@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     get :conclusion
   end
 
+  resource :auth_callback, controller: 'auth_callback' do
+    get :next_page
+  end
 
   namespace :me, as: :my do
     resource :staying_sharp, controller: 'staying_sharp', only: [:show]

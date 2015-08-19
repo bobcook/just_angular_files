@@ -21,6 +21,8 @@ gem 'uglifier', '~> 2.7.1'
 gem 'unicorn', '~> 4.9.0'
 gem 'high_voltage', '~> 2.4.0'
 gem 'fastly-rails', '~> 0.4.0'
+gem 'faraday', '~> 0.9.1'
+gem 'multi_xml', '~> 0.5.5'
 
 gem 'celluloid', '0.16.0' # for sidekiq; 0.16.1 was yanked from Rubygems
 #                           and sidekiq is locked below 0.17.0

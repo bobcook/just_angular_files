@@ -23,7 +23,6 @@ public/assets
 /db/*.sqlite3-journal
 /log/*
 /tmp/*
-.rspec
 /spec/tmp
 /vendor/bundle
 /vendor/assets/bower_components
