@@ -21,6 +21,9 @@ gem 'title', '~> 0.0.5'
 gem 'uglifier', '~> 2.7.1'
 gem 'unicorn', '~> 4.9.0'
 
+gem 'celluloid', '0.16.0' # for sidekiq; 0.16.1 was yanked from Rubygems
+#                           and sidekiq is locked below 0.17.0
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-jquery', '~> 2.1.4'
   gem 'rails-assets-jquery-ujs', '~> 1.0.4'
