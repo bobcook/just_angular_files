@@ -7,7 +7,6 @@ gem 'autoprefixer-rails', '~> 5.2.1.2'
 gem 'bundler', '>= 1.8.4'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'flutie', '~> 2.0.0'
-gem 'high_voltage', '~> 2.4.0'
 gem 'i18n-tasks', '~> 0.8.7'
 gem 'newrelic_rpm', '>= 3.9.8'
 gem 'pg', '~> 0.18.2'
@@ -60,4 +59,5 @@ end
 group :staging, :production do
   gem 'rails_12factor', '~> 0.0.3'
   gem 'rack-timeout', '~> 0.2.4'
+  gem 'passenger', '~> 5.0.15'
 end
