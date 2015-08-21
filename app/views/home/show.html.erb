@@ -1,0 +1,40 @@
+<h1>Explore Staying Sharp</h1>
+
+<ul>
+  <li><%= link_to 'Welcome', '#' %>
+    <ul>
+      <li><%= link_to 'Login', '#'%></li>
+      <li><%= link_to 'Sign up or Join', '#'%></li>
+    </ul>
+  </li>
+  <li><%= link_to 'Explore', '#' %>
+    <ul>
+      <li><%= link_to 'All Content', home_path %></li>
+      <li><%= link_to 'Articles', articles_path %></li>
+      <li><%= link_to 'Recipes', recipes_path %></li>
+      <li><%= link_to 'Activities', activities_path %></li>
+    </ul>
+  </li>
+  <li><%= link_to 'My Staying Sharp', '#' %>
+    <ul>
+      <li><%= link_to 'What I\'m Working On', my_staying_sharp_path %></li>
+      <li><%= link_to 'Saved Recipes', my_staying_sharp_path(tab: :saved_recipes) %></li>
+      <li><%= link_to 'Saved Articles', my_staying_sharp_path(tab: :saved_articles) %></li>
+      <li><%= link_to 'Assesment Results', conclusion_assessment_path %></li>
+
+    </ul>
+  </li>
+  <li><%= link_to 'Assesments', assessment_path %></li>
+  <!-- TODO: Onboarding tour modals -->
+  <li><%= link_to 'How it Works', '#' %>
+    <ul>
+      <li><%= link_to 'What is Brain Health', page_path('what_is_brain_health') %></li>
+      <li><%= link_to 'Using Staying Sharp', page_path('how_to_use_staying_sharp') %></li>
+      <li><%= link_to 'Connected Apps', page_path('connected_apps') %></li>
+    </ul>
+  </li>
+  <!-- TODO: Link to external join -->
+  <li><%= link_to 'Join Staying Sharp', '#' %></li>
+  <li><%= link_to 'Give Staying Sharp', '#' %></li>
+
+</ul>

@@ -1,0 +1,7 @@
+<h1>Explore: Activities</h1>
+
+<ul>
+  <li><%= link_to 'Untracked activity', activity_path(id: 1) %></li>
+  <li><%= link_to 'Untracked nutrition activity', activity_path(id: 1, type: 'Activity::Nutrition') %></li>
+  <li><%= link_to 'Tracked activity', my_activity_path(id: 1) %></li>
+</ul>

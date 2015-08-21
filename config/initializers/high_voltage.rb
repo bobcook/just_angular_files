@@ -1,3 +1,3 @@
 HighVoltage.configure do |config|
-  config.content_path = 'preview/'
+  config.route_drawer = HighVoltage::RouteDrawers::Root
 end

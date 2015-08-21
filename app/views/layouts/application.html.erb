@@ -14,8 +14,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>">
+  <%= render partial: 'application/top_nav' %>
+
   <%= render "flashes" -%>
   <%= yield %>
   <%= render "javascript" %>
+
+  <%= render partial: 'application/footer' %>
 </body>
 </html>
