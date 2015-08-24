@@ -7,8 +7,27 @@
 
 ```bash
 $ bundle
-$ rake newb
+$ bundle exec rake newb
 ```
+
+## ThirdParty Dependencies
+
+### Azul7 Frontend Components
+
+Azul7 has provided a majority of the frontend assets needed for the app via
+[https://github.com/StayingSharp/frontend-aarp-azul7](https://github.com/StayingSharp/frontend-aarp-azul7).
+They are made available to the app via a rake task.
+
+Whenever new components are ready for consumption, run
+
+```sh
+$ FRONTEND_REPO=<local path to azul7 repo> bundle exec rake frontend:update
+```
+
+Afterwards, create a commit to check in the changed files.
+
+**CAVEAT**: Do NOT modify the files in `/vendor/assets/<dirname>/azul7` since
+they will be destroyed the next time the `frontend:update` task runs
 
 ## Definition of Done
 
