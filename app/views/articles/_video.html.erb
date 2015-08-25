@@ -1,1 +1,39 @@
-<h2>Video Content</h2>
+<div class="cp-lead-in yellow-teal tall">
+  <div class="left"></div>
+  <div class="right"></div>
+
+  <div style="background: url(/assets/azul7/user-content/lead-in/tall-yellow-teal.png), url(http://aarp.org<%= @article.background_image_large %>); background-size: cover, cover; background-repeat: no-repeat; max-width: 940px; margin: 0 auto;">
+    <section>
+      <div class="copy-wrap">
+        <div class="vertical-content">
+          <h2><%= @article.title %></h2>
+          <p>By <%= @article.author %> | <%= @article.date %></p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="cp-pillar-filter">
+  <section>
+    <span class="pillar eating-right">Eating Right</span>
+    <span class="pillar being-social">Being Social</span>
+  </section>
+</div>
+
+<div class="cp-content-drawer">
+  <section>
+    <!-- video player -->
+    <object id="flashObj" width="1028" height="578" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,47,0"><param name="movie" value="http://c.brightcove.com/services/viewer/federated_f9?isVid=1&isUI=1" /><param name="bgcolor" value="#FFFFFF " /><param name="flashVars" value="videoId=3957010713001&playerID=3947524127001&playerKey=AQ~~,AAADbmBw59E~,iPUjQuIr3-bTANoq45vDuItb-RkT_VlE&domain=embed&dynamicStreaming=true" /><param name="base" value="http://admin.brightcove.com" /><param name="seamlesstabbing" value="false" /><param name="allowFullScreen" value="true" /><param name="swLiveConnect" value="true" /><param name="allowScriptAccess" value="always" /><embed src="http://c.brightcove.com/services/viewer/federated_f9?isVid=1&isUI=1" bgcolor="#FFFFFF " flashVars="videoId=3957010713001&playerID=3947524127001&playerKey=AQ~~,AAADbmBw59E~,iPUjQuIr3-bTANoq45vDuItb-RkT_VlE&domain=embed&dynamicStreaming=true" base="http://admin.brightcove.com" name="flashObj" width="1028" height="578" seamlesstabbing="false" type="application/x-shockwave-flash" allowFullScreen="true" allowScriptAccess="always" swLiveConnect="true" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"></embed></object>
+
+    <% @article.content.each do |segment| %>
+      <%= raw(@article.text(segment)) %>
+      <% if @article.image?(segment) %>
+        <figure>
+          <img src="http://aarp.org<%= @article.image(segment) %>">
+          <figcaption><%= @article.image_caption(segment) %></figcaption>
+        </figure>
+      <% end %>
+    <% end %>
+  </section>
+</div>

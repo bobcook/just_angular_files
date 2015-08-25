@@ -1,10 +1,8 @@
-<h2>Article Detail</h2>
-
-<% case params[:type]
+<% case @article.type
    when 'Article::Video' %>
-  <%= render partial: 'articles/video' %>
+  <%= render partial: 'articles/video', article: @article %>
 <% when 'Article::Slideshow' %>
-  <%= render partial: 'articles/slideshow' %>
+  <%= render partial: 'articles/slideshow', article: @article %>
 <% else %>
-  <%= render partial: 'articles/basic' %>
+  <%= render partial: 'articles/basic', article: @article %>
 <% end %>

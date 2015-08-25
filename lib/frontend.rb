@@ -1,5 +1,7 @@
 require 'fileutils'
 
+# TODO: change the font urls in the destination css from (../fonts/icons.eot)
+# to (/assets/azul7/icons.eot)
 module Frontend
   def self.update!(frontend_repo_path)
     Frontend.new(frontend_repo_path).update!

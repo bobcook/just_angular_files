@@ -1,7 +1,95 @@
-<h2>Explore: Articles</h2>
+<div class="cp-lead-in yellow-teal tall">
+  <div class="left"></div>
+  <div class="right"></div>
 
-<ul>
-  <li><%= link_to 'An Article', article_path(id: 1, type: 'Article::Basic') %></li>
-  <li><%= link_to 'A Video Article', article_path(id: 1, type: 'Article::Video') %></li>
-  <li><%= link_to 'A Slideshow Article', article_path(id: 1, type: 'Article::Slideshow') %></li>
-</ul>
+  <div style="background: url(/assets/azul7/user-content/lead-in/tall-yellow-teal.png), url(/assets/azul7/user-content/example-couple.png); background-size: cover, cover; background-repeat: no-repeat; max-width: 940px; margin: 0 auto;">
+    <section>
+      <div class="copy-wrap">
+        <div class="vertical-content">
+          <h2>Explore: Articles</h2>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<!-- Desktop ONLY -->
+<div class="cp-pillar-filter hidden-xs">
+    <section>
+        <p>Filter by:</p>
+        <ul>
+            <li><a href="" title=""><span class="pillar all-options">All</span></a></li>
+            <li class="hidden-xs"><span class="divider"></span></li>
+            <li><a href="" title="" class="keeping-fit"><span class="pillar keeping-fit">Keeping Fit</span></a></li>
+            <li><a href="" title="" class="learning-more"><span class="pillar learning-more">Learning More</span></a></li>
+            <li><a href="" title="" class="managing-stress"><span class="pillar managing-stress">Managing Stress</span></a></li>
+            <li><a href="" title="" class="eating-right"><span class="pillar eating-right">Eating Right</span></a></li>
+            <li><a href="" title="" class="being-social"><span class="pillar being-social">Being Social</span></a></li>
+        </ul>
+    </section>
+</div>
+
+
+<!-- Mobile ONLY -->
+<div class="cp-pillar-filter visible-xs">
+    <section>
+        <div class="btn-group">
+            <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span data-bind="label">All Categories</span><span class="chevron-down"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li class="switch-click"><a href="">All Categories</a></li>
+                <li class="switch-click"><a href="">Keeping Fit</a></li>
+                <li class="switch-click"><a href="">Learning More</a></li>
+                <li class="switch-click"><a href="">Managing Stress</a></li>
+                <li class="switch-click"><a href="">Eating Right</a></li>
+                <li class="switch-click"><a href="">Being Social</a></li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+
+<% @articles.in_groups_of(2, false) do |articles| %>
+  <div class="card-holder">
+  <% articles.each do |article| %>
+    <div class="cp-card article-card" style="background-image: url(http://aarp.org<%= article.background_image_large %>)">
+      <a href="#link-to-card-content"></a>
+      <div class="color-fill"></div>
+      <section>
+        <div class="info-block">
+          <header>
+            <h5>Article</h5>
+          </header>
+
+          <article>
+            <h4><%= link_to article.title, article_path(id: 1, type: article.type) %></h4>
+            <p><%= article.description %></p>
+            <div class="effort">
+              <% if article.type == :'Article::Slideshow' %>
+                <span>Slideshow: 5 slides</span>
+              <% elsif article.type == :'Article::Video' %>
+                <span>Video: 5 min</span>
+              <% else %>
+                <span>Read Time: 8 min</span>
+              <% end %>
+            </div>
+            <div class="proof">
+              <span class="icon-recommend"></span>
+              <span>85%</span>
+            </div>
+          </article>
+
+          <footer>
+            <div class="pillars">
+              <span class="pillar learning-more">Learning More</span>
+              <span class="pillar managing-stress">Managing Stress</span>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </div>
+  <% end %>
+  </div>
+<% end %>

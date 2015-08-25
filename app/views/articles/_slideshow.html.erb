@@ -1,1 +1,30 @@
-<h2>Slideshow Content</h2>
+<div class="cp-lead-in yellow-teal tall">
+  <div class="left"></div>
+  <div class="right"></div>
+
+  <div style="background: url(/assets/azul7/user-content/lead-in/tall-yellow-teal.png), url(http://aarp.org<%= @article.background_image_large %>); background-size: cover, cover; background-repeat: no-repeat; max-width: 940px; margin: 0 auto;">
+    <section>
+      <div class="copy-wrap">
+        <div class="vertical-content">
+          <h2><%= @article.title %></h2>
+          <p>By <%= @article.author %> | <%= @article.date %></p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="cp-pillar-filter">
+  <section>
+    <span class="pillar eating-right">Eating Right</span>
+    <span class="pillar being-social">Being Social</span>
+  </section>
+</div>
+
+<div class="cp-content-drawer">
+  <section>
+    <p><%= @article.titles %></p>
+    <p><%= @article.credits %></p>
+    <p><%= @article.images %></p>
+  </section>
+</div>
