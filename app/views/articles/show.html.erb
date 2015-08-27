@@ -1,7 +1,6 @@
-<% case @article.type
-   when 'Article::Video' %>
+<% if @article.video? %>
   <%= render partial: 'articles/video', article: @article %>
-<% when 'Article::Slideshow' %>
+<% elsif @article.slideshow? %>
   <%= render partial: 'articles/slideshow', article: @article %>
 <% else %>
   <%= render partial: 'articles/basic', article: @article %>

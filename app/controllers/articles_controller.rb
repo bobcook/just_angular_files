@@ -1,37 +1,30 @@
-# TODO: grab articles from database instead of connecting directly to AARP api
 class ArticlesController < ApplicationController
+  before_action :set_cache_control_headers, only: [:index, :show]
+
   def index
-    @articles = article_urls.map do |type, url|
-      json_payload = json_payload(type, url)
-      article_presenter(json_payload)
+    wip do
+      # TODO: remove raw_articles when we get requirements about what to display
+      raw_articles = Article.all
+      @articles = raw_articles.map do |article|
+        article_presenter(article)
+      end
+      set_surrogate_key_header Article.table_key, raw_articles.map(&:record_key)
     end
   end
 
   def show
-    wip do
-      # TODO: change so it's no directly passing :type param
-      url = article_urls[params[:type].to_sym]
-      return redirect_to articles_path if url.blank?
-      json_payload = json_payload(params[:type], url)
-      @article = article_presenter(json_payload)
-    end
+    raw_article = Article.find(params[:id])
+    @article = article_presenter(raw_article)
+    set_surrogate_key_header raw_article.record_key
   end
 
   private
 
-  def json_payload(type, url)
-    Apis::CMS::Article.new(url).json_payload_with_type(type)
-  end
-
-  def article_presenter(json_payload)
-    presenter = case params[:type]
-                when 'Article::Slideshow' then SlideshowArticlePresenter
+  def article_presenter(article)
+    presenter = case article.type
+                when 'SlideshowArticle' then SlideshowArticlePresenter
                 else BasicArticlePresenter
                 end
-    presenter.new(json_payload)
-  end
-
-  def article_urls
-    Apis::CMS::RecentArticles.new.fetch
+    presenter.new(article)
   end
 end

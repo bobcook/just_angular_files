@@ -9,7 +9,9 @@ module Apis
 
       def json_payload
         response = Faraday.get(api_url)
-        JSON.parse(response.body)
+        json = JSON.parse(response.body)
+        json['url'] = api_url
+        json
       end
 
       # NOTE: temporary method to add type to article json because the json
@@ -17,7 +19,7 @@ module Apis
       # and we can just use json_payload
       def json_payload_with_type(type)
         json_with_type = json_payload
-        json_with_type[:type] = type
+        json_with_type['type'] = type
         json_with_type
       end
     end

@@ -27,7 +27,7 @@ class BasicArticlePresenter < ArticlePresenter
   private
 
   def content_container
-    article['content']['columns_body']['pageColumnMain']['article']\
+    article.payload['content']['columns_body']['pageColumnMain']['article']\
       ['ContentParsys']
   rescue NoMethodError, TypeError
     nil

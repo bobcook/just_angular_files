@@ -1,30 +1,24 @@
 class ArticlePresenter
+  delegate :id, :title, :slideshow?, :video?, :basic?, to: :article
+
   def initialize(article)
     @article = article
   end
 
-  def title
-    article['jcr:title']
-  end
-
   def description
-    article['jcr:description']
+    article.payload['jcr:description']
   end
 
   def author
-    article['Author']
+    article.payload['Author']
   end
 
   def date
-    article['PrintDate'] || article['PublishDate']
+    article.publish_date
   end
 
   def background_image_large
-    article['ImageSize740']
-  end
-
-  def type
-    article[:type]
+    article.payload['ImageSize740']
   end
 
   private

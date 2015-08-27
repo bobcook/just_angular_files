@@ -1,0 +1,2 @@
+class BasicArticle < Article
+end

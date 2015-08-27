@@ -64,12 +64,12 @@
           </header>
 
           <article>
-            <h4><%= link_to article.title, article_path(id: 1, type: article.type) %></h4>
+            <h4><%= link_to article.title, article_path(id: article.id) %></h4>
             <p><%= article.description %></p>
             <div class="effort">
-              <% if article.type == :'Article::Slideshow' %>
+              <% if article.slideshow? %>
                 <span>Slideshow: 5 slides</span>
-              <% elsif article.type == :'Article::Video' %>
+              <% elsif article.video? %>
                 <span>Video: 5 min</span>
               <% else %>
                 <span>Read Time: 8 min</span>

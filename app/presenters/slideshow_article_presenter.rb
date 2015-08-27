@@ -14,7 +14,7 @@ class SlideshowArticlePresenter < ArticlePresenter
   private
 
   def content_container
-    article['content']['columns_body_0']['pageColumnMain']['slideshow']\
+    article.payload['content']['columns_body_0']['pageColumnMain']['slideshow']\
       ['slides']
   rescue NoMethodError, TypeError
     {}

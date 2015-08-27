@@ -1,0 +1,2 @@
+class SlideshowArticle < Article
+end
