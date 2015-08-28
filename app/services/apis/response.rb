@@ -15,7 +15,7 @@ module Apis
     def initialize(args = {})
       @status = args[:status]
       @body = args[:body]
-      @headers = args[:headers]
+      @headers = (args[:headers] || {}).with_indifferent_access
     end
 
     def method_missing(method_sym, *arguments, &block)
