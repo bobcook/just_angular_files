@@ -3,8 +3,8 @@ require 'rails_helper'
 module Apis
   module DSO
     describe Endpoints do
-      def make_subject(double = nil)
-        Endpoints.new(http: double)
+      def make_subject(double = nil, token_cache = nil)
+        Endpoints.new(http: double, token_cache: token_cache)
       end
 
       describe '#token' do
@@ -13,11 +13,13 @@ module Apis
             'https://services.share.aarp.org/applications/CoreServices/' \
             'WSOWebService/providers/ShareCare/token'
           http = double
+          crypto = double(authentication_header: '', signature_header: '')
           subject = make_subject(http)
 
           allow(subject).to receive(:http).and_return(http)
           allow(subject).to receive(:make_response)
-          expect(http).to receive(:post).with(expected_url)
+          allow(subject).to receive(:crypto).and_return(crypto)
+          expect(http).to receive(:post).with(expected_url, anything, anything)
 
           subject.token
         end
@@ -33,11 +35,14 @@ module Apis
             'https://services.share.aarp.org/applications/CoreServices/' \
             'WSOWebService/users/session'
           http = double
-          subject = make_subject(http)
+          token_cache = double
+          subject = make_subject(http, token_cache)
 
           allow(subject).to receive(:http).and_return(http)
+          allow(subject).to receive(:token_cache).and_return(token_cache)
           allow(subject).to receive(:make_response)
-          expect(http).to receive(:get).with(expected_url)
+          allow(token_cache).to receive(:with_provider_token).and_yield('123')
+          expect(http).to receive(:get).with(expected_url, anything, anything)
 
           subject.login_from_provider
         end
@@ -45,18 +50,21 @@ module Apis
 
       describe '#user' do
         it 'hits the correct endpoint' do
-          expected_user_token = '123456789'
+          token = '123456789'
           expected_url =
             'https://services.share.aarp.org/applications/CoreServices/' \
-            'WSOWebService/users/' + expected_user_token
+            'WSOWebService/users/' + token
           http = double
-          subject = make_subject(http)
+          token_cache = double
+          subject = make_subject(http, token_cache)
 
           allow(subject).to receive(:http).and_return(http)
           allow(subject).to receive(:make_response)
-          expect(http).to receive(:get).with(expected_url)
+          allow(subject).to receive(:token_cache).and_return(token_cache)
+          allow(token_cache).to receive(:with_provider_token).and_yield(token)
+          expect(http).to receive(:get).with(expected_url, anything, anything)
 
-          subject.user(expected_user_token)
+          subject.user(token)
         end
       end
     end
