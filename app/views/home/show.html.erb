@@ -4,7 +4,13 @@
   <li>Welcome
     <ul>
       <li><%= link_to 'Search Results', search_path %></li>
-      <li><%= link_to 'Login', '#'%></li>
+      <li>
+        <% if user_signed_in? %>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Login', user_omniauth_authorize_path(provider: 'aarp') %>
+        <% end %>
+      </li>
       <li><%= link_to 'Sign up or Join', '#'%></li>
     </ul>
   </li>

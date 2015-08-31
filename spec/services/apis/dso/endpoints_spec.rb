@@ -67,6 +67,27 @@ module Apis
           subject.user(token)
         end
       end
+
+      describe '#logout' do
+        it 'hits the correct endpoint' do
+          token = '12345'
+          expected_url =
+            'https://services.share.aarp.org/applications/CoreServices/' \
+            'WSOWebService/users/' + token + '/session'
+          http = double
+          token_cache = double
+          subject = make_subject(http, token_cache)
+
+          allow(subject).to receive(:http).and_return(http)
+          allow(subject).to receive(:make_response)
+          allow(subject).to receive(:token_cache).and_return(token_cache)
+          allow(token_cache).to receive(:with_provider_token).and_yield(token)
+          expect(http).to receive(:delete)
+            .with(expected_url, anything, anything)
+
+          subject.logout(token)
+        end
+      end
     end
   end
 end

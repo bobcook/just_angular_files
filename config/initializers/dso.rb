@@ -1,0 +1,3 @@
+# Needed because otherwise rails' load order is wack and you can't
+# call module methods in controller actions...
+require 'apis/dso'

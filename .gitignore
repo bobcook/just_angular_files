@@ -12,7 +12,6 @@ latest.dump
 .zsh_rake_cache
 .rbenv-version
 .rbenv-vars
-.ruby-version
 .env
 /.bundle
 /.foreman

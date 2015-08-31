@@ -5,9 +5,11 @@ module Apis
     attr_reader :status, :body, :headers
 
     def self.from_faraday(faraday_response)
+      # TODO conditionally check for response body type
       new(
         status: faraday_response.status,
-        body: MultiXml.parse(faraday_response.body),
+        body:
+          MultiXml.parse(faraday_response.body).try(:with_indifferent_access),
         headers: faraday_response.headers
       )
     end

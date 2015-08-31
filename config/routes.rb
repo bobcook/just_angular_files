@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users,
+             controllers: {
+               omniauth_callbacks: 'users/omniauth_callbacks'
+             },
+             skip: [:registrations, :sessions]
+
+  devise_scope :user do
+    delete 'sign_out', to: 'users/sessions#destroy', as: :destroy_user_session
+  end
+
   root to: 'home#show'
   resource :home, controller: 'home', only: :show
   resources :articles, only: [:index, :show]
