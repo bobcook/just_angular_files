@@ -8,10 +8,13 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    url = article_urls[params[:type].to_sym]
-    return redirect_to articles_path if url.blank?
-    json_payload = json_payload(params[:type], url)
-    @article = article_presenter(json_payload)
+    wip do
+      # TODO: change so it's no directly passing :type param
+      url = article_urls[params[:type].to_sym]
+      return redirect_to articles_path if url.blank?
+      json_payload = json_payload(params[:type], url)
+      @article = article_presenter(json_payload)
+    end
   end
 
   private

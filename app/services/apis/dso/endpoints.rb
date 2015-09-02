@@ -68,7 +68,10 @@ module Apis
       end
 
       def login_callback_url
-        # TODO
+        Rails.application.routes.url_helpers.user_omniauth_authorize_url(
+          provider: 'aarp',
+          host: ENV.fetch('HOST')
+        )
       end
 
       def make_response(faraday_response)

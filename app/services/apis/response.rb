@@ -5,7 +5,7 @@ module Apis
     attr_reader :status, :body, :headers
 
     def self.from_faraday(faraday_response)
-      # TODO conditionally check for response body type
+      # TODO: conditionally check for response body type
       new(
         status: faraday_response.status,
         body:

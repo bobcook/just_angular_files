@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+source 'https://nyvTgvizKAKWAVynPmpS@gem.fury.io/jdwolk/' do
+  gem 'wippersnapper', '~> 0.1.0'
+end
+
 ruby `cat .ruby-version`.strip
 
 gem 'airbrake', '~> 4.3.0'
