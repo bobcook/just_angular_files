@@ -8,12 +8,18 @@ module Apis
       ENDPOINTS = {
         get_token: '/providers/ShareCare/token',
         login_from_provider: '/users/session',
-        user: '/users',
-        logout: '/users/<%= token %>/session'
+        user: '/users/<%= token %>',
+        logout: '/users/<%= token %>/session',
+        membership_status: '/users/<%= token %>/membershipStatus',
+        membership_info: '/users/<%= token %>/membershipInfo',
+        specialized_membership_status:
+          '/users/<%= token %>/specializedMembershipStatus',
+        specialized_membership_info:
+          '/users/<%= token %>/specializedMembershipInfo'
       }
 
       def initialize(options = {})
-        @http = options[:http] || Faraday
+        @http = options[:http] || faraday
         @token_cache = options[:token_cache] || ProviderTokenCache.new(self)
       end
 
@@ -42,24 +48,39 @@ module Apis
       end
 
       def user(user_token, _options = {})
-        with_provider_token do |token|
-          full_url = url(:user) + "/#{user_token}"
-          headers = { 'Authentication' => token }
-
-          http.get(full_url, {}, headers)
-        end
+        user_authed_request(user_token, :get, :user)
       end
 
       def logout(user_token, _options = {})
-        with_provider_token do |token|
-          full_url = url(:logout, token: user_token)
-          headers = { 'Authentication' => token }
+        user_authed_request(user_token, :delete, :logout)
+      end
 
-          http.delete(full_url, {}, headers)
-        end
+      def membership_status(user_token, _options = {})
+        user_authed_request(user_token, :get, :membership_status)
+      end
+
+      def membership_info(user_token, _options = {})
+        user_authed_request(user_token, :get, :membership_info)
+      end
+
+      def specialized_membership_status(user_token, _options = {})
+        user_authed_request(user_token, :get, :specialized_membership_status)
+      end
+
+      def specialized_membership_info(user_token, _options = {})
+        user_authed_request(user_token, :get, :specialized_membership_info)
       end
 
       private
+
+      def user_authed_request(user_token, verb, endpoint, _options = {})
+        with_provider_token do |token|
+          full_url = url(endpoint, token: user_token)
+          headers = { 'Authentication' => token }
+
+          http.send(verb, full_url, {}, headers)
+        end
+      end
 
       def with_provider_token(&block)
         token_cache.with_provider_token do |token|
@@ -92,6 +113,15 @@ module Apis
 
       def crypto
         @crypto ||= Crypto.new
+      end
+
+      def faraday
+        @faraday ||= Faraday.new do |conn|
+          conn.request :json
+          conn.response :xml, content_type: /\bxml$/
+          conn.response :json, content_type: /\bjson$/
+          conn.adapter Faraday.default_adapter
+        end
       end
     end
   end

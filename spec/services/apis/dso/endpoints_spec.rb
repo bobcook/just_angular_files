@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative './endpoints_shared_examples'
 
 module Apis
   module DSO
@@ -8,21 +9,18 @@ module Apis
       end
 
       describe '#token' do
-        it 'hits the correct endpoint' do
-          expected_url =
-            'https://services.share.aarp.org/applications/CoreServices/' \
-            'WSOWebService/providers/ShareCare/token'
-          http = double
+        before do
           crypto = double(authentication_header: '', signature_header: '')
-          subject = make_subject(http)
-
-          allow(subject).to receive(:http).and_return(http)
-          allow(subject).to receive(:make_response)
-          allow(subject).to receive(:crypto).and_return(crypto)
-          expect(http).to receive(:post).with(expected_url, anything, anything)
-
-          subject.token
+          allow(Crypto).to receive(:new).and_return(crypto)
         end
+
+        it_behaves_like(
+          'it hits the correct endpoint',
+          verb: :post,
+          endpoint: 'https://services.share.aarp.org/applications/' \
+            'CoreServices/WSOWebService/providers/ShareCare/token',
+          method: :token
+        )
 
         it 'returns an ok status', integration: true do
           expect(make_subject.token.ok?).to eq(true)
@@ -30,63 +28,87 @@ module Apis
       end
 
       describe '#login_from_provider' do
-        it 'hits the correct endpoint' do
-          expected_url =
-            'https://services.share.aarp.org/applications/CoreServices/' \
-            'WSOWebService/users/session'
-          http = double
-          token_cache = double
-          subject = make_subject(http, token_cache)
-
-          allow(subject).to receive(:http).and_return(http)
-          allow(subject).to receive(:token_cache).and_return(token_cache)
-          allow(subject).to receive(:make_response)
-          allow(token_cache).to receive(:with_provider_token).and_yield('123')
-          expect(http).to receive(:get).with(expected_url, anything, anything)
-
-          subject.login_from_provider
-        end
+        it_behaves_like(
+          'it hits the correct endpoint',
+          verb: :get,
+          endpoint: 'https://services.share.aarp.org/applications/' \
+                    'CoreServices/WSOWebService/users/session',
+          method: :login_from_provider
+        )
       end
 
       describe '#user' do
-        it 'hits the correct endpoint' do
-          token = '123456789'
-          expected_url =
-            'https://services.share.aarp.org/applications/CoreServices/' \
-            'WSOWebService/users/' + token
-          http = double
-          token_cache = double
-          subject = make_subject(http, token_cache)
-
-          allow(subject).to receive(:http).and_return(http)
-          allow(subject).to receive(:make_response)
-          allow(subject).to receive(:token_cache).and_return(token_cache)
-          allow(token_cache).to receive(:with_provider_token).and_yield(token)
-          expect(http).to receive(:get).with(expected_url, anything, anything)
-
-          subject.user(token)
-        end
+        it_behaves_like(
+          'it hits the correct endpoint',
+          verb: :get,
+          endpoint: 'https://services.share.aarp.org/applications/' \
+                    'CoreServices/WSOWebService/users/' + 'abc123',
+          method: ->(subject) { subject.user('abc123') },
+          token: 'abc123'
+        )
       end
 
       describe '#logout' do
-        it 'hits the correct endpoint' do
-          token = '12345'
-          expected_url =
-            'https://services.share.aarp.org/applications/CoreServices/' \
-            'WSOWebService/users/' + token + '/session'
-          http = double
-          token_cache = double
-          subject = make_subject(http, token_cache)
+        it_behaves_like(
+          'it hits the correct endpoint',
+          verb: :delete,
+          endpoint: 'https://services.share.aarp.org/applications/' \
+                    'CoreServices/WSOWebService/users/' + '12345' + '/session',
+          method: ->(subject) { subject.logout('12345') },
+          token: '12345'
+        )
+      end
 
-          allow(subject).to receive(:http).and_return(http)
-          allow(subject).to receive(:make_response)
-          allow(subject).to receive(:token_cache).and_return(token_cache)
-          allow(token_cache).to receive(:with_provider_token).and_yield(token)
-          expect(http).to receive(:delete)
-            .with(expected_url, anything, anything)
+      describe '#membership_status' do
+        it_behaves_like(
+          'it hits the correct endpoint',
+          verb: :get,
+          endpoint: 'https://services.share.aarp.org/applications/' \
+                    'CoreServices/WSOWebService/users/' + '12345' \
+                    '/membershipStatus',
+          method: ->(subject) { subject.membership_status('12345') },
+          token: '12345'
+        )
+      end
 
-          subject.logout(token)
-        end
+      describe '#membership_info' do
+        it_behaves_like(
+          'it hits the correct endpoint',
+          verb: :get,
+          endpoint: 'https://services.share.aarp.org/applications/' \
+                    'CoreServices/WSOWebService/users/' + '12345' \
+                    '/membershipInfo',
+          method: ->(subject) { subject.membership_info('12345') },
+          token: '12345'
+        )
+      end
+
+      describe '#specialized_membership_status' do
+        it_behaves_like(
+          'it hits the correct endpoint',
+          verb: :get,
+          endpoint: 'https://services.share.aarp.org/applications/' \
+                    'CoreServices/WSOWebService/users/' + '12345' \
+                    '/specializedMembershipStatus',
+          method: lambda do |subject|
+                    subject.specialized_membership_status('12345')
+                  end,
+          token: '12345'
+        )
+      end
+
+      describe '#specialized_membership_info' do
+        it_behaves_like(
+          'it hits the correct endpoint',
+          verb: :get,
+          endpoint: 'https://services.share.aarp.org/applications/' \
+                    'CoreServices/WSOWebService/users/' + '12345' \
+                    '/specializedMembershipInfo',
+          method: lambda do |subject|
+                    subject.specialized_membership_info('12345')
+                  end,
+          token: '12345'
+        )
       end
     end
   end
