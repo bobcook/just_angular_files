@@ -19,7 +19,10 @@
       <li><%= link_to 'All Content', home_path %></li>
       <li><%= link_to 'Articles', articles_path %></li>
       <li><%= link_to 'Recipes', recipes_path %></li>
+      <%# TODO: only allow paid users to see actitivies %>
+      <% if user_signed_in? %>
       <li><%= link_to 'Activities', activities_path %></li>
+      <% end %>
       <li><%= link_to 'Challenges', challenges_path %></li>
     </ul>
   </li>

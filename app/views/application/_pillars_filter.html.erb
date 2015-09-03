@@ -1,0 +1,5 @@
+ <p>See content related to:
+  <% Pillar.all.each do |pillar| %>
+    <%= link_to pillar.name, "?pillar=#{pillar.slug}" %> |
+  <% end %>
+ </p>

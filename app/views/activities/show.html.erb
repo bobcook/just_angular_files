@@ -1,3 +1,29 @@
-<h2>Activity Detail (Untracked)</h2>
+<h2><%= "Activity: #{@activity.title}" %></h2>
+<p><%= @activity.points %> pts</p>
 
-<%= render partial: 'activities/nutrition' if @activity.type == 'Activity::Nutrition' %>
+<p>Pillars: <%= @activity.pillar_names %></p>
+
+<div>
+  <b>Recommended Effort</b>
+  <%= @activity.recommended_effort_time %>,
+  <%= @activity.recommended_effort_frequency %>
+</div>
+
+<div>
+  <b>Work On This: </b>
+  <p><%= render partial: 'user_activities/save_button', activity: @activity %></p>
+</div>
+
+<h3>Description</h3>
+<%= @activity.payload['description'].html_safe %>
+
+<h3>How To</h3>
+<%= @activity.payload['how_to'].html_safe %>
+
+<h3>Work On This</h3>
+<p>Interested in doing this activity?</p>
+<p><%= render partial: 'user_activities/save_button', activity: @activity %></p>
+
+<h3>Recommended Effort</h3>
+<p><%= @activity.recommended_effort_time %></p>
+<p><%= @activity.recommended_effort_frequency %></p>

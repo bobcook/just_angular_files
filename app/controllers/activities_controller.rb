@@ -1,9 +1,22 @@
 class ActivitiesController < ApplicationController
-  def index; end
+  before_action :set_cache_control_headers, only: [:index, :show]
+  # TODO: only allow paid users to see actitivies
+  before_action :authenticate_user!, only: [:index, :show]
+
+  def index
+    @activities = filtered_activities
+    set_surrogate_key_header Activity.table_key, @activities.map(&:record_key)
+    flash[:explanation] = I18n.t('explanation.activities')
+  end
 
   def show
-    wip do
-      @activity = OpenStruct.new(params.slice(:id, :type))
-    end
+    @activity = Activity.find(params[:id])
+    set_surrogate_key_header @activity.record_key
+  end
+
+  private
+
+  def filtered_activities
+    PillarFiltering.new(Activity.all, params).paginated_collection
   end
 end

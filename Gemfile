@@ -31,6 +31,7 @@ gem 'multi_xml', '~> 0.5.5'
 gem 'redis-rails', '~> 4.0.0'
 gem 'omniauth', '~> 1.2.2'
 gem 'devise', '~> 3.5.2'
+gem 'kaminari', '~> 0.16.1'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-jquery', '~> 2.1.4'

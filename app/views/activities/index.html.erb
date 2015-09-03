@@ -1,7 +1,18 @@
 <h2>Explore: Activities</h2>
 
-<ul>
-  <li><%= link_to 'Untracked activity', activity_path(id: 1) %></li>
-  <li><%= link_to 'Untracked nutrition activity', activity_path(id: 1, type: 'Activity::Nutrition') %></li>
-  <li><%= link_to 'Tracked activity', my_activity_path(id: 1) %></li>
-</ul>
+<h2>Staying Sharp Activities</h2>
+
+<p id="explanation"><%= flash[:explanation] %></p>
+
+<%= render partial: 'application/pillars_filter' %>
+
+<h2>All Activities</h2>
+
+<% @activities.each do |activity| %>
+  <h2><%= link_to "Activity: #{activity.title}", activity_path(activity) %></h2>
+  <p>Pillars: <%= activity.pillar_names %></p>
+  <p><%= activity.points %> pts</p>
+  <p><%= activity.recommended_effort_time %></p>
+<% end %>
+
+<%= paginate @activities %>

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :show]
   resources :recipes, only: [:index, :show]
   resources :activities, only: [:index, :show]
+
   resource :search, controller: 'search', only: [:show]
   resources :challenges, only: :index
   resource :assessment, controller: 'assessment', only: [:show] do
@@ -27,8 +28,11 @@ Rails.application.routes.draw do
   end
 
   namespace :me, as: :my do
+    resources :activities, only: [:show, :create] do
+      resource :reminder_settings,
+               only: [:new, :edit],
+               controller: 'activities/reminder_settings'
+    end
     resource :staying_sharp, controller: 'staying_sharp', only: [:show]
-    resources :activities, only: [:show]
-    resources :activity_reminders, only: [:edit, :update]
   end
 end
