@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   namespace :me, as: :my do
     resources :activities, only: [:show, :create] do
       resource :reminder_settings,
-               only: [:new, :edit],
+               only: [:new, :edit, :create],
                controller: 'activities/reminder_settings'
     end
     resource :staying_sharp, controller: 'staying_sharp', only: [:show]

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150904180438) do
+ActiveRecord::Schema.define(version: 20150908211624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 20150904180438) do
   end
 
   add_index "activities", ["activity_tracker_id"], name: "index_activities_on_activity_tracker_id", using: :btree
+
+  create_table "activity_reminder_settings", force: :cascade do |t|
+    t.string   "days",             default: [], array: true
+    t.string   "contact_methods",  default: [], array: true
+    t.string   "times",            default: [], array: true
+    t.integer  "user_activity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activity_reminder_settings", ["user_activity_id"], name: "index_activity_reminder_settings_on_user_activity_id", using: :btree
 
   create_table "activity_trackers", force: :cascade do |t|
     t.string   "name"
@@ -96,6 +107,7 @@ ActiveRecord::Schema.define(version: 20150904180438) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "activity_reminder_settings", "user_activities"
   add_foreign_key "user_activities", "activities"
   add_foreign_key "user_activities", "users"
 end

@@ -3,7 +3,8 @@ class UserActivitiesController < ApplicationController
     user_activity = UserActivity.new(user_activity_params)
     if user_activity.save
       flash[:success] = 'Activity was saved'
-      redirect_to activity_reminder_settings_path
+      redirect_to new_user_activity_activity_reminder_setting_path(
+        user_activity_id: user_activity.id)
     else
       flash[:warning] = 'Activity was not saved'
       redirect_to :back
