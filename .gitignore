@@ -13,6 +13,7 @@ latest.dump
 .rbenv-version
 .rbenv-vars
 .env
+.ruby-*
 /.bundle
 /.foreman
 public/uploads
