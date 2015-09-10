@@ -5,4 +5,8 @@ module CollectionUtils
     end
     Hash[to_return]
   end
+
+  def zipmap(keys, values)
+    Hash[keys.zip(values)]
+  end
 end

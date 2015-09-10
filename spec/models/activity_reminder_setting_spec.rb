@@ -48,6 +48,23 @@ describe ActivityReminderSetting do
     end
   end
 
+  describe '#empty' do
+    it 'is true for default' do
+      subject = ActivityReminderSetting.defaults
+      expect(subject.empty?).to eq(true)
+    end
+
+    it 'is true when settings match default settings' do
+      subject = create(:default_settings)
+      expect(subject.empty?).to eq(true)
+    end
+
+    it 'is false otherwise' do
+      subject = create(:activity_reminder_settings)
+      expect(subject.empty?).to eq(false)
+    end
+  end
+
   describe '.defaults' do
     it 'populates reminder with default settings' do
       settings = ActivityReminderSetting.defaults

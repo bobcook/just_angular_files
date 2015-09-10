@@ -1,0 +1,24 @@
+<%#
+This generates a JavaScript file that prepopulates the Angular template cache
+with our partials. Ideally, we should be able to use the angular-rails-templates
+gem, but it doesn't work with Sprockets 3.x, so this is used instead. It should
+probably be changed/removed when Rails or Sprockets changes (or if the gem is
+updated to work with current Rails).
+%>
+
+(function(){
+  'use strict';
+  angular.module('templates', []).run(['$templateCache', function($templateCache) {
+    <%
+      environment.context_class.instance_eval { include ActionView::Helpers::JavaScriptHelper }
+      templates_root = File.join(Rails.root, %w{app assets templates})
+      templates = File.join(templates_root, %w{** *.{html,html.erb}})
+      Dir.glob(templates).each do |f|
+        depend_on f
+        key  = f.gsub(%r(^#{templates_root}/), '').gsub(%r(.erb$), '')
+        html = Rails.application.assets[key].source
+    %>
+      $templateCache.put("<%= key %>", "<%= escape_javascript(html) %>");
+  <% end %>
+  }]);
+}());

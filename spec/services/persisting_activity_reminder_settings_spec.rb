@@ -7,7 +7,7 @@ describe PersistingActivityReminderSettings do
     context 'with reminders' do
       it 'builds a new activity using params' do
         params = {
-          reminders: 'Yes',
+          reminders: 'true',
           days: [:monday],
           contact_methods: [:text],
           times: [:morning],
@@ -31,7 +31,7 @@ describe PersistingActivityReminderSettings do
         old_settings = create(:activity_reminder_settings, attr)
 
         params = {
-          reminders: 'Yes',
+          reminders: 'true',
           days: [:tuesday],
           contact_methods: [:email],
           times: [:afternoon],
@@ -49,7 +49,7 @@ describe PersistingActivityReminderSettings do
 
     context 'without reminders' do
       it 'builds a new activity using default values' do
-        params = { reminders: 'No', user_activity_id: user_activity.id }
+        params = { reminders: 'false', user_activity_id: user_activity.id }
         settings = PersistingActivityReminderSettings.new(params).settings
         defaults = ActivityReminderSetting.default_settings
 
@@ -69,7 +69,7 @@ describe PersistingActivityReminderSettings do
         old_settings = create(:activity_reminder_settings, attr)
 
         params = {
-          reminders: 'No',
+          reminders: 'false',
           user_activity_id: user_activity.id
         }
         new_settings =

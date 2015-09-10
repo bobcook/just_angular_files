@@ -33,10 +33,14 @@ gem 'omniauth', '~> 1.2.2'
 gem 'devise', '~> 3.5.2'
 gem 'kaminari', '~> 0.16.1'
 gem 'bitmask_attributes', '~> 1.0.0'
+gem 'ngannotate-rails', '~> 1.0.3'
+gem 'therubyracer', '~> 0.12.2'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-jquery', '~> 2.1.4'
   gem 'rails-assets-jquery-ujs', '~> 1.0.4'
+  gem 'rails-assets-angular', '~> 1.4.5'
+  gem 'rails-assets-lodash', '~> 3.9.3'
 end
 
 group :development do

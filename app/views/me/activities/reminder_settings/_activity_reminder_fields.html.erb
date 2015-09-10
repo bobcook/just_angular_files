@@ -1,8 +1,11 @@
 <%= label_tag 'activity_reminder_setting[reminders]', 'Yes' %>
-<%= radio_button_tag 'activity_reminder_setting[reminders]', 'Yes' %>
+<%= radio_button_tag 'activity_reminder_setting[reminders]', true, form.object.empty?, 'ng-model' => 'vm.reminders' %>
 <%= label_tag 'activity_reminder_setting[reminders]', 'No' %>
-<%= radio_button_tag 'activity_reminder_setting[reminders]', 'No' %>
-<%= form.input :days,  as: :check_boxes, collection: ActivityReminderSetting.values_for_days %>
-<%= form.input :contact_methods,  as: :check_boxes, collection: ActivityReminderSetting.values_for_contact_methods %>
-<%= form.input :times,  as: :check_boxes, collection: ActivityReminderSetting.values_for_times %>
-<%= form.input :user_activity_id,  as: :hidden, :input_html => { :value => params[:activity_id] } %>
+<%= radio_button_tag 'activity_reminder_setting[reminders]', false, false, 'ng-model' => 'vm.reminders' %>
+
+<div ng-show="vm.equals(vm.reminders, 'true')">
+  <%= form.input :days,  as: :check_boxes, collection: ActivityReminderSetting.values_for_days %>
+  <%= form.input :contact_methods,  as: :check_boxes, collection: ActivityReminderSetting.values_for_contact_methods %>
+  <%= form.input :times,  as: :check_boxes, collection: ActivityReminderSetting.values_for_times %>
+  <%= form.input :user_activity_id,  as: :hidden, input_html: { value: params[:activity_id] } %>
+</div>

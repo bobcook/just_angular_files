@@ -21,7 +21,7 @@ class PersistingActivityReminderSettings
   end
 
   def reminders?
-    orig_params[:reminders] == 'Yes'
+    orig_params[:reminders] == 'true'
   end
 
   def orig_settings
