@@ -2,6 +2,9 @@
 #= require jquery-ujs
 #= require lodash
 #= require angular
+#= require azul7/vendor/modernizr
+#= require azul7/vendor
+#= require azul7/plugins
 #= require azul7/main
 #= require ng-templates/templates
 #= require_self
