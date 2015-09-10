@@ -1,10 +1,27 @@
 class ActivityReminderSetting < ActiveRecord::Base
+  include BitmaskPredicates
+
   belongs_to :user_activity
 
-  enum reminder_options: { 'Yes' => 1, 'No' => 0 }
-  enum day_options: [:Mon, :Tue, :Wed, :Thu, :Fri, :Sat, :Sun]
-  enum contact_options: [:email, :phone]
-  enum time_options: [:morning, :afternoon, :evening]
+  bitmask :days, as:
+    [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
+  bitmask :contact_methods, as: [:email, :text]
+  bitmask :times, as: [:morning, :afternoon, :evening]
 
-  validates :reminders, presence: true
+  def reset(user_activity_id)
+    assign(self.class.default_settings
+      .merge(user_activity_id: user_activity_id))
+  end
+
+  def assign(attrs)
+    tap { |model| model.assign_attributes(attrs) }
+  end
+
+  def self.defaults
+    new(default_settings)
+  end
+
+  def self.default_settings
+    { days: [], contact_methods: [], times: [] }
+  end
 end

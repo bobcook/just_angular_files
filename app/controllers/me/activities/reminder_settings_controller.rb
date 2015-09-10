@@ -6,9 +6,10 @@ module Me
       end
 
       def create
-        @activity_reminder = ActivityReminderSetting.new(reminder_params)
+        settings =
+          PersistingActivityReminderSettings.new(reminder_params).settings
 
-        if @activity_reminder.save
+        if settings.save
           flash[:success] = 'activity reminder is saved'
           redirect_to create_redirect_path
         else
@@ -28,8 +29,13 @@ module Me
       def reminder_params
         params
           .require(:activity_reminder_setting)
-          .permit({ times: [] }, { days: [] }, { contact_methods: [] },
-                  :user_activity_id, :reminders)
+          .permit(
+            { times: [] },
+            { days: [] },
+            { contact_methods: [] },
+            :user_activity_id,
+            :reminders
+          )
       end
     end
   end

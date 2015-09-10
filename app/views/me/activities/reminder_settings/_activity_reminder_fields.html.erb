@@ -1,5 +1,8 @@
-<%= form.input :reminders, as: :radio_buttons, collection:  ActivityReminderSetting.reminder_options  %>
-<%= form.input :days,  as: :check_boxes, collection: ActivityReminderSetting.day_options %>
-<%= form.input :contact_methods,  as: :check_boxes, collection: ActivityReminderSetting.contact_options %>
-<%= form.input :times,  as: :check_boxes, collection: ActivityReminderSetting.time_options %>
-<%= form.input :user_activity_id,  as: :hidden, :input_html => { :value => params[:user_activity_id] } %>
+<%= label_tag 'activity_reminder_setting[reminders]', 'Yes' %>
+<%= radio_button_tag 'activity_reminder_setting[reminders]', 'Yes' %>
+<%= label_tag 'activity_reminder_setting[reminders]', 'No' %>
+<%= radio_button_tag 'activity_reminder_setting[reminders]', 'No' %>
+<%= form.input :days,  as: :check_boxes, collection: ActivityReminderSetting.values_for_days %>
+<%= form.input :contact_methods,  as: :check_boxes, collection: ActivityReminderSetting.values_for_contact_methods %>
+<%= form.input :times,  as: :check_boxes, collection: ActivityReminderSetting.values_for_times %>
+<%= form.input :user_activity_id,  as: :hidden, :input_html => { :value => params[:activity_id] } %>

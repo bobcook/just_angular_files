@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20150908211624) do
   add_index "activities", ["activity_tracker_id"], name: "index_activities_on_activity_tracker_id", using: :btree
 
   create_table "activity_reminder_settings", force: :cascade do |t|
-    t.string   "days",             default: [], array: true
-    t.string   "contact_methods",  default: [], array: true
-    t.string   "times",            default: [], array: true
+    t.integer  "days"
+    t.integer  "contact_methods"
+    t.integer  "times"
     t.integer  "user_activity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
