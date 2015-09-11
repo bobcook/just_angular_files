@@ -40,6 +40,27 @@ ActiveRecord::Schema.define(version: 20150919040204) do
 
   add_index "activity_reminder_settings", ["user_activity_id"], name: "index_activity_reminder_settings_on_user_activity_id", using: :btree
 
+  create_table "activity_tracker_questions", force: :cascade do |t|
+    t.integer  "activity_tracker_id"
+    t.string   "text"
+    t.string   "type",                null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activity_tracker_questions", ["activity_tracker_id"], name: "index_activity_tracker_questions_on_activity_tracker_id", using: :btree
+
+  create_table "activity_tracker_responses", force: :cascade do |t|
+    t.string   "response"
+    t.integer  "activity_tracker_question_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_activity_period_id"
+  end
+
+  add_index "activity_tracker_responses", ["activity_tracker_question_id"], name: "activity_tracker_responses_on_question", using: :btree
+  add_index "activity_tracker_responses", ["user_activity_period_id"], name: "index_activity_tracker_responses_on_user_activity_period_id", using: :btree
+
   create_table "activity_trackers", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -79,7 +100,7 @@ ActiveRecord::Schema.define(version: 20150919040204) do
 
   create_table "recipes", force: :cascade do |t|
     t.string   "title"
-    t.string   "prep_time"
+    t.string   "read_time"
     t.json     "payload"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -94,6 +115,15 @@ ActiveRecord::Schema.define(version: 20150919040204) do
 
   add_index "user_activities", ["activity_id"], name: "index_user_activities_on_activity_id", using: :btree
   add_index "user_activities", ["user_id"], name: "index_user_activities_on_user_id", using: :btree
+
+  create_table "user_activity_periods", force: :cascade do |t|
+    t.integer  "user_activity_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "completed_date"
+  end
+
+  add_index "user_activity_periods", ["user_activity_id"], name: "index_user_activity_periods_on_user_activity_id", using: :btree
 
   create_table "user_recipes", force: :cascade do |t|
     t.integer  "user_id"
@@ -126,8 +156,12 @@ ActiveRecord::Schema.define(version: 20150919040204) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "activity_reminder_settings", "user_activities"
+  add_foreign_key "activity_tracker_questions", "activity_trackers"
+  add_foreign_key "activity_tracker_responses", "activity_tracker_questions"
+  add_foreign_key "activity_tracker_responses", "user_activity_periods"
   add_foreign_key "user_activities", "activities"
   add_foreign_key "user_activities", "users"
+  add_foreign_key "user_activity_periods", "user_activities"
   add_foreign_key "user_recipes", "recipes"
   add_foreign_key "user_recipes", "users"
 end

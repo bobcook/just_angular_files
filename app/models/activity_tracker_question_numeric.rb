@@ -1,0 +1,2 @@
+class ActivityTrackerQuestionNumeric < ActivityTrackerQuestion
+end

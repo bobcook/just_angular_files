@@ -1,19 +1,38 @@
 <h2>Saved Activities</h2>
 
-<p>Activities (<%= @user_activities.count %> of 6)</p>
+<div ng-app="stayingSharp.userActivities" ng-controller="ActivitiesController as vm">
 
-<% @user_activities.each do |user_activity| %>
-  <% activity = user_activity.activity %>
-  <h2><%= link_to "Activity: #{activity.title}", activity_path(activity) %></h2>
-  <p>Pillars: <%= activity.displayable_pillar_names(', ') %></p>
-  <p><%= activity.points %> pts</p>
-  <p><%= activity.recommended_effort_time %></p>
-  <p><%= link_to 'Settings', edit_my_activity_reminder_settings_path(activity_id: user_activity.activity.id, user_activity_id: user_activity.id ) %> | <%= link_to 'Archive', '#' %></p>
-  <p>May 1 - May 31: Track When You Did This</p>
-  <p><%= link_to 'I Did it Today', '#', class: 'btn' %></p>
-  <p>M T W TH F Sa Su</p>
-  <p><%= link_to 'Full Tracker Progress and Details', '#' %></p>
-<% end %>
+  <p>Activities ({{vm.userActivities.length}} of 6)</p>
 
-<h2>Find an activity to work on!</h2>
-<p><%= link_to 'Explore Activities', activities_path %></p>
+  <div ng-repeat="userActivity in vm.userActivities">
+    <h2><a href="{{vm.activityUrl(userActivity.activity.id)}}">Activity: {{userActivity.activity.title}}</a></h2>
+    <p>Pillars: {{vm.displayablePillarNames(userActivity.activity, ', ')}}</p>
+    <p>{{userActivity.activity.points}} pts</p>
+    <p>{{userActivity.activity.recommendedEffortTime}}</p>
+    <p>
+      <a href="{{vm.settingsUrl(userActivity.activity.id,userActivity.id)}}">Settings</a> |
+      <a href="#">Archive</a>
+    </p>
+
+    <p>{{vm.currentWeekText()}} : Track When You Did This</p>
+
+    <p>
+    <!-- TODO: remove this temporary copy once binary tracker is done  -->
+      ({{userActivity.activity.activityTracker.name}})
+    </p>
+
+    <p>
+      <!-- TODO: disable link after users entered in the tracker data for the day -->
+      <a class="btn" ng-click="vm.createActivityPeriod(userActivity.activity.id, userActivity.id)">I Did it Today</a>
+    </p>
+
+    <p>M T W TH F Sa Su</p>
+
+    <p><a href="#">Full Tracker Progress and Details</a></p>
+
+  </div>
+
+  <h2>Find an activity to work on!</h2>
+  <p><a href="/activities"> Explore Activities</a></p>
+
+</div>

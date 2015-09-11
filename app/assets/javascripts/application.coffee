@@ -3,6 +3,7 @@
 #= require lodash
 #= require angular
 #= require angular-rails-resource
+#= require moment
 #= require azul7/vendor/modernizr
 #= require azul7/vendor
 #= require azul7/plugins

@@ -1,0 +1,14 @@
+<h2>New Activity Tracker Response</h2>
+
+<div ng-app="stayingSharp.userActivities" ng-controller="TrackerResponsesController as vm">
+  <div ng-show="vm.error">{{vm.errorMessage}}</div>
+
+  <form ng-submit="vm.createTrackerResponse()">
+    <% @activity_tracker.activity_tracker_questions.each do |question| %>
+      <label><%= question.text %></label><br>
+      <input type="text" ng-model="vm.data['questions'][<%= question.id %>].response"/><br>
+    <% end %>
+
+    <button ng-click="vm.setValue('user_activity_id', <%= params[:user_activity_id]%>)">Submit</button>
+  </form>
+</div>

@@ -37,8 +37,32 @@ activity_tracker_data =
 puts 'Seeding ActivityTrackers'
 ActivityTracker.create(activity_tracker_data)
 
-puts 'Seeding Activities'
-20.times do |index|
+questions_data = {
+  binary: [
+    {
+      type: ActivityTrackerQuestionRadio,
+      text: nil
+    }
+  ],
+  quantity: [
+    {
+      type: ActivityTrackerQuestionNumeric,
+      text: 'time'
+    },
+    {
+      type: ActivityTrackerQuestionNumeric,
+      text: 'distance'
+    }
+  ],
+  scale: [
+    {
+      type: ActivityTrackerQuestionRadio,
+      text: 'intensity'
+    }
+  ]
+}
+
+def create_activities(index, tracker)
   title = "Lorem ipsum dolor #{index + 1}"
   time = Random.rand(20) + 10
   frequency = Random.rand(8)
@@ -47,8 +71,8 @@ puts 'Seeding Activities'
     title: title,
     recommended_effort_time: "#{time} minutes",
     recommended_effort_frequency: "#{frequency} x weekly",
-    activity_tracker_id: Random.rand(ActivityTracker.count) + 1,
     points: points,
+    activity_tracker_id: tracker.id,
     payload: {
       description: '<h2>Introduction</h2><p>Lorem ipsum dolor sit amet,
       consectetur adipis icing elit. Id praesentium suscipit est tempora!
@@ -69,6 +93,22 @@ puts 'Seeding Recipes'
 recipes = FactoryGirl.create_list(:recipe, 20)
 recipes.each do |recipe|
   recipe.update(pillars: Pillar.all.sample(2))
+end
+
+puts 'Seeding Activities'
+20.times do |index|
+  tracker = ActivityTracker.create(name: ActivityTracker.default_types.sample)
+
+  create_activities(index, tracker)
+
+  questions = questions_data[tracker.name.to_sym]
+
+  questions.each do |question|
+    question[:type].create(
+      text: question[:text],
+      activity_tracker_id: tracker.id
+    )
+  end
 end
 
 puts 'Seeding PillarCategorization'

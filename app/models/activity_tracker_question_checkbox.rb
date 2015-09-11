@@ -1,0 +1,2 @@
+class ActivityTrackerQuestionCheckbox < ActivityTrackerQuestion
+end

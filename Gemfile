@@ -37,6 +37,7 @@ gem 'bitmask_attributes', '~> 1.0.0'
 gem 'ngannotate-rails', '~> 1.0.3'
 gem 'therubyracer', '~> 0.12.2'
 gem 'factory_girl_rails', '~> 4.5.0'
+gem 'momentjs-rails', '~> 2.10.3'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-jquery', '~> 2.1.4'
@@ -44,6 +45,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-angular', '~> 1.4.5'
   gem 'rails-assets-angular-rails-resource', '~> 2.0.0'
   gem 'rails-assets-lodash', '~> 3.9.3'
+  gem 'rails-assets-restangular'
+  gem 'rails-assets-ui-router'
 end
 
 group :development do

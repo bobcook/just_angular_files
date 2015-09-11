@@ -5,6 +5,3 @@ ActivityPeriod = (railsResourceFactory) ->
 
 angular.module('stayingSharp.userActivities')
   .factory('ActivityPeriod', ActivityPeriod)
-
-
-

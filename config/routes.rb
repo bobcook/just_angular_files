@@ -29,12 +29,23 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :me, as: :my do
+        resources :user_activities, only: [:show, :index] do
+          resources :histories, only: [:index, :show]
+        end
+        resources :activities, only: [] do
+          resources :trackers, only: [:index]
+        end
+        resources :user_activity_periods, only: [:create]
+        resources :activity_tracker_responses, only: [:create]
       end
     end
   end
 
   namespace :me, as: :my do
     resources :activities, only: [:create] do
+      resources :tracker_responses,
+                only: [:new, :create],
+                controller: 'activities/tracker_responses'
       resource :reminder_settings,
                only: [:new, :edit, :create, :update],
                controller: 'activities/reminder_settings'

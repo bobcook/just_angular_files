@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe ActivityTracker do
   it { should have_many(:activities) }
+  it { should have_many(:activity_tracker_questions) }
 
   describe '#binary?' do
     it 'is true if name is binary' do

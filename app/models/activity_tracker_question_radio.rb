@@ -1,0 +1,2 @@
+class ActivityTrackerQuestionRadio < ActivityTrackerQuestion
+end
