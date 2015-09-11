@@ -6,6 +6,7 @@ end
 
 ruby `cat .ruby-version`.strip
 
+gem 'active_model_serializers', '~> 0.8.0'
 gem 'airbrake', '~> 4.3.0'
 gem 'autoprefixer-rails', '~> 5.2.1.2'
 gem 'bundler', '>= 1.8.4'
@@ -41,6 +42,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery', '~> 2.1.4'
   gem 'rails-assets-jquery-ujs', '~> 1.0.4'
   gem 'rails-assets-angular', '~> 1.4.5'
+  gem 'rails-assets-angular-rails-resource', '~> 2.0.0'
   gem 'rails-assets-lodash', '~> 3.9.3'
 end
 

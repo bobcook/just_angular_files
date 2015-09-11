@@ -26,6 +26,13 @@ Rails.application.routes.draw do
     get :next_page
   end
 
+  namespace :api do
+    namespace :v1 do
+      namespace :me, as: :my do
+      end
+    end
+  end
+
   namespace :me, as: :my do
     resources :activities, only: [:create] do
       resource :reminder_settings,

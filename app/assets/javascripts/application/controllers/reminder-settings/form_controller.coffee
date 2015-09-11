@@ -1,2 +1,5 @@
-SS.ReminderSettings.controller 'FormController', ->
+FormController = ->
   @
+
+angular.module('stayingSharp.reminderSettings')
+  .controller('FormController', FormController)

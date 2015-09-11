@@ -22,6 +22,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    active_model_serializers (0.8.3)
+      activemodel (>= 3.0)
     activejob (4.2.3)
       activesupport (= 4.2.3)
       globalid (>= 0.3.0)
@@ -249,6 +251,8 @@ GEM
       railties (= 4.2.3)
       sprockets-rails
     rails-assets-angular (1.4.5)
+    rails-assets-angular-rails-resource (2.0.0)
+      rails-assets-angular
     rails-assets-jquery (2.1.4)
     rails-assets-jquery-ujs (1.0.4)
       rails-assets-jquery (> 1.8)
@@ -395,6 +399,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers (~> 0.8.0)
   airbrake (~> 4.3.0)
   autoprefixer-rails (~> 5.2.1.2)
   better_errors (~> 2.1.1)
@@ -429,6 +434,7 @@ DEPENDENCIES
   rack-canonical-host (~> 0.1.0)
   rails (= 4.2.3)
   rails-assets-angular (~> 1.4.5)!
+  rails-assets-angular-rails-resource (~> 2.0.0)!
   rails-assets-jquery (~> 2.1.4)!
   rails-assets-jquery-ujs (~> 1.0.4)!
   rails-assets-lodash (~> 3.9.3)!
