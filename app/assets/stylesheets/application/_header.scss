@@ -1,0 +1,18 @@
+.global-header {
+
+  &.logged-in {
+
+    .nav-options {
+      
+      ul {
+        
+        li {
+          
+          &.menu-icon-container {
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+}
