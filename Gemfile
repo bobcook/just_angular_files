@@ -73,6 +73,5 @@ end
 
 group :staging, :production do
   gem 'rails_12factor', '~> 0.0.3'
-  gem 'rack-timeout', '~> 0.2.4'
   gem 'passenger', '~> 5.0.15'
 end
