@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   resources :activities, only: [:index, :show]
 
   resource :search, controller: 'search', only: [:show]
-  resources :challenges, only: :index
   resource :assessment, controller: 'assessment', only: [:show] do
     # TODO: revisit when we do assessments
     get :question
