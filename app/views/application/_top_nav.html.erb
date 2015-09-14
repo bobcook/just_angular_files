@@ -1,3 +1,5 @@
+<div id="bodyFadeOverlay"></div>
+
 <section class="global-header">
   <nav>
     <div class="logo">
@@ -5,9 +7,9 @@
     </div>
     <div class="nav-options">
       <ul>
-        <li><a href="" title="" class="hidden-xs">Sign up or Join</a></li>
+        <li><%= link_to 'Sign up or Join', '#', class: 'hiddex-xs' %></li>
         <li class="bullet hidden-xs">&bull;</li>
-        <li><a href="" title="" class="hidden-xs">Login</a></li>
+        <li><%= link_to 'Login', user_omniauth_authorize_path(provider: 'aarp'), class: 'hidden-xs' %></li>
         <li id="searchAccordion" class="search-icon-wrap">
             <a class="icon-search collapsed" data-toggle="collapse" data-parent="searchAccordion" href="#collapseSearch" aria-expanded="true" aria-controls="searchAccordion"></a>
         </li>
@@ -24,4 +26,118 @@
     </div>
   </nav>
 </section>
-<%= link_to 'Search', search_path %>
+
+<div id="collapseSearch" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+  <div class="search-bar-wrap">
+    <form action="<%= url_for search_path %>" class="search-bar">
+      <div class="search-input-group">
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <span data-bind="label">All content</span><span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li class="switch-click"><a href="">All content</a></li>
+            <li class="switch-click"><a href="">Option 1</a></li>
+            <li class="switch-click"><a href="">Option 2</a></li>
+          </ul>
+        </div>
+        <label class="sr-only" for="search"></label>
+        <input type="text" class="form-control" placeholder="Search Staying Sharp...">
+        <span class="input-group-btn">
+          <button type="submit">Search</button>
+        </span>
+      </div>
+    </form>
+    <div class="search-body-overlay"></div>
+  </div>
+</div>
+
+<div class="global-nav">
+  <div class="slide-menu closed">
+    <!-- nav options logged in -->
+    <div class="logged-in-nav">
+      <div class="slide-menu-header">
+        <% if user_signed_in? %>
+          <div class="profile-pic"><%= image_tag 'azul7/nav-profile-pic.png' %></div>
+        <% end %>
+        <div class="profile-details">
+          <ul>
+            <li>
+              <% if user_signed_in? %>
+                Hello, USERNAME
+              <% else %>
+                Welcome!
+              <% end %>
+            </li>
+            <li>
+              <button type="button" class="navbar-toggle navbar-menu-toggle navbar-close collapsed icon-close" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+              </button>
+            </li>
+          </ul>
+          <ul class="account-controls not-logged-in">
+            <li>
+              <% if user_signed_in? %>
+                <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+              <% else %>
+                <%= link_to 'Login', user_omniauth_authorize_path(provider: 'aarp') %>
+              <% end %>
+            </li>
+            <li class="bullet">&bull;</li>
+            <li>
+              <% if user_signed_in? %>
+                <%= link_to 'Account Settings', '#' %>
+              <% else %>
+                <%= link_to 'Sign up or Join', '#' %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <section class="slide-menu-options">
+        <ul class="primary-nav-options">
+          <li class="primary-level-toggle collapsed" data-toggle="collapse" data-target="#explore-toggle" aria-expanded="false" aria-controls="navbar">
+            <%= link_to '<span class="caret caret-left"></span> Explore <span class="caret caret-right"></span>'.html_safe, '#', class: 'primary-level' %>
+          </li>
+          <ul class="tertiary-level collapse" id="explore-toggle">
+            <li><%= link_to 'All Content', home_path %></li>
+            <li><%= link_to 'Articles', articles_path %></li>
+            <li><%= link_to 'Recipes', recipes_path %></li>
+            <%# TODO: only allow paid users to see actitivies %>
+            <% if user_signed_in? %>
+            <li><%= link_to 'Activities', activities_path %></li>
+            <% end %>
+            <li><%= link_to 'Challenges', challenges_path %></li>
+          </ul>
+          <li><%= link_to 'My Staying Sharp', '#', class: 'primary-level' %></li>
+          <li class="tertiary-open top">
+            <%= link_to '<span class="icon icon-activities-stats"></span>What I\'m Working On'.html_safe, my_staying_sharp_path %>
+          </li>
+          <li class="tertiary-open">
+            <%= link_to '<span class="icon icon-saved-recipes"></span>Saved Recipes</a>'.html_safe, my_staying_sharp_path(tab: :saved_recipes) %>
+          </li>
+          <li class="tertiary-open">
+            <%= link_to '<span class=" icon icon-saved-articles"></span>Saved Articles</a>'.html_safe, my_staying_sharp_path(tab: :saved_articles) %>
+          </li>
+          <li class="tertiary-open border-bottom">
+            <%= link_to '<span class="icon icon-assessment-results"></span>Saved Assessment Results</a>'.html_safe, conclusion_assessment_path %>
+          </li>
+          <li>
+            <%= link_to 'Assessments', assessment_path, class: 'primary-level' %>
+          </li>
+          <li class="primary-level-toggle collapsed" data-toggle="collapse" data-target="#howworks-toggle" aria-expanded="false" aria-controls="navbar">
+            <%= link_to '<span class="caret caret-left"></span> How It Works <span class="caret caret-right"></span>'.html_safe, '#', class: 'primary-level' %>
+          </li>
+          <ul class="tertiary-level collapse" id="howworks-toggle">
+            <li><%= link_to 'What is Brain Health', page_path('what_is_brain_health') %></li>
+            <li><%= link_to 'Learn More About Staying Sharp', page_path('learn_more_about_staying_sharp') %></li>
+            <li><%= link_to 'Using Staying Sharp', page_path('how_to_use_staying_sharp') %></li>
+            <li><%= link_to 'Connected Apps', page_path('connected_apps') %></li>
+          </ul>
+          <li><%= link_to 'Join Staying Sharp', '#', class: 'secondary-level' %></li>
+          <li><%= link_to 'Give Staying Sharp', '#', class: 'secondary-level' %></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</div>
