@@ -7,11 +7,13 @@ dump.rdb
 latest.dump
 /coverage/*
 .build
+config/database.yml
 
 # Ruby & Rails
 .zsh_rake_cache
 .rbenv-version
 .rbenv-vars
+.ruby-*
 .env
 .ruby-*
 /.bundle
