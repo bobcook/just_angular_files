@@ -8,7 +8,7 @@
   <p>Pillars: <%= activity.pillar_names %></p>
   <p><%= activity.points %> pts</p>
   <p><%= activity.recommended_effort_time %></p>
-  <p><%= link_to 'Settings', '#' %> | <%= link_to 'Archive', '#' %></p>
+  <p><%= link_to 'Settings', edit_my_activity_reminder_settings_path(activity_id: user_activity.activity.id, user_activity_id: user_activity.id ) %> | <%= link_to 'Archive', '#' %></p>
   <p>May 1 - May 31: Track When You Did This</p>
   <p><%= link_to 'I Did it Today', '#', class: 'btn' %></p>
   <p>M T W TH F Sa Su</p>

@@ -10,7 +10,10 @@ module Me
       if user_activity.save
         flash[:success] = 'Activity was saved'
         redirect_to(
-          new_my_activity_reminder_settings_path(activity_id: user_activity.id)
+          new_my_activity_reminder_settings_path(
+            activity_id: user_activity.activity_id,
+            user_activity_id: user_activity.id
+          )
         )
       else
         flash[:warning] = 'Activity was not saved'

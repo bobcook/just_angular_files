@@ -6,10 +6,8 @@ module Me
       end
 
       def create
-        settings =
-          PersistingActivityReminderSettings.new(reminder_params).settings
-
-        if settings.save
+        @activity_reminder = ActivityReminderSetting.new(settings_params)
+        if @activity_reminder.save
           flash[:success] = 'activity reminder is saved'
           redirect_to create_redirect_path
         else
@@ -18,9 +16,31 @@ module Me
         end
       end
 
-      def edit; end
+      def edit
+        activity_reminder
+      end
+
+      def update
+        if activity_reminder.update(settings_params)
+          flash[:success] = 'activity reminder is updated'
+          redirect_to my_staying_sharp_path
+        else
+          render :edit
+        end
+      end
 
       private
+
+      def settings_params
+        PersistingActivityReminderSettings.new(reminder_params).params
+      end
+
+      def activity_reminder
+        @activity_reminder ||= ActivityReminderSetting.where(
+          user_activity_id:
+            params[:user_activity_id] || reminder_params[:user_activity_id]
+        ).first
+      end
 
       def create_redirect_path
         params[:staying_sharp] ? my_staying_sharp_path : activities_path

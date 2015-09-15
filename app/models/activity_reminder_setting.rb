@@ -22,13 +22,7 @@ class ActivityReminderSetting < ActiveRecord::Base
   end
 
   def reset(user_activity_id)
-    assign(
-      self.class.default_settings.merge(user_activity_id: user_activity_id)
-    )
-  end
-
-  def assign(attrs)
-    tap { |model| model.assign_attributes(attrs) }
+    self.class.default_settings.merge(user_activity_id: user_activity_id)
   end
 
   def empty?

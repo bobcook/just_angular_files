@@ -5,46 +5,19 @@ describe ActivityReminderSetting do
 
   describe '#reset' do
     let(:user_activity) { create(:user_activity) }
-    let(:settings) do
-      create(:activity_reminder_settings, user_activity: user_activity)
-    end
 
-    it 'sets fields to default values' do
-      expect(settings.days?).to eq(true)
-      expect(settings.contact_methods?).to eq(true)
-      expect(settings.times?).to eq(true)
+    it 'returns the default values with user_activity_id' do
+      reset_result = ActivityReminderSetting.new.reset(user_activity.id)
+      defaults = ActivityReminderSetting.default_settings
 
-      settings.reset(user_activity.id)
-
-      expect(settings.days?).to eq(false)
-      expect(settings.contact_methods?).to eq(false)
-      expect(settings.times?).to eq(false)
+      expect(reset_result)
+        .to eq(defaults.merge(user_activity_id: user_activity.id))
     end
 
     it 'does not change the user_activity_id' do
-      expect(settings.user_activity_id).to eq(user_activity.id)
+      reset_result = ActivityReminderSetting.new.reset(user_activity.id)
 
-      settings.reset(user_activity.id)
-
-      expect(settings.user_activity_id).to eq(user_activity.id)
-    end
-  end
-
-  describe '#assign' do
-    it 'assigns new values to a reminder' do
-      settings = create(:activity_reminder_settings, days: [:monday])
-      attr = { days: [:tuesday] }
-      settings.assign(attr)
-
-      expect(settings.days).to eq([:tuesday])
-    end
-
-    it 'return an instance of ActivityReminderSetting' do
-      settings = create(:activity_reminder_settings)
-      attr = { days: [:tuesday] }
-      settings.assign(attr)
-
-      expect(settings).to be_instance_of(ActivityReminderSetting)
+      expect(reset_result[:user_activity_id]).to eq(user_activity.id)
     end
   end
 

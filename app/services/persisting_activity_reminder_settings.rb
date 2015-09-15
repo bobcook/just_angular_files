@@ -1,14 +1,13 @@
 class PersistingActivityReminderSettings
-  def initialize(orig_params, settings_arg = nil)
+  def initialize(orig_params)
     @orig_params = orig_params
-    @orig_settings = settings_arg if settings_arg
   end
 
-  def settings
+  def params
     if reminders?
-      orig_settings.assign(params)
+      edited_params
     else
-      orig_settings.reset(orig_params[:user_activity_id])
+      ActivityReminderSetting.new.reset(orig_params[:user_activity_id])
     end
   end
 
@@ -16,15 +15,11 @@ class PersistingActivityReminderSettings
 
   attr_reader :orig_params, :orig_settings
 
-  def params
-    @params ||= orig_params.except(:reminders)
+  def edited_params
+    @edited_params ||= orig_params.except(:reminders)
   end
 
   def reminders?
     orig_params[:reminders] == 'true'
-  end
-
-  def orig_settings
-    @orig_settings ||= ::ActivityReminderSetting.defaults
   end
 end
