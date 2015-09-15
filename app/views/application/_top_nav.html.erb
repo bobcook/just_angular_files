@@ -1,19 +1,21 @@
 <div id="bodyFadeOverlay"></div>
 
-<section class="global-header">
+<section class="global-header <%= if user_signed_in? then 'logged-in' end %>">
   <nav>
     <div class="logo">
       <a href="" title="Staying Sharp"><h1>Staying Sharp | AARP</h1></a>
     </div>
     <div class="nav-options">
       <ul>
-        <li><%= link_to 'Sign up or Join', '#', class: 'hiddex-xs' %></li>
-        <li class="bullet hidden-xs">&bull;</li>
-        <li><%= link_to 'Login', user_omniauth_authorize_path(provider: 'aarp'), class: 'hidden-xs' %></li>
+        <% if !user_signed_in? %>
+          <li><%= link_to 'Sign up or Join', '#', class: 'hidden-xs' %></li>
+          <li class="bullet hidden-xs">&bull;</li>
+          <li><%= link_to 'Login', user_omniauth_authorize_path(provider: 'aarp'), class: 'hidden-xs' %></li>
+        <% end %>
         <li id="searchAccordion" class="search-icon-wrap">
             <a class="icon-search collapsed" data-toggle="collapse" data-parent="searchAccordion" href="#collapseSearch" aria-expanded="true" aria-controls="searchAccordion"></a>
         </li>
-        <li>
+        <li class="menu-icon-container">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar top-bar"></span>
@@ -64,7 +66,7 @@
           <ul>
             <li>
               <% if user_signed_in? %>
-                Hello, USERNAME
+                Hello, <%= current_user.first_name %>
               <% else %>
                 Welcome!
               <% end %>
