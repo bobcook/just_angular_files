@@ -13,4 +13,23 @@
   </div>
 </div>
 
-<%= link_to 'A Recipe', recipe_path(id: 1) %>
+<%= render partial: 'application/pillars_filter' %>
+
+<div class="cp-call-out plain plain-link">
+  <section>
+    <button class="close close-call-out-plain-button"><span aria-hidden="true">&times;</span></button>
+    <div class="content">
+      <h3>Staying Sharp Recipes</h3>
+      <p id="explanation"><%= flash[:explanation] %></p>
+      <a href="#">Ok, got it</a>
+    </div>
+  </section>
+</div>
+
+<% @collection.each_slice(3) do |slice| %>
+  <div class="card-holder">
+    <%= render partial: 'card', collection: slice %>
+  </div>
+<% end %>
+
+<%= paginate @collection %>

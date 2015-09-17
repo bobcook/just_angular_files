@@ -7,6 +7,8 @@ describe User do
 
   it { should have_many(:user_activities) }
   it { should have_many(:activities).through(:user_activities) }
+  it { should have_many(:user_recipes) }
+  it { should have_many(:recipes).through(:user_recipes) }
 
   describe '#max_activity_limit?' do
     limit = 3

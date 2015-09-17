@@ -4,8 +4,8 @@ class ActivitiesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @activities = filtered_activities
-    set_surrogate_key_header Activity.table_key, @activities.map(&:record_key)
+    @collection = present(filtered_activities)
+    set_surrogate_key_header Activity.table_key, @collection.map(&:record_key)
     flash[:explanation] = I18n.t('explanation.activities')
   end
 
@@ -15,6 +15,10 @@ class ActivitiesController < ApplicationController
   end
 
   private
+
+  def present(activities)
+    Presenter.present_all(activities, roles: [Roles::AsCard])
+  end
 
   def filtered_activities
     PillarFiltering.new(Activity.all, params).paginated_collection

@@ -55,13 +55,20 @@ puts 'Seeding Activities'
       Doloremque numquam quos laudantium soluta</p><h2>Benefits to Brain
       Health</h2>libero architecto molestias nostrum laboriosam hic
       quis, aperiam natus omnis enim voluptatibus?</p>',
-      how_to: '<ul><li>Libero architecto molestias nostrum laboriosam hic</li>
+      how_to:
+      '<ul><li>Libero architecto molestias nostrum laboriosam hic</li>
       <li>Aperiam natus omnis enim voluptatibus</li></ul>',
       recommended_effort_time: "#{time} minutes",
       recommended_effort_frequency: "#{frequency} x weekly",
       points: points
     }
   )
+end
+
+puts 'Seeding Recipes'
+recipes = FactoryGirl.create_list(:recipe, 20)
+recipes.each do |recipe|
+  recipe.update(pillars: Pillar.all.sample(2))
 end
 
 puts 'Seeding PillarCategorization'

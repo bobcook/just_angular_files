@@ -26,40 +26,10 @@
   </section>
 </div>
 
-<% @activities.each_slice(3) do |batch| %>
-<div class="card-holder">
-  <% batch.each do |activity| %>
-    <div class="cp-card small-card" style="background-image: url(<%= asset_path("azul7/user-content/cards/card-small.jpg") %>">
-      <a href="#link-to-card-content"></a>
-      <div class="color-fill"></div>
-      <section>
-        <div class="info-block">
-          <header>
-            <h5>Activity</h5>
-            <span><span><%= activity.points %></span> Points</span>
-          </header>
-          <article>
-            <h4><%= link_to activity.title, activity_path(activity) %></h4>
-            <div class="effort">
-              <span><%= activity.recommended_effort_time %></span>
-            </div>
-            <div class="proof">
-              <span class="icon-recommend"></span>
-              <span>85%</span>
-            </div>
-          </article>
-          <footer>
-            <div class="pillars">
-              <% activity.pillar_names.each do |pillar_name| %>
-                <span class="pillar <%= pillar_name.parameterize %>"><%= pillar_name %></span>
-              <% end %>
-            </div>
-          </footer>
-        </div>
-      </section>
-    </div>
-  <% end %>
-</div>
+<% @collection.each_slice(3) do |slice| %>
+  <div class="card-holder">
+    <%= render partial: 'card', collection: slice %>
+  </div>
 <% end %>
 
-<%= paginate @activities %>
+<%= paginate @collection %>

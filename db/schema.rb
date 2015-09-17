@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908211624) do
+ActiveRecord::Schema.define(version: 20150919040204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,14 @@ ActiveRecord::Schema.define(version: 20150908211624) do
     t.datetime "updated_at"
   end
 
+  create_table "recipes", force: :cascade do |t|
+    t.string   "title"
+    t.string   "prep_time"
+    t.json     "payload"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_activities", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "activity_id"
@@ -86,6 +94,16 @@ ActiveRecord::Schema.define(version: 20150908211624) do
 
   add_index "user_activities", ["activity_id"], name: "index_user_activities_on_activity_id", using: :btree
   add_index "user_activities", ["user_id"], name: "index_user_activities_on_user_id", using: :btree
+
+  create_table "user_recipes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "recipe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_recipes", ["recipe_id"], name: "index_user_recipes_on_recipe_id", using: :btree
+  add_index "user_recipes", ["user_id"], name: "index_user_recipes_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -110,4 +128,6 @@ ActiveRecord::Schema.define(version: 20150908211624) do
   add_foreign_key "activity_reminder_settings", "user_activities"
   add_foreign_key "user_activities", "activities"
   add_foreign_key "user_activities", "users"
+  add_foreign_key "user_recipes", "recipes"
+  add_foreign_key "user_recipes", "users"
 end

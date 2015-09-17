@@ -19,6 +19,10 @@ module Apis
       @headers = (args[:headers] || {}).with_indifferent_access
     end
 
+    def merge!(hash = {})
+      tap { body.merge!(hash) }
+    end
+
     def method_missing(method_sym, *arguments, &block)
       method_name = method_sym.to_s.delete('?').to_sym
       if respond_to?(method_name)
@@ -33,6 +37,8 @@ module Apis
     end
 
     private
+
+    attr_writer :body
 
     def response_codes
       map_values(Rack::Utils::HTTP_STATUS_CODES) do |value|
