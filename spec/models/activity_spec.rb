@@ -53,4 +53,28 @@ describe Activity do
       expect(activity.saved?(user)).to eq(false)
     end
   end
+
+  describe '#pillar_names' do
+    let!(:keeping_fit_pillar) { create(:keeping_fit_pillar) }
+    let!(:being_social_pillar) { create(:being_social_pillar) }
+    let!(:learning_more_pillar) { create(:learning_more_pillar) }
+
+    it 'is an array of the names of the associated pillars' do
+      expected_pillars = [keeping_fit_pillar, being_social_pillar]
+      expected_names = expected_pillars.map(&:name)
+
+      subject = build(:activity, pillars: expected_pillars)
+      expect(subject.pillar_names).to match_array(expected_names)
+    end
+
+    describe '#displayable_pillar_names' do
+      it 'is a comma-separated string of the names of associated pillars' do
+        expected_pillars = [learning_more_pillar, being_social_pillar]
+        expected_names = expected_pillars.map(&:name).join(' ')
+
+        subject = build(:activity, pillars: expected_pillars)
+        expect(subject.displayable_pillar_names).to eq(expected_names)
+      end
+    end
+  end
 end

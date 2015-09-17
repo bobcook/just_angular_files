@@ -1,12 +1,11 @@
 <% if @activity.saved?(current_user) %>
-  <%= link_to 'Working on it', '#', class: 'btn' %>
+  <%= link_to '<span>Archive This Activity</span>'.html_safe, '#', class: 'btn tracking-btn' %>
 <% elsif current_user.max_activity_limit? %>
   <%# TODO: switch to a modal for the warning message %>
-  <%= link_to 'Save & Work on it', '#', class: 'btn ', data: { confirm: 'You have reached the max of 6 saved activities. You must delete one in order to add another.'} %>
+  <%= link_to '<span>Save & Work on This</span>'.html_safe, '#', class: 'btn tracking-btn ', data: { confirm: 'You have reached the max of 6 saved activities. You must delete one in order to add another.'} %>
 <% else %>
   <%= simple_form_for :user_activity, url: my_activities_path do |form| %>
     <%= form.input :activity_id, input_html: { value: @activity.id }, as: :hidden %>
     <%= form.button :submit %>
   <% end %>
 <% end %>
-

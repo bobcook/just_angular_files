@@ -13,19 +13,53 @@
   </div>
 </div>
 
-<h2>Staying Sharp Activities</h2>
-
-<p id="explanation"><%= flash[:explanation] %></p>
-
 <%= render partial: 'application/pillars_filter' %>
 
-<h2>All Activities</h2>
+<div class="cp-call-out plain plain-link">
+  <section>
+    <button class="close close-call-out-plain-button"><span aria-hidden="true">&times;</span></button>
+    <div class="content">
+      <h3>Staying Sharp Activities</h3>
+      <p id="explanation"><%= flash[:explanation] %></p>
+      <a href="#">Ok, got it</a>
+    </div>
+  </section>
+</div>
 
-<% @activities.each do |activity| %>
-  <h2><%= link_to "Activity: #{activity.title}", activity_path(activity) %></h2>
-  <p>Pillars: <%= activity.pillar_names %></p>
-  <p><%= activity.points %> pts</p>
-  <p><%= activity.recommended_effort_time %></p>
+<% @activities.each_slice(3) do |batch| %>
+<div class="card-holder">
+  <% batch.each do |activity| %>
+    <div class="cp-card small-card" style="background-image: url(<%= asset_path("azul7/user-content/cards/card-small.jpg") %>">
+      <a href="#link-to-card-content"></a>
+      <div class="color-fill"></div>
+      <section>
+        <div class="info-block">
+          <header>
+            <h5>Activity</h5>
+            <span><span><%= activity.points %></span> Points</span>
+          </header>
+          <article>
+            <h4><%= link_to activity.title, activity_path(activity) %></h4>
+            <div class="effort">
+              <span><%= activity.recommended_effort_time %></span>
+            </div>
+            <div class="proof">
+              <span class="icon-recommend"></span>
+              <span>85%</span>
+            </div>
+          </article>
+          <footer>
+            <div class="pillars">
+              <% activity.pillar_names.each do |pillar_name| %>
+                <span class="pillar <%= pillar_name.parameterize %>"><%= pillar_name %></span>
+              <% end %>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </div>
+  <% end %>
+</div>
 <% end %>
 
 <%= paginate @activities %>
