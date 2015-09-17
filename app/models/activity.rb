@@ -16,6 +16,10 @@ class Activity < ActiveRecord::Base
   end
 
   def pillar_names
-    pillars.map(&:name).join(', ')
+    pillars.map(&:name)
+  end
+
+  def displayable_pillar_names(separator = ' ')
+    pillar_names.join(separator)
   end
 end
