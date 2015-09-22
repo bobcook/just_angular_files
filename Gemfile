@@ -35,6 +35,7 @@ gem 'kaminari', '~> 0.16.1'
 gem 'bitmask_attributes', '~> 1.0.0'
 gem 'ngannotate-rails', '~> 1.0.3'
 gem 'therubyracer', '~> 0.12.2'
+gem 'factory_girl_rails', '~> 4.5.0'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-jquery', '~> 2.1.4'
@@ -55,7 +56,6 @@ end
 group :development, :test do
   gem 'bundler-audit', '~> 0.4.0', require: false
   gem 'dotenv-rails', '~> 2.0.2'
-  gem 'factory_girl_rails', '~> 4.5.0'
   gem 'pry-byebug', '~> 3.2.0'
   gem 'pry-rails', '~> 0.3.4'
   gem 'rspec-rails', '~> 3.1.0'
