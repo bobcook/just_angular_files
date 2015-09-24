@@ -1,6 +1,13 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+require 'rails'
+
+require 'active_model/railtie'
+require 'active_job/railtie'
+require 'active_record/railtie'
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'action_view/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -11,6 +18,7 @@ module StayingSharp
     config.i18n.enforce_available_locales = true
 
     config.generators do |generate|
+      generate.assets false
       generate.helper false
       generate.javascript_engine false
       generate.request_specs false
@@ -19,6 +27,13 @@ module StayingSharp
       generate.test_framework :rspec
       generate.view_specs false
     end
+
+    config.middleware.use Rack::MethodOverride
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+    config.middleware.use ActionDispatch::Flash
+
+    config.assets.enabled = false
 
     config.action_controller.action_on_unpermitted_parameters = :raise
 

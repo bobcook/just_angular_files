@@ -7,24 +7,21 @@ dump.rdb
 latest.dump
 /coverage/*
 .build
-config/database.yml
 
 # Ruby & Rails
 .zsh_rake_cache
 .rbenv-version
 .rbenv-vars
-.ruby-*
+.ruby-version
 .env
-.ruby-*
+/config/database.yml
 /.bundle
 /.foreman
-public/uploads
-public/system
-public/assets
 /db/*.sqlite3
 /db/*.sqlite3-journal
 /log/*
 /tmp/*
+.rspec
 /spec/tmp
 /vendor/bundle
 /vendor/assets/bower_components
@@ -33,3 +30,10 @@ tags
 .tags
 .gemtags
 zeus.json
+
+# gulp angular
+/node_modules
+/public
+/client/bower_components
+/client/.tmp
+/client/.env.json

@@ -9,13 +9,8 @@ Rails.application.configure do
   config.static_cache_control = "public, max-age=#{1.year.to_i}"
   config.middleware.use Rack::Deflater
   config.middleware.use Rack::CanonicalHost, ENV.fetch('HOST')
-  config.assets.js_compressor = :uglifier
-  config.assets.compile = false
-  config.assets.digest = true
   # config.force_ssl = true
   config.log_level = :debug
-  config.action_controller.asset_host =
-    ENV.fetch('ASSET_HOST', ENV.fetch('HOST'))
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = SMTP_SETTINGS
   config.i18n.fallbacks = true
