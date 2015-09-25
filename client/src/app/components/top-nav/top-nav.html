@@ -1,0 +1,40 @@
+<section class="global-header">
+  <nav>
+    <div>
+      <a href="" title="Staying Sharp"><h1>Staying Sharp | AARP</h1></a>
+    </div>
+    <div>
+      <ul>
+        <li ng-if="vm.isLoggedIn"><a href="#">Sign up or Join</a></li>
+        <li ng-if="vm.isLoggedIn"><a href="#">Login</a></li>
+        <li id="searchAccordion">
+          <a data-toggle="collapse" data-parent="searchAccordion" href="#collapseSearch" aria-expanded="true" aria-controls="searchAccordion"></a>
+        </li>
+        <li>
+          <button ng-click="vm.isMenuOpen = !vm.isMenuOpen">Menu</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</section>
+
+<section>
+  <form>
+    <div>
+      <div>
+        <ui-select ng-model="vm.selectedSearchCategory" search-enabled="false">
+          <ui-select-match>{{$select.selected}}</ui-select-match>
+          <ui-select-choices repeat="value in vm.searchCategories">
+            {{value}}
+          </ui-select-choices>
+        </ui-select>
+      </div>
+      <input type="text" placeholder="Search Staying Sharp...">
+      <button>Search</button>
+    </div>
+  </form>
+</section>
+
+<ss-side-nav is-open="vm.isMenuOpen">
+  <ss-nav-panel></ss-nav-panel>
+</ss-side-nav>

@@ -1,9 +1,9 @@
-var Article = function ($resource) {
+var Article = function (API_URL, railsResourceFactory) {
   'ngInject';
-  return $resource('api/v1/articles/', {
-    update: {
-      method: 'PUT'
-    }
+
+  return railsResourceFactory({
+    name: 'article',
+    url: `${API_URL}/v1/articles`,
   });
 };
 

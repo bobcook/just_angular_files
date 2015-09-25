@@ -1,0 +1,24 @@
+$side-nav-width: 400px;
+
+ss-side-nav {
+  display: block;
+  pointer-events: auto;
+  position: absolute;
+  right: -$side-nav-width;
+  top: 0;
+  transition: right 0.5s ease-out;
+  width: $side-nav-width;
+}
+
+.side-nav-open {
+  right: 0;
+}
+
+.side-nav-container {
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

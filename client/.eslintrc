@@ -17,11 +17,14 @@
   "ecmaFeatures": {
     "arrowFunctions": true,
     "blockBindings": true,
+    "classes": true,
     "forOf": true,
     "jsx": true,
-    "modules": true
+    "modules": true,
+    "templateStrings": true
   },
   "rules": {
+    "comma-dangle": [2, "always-multiline"],
     "indent": [2, 2],
     "semi": [2, "always"],
     "quotes": [2, "single"],

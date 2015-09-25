@@ -1,5 +1,3 @@
-/* global $:false */
-
 import config from './index.config';
 import routerConfig from './index.route';
 
@@ -8,11 +6,25 @@ import runBlock from './index.run';
 // services
 import Article from './common/resources/article.js';
 
-// controllers
-import MainController from './main/main.controller';
-import ArticlesController from './articles/articles.controller.js';
+// directives
+import sideNav from './components/side-nav/side-nav.js';
+import topNav from './components/top-nav/top-nav.js';
+import navPanel from './components/nav-panel/nav-panel.js';
 
-angular.module('aarp-staying-sharp', ['ngAnimate', 'ngResource', 'ui.router'])
+// controllers
+import ArticlesController from './articles/articles.controller.js';
+import HomeController from './home/home.controller';
+import TopNavController from './components/top-nav/top-nav.controller.js';
+import NavPanelController from './components/nav-panel/nav-panel.controller.js';
+
+angular.module('aarp-staying-sharp', [
+  'aarp-staying-sharp.constants',
+  'ngAnimate',
+  'rails',
+  'ui.router',
+  'ui.router.stateHelper',
+  'ui.select',
+])
   .config(config)
   .config(routerConfig)
 
@@ -20,5 +32,11 @@ angular.module('aarp-staying-sharp', ['ngAnimate', 'ngResource', 'ui.router'])
 
   .factory('Article', Article)
 
-  .controller('MainController', MainController)
-  .controller('ArticlesController', ArticlesController);
+  .directive('ssSideNav', sideNav)
+  .directive('ssTopNav', topNav)
+  .directive('ssNavPanel', navPanel)
+
+  .controller('ArticlesController', ArticlesController)
+  .controller('HomeController', HomeController)
+  .controller('NavPanelController', NavPanelController)
+  .controller('TopNavController', TopNavController);

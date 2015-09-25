@@ -1,18 +1,26 @@
-var routerConfig = function ($stateProvider, $urlRouterProvider) {
+var routerConfig = function (stateHelperProvider, $urlRouterProvider) {
   'ngInject';
 
-  $stateProvider
-    .state('home', {
-      url: '/',
-      templateUrl: 'app/main/main.html',
-      controller: 'MainController',
-      controllerAs: 'vm'
+  stateHelperProvider
+    .state({
+      name: 'application',
+      templateUrl: 'app/layouts/application.html',
+      children: [
+        {
+          name: 'home',
+          url: '/',
+          templateUrl: 'app/home/home.html',
+          controller: 'HomeController',
+          controllerAs: 'vm',
+        },
+      ],
     })
-    .state('articles', {
+    .state({
+      name: 'articles',
       url: '/articles',
       templateUrl: 'app/articles/articles.html',
       controller: 'ArticlesController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
     });
 
   $urlRouterProvider.otherwise('/');

@@ -22,7 +22,7 @@ gulp.task('constants', ['set-env'], function () {
   };
 
   return $.ngConstant({
-    name: 'aarp-staying-sharp',
+    name: 'aarp-staying-sharp.constants',
     constants: constants,
     stream: true
   })

@@ -1,0 +1,12 @@
+.nav-panel-subsection.ng-enter {
+  transition-duration: 5s;
+
+  ul {
+    opacity: 0;
+  }
+
+  &.ng-enter-active ul {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+  }
+}
