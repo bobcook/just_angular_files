@@ -245,6 +245,7 @@ Devise.setup do |config|
   #
   config.warden do |manager|
     manager.strategies.add :jwt, Strategies::JsonWebToken
+    manager.failure_app = CustomFailure
     manager.default_strategies(scope: :user).unshift :jwt
   end
 

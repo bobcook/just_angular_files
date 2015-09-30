@@ -23,5 +23,5 @@ AllCops:
     - "config/**/*"
     - "Rakefile"
     - "spec/i18n_spec.rb"
-    - "node_modules/**/*"
     - "client/**/*"
+    - "node_modules/**/*"

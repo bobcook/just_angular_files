@@ -9,18 +9,13 @@
     config/locales/en.yml. For more see:
     https://github.com/calebthompson/title#usage
   %>
-  <title><%= title %></title>
+  <title>Staying Sharp</title>
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600" rel="stylesheet" type="text/css">
-  <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= body_class %>">
+<body class="">
   <%= render partial: 'application/top_nav' %>
 
-  <%= render "flashes" -%>
   <%= yield %>
-  <%= render "javascript" %>
-
-  <%= render partial: 'application/footer' %>
 </body>
 </html>

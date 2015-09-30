@@ -1,7 +1,7 @@
 <section>
   <ul>
     <li>
-      <span ng-if="$root.$currentUser.isLoggedIn">Hello, {{vm.currentUser.firstName}}</span>
+      <span ng-if="$root.$currentUser.isLoggedIn">Hello, {{$root.$currentUser.firstName}}</span>
       <span ng-if="!$root.$currentUser.isLoggedIn">Welcome!</span>
     </li>
     <li>
@@ -36,10 +36,10 @@
       <a ui-sref="application.user.articles">Saved Articles</a>
       </li>
       <li>
-      <a ui-sref="application.user.assessments">Saved Assessments</a>
+        <a ui-sref="application.user.assessments">Saved Assessments</a>
       </li>
       <li>
-        <a ui-sref="application.assessments">Assessments</a>
+        <a ng-href="{{vm.assessmentsLoginURL}}">Assessments</a>
       </li>
       <li>
         <a href="#" ng-click="vm.currentRoute = 'how-it-works'">How It Works </a>

@@ -18,4 +18,13 @@ env 'AARP_PRIVATE_KEY',
             '(run `KEY_FILE=<path to ShareCare_private_key_pkcs8.pem> ' \
             'bundle exec rake rsa_keys:format`)')
 
+env 'SHARECARE_PUBLIC_CERT',
+    provide('Sharecare Public Cert ' \
+            '(run `KEY_FILE=<path to sharecare_stg_public.crt> ' \
+            'bundle exec rake rsa_keys:format`)')
+env 'SHARECARE_PRIVATE_KEY',
+    provide('Sharecare Private Key ' \
+            '(run `KEY_FILE=<path to sharecare_stg_private.key> ' \
+            'bundle exec rake rsa_keys:format`)')
+
 rake 'db:setup'

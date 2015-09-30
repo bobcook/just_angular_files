@@ -1,4 +1,4 @@
-const authInterceptor = function ($localStorage) {
+const authInterceptor = function ($localStorage, $injector) {
   'ngInject';
 
   return {
@@ -17,6 +17,16 @@ const authInterceptor = function ($localStorage) {
       }
 
       return config;
+    },
+
+    responseError: function (config) {
+      if (config.status === 401) {
+        $localStorage.auth = null;
+        // lazy load $state because of circular dependency error
+        return $injector.get('$state').go('application.login-failure');
+      } else {
+        return config;
+      }
     },
   };
 };

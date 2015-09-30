@@ -43,6 +43,13 @@ Rails.application.routes.draw do
         resources :user_activity_periods, only: [:create]
         resources :activity_tracker_responses, only: [:create]
       end
+
+      # MyBrainSolutions auth endpoints
+      namespace :mbs do
+        get '/auth' => 'saml_idp#create'
+        get '/metadata' => 'saml_idp#show'
+        get '/assessments_login' => 'saml#init'
+      end
     end
   end
 
