@@ -5,6 +5,9 @@ var navPanel = function () {
     bindToController: true,
     templateUrl: 'app/components/nav-panel/nav-panel.html',
     restrict: 'E',
+    scope: {
+      close: '&onClose',
+    },
   };
 };
 

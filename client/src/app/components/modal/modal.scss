@@ -1,0 +1,54 @@
+$modal-background-color: #fff;
+$modal-cellophane-color: #000;
+$modal-margin-top: 50px;
+$modal-opacity: 0.4;
+$modal-transition-duration: 0.25s;
+$modal-width: 800px;
+
+.modal {
+  background-color: $modal-background-color;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  left: calc(50% - #{$modal-width / 2});
+  padding: 10px 20px;
+  position: absolute;
+  top: $modal-margin-top;
+  width: $modal-width;
+  z-index: 100;
+}
+
+.modal-cellophane {
+  background-color: $modal-cellophane-color;
+  height: 100%;
+  left: 0%;
+  opacity: $modal-opacity;
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  z-index: 90;
+}
+
+ss-modal.ng-enter {
+  animation: fade-in $modal-transition-duration ease-in-out;
+
+  .modal {
+    animation: modal-slide-in $modal-transition-duration ease-out;
+  }
+}
+
+ss-modal.ng-leave {
+  animation: fade-out $modal-transition-duration ease-in-out;
+
+  .modal {
+    animation: modal-slide-out $modal-transition-duration ease-in;
+  }
+}
+
+@keyframes modal-slide-in {
+  from { top: -20%; }
+  to { top: $modal-margin-top; }
+}
+
+@keyframes modal-slide-out {
+  from { top: $modal-margin-top; }
+  to { top: -20%; }
+}

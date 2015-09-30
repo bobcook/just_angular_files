@@ -1,0 +1,5 @@
+linters:
+  LeadingZero:
+    style: include_zero
+  QualifyingElement:
+    enabled: false

@@ -1,11 +1,11 @@
 <section>
   <ul>
     <li>
-    <span ng-if="vm.isLoggedIn">Hello, {{vm.currentUser.firstName}}</span>
-    <span ng-if="!vm.isLoggedIn">Welcome!</span>
+      <span ng-if="vm.isLoggedIn">Hello, {{vm.currentUser.firstName}}</span>
+      <span ng-if="!vm.isLoggedIn">Welcome!</span>
     </li>
     <li>
-    <button type="button" ng-click="vm.isMenuOpen = false">Close</button>
+      <button type="button" ng-click="vm.close()">Close</button>
     </li>
   </ul>
   <ul>

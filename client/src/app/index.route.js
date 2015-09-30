@@ -1,4 +1,6 @@
-var routerConfig = function (stateHelperProvider, $urlRouterProvider) {
+var routerConfig = function (stateHelperProvider,
+                             modalStateHelperProvider,
+                             $urlRouterProvider) {
   'ngInject';
 
   stateHelperProvider
