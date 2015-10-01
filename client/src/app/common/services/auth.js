@@ -6,7 +6,7 @@ let $auth = function (ApiRoutes, $http, $localStorage) {
     $storage = $localStorage.auth = {};
   }
 
-  let getAuthTokenFrom = function (claimToken) {
+  const getAuthTokenFrom = function (claimToken) {
     return $http.get(ApiRoutes.AUTH_TOKEN({ id: claimToken }));
   };
 
@@ -19,7 +19,12 @@ let $auth = function (ApiRoutes, $http, $localStorage) {
     },
 
     destroySession: function () {
-      delete $storage.sessionToken;
+      return $http.delete(ApiRoutes.SESSION_DESTROY, {
+        headers: { Accept: 'application/json' },
+      }).then(function () {
+        delete $storage.sessionToken;
+        return true;
+      });
     },
 
     sessionExists: function () {

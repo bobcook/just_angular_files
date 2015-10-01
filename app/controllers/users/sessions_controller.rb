@@ -1,9 +1,9 @@
 module Users
   class SessionsController < Devise::SessionsController
     def destroy
-      user = current_user
       super do
-        Apis::DSO.endpoints.logout(user.auth_token) # consider backgrounding
+        # consider backgrounding
+        Apis::DSO.endpoints.logout current_user.auth_token
       end
     end
   end
