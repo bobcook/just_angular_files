@@ -18,6 +18,7 @@
     "arrowFunctions": true,
     "blockBindings": true,
     "classes": true,
+    "destructuring": true,
     "forOf": true,
     "jsx": true,
     "modules": true,

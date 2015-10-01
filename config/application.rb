@@ -33,6 +33,18 @@ module StayingSharp
     config.middleware.use ActionDispatch::Session::CookieStore
     config.middleware.use ActionDispatch::Flash
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource(
+          '/api/*',
+          headers: :any,
+          expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          methods: [:get, :post, :options, :delete, :put]
+        )
+      end
+    end
+
     config.assets.enabled = false
 
     config.action_controller.action_on_unpermitted_parameters = :raise

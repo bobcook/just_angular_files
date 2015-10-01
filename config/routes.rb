@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :auth_tokens, only: [:show]
+
       namespace :me, as: :my do
         resources :user_activities, only: [:show, :index] do
           resources :histories, only: [:index, :show]

@@ -3,8 +3,15 @@ import routerConfig from './index.route';
 
 import runBlock from './index.run';
 
-// services
+// config
+import ApiRoutes from './common/config/api-routes.js';
+
+// resources
 import Article from './common/resources/article.js';
+
+// services
+import $auth from './common/services/auth.js';
+import authInterceptor from './common/services/auth-interceptor.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
 
 // directives
@@ -17,6 +24,7 @@ import navPanel from './components/nav-panel/nav-panel.js';
 // controllers
 import ArticlesController from './articles/articles.controller.js';
 import HomeController from './home/home.controller.js';
+import LoginSuccessController from './callbacks/login-success.controller.js';
 import NavPanelController from './components/nav-panel/nav-panel.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
 
@@ -24,6 +32,7 @@ angular.module('aarp-staying-sharp', [
   'aarp-staying-sharp.constants',
   'angularModalService',
   'ngAnimate',
+  'ngStorage',
   'rails',
   'ui.router',
   'ui.router.stateHelper',
@@ -34,7 +43,12 @@ angular.module('aarp-staying-sharp', [
 
   .run(runBlock)
 
+  .factory('ApiRoutes', ApiRoutes)
+
   .factory('Article', Article)
+
+  .factory('$auth', $auth)
+  .factory('authInterceptor', authInterceptor)
   .provider('modalStateHelper', modalStateHelper)
 
   .directive('ssContentDrawer', contentDrawer)
@@ -45,5 +59,6 @@ angular.module('aarp-staying-sharp', [
 
   .controller('ArticlesController', ArticlesController)
   .controller('HomeController', HomeController)
+  .controller('LoginSuccessController', LoginSuccessController)
   .controller('NavPanelController', NavPanelController)
   .controller('TopNavController', TopNavController);

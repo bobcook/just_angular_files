@@ -15,14 +15,17 @@ var routerConfig = function (stateHelperProvider,
           controller: 'HomeController',
           controllerAs: 'vm',
         },
+        {
+          name: 'login-failure',
+          url: '/callbacks/login-failure',
+          templateUrl: 'app/login-failure/login-failure.html',
+        },
       ],
     })
     .state({
-      name: 'articles',
-      url: '/articles',
-      templateUrl: 'app/articles/articles.html',
-      controller: 'ArticlesController',
-      controllerAs: 'vm',
+      name: 'login-success',
+      url: '/callbacks/login-success/:claimToken',
+      controller: 'LoginSuccessController',
     });
 
   $urlRouterProvider.otherwise('/');

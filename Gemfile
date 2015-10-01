@@ -8,34 +8,36 @@ ruby `cat .ruby-version`.strip
 
 gem 'active_model_serializers', '~> 0.8.0'
 gem 'airbrake', '~> 4.3.0'
+gem 'bitmask_attributes', '~> 1.0.0'
 gem 'bundler', '>= 1.8.4'
+gem 'devise', '~> 3.5.2'
+gem 'factory_girl_rails', '~> 4.5.0'
+gem 'faraday_middleware', '~> 0.10.0'
+gem 'faraday', '~> 0.9.1'
+gem 'fastly-rails', '~> 0.4.0'
 gem 'i18n-tasks', '~> 0.8.7'
+gem 'jwt', '~> 1.5.1'
+gem 'momentjs-rails', '~> 2.10.3'
+gem 'multi_xml', '~> 0.5.5'
 gem 'newrelic_rpm', '>= 3.9.8'
+gem 'omniauth', '~> 1.2.2'
 gem 'pg', '~> 0.18.2'
 gem 'rack-canonical-host', '~> 0.1.0'
-gem 'rails', '4.2.3'
+gem 'rack-cors', '~> 0.4.0'
 gem 'rails-api', '~> 0.4.0'
-gem 'sidekiq', '~> 3.5.0'
-gem 'unicorn', '~> 4.9.0'
-gem 'fastly-rails', '~> 0.4.0'
-gem 'faraday', '~> 0.9.1'
-gem 'faraday_middleware', '~> 0.10.0'
-gem 'multi_xml', '~> 0.5.5'
+gem 'rails', '4.2.3'
 gem 'redis-rails', '~> 4.0.0'
-gem 'omniauth', '~> 1.2.2'
-gem 'devise', '~> 3.5.2'
-gem 'bitmask_attributes', '~> 1.0.0'
+gem 'sidekiq', '~> 3.5.0'
 gem 'therubyracer', '~> 0.12.2'
-gem 'factory_girl_rails', '~> 4.5.0'
-gem 'momentjs-rails', '~> 2.10.3'
+gem 'unicorn', '~> 4.9.0'
 
 group :development do
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', '~> 0.7.2'
-  gem 'spring', '~> 1.3.6'
-  gem 'spring-commands-rspec', '~> 1.0.4'
-  gem 'stairs', '~> 0.9.0'
   gem 'letter_opener', '~> 1.4.1'
+  gem 'spring-commands-rspec', '~> 1.0.4'
+  gem 'spring', '~> 1.3.6'
+  gem 'stairs', '~> 0.9.0'
 end
 
 group :development, :test do
@@ -55,6 +57,6 @@ group :test do
 end
 
 group :staging, :production do
-  gem 'rails_12factor', '~> 0.0.3'
   gem 'passenger', '~> 5.0.15'
+  gem 'rails_12factor', '~> 0.0.3'
 end

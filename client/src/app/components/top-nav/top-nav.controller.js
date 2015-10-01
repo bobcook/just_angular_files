@@ -1,4 +1,8 @@
-var TopNavController = function () {
+var TopNavController = function (ApiRoutes) {
+  'ngInject';
+
+  this.loginUrl = ApiRoutes.AARP_AUTH;
+
   this.isMenuOpen = false;
   this.isSearchOpen = false;
 

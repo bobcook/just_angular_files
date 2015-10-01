@@ -1,6 +1,9 @@
-var config = function ($logProvider) {
+var config = function ($httpProvider, $locationProvider, $logProvider) {
   'ngInject';
-  // Enable log
+
+  $httpProvider.interceptors.push('authInterceptor');
+
+  $locationProvider.html5Mode(true);
   $logProvider.debugEnabled(true);
 };
 

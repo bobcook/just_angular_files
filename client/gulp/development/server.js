@@ -10,6 +10,7 @@ var browserSyncSpa = require('browser-sync-spa');
 var util = require('util');
 
 var proxyMiddleware = require('http-proxy-middleware');
+var historyApiFallback = require('connect-history-api-fallback');
 var exec = require('child_process').exec;
 
 function browserSyncInit(baseDir, browser) {
@@ -26,7 +27,8 @@ function browserSyncInit(baseDir, browser) {
     baseDir: baseDir,
     routes: routes,
     middleware: [
-      proxyMiddleware('/api', { target: 'http://localhost:' + (process.env.GULP_SERVER_PORT || 3000) })
+      proxyMiddleware('/api', { target: 'http://localhost:' + (process.env.GULP_SERVER_PORT || 3000) }),
+      historyApiFallback()
     ]
   };
 
