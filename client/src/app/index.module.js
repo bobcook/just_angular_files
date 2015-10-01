@@ -11,6 +11,7 @@ import Article from './common/resources/article.js';
 
 // services
 import $auth from './common/services/auth.js';
+import $currentUser from './common/services/current-user.js';
 import authInterceptor from './common/services/auth-interceptor.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
 
@@ -25,6 +26,7 @@ import navPanel from './components/nav-panel/nav-panel.js';
 import ArticlesController from './articles/articles.controller.js';
 import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
+import LogoutController from './logout/logout.controller.js';
 import NavPanelController from './components/nav-panel/nav-panel.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
 
@@ -48,6 +50,7 @@ angular.module('aarp-staying-sharp', [
   .factory('Article', Article)
 
   .factory('$auth', $auth)
+  .factory('$currentUser', $currentUser)
   .factory('authInterceptor', authInterceptor)
   .provider('modalStateHelper', modalStateHelper)
 
@@ -60,5 +63,6 @@ angular.module('aarp-staying-sharp', [
   .controller('ArticlesController', ArticlesController)
   .controller('HomeController', HomeController)
   .controller('LoginSuccessController', LoginSuccessController)
+  .controller('LogoutController', LogoutController)
   .controller('NavPanelController', NavPanelController)
   .controller('TopNavController', TopNavController);

@@ -1,8 +1,8 @@
 <section>
   <ul>
     <li>
-      <span ng-if="vm.isLoggedIn">Hello, {{vm.currentUser.firstName}}</span>
-      <span ng-if="!vm.isLoggedIn">Welcome!</span>
+      <span ng-if="$root.$currentUser.isLoggedIn">Hello, {{vm.currentUser.firstName}}</span>
+      <span ng-if="!$root.$currentUser.isLoggedIn">Welcome!</span>
     </li>
     <li>
       <button type="button" ng-click="vm.close()">Close</button>
@@ -10,12 +10,12 @@
   </ul>
   <ul>
     <li>
-    <a ng-if="vm.isLoggedIn" ui-sref="application.logout">Logout</a>
-    <a ng-if="!vm.isLoggedIn" ui-sref="application.login">Login</a>
+    <a ng-if="$root.$currentUser.isLoggedIn" ui-sref="logout">Logout</a>
+    <a ng-if="!$root.$currentUser.isLoggedIn" ui-sref="application.login">Login</a>
     </li>
     <li>
-    <a ng-if="vm.isLoggedIn" ui-sref="application.user.settings">Account Settings</a>
-    <a ng-if="!vm.isLoggedIn" ui-sref="application.sign-up">Sign up or Join</a>
+    <a ng-if="$root.$currentUser.isLoggedIn" ui-sref="application.user.settings">Account Settings</a>
+    <a ng-if="!$root.$currentUser.isLoggedIn" ui-sref="application.sign-up">Sign up or Join</a>
     </li>
   </ul>
 </section>

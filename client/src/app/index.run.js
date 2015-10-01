@@ -1,6 +1,9 @@
-var runBlock = function ($log) {
+var runBlock = function ($currentUser, $log, $rootScope) {
   'ngInject';
+
   $log.debug('runBlock end');
+
+  $rootScope.$currentUser = $currentUser;
 };
 
 export default runBlock;

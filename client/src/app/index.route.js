@@ -26,6 +26,11 @@ var routerConfig = function (stateHelperProvider,
       name: 'login-success',
       url: '/callbacks/login-success/:claimToken',
       controller: 'LoginSuccessController',
+    })
+    .state({
+      name: 'logout',
+      url: '/logout',
+      controller: 'LogoutController',
     });
 
   $urlRouterProvider.otherwise('/');

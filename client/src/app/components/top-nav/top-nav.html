@@ -5,8 +5,8 @@
     </div>
     <div>
       <ul>
-        <li ng-if="!vm.isLoggedIn"><a href="#">Sign up or Join</a></li>
-        <li ng-if="!vm.isLoggedIn"><a ng-href="{{vm.loginUrl}}">Login</a></li>
+        <li ng-if="!$root.$currentUser.isLoggedIn"><a href="#">Sign up or Join</a></li>
+        <li ng-if="!$root.$currentUser.isLoggedIn"><a ng-href="{{vm.loginUrl}}">Login</a></li>
         <li>
           <button ng-click="vm.isSearchOpen = !vm.isSearchOpen">Search</button>
         </li>
