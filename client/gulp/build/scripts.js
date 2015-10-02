@@ -1,5 +1,3 @@
-'use strict';
-
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('../conf');
@@ -55,6 +53,13 @@ gulp.task('scripts', function () {
   return webpack(false);
 });
 
-gulp.task('scripts:watch', ['scripts'], function (callback) {
+gulp.task('bower:symlink', function () {
+  return gulp.src(conf.wiredep.directory)
+    .pipe($.symlink([conf.paths.tmp + '/serve/bower_components'], {
+      force: true,
+    }));
+});
+
+gulp.task('scripts:watch', ['scripts', 'bower:symlink'], function (callback) {
   return webpack(true, callback);
 });

@@ -1,5 +1,6 @@
 import config from './index.config';
 import routerConfig from './index.route';
+import installEnvironment from './index.env';
 
 import runBlock from './index.run';
 
@@ -30,8 +31,7 @@ import LogoutController from './logout/logout.controller.js';
 import NavPanelController from './components/nav-panel/nav-panel.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
 
-angular.module('aarp-staying-sharp', [
-  'aarp-staying-sharp.constants',
+const app = angular.module('aarp-staying-sharp', [
   'angularModalService',
   'ngAnimate',
   'ngStorage',
@@ -39,7 +39,11 @@ angular.module('aarp-staying-sharp', [
   'ui.router',
   'ui.router.stateHelper',
   'ui.select',
-])
+]);
+
+installEnvironment(app);
+
+app
   .config(config)
   .config(routerConfig)
 

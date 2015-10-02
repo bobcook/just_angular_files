@@ -15,7 +15,7 @@ exports.isDevelopment = process.env.NODE_ENV !== 'production';
  */
 exports.paths = {
   src: 'src',
-  dist: '../public',
+  dist: 'dist',
   tmp: '.tmp',
   e2e: 'e2e'
 };

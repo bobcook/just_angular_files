@@ -36,4 +36,8 @@ zeus.json
 /public
 /client/bower_components
 /client/.tmp
+/client/.divshot-cache
+/client/dist
 /client/.env.json
+/client/gulp.dot
+/client/gulp.png

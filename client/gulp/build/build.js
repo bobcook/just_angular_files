@@ -25,21 +25,23 @@ gulp.task('partials', function () {
     .pipe(gulp.dest(conf.paths.tmp + '/partials/'));
 });
 
-gulp.task('html', ['inject', 'partials'], function () {
-  var partialsInjectFile = gulp.src(path.join(conf.paths.tmp, '/partials/templateCacheHtml.js'), { read: false });
-  var partialsInjectOptions = {
-    starttag: '<!-- inject:partials -->',
-    ignorePath: path.join(conf.paths.tmp, '/partials'),
-    addRootSlash: false
-  };
+gulp.task('partials:watch', ['partials'], function () {
+  function copyPartials() {
+    return gulp.src(path.join(conf.paths.tmp, '/partials/*.js'))
+      .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
+  }
 
+  gulp.watch(path.join(conf.paths.src, '/**/*.html'), ['partials'], copyPartials);
+  return copyPartials();
+});
+
+gulp.task('html', ['inject', 'partials'], function () {
   var htmlFilter = $.filter('*.html');
   var jsFilter = $.filter('**/*.js');
   var cssFilter = $.filter('**/*.css');
   var assets;
 
   return gulp.src(path.join(conf.paths.tmp, '/serve/*.html'))
-    .pipe($.inject(partialsInjectFile, partialsInjectOptions))
     .pipe(assets = $.useref.assets())
     .pipe($.rev())
     .pipe(jsFilter)
