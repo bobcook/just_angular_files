@@ -1,4 +1,4 @@
-var Article = function (API_URL, railsResourceFactory) {
+const Article = function (API_URL, railsResourceFactory) {
   'ngInject';
 
   return railsResourceFactory({

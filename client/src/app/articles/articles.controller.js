@@ -1,8 +1,8 @@
-var ArticlesController = function (Article) {
+const ArticlesController = function (Article) {
   'ngInject';
 
-  Article.query((res) => {
-    this.articles = res;
+  Article.query().then((articles) => {
+    this.articles = articles;
   });
 };
 

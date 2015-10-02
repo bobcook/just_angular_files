@@ -1,4 +1,4 @@
-var topNav = function() {
+const topNav = function () {
   return {
     bindToController: true,
     controllerAs: 'vm',

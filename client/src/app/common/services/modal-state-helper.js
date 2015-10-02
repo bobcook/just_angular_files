@@ -1,16 +1,16 @@
-var modalStateHelper = function () {
-  var modalStateHelper = function(options) {
-    var closeModal = null;
-    var newOptions = _.omit(options, 'controller', 'onEnter', 'onExit');
+const modalStateHelper = function () {
+  const modalStateHelper = function (options) {
+    let closeModal = null;
+    const newOptions = _.omit(options, 'controller', 'onEnter', 'onExit');
 
     return _.merge(newOptions, {
-      onEnter: function($q, $state, ModalService) {
+      onEnter: function ($q, $state, ModalService) {
         'ngInject';
 
         ModalService.showModal({
           templateUrl: options.templateUrl,
 
-          controller: function(close, $scope, $element, $controller) {
+          controller: function (close, $scope, $element, $controller) {
             'ngInject';
 
             if (options.controller != null) {
@@ -20,15 +20,11 @@ var modalStateHelper = function () {
           },
         });
       },
-      onExit: function() {
-        closeModal();
-      },
+      onExit: closeModal,
     });
   };
 
-  modalStateHelper.$get = function() {
-    return modalStateHelper;
-  };
+  modalStateHelper.$get = () => modalStateHelper;
 
   return modalStateHelper;
 };

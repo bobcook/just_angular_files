@@ -1,4 +1,4 @@
-var NavPanelController = function() {
+const NavPanelController = function () {
   this.currentRoute = 'root';
 };
 

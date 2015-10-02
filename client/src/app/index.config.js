@@ -1,4 +1,4 @@
-var config = function ($httpProvider, $locationProvider, $logProvider) {
+const config = function ($httpProvider, $locationProvider, $logProvider) {
   'ngInject';
 
   $httpProvider.interceptors.push('authInterceptor');

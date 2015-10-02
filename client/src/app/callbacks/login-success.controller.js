@@ -1,4 +1,4 @@
-let LoginSuccessController = function ($auth, $state, $stateParams) {
+const LoginSuccessController = function ($auth, $state, $stateParams) {
   'ngInject';
 
   if ($stateParams.claimToken) {

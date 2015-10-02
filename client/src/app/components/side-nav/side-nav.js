@@ -1,4 +1,4 @@
-var sideNav = function($animate) {
+const sideNav = function ($animate) {
   'ngInject';
 
   return {

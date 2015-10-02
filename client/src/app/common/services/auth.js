@@ -1,7 +1,7 @@
-let $auth = function (ApiRoutes, $http, $localStorage) {
+const $auth = function (ApiRoutes, $http, $localStorage) {
   'ngInject';
 
-  var $storage = $localStorage.auth;
+  let $storage = $localStorage.auth;
   if ($storage == null) {
     $storage = $localStorage.auth = {};
   }

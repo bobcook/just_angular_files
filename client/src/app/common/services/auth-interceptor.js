@@ -1,13 +1,13 @@
-let authInterceptor = function ($localStorage) {
+const authInterceptor = function ($localStorage) {
   'ngInject';
 
   return {
-    request: function(config) {
+    request: function (config) {
       if (!config.headers) {
         config.headers = {};
       }
 
-      var token = null;
+      let token = null;
       if ($localStorage.auth != null) {
         token = $localStorage.auth.sessionToken;
       }

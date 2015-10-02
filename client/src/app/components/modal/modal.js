@@ -1,35 +1,35 @@
-var modal = function($state) {
+const modal = function ($state) {
   'ngInject';
 
-  let KEYCODE_ESCAPE = 27;
+  const KEYCODE_ESCAPE = 27;
 
   return {
     restrict: 'E',
     transclude: true,
     templateUrl: 'app/components/modal/modal.html',
     link: function (scope, element, attrs) {
-      let modalElement = $(element).children('.modal');
+      const modalElement = $(element).children('.modal');
 
-      let containerContainsEvent = function(container, event) {
+      const containerContainsEvent = function (container, event) {
         return $(container).is(event.target)
             || $(container).has(event.target).length > 0;
       };
 
-      let mouseUp = function(event) {
+      const mouseUp = function (event) {
         if (!containerContainsEvent(modalElement, event)) {
           $state.go('^');
           removeListeners();
         }
       };
 
-      let keyUp = function(event) {
+      const keyUp = function (event) {
         if (event.keyCode === KEYCODE_ESCAPE) {
           $state.go('^');
           removeListeners();
         }
       };
 
-      let removeListeners = function () {
+      const removeListeners = function () {
         $(document).off('mouseup', mouseUp);
         $(document).off('keyup', keyUp);
       };

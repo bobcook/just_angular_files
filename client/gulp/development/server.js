@@ -1,14 +1,13 @@
-var gulp = require('gulp');
-var conf = require('../conf');
+import gulp from 'gulp';
+import conf from '../conf';
 
-var _ = require('lodash');
+import _ from 'lodash';
 
-var superstatic = require('superstatic').server;
-var exec = require('child_process').exec;
+const superstatic = require('superstatic').server;
 
-var runServer = function (root) {
-  var baseConfig = require('../../divshot.json');
-  var app = superstatic({
+const runServer = function (root) {
+  const baseConfig = require('../../divshot.json');
+  const app = superstatic({
     config: _.merge({}, baseConfig, {
       root: root,
       'cache_control': {
@@ -28,9 +27,3 @@ gulp.task('serve', ['watch'], function () {
 gulp.task('serve:dist', ['build'], function () {
   runServer(conf.paths.dist);
 });
-
-gulp.task('rails', function() {
-  exec('../bin/rails s');
-});
-
-gulp.task('serve:full-stack', ['rails', 'serve']);

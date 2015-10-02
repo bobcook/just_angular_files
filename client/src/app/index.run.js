@@ -1,4 +1,4 @@
-var runBlock = function ($currentUser, $log, $rootScope) {
+const runBlock = function ($currentUser, $log, $rootScope) {
   'ngInject';
 
   $log.debug('runBlock end');

@@ -1,4 +1,4 @@
-var TopNavController = function (ApiRoutes) {
+const TopNavController = function (ApiRoutes) {
   'ngInject';
 
   this.loginUrl = ApiRoutes.AARP_AUTH;

@@ -1,4 +1,4 @@
-var HomeController = function () {
+const HomeController = function () {
 };
 
 export default HomeController;

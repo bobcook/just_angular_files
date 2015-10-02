@@ -1,43 +1,47 @@
-var path = require('path');
-var gulp = require('gulp');
-var conf = require('../conf');
+import path from 'path';
+import gulp from 'gulp';
+import conf from '../conf';
 
-var $ = require('gulp-load-plugins')();
+import $ from '../plugins';
 
-function webpack(watch, callback) {
-  var preLoaders = [];
+const webpack = function (watch, callback) {
+  const preLoaders = [];
   if (conf.isDevelopment) {
     preLoaders.push({
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'eslint-loader'
+      loader: 'eslint-loader',
     });
   }
 
-  var webpackOptions = {
+  const webpackOptions = {
     watch: watch,
     module: {
       preLoaders: preLoaders,
-      loaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}]
+      loaders: [{
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      }],
     },
-    output: { filename: 'index.module.js' }
+    output: { filename: 'index.module.js' },
   };
 
-  if(watch) {
+  if (watch) {
     webpackOptions.devtool = 'inline-source-map';
   }
 
-  var webpackChangeHandler = function(err, stats) {
-    if(err) {
+  const webpackChangeHandler = function (err, stats) {
+    if (err) {
       conf.errorHandler('Webpack')(err);
     }
     $.util.log(stats.toString({
       colors: $.util.colors.supportsColor,
       chunks: false,
       hash: false,
-      version: false
+      version: false,
     }));
-    if(watch) {
+    if (watch) {
       require('browser-sync').reload();
       watch = false;
       callback();
@@ -47,7 +51,7 @@ function webpack(watch, callback) {
   return gulp.src(path.join(conf.paths.src, '/app/index.module.js'))
     .pipe($.webpack(webpackOptions, null, webpackChangeHandler))
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app')));
-}
+};
 
 gulp.task('scripts', function () {
   return webpack(false);

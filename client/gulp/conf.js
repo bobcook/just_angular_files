@@ -6,7 +6,7 @@
  *  of the tasks
  */
 
-var gutil = require('gulp-util');
+import gutil from 'gulp-util';
 
 exports.isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -17,7 +17,7 @@ exports.paths = {
   src: 'src',
   dist: 'dist',
   tmp: '.tmp',
-  e2e: 'e2e'
+  e2e: 'e2e',
 };
 
 /**
@@ -26,16 +26,14 @@ exports.paths = {
  *  to inject css preprocessor deps and js files in karma
  */
 exports.wiredep = {
-  directory: 'bower_components'
+  directory: 'bower_components',
 };
 
 /**
  *  Common implementation for an error handler of a Gulp plugin
  */
-exports.errorHandler = function(title) {
-  'use strict';
-
-  return function(err) {
+exports.errorHandler = function (title) {
+  return function (err) {
     gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
     this.emit('end');
   };

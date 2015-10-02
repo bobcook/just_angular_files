@@ -1,4 +1,4 @@
-var contentDrawer = function() {
+const contentDrawer = function () {
   'ngInject';
 
   return {
@@ -9,7 +9,7 @@ var contentDrawer = function() {
     },
     link: function (scope, element, attrs) {
       $(element).wrap('<div class="content-drawer-wrapper"></div>');
-      var wrapper = $(element).parent();
+      const wrapper = $(element).parent();
       scope.$watch('isOpen', function (isOpen) {
         if (isOpen) {
           wrapper.css({ height: scope.height });

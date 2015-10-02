@@ -1,4 +1,4 @@
-var ApiRoutes = function (API_URL) {
+const ApiRoutes = function (API_URL) {
   'ngInject';
 
   return {

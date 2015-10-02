@@ -1,37 +1,38 @@
-'use strict';
+import path from 'path';
+import gulp from 'gulp';
+import conf from '../conf';
 
-var path = require('path');
-var gulp = require('gulp');
-var conf = require('../conf');
+import _ from 'lodash';
+import $ from '../plugins';
 
-var $ = require('gulp-load-plugins')();
-
-var wiredep = require('wiredep').stream;
-var _ = require('lodash');
+const wiredep = require('wiredep').stream;
 
 gulp.task('inject', ['scripts', 'partials', 'styles'], function () {
-  var injectStyles = gulp.src([
+  const injectStyles = gulp.src([
     path.join(conf.paths.tmp, '/serve/app/**/*.css'),
-    path.join('!' + conf.paths.tmp, '/serve/app/vendor.css')
+    path.join('!' + conf.paths.tmp, '/serve/app/vendor.css'),
   ], { read: false });
 
-  var injectScripts = gulp.src([
+  const injectScripts = gulp.src([
     path.join(conf.paths.tmp, '/serve/app/**/*.module.js'),
     path.join(conf.paths.tmp, '/serve/app/**/*.js'),
     path.join('!' + conf.paths.src, '/app/**/*.spec.js'),
-    path.join('!' + conf.paths.src, '/app/**/*.mock.js')
+    path.join('!' + conf.paths.src, '/app/**/*.mock.js'),
   ], { read: false });
 
-  var injectOptions = {
+  const injectOptions = {
     ignorePath: [conf.paths.src, path.join(conf.paths.tmp, '/serve')],
-    addRootSlash: false
+    addRootSlash: false,
   };
 
-  var partialsInjectFile = gulp.src(path.join(conf.paths.tmp, '/partials/templateCacheHtml.js'), { read: false });
-  var partialsInjectOptions = {
+  const partialsInjectFile = gulp.src(
+    path.join(conf.paths.tmp, '/partials/templateCacheHtml.js'),
+    { read: false }
+  );
+  const partialsInjectOptions = {
     starttag: '<!-- inject:partials -->',
     ignorePath: path.join(conf.paths.tmp, '/partials'),
-    addRootSlash: false
+    addRootSlash: false,
   };
 
   return gulp.src(path.join(conf.paths.src, '/*.html'))

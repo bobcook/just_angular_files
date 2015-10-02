@@ -1,4 +1,4 @@
-var navPanel = function () {
+const navPanel = function () {
   return {
     controller: 'NavPanelController',
     controllerAs: 'vm',
