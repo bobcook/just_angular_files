@@ -28,6 +28,7 @@ import topNav from './components/top-nav/top-nav.js';
 
 // controllers
 import ArticlesController from './articles/articles.controller.js';
+import ArticlesDetailController from './articles/articlesDetail.controller.js';
 import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
 import LogoutController from './logout/logout.controller.js';
@@ -72,6 +73,7 @@ app
   .directive('ssTopNav', topNav)
 
   .controller('ArticlesController', ArticlesController)
+  .controller('ArticlesDetailController', ArticlesDetailController)
   .controller('HomeController', HomeController)
   .controller('LoginSuccessController', LoginSuccessController)
   .controller('LogoutController', LogoutController)

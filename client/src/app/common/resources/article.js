@@ -3,7 +3,7 @@ const Article = function (API_URL, railsResourceFactory) {
 
   return railsResourceFactory({
     name: 'article',
-    url: `${API_URL}/v1/articles`,
+    url: `${API_URL}/api/v1/articles`,
   });
 };
 

@@ -9,6 +9,22 @@ const routerConfig = function (stateHelperProvider,
       templateUrl: 'app/layouts/application.html',
       children: [
         {
+          name: 'articles',
+          url: '/articles',
+          templateUrl: 'app/articles/articles.html',
+          controller: 'ArticlesController',
+          controllerAs: 'vm',
+        },
+
+        {
+          name: 'articles-detail',
+          url: '/articles/:id',
+          templateUrl: 'app/articles/articlesDetail.html',
+          controller: 'ArticlesDetailController',
+          controllerAs: 'vm',
+        },
+
+        {
           name: 'home',
           url: '/',
           templateUrl: 'app/home/home.html',
