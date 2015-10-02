@@ -8,7 +8,31 @@
 ```bash
 $ bundle
 $ bundle exec rake newb
+$ nvm use
+$ npm install
 ```
+
+## Frontend
+
+The frontend application is an Angular app located in the `client/` directory. The app is built with Gulp and structured for deployment with [Divshot][divshot]. To set up the frontend application, run `npm install` in the root directory, which will install Node and Bower dependencies and build the client code.
+
+There are a variety of Gulp tasks for development purposes. All the Gulp tasks should be run in the `client/` directory. To run a server that watches for changes, run `gulp serve`. To deploy to Divshot, use `gulp deploy` once you are logged in to the Divshot CLI.
+
+Environment variables are injected into the app from an `.env.json` file in the `client/` directory. All values will be included as injectable constants exposed to Angular. The following is a list of required environment variables:
+
+- `API_URL` — Should be set to the URL of the backend (Rails) server. For example, if Rails is running on port 3000, it should be set to `http://localhost:3000`.
+
+[divshot]: https://divshot.com
+
+## Backend
+
+The backend is a Rails API structured for deployment on Heroku.
+
+### Authentication
+
+In order for the frontend to be able to authenticate with AARP, the backend serves as a proxy that manages all third-party authentication itself, then returns a JWT to the client. When the user attempts to log in, they navigate to a remote URL on the backend, which redirects them to the AARP login flow. Once they've logged in, then they're returned to the backend, along with the auth token.
+
+The auth token itself is encoded into a JWT, but the JWT is too long to fit in a URL query parameter, so it can't be directly sent back to the Angular app. Instead, a temporary "claim token" is generated, which is just a random string, which *itself* is passed as a query parameter to the Angular app. The frontend then makes an API call back to the backend to retrieve the actual JWT, and the temporary claim token is destroyed. The temporary tokens expire after one hour, and the JWTs expire after 24 hours.
 
 ## ThirdParty Dependencies
 

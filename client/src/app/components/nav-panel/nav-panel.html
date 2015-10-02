@@ -1,0 +1,71 @@
+<section>
+  <ul>
+    <li>
+      <span ng-if="$root.$currentUser.isLoggedIn">Hello, {{vm.currentUser.firstName}}</span>
+      <span ng-if="!$root.$currentUser.isLoggedIn">Welcome!</span>
+    </li>
+    <li>
+      <button type="button" ng-click="vm.close()">Close</button>
+    </li>
+  </ul>
+  <ul>
+    <li>
+    <a ng-if="$root.$currentUser.isLoggedIn" ui-sref="logout">Logout</a>
+    <a ng-if="!$root.$currentUser.isLoggedIn" ui-sref="application.login">Login</a>
+    </li>
+    <li>
+    <a ng-if="$root.$currentUser.isLoggedIn" ui-sref="application.user.settings">Account Settings</a>
+    <a ng-if="!$root.$currentUser.isLoggedIn" ui-sref="application.sign-up">Sign up or Join</a>
+    </li>
+  </ul>
+</section>
+<div ng-switch="vm.currentRoute">
+  <section ng-switch-when="root">
+    <ul>
+      <li>
+        <a href="#" ng-click="vm.currentRoute = 'explore'"> Explore </a>
+      </li>
+      <li><a ui-sref="application.user.dashboard">My Staying Sharp</a></li>
+      <li>
+      <a ui-sref="application.user.dashboard">What I'm Working On</a>
+      </li>
+      <li>
+      <a ui-sref="application.user.recipes">Saved Recipes</a>
+      </li>
+      <li>
+      <a ui-sref="application.user.articles">Saved Articles</a>
+      </li>
+      <li>
+      <a ui-sref="application.user.assessments">Saved Assessments</a>
+      </li>
+      <li>
+        <a ui-sref="application.assessments">Assessments</a>
+      </li>
+      <li>
+        <a href="#" ng-click="vm.currentRoute = 'how-it-works'">How It Works </a>
+      </li>
+
+      <li><a ui-sref="application.join-staying-sharp">Join Staying Sharp</a></li>
+      <li><a ui-sref="application.give-staying-sharp">Give Staying Sharp</a></li>
+    </ul>
+  </section>
+  <section class="nav-panel-subsection" ng-switch-when="explore">
+    <a href="#" ng-click="vm.currentRoute = 'root'">Explore</a>
+    <ul>
+      <li><a ui-sref="application.home">All Content</a></li>
+      <li><a ui-sref="application.articles">Articles</a></li>
+      <li><a ui-sref="application.recipes">Recipes</a></li>
+      <!-- TODO: only allow paid users to see actitivies -->
+      <li><a ui-sref="application.activities">Activities</a></li>
+    </ul>
+  </section>
+  <section class="nav-panel-subsection" ng-switch-when="how-it-works">
+    <a href="#" ng-click="vm.currentRoute = 'root'">How It Works</a>
+    <ul>
+      <li><a ui-sref="application.what-is-brain-health">What is Brain Health</a></li>
+      <li><a ui-sref="application.learn-more-about-staying-sharp">Learn More About Staying Sharp</a></li>
+      <li><a ui-sref="application.using-staying-sharp">Using Staying Sharp</a></li>
+      <li><a ui-sref="application.connected-apps">Connected Apps</a></li>
+    </ul>
+  </section>
+</div>

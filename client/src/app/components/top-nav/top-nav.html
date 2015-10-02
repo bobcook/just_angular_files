@@ -1,0 +1,40 @@
+<section class="global-header">
+  <nav>
+    <div class="logo">
+      <a href="" title="Staying Sharp"><h1>Staying Sharp | AARP</h1></a>
+    </div>
+    <div>
+      <ul>
+        <li ng-if="!$root.$currentUser.isLoggedIn"><a href="#">Sign up or Join</a></li>
+        <li ng-if="!$root.$currentUser.isLoggedIn"><a ng-href="{{vm.loginUrl}}">Login</a></li>
+        <li>
+          <button ng-click="vm.isSearchOpen = !vm.isSearchOpen">Search</button>
+        </li>
+        <li>
+          <button ng-click="vm.isMenuOpen = !vm.isMenuOpen">Menu</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</section>
+
+<section ss-content-drawer="vm.isSearchOpen" ss-drawer-height="100">
+  <form>
+    <div>
+      <div>
+        <ui-select ng-model="vm.selectedSearchCategory" search-enabled="false">
+          <ui-select-match>{{$select.selected}}</ui-select-match>
+          <ui-select-choices repeat="value in vm.searchCategories">
+            {{value}}
+          </ui-select-choices>
+        </ui-select>
+      </div>
+      <input type="text" placeholder="Search Staying Sharp...">
+      <button>Search</button>
+    </div>
+  </form>
+</section>
+
+<ss-side-nav is-open="vm.isMenuOpen">
+  <ss-nav-panel on-close="vm.isMenuOpen = false"></ss-nav-panel>
+</ss-side-nav>
