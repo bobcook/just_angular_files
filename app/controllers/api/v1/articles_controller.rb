@@ -4,6 +4,10 @@ module Api
       def index
         render json: Article.all, each_serializer: ArticleSerializer
       end
+
+      def show
+        render json: Article.find(params[:id])
+      end
     end
   end
 end

@@ -1,7 +1,8 @@
 const modalStateHelper = function () {
   const modalStateHelper = function (options) {
     let closeModal = null;
-    const newOptions = _.omit(options, 'controller', 'onEnter', 'onExit');
+    const newOptions =
+      _.omit(options, 'controller', 'controllerAs', 'onEnter', 'onExit');
 
     return _.merge(newOptions, {
       onEnter: function ($q, $state, ModalService) {
@@ -14,13 +15,17 @@ const modalStateHelper = function () {
             'ngInject';
 
             if (options.controller != null) {
-              $controller(options.controller, { $scope: $scope });
+              let controllerString = options.controller;
+              if ('controllerAs' in options) {
+                controllerString += ' as ' + options.controllerAs;
+              }
+              $controller(controllerString, { $scope: $scope });
             }
             closeModal = close;
           },
         });
       },
-      onExit: closeModal,
+      onExit: () => closeModal(),
     });
   };
 

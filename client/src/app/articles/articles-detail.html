@@ -1,0 +1,14 @@
+<h1>Article Detail</h1>
+<h2>{{vm.article.title}}</h2>
+
+<p>{{vm.article.payload['jcr:description']}}</p>
+<p>{{vm.article.payload['promoText']}}</p>
+
+<p><button ng-click="vm.saveArticle()">Save</button></p>
+<p><button>Share</button></p>
+
+<p> -% Recommend This Article</p>
+<p>Did you find this article useful?
+<button>Yes</button>
+<button>No</button>
+</p>

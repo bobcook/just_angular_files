@@ -52,7 +52,7 @@
 
 <div ng-repeat="article in vm.articles">
   <div class="card-holder">
-    <div class="cp-card article-card" style="background-image: url(http://aarp.org<%= article.background_image_large %>)">
+    <div class="cp-card article-card" style="background-image: url(http://aarp.org/{{article.background_image_large}})">
       <a href="#link-to-card-content"></a>
       <div class="color-fill"></div>
       <section>

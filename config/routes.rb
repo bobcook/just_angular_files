@@ -31,10 +31,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :articles, only: [:index]
+      resources :articles, only: [:index, :show]
       resources :auth_tokens, only: [:show]
 
       namespace :me, as: :my do
+        resources :articles, only: [:create, :index, :show]
         resources :user_activities, only: [:show, :index] do
           resources :histories, only: [:index, :show]
         end

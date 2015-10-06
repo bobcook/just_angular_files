@@ -28,13 +28,16 @@ import topNav from './components/top-nav/top-nav.js';
 
 // controllers
 import ArticlesController from './articles/articles.controller.js';
-import ArticlesDetailController from './articles/articlesDetail.controller.js';
+import ArticlesDetailController from './articles/articles-detail.controller.js';
+import ArticleSavedController from './articles/article-saved.controller.js';
+
 import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
 import LogoutController from './logout/logout.controller.js';
 import NavPanelController from './components/nav-panel/nav-panel.controller.js';
 import RecipesController from './recipes/recipes.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
+import UserArticlesController from './me/user-articles.controller.js';
 
 const app = angular.module('aarp-staying-sharp', [
   'angularModalService',
@@ -74,9 +77,10 @@ app
 
   .controller('ArticlesController', ArticlesController)
   .controller('ArticlesDetailController', ArticlesDetailController)
+  .controller('ArticleSavedController', ArticleSavedController)
   .controller('HomeController', HomeController)
   .controller('LoginSuccessController', LoginSuccessController)
   .controller('LogoutController', LogoutController)
   .controller('NavPanelController', NavPanelController)
   .controller('RecipesController', RecipesController)
-  .controller('TopNavController', TopNavController);
+  .controller('UserArticlesController', UserArticlesController);

@@ -15,15 +15,21 @@ const routerConfig = function (stateHelperProvider,
           controller: 'ArticlesController',
           controllerAs: 'vm',
         },
-
         {
           name: 'articles-detail',
           url: '/articles/:id',
-          templateUrl: 'app/articles/articlesDetail.html',
+          templateUrl: 'app/articles/articles-detail.html',
           controller: 'ArticlesDetailController',
           controllerAs: 'vm',
+          children: [
+            modalStateHelperProvider({
+              name: 'article-saved',
+              templateUrl: 'app/articles/article-saved-modal.html',
+              controller: 'ArticleSavedController',
+              controllerAs: 'vm',
+            }),
+          ],
         },
-
         {
           name: 'home',
           url: '/',
@@ -42,6 +48,20 @@ const routerConfig = function (stateHelperProvider,
           name: 'login-failure',
           url: '/callbacks/login-failure',
           templateUrl: 'app/login-failure/login-failure.html',
+        },
+        {
+          name: 'user',
+          url: '/me',
+          template: '<div ui-view></div>',
+          children: [
+            {
+              name: 'articles',
+              url: '/articles',
+              templateUrl: 'app/articles/articles.html',
+              controller: 'UserArticlesController',
+              controllerAs: 'vm',
+            },
+          ],
         },
       ],
     })

@@ -1,4 +1,6 @@
 class Article < ActiveRecord::Base
+  has_many :user_articles, dependent: :destroy
+
   def outdated?(date)
     last_modified < date
   end
