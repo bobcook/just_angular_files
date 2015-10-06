@@ -1,71 +1,104 @@
-<section>
-  <ul>
-    <li>
-      <span ng-if="$root.$currentUser.isLoggedIn">Hello, {{$root.$currentUser.firstName}}</span>
-      <span ng-if="!$root.$currentUser.isLoggedIn">Welcome!</span>
-    </li>
-    <li>
-      <button type="button" ng-click="vm.close()">Close</button>
-    </li>
-  </ul>
-  <ul>
-    <li>
-    <a ng-if="$root.$currentUser.isLoggedIn" ui-sref="logout">Logout</a>
-    <a ng-if="!$root.$currentUser.isLoggedIn" ui-sref="application.login">Login</a>
-    </li>
-    <li>
-    <a ng-if="$root.$currentUser.isLoggedIn" ui-sref="application.user.settings">Account Settings</a>
-    <a ng-if="!$root.$currentUser.isLoggedIn" ui-sref="application.sign-up">Sign up or Join</a>
-    </li>
-  </ul>
-</section>
-<div ng-switch="vm.currentRoute">
-  <section ng-switch-when="root">
+<section class="side-nav-header">
+  <div class="profile-details">
     <ul>
       <li>
-        <a href="#" ng-click="vm.currentRoute = 'explore'"> Explore </a>
-      </li>
-      <li><a ui-sref="application.user.dashboard">My Staying Sharp</a></li>
-      <li>
-      <a ui-sref="application.user.dashboard">What I'm Working On</a>
+        <span ng-if="$root.$currentUser.isLoggedIn">Hello, {{$root.$currentUser.firstName}}</span>
+        <span ng-if="!$root.$currentUser.isLoggedIn">Welcome!</span>
       </li>
       <li>
-      <a ui-sref="application.user.recipes">Saved Recipes</a>
+        <button type="button" class="navbar-menu-toggle icon-close" ng-click="vm.close()">
+          <span class="sr-only">Toggle navigation</span>
+        </button>
       </li>
+    </ul>
+    <ul class="account-controls">
       <li>
-      <a ui-sref="application.user.articles">Saved Articles</a>
+      <a ng-if="$root.$currentUser.isLoggedIn" ui-sref="logout">Logout</a>
+      <a ng-if="!$root.$currentUser.isLoggedIn" ui-sref="application.login">Login</a>
       </li>
+      <li class="bullet">•</li>
       <li>
-        <a ui-sref="application.user.assessments">Saved Assessments</a>
+      <a ng-if="$root.$currentUser.isLoggedIn" ui-sref="application.user.settings">Account Settings</a>
+      <a ng-if="!$root.$currentUser.isLoggedIn" ui-sref="application.sign-up">Sign up or Join</a>
       </li>
-      <li>
-        <a ng-href="{{vm.assessmentsLoginURL}}">Assessments</a>
+    </ul>
+  </div>
+</section>
+<div class="slide-menu-options" ng-switch="vm.currentRoute">
+  <section ng-switch-when="root">
+    <ul class="primary-nav-options">
+      <li class="primary-level">
+        <a href="#" ng-click="vm.currentRoute = 'explore'">
+          Explore <span class="caret caret-right"></span>
+        </a>
       </li>
-      <li>
-        <a href="#" ng-click="vm.currentRoute = 'how-it-works'">How It Works </a>
+      <li class="primary-level">
+        <a ui-sref="application.user.dashboard">My Staying Sharp</a></li>
+      <li class="tertiary-level">
+        <ul>
+          <li>
+            <a ui-sref="application.user.dashboard"><span class="icon icon-activities-stats"></span>What I'm Working On</a>
+          </li>
+          <li>
+            <a ui-sref="application.user.recipes"><span class="icon icon-saved-recipes"></span>Saved Recipes</a>
+          </li>
+          <li>
+            <a ui-sref="application.user.articles"><span class=" icon icon-saved-articles"></span>Saved Articles</a>
+          </li>
+          <li>
+            <a ui-sref="application.user.assessments"><span class="icon icon-assessment-results"></span>Saved Assessments</a>
+          </li>
+        </ul>
       </li>
-
-      <li><a ui-sref="application.join-staying-sharp">Join Staying Sharp</a></li>
-      <li><a ui-sref="application.give-staying-sharp">Give Staying Sharp</a></li>
+      <li class="primary-level">
+        <a ui-sref="application.assessments">Assessments</a>
+      </li>
+      <li class="primary-level">
+        <a href="#" ng-click="vm.currentRoute = 'how-it-works'">
+          How It Works <span class="caret caret-right"></span>
+        </a>
+      </li>
+      <li class="secondary-level">
+        <a ui-sref="application.join-staying-sharp">Join Staying Sharp</a>
+      </li>
+      <li class="secondary-level">
+        <a ui-sref="application.give-staying-sharp">Give Staying Sharp</a>
+      </li>
     </ul>
   </section>
   <section class="nav-panel-subsection" ng-switch-when="explore">
-    <a href="#" ng-click="vm.currentRoute = 'root'">Explore</a>
-    <ul>
-      <li><a ui-sref="application.home">All Content</a></li>
-      <li><a ui-sref="application.articles">Articles</a></li>
-      <li><a ui-sref="application.recipes">Recipes</a></li>
-      <!-- TODO: only allow paid users to see actitivies -->
-      <li><a ui-sref="application.activities">Activities</a></li>
+    <ul class="primary-nav-options">
+      <li class="primary-level">
+        <a href="#" ng-click="vm.currentRoute = 'root'">
+          <span class="caret caret-left"></span> Explore
+        </a>
+      </li>
+      <li class="tertiary-level last">
+        <ul>
+          <li><a ui-sref="application.home">All Content</a></li>
+          <li><a ui-sref="application.articles">Articles</a></li>
+          <li><a ui-sref="application.recipes">Recipes</a></li>
+          <!-- TODO: only allow paid users to see actitivies -->
+          <li><a ui-sref="application.activities">Activities</a></li>
+        </ul>
+      </li>
     </ul>
   </section>
   <section class="nav-panel-subsection" ng-switch-when="how-it-works">
-    <a href="#" ng-click="vm.currentRoute = 'root'">How It Works</a>
-    <ul>
-      <li><a ui-sref="application.what-is-brain-health">What is Brain Health</a></li>
-      <li><a ui-sref="application.learn-more-about-staying-sharp">Learn More About Staying Sharp</a></li>
-      <li><a ui-sref="application.using-staying-sharp">Using Staying Sharp</a></li>
-      <li><a ui-sref="application.connected-apps">Connected Apps</a></li>
+    <ul class="primary-nav-options">
+      <li class="primary-level">
+        <a href="#" ng-click="vm.currentRoute = 'root'">
+          <span class="caret caret-left"></span> How It Works
+        </a>
+      </li>
+      <li class="tertiary-level last">
+        <ul>
+          <li><a ui-sref="application.what-is-brain-health">What is Brain Health</a></li>
+          <li><a ui-sref="application.learn-more-about-staying-sharp">Learn More About Staying Sharp</a></li>
+          <li><a ui-sref="application.using-staying-sharp">Using Staying Sharp</a></li>
+          <li><a ui-sref="application.connected-apps">Connected Apps</a></li>
+        </ul>
+      </li>
     </ul>
   </section>
 </div>
