@@ -37,6 +37,7 @@ group :development do
   gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller', '~> 0.7.2'
   gem 'letter_opener', '~> 1.4.1'
+  gem 'rails-erd', '~> 1.4.3'
   gem 'spring-commands-rspec', '~> 1.0.4'
   gem 'spring', '~> 1.3.6'
   gem 'stairs', '~> 0.9.0'

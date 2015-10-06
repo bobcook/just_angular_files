@@ -1,0 +1,10 @@
+<ul>
+  <li ng-repeat="period in vm.periods">
+    <label>{{period.date.format('dd')}}</label>
+    <button ng-class="{ selected: period.isTracked }"
+            ng-click="vm.periodClicked({ $period: period })">
+      <span ng-if="period.isTracked">✓</span>
+      <span ng-if="!period.isTracked">+</span>
+    </button>
+  </li>
+</ul>

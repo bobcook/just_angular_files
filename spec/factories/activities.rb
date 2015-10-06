@@ -4,5 +4,6 @@ FactoryGirl.define do
     recommended_effort_time '30 minutes'
     recommended_effort_frequency '1 x weekly'
     points '10 pts'
+    activity_tracker
   end
 end

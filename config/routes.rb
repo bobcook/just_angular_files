@@ -31,19 +31,13 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      resources :activities, only: [:show]
       resources :articles, only: [:index, :show]
       resources :auth_tokens, only: [:show]
 
       namespace :me, as: :my do
-        resources :articles, only: [:create, :index, :show]
-        resources :user_activities, only: [:show, :index] do
-          resources :histories, only: [:index, :show]
-        end
-        resources :activities, only: [] do
-          resources :trackers, only: [:index]
-        end
-        resources :user_activity_periods, only: [:create]
-        resources :activity_tracker_responses, only: [:create]
+        resources :user_activities, only: [:show]
+        resources :user_activity_periods, only: [:update]
       end
 
       # MyBrainSolutions auth endpoints

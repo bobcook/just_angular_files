@@ -2,41 +2,52 @@ module Api
   module V1
     module Me
       class UserActivityPeriodsController < Api::V1::Me::BaseController
-        def edit; end
+        def update
+          user_activity_period.activity_tracker_responses =
+            activity_tracker_responses
 
-        def create
-          new_user_activity_period =
-            UserActivityPeriod.find_or_initialize_by(activity_period_attrs)
-
-          if new_user_activity_period.save
-            render json: new_user_activity_period,
-                   status: 202
+          if user_activity_period.save
+            render json: user_activity_period,
+                   serializer: UserActivityPeriodSerializer
           else
-            render json:
-              { errors: 'The date information was not saved. Try again.' },
-                   status: 422
+            render json: { errors: user_activity_period.errors.full_messages },
+                   status: :unprocessable_entity
           end
         end
 
         private
 
-        def activity_period_attrs
-          # TODO: is there a better way to change javascript time to rails time?
-          time = convert_js_time(activity_period_params[:completed_date])
-          { completed_date: time,
-            user_activity_id: activity_period_params[:user_activity_id] }
-        end
-
-        def convert_js_time(seconds)
-          Time.at(seconds / 1000)
-        end
-
-        def activity_period_params
-          params.require(:activity_period)
-            .permit(
+        def user_activity_period_params
+          @user_activity_period_params ||=
+            params.require(:user_activity_period).permit(
               :user_activity_id,
-              :completed_date
+              activity_tracker_responses: [[
+                :activity_tracker_question_id,
+                :response
+              ]]
             )
+        end
+
+        def user_activity
+          @user_activity ||=
+            UserActivity.find user_activity_period_params[:user_activity_id]
+        end
+
+        def user_activity_period
+          @user_activity_period ||= UserActivityPeriod.find_or_initialize_by(
+            user_activity: user_activity,
+            # the date + the user is the only reasonable primary key since some
+            # of these records don't actually exist, they're just stubbed
+            completed_date: params[:id]
+          )
+        end
+
+        def activity_tracker_responses
+          @activity_tracker_responses ||=
+            user_activity_period_params[:activity_tracker_responses]
+            .map do |response_params|
+              ActivityTrackerResponse.new response_params
+            end
         end
       end
     end

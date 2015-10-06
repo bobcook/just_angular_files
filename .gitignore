@@ -30,6 +30,7 @@ tags
 .tags
 .gemtags
 zeus.json
+/erd.pdf
 
 # gulp angular
 /node_modules

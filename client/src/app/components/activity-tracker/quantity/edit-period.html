@@ -1,0 +1,13 @@
+<ss-modal on-close="vm.close()">
+  <h1>Track</h1>
+
+  <div ng-repeat="response in vm.period.activityTrackerResponses">
+    <h3>{{response.activityTrackerQuestion.text}}</h3>
+    <input
+      type="number" min="0" max="{{vm.maxValue}}"
+      ng-model="response.response"
+      ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+  </div>
+
+  <button ng-click="vm.close()">Close</button>
+</ss-modal>

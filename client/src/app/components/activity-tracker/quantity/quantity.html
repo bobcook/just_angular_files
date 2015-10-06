@@ -1,0 +1,13 @@
+<ul>
+  <li ng-repeat="period in vm.periods">
+    <label>{{period.date.format('dd')}}</label>
+    <span ng-if="period.isTracked"
+          ng-click="vm.periodClicked({ $period: period })">
+      {{period.activityTrackerResponses[0].response | number}}
+    </span>
+    <button ng-if="!period.isTracked"
+            ng-click="vm.periodClicked({ $period: period })">
+      +
+    </button>
+  </li>
+</ul>

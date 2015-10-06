@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005221131) do
+ActiveRecord::Schema.define(version: 20151008002424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20151005221131) do
   add_index "activity_tracker_questions", ["activity_tracker_id"], name: "index_activity_tracker_questions_on_activity_tracker_id", using: :btree
 
   create_table "activity_tracker_responses", force: :cascade do |t|
-    t.string   "response"
+    t.decimal  "response"
     t.integer  "activity_tracker_question_id"
     t.datetime "created_at"
     t.datetime "updated_at"

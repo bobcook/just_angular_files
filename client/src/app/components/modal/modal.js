@@ -7,6 +7,9 @@ const modal = function ($state) {
     restrict: 'E',
     transclude: true,
     templateUrl: 'app/components/modal/modal.html',
+    scope: {
+      close: '&onClose',
+    },
     link: function (scope, element, attrs) {
       const modalElement = $(element).children('.modal');
 
@@ -17,15 +20,23 @@ const modal = function ($state) {
 
       const mouseUp = function (event) {
         if (!containerContainsEvent(modalElement, event)) {
-          $state.go('^');
+          close();
           removeListeners();
         }
       };
 
       const keyUp = function (event) {
         if (event.keyCode === KEYCODE_ESCAPE) {
-          $state.go('^');
+          close();
           removeListeners();
+        }
+      };
+
+      const close = function () {
+        if (scope.close) {
+          scope.close();
+        } else {
+          $state.go('^');
         }
       };
 
