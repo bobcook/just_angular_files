@@ -21,7 +21,7 @@ const webpack = function (watch, callback) {
       loaders: [{
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loaders: ['ng-annotate', 'babel-loader'],
       }],
     },
     output: { filename: 'index.module.js' },

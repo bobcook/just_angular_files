@@ -1,9 +1,13 @@
 export default require('gulp-load-plugins')({
   pattern: [
     'gulp-*',
-    'main-bower-files',
-    'uglify-save-license',
     'del',
+    'main-bower-files',
     'run-sequence',
+    'uglify-save-license',
+    'webpack-stream',
   ],
+  rename: {
+    'webpack-stream': 'webpack',
+  },
 });

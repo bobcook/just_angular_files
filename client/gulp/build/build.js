@@ -33,22 +33,21 @@ gulp.task('partials:watch', ['partials:symlink'], function () {
 });
 
 gulp.task('html', ['inject', 'partials'], function () {
-  const htmlFilter = $.filter('*.html');
-  const jsFilter = $.filter('**/*.js');
-  const cssFilter = $.filter('**/*.css');
+  const htmlFilter = $.filter('*.html', { restore: true });
+  const jsFilter = $.filter('**/*.js', { restore: true });
+  const cssFilter = $.filter('**/*.css', { restore: true });
   const assets = $.useref.assets();
 
   return gulp.src(path.join(conf.paths.tmp, '/serve/*.html'))
     .pipe(assets)
     .pipe($.rev())
     .pipe(jsFilter)
-    .pipe($.ngAnnotate())
     .pipe($.uglify({ preserveComments: $.uglifySaveLicense }))
       .on('error', conf.errorHandler('Uglify'))
-    .pipe(jsFilter.restore())
+    .pipe(jsFilter.restore)
     .pipe(cssFilter)
     .pipe($.csso())
-    .pipe(cssFilter.restore())
+    .pipe(cssFilter.restore)
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
@@ -59,7 +58,7 @@ gulp.task('html', ['inject', 'partials'], function () {
       quotes: true,
       conditionals: true,
     }))
-    .pipe(htmlFilter.restore())
+    .pipe(htmlFilter.restore)
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
     .pipe($.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }));
 });
