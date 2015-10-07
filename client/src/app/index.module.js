@@ -13,12 +13,14 @@ import Pillar from './common/resources/pillar.js';
 import Recipe from './common/resources/recipe.js';
 import UserActivity from './common/resources/user-activity.js';
 import UserActivityPeriod from './common/resources/user-activity-period.js';
+import ArticleReview from './common/resources/article-review.js';
+import CurrentUser from './common/resources/current-user.js';
 
 // services
 import $auth from './common/services/auth.js';
 import $assessmentsAuth from './assessments/assessments-auth.js';
+import $loadCurrentUser from './common/services/load-current-user.js';
 import $postHref from './common/services/post-href.js';
-import $currentUser from './common/services/current-user.js';
 import authInterceptor from './common/services/auth-interceptor.js';
 import dependentMemoize from './common/services/dependent-memoize.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
@@ -39,6 +41,7 @@ import navPanel from './components/nav-panel/nav-panel.js';
 import postHref from './common/directives/post-href.js';
 import sideNav from './components/side-nav/side-nav.js';
 import topNav from './components/top-nav/top-nav.js';
+import reviews from './components/reviews/reviews.js';
 
 // controllers
 import ActivityTrackerController from
@@ -62,6 +65,7 @@ import RecipeController from './recipes/recipe.controller.js';
 import RecipesController from './recipes/recipes.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
 import UserArticlesController from './me/user-articles.controller.js';
+import ReviewsController from './components/reviews/reviews.controller.js';
 
 const app = angular.module('aarp-staying-sharp', [
   'angularModalService',
@@ -91,11 +95,13 @@ app
   .factory('Recipe', Recipe)
   .factory('UserActivity', UserActivity)
   .factory('UserActivityPeriod', UserActivityPeriod)
+  .factory('ArticleReview', ArticleReview)
+  .factory('CurrentUser', CurrentUser)
 
   .factory('$assessmentsAuth', $assessmentsAuth)
   .factory('$auth', $auth)
-  .factory('$currentUser', $currentUser)
   .factory('$postHref', $postHref)
+  .factory('$loadCurrentUser', $loadCurrentUser)
   .factory('authInterceptor', authInterceptor)
   .factory('dependentMemoize', dependentMemoize)
   .provider('modalStateHelper', modalStateHelper)
@@ -113,6 +119,7 @@ app
   .directive('ssPostHref', postHref)
   .directive('ssSideNav', sideNav)
   .directive('ssTopNav', topNav)
+  .directive('ssReviews', reviews)
 
   .controller('ActivityTrackerController', ActivityTrackerController)
   .controller('ActivityTrackerBinaryController',
@@ -133,4 +140,5 @@ app
   .controller('RecipeController', RecipeController)
   .controller('RecipesController', RecipesController)
   .controller('TopNavController', TopNavController)
-  .controller('UserArticlesController', UserArticlesController);
+  .controller('UserArticlesController', UserArticlesController)
+  .controller('ReviewsController', ReviewsController);

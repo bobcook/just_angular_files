@@ -6,7 +6,7 @@ module Api
       end
 
       def show
-        render json: Article.find(params[:id])
+        render json: Article.find(params[:id]), serializer: ArticleSerializer
       end
     end
   end

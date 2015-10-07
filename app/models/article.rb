@@ -1,5 +1,7 @@
 class Article < ActiveRecord::Base
   has_many :user_articles, dependent: :destroy
+  has_many :article_reviews, dependent: :destroy
+  has_many :reviews, as: :reviewable, dependent: :destroy
 
   def outdated?(date)
     last_modified < date

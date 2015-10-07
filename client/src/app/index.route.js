@@ -7,6 +7,13 @@ const routerConfig = function (stateHelperProvider,
     .state({
       name: 'application',
       templateUrl: 'app/layouts/application.html',
+      // NOTE: can access current user in the controller using currentUser
+      // or $rootsScope.$currentUser
+      resolve: {
+        currentUser: function ($loadCurrentUser) {
+          return $loadCurrentUser();
+        },
+      },
       children: [
         {
           name: 'articles',
@@ -76,12 +83,12 @@ const routerConfig = function (stateHelperProvider,
             },
           ],
         },
+        {
+          name: 'login-success',
+          url: '/callbacks/login-success/:claimToken',
+          controller: 'LoginSuccessController',
+        },
       ],
-    })
-    .state({
-      name: 'login-success',
-      url: '/callbacks/login-success/:claimToken',
-      controller: 'LoginSuccessController',
     })
     .state({
       name: 'logout',

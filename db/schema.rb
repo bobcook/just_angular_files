@@ -113,6 +113,20 @@ ActiveRecord::Schema.define(version: 20151008205347) do
     t.datetime "updated_at"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "reviewable_id"
+    t.string   "reviewable_type"
+    t.string   "comment"
+    t.boolean  "recommend",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["reviewable_type", "reviewable_id"], name: "index_reviews_on_reviewable_type_and_reviewable_id", using: :btree
+  add_index "reviews", ["user_id", "reviewable_id", "reviewable_type"], name: "index_reviews_on_user_id_and_reviewable_id_and_reviewable_type", unique: true, using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+
   create_table "user_activities", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "activity_id"
@@ -177,6 +191,7 @@ ActiveRecord::Schema.define(version: 20151008205347) do
   add_foreign_key "activity_tracker_questions", "activity_trackers"
   add_foreign_key "activity_tracker_responses", "activity_tracker_questions"
   add_foreign_key "activity_tracker_responses", "user_activity_periods"
+  add_foreign_key "reviews", "users"
   add_foreign_key "user_activities", "activities"
   add_foreign_key "user_activities", "users"
   add_foreign_key "user_activity_periods", "user_activities"

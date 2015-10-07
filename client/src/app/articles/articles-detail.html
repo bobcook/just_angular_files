@@ -4,11 +4,10 @@
 <p>{{vm.article.payload['jcr:description']}}</p>
 <p>{{vm.article.payload['promoText']}}</p>
 
-<p><button ng-click="vm.saveArticle()">Save</button></p>
+<p><button ng-disabled="vm.articleIsSaved" ng-click="vm.saveArticle()">Save</button></p>
 <p><button ui-sref=".article-share">Share</button></p>
 
-<p> -% Recommend This Article</p>
-<p>Did you find this article useful?
-<button>Yes</button>
-<button>No</button>
-</p>
+<ss-reviews resource-review="vm.ReviewResource" parent-resource='vm.ParentResource'>
+  <p>Did you find this article useful?</p>
+</ss-reviews>
+

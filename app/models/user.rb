@@ -3,12 +3,14 @@ class User < ActiveRecord::Base
 
   include OmniauthCreation
 
-  has_many :user_activities, dependent: :destroy
   has_many :activities, through: :user_activities
-  has_many :user_recipes, dependent: :destroy
   has_many :recipes, through: :user_recipes
-  has_many :user_articles, dependent: :destroy
   has_many :articles, through: :user_articles
+  has_many :reviews
+
+  has_many :user_activities, dependent: :destroy
+  has_many :user_recipes, dependent: :destroy
+  has_many :user_articles, dependent: :destroy
 
   devise :database_authenticatable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:aarp]

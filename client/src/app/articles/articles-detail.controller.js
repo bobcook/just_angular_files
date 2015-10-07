@@ -1,7 +1,12 @@
-const ArticlesDetailController = function (Article, $state, $stateParams) {
+const ArticlesDetailController = function (Article,
+                                           ArticleReview,
+                                           $state,
+                                           $stateParams) {
   'ngInject';
 
-  // show one article
+  this.reviews = [];
+
+  // get one article
   Article.get($stateParams.id).then((article) => {
     this.article = article;
   });
@@ -9,13 +14,6 @@ const ArticlesDetailController = function (Article, $state, $stateParams) {
   // save article
   this.articleIsSaved = false;
 
-  Article.queryUserArticle($stateParams.id).then((article) => {
-    if (article.id) {
-      this.articleIsSaved = true;
-    }
-  });
-
-  // TODO: disable save button when article is saved
   this.saveArticle = () => {
     if (!this.articleIsSaved) {
       this.article.saveUserArticle().then(() => {
@@ -23,6 +21,18 @@ const ArticlesDetailController = function (Article, $state, $stateParams) {
       });
     }
   };
+
+  // check if user has saved the article
+  Article.queryUserArticle($stateParams.id).then((article) => {
+    if (article.id) {
+      this.articleIsSaved = true;
+    }
+  });
+
+  // pass values to directive
+  this.ReviewResource = ArticleReview;
+  this.ParentResource = Article;
+
 };
 
 export default ArticlesDetailController;
