@@ -1,27 +1,36 @@
 <section class="global-header">
-  <nav>
+  <nav class="container">
     <div class="logo">
       <a href="" title="Staying Sharp"><h1>Staying Sharp | AARP</h1></a>
     </div>
-    <div>
+    <div class="nav-options">
       <ul>
-        <li ng-if="!$root.$currentUser.isLoggedIn"><a href="#">Sign up or Join</a></li>
-        <li ng-if="!$root.$currentUser.isLoggedIn"><a ng-href="{{vm.loginUrl}}">Login</a></li>
+        <li ng-if="!$root.$currentUser.isLoggedIn" class="hidden-xs"><a class="text-link" href="#">Sign up or Join</a></li>
+        <li class="bullet hidden-xs">•</li>
+        <li ng-if="!$root.$currentUser.isLoggedIn" class="hidden-xs"><a class="text-link" ng-href="{{vm.loginUrl}}">Login</a></li>
         <li>
-          <button ng-click="vm.isSearchOpen = !vm.isSearchOpen">Search</button>
+          <span class="icon-search-container">
+            <button class="icon-search" ng-click="vm.isSearchOpen = !vm.isSearchOpen"></button>
+          </span>
         </li>
         <li>
-          <button ng-click="vm.isMenuOpen = !vm.isMenuOpen">Menu</button>
+          <button class="navbar-toggle" ng-click="vm.isMenuOpen = !vm.isMenuOpen">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+            <span class="menu-label">Menu</span>
+          </button>
         </li>
       </ul>
     </div>
   </nav>
 </section>
 
-<section ss-content-drawer="vm.isSearchOpen" ss-drawer-height="100">
-  <form>
-    <div>
-      <div>
+<section class="search-bar" ss-content-drawer="vm.isSearchOpen" ss-drawer-height="100">
+  <form class="container">
+    <div class="search-input-group">
+      <div class="btn-group">
         <ui-select ng-model="vm.selectedSearchCategory" search-enabled="false">
           <ui-select-match>{{$select.selected}}</ui-select-match>
           <ui-select-choices repeat="value in vm.searchCategories">
@@ -29,8 +38,10 @@
           </ui-select-choices>
         </ui-select>
       </div>
-      <input type="text" placeholder="Search Staying Sharp...">
-      <button>Search</button>
+      <input type="text" class="search-input" placeholder="Search Staying Sharp...">
+      <span class="input-group-btn">
+        <button type="button">Search</button>
+      </span>
     </div>
   </form>
 </section>

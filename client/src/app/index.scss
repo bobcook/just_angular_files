@@ -1,18 +1,18 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,600");
+
+@import "assets/scss/mixins",
+        "assets/scss/variables";
+
 // bower:scss
 // endbower
 
 // injector
 // endinjector
 
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,600");
-@import "scss/base";
-
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
+@import "assets/scss/normalize",
+        "assets/scss/utilities",
+        "assets/scss/base",
+        "assets/scss/icons",
+        "assets/scss/forms",
+        "assets/scss/keyframes",
+        "assets/scss/print";
