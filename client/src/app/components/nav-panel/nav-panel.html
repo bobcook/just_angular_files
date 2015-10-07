@@ -33,7 +33,8 @@
         </a>
       </li>
       <li class="primary-level">
-        <a ui-sref="application.user.dashboard">My Staying Sharp</a></li>
+        <a ui-sref="application.user.dashboard">My Staying Sharp</a>
+      </li>
       <li class="tertiary-level">
         <ul>
           <li>
@@ -51,7 +52,7 @@
         </ul>
       </li>
       <li class="primary-level">
-        <a ui-sref="application.assessments">Assessments</a>
+        <a href="#" ss-post-href="{{vm.assessmentsAuthURL}}" ss-post-data="{ authToken: vm.sessionToken }">Assessments</a>
       </li>
       <li class="primary-level">
         <a href="#" ng-click="vm.currentRoute = 'how-it-works'">

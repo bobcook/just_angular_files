@@ -4,7 +4,7 @@ module Api
       class SamlController < ApplicationController
         before_action :authenticate_user!
 
-        def init
+        def create
           auth_request = OneLogin::RubySaml::Authrequest.new
           redirect_to(auth_request.create(SamlSP.settings))
         end

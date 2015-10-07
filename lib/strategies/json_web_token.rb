@@ -1,7 +1,8 @@
 module Strategies
   class JsonWebToken < Devise::Strategies::Base
     def valid?
-      request.headers['Authorization'].present?
+      request.headers['Authorization'].present? ||
+        request.params['authToken'].present?
     end
 
     def authenticate!
@@ -15,12 +16,15 @@ module Strategies
       return @claims if defined? @claims
       @claims =
         begin
-          (auth_header = request.headers['Authorization']) &&
-          (token = auth_header.split(' ').last) &&
-          (::JsonWebToken.decode token)
+          auth_token && ::JsonWebToken.decode(auth_token)
         rescue
           nil
         end
+    end
+
+    def auth_token
+      request.headers['Authorization'].try { |s| s.split(' ').last } ||
+        request.params['authToken']
     end
 
     def resource

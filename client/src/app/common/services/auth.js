@@ -30,6 +30,10 @@ const $auth = function (ApiRoutes, $http, $localStorage) {
     sessionExists: function () {
       return !!$storage.sessionToken;
     },
+
+    sessionToken: function () {
+      return $storage.sessionToken;
+    },
   };
 };
 

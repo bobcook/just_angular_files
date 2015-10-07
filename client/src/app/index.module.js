@@ -19,9 +19,10 @@ import modalStateHelper from './common/services/modal-state-helper.js';
 // directives
 import contentDrawer from './components/content-drawer/content-drawer.js';
 import modal from './components/modal/modal.js';
+import navPanel from './components/nav-panel/nav-panel.js';
+import postHref from './common/directives/post-href.js';
 import sideNav from './components/side-nav/side-nav.js';
 import topNav from './components/top-nav/top-nav.js';
-import navPanel from './components/nav-panel/nav-panel.js';
 
 // controllers
 import ArticlesController from './articles/articles.controller.js';
@@ -60,9 +61,10 @@ app
 
   .directive('ssContentDrawer', contentDrawer)
   .directive('ssModal', modal)
+  .directive('ssNavPanel', navPanel)
+  .directive('ssPostHref', postHref)
   .directive('ssSideNav', sideNav)
   .directive('ssTopNav', topNav)
-  .directive('ssNavPanel', navPanel)
 
   .controller('ArticlesController', ArticlesController)
   .controller('HomeController', HomeController)
