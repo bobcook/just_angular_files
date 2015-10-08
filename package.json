@@ -51,7 +51,7 @@
     "node-sass": "^3.3.3",
     "require-dir": "~0.3.0",
     "run-sequence": "^1.1.4",
-    "superstatic": "^2.2.1",
+    "superstatic": "^2.2.2",
     "uglify-save-license": "~0.4.1",
     "webpack-stream": "^2.1.1",
     "wiredep": "~2.2.2",
