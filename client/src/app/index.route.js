@@ -44,16 +44,23 @@ const routerConfig = function (stateHelperProvider,
           controllerAs: 'vm',
         },
         {
+          name: 'login-failure',
+          url: '/callbacks/login-failure',
+          templateUrl: 'app/login-failure/login-failure.html',
+        },
+        {
+          name: 'recipe',
+          url: '/recipe/:id',
+          templateUrl: 'app/recipes/recipe.html',
+          controller: 'RecipeController',
+          controllerAs: 'vm',
+        },
+        {
           name: 'recipes',
           url: '/recipes',
           templateUrl: 'app/recipes/recipes.html',
           controller: 'RecipesController',
           controllerAs: 'vm',
-        },
-        {
-          name: 'login-failure',
-          url: '/callbacks/login-failure',
-          templateUrl: 'app/login-failure/login-failure.html',
         },
         {
           name: 'user',

@@ -14,8 +14,6 @@ Rails.application.routes.draw do
 
   root to: 'home#show'
   resource :home, controller: 'home', only: :show
-  resources :articles, only: [:index, :show]
-  resources :recipes, only: [:index, :show]
   resources :activities, only: [:index, :show]
 
   resource :search, controller: 'search', only: [:show]
@@ -35,6 +33,7 @@ Rails.application.routes.draw do
       resources :articles, only: [:index, :show]
       resources :auth_tokens, only: [:show]
       resource :copy, controller: 'copy', only: :show
+      resources :recipes, only: [:index, :show]
 
       namespace :me, as: :my do
         resources :user_activities, only: [:show]

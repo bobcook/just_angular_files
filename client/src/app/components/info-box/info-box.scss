@@ -18,3 +18,9 @@
   clear: both;
 }
 
+// From angular-translate.
+// Prevents content flickering while translations are loaded async.
+// Removed automatically after translations load
+.translate-cloak {
+  display: none;
+}

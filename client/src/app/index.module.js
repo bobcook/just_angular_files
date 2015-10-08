@@ -9,6 +9,8 @@ import Activity from './common/resources/activity.js';
 import ActivityTrackerResponse from
   './common/resources/activity-tracker-response.js';
 import Article from './common/resources/article.js';
+import Pillar from './common/resources/pillar.js';
+import Recipe from './common/resources/recipe.js';
 import UserActivity from './common/resources/user-activity.js';
 import UserActivityPeriod from './common/resources/user-activity-period.js';
 
@@ -27,6 +29,9 @@ import activityTrackerBinary from
   './components/activity-tracker/binary/binary.js';
 import activityTrackerQuantity from
   './components/activity-tracker/quantity/quantity.js';
+import card from './components/card/card.js';
+import cardPillars from './components/card/pillars.js';
+import cards from './components/cards/cards.js';
 import contentDrawer from './components/content-drawer/content-drawer.js';
 import infoBox from './components/info-box/info-box.js';
 import modal from './components/modal/modal.js';
@@ -47,10 +52,13 @@ import ActivityTrackerQuantityEditPeriodController from
 import ArticlesController from './articles/articles.controller.js';
 import ArticlesDetailController from './articles/articles-detail.controller.js';
 import ArticleModalController from './articles/article-modal.controller.js';
+import CardController from './components/card/card.controller.js';
+import CardsController from './components/cards/cards.controller.js';
 import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
 import LogoutController from './logout/logout.controller.js';
 import NavPanelController from './components/nav-panel/nav-panel.controller.js';
+import RecipeController from './recipes/recipe.controller.js';
 import RecipesController from './recipes/recipes.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
 import UserArticlesController from './me/user-articles.controller.js';
@@ -79,6 +87,8 @@ app
   .factory('Activity', Activity)
   .factory('ActivityTrackerResponse', ActivityTrackerResponse)
   .factory('Article', Article)
+  .factory('Pillar', Pillar)
+  .factory('Recipe', Recipe)
   .factory('UserActivity', UserActivity)
   .factory('UserActivityPeriod', UserActivityPeriod)
 
@@ -93,6 +103,9 @@ app
   .directive('ssActivityTracker', activityTracker)
   .directive('ssActivityTrackerBinary', activityTrackerBinary)
   .directive('ssActivityTrackerQuantity', activityTrackerQuantity)
+  .directive('ssCard', card)
+  .directive('ssCardPillars', cardPillars)
+  .directive('ssCards', cards)
   .directive('ssContentDrawer', contentDrawer)
   .directive('ssInfoBox', infoBox)
   .directive('ssModal', modal)
@@ -111,10 +124,13 @@ app
   .controller('ArticlesController', ArticlesController)
   .controller('ArticlesDetailController', ArticlesDetailController)
   .controller('ArticleModalController', ArticleModalController)
+  .controller('CardController', CardController)
+  .controller('CardsController', CardsController)
   .controller('HomeController', HomeController)
   .controller('LoginSuccessController', LoginSuccessController)
   .controller('LogoutController', LogoutController)
   .controller('NavPanelController', NavPanelController)
+  .controller('RecipeController', RecipeController)
   .controller('RecipesController', RecipesController)
   .controller('TopNavController', TopNavController)
   .controller('UserArticlesController', UserArticlesController);

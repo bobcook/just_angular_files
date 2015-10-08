@@ -15,13 +15,19 @@ en:
       short:
         "%B %d"
 
+  config:
+    pagination:
+      per_page: 6
+
   titles:
     application: Staying-sharp
 
   info:
     did_you_know: "Did you know that trying new, holistic, brain health is part of maintaining a healthy brain?<br>With My Staying Sharp, discover brain healthy activities, challenges, recipes, and articles<br>that help you take control of your brain health – for today, and all of your tomorrows."
+    every_recipe_in_staying_sharp: "Every recipe in Staying Sharp incorporates foods know to enchance brain health. Eating a brain healthy diet is as simple as finding, saving and making Staying Sharp recipes."
     improve_your_holistic_brain_health: "Improve Your Holistic Brain Health with My Staying Sharp"
     staying_sharp_articles: "Staying Sharp Articles"
+    staying_sharp_recipes: "Staying Sharp Recipes"
     understand_the_science: "Understand the science behind brain health by exploring Staying Sharp's rich library of articles, video, and other resources."
 
   explanation:
