@@ -83,4 +83,5 @@ app
   .controller('LogoutController', LogoutController)
   .controller('NavPanelController', NavPanelController)
   .controller('RecipesController', RecipesController)
+  .controller('TopNavController', TopNavController)
   .controller('UserArticlesController', UserArticlesController);
