@@ -38,16 +38,16 @@
       <li class="tertiary-level">
         <ul>
           <li>
-            <a ui-sref="application.user.dashboard"><span class="icon icon-activities-stats"></span>What I'm Working On</a>
+            <a ui-sref="application.user.dashboard" ng-click="vm.close()"><span class="icon icon-activities-stats"></span>What I'm Working On</a>
           </li>
           <li>
-            <a ui-sref="application.user.recipes"><span class="icon icon-saved-recipes"></span>Saved Recipes</a>
+            <a ui-sref="application.user.recipes" ng-click="vm.close()"><span class="icon icon-saved-recipes"></span>Saved Recipes</a>
           </li>
           <li>
-            <a ui-sref="application.user.articles"><span class=" icon icon-saved-articles"></span>Saved Articles</a>
+            <a ui-sref="application.user.articles" ng-click="vm.close()"><span class=" icon icon-saved-articles"></span>Saved Articles</a>
           </li>
           <li>
-            <a ui-sref="application.user.assessments"><span class="icon icon-assessment-results"></span>Saved Assessments</a>
+            <a ui-sref="application.user.assessments" ng-click="vm.close()"><span class="icon icon-assessment-results"></span>Saved Assessments</a>
           </li>
         </ul>
       </li>
@@ -76,11 +76,11 @@
       </li>
       <li class="tertiary-level last">
         <ul>
-          <li><a ui-sref="application.home">All Content</a></li>
-          <li><a ui-sref="application.articles">Articles</a></li>
-          <li><a ui-sref="application.recipes">Recipes</a></li>
+          <li><a ui-sref="application.home" ng-click="vm.close()">All Content</a></li>
+          <li><a ui-sref="application.articles" ng-click="vm.close()">Articles</a></li>
+          <li><a ui-sref="application.recipes" ng-click="vm.close()">Recipes</a></li>
           <!-- TODO: only allow paid users to see actitivies -->
-          <li><a ui-sref="application.activities">Activities</a></li>
+          <li><a ui-sref="application.activities" ng-click="vm.close()">Activities</a></li>
         </ul>
       </li>
     </ul>
@@ -94,10 +94,10 @@
       </li>
       <li class="tertiary-level last">
         <ul>
-          <li><a ui-sref="application.what-is-brain-health">What is Brain Health</a></li>
-          <li><a ui-sref="application.learn-more-about-staying-sharp">Learn More About Staying Sharp</a></li>
-          <li><a ui-sref="application.using-staying-sharp">Using Staying Sharp</a></li>
-          <li><a ui-sref="application.connected-apps">Connected Apps</a></li>
+          <li><a ui-sref="application.what-is-brain-health" ng-click="vm.close()">What is Brain Health</a></li>
+          <li><a ui-sref="application.learn-more-about-staying-sharp" ng-click="vm.close()">Learn More About Staying Sharp</a></li>
+          <li><a ui-sref="application.using-staying-sharp" ng-click="vm.close()">Using Staying Sharp</a></li>
+          <li><a ui-sref="application.connected-apps" ng-click="vm.close()">Connected Apps</a></li>
         </ul>
       </li>
     </ul>

@@ -16,6 +16,13 @@ const routerConfig = function (stateHelperProvider,
           controllerAs: 'vm',
         },
         {
+          name: 'recipes',
+          url: '/recipes',
+          templateUrl: 'app/recipes/recipes.html',
+          controller: 'RecipesController',
+          controllerAs: 'vm',
+        },
+        {
           name: 'login-failure',
           url: '/callbacks/login-failure',
           templateUrl: 'app/login-failure/login-failure.html',

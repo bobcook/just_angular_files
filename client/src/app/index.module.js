@@ -32,6 +32,7 @@ import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
 import LogoutController from './logout/logout.controller.js';
 import NavPanelController from './components/nav-panel/nav-panel.controller.js';
+import RecipesController from './recipes/recipes.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
 
 const app = angular.module('aarp-staying-sharp', [
@@ -75,4 +76,5 @@ app
   .controller('LoginSuccessController', LoginSuccessController)
   .controller('LogoutController', LogoutController)
   .controller('NavPanelController', NavPanelController)
+  .controller('RecipesController', RecipesController)
   .controller('TopNavController', TopNavController);
