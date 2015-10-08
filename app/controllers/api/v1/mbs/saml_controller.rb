@@ -6,7 +6,17 @@ module Api
 
         def create
           auth_request = OneLogin::RubySaml::Authrequest.new
-          redirect_to(auth_request.create(SamlSP.settings))
+          saml_request = Rack::Utils.unescape(
+            auth_request.create(saml_settings).split('SAMLRequest')[1]
+          )
+
+          render json: { samlRequest: saml_request }
+        end
+
+        private
+
+        def saml_settings
+          OneLogin::RubySaml::Settings.new(SamlSP.config.to_h)
         end
       end
     end

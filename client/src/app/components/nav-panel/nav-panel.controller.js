@@ -1,9 +1,10 @@
-const NavPanelController = function (ApiRoutes, $auth) {
+const NavPanelController = function (ApiRoutes, $assessmentsAuth) {
   'ngInject';
 
   this.currentRoute = 'root';
-  this.assessmentsAuthURL = ApiRoutes.ASSESSMENTS_AUTH;
-  this.sessionToken = $auth.sessionToken();
+  this.authForAssessments = function () {
+    $assessmentsAuth.authenticate();
+  };
 };
 
 export default NavPanelController;

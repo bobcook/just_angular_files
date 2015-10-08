@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
       # MyBrainSolutions auth endpoints
       namespace :mbs do
-        get '/auth' => 'saml_idp#create'
+        post '/auth' => 'saml_idp#create'
         get '/metadata' => 'saml_idp#show'
         post '/assessments_login' => 'saml#create'
       end

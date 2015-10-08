@@ -52,7 +52,7 @@
         </ul>
       </li>
       <li class="primary-level">
-        <a href="#" ss-post-href="{{vm.assessmentsAuthURL}}" ss-post-data="{ authToken: vm.sessionToken }">Assessments</a>
+        <a href="#" ng-click="vm.authForAssessments()">Assessments</a>
       </li>
       <li class="primary-level">
         <a href="#" ng-click="vm.currentRoute = 'how-it-works'">

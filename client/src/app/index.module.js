@@ -12,6 +12,8 @@ import Article from './common/resources/article.js';
 
 // services
 import $auth from './common/services/auth.js';
+import $assessmentsAuth from './assessments/assessments-auth.js';
+import $postHref from './common/services/post-href.js';
 import $currentUser from './common/services/current-user.js';
 import authInterceptor from './common/services/auth-interceptor.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
@@ -54,8 +56,10 @@ app
 
   .factory('Article', Article)
 
+  .factory('$assessmentsAuth', $assessmentsAuth)
   .factory('$auth', $auth)
   .factory('$currentUser', $currentUser)
+  .factory('$postHref', $postHref)
   .factory('authInterceptor', authInterceptor)
   .provider('modalStateHelper', modalStateHelper)
 

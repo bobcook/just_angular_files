@@ -1,4 +1,4 @@
-const postHref = function () {
+const postHref = function ($postHref) {
   'ngInject';
 
   const makeInput = function (value, name) {
@@ -13,14 +13,7 @@ const postHref = function () {
     },
     link: function (scope, element, attrs) {
       element.bind('click', function () {
-        const inputs = _.map(scope.data, makeInput);
-
-        const form = $('<form>', {
-          method: 'POST',
-          action: scope.url,
-          html: inputs,
-        });
-        form.appendTo(document.body).submit();
+        $postHref(scope.url, scope.data);
       });
     },
   };
