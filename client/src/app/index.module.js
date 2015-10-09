@@ -29,8 +29,7 @@ import topNav from './components/top-nav/top-nav.js';
 // controllers
 import ArticlesController from './articles/articles.controller.js';
 import ArticlesDetailController from './articles/articles-detail.controller.js';
-import ArticleSavedController from './articles/article-saved.controller.js';
-
+import ArticleModalController from './articles/article-modal.controller.js';
 import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
 import LogoutController from './logout/logout.controller.js';
@@ -47,6 +46,7 @@ const app = angular.module('aarp-staying-sharp', [
   'ui.router',
   'ui.router.stateHelper',
   'ui.select',
+  '720kb.socialshare',
 ]);
 
 installEnvironment(app);
@@ -77,7 +77,7 @@ app
 
   .controller('ArticlesController', ArticlesController)
   .controller('ArticlesDetailController', ArticlesDetailController)
-  .controller('ArticleSavedController', ArticleSavedController)
+  .controller('ArticleModalController', ArticleModalController)
   .controller('HomeController', HomeController)
   .controller('LoginSuccessController', LoginSuccessController)
   .controller('LogoutController', LogoutController)
