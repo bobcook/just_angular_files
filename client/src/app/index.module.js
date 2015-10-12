@@ -1,11 +1,8 @@
 import config from './index.config';
 import routerConfig from './index.route';
-import installEnvironment from './index.env';
+import addConstants from './index.constants';
 
 import runBlock from './index.run';
-
-// config
-import ApiRoutes from './common/config/api-routes.js';
 
 // resources
 import Activity from './common/resources/activity.js';
@@ -31,6 +28,7 @@ import activityTrackerBinary from
 import activityTrackerQuantity from
   './components/activity-tracker/quantity/quantity.js';
 import contentDrawer from './components/content-drawer/content-drawer.js';
+import infoBox from './components/info-box/info-box.js';
 import modal from './components/modal/modal.js';
 import navPanel from './components/nav-panel/nav-panel.js';
 import postHref from './common/directives/post-href.js';
@@ -59,24 +57,24 @@ import UserArticlesController from './me/user-articles.controller.js';
 
 const app = angular.module('aarp-staying-sharp', [
   'angularModalService',
+  'pascalprecht.translate', // aka angular-translate
   'ngAnimate',
+  'ngSanitize',
   'ngStorage',
-  'rails',
+  'rails', // aka angular-rails-resource
   'ui.router',
   'ui.router.stateHelper',
   'ui.select',
   '720kb.socialshare',
 ]);
 
-installEnvironment(app);
+addConstants(app);
 
 app
   .config(config)
   .config(routerConfig)
 
   .run(runBlock)
-
-  .factory('ApiRoutes', ApiRoutes)
 
   .factory('Activity', Activity)
   .factory('ActivityTrackerResponse', ActivityTrackerResponse)
@@ -96,6 +94,7 @@ app
   .directive('ssActivityTrackerBinary', activityTrackerBinary)
   .directive('ssActivityTrackerQuantity', activityTrackerQuantity)
   .directive('ssContentDrawer', contentDrawer)
+  .directive('ssInfoBox', infoBox)
   .directive('ssModal', modal)
   .directive('ssNavPanel', navPanel)
   .directive('ssPostHref', postHref)

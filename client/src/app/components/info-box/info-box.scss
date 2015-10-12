@@ -1,0 +1,20 @@
+/* This should replace the .cp-call-out from the original styles */
+/* TODO add real styles */
+
+.info-box {
+  margin: 20px 0;
+  background-color: #fff;
+}
+
+.info-box section {
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.info-box section:after {
+  clear: both;
+}
+
