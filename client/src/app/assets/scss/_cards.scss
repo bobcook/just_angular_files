@@ -1,0 +1,509 @@
+.cp-card {
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 2px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 93.75%;
+  min-width: 300px;
+  padding-top: 138px;
+  position: relative;
+  overflow: hidden;
+  transition: background-size 250ms;
+  
+  @media screen and (min-width: 768px) {
+    width: 100%;
+    height: 340px;
+    background-size: auto 100%;
+    margin-top: 20px;
+  }
+  
+  &:hover {
+    @media screen and (min-width: 768px) {
+      background-size: auto 102%;
+    }
+    
+    .color-fill {
+      opacity: 0.05;
+    }
+  }
+
+  > section {
+    padding: 10px;
+    position: relative;
+    z-index: 3;
+    
+    article {
+      @media screen and (min-width: 768px) {
+        position: relative;
+      }
+    }
+  }
+  
+  article {
+    @media screen and (min-width: 768px) {
+      height: 91px;
+    }
+  }
+
+  > a, .color-fill {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .color-fill {
+    background-color: $metal;
+    opacity: 0.10;
+    transition: opacity 200ms;
+  }
+
+  header, article, footer > div {
+    padding: 0 15px;
+  }
+
+  .info-block {
+    background: rgba(255, 255, 255, 0.93);
+    width: 100%;
+    padding: 17px 0 10px;
+    border-radius: 1px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+    
+    @media screen and (min-width: 768px) {
+      height: 182px;
+    }
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 11px;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  header {
+    h5 {
+      float: left;
+      margin-top: 0;
+      margin-bottom: 9px;
+    }
+    
+    > span {
+      float: right;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  .effort, .proof {
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  .effort {
+    float: left;
+  }
+
+  .proof {
+    float: right;
+  }
+
+  .btn {
+    width: 100%;
+    margin-top: 16px;
+
+    span {
+      display: none;
+      
+      &:first-child {
+        display: inline;
+      }
+    }
+
+    &.tracked {
+      span {
+        display: inline;
+    
+        &:first-child {
+          display: none;
+        }
+      }
+  }
+
+  [class^="icon-"], [class*=" icon-"] {
+    vertical-align: bottom;
+    font-size: 19px;
+    line-height: 16px;
+  }
+
+  .icon-recommend {
+    font-size: 12px;
+    line-height: 19px;
+  }
+
+  a {
+    .icon-delete, .icon-settings, .icon-archive {
+      color: $grey-medium;
+    }
+    
+    .icon-delete:hover, .icon-delete:active, .icon-delete:focus,
+    .icon-settings:hover, .icon-settings:active, .icon-settings:focus,
+    .icon-archive:hover, .icon-archive:active, .icon-archive:focus {
+      color: $grey-dark;
+      cursor: pointer;
+    }
+  }
+
+  footer {
+    border-top: 1px solid $grey-light;
+    margin-top: 7px;
+  }
+
+  .options {
+    border-top: 1px solid $grey-light;
+    border-bottom: 1px solid $grey-light;
+    padding-top: 8px;
+    padding-bottom: 6px;
+
+    a {
+      float: right;
+      margin-left: 8px;
+      color: inherit;
+
+      &:first-child {
+        color: $link-color;
+        float: left;
+        margin-left: 0;
+        font-size: 12px;
+        font-weight: 600;
+
+        &:hover {
+          color: $grey-blue;
+        }
+      }
+    }
+
+    [class^="icon-"] {
+      display: block;
+      font-size: 18px;
+    }
+  }
+
+  .pillars {
+    clear: both;
+    width: 100%;
+  }
+
+  .pillar {
+    margin-top: 10px;
+    vertical-align: top;
+  }
+
+  &.challenge-card 
+    > a {
+      width: 100%;
+      background-image: url("../images/challenge-overlay-left.svg"), url("../images/challenge-overlay-right.svg");
+      background-position: left top, right top;
+      background-repeat: no-repeat;
+      opacity: 0.8;
+    }
+  }
+
+  &.trackable-challenge-card {
+    padding-top: 0;
+    height: auto;
+    max-width: 910px;
+
+    .color-fill {
+      transition: none;
+      opacity: 1.0;
+      background: url("../images/challenge-activity.svg");
+      background-position: left top;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .info-block {
+      height: auto;
+    }
+
+    .effort, .btn {
+      width: 100%;
+    }
+  
+    .proof {
+      width: 100%;
+    }
+
+    .btn {
+      float: right;
+      text-align: center;
+    }
+  }
+
+  &.featured-card {
+    p {
+      max-width: 390px;
+      float: right;
+      display: none;
+    }
+  }
+
+  &.article-card {
+    padding-top: 148px;
+  }
+
+  &.recipe-card {
+    padding-top: 108px;
+  }
+
+  &.small-card {
+    padding-top: 162px;
+    background-size: cover;
+  }
+
+  &.tracker-card {
+    footer {
+      margin-top: 17px;
+    }
+    
+    .effort, .proof {
+      margin-top: 11px;
+      position: static;
+    }
+  }
+
+  &.messaging-card {
+    &.small-card {
+      height: auto;
+      padding: 0;
+  
+      section {
+        padding: 0px;
+        border-radius: 2px;
+      }
+      
+      .info-block {
+        height: auto;
+        padding-bottom: 26px;
+        padding-top: 30px;
+        border: 1px solid $grey-border;
+        border-radius: 2px;
+        box-shadow: none;
+      }
+
+      h4, a {
+        text-align: center;
+      }
+    
+      header {
+        text-align: center;
+        margin-bottom: 13px;
+        
+        .icon-block {
+          float: none;
+          padding: 9px 0;
+          text-align: center;
+          width: 40px;
+        }
+
+        [class^="icon-"], [class*=" icon-"] {
+          font-size: 27px;
+          line-height: 22px;
+        }
+      }
+
+      article {
+        text-align: center;
+      }
+
+      .btn {
+        width: auto;
+      }
+    }
+  }
+
+  .icon-block {
+    margin: 0 2px;
+  }
+
+  @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+    &.featured-card,
+    &.challenge-card,
+    &.messaging-card {
+      max-width: 350px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+
+    .effort,
+    .proof {
+      position: absolute;
+      bottom: 2px;
+      margin-top: 0;
+    }
+
+    .effort {
+      left: 15px;
+    }
+
+    .proof {
+      right: 15px;
+    }
+
+    footer {
+      margin-top: 5px;
+    }
+
+    &.article-card,
+    &.recipe-card,
+    &.small-card {
+      width: 49%;
+      margin-left: 2%;
+      float: left;
+    }
+
+    &.article-card:nth-child(odd),
+    &.recipe-card:nth-child(odd),
+    &.small-card:nth-child(odd) {
+      margin-left: 0;
+    }
+
+    &.article-card {
+      background-size: auto 100%;
+    }
+
+    &.article-card:hover {
+      background-size: auto 102%;
+    }
+
+    &.article-card {
+      height: 400px;
+    }
+
+    &.article-card .info-block {
+      height: 232px;
+    }
+
+    &.article-card article {
+      height: 141px;
+    }
+
+    &.recipe-card {
+      height: 300px;
+      background-size: auto 100%;
+    }
+
+    &.recipe-card:hover {
+      background-size: auto 102%;
+    }
+
+    &.recipe-card article {
+      height: 81px;
+    }
+
+    &.recipe-card .info-block {
+      height: 172px;
+    }
+
+    &.recipe-card h4 {
+      max-height: 50px;
+      overflow: hidden;
+    }
+
+    &.small-card {
+      height: 365px;
+      background-size: 100% auto;
+    }
+
+    &.small-card:hover {
+      background-size: 102% auto;
+    }
+
+    &.small-card .info-block {
+      height: 183px;
+    }
+
+    &.small-card article {
+      height: 92px;
+    }
+
+    &.tracker-card {
+      height: 460px;
+      padding-top: 97px;
+    }
+
+    &.tracker-card footer {
+      margin-top: 7px;
+    }
+
+    &.tracker-card .effort,
+    &.tracker-card .proof {
+      margin-top: 7px;
+    }
+
+    &.tracker-card .info-block {
+      height: 343px;
+    }
+
+    &.tracker-card article {
+      height: 66px;
+    }
+
+    &.trackable-challenge-card .effort {
+      width: auto;
+      bottom: -1px;
+    }
+
+    &.trackable-challenge-card .btn {
+      width: 105px;
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    &.featured-card h4 {
+      max-width: 400px;
+      float: left;
+    }
+
+    &.featured-card p {
+      display: inline;
+    }
+
+    &.small-card {
+      width: 300px;
+      margin-left: 20px;
+    }
+
+    &.small-card:nth-child(odd),
+    &.article-card:nth-child(odd),
+    &.recipe-card:nth-child(odd) {
+      margin-left: 20px;
+    }
+
+    &.small-card:first-child,
+    &.article-card:first-child,
+    &.recipe-card:first-child {
+      margin-left: 0;
+    }
+
+    &.recipe-card h4 {
+      max-height: none;
+      overflow: visible;
+    }
+  }
+}

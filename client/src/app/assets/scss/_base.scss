@@ -266,3 +266,8 @@ button, .btn {
     width: 50%;
   }
 }
+
+.vertical-content {
+  display: table-cell;
+  vertical-align: middle;
+}
