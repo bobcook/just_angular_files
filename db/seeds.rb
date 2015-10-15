@@ -89,11 +89,15 @@ def create_activities(index, tracker)
   )
 end
 
+puts 'Seeding Articles'
+FactoryGirl.create_list(
+  :article,
+  20,
+  type: "#{Article.article_types.sample.capitalize}Article"
+)
+
 puts 'Seeding Recipes'
-recipes = FactoryGirl.create_list(:recipe, 20)
-recipes.each do |recipe|
-  recipe.update(pillars: Pillar.all.sample(2))
-end
+FactoryGirl.create_list(:recipe, 20, pillars: Pillar.all.sample(2))
 
 puts 'Seeding Activities'
 20.times do |index|

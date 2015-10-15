@@ -5,7 +5,11 @@ class Article < ActiveRecord::Base
     last_modified < date
   end
 
-  %w(basic video slideshow).each do |article_type|
+  def self.article_types
+    %w(basic video slideshow)
+  end
+
+  article_types.each do |article_type|
     define_method "#{article_type}?" do
       self.class.name.downcase.start_with?(article_type)
     end
