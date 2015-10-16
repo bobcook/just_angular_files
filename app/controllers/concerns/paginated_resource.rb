@@ -17,15 +17,19 @@ module PaginatedResource
   private
 
   def serializer
-    fail 'Must be overriden in children of PaginatedResourceController'
+    fail 'Must be defined in mixed-in classes of PaginatedResource'
   end
 
   def resource
-    fail 'Must be overriden in children of PaginatedResourceController'
+    fail 'Must be defined in mixed-in classes of PaginatedResource'
   end
 
   def instance
-    @instance ||= resource.find_by(id: params[:id])
+    @instance ||= resource.includes(instance_includes).find_by(id: params[:id])
+  end
+
+  def instance_includes
+    @instance_includes ||= [:pillars]
   end
 
   def collection

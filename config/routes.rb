@@ -31,7 +31,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :activities, only: [:index, :show]
       resources :articles, only: [:index, :show] do
-        resources :reviews, controller: 'articles/reviews', only: [:create, :index]
+        resources :reviews,
+                  controller: 'articles/reviews',
+                  only: [:create, :index]
       end
       resources :auth_tokens, only: [:show]
       resources :games, only: [:index, :show] do
@@ -39,16 +41,20 @@ Rails.application.routes.draw do
       end
       resource :copy, controller: 'copy', only: :show
       resources :pillars, only: [:index]
-      resources :recipes, only: [:index, :show]
-      resources :related_content, only: [:index]
+      resources :recipes, only: [:index, :show] do
+        resources :reviews,
+                  controller: 'recipes/reviews',
+                  only: [:create, :index]
+      end
+      resources :related_content, controller: 'related_content', only: [:index]
 
       namespace :me, as: :my do
-        resources :articles, only: [:show, :index, :create, :destroy]
+        resources :articles, only: [:index, :show, :create, :destroy]
         resources :games, only: [:show, :index, :create, :destroy]
+        resources :current_user, controller: 'current_user', only: :index
+        resources :recipes, only: [:index, :show, :create, :destroy]
         resources :user_activities, only: [:show]
         resources :user_activity_periods, only: [:update]
-        resources :current_user, controller: 'current_user', only: :index
-        resources :articles, only: [:create, :index, :show]
       end
 
       # MyBrainSolutions auth endpoints
@@ -61,6 +67,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # TODO: can probably remove these, should verify
   namespace :me, as: :my do
     resources :activities, only: [:create] do
       resources :tracker_responses,

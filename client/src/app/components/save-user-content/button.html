@@ -1,2 +1,8 @@
-<button class="btn" ng-if="vm.isSaved === false" ng-click="vm.save()">Save to My {{vm.resourceNameCapitalize}}</button>
-<button class="btn" ng-if="vm.isSaved" ng-click="vm.delete()">Remove from Saved {{vm.resourceNameCapitalize}}</button>
+<button
+  ng-click="vm.saveOrDelete()"
+  ng-class="{ tracked: vm.isSaved }"
+  class="btn tracking-btn">
+
+  <span>Save to My {{vm.resourceNamePluralized | capitalize}}</span>
+  <span>Remove from Saved {{vm.resourceNamePluralized | capitalize}}</span>
+</button>

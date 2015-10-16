@@ -1,4 +1,5 @@
 class ArticleSerializer < ActiveModel::Serializer
+  # TODO: add card_title and card_image
   attributes :id, :title, :type, :body_image, :description, :duration, :effort,
              :mast_head_image, :mast_head_title, :section1_body, :section2_body,
              :source_materials_citation

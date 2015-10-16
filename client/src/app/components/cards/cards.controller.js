@@ -9,8 +9,11 @@ const CardsController = function ($pillarFiltering) {
   this.perPage = this.perPage || 8; // Defined via ss-per-page
   this.perRow = this.perRow || 2; // Defined via ss-per-row
   this.cardClasses = this.cardClasses || ''; // Defined via ss-card-classes
-  this.items = [];
-  this.shownItems = this.items;
+  this.items = this.items || []; // Defined via ss-items
+  this.shownItems = this.items; // For restricting items based on filters
+  if (_.isUndefined(this.displayShowMore) || _.isNull(this.displayShowMore)) {
+    this.displayShowMore = true; // Defined via ss-show-more
+  }
   this.page = 0;
   this.completed = false;
 
@@ -33,6 +36,7 @@ const CardsController = function ($pillarFiltering) {
   };
 
   const showMore = (page) => {
+    if (!this.displayShowMore) { return; }
     const options = {
       page: page,
       perPage: this.perPage,

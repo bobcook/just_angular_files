@@ -33,20 +33,19 @@ TODO: Image is broken, using temp for now.
   </section>
 </div>
 
+<!-- TODO: use a different class besides cp-content-drawer since this is not -->
+<!-- technically drawer content -->
 <div class="cp-content-drawer">
   <section class="container">
-    <a class="toggle-content-link" ng-click="vm.isContentDrawerOpen = !vm.isContentDrawerOpen">
-      <span ng-if="!vm.isContentDrawerOpen" class="change-text">Show Article Details<span class="caret caret-down"></span></span>
-      <span ng-if="vm.isContentDrawerOpen" class="change-text">Hide Article Details<span class="caret caret-up"></span></span>
-    </a>
-    <article ss-content-drawer="vm.isContentDrawerOpen" ss-drawer-class="">
+    <article>
+      <hr>
       <div ng-bind-html="vm.article.section1Body" ></div>
       <!-- TODO: correct location of this image -->
       <img ng-src="{{vm.article.bodyImage}}" alt="">
       <hr>
       <div data-ng-bind-html="vm.article.sourceMaterialsCitation"></div>
+      <hr><!-- TODO: proper styles for spacing before cp-content-group? -->
     </article>
-    <hr>
   </section>
 </div>
 

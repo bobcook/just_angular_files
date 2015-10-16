@@ -93,7 +93,8 @@ puts 'Seeding Articles'
 FactoryGirl.create_list(
   :article,
   20,
-  type: "#{Article.article_types.sample.capitalize}Article"
+  type: "#{Article.article_types.sample.capitalize}Article",
+  pillars: Pillar.all.sample(2)
 )
 
 puts 'Seeding Recipes'

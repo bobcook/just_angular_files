@@ -31,6 +31,16 @@ const Activity = function (API_URL, railsResourceFactory, railsSerializer) {
     },
   });
 
+  Object.defineProperty(Activity.prototype, 'cardImage', {
+    // TODO: replace w/ real images
+    get: function () {
+      return 'http://cache2.asset-cache.net/gc/' +
+        '136811175-older-woman-jumping-rope-in-park-gettyimages.jpg?' +
+        'v=1&c=IWSAsset&k=2&d=Ca9O%2FgCTOLQ%2F3%2FKMXdtlbb9F9L7wGZ6nTWCbOMin' +
+        'Sp1KCUGpYwNm%2FvMw8vbdo8MawzSjPM%2FevZX0iGq9%2FORKKA%3D%3D';
+    },
+  });
+
   return Activity;
 };
 

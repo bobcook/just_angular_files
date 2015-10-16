@@ -8,43 +8,68 @@ FactoryGirl.define do
     last_modified { Time.current }
     published_at { Time.current }
     prep_time '5 mins.'
-    sequence(:payload) do
+    sequence(:payload) do |n|
       example_instructions = [
-        'Mix the things',
-        'Whip it up real good-like',
-        'Add the second ingredient',
-        'Add another ingredient',
-        'Bake until done',
-        'Cut and serve'
+        'Start Grill',
+        'Cook hot dogs',
+        'Put hot dog on bun',
+        'Drown in Ketchup and Mustard',
+        'Enjoy'
       ]
       example_ingredients = [
-        '2 eggs',
-        '1 cup sugar',
-        '1 cup milk',
-        '1 tsp salt',
-        '2 cups flour',
-        '1/2 cup oil'
+        'Hot Dogs',
+        'Buns',
+        'Ketchup',
+        'Mustard'
       ]
 
       instructions =
         example_instructions.sample(rand(2..example_instructions.size))
+      instructions_inner_text = instructions.reduce('') do |text, val|
+        text + "<li>#{val}</li>"
+      end
+      instructions_text = "<ol>#{instructions_inner_text}</ol>"
 
       ingredients =
         example_ingredients.sample(rand(2..example_ingredients.size))
+      ingredients_text = ingredients.reduce('') do |text, val|
+        text + "<p>#{val}</p>"
+      end
+
       {
-        ingredients: ingredients,
-        instructions: instructions,
-        overview: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' \
-                  'Proin tincidunt, justo in cursus tincidunt, tellus augue ' \
-                  'sodales lectus, maximus rutrum nunc enim sit amet quam. ' \
-                  'Sed mollis ultricies neque, at bibendum libero imperdiet ' \
-                  'at. Vestibulum a felis lacus. Etiam ullamcorper eget ' \
-                  'purus id molestie.',
-        benefits: 'Praesent in elit urna. Vivamus in sem non leo euismod ' \
-                  'tincidunt. Mauris quam arcu, mattis eu felis vel, ' \
-                  'vulputate suscipit eros. Fusce commodo arcu cursus ' \
-                  'ullamcorper sagittis. Maecenas pharetra quam vel ante ' \
-                  'porta, nec volutpat purus porttitor.'
+        type: 'recipe',
+        mastheadTitle: "Test Recipe Hot Dogs #{n}",
+        brainHealthPillar: 'Eating Right',
+        mastheadImage: 'http://www.suncanihvar.com/sites/default/files/' \
+                       'styles/tuesday_caroussel_full/public/featured-blog/' \
+                       'autumn_apple_pie_banner.jpg?itok=jWjTYf3X',
+        cardImage: 'https://d2izl3afq8akgg.cloudfront.net/' \
+                   'wp-content/uploads/2013/12/Blueberries-008.jpg',
+        contentSourceBranding: '<p>This is supposed to limit to 40 ' \
+                               "characters. Don't think this is happening." \
+                               "</p>\n<p></p>\n",
+        prepTime: '10 min.',
+        description: 'Making hot dogs takes no time at all',
+        benefitToBrainHealth:
+          "<p>This is acting like a required field?</p>\n<p></p>\n",
+        ingredients: ingredients_text,
+        'prep/cookingInstructions' => instructions_text,
+        cardTitle: "Cooking Hot Dogs #{n}",
+        body: '<p>Cooking hot dogs is easy and fun for all.&nbsp;' \
+              "</p>\n<p></p>\n",
+        impact: '1',
+        validity: '2',
+        fun: '4',
+        difficulty: '5',
+        neurotest: [
+          'Cognitive Flexibility',
+          'Executive Function'
+        ],
+        activityName: 'Play Tennis',
+        trial: 'Yes',
+        seoTitle: 'SEO Title',
+        seoDescription: 'SEO Description',
+        keywords: 'brain food, hot dogs, meat, grilling, healthy eating'
       }
     end
 

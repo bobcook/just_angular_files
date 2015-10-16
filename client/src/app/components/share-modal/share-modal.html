@@ -1,0 +1,23 @@
+<ss-modal>
+  <div class="content">
+    <div class="header">
+      <a href="#" aria-label="Close" ng-click="vm.closeModal()">
+        <span class="icon-close" ></span>
+      </a>
+      <div class="header-content">
+        <h5>Share {{vm.resourceType}}</h5>
+        <h3>{{vm.resource.title}}</h3>
+        <span>{{vm.subheader}}</span>
+      </div>
+    </div>
+    <div class="footer">
+      <label>Share via:</label>
+
+      <ss-social-links
+        ss-page-url="vm.resourceURL"
+        ss-title="vm.resourceTitle"
+        ss-resource-type="vm.resourceType">
+      </ss-social-links>
+    </div>
+  </div>
+</ss-modal>

@@ -27,4 +27,9 @@ env 'SHARECARE_PRIVATE_KEY',
             '(run `KEY_FILE=<path to sharecare_stg_private.key> ' \
             'bundle exec rake rsa_keys:format`)')
 
+env 'DSO_API',
+    provide('AARP Digital API base URL',
+            default: 'https://services.share.aarp.org/' \
+                     'applications/CoreServices')
+
 rake 'db:setup'

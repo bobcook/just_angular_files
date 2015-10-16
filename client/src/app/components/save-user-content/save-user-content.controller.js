@@ -1,8 +1,13 @@
-const SaveUserContentController = function ($state) {
+const SaveUserContentController = function ($state, $filter) {
   'ngInject';
 
+  const resourceName =
+    $filter('downcase')(this.resource.contentName);
+
+  this.item = this.item || null; // Via ss-item
+
   // TODO: consider adding a service to pluralize the resource names
-  const resourceName = resourceName || this.resource.contentName.toLowerCase();
+  this.resourceNamePluralized = `${resourceName}s`;
 
   if (this.isUserNamespace) {
     this.isSaved = true;
@@ -12,11 +17,19 @@ const SaveUserContentController = function ($state) {
     });
   }
 
-  this.resourceNameCapitalize = `${this.resource.contentName}s`;
+  this.saveOrDelete = function () {
+    if (this.isSaved) {
+      this.delete();
+    } else {
+      this.save();
+    }
+  };
 
   this.save = function () {
-    new this.resource({ [`${resourceName}Id`] : this.item.id }).create()
-    .then(() => {
+    const resourceIdField = `${resourceName}Id`;
+    const args = {};
+    args[resourceIdField] = this.item.id;
+    new this.resource(args).create().then(() => {
       this.isSaved = true;
       // show modal after saving
       $state.go(`.${resourceName}-saved`);

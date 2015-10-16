@@ -20,9 +20,6 @@ const Recipe = function (API_URL, railsResourceFactory, railsSerializer) {
   // "Instance-level" properties
   Recipe.include({
     contentName: 'Recipe',
-    // TODO: real cardImage
-    cardImage: 'https://d2izl3afq8akgg.cloudfront.net/' +
-               'wp-content/uploads/2013/12/Blueberries-008.jpg',
   });
 
   // Computed properties

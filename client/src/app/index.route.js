@@ -24,6 +24,11 @@ const routerConfig = function (stateHelperProvider,
       },
       children: [
         {
+          name: 'activity',
+          url: '/activities/:id',
+          // TODO: add real activity detail page
+        },
+        {
           name: 'activities',
           url: '/activities',
           templateUrl: 'app/activities/activities.html',
@@ -39,13 +44,13 @@ const routerConfig = function (stateHelperProvider,
           children: [
             modalStateHelperProvider({
               name: 'article-saved',
-              templateUrl: 'app/articles/article-saved-modal.html',
+              templateUrl: 'app/components/saved-modal/saved-modal.html',
               controller: 'ArticleModalController',
               controllerAs: 'vm',
             }),
             modalStateHelperProvider({
               name: 'article-share',
-              templateUrl: 'app/articles/article-share-modal.html',
+              templateUrl: 'app/components/share-modal/share-modal.html',
               controller: 'ArticleModalController',
               controllerAs: 'vm',
             }),
@@ -119,10 +124,24 @@ const routerConfig = function (stateHelperProvider,
         },
         {
           name: 'recipe',
-          url: '/recipe/:id',
+          url: '/recipes/:id',
           templateUrl: 'app/recipes/recipe.html',
           controller: 'RecipeController',
           controllerAs: 'vm',
+          children: [
+            modalStateHelperProvider({
+              name: 'recipe-saved',
+              templateUrl: 'app/components/saved-modal/saved-modal.html',
+              controller: 'RecipeModalController',
+              controllerAs: 'vm',
+            }),
+            modalStateHelperProvider({
+              name: 'recipe-share',
+              templateUrl: 'app/components/share-modal/share-modal.html',
+              controller: 'RecipeModalController',
+              controllerAs: 'vm',
+            }),
+          ],
         },
         {
           name: 'recipes',
@@ -156,18 +175,18 @@ const routerConfig = function (stateHelperProvider,
         {
           name: 'user',
           url: '/me',
-          template: '<div ui-view></div>',
+          templateUrl: 'app/layouts/user.html',
           children: [
             {
               name: 'article',
-              url: '/article/:id',
+              url: '/articles/:id',
               templateUrl: 'app/articles/article.html',
               controller: 'UserArticleController',
               controllerAs: 'vm',
               children: [
                 modalStateHelperProvider({
                   name: 'article-share',
-                  templateUrl: 'app/articles/article-share-modal.html',
+                  templateUrl: 'app/components/share-modal/share-modal.html',
                   controller: 'ArticleModalController',
                   controllerAs: 'vm',
                 }),
@@ -192,6 +211,28 @@ const routerConfig = function (stateHelperProvider,
               url: '/games',
               templateUrl: 'app/me/games/user-games.html',
               controller: 'UserGamesController',
+              controllerAs: 'vm',
+            },
+            {
+              name: 'recipe',
+              url: '/recipes/:id',
+              templateUrl: 'app/recipes/recipe.html',
+              controller: 'UserRecipeController',
+              controllerAs: 'vm',
+              children: [
+                modalStateHelperProvider({
+                  name: 'recipe-share',
+                  templateUrl: 'app/components/share-modal/share-modal.html',
+                  controller: 'RecipeModalController',
+                  controllerAs: 'vm',
+                }),
+              ],
+            },
+            {
+              name: 'recipes',
+              url: '/recipes',
+              templateUrl: 'app/me/recipes/user-recipes.html',
+              controller: 'UserRecipesController',
               controllerAs: 'vm',
             },
           ],

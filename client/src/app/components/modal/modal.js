@@ -49,6 +49,9 @@ const modal = function ($state) {
       $(document).on('keyup', keyUp);
 
       scope.$on('$destroy', removeListeners);
+
+      // Triggered by $currentModal.close()
+      scope.$on('closeModal', close);
     },
   };
 };

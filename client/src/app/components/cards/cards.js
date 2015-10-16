@@ -14,6 +14,8 @@ const cards = function ($pillarFiltering) {
       perRow: '=ssPerRow',
       resource: '=ssResource',
       selectedPillar: '=ssSelectedPillar',
+      displayShowMore: '=?ssShowMore',
+      items: '=?ssItems',
     },
     link: function (scope, element, attrs) {
       const setShownItems = function () {

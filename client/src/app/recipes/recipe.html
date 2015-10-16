@@ -1,1 +1,99 @@
-<h1>{{vm.recipe.title}}</h1>
+<div
+  ng-style="{'background-image':'url(' + vm.mastHeadImage + ')'}"
+  class="cp-lead-in-detail">
+
+  <section>
+    <div class="container">
+      <div class="info-block">
+        <header>
+          <h5>{{vm.topLeft}}</h5>
+          <span ng-if="vm.topRight">{{vm.topRight}}</span>
+        </header>
+        <article>
+          <h2 class="ellipsis">
+            {{vm.title}}
+          </h2>
+        </article>
+        <div class="pillars" ss-card-pillars="vm.pillars"></div>
+      </div>
+      <footer>
+        <div class="effort"><span>{{vm.lowerLeft}}</span></div>
+        <div class="action-items">
+          <ss-save-user-content
+            ng-if="vm.recipe"
+            ss-display-type="button"
+            ss-is-user-namespace="vm.isUserNamespace"
+            ss-item="vm.recipe"
+            ss-resource="vm.userResource">
+          </ss-save-user-content>
+          <a ui-sref=".recipe-share">
+            <span class="icon-share"></span>Share
+          </a>
+        </div>
+      </footer>
+    </div>
+  </section>
+</div>
+
+<!-- TODO: use a different class besides cp-content-drawer since this is not -->
+<!-- technically drawer content -->
+<div class="cp-content-drawer">
+  <section class="container">
+    <article>
+      <div ng-bind-html="vm.section1Body" ></div>
+      <h4>Benefits to Brain Health</h4>
+      <div ng-bind-html="vm.benefitsToBrainHealth"></div>
+      <hr>
+      <h4>Want to dig a little deeper on this topic?</h4>
+      <div data-ng-bind-html="vm.sourceMaterialsCitation"></div>
+      <!-- TODO: proper styles for spacing before cp-content-group? -->
+      <hr>
+    </article>
+  </section>
+</div>
+
+<div class="cp-content-group">
+  <section class="container">
+    <header>
+      <h3>{{vm.contentTitle}}</h3>
+      <span class="effort">{{vm.contentSubtitle}}</span>
+      <hr>
+    </header>
+    <article ng-repeat="(subheader, article) in vm.content">
+      <h3>{{subheader}}</h3>
+      <p ng-bind-html="article"></p>
+    </article>
+    <footer>
+      <hr>
+      <h4>Interested saving or sharing this recipe?</h4>
+      <ss-save-user-content
+        ng-if="vm.recipe"
+        ss-display-type="button"
+        ss-is-user-namespace="vm.isUserNamespace"
+        ss-item="vm.recipe"
+        ss-resource="vm.userResource">
+      </ss-save-user-content>
+      <a ui-sref=".recipe-share">
+        <span class="icon-share"></span>Share
+      </a>
+    </footer>
+  </section>
+</div>
+
+<div class="cp-print-button">
+  <section>
+    <div class="print">
+      <a href="" onclick="window.print()">Print <span class="icon-print"></span></a>
+    </div>
+  </section>
+</div>
+
+<ss-reviews
+  ss-review-resource="vm.reviewResource"
+  ss-resource='vm.resource'>
+  <p>Did you find this recipe useful?</p>
+</ss-reviews>
+
+<ss-related-content
+  ss-resource="vm.recipe">
+</ss-related-content>

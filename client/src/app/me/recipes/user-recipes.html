@@ -1,0 +1,30 @@
+<div class="cp-lead-in navy-teal">
+  <div class="left"></div>
+  <div class="right"></div>
+  <!-- NEEDED: Load in assets from CMS for Lead-Ins -->
+  <div class="cp-lead-in-bg" style="background-image: url('app/assets/images/user-content/lead-in/short-navy-teal.png'), url('app/assets/images/user-content/example-ocean.png');">
+    <section class="container">
+      <div class="copy-wrap">
+        <div class="vertical-content">
+          <h2>My Staying Sharp</h2>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<ss-nav-tabs>
+</ss-nav-tabs>
+
+<ss-pillar-filters
+  ss-selected-pillar="vm.selectedPillar">
+</ss-pillar-filters>
+
+<ss-cards
+  ss-card-classes="recipe-card"
+  ss-is-user-namespace="vm.isUserNamespace"
+  ss-per-page="8"
+  ss-per-row="2"
+  ss-resource="vm.resource"
+  ss-selected-pillar="vm.selectedPillar">
+</ss-cards>

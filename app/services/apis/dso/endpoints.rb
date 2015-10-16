@@ -110,7 +110,11 @@ module Apis
       end
 
       def base_url
-        'https://services.share.aarp.org/applications/CoreServices/WSOWebService'
+        ENV.fetch(
+          'DSO_API',
+          'https://services.share.aarp.org/applications/CoreServices/' \
+          'WSOWebService'
+        )
       end
 
       def crypto

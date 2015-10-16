@@ -36,7 +36,11 @@ class PillarQuerying
   end
 
   def pillars
-    @pillars ||= Pillar.unscoped.where(slug: pillar_names)
+    @pillars ||=
+      Pillar
+      .unscoped
+      .includes(:recipes, :articles, :activities, :games)
+      .where(slug: pillar_names)
   end
 
   def count_for(resource_name)

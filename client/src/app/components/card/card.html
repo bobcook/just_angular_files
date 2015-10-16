@@ -18,8 +18,7 @@
           ss-resource="vm.resource">
         </ss-save-user-content>
 
-        <div ng-if="!vm.isGame">{{vm.cardContent}}</div>
-        <a ng-if="vm.isGame" ui-sref="{{vm.card.playUiSref}}">Play Game</a>
+        <div>{{vm.cardContent}}</div>
 
         <div class="effort">
           <span>{{vm.lowerLeft}}</span>
@@ -30,7 +29,22 @@
         </div>
       </article>
 
-      <footer class="pillars" ss-pillars-display="vm.pillars">
+      <footer
+        ng-if="vm.isGame">
+
+        <div class="play-btn">
+          <a
+            ui-sref="{{vm.card.playUiSref}}"
+            class="btn green-btn">
+
+            Play Game
+          </a>
+        </div>
+      </footer>
+      <footer
+        ng-if"!vm.isGame"
+        ss-pillars-display="vm.pillars"
+        class="pillars">
       </footer>
     </div>
   </section>

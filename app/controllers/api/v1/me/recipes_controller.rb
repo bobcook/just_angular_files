@@ -1,22 +1,22 @@
 module Api
   module V1
     module Me
-      class ArticlesController < Api::V1::Me::BaseController
+      class RecipesController < Api::V1::Me::BaseController
         include PaginatedResource
         include SaveableResource
 
         private
 
         def resource
-          current_user.articles
+          current_user.recipes
         end
 
         def serializer
-          ArticleSerializer
+          RecipeSerializer
         end
 
         def saveable_resource_type
-          Article
+          Recipe
         end
       end
     end

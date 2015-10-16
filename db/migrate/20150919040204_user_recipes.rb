@@ -5,6 +5,7 @@ class UserRecipes < ActiveRecord::Migration
       t.references :recipe, index: true, foreign_key: true
 
       t.timestamps
+      t.index [:user_id, :recipe_id], unique: true
     end
   end
 end

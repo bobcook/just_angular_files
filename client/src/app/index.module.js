@@ -5,7 +5,10 @@ import addConstants from './index.constants';
 import runBlock from './index.run';
 
 // filters
+import capitalize from './common/filters/capitalize.js';
+import downcase from './common/filters/downcase.js';
 import hyphenate from './common/filters/hyphenate.js';
+import upcase from './common/filters/upcase.js';
 
 // resources
 import Activity from './common/resources/activity.js';
@@ -18,16 +21,31 @@ import Game from './common/resources/game.js';
 import GameReview from './common/resources/game-review.js';
 import Pillar from './common/resources/pillar.js';
 import Recipe from './common/resources/recipe.js';
+import RecipeReview from './common/resources/recipe-review.js';
 import RelatedContent from './common/resources/related-content.js';
 import RelatedContentGames from './common/resources/related-content-games.js';
 import UserActivity from './common/resources/user-activity.js';
 import UserActivityPeriod from './common/resources/user-activity-period.js';
 import UserArticle from './common/resources/user-article.js';
 import UserGame from './common/resources/user-game.js';
+import UserRecipe from './common/resources/user-recipe.js';
+
+// presenters
+import ActivityCardPresenter from
+  './common/presenters/activity-card.presenter.js';
+import ArticleCardPresenter from
+  './common/presenters/article-card.presenter.js';
+import DefaultCardPresenter from
+  './common/presenters/default-card.presenter.js';
+import GameCardPresenter from
+  './common/presenters/game-card.presenter.js';
+import RecipeCardPresenter from './common/presenters/recipe-card.presenter.js';
+import RecipePagePresenter from './common/presenters/recipe-page.presenter.js';
 
 // services
 import $auth from './common/services/auth.js';
 import $assessmentsAuth from './assessments/assessments-auth.js';
+import $currentModal from './common/services/current-modal.js';
 import $loadCurrentUser from './common/services/load-current-user.js';
 import $pillarFiltering from './common/services/pillar-filtering.js';
 import $postHref from './common/services/post-href.js';
@@ -83,9 +101,11 @@ import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
 import LogoutController from './logout/logout.controller.js';
 import NavPanelController from './components/nav-panel/nav-panel.controller.js';
+import NavTabsController from './components/nav-tabs/nav-tabs.controller.js';
 import PillarFiltersController from
   './components/pillar-filters/pillar-filters.controller.js';
 import RecipeController from './recipes/recipe.controller.js';
+import RecipeModalController from './recipes/recipe-modal.controller.js';
 import RecipesController from './recipes/recipes.controller.js';
 import RelatedContentController from
   './components/related-content/related-content.controller.js';
@@ -95,12 +115,12 @@ import SaveUserContentController from
 import SocialLinksController from
   './components/social-links/social-links.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
-import NavTabsController from './components/nav-tabs/nav-tabs.controller.js';
-import UserArticleController from
-  './me/articles/user-article.controller.js';
+import UserArticleController from './me/articles/user-article.controller.js';
 import UserArticlesController from './me/articles/user-articles.controller.js';
 import UserGameController from './me/games/user-game.controller.js';
 import UserGamesController from './me/games/user-games.controller.js';
+import UserRecipeController from './me/recipes/user-recipe.controller.js';
+import UserRecipesController from './me/recipes/user-recipes.controller.js';
 
 const app = angular.module('aarp-staying-sharp', [
   'angularModalService',
@@ -124,7 +144,11 @@ app
   .run(runBlock)
 
   // filters
+
+  .filter('capitalize', capitalize)
+  .filter('downcase', downcase)
   .filter('hyphenate', hyphenate)
+  .filter('upcase', upcase)
 
   // resources
   .factory('Activity', Activity)
@@ -136,16 +160,27 @@ app
   .factory('GameReview', GameReview)
   .factory('Pillar', Pillar)
   .factory('Recipe', Recipe)
+  .factory('RecipeReview', RecipeReview)
   .factory('RelatedContent', RelatedContent)
   .factory('RelatedContentGames', RelatedContentGames)
   .factory('UserActivity', UserActivity)
   .factory('UserActivityPeriod', UserActivityPeriod)
   .factory('UserArticle', UserArticle)
   .factory('UserGame', UserGame)
+  .factory('UserRecipe', UserRecipe)
+
+  // presenters
+  .factory('ActivityCardPresenter', ActivityCardPresenter)
+  .factory('ArticleCardPresenter', ArticleCardPresenter)
+  .factory('DefaultCardPresenter', DefaultCardPresenter)
+  .factory('GameCardPresenter', GameCardPresenter)
+  .factory('RecipeCardPresenter', RecipeCardPresenter)
+  .factory('RecipePagePresenter', RecipePagePresenter)
 
   // services
   .factory('$assessmentsAuth', $assessmentsAuth)
   .factory('$auth', $auth)
+  .factory('$currentModal', $currentModal)
   .factory('$loadCurrentUser', $loadCurrentUser)
   .factory('$pillarFiltering', $pillarFiltering)
   .factory('$postHref', $postHref)
@@ -199,6 +234,7 @@ app
   .controller('NavPanelController', NavPanelController)
   .controller('PillarFiltersController', PillarFiltersController)
   .controller('RecipeController', RecipeController)
+  .controller('RecipeModalController', RecipeModalController)
   .controller('RecipesController', RecipesController)
   .controller('RelatedContentController', RelatedContentController)
   .controller('ReviewsController', ReviewsController)
@@ -209,4 +245,6 @@ app
   .controller('UserArticleController', UserArticleController)
   .controller('UserArticlesController', UserArticlesController)
   .controller('UserGameController', UserGameController)
-  .controller('UserGamesController', UserGamesController);
+  .controller('UserGamesController', UserGamesController)
+  .controller('UserRecipeController', UserRecipeController)
+  .controller('UserRecipesController', UserRecipesController);
