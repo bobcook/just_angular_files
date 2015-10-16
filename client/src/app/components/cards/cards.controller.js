@@ -4,6 +4,8 @@ const CardsController = function () {
   const MorePages = {};
   const NoMorePages = {};
 
+  // only saveable resources (UserArticles, UserRecipes) have a parentResource
+  this.parentResource = this.parentResource || null;
   this.resource = this.resource || null; // Should be defined via ss-resource
   this.perPage = this.perPage || 8; // Defined via ss-per-page
   this.perRow = this.perRow || 2; // Defined via ss-per-row

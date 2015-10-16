@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       resources :related_content, only: [:index]
 
       namespace :me, as: :my do
+        resources :articles, only: [:show, :index, :create, :destroy]
         resources :user_activities, only: [:show]
         resources :user_activity_periods, only: [:update]
         resources :current_user, controller: 'current_user', only: :index

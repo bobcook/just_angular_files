@@ -10,6 +10,7 @@ const cards = function () {
       perPage: '=ssPerPage',
       perRow: '=ssPerRow',
       cardClasses: '@ssCardClasses',
+      parentResource: '=?ssParentResource',
     },
   };
 };

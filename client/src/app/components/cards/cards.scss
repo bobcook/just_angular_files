@@ -43,19 +43,12 @@
     }
   }
 
-  > a, .color-fill {
+  .color-fill {
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     position: absolute;
-  }
-
-  > a {
-    z-index: 5;
-  }
-
-  .color-fill {
     background-color: $metal;
     opacity: 0.10;
     transition: opacity 200ms;

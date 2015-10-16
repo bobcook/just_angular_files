@@ -12,7 +12,7 @@ module Api
         end
 
         def index
-          render json: article.reviews, each_serializer: ArticleReviewSerializer
+          render json: article.reviews, each_serializer: ReviewSerializer
         end
 
         private

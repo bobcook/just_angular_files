@@ -9,6 +9,15 @@
       </header>
       <article>
         <h4><a ui-sref="{{vm.resourcePath}}">{{vm.cardTitle}}</a></h4>
+        <ss-delete-user-content
+          ng-if="vm.parentResource"
+          ss-resource="vm.resource"
+          ss-parent-resource="vm.parentResource"
+          ss-display-type="icon"
+          ss-item="vm.card"
+          ss-items="vm.items">
+        </ss-delete-user-content>
+
         <div class="effort">
           <span>{{vm.lowerLeft}}</span>
         </div>

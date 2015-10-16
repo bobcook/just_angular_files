@@ -1,6 +1,8 @@
 module Api
   module V1
-    class RecipesController < Api::V1::PaginatedResourceController
+    class RecipesController < Api::V1::BaseController
+      include PaginatedResource
+
       private
 
       def resource

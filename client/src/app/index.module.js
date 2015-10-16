@@ -9,12 +9,13 @@ import Activity from './common/resources/activity.js';
 import ActivityTrackerResponse from
   './common/resources/activity-tracker-response.js';
 import Article from './common/resources/article.js';
+import ArticleReview from './common/resources/article-review.js';
+import CurrentUser from './common/resources/current-user.js';
 import Pillar from './common/resources/pillar.js';
 import Recipe from './common/resources/recipe.js';
 import UserActivity from './common/resources/user-activity.js';
 import UserActivityPeriod from './common/resources/user-activity-period.js';
-import ArticleReview from './common/resources/article-review.js';
-import CurrentUser from './common/resources/current-user.js';
+import UserArticle from './common/resources/user-article.js';
 
 // services
 import $auth from './common/services/auth.js';
@@ -35,13 +36,15 @@ import card from './components/card/card.js';
 import cardPillars from './components/card/pillars.js';
 import cards from './components/cards/cards.js';
 import contentDrawer from './components/content-drawer/content-drawer.js';
+import deleteUserContent from
+  './components/delete-user-content/delete-user-content.js';
 import infoBox from './components/info-box/info-box.js';
 import modal from './components/modal/modal.js';
 import navPanel from './components/nav-panel/nav-panel.js';
 import postHref from './common/directives/post-href.js';
+import reviews from './components/reviews/reviews.js';
 import sideNav from './components/side-nav/side-nav.js';
 import topNav from './components/top-nav/top-nav.js';
-import reviews from './components/reviews/reviews.js';
 
 // controllers
 import ActivityTrackerController from
@@ -52,20 +55,24 @@ import ActivityTrackerQuantityController from
   './components/activity-tracker/quantity/quantity.controller.js';
 import ActivityTrackerQuantityEditPeriodController from
   './components/activity-tracker/quantity/edit-period.controller.js';
-import ArticlesController from './articles/articles.controller.js';
-import ArticlesDetailController from './articles/articles-detail.controller.js';
+import ArticleController from './articles/article.controller.js';
 import ArticleModalController from './articles/article-modal.controller.js';
+import ArticlesController from './articles/articles.controller.js';
 import CardController from './components/card/card.controller.js';
 import CardsController from './components/cards/cards.controller.js';
+import DeleteUserContentController from
+  './components/delete-user-content/delete-user-content.controller.js';
 import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
 import LogoutController from './logout/logout.controller.js';
 import NavPanelController from './components/nav-panel/nav-panel.controller.js';
 import RecipeController from './recipes/recipe.controller.js';
 import RecipesController from './recipes/recipes.controller.js';
-import TopNavController from './components/top-nav/top-nav.controller.js';
-import UserArticlesController from './me/user-articles.controller.js';
 import ReviewsController from './components/reviews/reviews.controller.js';
+import TopNavController from './components/top-nav/top-nav.controller.js';
+import UserArticleController from
+  './me/articles/user-article.controller.js';
+import UserArticlesController from './me/articles/user-articles.controller.js';
 
 const app = angular.module('aarp-staying-sharp', [
   'angularModalService',
@@ -88,16 +95,19 @@ app
 
   .run(runBlock)
 
+  // resources
   .factory('Activity', Activity)
   .factory('ActivityTrackerResponse', ActivityTrackerResponse)
   .factory('Article', Article)
+  .factory('ArticleReview', ArticleReview)
+  .factory('CurrentUser', CurrentUser)
   .factory('Pillar', Pillar)
   .factory('Recipe', Recipe)
   .factory('UserActivity', UserActivity)
   .factory('UserActivityPeriod', UserActivityPeriod)
-  .factory('ArticleReview', ArticleReview)
-  .factory('CurrentUser', CurrentUser)
+  .factory('UserArticle', UserArticle)
 
+  // services
   .factory('$assessmentsAuth', $assessmentsAuth)
   .factory('$auth', $auth)
   .factory('$postHref', $postHref)
@@ -106,6 +116,7 @@ app
   .factory('dependentMemoize', dependentMemoize)
   .provider('modalStateHelper', modalStateHelper)
 
+  // directives
   .directive('ssActivityTracker', activityTracker)
   .directive('ssActivityTrackerBinary', activityTrackerBinary)
   .directive('ssActivityTrackerQuantity', activityTrackerQuantity)
@@ -113,14 +124,16 @@ app
   .directive('ssCardPillars', cardPillars)
   .directive('ssCards', cards)
   .directive('ssContentDrawer', contentDrawer)
+  .directive('ssDeleteUserContent', deleteUserContent)
   .directive('ssInfoBox', infoBox)
   .directive('ssModal', modal)
   .directive('ssNavPanel', navPanel)
   .directive('ssPostHref', postHref)
+  .directive('ssReviews', reviews)
   .directive('ssSideNav', sideNav)
   .directive('ssTopNav', topNav)
-  .directive('ssReviews', reviews)
 
+  // controllers
   .controller('ActivityTrackerController', ActivityTrackerController)
   .controller('ActivityTrackerBinaryController',
     ActivityTrackerBinaryController)
@@ -128,17 +141,19 @@ app
     ActivityTrackerQuantityController)
   .controller('ActivityTrackerQuantityEditPeriodController',
     ActivityTrackerQuantityEditPeriodController)
-  .controller('ArticlesController', ArticlesController)
-  .controller('ArticlesDetailController', ArticlesDetailController)
+  .controller('ArticleController', ArticleController)
   .controller('ArticleModalController', ArticleModalController)
+  .controller('ArticlesController', ArticlesController)
   .controller('CardController', CardController)
   .controller('CardsController', CardsController)
+  .controller('DeleteUserContentController', DeleteUserContentController)
   .controller('HomeController', HomeController)
   .controller('LoginSuccessController', LoginSuccessController)
   .controller('LogoutController', LogoutController)
   .controller('NavPanelController', NavPanelController)
   .controller('RecipeController', RecipeController)
   .controller('RecipesController', RecipesController)
+  .controller('ReviewsController', ReviewsController)
   .controller('TopNavController', TopNavController)
-  .controller('UserArticlesController', UserArticlesController)
-  .controller('ReviewsController', ReviewsController);
+  .controller('UserArticleController', UserArticleController)
+  .controller('UserArticlesController', UserArticlesController);

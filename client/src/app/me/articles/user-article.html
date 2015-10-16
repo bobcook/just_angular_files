@@ -1,0 +1,18 @@
+<h1>User Article Detail</h1>
+<h2>{{vm.article.title}}</h2>
+
+<p>{{vm.article.description}}</p>
+<p>
+  <ss-delete-user-content
+    ss-resource="vm.resource"
+    ss-parent-resource="vm.parentResource"
+    ss-display-type="button"
+    ss-item="vm.article">
+  </ss-delete-user-content>
+</p>
+
+<p><button ui-sref=".article-share">Share</button></p>
+
+<ss-reviews resource-review="vm.reviewResource" parent-resource='vm.parentResource'>
+  <p>Did you find this article useful?</p>
+</ss-reviews>

@@ -1,13 +1,12 @@
 <h1>Article Detail</h1>
 <h2>{{vm.article.title}}</h2>
 
-<p>{{vm.article.payload['jcr:description']}}</p>
-<p>{{vm.article.payload['promoText']}}</p>
+<p>{{vm.article.description}}</p>
 
 <p><button ng-disabled="vm.articleIsSaved" ng-click="vm.saveArticle()">Save</button></p>
 <p><button ui-sref=".article-share">Share</button></p>
 
-<ss-reviews resource-review="vm.ReviewResource" parent-resource='vm.ParentResource'>
+<ss-reviews review-resource="vm.reviewResource" parent-resource='vm.parentResource'>
   <p>Did you find this article useful?</p>
 </ss-reviews>
 

@@ -2,21 +2,31 @@ module Api
   module V1
     module Me
       class ArticlesController < Api::V1::Me::BaseController
-        def index
-          render json: current_user.articles, each_serializer: ArticleSerializer
-        end
+        include PaginatedResource
 
-        def show
-          article = UserArticle.find_by(
+        # TODO: add error handling for destroy and create
+        def destroy
+          user_article = UserArticle.find_by(
             article_id: params[:id], user_id: current_user.id
           )
-          render json: article || {}
+          user_article.destroy
+          head :accepted
         end
 
         def create
           article = Article.find(params[:article][:id])
           current_user.articles << article
           head :created
+        end
+
+        private
+
+        def resource
+          current_user.articles
+        end
+
+        def serializer
+          ArticleSerializer
         end
       end
     end

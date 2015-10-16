@@ -2,8 +2,8 @@ const ReviewsController = function ($stateParams, $rootScope) {
   'ngInject';
 
   // display all reviews
-  this.ReviewResource
-  .query({}, { [ `${this.ParentResource.config.name}Id` ]: $stateParams.id })
+  this.reviewResource
+  .query({}, { [ `${this.parentResource.config.name}Id` ]: $stateParams.id })
   .then((reviews) => {
     this.reviews = reviews;
   });
@@ -11,8 +11,8 @@ const ReviewsController = function ($stateParams, $rootScope) {
   // review the resource
   this.submitReview = () => {
 
-    new this.ReviewResource({
-      [ `${this.ParentResource.config.name}Id` ]: $stateParams.id,
+    new this.reviewResource({
+      [ `${this.parentResource.config.name}Id` ]: $stateParams.id,
       recommend: this.recommend,
       comment: this.comment,
     })

@@ -1,4 +1,4 @@
-const ArticlesDetailController = function (Article,
+const ArticleController = function (Article,
                                            ArticleReview,
                                            $state,
                                            $stateParams) {
@@ -8,7 +8,7 @@ const ArticlesDetailController = function (Article,
 
   // get one article
   Article.get($stateParams.id).then((article) => {
-    this.article = article;
+    this.article = article.data;
   });
 
   // save article
@@ -30,9 +30,9 @@ const ArticlesDetailController = function (Article,
   });
 
   // pass values to directive
-  this.ReviewResource = ArticleReview;
-  this.ParentResource = Article;
+  this.reviewResource = ArticleReview;
+  this.parentResource = Article;
 
 };
 
-export default ArticlesDetailController;
+export default ArticleController;

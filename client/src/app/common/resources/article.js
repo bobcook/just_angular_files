@@ -12,6 +12,8 @@ const Article = function (API_URL, railsResourceFactory, railsSerializer) {
 
   const userArticleUrl = `${API_URL}/api/v1/me/articles`;
 
+  // TODO: possibly delete saveUserArticle, queryUserArticles, queryUserArticle
+  // after we make the saving articles a directive
   Article.prototype.saveUserArticle = function () {
     return this.$post(userArticleUrl);
   };
@@ -34,7 +36,7 @@ const Article = function (API_URL, railsResourceFactory, railsSerializer) {
 
   Object.defineProperty(Article.prototype, 'uiSref', {
     get: function () {
-      return `application.articles-detail({ id: ${this.id} })`;
+      return `application.article({ id: ${this.id} })`;
     },
   });
 

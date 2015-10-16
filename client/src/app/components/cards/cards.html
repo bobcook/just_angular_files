@@ -1,5 +1,5 @@
 <div ng-repeat="item in vm.items" ng-if="$index % vm.perRow == 0" class="card-holder container article-holder">
-  <ss-card ng-repeat="i in vm.range(vm.perRow)" ss-card-for="vm.items[$parent.$index + i]" ss-card-classes="vm.cardClasses"></ss-card>
+  <ss-card ng-repeat="i in vm.range(vm.perRow)" ss-card-for="vm.items[$parent.$index + i]" ss-card-classes="vm.cardClasses" ss-resource="vm.resource" ss-parent-resource="vm.parentResource" ss-items="vm.items"></ss-card>
 </div>
 
 <button ng-show="!vm.completed" ng-click="vm.showMore()">
