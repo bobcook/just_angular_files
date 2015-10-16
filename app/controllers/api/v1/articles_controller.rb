@@ -1,12 +1,14 @@
 module Api
   module V1
-    class ArticlesController < Api::V1::BaseController
-      def index
-        render json: Article.all, each_serializer: ArticleSerializer
+    class ArticlesController < Api::V1::PaginatedResourceController
+      private
+
+      def resource
+        Article
       end
 
-      def show
-        render json: Article.find(params[:id]), serializer: ArticleSerializer
+      def serializer
+        ArticleSerializer
       end
     end
   end

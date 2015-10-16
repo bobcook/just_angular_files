@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative './publishable_shared_examples'
 
 describe Article do
   def last_week
@@ -24,5 +25,21 @@ describe Article do
       subject = make_subject
       expect(subject.outdated?(Time.zone.now.noon - 2.week)).to eq(false)
     end
+  end
+
+  describe '#last_modified' do
+    it_behaves_like(
+      'it defaults to the current time',
+      :basic_article,
+      :last_modified
+    )
+  end
+
+  describe '#published_at' do
+    it_behaves_like(
+      'it defaults to the current time',
+      :basic_article,
+      :published_at
+    )
   end
 end

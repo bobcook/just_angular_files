@@ -1,5 +1,7 @@
 FactoryGirl.define do
   factory :article do
+    last_modified { Time.current }
+    published_at { Time.current }
     sequence(:title) { |n| "Article #{n}" }
     sequence(:payload) do |n|
       {
@@ -33,6 +35,13 @@ FactoryGirl.define do
                         'stress provoke negative behaviors such as bingeing ' \
                         'on junk food, smoking'
       }
+    end
+
+    Article.article_types.each do |article_type|
+      underscored_name = "#{article_type}_article"
+      klass = underscored_name.camelize.constantize
+
+      factory underscored_name, class: klass
     end
   end
 end

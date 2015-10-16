@@ -55,41 +55,4 @@
   <p translate>info.understand_the_science</p>
 </ss-info-box>
 
-<div ng-repeat="article in vm.articles">
-  <div class="card-holder">
-    <div class="cp-card article-card" style="background-image: url(http://aarp.org/{{article.background_image_large}})">
-      <a href="#link-to-card-content"></a>
-      <div class="color-fill"></div>
-      <section>
-        <div class="info-block">
-          <header>
-            <h5>Article</h5>
-          </header>
-          <article>
-            <h4><a ui-sref="application.articles-detail({ id: article.id })">{{ article.title }}</a></h4>
-            <p>{{ article.description }}</p>
-            <p>{{ article.payload['jcr:description'] }}</p>
-
-            <div class="effort">
-              <div ng-switch="article.type">
-                <span ng-switch-when="SlideshowArticle">Slideshow: 5 slides</span>
-                <span ng-switch-when="VideoArticle">Video: 5 min</span>
-                <span ng-switch-when="BasicArticle">Read Time: 8 min</span>
-              </div>
-            </div>
-            <div class="proof">
-              <span class="icon-recommend"></span>
-              <span>0%</span>
-            </div>
-          </article>
-
-          <footer>
-            <div class="pillars">
-              <span class="pillar learning-more">Learning More</span>
-              <span class="pillar managing-stress">Managing Stress</span>
-            </div>
-          </footer>
-        </div>
-      </section>
-    </div>
-  </div>
+<ss-cards ss-resource="vm.resource" ss-per-page="8" ss-per-row="w" ss-card-classes="article-card"></ss-cards>

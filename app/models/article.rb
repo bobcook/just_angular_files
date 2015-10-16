@@ -1,4 +1,6 @@
 class Article < ActiveRecord::Base
+  include Publishable
+
   has_many :user_articles, dependent: :destroy
   has_many :article_reviews, dependent: :destroy
   has_many :reviews, as: :reviewable, dependent: :destroy

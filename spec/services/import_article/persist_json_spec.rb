@@ -5,7 +5,7 @@ module ImportArticle
     def article_hash
       {
         title: 'blah title',
-        publish_date: Time.zone.now,
+        published_at: Time.zone.now,
         last_modified: Time.zone.now,
         uuid: 'abc123',
         url: 'http://blah.com',

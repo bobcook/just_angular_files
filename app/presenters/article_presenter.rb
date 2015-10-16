@@ -14,7 +14,7 @@ class ArticlePresenter
   end
 
   def date
-    article.publish_date
+    article.published_at
   end
 
   def background_image_large

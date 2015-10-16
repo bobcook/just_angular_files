@@ -7,7 +7,7 @@ module ImportArticle
     def convert_article
       {
         title: json_payload[:'jcr:title'],
-        publish_date: json_payload[:PrintDate] || json_payload[:PublishDate],
+        published_at: json_payload[:PrintDate] || json_payload[:PublishDate],
         last_modified: json_payload[:'cq:lastModified'],
         # NOTE: the uuid for a particular article constantly changes,
         # therefore can't use uuid as a unique identifier
