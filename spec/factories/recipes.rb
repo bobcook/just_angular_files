@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :recipe do
     sequence(:title) { |n| "Recipe #{n}" }
+    last_modified { Time.current }
+    published_at { Time.current }
     prep_time '5 mins.'
     sequence(:payload) do
       example_instructions = [

@@ -39,8 +39,10 @@ module Api
           ).to_json
 
           get :index
-          expect(JSON.parse(response.body))
-            .to match_array(JSON.parse(serialized))
+          result = JSON.parse(response.body)['recipes']
+
+          expect(result).not_to be_empty
+          expect(result).to match_array(JSON.parse(serialized)['recipes'])
         end
 
         it 'returns a 206 status' do

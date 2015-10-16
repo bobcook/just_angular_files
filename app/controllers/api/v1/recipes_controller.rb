@@ -9,7 +9,7 @@ module Api
       end
 
       def index
-        recipes = Recipe.page(params[:page]).per(per_page)
+        recipes = Recipe.newest_first.page(params[:page]).per(per_page)
 
         options = { each_serializer: RecipeSerializer }
         options.merge!(status: :partial_content) unless recipes.last_page?
