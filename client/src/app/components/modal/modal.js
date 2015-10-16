@@ -8,7 +8,7 @@ const modal = function ($state) {
     transclude: true,
     templateUrl: 'app/components/modal/modal.html',
     scope: {
-      close: '&onClose',
+      close: '&?onClose',
     },
     link: function (scope, element, attrs) {
       const modalElement = $(element).children('.modal');
