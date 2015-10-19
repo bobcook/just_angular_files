@@ -5,6 +5,16 @@ class Pillar < ActiveRecord::Base
            source: :categorizable,
            source_type: 'Activity'
 
+  has_many :recipes,
+           through: :pillar_categorizations,
+           source: :categorizable,
+           source_type: 'Recipe'
+
+  has_many :articles,
+           through: :pillar_categorizations,
+           source: :categorizable,
+           source_type: 'Article'
+
   def self.default_types
     %w(keeping_fit learning_more managing_stress eating_right being_social)
   end

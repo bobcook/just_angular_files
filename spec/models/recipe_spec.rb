@@ -1,11 +1,14 @@
 require 'rails_helper'
 require_relative './publishable_shared_examples'
+require_relative './with_pillars_shared_examples'
 
 describe Recipe do
   it { should have_many(:pillar_categorizations) }
   it { should have_many(:pillars).through(:pillar_categorizations) }
   it { should have_many(:user_recipes) }
   it { should have_many(:users).through(:user_recipes) }
+
+  it_behaves_like 'it fulfills the WithPillars interface', :recipe
 
   describe 'scopes' do
     describe '::newest_first' do

@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       resources :auth_tokens, only: [:show]
       resource :copy, controller: 'copy', only: :show
       resources :recipes, only: [:index, :show]
+      resources :related_content, only: [:index]
 
       namespace :me, as: :my do
         resources :user_activities, only: [:show]

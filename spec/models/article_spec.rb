@@ -1,5 +1,6 @@
 require 'rails_helper'
 require_relative './publishable_shared_examples'
+require_relative './with_pillars_shared_examples'
 
 describe Article do
   def last_week
@@ -9,6 +10,11 @@ describe Article do
   def make_subject
     Article.new(last_modified: last_week)
   end
+
+  it { should have_many(:pillar_categorizations) }
+  it { should have_many(:pillars).through(:pillar_categorizations) }
+
+  it_behaves_like 'it fulfills the WithPillars interface', :basic_article
 
   describe '#outdated' do
     it 'returns true if specified time is after last_modified' do
