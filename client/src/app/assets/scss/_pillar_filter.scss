@@ -1,0 +1,169 @@
+.cp-pillar-filter {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: $white;
+  border-bottom: 1px solid $grey-border;
+  
+  @media screen and (min-width: 768px) {
+    padding-top: 20px;
+    padding-bottom: 5px;
+  }
+
+  p {
+    margin-bottom: 0;
+    
+    @media screen and (min-width: 768px) {
+      display: inline;
+      float: left;
+      padding-right: 20px;
+    }
+  }
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline;
+
+    @media screen and (min-width: 768px) {
+      display: inline;
+      margin-right: 5px;
+    }
+  }
+
+  span.divider {
+    margin-left: 5px;
+    margin-right: 8px;
+    vertical-align: middle;
+    border-right: 1px solid $grey-light;
+  }
+
+  .pillar {
+    margin-right: 0;
+    margin-bottom: 7px;
+  }
+
+  .all-options {
+    background: $metal;
+    color: $white;
+  }
+
+  .btn-group {
+    width: 100%;
+  }
+
+  button {
+    background: $white;
+    width: 100%;
+    border: 1px solid $grey-border;
+    border-radius: 1px;
+    color: $black;
+    text-align: left;
+    
+    &.dropdown-toggle {
+      font-size: 14px;
+      border: 1px solid $grey-border;
+      border-radius: 4px;
+      color: $grey-dark;
+    }
+  }
+
+  .dropdown-menu {
+    width: 100%;
+
+    li a {
+      padding: 4px 15px;
+
+      &:hover {
+        color: $white;
+        background: $link-color;
+      }
+    }
+  }
+
+  .chevron-down {
+    background-image: url('assets/images/icon-chevron-down.svg');
+    display: inherit;
+    width: 19px;
+    height: 12px;
+    float: right;
+    margin-top: 5px;
+  }
+  
+  a {
+    @media screen and (min-width: 768px) {
+      padding-left: 1px;
+
+      &:hover, &:focus {
+        padding-bottom: 20px;
+        border-bottom: 4px solid $metal;
+  
+        &.keeping-fit, &.keeping-fit {
+          border-color: $red;
+        }
+
+        &.learning-more, &.learning-more {
+          border-color: $orange;
+        }
+
+        &.managing-stress, &.managing-stress {
+          border-color: $yellow;
+        }
+        
+        &.eating-right, &.eating-right {
+          border-color: $fountain-blue;
+        }
+  
+        &.being-social, &.being-social {
+          border-color: $grey-blue;
+        }
+      }
+    }
+  }
+}
+
+.pillar {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 12px;
+  color: white;
+  background-color: $grey-light;
+  padding: 5px 10px;
+  text-align: center;
+  margin-right: 5px;
+  border-radius: 1px;
+
+  &.being-social {
+    background-color: $grey-blue;
+  }
+
+  &.eating-right {
+    background-color: $fountain-blue;
+  }
+
+  &.keeping-fit {
+    background-color: $red;
+  }
+
+  &.learning-more {
+    background-color: $orange;
+  }
+
+  &.managing-stress {
+    background-color: $yellow;
+  }
+}
+
+/* IE specific styles */
+.ie .pillar {
+  padding-top: 3px;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .pillar {
+    padding-top: 3px;
+  }
+}

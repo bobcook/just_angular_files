@@ -43,12 +43,6 @@
     }
   }
 
-  article {
-    @media screen and (min-width: 768px) {
-      height: 91px;
-    }
-  }
-
   > a, .color-fill {
     top: 0;
     left: 0;
@@ -98,6 +92,8 @@
   }
 
   header {
+    @include clearfix;
+
     h5 {
       float: left;
       margin-top: 0;
@@ -111,18 +107,40 @@
     }
   }
 
+  article {
+    @include clearfix;
+
+    @media screen and (min-width: 768px) {
+      height: 91px;
+    }
+  }
+
   .effort, .proof {
     font-size: 12px;
     font-weight: 600;
     margin-top: 10px;
+
+    @media screen and (min-width: 768px) {
+      position: absolute;
+      bottom: 2px;
+      margin-top: 0;
+    }
   }
 
   .effort {
     float: left;
+
+    @media screen and (min-width: 768px) {
+      left: 15px;
+    }
   }
 
   .proof {
     float: right;
+
+    @media screen and (min-width: 768px) {
+      right: 15px;
+    }
   }
 
   .btn {
@@ -145,6 +163,7 @@
           display: none;
         }
       }
+    }
   }
 
   [class^="icon-"], [class*=" icon-"] {
@@ -174,6 +193,10 @@
   footer {
     border-top: 1px solid $grey-light;
     margin-top: 7px;
+
+    @media screen and (min-width: 768px) {
+      margin-top: 5px;
+    }
   }
 
   .options {
@@ -216,7 +239,12 @@
     vertical-align: top;
   }
 
-  &.challenge-card
+  &.challenge-card {
+
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+      max-width: 350px;
+    }
+
     > a {
       width: 100%;
       background-image: url("../images/challenge-overlay-left.svg"), url("../images/challenge-overlay-right.svg");
@@ -248,6 +276,13 @@
       width: 100%;
     }
 
+    .effort {
+      @media screen and (min-width: 768px) {
+        width: auto;
+        bottom: -1px;
+      }
+    }
+
     .proof {
       width: 100%;
     }
@@ -255,42 +290,234 @@
     .btn {
       float: right;
       text-align: center;
+
+      @media screen and (min-width: 768px) {
+        width: 105px;
+      }
     }
   }
 
   &.featured-card {
+
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+      max-width: 350px;
+    }
+
+    h4 {
+      @media screen and (min-width: 992px) {
+        max-width: 400px;
+        float: left;
+      }
+    }
+
     p {
       max-width: 390px;
       float: right;
       display: none;
+
+      @media screen and (min-width: 992px) {
+        display: inline;
+      }
     }
   }
 
   &.article-card {
     padding-top: 148px;
+
+    @media screen and (min-width: 768px) {
+      width: 49%;
+      height: 400px;
+      margin-left: 2%;
+      float: left;
+      background-size: auto 100%;
+    }
+
+    &:nth-child(odd) {
+      @media screen and (min-width: 768px) {
+        margin-left: 0;
+      }
+
+      @media screen and (min-width: 992px) {
+        margin-left: 20px;
+      }
+    }
+
+
+    &:first-child {
+      @media screen and (min-width: 992px) {
+        margin-left: 0;
+      }
+    }
+
+    &:hover {
+      @media screen and (min-width: 768px) {
+        background-size: auto 102%;
+      }
+    }
+
+    .info-block {
+      @media screen and (min-width: 768px) {
+        height: 232px;
+      }
+    }
+
+    article {
+      @media screen and (min-width: 768px) {
+        height: 141px;
+      }
+    }
   }
 
   &.recipe-card {
     padding-top: 108px;
+
+    @media screen and (min-width: 768px) {
+      width: 49%;
+      margin-left: 2%;
+      float: left;
+      height: 300px;
+      background-size: auto 100%;
+    }
+
+    &:hover {
+      @media screen and (min-width: 768px) {
+        background-size: auto 102%;
+      }
+    }
+
+    &:nth-child(odd) {
+      @media screen and (min-width: 992px) {
+        margin-left: 20px;
+      }
+    }
+
+    &:first-child {
+      @media screen and (min-width: 992px) {
+        margin-left: 0;
+      }
+    }
+
+    h4 {
+      @media screen and (min-width: 992px) {
+        max-height: none;
+        overflow: visible;
+      }
+    }
+
+    article {
+      @media screen and (min-width: 768px) {
+        height: 81px;
+      }
+    }
+
+    .info-block {
+      @media screen and (min-width: 768px) {
+        height: 172px;
+      }
+    }
+
+    h4 {
+      @media screen and (min-width: 768px) {
+        max-height: 50px;
+        overflow: hidden;
+      }
+    }
   }
 
   &.small-card {
     padding-top: 162px;
     background-size: cover;
+
+    @media screen and (min-width: 768px) {
+      width: 49%;
+      margin-left: 2%;
+      float: left;
+      height: 365px;
+      background-size: 100% auto;
+    }
+
+    @media screen and (min-width: 992px) {
+      width: 300px;
+      margin-left: 20px;
+    }
+
+    &:hover {
+      @media screen and (min-width: 768px) {
+        background-size: 102% auto;
+      }
+    }
+
+    &:nth-child(odd) {
+      @media screen and (min-width: 768px) {
+        margin-left: 0;
+      }
+      @media screen and (min-width: 992px) {
+        margin-left: 20px;
+      }
+    }
+
+    &:first-child {
+      @media screen and (min-width: 992px) {
+        margin-left: 0;
+      }
+    }
+
+    .info-block {
+      @media screen and (min-width: 768px) {
+        height: 183px;
+      }
+    }
+
+    article {
+      @media screen and (min-width: 768px) {
+        height: 92px;
+      }
+    }
   }
 
   &.tracker-card {
+
+    @media screen and (min-width: 768px) {
+      height: 460px;
+      padding-top: 97px;
+    }
+
+    .info-block {
+      @media screen and (min-width: 768px) {
+        height: 343px;
+      }
+    }
+
+    article {
+      @media screen and (min-width: 768px) {
+        height: 66px;
+      }
+    }
+
     footer {
       margin-top: 17px;
+
+      @media screen and (min-width: 768px) {
+        margin-top: 7px;
+      }
     }
 
     .effort, .proof {
       margin-top: 11px;
       position: static;
+
+      @media screen and (min-width: 768px) {
+        margin-top: 7px;
+      }
     }
   }
 
   &.messaging-card {
+
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+      max-width: 350px;
+    }
+
     &.small-card {
       height: auto;
       padding: 0;
@@ -342,172 +569,5 @@
 
   .icon-block {
     margin: 0 2px;
-  }
-
-  @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-    &.featured-card,
-    &.challenge-card,
-    &.messaging-card {
-      max-width: 350px;
-    }
-  }
-
-  @media screen and (min-width: 768px) {
-
-    .effort,
-    .proof {
-      position: absolute;
-      bottom: 2px;
-      margin-top: 0;
-    }
-
-    .effort {
-      left: 15px;
-    }
-
-    .proof {
-      right: 15px;
-    }
-
-    footer {
-      margin-top: 5px;
-    }
-
-    &.article-card,
-    &.recipe-card,
-    &.small-card {
-      width: 49%;
-      margin-left: 2%;
-      float: left;
-    }
-
-    &.article-card:nth-child(odd),
-    &.recipe-card:nth-child(odd),
-    &.small-card:nth-child(odd) {
-      margin-left: 0;
-    }
-
-    &.article-card {
-      background-size: auto 100%;
-    }
-
-    &.article-card:hover {
-      background-size: auto 102%;
-    }
-
-    &.article-card {
-      height: 400px;
-    }
-
-    &.article-card .info-block {
-      height: 232px;
-    }
-
-    &.article-card article {
-      height: 141px;
-    }
-
-    &.recipe-card {
-      height: 300px;
-      background-size: auto 100%;
-    }
-
-    &.recipe-card:hover {
-      background-size: auto 102%;
-    }
-
-    &.recipe-card article {
-      height: 81px;
-    }
-
-    &.recipe-card .info-block {
-      height: 172px;
-    }
-
-    &.recipe-card h4 {
-      max-height: 50px;
-      overflow: hidden;
-    }
-
-    &.small-card {
-      height: 365px;
-      background-size: 100% auto;
-    }
-
-    &.small-card:hover {
-      background-size: 102% auto;
-    }
-
-    &.small-card .info-block {
-      height: 183px;
-    }
-
-    &.small-card article {
-      height: 92px;
-    }
-
-    &.tracker-card {
-      height: 460px;
-      padding-top: 97px;
-    }
-
-    &.tracker-card footer {
-      margin-top: 7px;
-    }
-
-    &.tracker-card .effort,
-    &.tracker-card .proof {
-      margin-top: 7px;
-    }
-
-    &.tracker-card .info-block {
-      height: 343px;
-    }
-
-    &.tracker-card article {
-      height: 66px;
-    }
-
-    &.trackable-challenge-card .effort {
-      width: auto;
-      bottom: -1px;
-    }
-
-    &.trackable-challenge-card .btn {
-      width: 105px;
-    }
-  }
-
-  @media screen and (min-width: 992px) {
-    &.featured-card h4 {
-      max-width: 400px;
-      float: left;
-    }
-
-    &.featured-card p {
-      display: inline;
-    }
-
-    &.small-card {
-      width: 300px;
-      margin-left: 20px;
-    }
-
-    &.small-card:nth-child(odd),
-    &.article-card:nth-child(odd),
-    &.recipe-card:nth-child(odd) {
-      margin-left: 20px;
-    }
-
-    &.small-card:first-child,
-    &.article-card:first-child,
-    &.recipe-card:first-child {
-      margin-left: 0;
-    }
-
-    &.recipe-card h4 {
-      max-height: none;
-      overflow: visible;
-    }
   }
 }

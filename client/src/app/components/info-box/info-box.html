@@ -1,4 +1,6 @@
-<section ng-hide="vm.isClosed" class="info-box" translate-cloak>
-  <button type="button" class="icon-close close" ng-click="vm.isClosed = true"></button>
-  <div class="content" ng-transclude></div>
+<section ng-hide="vm.isClosed" class="info-box plain" translate-cloak>
+  <div class="container">
+    <button type="button" class="close" ng-click="vm.isClosed = true"><span aria-hidden="true">×</span></button>
+    <div class="content" ng-transclude></div>
+  </div>
 </section>
