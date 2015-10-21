@@ -140,66 +140,6 @@ input, button, select, textarea {
   white-space: nowrap;
 }
 
-button, .btn {
-  color: $white;
-  background: $button-blue;
-  padding: 8px 15px;
-  border-radius: 2px;
-  border-color: transparent;
-  transition: background 0.3s ease;
-  font-size: 16px;
-
-  &.tracked {
-    background: $button-green;
-    color: white;
-
-    &:hover {
-      background: $button-green-hover;
-    }
-  }
-
-  &:hover {
-    color: white;
-    background: $blue-dark;
-  }
-
-  &:focus {
-    outline: none;
-    color: $white;
-  }
-
-  &.tracking-btn {
-    color: white;
-
-    span {
-      display: none;
-
-      &:first-child {
-        display: inline;
-      }
-    }
-  }
-
-  &.tracked {
-    min-width: 108px;
-
-    span {
-      display: inline;
-
-      &:first-child {
-        display: none;
-      }
-    }
-
-    .icon-check {
-      line-height: 16px;
-      vertical-align: middle;
-      position: relative;
-      top: -2px;
-    }
-  }
-}
-
 .container {
   margin-right: auto;
   margin-left: auto;

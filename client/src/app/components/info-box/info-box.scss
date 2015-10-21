@@ -1,26 +1,152 @@
-/* This should replace the .cp-call-out from the original styles */
-/* TODO add real styles */
-
-.info-box {
-  margin: 20px 0;
-  background-color: #fff;
-}
-
-.info-box section {
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  text-align: center;
-  border-radius: 2px;
-}
-
-.info-box section:after {
-  clear: both;
-}
-
 // From angular-translate.
 // Prevents content flickering while translations are loaded async.
 // Removed automatically after translations load
 .translate-cloak {
   display: none;
+}
+
+.info-box {
+  margin: 20px 0;
+
+  .container {
+    text-align: center;
+    border-radius: 2px;
+
+    &.border-bg {
+      background-image: url('assets/images/marketing-banner-bg.svg');
+      background-repeat: no-repeat;
+      background-size: 1900px;
+      background-position: -235px -659px;
+      padding: 12px;
+
+      @media screen and (min-width: 768px) {
+        padding: 20px;
+      }
+    }
+
+    .inner {
+      background: rgba($white, 0.97);
+      padding: 20px;
+      box-shadow: 0px 0px 3px rgba($black, 0.25);
+
+      @media screen and (min-width: 768px) {
+        padding: 30px;
+      }
+    }
+  }
+
+  .close {
+    margin-top: -14px;
+    opacity: 1;
+    color: $black;
+    font-size: 30px;
+
+    &:hover {
+      transition: all 0.8s ease-in-out;
+      color: $grey-medium;
+      background: transparent;
+    }
+  }
+
+  .content {
+    width: 100%;
+    margin: 0 auto;
+
+    @media screen and (min-width: 768px) {
+      width: 70%;
+    }
+  }
+
+  h3 {
+    margin: 0 0 15px 0;
+    line-height: 30px;
+  }
+
+  p {
+    font-size: 14px;
+    width: 100%;
+    margin: 0 auto 20px auto;
+
+    @media screen and (min-width: 768px) {
+      width: 80%;
+      margin: 0 auto 25px auto;
+    }
+  }
+
+  &.plain {
+
+    .container {
+      background: $white;
+      border: 1px solid $grey-border;
+      border-radius: 2px;
+      margin: 0 auto;
+      padding: 20px 12px;
+
+      @media screen and (min-width: 768px) {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &.details {
+
+    .container {
+      background: $white;
+      border: 1px solid $grey-border;
+      border-radius: 2px;
+      margin: 0 10px;
+      padding: 0px 12px;
+
+      @media screen and (min-width: 768px) {
+        margin: 0 auto;
+      }
+    }
+
+    .content {
+      width: 100%;
+      padding-bottom: 30px;
+
+      @media screen and (min-width: 768px) {
+        width: 75%;
+      }
+    }
+
+    p {
+      width: 86%;
+      margin: 0 auto 15px auto;
+    }
+
+    header {
+      margin-top: 55px;
+      margin-bottom: 20px;
+      text-align: center;
+      margin-bottom: 13px;
+
+      @media screen and (min-width: 768px) {
+        margin-top: 50px;
+        margin-bottom: 35px;
+      }
+    }
+
+    .icon-block {
+      padding: 10px 0;
+      text-align: center;
+      width: 46px;
+
+      @media screen and (min-width: 768px) {
+        margin: 0 3px;
+        width: 60px;
+      }
+    }
+
+    .icon-keeping-fit, .icon-learn-more, .icon-managing-stress, .icon-eating-right, .icon-being-social {
+      font-size: 27px;
+      line-height: 22px;
+
+      @media screen and (min-width: 768px) {
+        font-size: 37px;
+        line-height: 37px;
+      }
+    }
+  }
 }
