@@ -2,6 +2,7 @@ const CardController = function ($filter) {
   'ngInject';
 
   const MAX_TITLE_LENGTH = 80;
+  const MAX_ABSTRACT_LENGTH = 100;
 
   const cardClassesFor = function (card) {
     switch (card.contentName) {
@@ -20,6 +21,8 @@ const CardController = function ($filter) {
   this.lowerRight = '85%'; // TODO actual value
   this.lowerLeft = this.card.duration;
   this.cardTitle = $filter('limitTo')(this.card.title, MAX_TITLE_LENGTH);
+  this.cardAbstract =
+    $filter('limitTo')(this.card.description, MAX_ABSTRACT_LENGTH);
   this.cardImage = this.card.cardImage;
   this.resourcePath = this.card.uiSref;
   this.pillars = this.card.pillars;

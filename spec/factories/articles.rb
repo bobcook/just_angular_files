@@ -17,14 +17,20 @@ FactoryGirl.define do
         contentSourceBranding: 'An Article from our partner: ' \
                                'content/dam/specialized-membership/' \
                                'staying-sharp/articles/info-2015/jh-logo.jpg',
-        sourceMaterialsCitation: 'Want to dig a little deeper on this topic?',
+        sourceMaterialsCitation: '<p>Want to dig a little deeper on this ' \
+          'topic?</p> </p>If you want to dig a little deeper, the full study ' \
+          'can be found in <a href="http://jama.jamanetwork.com/article.aspx?' \
+          'articleid=1814206&resultClick=3">Journal of the American Medical ' \
+          'Association</a>',
         description: 'The older we get, the more we worry – and the less ' \
                      'likely we are to try new experiences.',
-        section1Body: "<p>A paragraph #{n}</p>",
+        section1Body: "<p>A paragraph #{n}</p>" \
+          '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>',
         section2Body: '',
-        bodyImage: '',
-        cardImage: 'http://www.aarp.org/content/dam/specialized-membership' \
-                   '/staying-sharp/articles/info-2015/card-image.jpg',
+        bodyImage: 'http://i.istockimg.com/file_thumbview_approve/23264892/6/' \
+          'stock-photo-23264892-elderly-women-gardening.jpg',
+        cardImage: 'http://i.istockimg.com/file_thumbview_approve/23264892/6/' \
+          'stock-photo-23264892-elderly-women-gardening.jpg',
         brainHealthPillar: ['Managing Stress'],
         impact: '1',
         validity: '1',

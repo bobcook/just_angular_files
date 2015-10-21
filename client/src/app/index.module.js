@@ -38,12 +38,12 @@ import activityTrackerBinary from
 import activityTrackerQuantity from
   './components/activity-tracker/quantity/quantity.js';
 import card from './components/card/card.js';
-import cardPillars from './components/card/pillars.js';
 import cards from './components/cards/cards.js';
 import contentDrawer from './components/content-drawer/content-drawer.js';
 import infoBox from './components/info-box/info-box.js';
 import modal from './components/modal/modal.js';
 import navPanel from './components/nav-panel/nav-panel.js';
+import pillarsDisplay from './components/pillars-display/pillars.js';
 import pillarFilters from './components/pillar-filters/pillar-filters.js';
 import postHref from './common/directives/post-href.js';
 import relatedContent from './components/related-content/related-content.js';
@@ -141,12 +141,12 @@ app
   .directive('ssActivityTrackerBinary', activityTrackerBinary)
   .directive('ssActivityTrackerQuantity', activityTrackerQuantity)
   .directive('ssCard', card)
-  .directive('ssCardPillars', cardPillars)
   .directive('ssCards', cards)
   .directive('ssContentDrawer', contentDrawer)
   .directive('ssInfoBox', infoBox)
   .directive('ssModal', modal)
   .directive('ssNavPanel', navPanel)
+  .directive('ssPillarsDisplay', pillarsDisplay)
   .directive('ssPillarFilters', pillarFilters)
   .directive('ssPostHref', postHref)
   .directive('ssRelatedContent', relatedContent)
