@@ -97,7 +97,7 @@ FactoryGirl.create_list(
 )
 
 puts 'Seeding Recipes'
-FactoryGirl.create_list(:recipe, 20, pillars: Pillar.all.sample(2))
+FactoryGirl.create_list(:recipe, 20)
 
 puts 'Seeding Activities'
 20.times do |index|

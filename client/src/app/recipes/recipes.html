@@ -2,21 +2,31 @@
   <div class="left"></div>
   <div class="right"></div>
   <!-- TODO add banner w/ background image -->
-  <section>
-    <div class="copy-wrap">
-      <div class="vertical-content">
-        <h2>Explore: Recipes</h2>
-        <p>Lorem ipsum dolor sit amet, nulla ipsum pede donec volutpat aenean convallis.</p>
+  <div class="cp-lead-in-bg">
+    <section class="container">
+      <div class="copy-wrap">
+        <div class="vertical-content">
+          <h2>Explore: Recipes</h2>
+          <p>Lorem ipsum dolor sit amet, nulla ipsum pede donec volutpat aenean convallis.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </div>
 
-<!-- TODO: add ss-filters directive -->
+<ss-pillar-filters
+  ss-selected-pillar="vm.selectedPillar">
+</ss-pillar-filters>
 
 <ss-info-box>
   <h3 translate>info.staying_sharp_recipes</h3>
   <p translate>info.every_recipe_in_staying_sharp</p>
 </ss-info-box>
 
-<ss-cards ss-resource="vm.resource" ss-per-page="8" ss-per-row="2" ss-card-classes="recipe-card"></ss-cards>
+<ss-cards
+  ss-resource="vm.resource"
+  ss-per-page="8"
+  ss-per-row="2"
+  ss-card-classes="recipe-card"
+  ss-selected-pillar="vm.selectedPillar">
+</ss-cards>

@@ -1,0 +1,25 @@
+<div class="cp-pillar-filter hidden-xs">
+  <section class="container">
+    <p>Filter by:</p>
+    <ul>
+      <li><a href="" ng-click="vm.setSelectedPillar('all')"><span class="pillar all-options">All</span></a></li>
+      <li class="hidden-xs"><span class="divider"></span></li>
+      <li ng-repeat="pillar in vm.otherPillars"><a href="" class="{{pillar.slug | hyphenate}}" ng-click="vm.setSelectedPillar(pillar.slug)"><span class="pillar {{pillar.slug | hyphenate}}">{{pillar.name}}</span></a></li>
+    </ul>
+  </section>
+</div>
+
+<!-- Mobile ONLY -->
+<div class="cp-pillar-filter visible-xs">
+  <section class="container">
+    <div class="btn-group">
+      <!-- TODO apply proper classes / styling -->
+      <select
+        name="pillar-filter-select"
+        ng-options="pillar.name for pillar in vm.pillars track by pillar.id"
+        ng-model="vm.selectedPillar">
+      </select>
+    </div>
+  </section>
+</div>
+

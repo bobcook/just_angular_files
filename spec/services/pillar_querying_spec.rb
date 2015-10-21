@@ -3,30 +3,30 @@ require 'rails_helper'
 describe PillarQuerying do
   include CollectionUtils
 
+  before(:each) do
+    Pillar.default_types.each do |slug|
+      create("#{slug}_pillar")
+    end
+  end
+
+  def create_items_with(pillars, counts = {})
+    pillars = pillars.respond_to?(:first) ? pillars : [pillars]
+
+    counts.map do |factory_name, count|
+      factory_name =
+        case factory_name
+        when :articles then :basic_article
+        else factory_name.to_s.singularize
+        end
+      create_list(factory_name, count, pillars: pillars)
+    end
+  end
+
+  def make_subject(options = {})
+    PillarQuerying.new(options)
+  end
+
   describe '#query' do
-    before(:each) do
-      Pillar.default_types.each do |slug|
-        create("#{slug}_pillar")
-      end
-    end
-
-    def create_items_with(pillars, counts = {})
-      pillars = pillars.respond_to?(:first) ? pillars : [pillars]
-
-      counts.map do |factory_name, count|
-        factory_name =
-          case factory_name
-          when :articles then :basic_article
-          else factory_name.to_s.singularize
-          end
-        create_list(factory_name, count, pillars: pillars)
-      end
-    end
-
-    def make_subject(options = {})
-      PillarQuerying.new(options)
-    end
-
     it 'queries for the given pillars' do
       pillar = Pillar.first
       other_pillar = Pillar.last
@@ -73,7 +73,9 @@ describe PillarQuerying do
       results = subject.query
       expect(results.size).to eq(expected_num_returned)
     end
+  end
 
+  describe '#recipes' do
     it 'returns the correct number of Recipes' do
       pillar = Pillar.first
       other_pillar = Pillar.last
@@ -94,11 +96,11 @@ describe PillarQuerying do
         counts: query_counts
       )
 
-      results = subject.query
-      recipes = results.select { |r| r.is_a?(Recipe) }
-      expect(recipes.count).to eq(expected_num_recipes)
+      expect(subject.recipes.count).to eq(expected_num_recipes)
     end
+  end
 
+  describe '#articles' do
     it 'returns the correct number of Articles' do
       pillar = Pillar.first
       other_pillar = Pillar.last
@@ -119,11 +121,11 @@ describe PillarQuerying do
         counts: query_counts
       )
 
-      results = subject.query
-      articles = results.select { |r| r.is_a?(Article) }
-      expect(articles.count).to eq(expected_num_articles)
+      expect(subject.articles.count).to eq(expected_num_articles)
     end
+  end
 
+  describe '#activities' do
     it 'returns the correct number of Activities' do
       pillar = Pillar.first
       other_pillar = Pillar.last
@@ -144,9 +146,7 @@ describe PillarQuerying do
         counts: query_counts
       )
 
-      results = subject.query
-      activities = results.select { |r| r.is_a?(Activity) }
-      expect(activities.count).to eq(expected_num_activities)
+      expect(subject.activities.count).to eq(expected_num_activities)
     end
   end
 end

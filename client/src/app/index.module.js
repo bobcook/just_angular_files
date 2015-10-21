@@ -4,6 +4,9 @@ import addConstants from './index.constants';
 
 import runBlock from './index.run';
 
+// filters
+import hyphenate from './common/filters/hyphenate.js';
+
 // resources
 import Activity from './common/resources/activity.js';
 import ActivityTrackerResponse from
@@ -21,6 +24,7 @@ import UserArticle from './common/resources/user-article.js';
 import $auth from './common/services/auth.js';
 import $assessmentsAuth from './assessments/assessments-auth.js';
 import $loadCurrentUser from './common/services/load-current-user.js';
+import $pillarFiltering from './common/services/pillar-filtering.js';
 import $postHref from './common/services/post-href.js';
 import authInterceptor from './common/services/auth-interceptor.js';
 import dependentMemoize from './common/services/dependent-memoize.js';
@@ -41,6 +45,7 @@ import deleteUserContent from
 import infoBox from './components/info-box/info-box.js';
 import modal from './components/modal/modal.js';
 import navPanel from './components/nav-panel/nav-panel.js';
+import pillarFilters from './components/pillar-filters/pillar-filters.js';
 import postHref from './common/directives/post-href.js';
 import reviews from './components/reviews/reviews.js';
 import sideNav from './components/side-nav/side-nav.js';
@@ -66,6 +71,8 @@ import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
 import LogoutController from './logout/logout.controller.js';
 import NavPanelController from './components/nav-panel/nav-panel.controller.js';
+import PillarFiltersController from
+  './components/pillar-filters/pillar-filters.controller.js';
 import RecipeController from './recipes/recipe.controller.js';
 import RecipesController from './recipes/recipes.controller.js';
 import ReviewsController from './components/reviews/reviews.controller.js';
@@ -95,6 +102,9 @@ app
 
   .run(runBlock)
 
+  // filters
+  .filter('hyphenate', hyphenate)
+
   // resources
   .factory('Activity', Activity)
   .factory('ActivityTrackerResponse', ActivityTrackerResponse)
@@ -110,8 +120,9 @@ app
   // services
   .factory('$assessmentsAuth', $assessmentsAuth)
   .factory('$auth', $auth)
-  .factory('$postHref', $postHref)
   .factory('$loadCurrentUser', $loadCurrentUser)
+  .factory('$pillarFiltering', $pillarFiltering)
+  .factory('$postHref', $postHref)
   .factory('authInterceptor', authInterceptor)
   .factory('dependentMemoize', dependentMemoize)
   .provider('modalStateHelper', modalStateHelper)
@@ -128,6 +139,7 @@ app
   .directive('ssInfoBox', infoBox)
   .directive('ssModal', modal)
   .directive('ssNavPanel', navPanel)
+  .directive('ssPillarFilters', pillarFilters)
   .directive('ssPostHref', postHref)
   .directive('ssReviews', reviews)
   .directive('ssSideNav', sideNav)
@@ -151,6 +163,7 @@ app
   .controller('LoginSuccessController', LoginSuccessController)
   .controller('LogoutController', LogoutController)
   .controller('NavPanelController', NavPanelController)
+  .controller('PillarFiltersController', PillarFiltersController)
   .controller('RecipeController', RecipeController)
   .controller('RecipesController', RecipesController)
   .controller('ReviewsController', ReviewsController)

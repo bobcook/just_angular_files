@@ -1,7 +1,30 @@
-<div ng-repeat="item in vm.items" ng-if="$index % vm.perRow == 0" class="card-holder container article-holder">
-  <ss-card ng-repeat="i in vm.range(vm.perRow)" ss-card-for="vm.items[$parent.$index + i]" ss-card-classes="vm.cardClasses" ss-resource="vm.resource" ss-parent-resource="vm.parentResource" ss-items="vm.items"></ss-card>
+<section class="info-box">
+  <div
+    ng-if="vm.shownItems.length === 0"
+    class="container">
+
+    <div class="content">
+      <h3>No cards found for the selected pillar</h3>
+    </div>
+  </div>
+</section>
+
+<div
+  ng-repeat="item in vm.shownItems"
+  ng-if="$index % vm.perRow == 0"
+  class="card-holder container article-holder">
+
+  <ss-card
+    ng-repeat="card in vm.itemsInRow($parent.$index, vm.shownItems)"
+    ss-card-for="card"
+    ss-card-classes="vm.cardClasses"
+    ss-resource="vm.resource"
+    ss-parent-resource="vm.parentResource">
+  </ss-card>
 </div>
 
-<button ng-show="!vm.completed" ng-click="vm.showMore()">
+<button
+  ng-show="!vm.completed"
+  ng-click="vm.showMore()">
   Show more
 </button>

@@ -3,10 +3,15 @@ const Pillar = function (API_URL, railsResourceFactory) {
 
   const pillarsURL = `${API_URL}/api/v1/pillars`;
 
-  return railsResourceFactory({
+  const Pillar = railsResourceFactory({
     name: 'pillar',
     url: `${pillarsURL}/{{id}}`,
+    httpConfig: {
+      cache: true,
+    },
   });
+
+  return Pillar;
 };
 
 export default Pillar;

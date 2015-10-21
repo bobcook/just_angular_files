@@ -1,5 +1,9 @@
 FactoryGirl.define do
   factory :recipe do
+    transient do
+      pillar_count 2
+    end
+
     sequence(:title) { |n| "Recipe #{n}" }
     last_modified { Time.current }
     published_at { Time.current }
@@ -42,6 +46,15 @@ FactoryGirl.define do
                   'ullamcorper sagittis. Maecenas pharetra quam vel ante ' \
                   'porta, nec volutpat purus porttitor.'
       }
+    end
+
+    after(:create) do |recipe, evaluator|
+      unless recipe.pillars.present?
+        pillars = Pillar.default_types.map do |slug|
+          Pillar.find_by(slug: slug) || build("#{slug}_pillar")
+        end
+        recipe.update(pillars: pillars.sample(evaluator.pillar_count))
+      end
     end
   end
 end

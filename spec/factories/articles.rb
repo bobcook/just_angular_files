@@ -1,5 +1,9 @@
 FactoryGirl.define do
   factory :article do
+    transient do
+      pillar_count 2
+    end
+
     last_modified { Time.current }
     published_at { Time.current }
     sequence(:title) { |n| "Article #{n}" }
@@ -35,6 +39,15 @@ FactoryGirl.define do
                         'stress provoke negative behaviors such as bingeing ' \
                         'on junk food, smoking'
       }
+    end
+
+    after(:create) do |article, evaluator|
+      unless evaluator.pillars.present?
+        pillars = Pillar.default_types.map do |slug|
+          Pillar.find_by(slug: slug) || build("#{slug}_pillar")
+        end
+        article.update(pillars: pillars.sample(evaluator.pillar_count))
+      end
     end
 
     Article.article_types.each do |article_type|

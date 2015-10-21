@@ -1,4 +1,4 @@
-const CardsController = function () {
+const CardsController = function ($pillarFiltering) {
   'ngInject';
 
   const MorePages = {};
@@ -6,13 +6,19 @@ const CardsController = function () {
 
   // only saveable resources (UserArticles, UserRecipes) have a parentResource
   this.parentResource = this.parentResource || null;
+  this.selectedPillar = this.selectedPillar || null; // Via ss-selected-pillar
   this.resource = this.resource || null; // Should be defined via ss-resource
   this.perPage = this.perPage || 8; // Defined via ss-per-page
   this.perRow = this.perRow || 2; // Defined via ss-per-row
   this.cardClasses = this.cardClasses || ''; // Defined via ss-card-classes
   this.items = [];
+  this.shownItems = this.items;
   this.page = 0;
   this.completed = false;
+
+  this.setShownItems = (newItems) => {
+    this.shownItems = newItems;
+  };
 
   this.showMore = () => {
     showMore(this.page + 1);
@@ -20,6 +26,12 @@ const CardsController = function () {
 
   this.range = function (num) {
     return _.range(0, num);
+  };
+
+  this.itemsInRow = function (offset, items) {
+    const chunks = _.chunk(items, this.perRow);
+    const chunkNum = offset / this.perRow;
+    return chunks[chunkNum];
   };
 
   const showMore = (page) => {

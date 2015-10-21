@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       end
       resources :auth_tokens, only: [:show]
       resource :copy, controller: 'copy', only: :show
+      resources :pillars, only: [:index]
       resources :recipes, only: [:index, :show]
       resources :related_content, only: [:index]
 

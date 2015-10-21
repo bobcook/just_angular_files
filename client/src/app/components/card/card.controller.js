@@ -11,6 +11,7 @@ const CardController = function ($filter) {
   this.cardTitle = $filter('limitTo')(this.card.title, MAX_TITLE_LENGTH);
   this.cardImage = this.card.cardImage;
   this.resourcePath = this.card.uiSref;
+  this.pillars = this.card.pillars;
 };
 
 export default CardController;
