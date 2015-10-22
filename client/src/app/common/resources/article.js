@@ -12,20 +12,6 @@ const Article = function (API_URL, railsResourceFactory, railsSerializer) {
 
   const userArticleUrl = `${API_URL}/api/v1/me/articles`;
 
-  // TODO: possibly delete saveUserArticle, queryUserArticles, queryUserArticle
-  // after we make the saving articles a directive
-  Article.prototype.saveUserArticle = function () {
-    return this.$post(userArticleUrl);
-  };
-
-  Article.queryUserArticles = function () {
-    return this.$get(userArticleUrl);
-  };
-
-  Article.queryUserArticle = function (id) {
-    return this.$get(`${userArticleUrl}/${id}`);
-  };
-
   Object.defineProperty(Article.prototype, 'cardImage', {
     // TODO: replace w/ real images
     get: function () {

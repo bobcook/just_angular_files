@@ -14,7 +14,7 @@ module Api
         end
 
         def create
-          article = Article.find(params[:article][:id])
+          article = Article.find(params[:article][:article_id])
           current_user.articles << article
           head :created
         end

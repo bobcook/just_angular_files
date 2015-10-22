@@ -1,11 +1,8 @@
 const UserArticleController = function (Article,
-                                               UserArticle,
-                                               ArticleReview,
-                                               $state,
-                                               $stateParams) {
+                                       ArticleReview,
+                                       UserArticle,
+                                       $stateParams) {
   'ngInject';
-
-  this.reviews = [];
 
   // get one article
   UserArticle.get($stateParams.id).then((article) => {
@@ -13,10 +10,10 @@ const UserArticleController = function (Article,
   });
 
   // pass values to directive
-  this.parentResource = Article;
-  this.resource = UserArticle;
+  this.isUserNamespace = true;
+  this.resource = Article;
   this.reviewResource = ArticleReview;
-  this.parentResourceId = $stateParams.id;
+  this.userResource = UserArticle;
 };
 
 export default UserArticleController;

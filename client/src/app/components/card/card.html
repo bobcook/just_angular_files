@@ -9,14 +9,14 @@
       </header>
       <article>
         <h4><a ui-sref="{{vm.resourcePath}}">{{vm.cardTitle}}</a></h4>
-        <ss-delete-user-content
-          ng-if="vm.parentResource"
-          ss-resource="vm.resource"
-          ss-parent-resource="vm.parentResource"
+        <ss-save-user-content
+          ng-if="vm.isUserNamespace"
           ss-display-type="icon"
+          ss-is-user-namespace="vm.isUserNamespace"
           ss-item="vm.card"
-          ss-items="vm.items">
-        </ss-delete-user-content>
+          ss-items="vm.items"
+          ss-resource="vm.resource">
+        </ss-save-user-content>
 
         <div class="effort">
           <span>{{vm.lowerLeft}}</span>

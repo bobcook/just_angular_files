@@ -77,14 +77,14 @@ const routerConfig = function (stateHelperProvider,
             {
               name: 'articles',
               url: '/articles',
-              templateUrl: 'app/me/articles/user-articles.html',
+              templateUrl: 'app/articles/articles.html',
               controller: 'UserArticlesController',
               controllerAs: 'vm',
             },
             {
               name: 'article',
               url: '/article/:id',
-              templateUrl: 'app/me/articles/user-article.html',
+              templateUrl: 'app/articles/article.html',
               controller: 'UserArticleController',
               controllerAs: 'vm',
               children: [

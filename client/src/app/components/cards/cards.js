@@ -8,11 +8,11 @@ const cards = function ($pillarFiltering) {
     templateUrl: 'app/components/cards/cards.html',
     restrict: 'AE',
     scope: {
-      resource: '=ssResource',
+      cardClasses: '@ssCardClasses',
+      isUserNamespace: '=ssIsUserNamespace',
       perPage: '=ssPerPage',
       perRow: '=ssPerRow',
-      cardClasses: '@ssCardClasses',
-      parentResource: '=?ssParentResource',
+      resource: '=ssResource',
       selectedPillar: '=ssSelectedPillar',
     },
     link: function (scope, element, attrs) {

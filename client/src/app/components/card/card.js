@@ -8,9 +8,9 @@ const card = function () {
     scope: {
       card: '=ssCardFor',
       cardClasses: '=ssCardClasses',
-      resource: '=ssResource',
-      parentResource: '=ssParentResource',
+      isUserNamespace: '=ssIsUserNamespace',
       items: '=ssItems',
+      resource: '=ssResource',
     },
   };
 };

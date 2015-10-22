@@ -4,8 +4,6 @@ const CardsController = function ($pillarFiltering) {
   const MorePages = {};
   const NoMorePages = {};
 
-  // only saveable resources (UserArticles, UserRecipes) have a parentResource
-  this.parentResource = this.parentResource || null;
   this.selectedPillar = this.selectedPillar || null; // Via ss-selected-pillar
   this.resource = this.resource || null; // Should be defined via ss-resource
   this.perPage = this.perPage || 8; // Defined via ss-per-page

@@ -40,14 +40,14 @@ import card from './components/card/card.js';
 import cardPillars from './components/card/pillars.js';
 import cards from './components/cards/cards.js';
 import contentDrawer from './components/content-drawer/content-drawer.js';
-import deleteUserContent from
-  './components/delete-user-content/delete-user-content.js';
 import infoBox from './components/info-box/info-box.js';
 import modal from './components/modal/modal.js';
 import navPanel from './components/nav-panel/nav-panel.js';
 import pillarFilters from './components/pillar-filters/pillar-filters.js';
 import postHref from './common/directives/post-href.js';
 import reviews from './components/reviews/reviews.js';
+import saveUserContent from
+  './components/save-user-content/save-user-content.js';
 import sideNav from './components/side-nav/side-nav.js';
 import socialLinks from './components/social-links/social-links.js';
 import topNav from './components/top-nav/top-nav.js';
@@ -66,8 +66,6 @@ import ArticleModalController from './articles/article-modal.controller.js';
 import ArticlesController from './articles/articles.controller.js';
 import CardController from './components/card/card.controller.js';
 import CardsController from './components/cards/cards.controller.js';
-import DeleteUserContentController from
-  './components/delete-user-content/delete-user-content.controller.js';
 import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
 import LogoutController from './logout/logout.controller.js';
@@ -77,6 +75,8 @@ import PillarFiltersController from
 import RecipeController from './recipes/recipe.controller.js';
 import RecipesController from './recipes/recipes.controller.js';
 import ReviewsController from './components/reviews/reviews.controller.js';
+import SaveUserContentController from
+  './components/save-user-content/save-user-content.controller.js';
 import SocialLinksController from
   './components/social-links/social-links.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
@@ -138,13 +138,13 @@ app
   .directive('ssCardPillars', cardPillars)
   .directive('ssCards', cards)
   .directive('ssContentDrawer', contentDrawer)
-  .directive('ssDeleteUserContent', deleteUserContent)
   .directive('ssInfoBox', infoBox)
   .directive('ssModal', modal)
   .directive('ssNavPanel', navPanel)
   .directive('ssPillarFilters', pillarFilters)
   .directive('ssPostHref', postHref)
   .directive('ssReviews', reviews)
+  .directive('ssSaveUserContent', saveUserContent)
   .directive('ssSocialLinks', socialLinks)
   .directive('ssSideNav', sideNav)
   .directive('ssTopNav', topNav)
@@ -162,7 +162,6 @@ app
   .controller('ArticlesController', ArticlesController)
   .controller('CardController', CardController)
   .controller('CardsController', CardsController)
-  .controller('DeleteUserContentController', DeleteUserContentController)
   .controller('HomeController', HomeController)
   .controller('LoginSuccessController', LoginSuccessController)
   .controller('LogoutController', LogoutController)
@@ -171,6 +170,7 @@ app
   .controller('RecipeController', RecipeController)
   .controller('RecipesController', RecipesController)
   .controller('ReviewsController', ReviewsController)
+  .controller('SaveUserContentController', SaveUserContentController)
   .controller('SocialLinksController', SocialLinksController)
   .controller('TopNavController', TopNavController)
   .controller('UserArticleController', UserArticleController)

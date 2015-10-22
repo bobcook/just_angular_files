@@ -18,8 +18,9 @@
     ng-repeat="card in vm.itemsInRow($parent.$index, vm.shownItems)"
     ss-card-for="card"
     ss-card-classes="vm.cardClasses"
-    ss-resource="vm.resource"
-    ss-parent-resource="vm.parentResource">
+    ss-is-user-namespace="vm.isUserNamespace"
+    ss-items="vm.items"
+    ss-resource="vm.resource">
   </ss-card>
 </div>
 

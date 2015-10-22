@@ -1,12 +1,8 @@
-const UserArticlesController = function (UserArticle, Article) {
+const UserArticlesController = function (UserArticle) {
   'ngInject';
 
-  UserArticle.query().then((userArticles) => {
-    this.articles = userArticles.articles;
-  });
-
   // pass values to directive
-  this.parentResource = Article;
+  this.isUserNamespace = true;
   this.resource = UserArticle;
 };
 
