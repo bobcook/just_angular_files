@@ -11,7 +11,7 @@ const SocialLinksController = function ($filter) {
 
   this.providerNames = function () {
     return _.filter(_.keys(providers), function (providerName) {
-      return providerName !== 'email'
+      return providerName !== 'email';
     });
   };
 

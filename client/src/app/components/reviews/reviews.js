@@ -6,8 +6,8 @@ const reviews = function () {
     templateUrl: 'app/components/reviews/reviews.html',
     restrict: 'E',
     scope: {
-      reviewResource: '=',
-      parentResource: '=',
+      reviewResource: '=ssReviewResource',
+      resource: '=ssResource',
     },
     transclude: true,
   };

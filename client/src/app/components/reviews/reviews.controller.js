@@ -3,16 +3,15 @@ const ReviewsController = function ($stateParams, $rootScope) {
 
   // display all reviews
   this.reviewResource
-  .query({}, { [ `${this.parentResource.config.name}Id` ]: $stateParams.id })
+  .query({}, { [ `${this.resource.config.name}Id` ]: $stateParams.id })
   .then((reviews) => {
     this.reviews = reviews;
   });
 
   // review the resource
   this.submitReview = () => {
-
     new this.reviewResource({
-      [ `${this.parentResource.config.name}Id` ]: $stateParams.id,
+      [ `${this.resource.config.name}Id` ]: $stateParams.id,
       recommend: this.recommend,
       comment: this.comment,
     })
@@ -21,14 +20,14 @@ const ReviewsController = function ($stateParams, $rootScope) {
       newReview.user = {};
       newReview.user.firstName = $rootScope.$currentUser.firstName;
       newReview.user.lastName = $rootScope.$currentUser.lastName;
+      newReview.user.id = $rootScope.$currentUser.id;
       this.reviews.push(newReview);
     });
   };
 
   // check if user has reviewed the resource
   this.userHasReviewed = () => {
-    if (!this.reviews) { return false; }
-
+    if (!this.reviews || this.reviews.length === 0) { return false; }
     return this.reviews.some((review) => {
       return review.user.id === $rootScope.$currentUser.id;
     });
