@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "icons";
+  src: url("assets/fonts/icons.woff"), url("assets/fonts/icons.eot"), url("assets/fonts/icons.svg"), url("assets/fonts/icons.ttf");
+}
+
 [class^="icon-"],
 [class*=" icon-"] {
   font-family: 'icons';

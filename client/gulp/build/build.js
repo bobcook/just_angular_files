@@ -78,6 +78,7 @@ gulp.task('other', function () {
     path.join('!' + conf.paths.src, '/**/*.{html,css,js,scss}'),
   ])
     .pipe($.filter((file) => file.stat.isFile()))
+    .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/')))
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
 });
 
