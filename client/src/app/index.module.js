@@ -49,6 +49,7 @@ import pillarFilters from './components/pillar-filters/pillar-filters.js';
 import postHref from './common/directives/post-href.js';
 import reviews from './components/reviews/reviews.js';
 import sideNav from './components/side-nav/side-nav.js';
+import socialLinks from './components/social-links/social-links.js';
 import topNav from './components/top-nav/top-nav.js';
 
 // controllers
@@ -76,6 +77,8 @@ import PillarFiltersController from
 import RecipeController from './recipes/recipe.controller.js';
 import RecipesController from './recipes/recipes.controller.js';
 import ReviewsController from './components/reviews/reviews.controller.js';
+import SocialLinksController from
+  './components/social-links/social-links.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
 import UserArticleController from
   './me/articles/user-article.controller.js';
@@ -142,6 +145,7 @@ app
   .directive('ssPillarFilters', pillarFilters)
   .directive('ssPostHref', postHref)
   .directive('ssReviews', reviews)
+  .directive('ssSocialLinks', socialLinks)
   .directive('ssSideNav', sideNav)
   .directive('ssTopNav', topNav)
 
@@ -167,6 +171,7 @@ app
   .controller('RecipeController', RecipeController)
   .controller('RecipesController', RecipesController)
   .controller('ReviewsController', ReviewsController)
+  .controller('SocialLinksController', SocialLinksController)
   .controller('TopNavController', TopNavController)
   .controller('UserArticleController', UserArticleController)
   .controller('UserArticlesController', UserArticlesController);

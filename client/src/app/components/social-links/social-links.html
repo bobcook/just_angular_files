@@ -1,0 +1,15 @@
+<a
+  ng-repeat="providerName in vm.providerNames()"
+  href="#"
+  socialshare
+  socialshare-provider="{{providerName}}"
+  socialshare-text={{vm.title}}
+  socialshare-url={{vm.pageURL}}>
+
+  <span
+    class="{{vm.iconClassFor(providerName)}}">
+  </span>
+</a>
+<a href="mailto:?subject={{vm.title}}&body=Check out this {{vm.resourceType}} On Staying Sharp{{vm.pageURL}}">
+  <span class="{{vm.iconClassFor('email')}}"></span>
+<a/>

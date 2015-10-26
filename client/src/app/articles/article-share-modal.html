@@ -1,40 +1,20 @@
 <ss-modal>
+  <div class="content">
+    <div class="header">
+      <div class="header-content">
+        <h5>Share Article</h5>
+        <h3>{{vm.article.title}}</h3>
+        <span>Read Time: {{vm.article.duration}}</span>
+      </div>
+    </div>
+    <div class="footer">
+      <label>Share via:</label>
 
-<h3>Share Article</h3>
-<h2>{{vm.article.title}}</h2>
-<p>Read Time: - </p>
-<p>Share via:</p>
-
-<ul>
-  <li>
-    <a href="#"
-       socialshare
-       socialshare-provider="facebook"
-       socialshare-url={{vm.article.url}}>
-      Facebook
-    </a>
-  </li>
-  <li>
-    <a href="#"
-       socialshare
-       socialshare-provider="twitter"
-       socialshare-url={{vm.article.url}}
-       socialshare-text={{vm.article.title}}>
-      Twitter
-    </a>
-  </li>
-  <li>
-    <a href="#"
-       socialshare
-       socialshare-provider="google+"
-       socialshare-url={{vm.article.url}}>
-      google+
-    </a>
-  </li>
-  <li>
-    <a ng-href="mailto:?subject={{vm.article.title}}&body=Check out this Article On Staying Sharp {{vm.article.url}}">
-    Email</a>
-  </li>
-</ul>
-
+      <ss-social-links
+        ss-page-url="vm.articleURL"
+        ss-title="vm.articleTitle"
+        ss-resource-type="Article">
+      </ss-social-links>
+    </div>
+  </div>
 </ss-modal>
