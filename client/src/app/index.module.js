@@ -53,6 +53,7 @@ import socialLinks from './components/social-links/social-links.js';
 import topNav from './components/top-nav/top-nav.js';
 
 // controllers
+import ActivitiesController from './activities/activities.controller.js';
 import ActivityTrackerController from
   './components/activity-tracker/activity-tracker.controller.js';
 import ActivityTrackerBinaryController from
@@ -150,6 +151,7 @@ app
   .directive('ssTopNav', topNav)
 
   // controllers
+  .controller('ActivitiesController', ActivitiesController)
   .controller('ActivityTrackerController', ActivityTrackerController)
   .controller('ActivityTrackerBinaryController',
     ActivityTrackerBinaryController)

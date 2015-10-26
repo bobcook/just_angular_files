@@ -16,6 +16,13 @@ const routerConfig = function (stateHelperProvider,
       },
       children: [
         {
+          name: 'activities',
+          url: '/activities',
+          templateUrl: 'app/activities/activities.html',
+          controller: 'ActivitiesController',
+          controllerAs: 'vm',
+        },
+        {
           name: 'articles',
           url: '/articles',
           templateUrl: 'app/articles/articles.html',

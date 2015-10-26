@@ -1,4 +1,5 @@
 require 'rails_helper'
+require_relative './publishable_shared_examples'
 require_relative './with_pillars_shared_examples'
 
 describe Activity do
@@ -6,8 +7,6 @@ describe Activity do
   it { should have_many(:pillars).through(:pillar_categorizations) }
   it { should belong_to(:activity_tracker) }
   it { should have_many(:user_activities) }
-
-  it_behaves_like 'it fulfills the WithPillars interface', :activity
 
   describe '#saved?' do
     it 'returns true if user has saved the activity' do
@@ -24,5 +23,21 @@ describe Activity do
 
       expect(subject.saved?(user)).to eq(false)
     end
+  end
+
+  describe '#last_modified' do
+    it_behaves_like(
+      'it defaults to the current time',
+      :activity,
+      :last_modified
+    )
+  end
+
+  describe '#published_at' do
+    it_behaves_like(
+      'it defaults to the current time',
+      :activity,
+      :published_at
+    )
   end
 end

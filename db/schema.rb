@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151016225020) do
+ActiveRecord::Schema.define(version: 20151026231618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20151016225020) do
     t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "published_at",                 null: false
+    t.datetime "last_modified",                null: false
   end
 
   add_index "activities", ["activity_tracker_id"], name: "index_activities_on_activity_tracker_id", using: :btree
@@ -69,8 +71,8 @@ ActiveRecord::Schema.define(version: 20151016225020) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",         null: false
-    t.datetime "published_at"
-    t.datetime "last_modified"
+    t.datetime "published_at",  null: false
+    t.datetime "last_modified", null: false
     t.json     "payload",       null: false
     t.string   "type",          null: false
     t.string   "uuid"

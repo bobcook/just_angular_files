@@ -1,4 +1,5 @@
 class Activity < ActiveRecord::Base
+  include Publishable
   include WithPillars
 
   has_many :pillar_categorizations, as: :categorizable

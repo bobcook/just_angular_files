@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :activities, only: [:show]
+      resources :activities, only: [:index, :show]
       resources :articles, only: [:index, :show] do
         resources :reviews, controller: 'articles/reviews', only: [:create, :index]
       end
