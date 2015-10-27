@@ -14,6 +14,7 @@ import ActivityTrackerResponse from
 import Article from './common/resources/article.js';
 import ArticleReview from './common/resources/article-review.js';
 import CurrentUser from './common/resources/current-user.js';
+import Game from './common/resources/game.js';
 import Pillar from './common/resources/pillar.js';
 import Recipe from './common/resources/recipe.js';
 import RelatedContent from './common/resources/related-content.js';
@@ -69,6 +70,7 @@ import ArticleModalController from './articles/article-modal.controller.js';
 import ArticlesController from './articles/articles.controller.js';
 import CardController from './components/card/card.controller.js';
 import CardsController from './components/cards/cards.controller.js';
+import GamesController from './games/games.controller.js';
 import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
 import LogoutController from './logout/logout.controller.js';
@@ -119,6 +121,7 @@ app
   .factory('Article', Article)
   .factory('ArticleReview', ArticleReview)
   .factory('CurrentUser', CurrentUser)
+  .factory('Game', Game)
   .factory('Pillar', Pillar)
   .factory('Recipe', Recipe)
   .factory('RelatedContent', RelatedContent)
@@ -170,6 +173,7 @@ app
   .controller('ArticlesController', ArticlesController)
   .controller('CardController', CardController)
   .controller('CardsController', CardsController)
+  .controller('GamesController', GamesController)
   .controller('HomeController', HomeController)
   .controller('LoginSuccessController', LoginSuccessController)
   .controller('LogoutController', LogoutController)

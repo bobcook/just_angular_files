@@ -126,3 +126,6 @@ Activity.all.each do |activity|
     PillarCategorization.create(pillar: pillar, categorizable: activity)
   end
 end
+
+puts 'Seeding Games'
+FactoryGirl.create_list(:game, 20)

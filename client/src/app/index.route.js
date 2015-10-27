@@ -51,6 +51,13 @@ const routerConfig = function (stateHelperProvider,
           ],
         },
         {
+          name: 'games',
+          url: '/games',
+          templateUrl: 'app/games/games.html',
+          controller: 'GamesController',
+          controllerAs: 'vm',
+        },
+        {
           name: 'home',
           url: '/',
           templateUrl: 'app/home/home.html',
