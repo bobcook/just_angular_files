@@ -30,6 +30,16 @@ SamlIdp.configure do |config|
     },
     uniqueuserid: {
       getter: -> (principal) { principal.id }
+    },
+    # TODO: get these from user questionnaire
+    gender: {
+      getter: -> (_principal) { 'MALE' }
+    },
+    yrofedu: {
+      getter: -> (_prinicpal) { 16 }
+    },
+    hand: {
+      getter: -> (_principal) { 'RIGHT' }
     }
   }
 
