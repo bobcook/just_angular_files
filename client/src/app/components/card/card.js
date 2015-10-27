@@ -5,6 +5,7 @@ const card = function () {
     bindToController: true,
     templateUrl: 'app/components/card/card.html',
     restrict: 'E',
+    replace: true,
     scope: {
       card: '=ssCardFor',
       cardClasses: '=ssCardClasses',

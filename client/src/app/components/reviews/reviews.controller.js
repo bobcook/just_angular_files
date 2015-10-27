@@ -1,9 +1,11 @@
 const ReviewsController = function ($stateParams, $rootScope) {
   'ngInject';
 
+  const contentName = this.resource.contentName.toLowerCase();
+
   // display all reviews
   this.reviewResource
-  .query({}, { [ `${this.resource.config.name}Id` ]: $stateParams.id })
+  .query({}, { [ `${contentName}Id` ]: $stateParams.id })
   .then((reviews) => {
     this.reviews = reviews;
   });
@@ -11,7 +13,7 @@ const ReviewsController = function ($stateParams, $rootScope) {
   // review the resource
   this.submitReview = () => {
     new this.reviewResource({
-      [ `${this.resource.config.name}Id` ]: $stateParams.id,
+      [ `${contentName}Id` ]: $stateParams.id,
       recommend: this.recommend,
       comment: this.comment,
     })

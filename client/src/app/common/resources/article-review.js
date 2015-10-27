@@ -6,6 +6,16 @@ const ArticleReview = function ($stateParams, API_URL, railsResourceFactory) {
     url: `${API_URL}/api/v1/articles/{{articleId}}/reviews`,
   });
 
+  // "Class-level" properties
+  ArticleReview.extend({
+    contentName: 'Review',
+  });
+
+  // "Instance-level" properties
+  ArticleReview.include({
+    contentName: 'Review',
+  });
+
   return ArticleReview;
 };
 

@@ -16,6 +16,7 @@ import ArticleReview from './common/resources/article-review.js';
 import CurrentUser from './common/resources/current-user.js';
 import Pillar from './common/resources/pillar.js';
 import Recipe from './common/resources/recipe.js';
+import RelatedContent from './common/resources/related-content.js';
 import UserActivity from './common/resources/user-activity.js';
 import UserActivityPeriod from './common/resources/user-activity-period.js';
 import UserArticle from './common/resources/user-article.js';
@@ -45,6 +46,7 @@ import modal from './components/modal/modal.js';
 import navPanel from './components/nav-panel/nav-panel.js';
 import pillarFilters from './components/pillar-filters/pillar-filters.js';
 import postHref from './common/directives/post-href.js';
+import relatedContent from './components/related-content/related-content.js';
 import reviews from './components/reviews/reviews.js';
 import saveUserContent from
   './components/save-user-content/save-user-content.js';
@@ -75,6 +77,8 @@ import PillarFiltersController from
   './components/pillar-filters/pillar-filters.controller.js';
 import RecipeController from './recipes/recipe.controller.js';
 import RecipesController from './recipes/recipes.controller.js';
+import RelatedContentController from
+  './components/related-content/related-content.controller.js';
 import ReviewsController from './components/reviews/reviews.controller.js';
 import SaveUserContentController from
   './components/save-user-content/save-user-content.controller.js';
@@ -117,6 +121,7 @@ app
   .factory('CurrentUser', CurrentUser)
   .factory('Pillar', Pillar)
   .factory('Recipe', Recipe)
+  .factory('RelatedContent', RelatedContent)
   .factory('UserActivity', UserActivity)
   .factory('UserActivityPeriod', UserActivityPeriod)
   .factory('UserArticle', UserArticle)
@@ -144,6 +149,7 @@ app
   .directive('ssNavPanel', navPanel)
   .directive('ssPillarFilters', pillarFilters)
   .directive('ssPostHref', postHref)
+  .directive('ssRelatedContent', relatedContent)
   .directive('ssReviews', reviews)
   .directive('ssSaveUserContent', saveUserContent)
   .directive('ssSocialLinks', socialLinks)
@@ -171,6 +177,7 @@ app
   .controller('PillarFiltersController', PillarFiltersController)
   .controller('RecipeController', RecipeController)
   .controller('RecipesController', RecipesController)
+  .controller('RelatedContentController', RelatedContentController)
   .controller('ReviewsController', ReviewsController)
   .controller('SaveUserContentController', SaveUserContentController)
   .controller('SocialLinksController', SocialLinksController)

@@ -2,7 +2,7 @@ const SaveUserContentController = function ($state) {
   'ngInject';
 
   // TODO: consider adding a service to pluralize the resource names
-  const resourceName = resourceName || this.resource.config.name;
+  const resourceName = resourceName || this.resource.contentName.toLowerCase();
 
   if (this.isUserNamespace) {
     this.isSaved = true;

@@ -12,14 +12,20 @@ const Recipe = function (API_URL, railsResourceFactory, railsSerializer) {
     }),
   });
 
-  Object.defineProperty(Recipe.prototype, 'cardImage', {
-    // TODO: replace w/ real images
-    get: function () {
-      return 'https://d2izl3afq8akgg.cloudfront.net/' +
-        'wp-content/uploads/2013/12/Blueberries-008.jpg';
-    },
+  // "Class-level" properties
+  Recipe.extend({
+    contentName: 'Recipe',
   });
 
+  // "Instance-level" properties
+  Recipe.include({
+    contentName: 'Recipe',
+    // TODO: real cardImage
+    cardImage: 'https://d2izl3afq8akgg.cloudfront.net/' +
+               'wp-content/uploads/2013/12/Blueberries-008.jpg',
+  });
+
+  // Computed properties
   Object.defineProperty(Recipe.prototype, 'uiSref', {
     get: function () {
       return `application.recipe({ id: ${this.id} })`;

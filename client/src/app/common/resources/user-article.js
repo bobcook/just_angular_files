@@ -12,17 +12,23 @@ const UserArticle = function (API_URL, railsResourceFactory, railsSerializer) {
     }),
   });
 
+  // "Class-level" properties
+  UserArticle.extend({
+    contentName: 'Article',
+  });
+
+  // "Instance-level" properties
+  UserArticle.include({
+    contentName: 'Article',
+    // TODO: real cardImage
+    cardImage: 'http://i.istockimg.com/file_thumbview_approve/23264892/6' +
+                '/stock-photo-23264892-elderly-women-gardening.jpg',
+  });
+
+  // Computed properties
   UserArticle.delete = function (id) {
     return this.$delete(`${userArticleUrl}/${id}`);
   };
-
-  Object.defineProperty(UserArticle.prototype, 'cardImage', {
-    // TODO: replace w/ real images
-    get: function () {
-      return 'http://i.istockimg.com/file_thumbview_approve/23264892/6' +
-        '/stock-photo-23264892-elderly-women-gardening.jpg';
-    },
-  });
 
   Object.defineProperty(UserArticle.prototype, 'uiSref', {
     get: function () {
