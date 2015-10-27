@@ -1,22 +1,37 @@
-<p> {{ vm.recommendPercentage() }} Liked This:</p>
-<ng-transclude></ng-transclude>
+<div class="cp-reviews">
+  <div class="container">
 
-<form ng-hide="vm.userHasReviewed()" ng-submit="vm.submitReview()">
-  <input type="radio" name="recommend" ng-value="true" id="yes" ng-model="vm.recommend">
-  <label for="yes">Yes, I liked this</label>
+    <header>
+      <h3>{{ vm.recommendPercentage() }} Liked This:</h3>
+      <ng-transclude></ng-transclude>
 
-  <input type="radio" name="recommend" ng-value="false" id="no" ng-model="vm.recommend">
-  <label for="no">No, I didn't like this</label><br>
+      <form ng-hide="vm.userHasReviewed()" ng-submit="vm.submitReview()">
+        <span class="form-row">
+          <input type="radio" name="recommend" ng-value="true" id="yes" ng-model="vm.recommend">
+          <label for="yes">Yes, I liked this</label>
+        </span>
 
-  <label for="comment">Write a review (Optional):</label><br>
-  <textarea id="comment" ng-model="vm.comment"></textarea>
+        <span class="form-row">
+          <input type="radio" name="recommend" ng-value="false" id="no" ng-model="vm.recommend">
+          <label for="no">No, I didn't like this</label>
+        </span>
 
-  <input type="submit" value="Submit Review">
-</form>
+        <div class="comment">
+          <label for="comment">Write a review (Optional):</label><br>
+          <textarea id="comment" ng-model="vm.comment"></textarea>
+        </div>
 
+        <button class="btn" type="submit">Submit Review</button>
+      </form>
+    </header>
 
-<div ng-repeat="review in vm.reviews">
-  <h3>{{review.user.firstName}} {{review.user.lastName}}</h3>
-  <p>{{review.comment}}</p>
-  <p>{{review.recommend}}</p>
+    <article class="review" ng-repeat="review in vm.reviews">
+      <h4>{{review.user.firstName}} {{review.user.lastName}}</h4>
+      <p>{{review.comment}}</p>
+      <footer>
+        <p><span class="icon-recommend"></span>{{review.recommend}}</p>
+      </footer>
+    </article>
+
+  </div>
 </div>
