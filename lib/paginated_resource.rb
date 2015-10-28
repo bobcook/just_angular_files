@@ -37,6 +37,6 @@ module PaginatedResource
   end
 
   def not_found
-    render json: { error: 'Content not found' }, status: :not_found
+    render json: { error: 'Content not found' }, status: :no_content
   end
 end

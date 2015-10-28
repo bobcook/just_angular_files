@@ -1,4 +1,4 @@
-const Game = function(API_URL, railsResourceFactory, railsSerializer) {
+const Game = function (API_URL, railsResourceFactory, railsSerializer) {
   'ngInject';
 
   const gamesUrl = `${API_URL}/api/v1/games`;
@@ -33,6 +33,6 @@ const Game = function(API_URL, railsResourceFactory, railsSerializer) {
   });
 
   return Game;
-}
+};
 
 export default Game;

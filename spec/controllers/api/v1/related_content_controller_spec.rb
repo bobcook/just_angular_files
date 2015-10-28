@@ -15,18 +15,21 @@ module Api
         end
 
         it 'queries for related content by pillars' do
-          querying = double(recipes: [], articles: [], activities: [])
+          querying =
+            double(recipes: [], articles: [], activities: [], games: [])
           params = {
             pillars: [Pillar.first.slug],
             recipes: 1,
             articles: 1,
-            activities: 3
+            activities: 3,
+            games: 1
           }
           allow(PillarQuerying).to receive(:new).and_return(querying)
 
           expect(querying).to receive(:recipes)
           expect(querying).to receive(:articles)
           expect(querying).to receive(:activities)
+          expect(querying).to receive(:games)
           get :index, params
         end
 
@@ -35,12 +38,13 @@ module Api
             pillars: [Pillar.first.slug],
             recipes: 1,
             articles: 1,
-            activities: 3
+            activities: 3,
+            games: 1
           }
           get(:index, params)
 
           expect(JSON.parse(response.body)['related_content'].keys)
-            .to match_array(%w(recipes articles activities))
+            .to match_array(%w(recipes articles activities games))
         end
       end
     end

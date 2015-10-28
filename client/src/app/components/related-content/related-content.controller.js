@@ -1,8 +1,10 @@
-const RelatedContentController = function (RelatedContent) {
+const RelatedContentController = function (RelatedContent,
+                                           RelatedContentGames) {
   'ngInject';
 
-  const NUM_RELATED_ARTICLES_AND_RECIPES = 2;
-  const NUM_RELATED_ACTIVITIES = 3;
+  const NUM_TOP_ITEMS = 2;
+  const NUM_BOTTOM_ITEMS = 3;
+  const NUM_RELATED_GAMES = 2;
 
   this.loadResource = (resource) => {
     if (_.isUndefined(resource)) { return; }
@@ -10,18 +12,19 @@ const RelatedContentController = function (RelatedContent) {
     this.resource = resource; // Via ss-resource
 
     const getRelatedContent = () => {
+      const RelatedContentResource = this.resourceName === 'Game' ?
+        RelatedContentGames : RelatedContent;
       const pillarSlugs = _.pluck(this.resource.pillars, 'slug');
-      return RelatedContent.query({ 'pillars[]': pillarSlugs });
+      return RelatedContentResource.query({ 'pillars[]': pillarSlugs });
     };
 
     const setRelatedContent = (content) => {
-      const articlesAndRecipes =
-        _.shuffle(content.articles.concat(content.recipes));
+      const topItems = content.articles.length > 0 ?
+        content.articles.concat(content.recipes) : content.games;
+      const bottomItems = content.activities || [];
 
-      this.relatedArticlesAndRecipes =
-        _.take(articlesAndRecipes, NUM_RELATED_ARTICLES_AND_RECIPES);
-      this.relatedActivities =
-        _.take(content.activities, NUM_RELATED_ACTIVITIES);
+      this.topItems = _.take(_.shuffle(topItems), NUM_TOP_ITEMS);
+      this.bottomItems = _.take(_.shuffle(bottomItems), NUM_BOTTOM_ITEMS);
     };
 
     getRelatedContent().then(setRelatedContent);
@@ -29,3 +32,4 @@ const RelatedContentController = function (RelatedContent) {
 };
 
 export default RelatedContentController;
+

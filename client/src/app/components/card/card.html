@@ -18,7 +18,8 @@
           ss-resource="vm.resource">
         </ss-save-user-content>
 
-        <div class="description">{{vm.cardAbstract}}</div>
+        <div ng-if="!vm.isGame">{{vm.cardContent}}</div>
+        <a ng-if="vm.isGame" href="#">Play Game</a>
 
         <div class="effort">
           <span>{{vm.lowerLeft}}</span>

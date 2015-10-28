@@ -15,6 +15,11 @@ class Pillar < ActiveRecord::Base
            source: :categorizable,
            source_type: 'Article'
 
+  has_many :games,
+           through: :pillar_categorizations,
+           source: :categorizable,
+           source_type: 'Game'
+
   def self.default_types
     %w(keeping_fit learning_more managing_stress eating_right being_social)
   end

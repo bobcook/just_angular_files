@@ -16,9 +16,9 @@ module Api
           expect(response.body).to eql(serialized)
         end
 
-        it 'returns a 404 when no Recipe is found' do
+        it 'returns a 204 when no Recipe is found' do
           get :show, id: 1
-          expect(response.status).to eq(404)
+          expect(response.status).to eq(204)
         end
       end
 

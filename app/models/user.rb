@@ -6,11 +6,13 @@ class User < ActiveRecord::Base
   has_many :activities, through: :user_activities
   has_many :recipes, through: :user_recipes
   has_many :articles, through: :user_articles
+  has_many :games, through: :user_games
   has_many :reviews
 
   has_many :user_activities, dependent: :destroy
   has_many :user_recipes, dependent: :destroy
   has_many :user_articles, dependent: :destroy
+  has_many :user_games, dependent: :destroy
 
   devise :database_authenticatable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:aarp]

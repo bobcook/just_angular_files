@@ -15,12 +15,15 @@ import Article from './common/resources/article.js';
 import ArticleReview from './common/resources/article-review.js';
 import CurrentUser from './common/resources/current-user.js';
 import Game from './common/resources/game.js';
+import GameReview from './common/resources/game-review.js';
 import Pillar from './common/resources/pillar.js';
 import Recipe from './common/resources/recipe.js';
 import RelatedContent from './common/resources/related-content.js';
+import RelatedContentGames from './common/resources/related-content-games.js';
 import UserActivity from './common/resources/user-activity.js';
 import UserActivityPeriod from './common/resources/user-activity-period.js';
 import UserArticle from './common/resources/user-article.js';
+import UserGame from './common/resources/user-game.js';
 
 // services
 import $auth from './common/services/auth.js';
@@ -71,6 +74,8 @@ import ArticleModalController from './articles/article-modal.controller.js';
 import ArticlesController from './articles/articles.controller.js';
 import CardController from './components/card/card.controller.js';
 import CardsController from './components/cards/cards.controller.js';
+import GameController from './games/game.controller.js';
+import GameModalController from './games/game-modal.controller.js';
 import GamesController from './games/games.controller.js';
 import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
@@ -92,6 +97,8 @@ import NavTabsController from './components/nav-tabs/nav-tabs.controller.js';
 import UserArticleController from
   './me/articles/user-article.controller.js';
 import UserArticlesController from './me/articles/user-articles.controller.js';
+import UserGameController from './me/games/user-game.controller.js';
+import UserGamesController from './me/games/user-games.controller.js';
 
 const app = angular.module('aarp-staying-sharp', [
   'angularModalService',
@@ -124,12 +131,15 @@ app
   .factory('ArticleReview', ArticleReview)
   .factory('CurrentUser', CurrentUser)
   .factory('Game', Game)
+  .factory('GameReview', GameReview)
   .factory('Pillar', Pillar)
   .factory('Recipe', Recipe)
   .factory('RelatedContent', RelatedContent)
+  .factory('RelatedContentGames', RelatedContentGames)
   .factory('UserActivity', UserActivity)
   .factory('UserActivityPeriod', UserActivityPeriod)
   .factory('UserArticle', UserArticle)
+  .factory('UserGame', UserGame)
 
   // services
   .factory('$assessmentsAuth', $assessmentsAuth)
@@ -176,6 +186,8 @@ app
   .controller('ArticlesController', ArticlesController)
   .controller('CardController', CardController)
   .controller('CardsController', CardsController)
+  .controller('GameController', GameController)
+  .controller('GameModalController', GameModalController)
   .controller('GamesController', GamesController)
   .controller('HomeController', HomeController)
   .controller('LoginSuccessController', LoginSuccessController)
@@ -191,4 +203,6 @@ app
   .controller('TopNavController', TopNavController)
   .controller('NavTabsController', NavTabsController)
   .controller('UserArticleController', UserArticleController)
-  .controller('UserArticlesController', UserArticlesController);
+  .controller('UserArticlesController', UserArticlesController)
+  .controller('UserGameController', UserGameController)
+  .controller('UserGamesController', UserGamesController);

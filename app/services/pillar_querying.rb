@@ -7,7 +7,7 @@ class PillarQuerying
   end
 
   def query
-    activities + recipes + articles
+    activities + recipes + articles + games
   end
 
   def activities
@@ -20,6 +20,10 @@ class PillarQuerying
 
   def recipes
     @recipes ||= query_pillars_for :recipes
+  end
+
+  def games
+    @games ||= query_pillars_for :games
   end
 
   private

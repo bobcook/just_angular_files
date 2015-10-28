@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151027181253) do
+ActiveRecord::Schema.define(version: 20151028203121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -170,6 +170,17 @@ ActiveRecord::Schema.define(version: 20151027181253) do
   add_index "user_articles", ["user_id", "article_id"], name: "index_user_articles_on_user_id_and_article_id", unique: true, using: :btree
   add_index "user_articles", ["user_id"], name: "index_user_articles_on_user_id", using: :btree
 
+  create_table "user_games", force: :cascade do |t|
+    t.integer  "game_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_games", ["game_id"], name: "index_user_games_on_game_id", using: :btree
+  add_index "user_games", ["user_id", "game_id"], name: "index_user_games_on_user_id_and_game_id", unique: true, using: :btree
+  add_index "user_games", ["user_id"], name: "index_user_games_on_user_id", using: :btree
+
   create_table "user_recipes", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "recipe_id"
@@ -210,6 +221,8 @@ ActiveRecord::Schema.define(version: 20151027181253) do
   add_foreign_key "user_activity_periods", "user_activities"
   add_foreign_key "user_articles", "articles"
   add_foreign_key "user_articles", "users"
+  add_foreign_key "user_games", "games"
+  add_foreign_key "user_games", "users"
   add_foreign_key "user_recipes", "recipes"
   add_foreign_key "user_recipes", "users"
 end

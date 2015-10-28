@@ -17,9 +17,10 @@ module Api
           PillarQuerying.new(
             pillars: pillars,
             counts: {
-              recipes: params[:recipes].to_i,
+              activities: params[:activities].to_i,
               articles: params[:articles].to_i,
-              activities: params[:activities].to_i
+              games: params[:games].to_i,
+              recipes: params[:recipes].to_i
             }
           )
       end

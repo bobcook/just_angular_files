@@ -1,10 +1,10 @@
-const ArticleModalController = function (Article, $stateParams) {
+const ArticleModalController = function (Article, $stateParams, $location) {
   'ngInject';
 
   Article.get($stateParams.id).then((response) => {
     this.article = response.data;
     this.articleTitle = this.article.title;
-    this.articleURL = this.article.$url();
+    this.articleURL = $location.absUrl();
   });
 };
 

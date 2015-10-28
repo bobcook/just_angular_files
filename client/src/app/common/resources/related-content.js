@@ -6,9 +6,9 @@ const RelatedContent = function (API_URL,
   const relatedContentURL = `${API_URL}/api/v1/related_content`;
 
   const defaults = {
-    recipes: 5,
-    articles: 5,
     activities: 5,
+    articles: 5,
+    recipes: 5,
   };
 
   const RelatedContent = railsResourceFactory({

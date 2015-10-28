@@ -1,0 +1,32 @@
+<img ng-src="{{vm.game.bodyImage}}" alt="">
+
+<h2>Game: {{vm.game.title}}</h2>
+<p>{{vm.game.description}}</p>
+
+<h3>Work On This</h3>
+<p>Interested in playing this game?</p>
+
+<a href="#">Play Game</a>
+<p>
+  <ss-save-user-content
+    ng-if="vm.game"
+    ss-display-type="button"
+    ss-is-user-namespace="vm.isUserNamespace"
+    ss-item="vm.game"
+    ss-resource="vm.userResource">
+  </ss-save-user-content>
+</p>
+
+<div ss-pillars-display="vm.game.pillars"></div>
+<p>Level of Difficulty: {{vm.game.difficultyLevel}}</p>
+
+<ss-reviews
+  ss-review-resource="vm.reviewResource"
+  ss-resource='vm.resource'>
+  <p>Did you find this game useful?</p>
+</ss-reviews>
+
+<ss-related-content
+  ss-resource="vm.game"
+  ss-resource-name="Game">
+</ss-related-content>

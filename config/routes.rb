@@ -34,7 +34,9 @@ Rails.application.routes.draw do
         resources :reviews, controller: 'articles/reviews', only: [:create, :index]
       end
       resources :auth_tokens, only: [:show]
-      resources :games, only: [:index, :show]
+      resources :games, only: [:index, :show] do
+        resources :reviews, controller: 'games/reviews', only: [:create, :index]
+      end
       resource :copy, controller: 'copy', only: :show
       resources :pillars, only: [:index]
       resources :recipes, only: [:index, :show]
@@ -42,6 +44,7 @@ Rails.application.routes.draw do
 
       namespace :me, as: :my do
         resources :articles, only: [:show, :index, :create, :destroy]
+        resources :games, only: [:show, :index, :create, :destroy]
         resources :user_activities, only: [:show]
         resources :user_activity_periods, only: [:update]
         resources :current_user, controller: 'current_user', only: :index

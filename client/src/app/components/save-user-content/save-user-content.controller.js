@@ -12,10 +12,11 @@ const SaveUserContentController = function ($state) {
     });
   }
 
-  this.resourceNameCapitalize = _.capitalize(`${resourceName}s`);
+  this.resourceNameCapitalize = `${this.resource.contentName}s`;
 
   this.save = function () {
-    new this.resource({ articleId: this.item.id }).create().then(() => {
+    new this.resource({ [`${resourceName}Id`] : this.item.id }).create()
+    .then(() => {
       this.isSaved = true;
       // show modal after saving
       $state.go(`.${resourceName}-saved`);

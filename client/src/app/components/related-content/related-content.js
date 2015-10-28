@@ -7,6 +7,7 @@ const relatedContent = function () {
     bindToController: true,
     scope: {
       resource: '=ssResource',
+      resourceName : '@ssResourceName',
     },
     link: function (scope, element, attrs) {
       scope.$watch('vm.resource', function (newResource, _oldResource) {
