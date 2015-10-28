@@ -14,6 +14,7 @@ const ArticleController = function (Article,
   this.resource = Article;
   this.reviewResource = ArticleReview;
   this.userResource = UserArticle;
+  this.isContentDrawerOpen = false;
 };
 
 export default ArticleController;
