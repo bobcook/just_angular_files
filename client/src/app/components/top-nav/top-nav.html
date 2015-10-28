@@ -1,4 +1,4 @@
-<section class="global-header">
+<section class="global-header" ng-class="{'logged-in':$root.$currentUser.isLoggedIn}">
   <nav class="container">
     <div class="logo">
       <a href="" title="Staying Sharp"><h1>Staying Sharp | AARP</h1></a>
@@ -6,7 +6,7 @@
     <div class="nav-options">
       <ul>
         <li ng-if="!$root.$currentUser.isLoggedIn" class="hidden-xs"><a class="text-link" href="#">Sign up or Join</a></li>
-        <li class="bullet hidden-xs">•</li>
+        <li ng-if="!$root.$currentUser.isLoggedIn" class="bullet hidden-xs">•</li>
         <li ng-if="!$root.$currentUser.isLoggedIn" class="hidden-xs"><a class="text-link" ng-href="{{vm.loginUrl}}">Login</a></li>
         <li>
           <span class="icon-search-container">

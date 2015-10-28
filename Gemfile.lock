@@ -397,6 +397,3 @@ DEPENDENCIES
   timecop (~> 0.8.0)
   unicorn (~> 4.9.0)
   wippersnapper (~> 0.1.0)!
-
-BUNDLED WITH
-   1.10.6
