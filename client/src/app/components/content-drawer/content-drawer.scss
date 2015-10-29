@@ -1,9 +1,64 @@
 .content-drawer-wrapper {
-  background: $white;
-  position: fixed;
-  width: 100%;
   overflow: hidden;
-  z-index: 2;
-  box-shadow: 0 4px 2px -2px $grey-border;
   transition: height 0.5s ease-in-out;
+  width: 100%;
+  
+  &.sticky {
+    position: fixed;
+    z-index: 2;
+    background: $white;
+  }
+}
+
+.cp-content-drawer {
+  padding-top: 15px;
+  background: $white;
+
+  a {
+    text-decoration: none;
+    color: $link-color;
+
+    &:hover, &:active, &:visited {
+      text-decoration: none;
+    }
+  }
+
+  .toggle-content-link {
+    cursor: pointer;
+  }
+
+  .caret {
+    margin-left: 8px;
+  }
+
+  .caret-down {
+    border-top: 5px solid $link-color;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      padding: 7px 0;
+
+      span {
+        padding-right: 5px;
+      }
+    }
+  }
+
+  h4 {
+    margin: 25px 0 15px 0;
+  }
+
+  p {
+    &:last-child {
+      padding-bottom: 15px;
+    }
+
+    &:first-child {
+      padding-top: 15px;
+    }
+  }
 }

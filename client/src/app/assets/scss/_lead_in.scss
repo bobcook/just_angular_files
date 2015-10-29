@@ -1,5 +1,5 @@
 .cp-lead-in {
-  
+
   .copy-wrap {
     display: table;
     height: 100%;
@@ -24,11 +24,11 @@
     .left, .right {
       height: 169px;
     }
-  
+
     .container {
       height: 169px;
     }
-  
+
     h2 {
       padding: 0;
     }
@@ -38,7 +38,7 @@
       padding-top: 10px;
     }
   }
-  
+
   &.navy-teal {
     .left {
       background: $navy;
@@ -83,7 +83,7 @@
       background: $pink;
     }
   }
-  
+
   &.navy-red {
     .left {
       background: $navy;
@@ -128,24 +128,24 @@
       background: $teal;
     }
   }
-  
+
   &.no-imagary {
     background: $white;
-    
+
     .container {
       height: 115px;
     }
-    
+
     h2 {
       color: $header-color;
       padding: 0;
     }
-    
+
     hr {
       margin-top: 0;
     }
   }
-  
+
   .cp-lead-in-bg {
     background-size: cover;
     background-repeat: no-repeat;
@@ -159,19 +159,19 @@
     h2, p {
       color: $white;
     }
-    
+
     h2 {
       font-size: 28px;
       margin: 0;
       padding: 0;
       max-width: 350px;
-      
+
       @media screen and (min-width: 767px) {
         font-size: 32px;
         padding: 0;
       }
     }
-    
+
     p {
       max-width: 400px;
     }
@@ -183,12 +183,12 @@
   padding-bottom: 30px;
   background-size: cover;
   background-position: center top;
-  
+
   @media screen and (min-width: 767px) {
     height: 425px;
   }
-  
-  section {
+
+  .container {
     @media screen and (min-width: 767px) {
       height: 425px;
     }
@@ -207,7 +207,7 @@
     margin: 5px 0 20px 0;
     font-size: 28px;
     max-width: 580px;
-    
+
     @media screen and (min-width: 767px) {
       font-size: 32px;
     }
@@ -218,6 +218,8 @@
   }
 
   header {
+    @include clearfix;
+
     h5 {
       float: left;
       margin: 0;
@@ -239,7 +241,8 @@
   footer {
     padding: 10px 15px;
     text-align: center;
-    
+    @include clearfix;
+
     @media screen and (min-width: 992px) {
       text-align: left;
     }
@@ -252,7 +255,7 @@
 
   .effort {
     padding: 0 0 9px;
-    
+
     @media screen and (min-width: 992px) {
       padding: 9px 0;
       width: 60%;
@@ -260,12 +263,12 @@
   }
 
   .action-items {
-    
+
     @media screen and (min-width: 992px) {
       width: 40%;
       text-align: right;
     }
-    
+
     .btn {
       font-size: 16px;
       margin: 0 0 0 20px;
@@ -279,7 +282,8 @@
   .share {
     line-height: 1.42857;
     padding: 8px 0;
-    vertical-align: middle;
+    vertical-align: top;
+    display: inline-block;
     margin-left: 20px;
   }
 
@@ -297,7 +301,7 @@
   a {
     text-decoration: none;
     color: $button-blue;
-    
+
     &:hover, &:active, &:visited {
       text-decoration: none;
     }
@@ -314,10 +318,10 @@
   ul {
     list-style: none;
     padding-left: 0;
-  
+
     li {
       padding: 7px 0;
-      
+
       span {
         padding-right: 5px;
       }
