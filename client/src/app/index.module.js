@@ -54,6 +54,7 @@ import saveUserContent from
 import sideNav from './components/side-nav/side-nav.js';
 import socialLinks from './components/social-links/social-links.js';
 import topNav from './components/top-nav/top-nav.js';
+import navTabs from './components/nav-tabs/nav-tabs.js';
 
 // controllers
 import ActivitiesController from './activities/activities.controller.js';
@@ -87,6 +88,7 @@ import SaveUserContentController from
 import SocialLinksController from
   './components/social-links/social-links.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
+import NavTabsController from './components/nav-tabs/nav-tabs.controller.js';
 import UserArticleController from
   './me/articles/user-article.controller.js';
 import UserArticlesController from './me/articles/user-articles.controller.js';
@@ -158,6 +160,7 @@ app
   .directive('ssSocialLinks', socialLinks)
   .directive('ssSideNav', sideNav)
   .directive('ssTopNav', topNav)
+  .directive('ssNavTabs', navTabs)
 
   // controllers
   .controller('ActivitiesController', ActivitiesController)
@@ -186,5 +189,6 @@ app
   .controller('SaveUserContentController', SaveUserContentController)
   .controller('SocialLinksController', SocialLinksController)
   .controller('TopNavController', TopNavController)
+  .controller('NavTabsController', NavTabsController)
   .controller('UserArticleController', UserArticleController)
   .controller('UserArticlesController', UserArticlesController);
