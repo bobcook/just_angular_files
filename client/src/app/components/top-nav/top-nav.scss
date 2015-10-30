@@ -25,12 +25,12 @@
       background-position: left center;
       background-repeat: no-repeat;
       background-size: auto 27px;
-      text-indent: -9999px;
       height: 27px;
       padding: 0;
       margin: 0;
+      @include hide-text();
     }
-    
+
     a {
       display: block;
     }
@@ -78,7 +78,7 @@
   }
 
   .icon-search {
-    color: $blue;
+    color: $grey-dark;
     padding: 0;
     background: none;
     border-radius: 0;
@@ -86,6 +86,7 @@
     transition: none;
 
     &:hover {
+      color: $blue;
       cursor: pointer;
     }
   }
@@ -102,6 +103,14 @@
 
     &:hover {
       background: transparent;
+
+      span {
+        color: $blue;
+      }
+
+      .icon-bar {
+        background-color: $blue;
+      }
     }
 
     .icon-bar {
@@ -133,12 +142,11 @@
   background: $white;
   width: 100%;
   padding: 15px 0;
-  box-shadow: 0 4px 2px -2px $grey-border;
 
   @media screen and (min-width: 768px) {
     padding: 31px 0;
   }
-  
+
   .container {
     margin-bottom: 0;
   }
@@ -148,11 +156,15 @@
     display: table;
     border-collapse: separate;
     width: 100%;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .btn-group {
     display: table-cell;
     vertical-align: top;
+    width: 1%;
   }
 
   .dropdown {
@@ -160,7 +172,9 @@
     white-space: nowrap;
 
     .ui-select-match {
-      display: inline-block;
+      display: inline-block !important;
+      outline: none;
+      box-shadow: none;
     }
 
     .btn {
@@ -174,20 +188,50 @@
       background: $white;
       border-radius: 2px 0 0 2px;
       border: 1px solid $grey-light;
+      border-right: none;
       padding-top: 8px;
       padding-bottom: 8px;
+      cursor: pointer;
 
       &:hover, &:active, &:focus {
-        background: $bg-color;
+        background-color: $bg-color;
         border-color: $grey-light;
         box-shadow: none;
+      }
+      &:focus {
+        background-color: $grey-light;
+      }
+    }
+
+    .caret {
+      display: inline-block;
+      margin: -1px auto auto 6px;
+      position: relative;
+      top: auto;
+      right: auto;
+      height: auto;
+    }
+
+  }
+
+  .ui-select-bootstrap .ui-select-choices-row {
+    > a {
+      &:hover, &:focus {
+        background-color: $blue;
+        color: $grey-faint;
+      }
+    }
+    &.active {
+      > a {
+        background-color: $grey-faint;
+        color: $black;
       }
     }
   }
 
   .dropdown-menu {
+    display: none;
     position: absolute;
-    display: block;
     opacity: 0;
     top: 100%;
     left: 0;
@@ -236,6 +280,8 @@
     border-radius: 0;
     box-shadow: none;
     vertical-align: top;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 
   .input-group-btn button {
@@ -253,5 +299,8 @@
   height: 100%;
   background: #717171;
   opacity: 0.4;
-  transition: all 1s;
+  transition: opacity 250ms ease-in-out;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
 }

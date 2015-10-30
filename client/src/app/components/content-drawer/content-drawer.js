@@ -2,22 +2,25 @@ const contentDrawer = function () {
   'ngInject';
 
   return {
-    restrict: 'A',
+    controllerAs: 'vm',
+    templateUrl: 'app/components/content-drawer/content-drawer.html',
+    transclude: true,
+    replace: true,
     scope: {
       isOpen: '=ssContentDrawer',
-      drawerClass: '@ssDrawerClass',
+      ssDrawerClass: '@?',
     },
     link: function (scope, element, attrs) {
-      $(element).wrap(
-        '<div class="content-drawer-wrapper '+scope.drawerClass+'"></div>'
-      );
-      const wrapper = $(element).parent();
-      console.log();
+      const elementInner = $(element).find('.content-drawer-inner');
       scope.$watch('isOpen', function (isOpen) {
         if (isOpen) {
-          wrapper.css({ height: $(element)[0].offsetHeight });
+          element
+            .addClass('visible')
+            .css({ height: $(elementInner)[0].offsetHeight });
         } else {
-          wrapper.css({ height: 0 });
+          element
+            .removeClass('visible')
+            .css({ height: 0 });
         }
       });
     },

@@ -1,12 +1,45 @@
 .content-drawer-wrapper {
-  overflow: hidden;
-  transition: height 0.5s ease-in-out;
   width: 100%;
-  
-  &.sticky {
+  overflow: hidden;
+
+  .content-drawer-inner {
+    opacity: 0;
+    transition: all 250ms ease-in-out;
+    position: relative;
+    z-index: 10;
+  }
+
+  &.search {
     position: fixed;
-    z-index: 2;
-    background: $white;
+    overflow: visible;
+    z-index: 100;
+    top: 60px;
+
+    .content-drawer-inner {
+      background: $white;
+      transform: translateY(-100%);
+      box-shadow: 0 4px 2px -2px $grey-medium;
+    }
+
+    .search-body-overlay {
+      opacity: 0;
+      height: 0;
+    }
+  }
+
+  &.visible {
+    .content-drawer-inner {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 250ms ease-in-out;
+    }
+
+    &.search {
+      .search-body-overlay {
+        opacity: 0.4;
+        height: 100%;
+      }
+    }
   }
 }
 
