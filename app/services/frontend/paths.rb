@@ -2,7 +2,8 @@ module Frontend
   module Paths
     FRONTEND_PATHS = {
       login_failure: ->()      { '/callbacks/login-failure' },
-      login_success: ->(token) { "/callbacks/login-success/#{token}" }
+      login_success: ->(token) { "/callbacks/login-success/#{token}" },
+      assessments: -> (id) { "/assessment/#{id}" }
     }
 
     module_function
