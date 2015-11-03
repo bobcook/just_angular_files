@@ -77,6 +77,7 @@ import CardController from './components/card/card.controller.js';
 import CardsController from './components/cards/cards.controller.js';
 import GameController from './games/game.controller.js';
 import GameModalController from './games/game-modal.controller.js';
+import GamePlayController from './games/game-play.controller.js';
 import GamesController from './games/games.controller.js';
 import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
@@ -190,6 +191,7 @@ app
   .controller('CardsController', CardsController)
   .controller('GameController', GameController)
   .controller('GameModalController', GameModalController)
+  .controller('GamePlayController', GamePlayController)
   .controller('GamesController', GamesController)
   .controller('HomeController', HomeController)
   .controller('LoginSuccessController', LoginSuccessController)

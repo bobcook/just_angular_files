@@ -6,7 +6,7 @@
 <h3>Work On This</h3>
 <p>Interested in playing this game?</p>
 
-<a href="#">Play Game</a>
+<p><a ng-if="vm.game" ui-sref="{{vm.game.playUiSref}}">Play game</a></p>
 <p>
   <ss-save-user-content
     ng-if="vm.game"

@@ -19,7 +19,7 @@
         </ss-save-user-content>
 
         <div ng-if="!vm.isGame">{{vm.cardContent}}</div>
-        <a ng-if="vm.isGame" href="#">Play Game</a>
+        <a ng-if="vm.isGame" ui-sref="{{vm.card.playUiSref}}">Play Game</a>
 
         <div class="effort">
           <span>{{vm.lowerLeft}}</span>

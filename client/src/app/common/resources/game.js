@@ -32,6 +32,12 @@ const Game = function (API_URL, railsResourceFactory, railsSerializer) {
     },
   });
 
+  Object.defineProperty(Game.prototype, 'playUiSref', {
+    get: function () {
+      return `application.game-play({ id: ${this.id} })`;
+    },
+  });
+
   return Game;
 };
 

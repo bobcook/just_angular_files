@@ -3,6 +3,14 @@ const routerConfig = function (stateHelperProvider,
                                $urlRouterProvider) {
   'ngInject';
 
+  const previousState = function ($state) {
+    return {
+      name: $state.current.name,
+      params: $state.params,
+      url: $state.href($state.current.name, $state.params),
+    };
+  };
+
   stateHelperProvider
     .state({
       name: 'application',
@@ -83,6 +91,14 @@ const routerConfig = function (stateHelperProvider,
               controllerAs: 'vm',
             }),
           ],
+        },
+        {
+          name: 'game-play',
+          url: '/game-play/:id',
+          templateUrl: 'app/games/game-play.html',
+          controller: 'GamePlayController',
+          controllerAs: 'vm',
+          resolve: { previousState },
         },
         {
           name: 'home',
