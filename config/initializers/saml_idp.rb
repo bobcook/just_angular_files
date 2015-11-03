@@ -31,6 +31,9 @@ SamlIdp.configure do |config|
     uniqueuserid: {
       getter: -> (principal) { principal.id }
     },
+    jwtCredentials: {
+      getter: -> (principal) { UserJwt.for(principal) }
+    },
     # TODO: get these from user questionnaire
     gender: {
       getter: -> (_principal) { 'MALE' }

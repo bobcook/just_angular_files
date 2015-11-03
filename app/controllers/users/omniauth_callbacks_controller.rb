@@ -17,11 +17,7 @@ module Users
     end
 
     def create_token_holder_for!(user)
-      ClaimTokenHolder.create_from_auth_token!(jwt_for user)
-    end
-
-    def jwt_for(user)
-      JsonWebToken.encode 'user_id' => user.id
+      ClaimTokenHolder.create_from_auth_token!(UserJwt.for(user))
     end
   end
 end

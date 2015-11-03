@@ -14,7 +14,7 @@
     <ul class="account-controls">
       <li>
       <a ng-if="$root.$currentUser.isLoggedIn" ui-sref="logout">Logout</a>
-      <a ng-if="!$root.$currentUser.isLoggedIn" ui-sref="application.login">Login</a>
+      <a ng-if="!$root.$currentUser.isLoggedIn" ng-href="{{vm.loginUrl}}">Login</a>
       </li>
       <li class="bullet">•</li>
       <li>
