@@ -80,7 +80,7 @@ const routerConfig = function (stateHelperProvider,
           controllerAs: 'vm',
         },
         {
-          name: 'assessment',
+          name: 'assessments-mbs',
           url: '/assessment',
           template: '<div ui-view></div>',
           // TODO: come up with a better solution for the static instructions
@@ -185,6 +185,13 @@ const routerConfig = function (stateHelperProvider,
               controllerAs: 'vm',
             },
           ],
+        },
+        {
+          name: 'assessments-questionnaire',
+          url: '/assessment/:id',
+          controller: 'AssessmentController',
+          controllerAs: 'vm',
+          templateUrl: 'app/assessments/assessment.html',
         },
         {
           name: 'assessments',

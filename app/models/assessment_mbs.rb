@@ -1,0 +1,2 @@
+class AssessmentMBS < Assessment
+end

@@ -17,6 +17,7 @@ import ActivityTrackerResponse from
   './common/resources/activity-tracker-response.js';
 import Article from './common/resources/article.js';
 import ArticleReview from './common/resources/article-review.js';
+import Assessment from './common/resources/assessment.js';
 import CurrentUser from './common/resources/current-user.js';
 import ExploreContent from './common/resources/explore-content.js';
 import Game from './common/resources/game.js';
@@ -187,6 +188,7 @@ app
   .factory('ActivityTrackerResponse', ActivityTrackerResponse)
   .factory('Article', Article)
   .factory('ArticleReview', ArticleReview)
+  .factory('Assessment', Assessment)
   .factory('CurrentUser', CurrentUser)
   .factory('ExploreContent', ExploreContent)
   .factory('Game', Game)

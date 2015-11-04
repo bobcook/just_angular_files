@@ -12,12 +12,19 @@ const addConstants = function (module) {
     SESSION_DESTROY: `${API_URL}/api/v1/users/auth`,
   };
 
+  const MbsRoutes = {
+    TAKE_ASSESSMENTS:
+      'https://staging.mybrainsolutions.com/mybrain/MyBrainAssessment.aspx?' +
+        'start=true',
+  };
+
   const constants = _.merge(
     {},
     window.__env, // load environment variables into constants
     {
       'ApiRoutes': ApiRoutes,
       '$moment': moment,
+      'MbsRoutes': MbsRoutes,
     }
   );
 

@@ -1,0 +1,2 @@
+class AssessmentQuestionnaire < Assessment
+end

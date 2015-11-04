@@ -39,6 +39,7 @@ Rails.application.routes.draw do
                   controller: 'articles/reviews',
                   only: [:create, :index]
       end
+      resources :assessments, only: [:index, :show]
       resources :auth_tokens, only: [:show]
       resources :games, only: [:index, :show] do
         resources :reviews, controller: 'games/reviews', only: [:create, :index]

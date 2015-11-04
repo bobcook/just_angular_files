@@ -81,6 +81,38 @@ ActiveRecord::Schema.define(version: 20151113142938) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "assessment_questions", force: :cascade do |t|
+    t.string   "text"
+    t.string   "answer_options",    default: [],              array: true
+    t.string   "answer_values",     default: [],              array: true
+    t.integer  "order",                          null: false
+    t.integer  "assessment_id"
+    t.integer  "recommendation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assessment_questions", ["assessment_id"], name: "index_assessment_questions_on_assessment_id", using: :btree
+
+  create_table "assessment_responses", force: :cascade do |t|
+    t.integer  "assessment_question_id"
+    t.integer  "user_assessment_id"
+    t.string   "response"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assessment_responses", ["assessment_question_id"], name: "index_assessment_responses_on_assessment_question_id", using: :btree
+  add_index "assessment_responses", ["user_assessment_id"], name: "index_assessment_responses_on_user_assessment_id", using: :btree
+
+  create_table "assessments", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "order"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "claim_token_holders", force: :cascade do |t|
     t.string   "claim_token", null: false
     t.text     "auth_token",  null: false
@@ -172,6 +204,16 @@ ActiveRecord::Schema.define(version: 20151113142938) do
   add_index "user_articles", ["user_id", "article_id"], name: "index_user_articles_on_user_id_and_article_id", unique: true, using: :btree
   add_index "user_articles", ["user_id"], name: "index_user_articles_on_user_id", using: :btree
 
+  create_table "user_assessments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "assessment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_assessments", ["assessment_id"], name: "index_user_assessments_on_assessment_id", using: :btree
+  add_index "user_assessments", ["user_id"], name: "index_user_assessments_on_user_id", using: :btree
+
   create_table "user_games", force: :cascade do |t|
     t.integer  "game_id"
     t.integer  "user_id"
@@ -218,12 +260,17 @@ ActiveRecord::Schema.define(version: 20151113142938) do
   add_foreign_key "activity_tracker_questions", "activity_trackers"
   add_foreign_key "activity_tracker_responses", "activity_tracker_questions"
   add_foreign_key "activity_tracker_responses", "user_activity_periods"
+  add_foreign_key "assessment_questions", "assessments"
+  add_foreign_key "assessment_responses", "assessment_questions"
+  add_foreign_key "assessment_responses", "user_assessments"
   add_foreign_key "reviews", "users"
   add_foreign_key "user_activities", "activities"
   add_foreign_key "user_activities", "users"
   add_foreign_key "user_activity_periods", "user_activities"
   add_foreign_key "user_articles", "articles"
   add_foreign_key "user_articles", "users"
+  add_foreign_key "user_assessments", "assessments"
+  add_foreign_key "user_assessments", "users"
   add_foreign_key "user_games", "games"
   add_foreign_key "user_games", "users"
   add_foreign_key "user_recipes", "recipes"

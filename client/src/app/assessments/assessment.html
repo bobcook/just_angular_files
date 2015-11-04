@@ -1,0 +1,14 @@
+<form>
+  <div ng-repeat="question in vm.questions">
+    <label>{{question.text}}</label>
+    <div ng-if="question.answerOptions">
+      <div ng-repeat="option in question.answerOptions">
+        <input name="{{question.id}}" value="{{option}}" type="radio" >{{option}}
+      </div>
+    </div>
+    <br>
+  </div>
+</form>
+
+<p><a ng-if="!vm.showResultsLink" href="{{vm.mbsUrl}}">Next Assessment</a></p>
+<p><a ng-if="vm.showResultsLink" ui-sref="application.assessments-results">Results</a></p>
