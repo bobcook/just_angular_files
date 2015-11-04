@@ -51,6 +51,13 @@ const routerConfig = function (stateHelperProvider,
           ],
         },
         {
+          name: 'assessments',
+          url: '/assessments',
+          controller: 'AssessmentsController',
+          controllerAs: 'vm',
+          templateUrl: 'app/assessments/assessments.html',
+        },
+        {
           name: 'assessment',
           url: '/assessment/:id',
           templateUrl: 'app/assessments/assessment.html',
