@@ -1,0 +1,51 @@
+.cp-content-detail {
+  padding-top: 15px;
+  background: $white;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      padding: 7px 0;
+
+      span {
+        padding-right: 5px;
+      }
+    }
+  }
+
+  h4 {
+    margin: 25px 0 15px 0;
+  }
+
+  p {
+    &:last-child {
+      padding-bottom: 15px;
+    }
+
+    &:first-child {
+      padding-top: 15px;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: $link-color;
+
+    &:hover, &:active, &:visited {
+      text-decoration: none;
+    }
+  }
+  
+  img.detail-image {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .detail-source {
+    padding-bottom: 15px;
+  }
+}

@@ -3,9 +3,11 @@
 
     <header>
       <h3>{{ vm.recommendPercentage() }} Liked This:</h3>
-      <ng-transclude></ng-transclude>
 
       <form ng-hide="vm.userHasReviewed()" ng-submit="vm.submitReview()">
+
+        <ng-transclude></ng-transclude>
+
         <span class="form-row">
           <input type="radio" name="recommend" ng-value="true" id="yes" ng-model="vm.recommend">
           <label for="yes">Yes, I liked this</label>
@@ -29,7 +31,14 @@
       <h4>{{review.user.firstName}} {{review.user.lastName}}</h4>
       <p>{{review.comment}}</p>
       <footer>
-        <p><span class="icon-recommend"></span></p>
+        <p ng-if="review.recommend">
+          <span class="icon-recommend"></span>
+          Yes, I liked this
+        </p>
+        <p ng-if="!review.recommend">
+          <span class="icon-dislike"></span>
+          No, I disliked it
+        </p>
       </footer>
     </article>
 

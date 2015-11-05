@@ -33,18 +33,28 @@ TODO: Image is broken, using temp for now.
   </section>
 </div>
 
-<!-- TODO: use a different class besides cp-content-drawer since this is not -->
-<!-- technically drawer content -->
-<div class="cp-content-drawer">
+<div class="cp-article-partner">
+  <section class="container">
+    <div class="left">
+      <!-- TODO: Text for article partner -->
+      <p>Lorem ipsum dolor from our partner:</p>
+    </div>
+    <div class="right">
+      <!-- TODO: Image/logo for article partner -->
+      <img src="app/assets/images/article-partner-example.png" alt="">
+    </div>
+    <hr>
+  </section>
+</div>
+
+<div class="cp-content-detail">
   <section class="container">
     <article>
+      <div class="detail-text" ng-bind-html="vm.article.section1Body" ></div>
+      <img class="detail-image" ng-src="{{vm.article.bodyImage}}" alt="">
       <hr>
-      <div ng-bind-html="vm.article.section1Body" ></div>
-      <!-- TODO: correct location of this image -->
-      <img ng-src="{{vm.article.bodyImage}}" alt="">
+      <div class="detail-source" data-ng-bind-html="vm.article.sourceMaterialsCitation"></div>
       <hr>
-      <div data-ng-bind-html="vm.article.sourceMaterialsCitation"></div>
-      <hr><!-- TODO: proper styles for spacing before cp-content-group? -->
     </article>
   </section>
 </div>
