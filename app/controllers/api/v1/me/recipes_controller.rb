@@ -8,7 +8,11 @@ module Api
         private
 
         def resource
-          current_user.recipes
+          @resource ||= current_user.recipes
+        end
+
+        def sorted_collection
+          @sorted_collection ||= resource.order('user_recipes.created_at DESC')
         end
 
         def serializer

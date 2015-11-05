@@ -22,7 +22,11 @@ module Api
         private
 
         def resource
-          current_user.games
+          @resource ||= current_user.games
+        end
+
+        def sorted_collection
+          @sorted_collection ||= resource.order('user_games.created_at DESC')
         end
 
         def serializer

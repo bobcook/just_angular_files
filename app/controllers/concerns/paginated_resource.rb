@@ -32,8 +32,12 @@ module PaginatedResource
     @instance_includes ||= [:pillars]
   end
 
+  def sorted_collection
+    @sorted_collection ||= resource.newest_first
+  end
+
   def collection
-    @collection ||= resource.newest_first.page(params[:page]).per(per_page)
+    @collection ||= sorted_collection.page(params[:page]).per(per_page)
   end
 
   def per_page
