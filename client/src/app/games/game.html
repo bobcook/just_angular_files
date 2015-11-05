@@ -1,24 +1,37 @@
-<img ng-src="{{vm.game.bodyImage}}" alt="">
+<div class="cp-games-details">
+  <section class="container">
+    <article>
+      <h5>Games</h5>
+      <h2>{{vm.game.title}}</h2>
+      <p>{{vm.game.description}}</p>
+      <div ss-pillars-display="vm.game.pillars"></div>
+    </article>
+    <div class="game-img">
+      <img ng-src="{{vm.game.bodyImage}}" alt="">
+    </div>
+  </section>
+</div>
 
-<h2>Game: {{vm.game.title}}</h2>
-<p>{{vm.game.description}}</p>
-
-<h3>Work On This</h3>
-<p>Interested in playing this game?</p>
-
-<p><a ng-if="vm.game" ui-sref="{{vm.game.playUiSref}}">Play game</a></p>
-<p>
-  <ss-save-user-content
-    ng-if="vm.game"
-    ss-display-type="button"
-    ss-is-user-namespace="vm.isUserNamespace"
-    ss-item="vm.game"
-    ss-resource="vm.userResource">
-  </ss-save-user-content>
-</p>
-
-<div ss-pillars-display="vm.game.pillars"></div>
-<p>Level of Difficulty: {{vm.game.difficultyLevel}}</p>
+<div class="cp-content-group">
+  <section class="container">
+    <header>
+      <h3>Ways to Work on This</h3>
+      <span class="effort">Level of Difficulty: {{vm.game.difficultyLevel}}</span>
+      <hr>
+    </header>
+    <footer>
+      <h4>Interested in playing this game?</h4>
+      <button ng-if="vm.game" ui-sref="{{vm.game.playUiSref}}" class="btn green-btn"><span>Play Game</span></button>
+      <ss-save-user-content
+        ng-if="vm.game"
+        ss-display-type="button"
+        ss-is-user-namespace="vm.isUserNamespace"
+        ss-item="vm.game"
+        ss-resource="vm.userResource">
+      </ss-save-user-content>
+    </footer>
+  </section>
+</div>
 
 <ss-reviews
   ss-review-resource="vm.reviewResource"

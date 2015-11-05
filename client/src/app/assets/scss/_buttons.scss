@@ -1,5 +1,7 @@
 button, .btn {
   color: $white;
+  display: inline-block;
+  text-align: center;
   background: $button-blue;
   padding: 8px 15px;
   border-radius: 2px;
@@ -7,7 +9,7 @@ button, .btn {
   transition: background 0.3s ease;
   font-size: 16px;
 
-  &.tracked {
+  &.tracked, &.green-btn {
     background: $button-green;
     color: white;
 

@@ -1,0 +1,63 @@
+.cp-games-details {
+  background: $white;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  > .container {
+    padding-bottom: 30px;
+  }
+
+  article {
+    width: 70%;
+    display: inline;
+    float: left;
+    
+    @media screen and (min-width: 768px) {
+      width: 80%;
+    }
+  }
+
+  .game-img {
+    width: 25%;
+    display: inline;
+    float: right;
+    
+    @media screen and (min-width: 768px) {
+      width: 20%;
+    }
+  }
+
+  img {
+    border-radius: 50%;
+    float: right;
+    max-width: 100%;
+  }
+
+  h2 {
+    margin-top: 10px;
+  }
+
+  p {
+    margin-bottom: 25px;
+  }
+
+  .cp-content-group {
+    padding-top: 0;
+  }
+}
+
+.cp-games-embed-details {
+  background: $white;
+  padding-bottom: 10px;
+  
+  h2 {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  .cp-cross-link {
+    section {
+      margin: 0;
+    }
+  }
+}

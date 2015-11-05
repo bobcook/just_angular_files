@@ -571,6 +571,60 @@
     }
   }
 
+  &.game-card {
+    padding-top: 0;
+    height: auto;
+    border: 1px solid $grey-border;
+    
+    @media screen and (min-width: 768px) {
+      width: 49%;
+      margin-left: 2%;
+      float: left;
+    }
+    
+    &:nth-child(odd) {
+      @media screen and (min-width: 768px) {
+        margin-left: 0;
+      }
+    }
+    
+    > section {
+      padding: 0;
+    }
+
+    .info-block {
+      height: auto;
+    }
+
+    article {
+      position: relative;
+    }
+
+    header {
+      img {
+        position: absolute;
+        right: 15px;
+        border-radius: 50%;
+      }
+    }
+
+    h4, h5 {
+      max-width: 70%;
+    }
+
+    h4 {
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      margin-bottom: 5px;
+    }
+
+    footer {
+      border-color: $grey-border;
+    }
+  }
+
   .icon-block {
     margin: 0 2px;
   }

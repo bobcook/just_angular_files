@@ -6,6 +6,7 @@
       <header>
         <h5>{{vm.upperLeft}}</h5>
         <span ng-if="vm.upperRight">{{vm.upperRight}}</span>
+        <img ng-if="vm.isGame" src="http://placehold.it/75x75" alt="">
       </header>
       <article>
         <h4><a ui-sref="{{vm.resourcePath}}">{{vm.cardTitle}}</a></h4>
@@ -31,18 +32,16 @@
 
       <footer
         ng-if="vm.isGame">
-
         <div class="play-btn">
           <a
             ui-sref="{{vm.card.playUiSref}}"
             class="btn green-btn">
-
             Play Game
           </a>
         </div>
       </footer>
       <footer
-        ng-if"!vm.isGame"
+        ng-if="!vm.isGame"
         ss-pillars-display="vm.pillars"
         class="pillars">
       </footer>
