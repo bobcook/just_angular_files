@@ -1,9 +1,10 @@
-const GameCardPresenter = function (DefaultCardPresenter) {
+const GameCardPresenter = function ($presenterUtils,
+                                    DefaultCardPresenter) {
   'ngInject';
 
   const Default = DefaultCardPresenter;
 
-  const fieldOverrides = function (controller, game) {
+  const overrideFields = function (game, controller) {
     return {
       cardClasses: controller.cardClasses || 'game-card',
       cardContent: '',
@@ -15,10 +16,9 @@ const GameCardPresenter = function (DefaultCardPresenter) {
   };
 
   return {
-    forController: function (controller, game) {
-      const overrides = fieldOverrides(controller, game);
-      return Default.forController(controller, game, overrides);
-    },
+    // forController :: Controller -> Resource -> MutatedController
+    forController:
+      $presenterUtils.withFieldsFrom(Default.defaultFields, overrideFields),
   };
 };
 

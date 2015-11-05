@@ -2,23 +2,12 @@ module Api
   module V1
     module Games
       class ReviewsController < Api::V1::BaseController
-        def create
-          current_user.reviews.create(
-            reviewable: game,
-            recommend: params[:review][:recommend],
-            comment: params[:review][:comment]
-          )
-          head :created
-        end
-
-        def index
-          render json: game.reviews, each_serializer: ReviewSerializer
-        end
+        include ReviewableResource
 
         private
 
-        def game
-          Game.find(params[:game_id])
+        def reviewable_resource_type
+          Game
         end
       end
     end

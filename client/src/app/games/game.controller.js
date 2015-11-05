@@ -12,6 +12,7 @@ const GameController = function (Game,
   this.isUserNamespace = false;
   this.resource = Game;
   this.reviewResource = GameReview;
+  this.pluralResourceName = 'games';
   this.userResource = UserGame;
 };
 

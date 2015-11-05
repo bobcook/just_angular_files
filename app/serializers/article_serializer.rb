@@ -1,7 +1,11 @@
 class ArticleSerializer < ActiveModel::Serializer
-  # TODO: add card_title and card_image
-  attributes :id, :title, :type, :body_image, :description, :duration, :effort,
-             :mast_head_image, :mast_head_title, :section1_body, :section2_body,
+  delegate :id, :card_image, :description, :mast_head_image, :mast_head_title,
+           :section1_body, :section2_body, :source_materials_citation,
+           to: :common
+
+  attributes :id, :card_title, :card_image, :title, :type, :body_image,
+             :description, :duration, :effort, :mast_head_image,
+             :mast_head_title, :section1_body, :section2_body,
              :source_materials_citation
 
   has_many :pillars
@@ -10,35 +14,21 @@ class ArticleSerializer < ActiveModel::Serializer
     object.payload['bodyImage']
   end
 
-  def description
-    object.payload['description']
-  end
-
   def duration
-    '6 mins.' # TODO: real value normalization based on Article type
+    effort
   end
 
   def effort
-    object.payload['effort/readtime']
+    object.payload['effort/readTime']
   end
 
-  def mast_head_image
-    object.payload['mastHeadImage']
+  def card_title
+    object.title # TODO: they should introduce a cardTitle
   end
 
-  def mast_head_title
-    object.payload['mastHeadTitle']
-  end
+  private
 
-  def section1_body
-    object.payload['section1Body']
-  end
-
-  def section2_body
-    object.payload['section2Body']
-  end
-
-  def source_materials_citation
-    object.payload['sourceMaterialsCitation']
+  def common
+    @common ||= CommonContent.new(object)
   end
 end

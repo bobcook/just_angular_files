@@ -1,22 +1,21 @@
-const ActivityCardPresenter = function (DefaultCardPresenter) {
+const ActivityCardPresenter = function ($presenterUtils,
+                                        DefaultCardPresenter) {
   'ngInject';
 
   const Default = DefaultCardPresenter;
 
-  const fieldOverrides = function (controller, activity) {
+  const overrideFields = function (activity, controller) {
     return {
-      cardTitle: activity.title, // TODO: change when real fields added
+      cardContent: '',
       cardClasses: controller.cardClasses || 'activity-card small-card',
-      lowerLeft: 'Effort: ' + activity.recommendedEffortTime + ' / ' +
-                 activity.recommendedEffortFrequency,
+      lowerLeft: activity.effortText,
     };
   };
 
   return {
-    forController: function (controller, activity) {
-      const overrides = fieldOverrides(controller, activity);
-      return Default.forController(controller, activity, overrides);
-    },
+    // forController :: Controller -> Resource -> MutatedController
+    forController:
+      $presenterUtils.withFieldsFrom(Default.defaultFields, overrideFields),
   };
 };
 

@@ -12,6 +12,7 @@ import upcase from './common/filters/upcase.js';
 
 // resources
 import Activity from './common/resources/activity.js';
+import ActivityReview from './common/resources/activity-review.js';
 import ActivityTrackerResponse from
   './common/resources/activity-tracker-response.js';
 import Article from './common/resources/article.js';
@@ -33,10 +34,14 @@ import UserRecipe from './common/resources/user-recipe.js';
 // presenters
 import ActivityCardPresenter from
   './common/presenters/activity-card.presenter.js';
+import ActivityPagePresenter from
+  './common/presenters/activity-page.presenter.js';
 import ArticleCardPresenter from
   './common/presenters/article-card.presenter.js';
 import DefaultCardPresenter from
   './common/presenters/default-card.presenter.js';
+import DefaultShowPagePresenter from
+  './common/presenters/default-show-page.presenter.js';
 import GameCardPresenter from
   './common/presenters/game-card.presenter.js';
 import RecipeCardPresenter from './common/presenters/recipe-card.presenter.js';
@@ -49,6 +54,7 @@ import $currentModal from './common/services/current-modal.js';
 import $loadCurrentUser from './common/services/load-current-user.js';
 import $pillarFiltering from './common/services/pillar-filtering.js';
 import $postHref from './common/services/post-href.js';
+import $presenterUtils from './common/services/presenter-utils.js';
 import authInterceptor from './common/services/auth-interceptor.js';
 import dependentMemoize from './common/services/dependent-memoize.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
@@ -78,6 +84,8 @@ import topNav from './components/top-nav/top-nav.js';
 import navTabs from './components/nav-tabs/nav-tabs.js';
 
 // controllers
+import ActivityController from './activities/activity.controller.js';
+import ActivityModalController from './activities/activity-modal.controller.js';
 import ActivitiesController from './activities/activities.controller.js';
 import ActivityTrackerController from
   './components/activity-tracker/activity-tracker.controller.js';
@@ -152,6 +160,7 @@ app
 
   // resources
   .factory('Activity', Activity)
+  .factory('ActivityReview', ActivityReview)
   .factory('ActivityTrackerResponse', ActivityTrackerResponse)
   .factory('Article', Article)
   .factory('ArticleReview', ArticleReview)
@@ -171,8 +180,10 @@ app
 
   // presenters
   .factory('ActivityCardPresenter', ActivityCardPresenter)
+  .factory('ActivityPagePresenter', ActivityPagePresenter)
   .factory('ArticleCardPresenter', ArticleCardPresenter)
   .factory('DefaultCardPresenter', DefaultCardPresenter)
+  .factory('DefaultShowPagePresenter', DefaultShowPagePresenter)
   .factory('GameCardPresenter', GameCardPresenter)
   .factory('RecipeCardPresenter', RecipeCardPresenter)
   .factory('RecipePagePresenter', RecipePagePresenter)
@@ -184,6 +195,7 @@ app
   .factory('$loadCurrentUser', $loadCurrentUser)
   .factory('$pillarFiltering', $pillarFiltering)
   .factory('$postHref', $postHref)
+  .factory('$presenterUtils', $presenterUtils)
   .factory('authInterceptor', authInterceptor)
   .factory('dependentMemoize', dependentMemoize)
   .provider('modalStateHelper', modalStateHelper)
@@ -210,6 +222,8 @@ app
   .directive('ssNavTabs', navTabs)
 
   // controllers
+  .controller('ActivityController', ActivityController)
+  .controller('ActivityModalController', ActivityModalController)
   .controller('ActivitiesController', ActivitiesController)
   .controller('ActivityTrackerController', ActivityTrackerController)
   .controller('ActivityTrackerBinaryController',

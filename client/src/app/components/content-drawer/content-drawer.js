@@ -12,6 +12,7 @@ const contentDrawer = function () {
     },
     link: function (scope, element, attrs) {
       const elementInner = $(element).find('.content-drawer-inner');
+
       scope.$watch('isOpen', function (isOpen) {
         if (isOpen) {
           element

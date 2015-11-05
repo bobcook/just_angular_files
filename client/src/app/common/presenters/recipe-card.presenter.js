@@ -1,9 +1,10 @@
-const RecipeCardPresenter = function (DefaultCardPresenter) {
+const RecipeCardPresenter = function ($presenterUtils,
+                                      DefaultCardPresenter) {
   'ngInject';
 
   const Default = DefaultCardPresenter;
 
-  const fieldOverrides = function (controller, recipe) {
+  const overrideFields = function (recipe, controller) {
     return {
       cardContent: '',
       cardClasses: controller.cardClasses || 'recipe-card',
@@ -12,10 +13,9 @@ const RecipeCardPresenter = function (DefaultCardPresenter) {
   };
 
   return {
-    forController: function (controller, recipe) {
-      const overrides = fieldOverrides(controller, recipe);
-      return Default.forController(controller, recipe, overrides);
-    },
+    // forController :: Controller -> Resource -> MutatedController
+    forController:
+      $presenterUtils.withFieldsFrom(Default.defaultFields, overrideFields),
   };
 };
 

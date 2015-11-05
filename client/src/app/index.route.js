@@ -26,7 +26,17 @@ const routerConfig = function (stateHelperProvider,
         {
           name: 'activity',
           url: '/activities/:id',
-          // TODO: add real activity detail page
+          templateUrl: 'app/activities/activity.html',
+          controller: 'ActivityController',
+          controllerAs: 'vm',
+          children: [
+            modalStateHelperProvider({
+              name: 'activity-saved',
+              templateUrl: 'app/components/saved-modal/saved-modal.html',
+              controller: 'ActivityModalController',
+              controllerAs: 'vm',
+            }),
+          ],
         },
         {
           name: 'activities',
@@ -84,7 +94,7 @@ const routerConfig = function (stateHelperProvider,
           children: [
             modalStateHelperProvider({
               name: 'game-saved',
-              templateUrl: 'app/games/game-saved-modal.html',
+              templateUrl: 'app/components/saved-modal/saved-modal.html',
               controller: 'GameModalController',
               controllerAs: 'vm',
             }),

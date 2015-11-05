@@ -13,6 +13,7 @@ const UserArticleController = function (Article,
   this.isUserNamespace = true;
   this.resource = Article;
   this.reviewResource = ArticleReview;
+  this.pluralResourceName = 'articles';
   this.userResource = UserArticle;
 };
 

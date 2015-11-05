@@ -1,7 +1,11 @@
-const RecipePagePresenter = function ($filter) {
+const RecipePagePresenter = function (DefaultShowPagePresenter,
+                                      $filter,
+                                      $presenterUtils) {
   'ngInject';
 
-  const presentableFields = function (recipe) {
+  const Default = DefaultShowPagePresenter;
+
+  const overrideFields = function (recipe) {
     const MAX_TITLE_LENGTH = 80;
     const timeText = `Preparation time: ${recipe.duration}`;
 
@@ -17,20 +21,14 @@ const RecipePagePresenter = function ($filter) {
       ingredients: recipe.ingredients,
       instructions: recipe.instructions,
       lowerLeft: timeText,
-      mastHeadImage: recipe.mastHeadImage,
-      pillars: recipe.pillars,
       sourceMaterialsCitation: recipe.sourceMaterialsCitation,
-      topLeft: _.capitalize(recipe.constructor.config.name),
-      title: $filter('limitTo')(recipe.mastHeadTitle, MAX_TITLE_LENGTH),
     };
   };
 
   return {
-    forController: function (controller, recipe) {
-      _.each(presentableFields(recipe), function (v, k) {
-        controller[k] = v;
-      });
-    },
+    // forController :: Controller -> Resource -> ModifiedResource
+    forController:
+      $presenterUtils.withFieldsFrom(Default.defaultFields, overrideFields),
   };
 };
 

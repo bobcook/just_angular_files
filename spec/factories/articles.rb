@@ -9,11 +9,11 @@ FactoryGirl.define do
     sequence(:title) { |n| "Article #{n}" }
     sequence(:payload) do |n|
       {
-        mastHeadTitle: '4 Steps to Reduce Age-Related Anxiety',
-        mastHeadImage: 'http://www.aarp.org/content/dam/' \
+        mastheadTitle: '4 Steps to Reduce Age-Related Anxiety',
+        mastheadImage: 'http://www.aarp.org/content/dam/' \
                        'specialized-membership/staying-sharp/articles/' \
                        'info-2015/masthead.jpg',
-        'effort/readtime' => 'Read Time: 5 min',
+        'effort/readTime' => 'Read Time: 5 min',
         contentSourceBranding: 'An Article from our partner: ' \
                                'content/dam/specialized-membership/' \
                                'staying-sharp/articles/info-2015/jh-logo.jpg',

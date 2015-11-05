@@ -1,26 +1,27 @@
 module Api
   module V1
     module Me
-      class GamesController < Api::V1::Me::BaseController
+      class ActivitiesController < Api::V1::Me::BaseController
         include PaginatedResource
         include SaveableResource
 
         private
 
         def resource
-          @resource ||= current_user.games
+          @resource ||= current_user.activities
         end
 
         def sorted_collection
-          @sorted_collection ||= resource.order('user_games.created_at DESC')
+          @sorted_collection ||=
+            resource.order('user_activities.created_at DESC')
         end
 
         def serializer
-          GameSerializer
+          ActivitySerializer
         end
 
         def saveable_resource_type
-          Game
+          Activity
         end
       end
     end

@@ -10,11 +10,12 @@ const ArticleController = function (Article,
   });
 
   // pass values to directive
+  this.isContentDrawerOpen = false;
   this.isUserNamespace = false;
   this.resource = Article;
   this.reviewResource = ArticleReview;
+  this.pluralResourceName = 'articles';
   this.userResource = UserArticle;
-  this.isContentDrawerOpen = false;
 };
 
 export default ArticleController;

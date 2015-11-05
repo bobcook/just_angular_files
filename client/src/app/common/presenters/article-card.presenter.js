@@ -1,4 +1,6 @@
-const ArticleCardPresenter = function ($filter, DefaultCardPresenter) {
+const ArticleCardPresenter = function ($filter,
+                                       $presenterUtils,
+                                       DefaultCardPresenter) {
   'ngInject';
 
   const Default = DefaultCardPresenter;
@@ -9,7 +11,7 @@ const ArticleCardPresenter = function ($filter, DefaultCardPresenter) {
     return $filter('limitTo')(article.description, MAX_ABSTRACT_LENGTH);
   };
 
-  const fieldOverrides = function (controller, article) {
+  const overrideFields = function (article, controller) {
     return {
       cardClasses: controller.cardClasses || 'article-card',
       cardContent: getTitle(article),
@@ -19,10 +21,9 @@ const ArticleCardPresenter = function ($filter, DefaultCardPresenter) {
   };
 
   return {
-    forController: function (controller, article) {
-      const overrides = fieldOverrides(controller, article);
-      return Default.forController(controller, article, overrides);
-    },
+    // forController :: Controller -> Resource -> MutatedController
+    forController:
+      $presenterUtils.withFieldsFrom(Default.defaultFields, overrideFields),
   };
 };
 

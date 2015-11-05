@@ -1,10 +1,13 @@
-const RecipeModalController = function (Recipe, $stateParams, $currentModal) {
+const RecipeModalController = function (Recipe,
+                                        $currentModal,
+                                        $location,
+                                        $stateParams) {
   'ngInject';
 
   Recipe.get($stateParams.id).then((response) => {
     this.resource = response.data;
     this.resourceTitle = this.resource.title;
-    this.resourceURL = this.resource.$url();
+    this.resourceURL = $location.absUrl();
     this.durationText = `Prep time: ${this.resource.duration}`;
   });
 

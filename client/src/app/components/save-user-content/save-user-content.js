@@ -13,10 +13,13 @@ const saveUserContent = function () {
     },
     bindToController: true,
     scope: {
+      displayContent: '=?ssDisplayContent',
+      isUserNamespace: '=ssIsUserNamespace',
+      isSaved: '=ssIsSaved',
       item: '=ssItem',
       items: '=?ssItems',
+      pluralResourceName: '=ssPluralResourceName',
       resource: '=ssResource',
-      isUserNamespace: '=ssIsUserNamespace',
     },
   };
 };

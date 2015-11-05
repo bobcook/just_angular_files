@@ -5,6 +5,7 @@ class Activity < ActiveRecord::Base
   has_many :pillar_categorizations, as: :categorizable
   has_many :pillars, through: :pillar_categorizations
   has_many :user_activities
+  has_many :reviews, as: :reviewable, dependent: :destroy
 
   belongs_to :activity_tracker, inverse_of: :activities
 

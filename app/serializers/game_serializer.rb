@@ -1,23 +1,13 @@
 class GameSerializer < ActiveModel::Serializer
-  attributes :id, :title, :body_image, :call_to_action_url, :card_image,
-             :description, :difficulty_level, :game_type
+  delegate :card_image, :description, :id, to: :common
+
+  attributes :id, :title, :call_to_action_url, :card_image,
+             :card_title, :description, :difficulty_level, :game_type
 
   has_many :pillars
 
-  def body_image
-    object.payload['bodyImage']
-  end
-
   def call_to_action_url
     object.payload['callToActionUrl']
-  end
-
-  def card_image
-    object.payload['cardImage']
-  end
-
-  def description
-    object.payload['description']
   end
 
   def difficulty_level
@@ -26,5 +16,15 @@ class GameSerializer < ActiveModel::Serializer
 
   def game_type
     object.payload['gameType']
+  end
+
+  def card_title
+    object.title # TODO: they should introduce a cardTitle
+  end
+
+  private
+
+  def common
+    @common ||= CommonContent.new(object)
   end
 end

@@ -3,6 +3,6 @@
   ng-class="{ tracked: vm.isSaved }"
   class="btn tracking-btn">
 
-  <span>Save to My {{vm.resourceNamePluralized | capitalize}}</span>
-  <span>Remove from Saved {{vm.resourceNamePluralized | capitalize}}</span>
+  <span>{{vm.displayContent['unsaved']}}</span>
+  <span>{{vm.displayContent['saved']}}</span>
 </button>

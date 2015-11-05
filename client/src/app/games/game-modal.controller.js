@@ -1,12 +1,20 @@
-// TODO: consider generalizing the controller logic for modals
-const GameModalController = function (Game, $stateParams, $location) {
+const GameModalController = function (Game,
+                                      $currentModal,
+                                      $location,
+                                      $stateParams) {
   'ngInject';
 
   Game.get($stateParams.id).then((response) => {
-    this.game = response.data;
-    this.gameTitle = this.game.title;
-    this.gameURL = $location.absUrl();
+    this.resource = response.data;
+    this.resourceTitle = this.resource.title;
+    this.resourceURL = this.resource.$url();
   });
+
+  this.closeModal = $currentModal.close;
+  this.resourceName = 'game';
+  this.pluralResourceName = `${this.resourceName}s`;
+  this.explorePath = `application.${this.pluralResourceName}`;
+  this.stayingSharpPath = `application.user.${this.pluralResourceName}`;
 };
 
 export default GameModalController;

@@ -1,13 +1,22 @@
 const SaveUserContentController = function ($state, $filter) {
   'ngInject';
 
+  const defaultContent = function (resourceName) {
+    return {
+      'unsaved': `Save to My ${$filter('capitalize')(resourceName)}`,
+      'saved': `Remove from Saved ${$filter('capitalize')(resourceName)}`,
+    };
+  };
+
   const resourceName =
     $filter('downcase')(this.resource.contentName);
 
+  // via ss-plural-resource-name
+  this.pluralResourceName = this.pluralResourceName || 'OVERRIDE';
+  // via ss-display-content
+  this.displayContent =
+    this.displayContent || defaultContent(this.pluralResourceName);
   this.item = this.item || null; // Via ss-item
-
-  // TODO: consider adding a service to pluralize the resource names
-  this.resourceNamePluralized = `${resourceName}s`;
 
   if (this.isUserNamespace) {
     this.isSaved = true;

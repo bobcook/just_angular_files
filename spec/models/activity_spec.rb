@@ -7,6 +7,7 @@ describe Activity do
   it { should have_many(:pillars).through(:pillar_categorizations) }
   it { should belong_to(:activity_tracker) }
   it { should have_many(:user_activities) }
+  it { should have_many(:reviews) }
 
   describe '#saved?' do
     it 'returns true if user has saved the activity' do

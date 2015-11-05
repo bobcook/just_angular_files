@@ -1,13 +1,13 @@
 module Api
   module V1
-    module Articles
+    module Activities
       class ReviewsController < Api::V1::BaseController
         include ReviewableResource
 
         private
 
         def reviewable_resource_type
-          Article
+          Activity
         end
       end
     end

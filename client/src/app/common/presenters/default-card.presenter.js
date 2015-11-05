@@ -33,7 +33,7 @@ const DefaultCardPresenter = function ($filter) {
 
   const upperLeft = function (resource) { return resource.contentName; };
 
-  const defaultPresentableFields = function (resource) {
+  const defaultFields = function (resource) {
     return {
       cardContent: cardContent(resource),
       cardClasses: cardClasses(resource),
@@ -48,20 +48,8 @@ const DefaultCardPresenter = function ($filter) {
     };
   };
 
-  const forController = function (controller,
-                                  resource,
-                                  overrides) {
-    overrides = overrides || {};
-    const defaults = defaultPresentableFields(resource);
-    const presentableFields = _.merge({}, defaults, overrides);
-
-    _.each(presentableFields, function (v, k) {
-      controller[k] = v;
-    });
-  };
-
   return {
-    forController: forController,
+    defaultFields: defaultFields,
   };
 };
 

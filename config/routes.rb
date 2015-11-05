@@ -29,7 +29,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :activities, only: [:index, :show]
+      resources :activities, only: [:index, :show] do
+        resources :reviews,
+                  controller: 'activities/reviews',
+                  only: [:create, :index]
+      end
       resources :articles, only: [:index, :show] do
         resources :reviews,
                   controller: 'articles/reviews',
@@ -50,6 +54,7 @@ Rails.application.routes.draw do
 
       namespace :me, as: :my do
         resources :articles, only: [:index, :show, :create, :destroy]
+        resources :activities, only: [:index, :show, :create, :destroy]
         resources :games, only: [:show, :index, :create, :destroy]
         resources :current_user, controller: 'current_user', only: :index
         resources :recipes, only: [:index, :show, :create, :destroy]

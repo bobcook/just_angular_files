@@ -18,9 +18,6 @@ const Article = function (API_URL, railsResourceFactory, railsSerializer) {
   // "Instance-level" properties
   Article.include({
     contentName: 'Article',
-    // TODO: real cardImage
-    cardImage: 'http://i.istockimg.com/file_thumbview_approve/23264892/6' +
-                '/stock-photo-23264892-elderly-women-gardening.jpg',
   });
 
   // Computed properties
