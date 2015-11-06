@@ -79,11 +79,74 @@ const routerConfig = function (stateHelperProvider,
           templateUrl: 'app/assessments/assessment.html',
         },
         {
+          name: 'assessment-mbs',
+          url: '/assessments-mbs',
+          template: '<div ui-view></div>',
+          children: [
+            {
+              name: 'choice-reaction-time',
+              url: '/choice-reaction-time',
+              templateUrl: 'app/assessments/mbs/choice-reaction-time.html',
+            },
+            {
+              name: 'continuous-performance',
+              url: '/continuous-performance',
+              templateUrl: 'app/assessments/mbs/continuous-performance.html',
+            },
+            {
+              name: 'digit-span',
+              url: '/digit-span',
+              templateUrl: 'app/assessments/mbs/digit-span.html',
+            },
+            {
+              name: 'go-nogo',
+              url: '/go-nogo',
+              templateUrl: 'app/assessments/mbs/go-nogo.html',
+            },
+            {
+              name: 'maze',
+              url: '/maze',
+              templateUrl: 'app/assessments/mbs/maze.html',
+            },
+            {
+              name: 'memory-recognition-delayed',
+              url: '/memory-recognition-delayed',
+              templateUrl:
+                'app/assessments/mbs/memory-recognition-delayed.html',
+            },
+            {
+              name: 'memory-recognition',
+              url: '/memory-recognition',
+              templateUrl: 'app/assessments/mbs/memory-recognition.html',
+            },
+            {
+              name: 'motor-tapping',
+              url: '/motor-tapping',
+              templateUrl: 'app/assessments/mbs/motor-tapping.html',
+            },
+            {
+              name: 'switching-of-attention',
+              url: '/switching-of-attention',
+              templateUrl: 'app/assessments/mbs/switching-of-attention.html',
+            },
+            {
+              name: 'verbal-interference',
+              url: '/verbal-interference',
+              templateUrl: 'app/assessments/mbs/verbal-interference.html',
+            },
+          ],
+        },
+        {
           name: 'assessments',
           url: '/assessments',
           controller: 'AssessmentsController',
           controllerAs: 'vm',
           templateUrl: 'app/assessments/assessments.html',
+        },
+        {
+          name: 'assessments-results',
+          url: '/assessments-results',
+          templateUrl: 'app/assessments/assessments-results.html',
         },
         {
           name: 'game',
