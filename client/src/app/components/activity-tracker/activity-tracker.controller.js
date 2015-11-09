@@ -1,7 +1,28 @@
 const ActivityTrackerController = function (ModalService,
+                                            $moment,
                                             $scope,
                                             dependentMemoize) {
   'ngInject';
+
+  // XXX: remove; for debugging UTC/timezone offset issue
+  //const tk = require('timekeeper');
+  //const yesterdayDay = $moment().subtract(24, 'hours').toDate();
+  //const yesterdayNight = $moment().subtract(12, 'hours').toDate();
+  //const now = $moment();
+  //const tonight = $moment().add(6, 'hours').toDate();
+  //const newTime = yesterdayDay;
+  //tk.travel(newTime);
+  //console.dir($moment().format('l LT'));
+
+  const daysForGroup = function (periodGroup) {
+    const today = $moment().utc().local();
+    const notAfterToday = function (period) {
+      return !period.date.isAfter(today);
+    };
+    // XXX: deal w/ UTC/timezone offset issue
+    //return _.filter(periodGroup[1], notAfterToday);
+    return periodGroup[1];
+  };
 
   dependentMemoize.defineProperty(
     this, 'todayPeriod',
@@ -17,11 +38,14 @@ const ActivityTrackerController = function (ModalService,
       // in a JavaScript object (which can only have string keys). Since we need
       // to sort by these keys below, the easiest way is to just convert the
       // year + week combo into a number, ensuring the year is the most
-      // significant by multiplying it by 100 first.
-      const groups = _.groupBy(periods, period =>
-        period.date.year() * 100 + period.date.week());
+      // significant by putting it ahead of the week while it is still a string.
+      const groups = _.groupBy(periods, function (period) {
+        const yearPart = period.date.year();
+        const weekPart = period.date.startOf('week').week();
+        return `${yearPart}${weekPart}`;
+      });
       const sortedGroups = _.sortBy(_.pairs(groups), g => _.parseInt(g[0]));
-      return _.map(sortedGroups, g => g[1]);
+      return _.map(sortedGroups, daysForGroup);
     });
 
   this.editPeriod = (period) => {

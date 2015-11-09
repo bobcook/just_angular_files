@@ -17,6 +17,7 @@ const addConstants = function (module) {
     window.__env, // load environment variables into constants
     {
       'ApiRoutes': ApiRoutes,
+      '$moment': moment,
     }
   );
 

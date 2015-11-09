@@ -1,2 +1,0 @@
-class ActivityTrackerQuestionCheckbox < ActivityTrackerQuestion
-end

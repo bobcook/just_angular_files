@@ -5,10 +5,27 @@ module Api
         include PaginatedResource
         include SaveableResource
 
+        def create
+          user_activity = resource.create(activity: instance_to_save)
+
+          render json: user_activity, serializer: serializer, status: :created
+        end
+
         private
 
+        def instance
+          @instance ||=
+            resource
+            .includes(activity: :pillars)
+            .find_by(activity_id: params[:id])
+        end
+
+        def instance_to_save
+          @instance_to_save ||= Activity.find(params[:activity][:activity_id])
+        end
+
         def resource
-          @resource ||= current_user.activities
+          @resource ||= current_user.user_activities
         end
 
         def sorted_collection
@@ -17,7 +34,7 @@ module Api
         end
 
         def serializer
-          ActivitySerializer
+          UserActivitySerializer
         end
 
         def saveable_resource_type

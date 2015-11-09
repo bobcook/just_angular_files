@@ -27,7 +27,8 @@
             ss-item="vm.activity"
             ss-resource="vm.userResource"
             ss-is-saved="vm.isSaved"
-            ss-plural-resource-name="vm.pluralResourceName">
+            ss-plural-resource-name="vm.pluralResourceName"
+            ss-saved-item="vm.savedItem">
           </ss-save-user-content>
         </div>
       </footer>
@@ -38,7 +39,7 @@
 <!-- TODO: use a different class besides cp-content-drawer since this is not -->
 <!-- technically drawer content -->
 <div
-  ng-if="!vm.isSaved"
+  ng-if="!vm.savedItem"
   class="cp-content-drawer">
 
   <section class="container">
@@ -56,7 +57,7 @@
 </div>
 
 <div
-  ng-if="vm.isSaved"
+  ng-if="vm.savedItem"
   class="cp-content-drawer">
 
   <section class="container">
@@ -65,7 +66,9 @@
       <span ng-if="vm.isContentDrawerOpen" class="change-text">Hide Activity Details<span class="caret caret-up"></span></span>
     </a>
     <article ss-content-drawer="vm.isContentDrawerOpen" ss-drawer-class="">
-      <h1>(Activity Tracker here)</h1>
+      <ss-activity-tracker
+        activity="vm.savedItem">
+      </ss-activity-tracker>
     </article>
     <hr>
   </section>
@@ -94,7 +97,8 @@
         ss-item="vm.activity"
         ss-resource="vm.userResource"
         ss-is-saved="vm.isSaved"
-        ss-plural-resource-name="vm.pluralResourceName">
+        ss-plural-resource-name="vm.pluralResourceName"
+        ss-saved-item="vm.savedItem">
       </ss-save-user-content>
     </footer>
   </section>
@@ -114,6 +118,8 @@
   <p>Did you find this activity useful?</p>
 </ss-reviews>
 
+<!-- TODO: turn back on
 <ss-related-content
   ss-resource="vm.activity">
 </ss-related-content>
+-->

@@ -1,33 +1,39 @@
-<div>
-  <h2>Track When You Did This</h2>
-  <button ng-class="{ selected: vm.todayPeriod.isTracked }"
-          ng-click="vm.editPeriod(vm.todayPeriod)">
-    <span ng-if="!vm.todayPeriod.isTracked">Track Today</span>
-    <span ng-if="vm.todayPeriod.isTracked">✓</span>
-  </button>
-  <div ng-switch="vm.activity.activityTracker.type">
-    <ss-activity-tracker-binary
-      ng-switch-when="binary"
-      periods="vm.currentWeek"
-      on-period-clicked="vm.editPeriod($period)">
-    </ss-activity-tracker-binary>
-    <ss-activity-tracker-quantity
-      ng-switch-default
-      periods="vm.currentWeek"
-      on-period-clicked="vm.editPeriod($period)">
-    </ss-activity-tracker-quantity>
-  </div>
-  <div>
-    <div ng-repeat="week in vm.periodsByWeek">
-      <button ng-class="{ selected: week == vm.currentWeek }"
-              ng-click="vm.selectWeek(week)">
-        Week {{$index + 1}}
-      </button>
-      <div ng-repeat="period in week">
-        {{period.date.format('dddd')}}
-        <span ng-if="period.isTracked">✓</span>
-        <span ng-if="!period.isTracked">✗</span>
+<div class="detail-activity-tracker {{ vm.activity.activityTracker.type}}">
+  <section>
+    <header>
+      <hgroup>
+        <h2>Track When You Did This</h2>
+        <button ng-class="{ selected: vm.todayPeriod.isTracked }"
+                ng-click="vm.editPeriod(vm.todayPeriod)">
+          <span ng-if="!vm.todayPeriod.isTracked">Track Today</span>
+          <span ng-if="vm.todayPeriod.isTracked">✓</span>
+        </button>
+      </hgroup>
+    </header>
+    <div ng-switch="vm.activity.activityTracker.type">
+      <ss-activity-tracker-binary
+        ng-switch-when="binary"
+        periods="vm.currentWeek"
+        on-period-clicked="vm.editPeriod($period)">
+      </ss-activity-tracker-binary>
+      <ss-activity-tracker-quantity
+        ng-switch-default
+        periods="vm.currentWeek"
+        on-period-clicked="vm.editPeriod($period)">
+      </ss-activity-tracker-quantity>
+    </div>
+    <div>
+      <div ng-repeat="week in vm.periodsByWeek">
+        <button ng-class="{ selected: week == vm.currentWeek }"
+                ng-click="vm.selectWeek(week)">
+          Week {{$index + 1}}
+        </button>
+        <div ng-repeat="period in week">
+          {{period.date.format('dddd')}}
+          <span ng-if="period.isTracked">✓</span>
+          <span ng-if="!period.isTracked">✗</span>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </div>

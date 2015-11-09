@@ -9,13 +9,14 @@ class UserActivity < ActiveRecord::Base
     scope: :activity_id, message: 'activity already saved'
   }
 
-  def stubbed_activity_periods
-    (created_at.to_date..Date.today).map do |day|
+  def stubbed_activity_periods(options = {})
+    stubbed_period_date_range(options).map do |day|
       user_activity_periods.where(completed_date: day...(day + 1)).first ||
         stubbed_activity_period(day)
     end
   end
 
+  # TODO: remove if possible
   def days_with_activities(today)
     days_for_a_week(today).map do |day|
       UserActivityPeriod.find_or_initialize_by(
@@ -25,6 +26,21 @@ class UserActivity < ActiveRecord::Base
   end
 
   private
+
+  def stubbed_period_date_range(options = {})
+    create_time ||= options[:created_at] || created_at
+    current_time ||= options[:current_time] || Time.now # .utc.to_date ?
+
+    # Send 1 extra day to account for user tz offset; client should choose
+    # whether or not to use the extra day
+    start_date = utc_date(create_time).at_beginning_of_week + 1 # Start Monday
+    end_date = utc_date(current_time + 1.day)
+    (start_date..end_date)
+  end
+
+  def utc_date(date)
+    date.utc.to_date
+  end
 
   def stubbed_activity_period(date)
     questions = activity.activity_tracker.activity_tracker_questions
@@ -40,6 +56,7 @@ class UserActivity < ActiveRecord::Base
     end
   end
 
+  # TODO: remove if possible
   def days_for_a_week(date)
     (date.at_beginning_of_week..date).to_a
   end

@@ -11,6 +11,7 @@ const ActivityController = function (Activity,
   });
 
   this.isSaved = false; // Will be overwritten by ss-save-user-content
+  this.savedItem = null; // Will be overwritten by ss-save-user-content
   this.isContentDrawerOpen = true;
   this.isUserNamespace = false;
   this.resource = Activity;

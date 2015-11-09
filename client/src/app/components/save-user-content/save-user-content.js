@@ -20,6 +20,7 @@ const saveUserContent = function () {
       items: '=?ssItems',
       pluralResourceName: '=ssPluralResourceName',
       resource: '=ssResource',
+      savedItem: '=?ssSavedItem',
     },
   };
 };

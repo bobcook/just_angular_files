@@ -15,6 +15,6 @@ class UserActivitySerializer < ActiveModel::Serializer
     ActiveModel::ArraySerializer.new(
       object.stubbed_activity_periods,
       each_serializer: UserActivityPeriodSerializer
-    )
+    ).as_json
   end
 end

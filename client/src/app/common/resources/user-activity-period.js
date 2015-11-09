@@ -1,4 +1,5 @@
-const UserActivityPeriod = function (API_URL,
+const UserActivityPeriod = function ($moment,
+                                     API_URL,
                                      railsResourceFactory,
                                      railsSerializer) {
   'ngInject';
@@ -14,7 +15,7 @@ const UserActivityPeriod = function (API_URL,
 
   Object.defineProperty(UserActivityPeriod.prototype, 'date', {
     get: function () {
-      return moment(this.completedDate);
+      return $moment.utc(this.completedDate).local();
     },
   });
 

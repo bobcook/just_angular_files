@@ -11,19 +11,17 @@ const contentDrawer = function () {
       ssDrawerClass: '@?',
     },
     link: function (scope, element, attrs) {
-      const elementInner = $(element).find('.content-drawer-inner');
-
-      scope.$watch('isOpen', function (isOpen) {
+      const render = function (isOpen) {
         if (isOpen) {
-          element
-            .addClass('visible')
-            .css({ height: $(elementInner)[0].offsetHeight });
+          element.addClass('visible');
+          element.show();
         } else {
-          element
-            .removeClass('visible')
-            .css({ height: 0 });
+          element.removeClass('visible');
+          element.hide();
         }
-      });
+      };
+
+      scope.$watch('isOpen', render);
     },
   };
 };

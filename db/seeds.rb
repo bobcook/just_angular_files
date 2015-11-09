@@ -31,11 +31,12 @@ pillar_data = [
 puts 'Seeding Pillars'
 Pillar.create(pillar_data)
 
-activity_tracker_data =
-  ActivityTracker.default_types.map { |t| { name: t } }
+activity_tracker_names = ActivityTracker.default_types
 
 puts 'Seeding ActivityTrackers'
-ActivityTracker.create(activity_tracker_data)
+activity_tracker_names.each do |name|
+  FactoryGirl.create(:activity_tracker, name.to_sym)
+end
 
 puts 'Seeding Articles'
 FactoryGirl.create_list(
@@ -49,8 +50,8 @@ puts 'Seeding Recipes'
 FactoryGirl.create_list(:recipe, 20)
 
 puts 'Seeding Activities'
-20.times do |index|
-  tracker = ActivityTracker.create(name: ActivityTracker.default_types.sample)
+20.times do
+  tracker = ActivityTracker.find_by(name: 'binary')
   FactoryGirl.create(:activity, activity_tracker: tracker)
 end
 

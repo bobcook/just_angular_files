@@ -6,19 +6,19 @@ describe ActivityTracker do
 
   describe '#binary?' do
     it 'is true if name is binary' do
-      subject = create(:binary_tracker)
+      subject = create(:activity_tracker, :binary)
 
       expect(subject.binary?).to eq(true)
     end
 
     it 'is false if name is quantity' do
-      subject = create(:quantity_tracker)
+      subject = create(:activity_tracker, :quantity)
 
       expect(subject.binary?).to eq(false)
     end
 
     it 'is false if name is scale' do
-      subject = create(:scale_tracker)
+      subject = create(:activity_tracker, :scale)
 
       expect(subject.binary?).to eq(false)
     end
@@ -26,19 +26,19 @@ describe ActivityTracker do
 
   describe '#quantity?' do
     it 'is false if name is binary' do
-      subject = create(:binary_tracker)
+      subject = create(:activity_tracker, :binary)
 
       expect(subject.quantity?).to eq(false)
     end
 
     it 'is true if name is quantity' do
-      subject = create(:quantity_tracker)
+      subject = create(:activity_tracker, :quantity)
 
       expect(subject.quantity?).to eq(true)
     end
 
     it 'is false if name is scale' do
-      subject = create(:scale_tracker)
+      subject = create(:activity_tracker, :scale)
 
       expect(subject.quantity?).to eq(false)
     end
@@ -46,19 +46,19 @@ describe ActivityTracker do
 
   describe '#scale?' do
     it 'is false if name is binary' do
-      subject = create(:binary_tracker)
+      subject = create(:activity_tracker, :binary)
 
       expect(subject.scale?).to eq(false)
     end
 
     it 'is false if name is quantity' do
-      subject = create(:quantity_tracker)
+      subject = create(:activity_tracker, :quantity)
 
       expect(subject.scale?).to eq(false)
     end
 
     it 'is true if name is scale' do
-      subject = create(:scale_tracker)
+      subject = create(:activity_tracker, :scale)
 
       expect(subject.scale?).to eq(true)
     end

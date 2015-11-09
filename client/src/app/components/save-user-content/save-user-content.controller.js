@@ -17,11 +17,13 @@ const SaveUserContentController = function ($state, $filter) {
   this.displayContent =
     this.displayContent || defaultContent(this.pluralResourceName);
   this.item = this.item || null; // Via ss-item
+  this.savedItem = this.savedItem || null; // Via ss-saved-item
 
   if (this.isUserNamespace) {
     this.isSaved = true;
   } else {
     this.resource.get(this.item.id).then((response) => {
+      this.savedItem = response.data;
       this.isSaved = response.status === 200;
     });
   }
@@ -38,7 +40,8 @@ const SaveUserContentController = function ($state, $filter) {
     const resourceIdField = `${resourceName}Id`;
     const args = {};
     args[resourceIdField] = this.item.id;
-    new this.resource(args).create().then(() => {
+    new this.resource(args).create().then((response) => {
+      this.savedItem = _.isEmpty(response) ? null : response.data;
       this.isSaved = true;
       // show modal after saving
       $state.go(`.${resourceName}-saved`);
@@ -47,6 +50,7 @@ const SaveUserContentController = function ($state, $filter) {
 
   this.delete = function () {
     this.resource.delete(this.item.id).then(() => {
+      this.savedItem = null;
       this.isSaved = false;
       // remove item from index
       if (this.items) {

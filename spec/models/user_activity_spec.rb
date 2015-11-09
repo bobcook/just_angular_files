@@ -16,32 +16,53 @@ describe UserActivity do
   end
 
   describe '#stubbed_activity_periods' do
-    let(:days_ago_created) { 15 }
-
-    let(:user_activity) do
-      create :user_activity,
-             created_at: (Date.today - days_ago_created.days)
+    let(:freeze_time) do
+      DateTime.parse('1/1/2016')
     end
 
-    let(:existing_activity_period) do
-      create :user_activity_period, completed_date: 2.days.ago
+    def make_user_activity(created_at)
+      create :user_activity, created_at: created_at
     end
 
-    it 'returns one record per day since its creation' do
+    def make_existing_activity_period(completed_date)
+      create :user_activity_period, completed_date: completed_date
+    end
+
+    it 'returns one record per day since the beginning of start week' do
+      today_in_utc = Time.now.utc.to_date
+      day_created = today_in_utc - 15.days
+      beginning_of_creation_week = day_created.at_beginning_of_week + 1.day
+
+      expected_num_days = (today_in_utc - beginning_of_creation_week).to_i + 2
+      user_activity = make_user_activity(day_created)
+
       expect(user_activity.stubbed_activity_periods.length)
-        .to eq(days_ago_created + 1)
+        .to eq(expected_num_days)
     end
 
     it 'returns non-persisted records for dates without activity periods' do
+      today_in_utc = Time.now.utc.to_date
+      day_created = today_in_utc - 15.days
+      beginning_of_creation_week = day_created.at_beginning_of_week + 1.day
+
+      user_activity = make_user_activity(day_created)
+      existing_activity_period = make_existing_activity_period(2.days.ago)
+
       user_activity.user_activity_periods << existing_activity_period
 
       stubbed_periods = user_activity.stubbed_activity_periods
       non_persisted_periods = stubbed_periods.reject(&:persisted?)
+      expected_num_days = (today_in_utc - beginning_of_creation_week).to_i + 1
 
-      expect(non_persisted_periods.length).to eq days_ago_created
+      expect(non_persisted_periods.length).to eq expected_num_days
     end
 
     it 'returns pre-existing activity periods' do
+      today_in_utc = Time.now.utc.to_date
+      days_ago_created = 15
+      user_activity = make_user_activity(today_in_utc - days_ago_created.days)
+      existing_activity_period = make_existing_activity_period(2.days.ago)
+
       user_activity.user_activity_periods << existing_activity_period
 
       stubbed_periods = user_activity.stubbed_activity_periods
