@@ -1,5 +1,5 @@
 {
-  "firebase": "aarp-staying-sharp",
+  "firebase": "aarp-ss-prod",
   "public": "./dist",
   "ignore": [
     "firebase.json",
