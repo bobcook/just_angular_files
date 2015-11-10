@@ -18,6 +18,7 @@ import ActivityTrackerResponse from
 import Article from './common/resources/article.js';
 import ArticleReview from './common/resources/article-review.js';
 import CurrentUser from './common/resources/current-user.js';
+import ExploreContent from './common/resources/explore-content.js';
 import Game from './common/resources/game.js';
 import GameReview from './common/resources/game-review.js';
 import Pillar from './common/resources/pillar.js';
@@ -52,6 +53,7 @@ import $auth from './common/services/auth.js';
 import $assessmentsAuth from './assessments/assessments-auth.js';
 import $currentModal from './common/services/current-modal.js';
 import $loadCurrentUser from './common/services/load-current-user.js';
+import $pagination from './common/services/pagination.js';
 import $pillarFiltering from './common/services/pillar-filtering.js';
 import $postHref from './common/services/post-href.js';
 import $presenterUtils from './common/services/presenter-utils.js';
@@ -68,6 +70,7 @@ import activityTrackerQuantity from
 import card from './components/card/card.js';
 import cards from './components/cards/cards.js';
 import contentDrawer from './components/content-drawer/content-drawer.js';
+import exploreContent from './components/explore-content/explore-content.js';
 import infoBox from './components/info-box/info-box.js';
 import modal from './components/modal/modal.js';
 import navPanel from './components/nav-panel/nav-panel.js';
@@ -101,6 +104,8 @@ import ArticlesController from './articles/articles.controller.js';
 import AssessmentsController from './assessments/assessments.controller.js';
 import CardController from './components/card/card.controller.js';
 import CardsController from './components/cards/cards.controller.js';
+import ExploreContentController from
+  './components/explore-content/explore-content.controller.js';
 import GameController from './games/game.controller.js';
 import GameModalController from './games/game-modal.controller.js';
 import GamePlayController from './games/game-play.controller.js';
@@ -165,6 +170,7 @@ app
   .factory('Article', Article)
   .factory('ArticleReview', ArticleReview)
   .factory('CurrentUser', CurrentUser)
+  .factory('ExploreContent', ExploreContent)
   .factory('Game', Game)
   .factory('GameReview', GameReview)
   .factory('Pillar', Pillar)
@@ -193,6 +199,7 @@ app
   .factory('$auth', $auth)
   .factory('$currentModal', $currentModal)
   .factory('$loadCurrentUser', $loadCurrentUser)
+  .factory('$pagination', $pagination)
   .factory('$pillarFiltering', $pillarFiltering)
   .factory('$postHref', $postHref)
   .factory('$presenterUtils', $presenterUtils)
@@ -207,6 +214,7 @@ app
   .directive('ssCard', card)
   .directive('ssCards', cards)
   .directive('ssContentDrawer', contentDrawer)
+  .directive('ssExploreContent', exploreContent)
   .directive('ssInfoBox', infoBox)
   .directive('ssModal', modal)
   .directive('ssNavPanel', navPanel)
@@ -238,6 +246,7 @@ app
   .controller('AssessmentsController', AssessmentsController)
   .controller('CardController', CardController)
   .controller('CardsController', CardsController)
+  .controller('ExploreContentController', ExploreContentController)
   .controller('GameController', GameController)
   .controller('GameModalController', GameModalController)
   .controller('GamePlayController', GamePlayController)

@@ -51,6 +51,7 @@ Rails.application.routes.draw do
                   only: [:create, :index]
       end
       resources :related_content, controller: 'related_content', only: [:index]
+      resource :explore_content, controller: 'explore_content', only: :show
 
       namespace :me, as: :my do
         resources :articles, only: [:index, :show, :create, :destroy]

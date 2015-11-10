@@ -1,8 +1,5 @@
-const CardsController = function ($pillarFiltering) {
+const CardsController = function ($pagination) {
   'ngInject';
-
-  const MorePages = {};
-  const NoMorePages = {};
 
   this.selectedPillar = this.selectedPillar || null; // Via ss-selected-pillar
   this.resource = this.resource || null; // Should be defined via ss-resource
@@ -14,7 +11,7 @@ const CardsController = function ($pillarFiltering) {
   if (_.isUndefined(this.displayShowMore) || _.isNull(this.displayShowMore)) {
     this.displayShowMore = true; // Defined via ss-show-more
   }
-  this.page = 0;
+
   this.completed = false;
 
   this.setShownItems = (newItems) => {
@@ -22,7 +19,7 @@ const CardsController = function ($pillarFiltering) {
   };
 
   this.showMore = () => {
-    showMore(this.page + 1);
+    showMore($pagination.page + 1);
   };
 
   this.range = function (num) {
@@ -36,34 +33,20 @@ const CardsController = function ($pillarFiltering) {
   };
 
   const showMore = (page) => {
-    if (!this.displayShowMore) { return; }
-    const options = {
-      page: page,
-      perPage: this.perPage,
-    };
-    this.resource.query(options).then(interpretResponse);
+    $pagination.showMore(page).then((items) => {
+      this.items = items;
+      this.completed = $pagination.completed;
+    });
   };
 
-  const actionFor = function (response) {
-    return (response.status === 200) ? NoMorePages : MorePages;
-  };
+  $pagination.init({
+    displayShowMore: this.displayShowMore,
+    perPage: this.perPage,
+    resource: this.resource,
+  });
 
-  const interpretResponse = function (response) {
-    return interpret(actionFor(response), response);
-  };
+  showMore($pagination.page);
 
-  const interpret = (action, response) => {
-    concatNextPage(response.data);
-
-    if (action === NoMorePages) { this.completed = true; }
-  };
-
-  const concatNextPage = (items) => {
-    this.page += 1;
-    this.items = this.items.concat(items);
-  };
-
-  showMore(this.page);
 };
 
 export default CardsController;

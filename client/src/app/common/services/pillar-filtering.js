@@ -59,6 +59,36 @@ const $pillarFiltering = function (Pillar, $q) {
     return this.getPillarData().then(doFilter);
   };
 
+  // mixedContent =
+  // [
+  //   {articles: ..., recipes: ..., $$hashKey: 'string'},
+  //   {articles: ..., recipes: ..., $$hashKey: 'string'}
+  // ]
+  this.filterMixedContentByPillar = (pillar, mixedContent) => {
+    const doFilter = () => {
+      const selectAll = this.pillarData.selectAll;
+      const filterPillar = pillar || selectAll;
+      const results = [];
+
+      if (filterPillar.slug === selectAll.slug) { return mixedContent; }
+
+      _.forEach(mixedContent, (pageContent, page) => {
+        results.push({});
+        _.forEach(pageContent, (items, key) => {
+          // skip $$hashKey: 'string'
+          if (typeof items === 'object') {
+            this.filterByPillar(filterPillar, items).then(function (item){
+              results[page][key] = item;
+            });
+          };
+        });
+      });
+      return results;
+    };
+
+    return this.getPillarData().then(doFilter);
+  };
+
   return this;
 };
 

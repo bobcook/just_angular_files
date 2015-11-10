@@ -1,0 +1,50 @@
+<section class="info-box">
+  <div
+    ng-if="vm.shownItems.length === 0"
+    class="container">
+
+    <div class="content">
+      <h3>No cards found for the selected pillar</h3>
+    </div>
+  </div>
+</section>
+
+<div
+  ng-repeat="page in vm.shownItems"
+  class="card-holder container article-holder">
+  <div class="card-holder">
+     <ss-card
+       ng-repeat="card in page.articles"
+       ss-card-for="card">
+      </ss-card>
+  </div>
+  <div class="card-holder">
+    <ss-card
+      ng-repeat="card in page.games"
+      ss-card-for="card">
+     </ss-card>
+  </div>
+  <div class="card-holder">
+    <ss-card
+      ng-repeat="card in page.activities"
+      ss-card-for="card">
+     </ss-card>
+  </div>
+  <div class="card-holder">
+    <ss-card
+      ng-repeat="card in page.recipes"
+      ss-card-for="card">
+     </ss-card>
+  </div>
+</div>
+
+<div class="info-box">
+  <div class="container">
+    <button
+      class="btn"
+      ng-show="vm.displayShowMore && !vm.completed"
+      ng-click="vm.showMore()">
+      Load more
+    </button>
+  </div>
+</div>

@@ -9,8 +9,17 @@
   </li>
 </ul>
 
+<ss-pillar-filters
+  ss-selected-pillar="vm.selectedPillar">
+</ss-pillar-filters>
+
 <ss-info-box>
   <h3 translate>info.improve_your_holistic_brain_health</h3>
-  <p translate>info.did_you_know</p>
-  <button type="button" ui-sref="application.learn-more-about-staying-sharp">Learn About My Staying Sharp</button>
+  <p translate>info.ready_set_start</p>
+  <button type="button" ui-sref="application.assessments">Start Now</button>
 </ss-info-box>
+
+<ss-explore-content
+  ss-resource="vm.resource"
+  ss-selected-pillar="vm.selectedPillar">
+</ss-explore-content>
