@@ -15,17 +15,19 @@
 
   .logo {
     width: auto;
-    padding: 16px 0;
+    padding: 9px 0 8px;
     cursor: pointer;
     float: left;
     width: 55%;
 
     h1 {
-      background-image: url("assets/images/staying-sharp.svg");
+      /* Fallback for browsers without svg support */
+      background-image: url("assets/images/aarp-logo.png");
+      background-image: url("assets/images/aarp-logo.svg"), linear-gradient(transparent, transparent);
       background-position: left center;
-      background-repeat: no-repeat;
-      background-size: auto 27px;
-      height: 27px;
+      background-size: 161px 42px;
+      width: 161px;
+      height: 42px;
       padding: 0;
       margin: 0;
       @include hide-text();
