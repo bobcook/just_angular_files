@@ -1,0 +1,501 @@
+.cp-assessment-results {
+  margin: 0 10px;
+
+  @media screen and (min-width: 768px) {
+    margin: 0 auto;
+  }
+
+  > .container {
+    border: 1px solid $grey-border;
+    border-top: none;
+    overflow: hidden;
+    background-color: $white;
+    
+    @media screen and (min-width: 768px) {
+      
+    }
+
+    > header {
+      border-bottom: 1px solid $grey-border;
+      padding: 15px 0;
+      @include clearfix;
+
+      @media screen and (min-width: 768px) {
+        border-bottom: 1px solid $grey-border;
+        padding: 27px 15px;
+        margin: 0 auto;
+      }
+    }
+
+    .break-down {
+      padding: 15px 0;
+
+      @media screen and (min-width: 768px) {
+        margin: 0 auto;
+      }
+      
+      @media screen and (min-width: 992px) {
+        padding: 17px 15px 5px;
+      }
+    }
+  }
+
+  .score {
+    font-size: 48px;
+    font-weight: 600;
+    color: $green;
+    margin: 5px 0;
+
+    @media screen and (min-width: 768px) {
+      margin: 5px 0 15px;
+    }
+  }
+
+  hgroup {
+    float: left;
+    width: 100%;
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid $grey-border;
+
+    @media screen and (min-width: 768px) {
+      max-width: 210px;
+      border-bottom: none;
+      border-right: 1px solid $grey-border;
+      padding-bottom: 0;
+    }
+
+    @media screen and (min-width: 992px) {
+      max-width: 265px;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    h3, h4 {
+      margin: 0;
+    }
+
+    h4 {
+      margin-top: 1px;
+    }
+
+    .btn {
+      padding: 6px 15px;
+    }
+
+    a:last-child {
+      display: block;
+    }
+  }
+
+  .btn {
+    margin: 17px 0 15px;
+
+    @media screen and (min-width: 768px) {
+      margin: 27px 0 25px;
+    }
+  }
+
+  .assessment-graph {
+    width: 100%;
+    float: left;
+    padding-top: 10px;
+    overflow: hidden;
+
+    @media screen and (min-width: 768px) {
+      width: 480px;
+      padding-left: 10px;
+      padding-top: 7px;
+      float: right;
+    }
+
+    @media screen and (min-width: 992px) {
+      width: 625px;
+      padding-left: 10px;
+      float: right;
+    }
+
+    h4 {
+      margin-top: 0;
+      font-size: 16px;
+      line-height: 16px;
+      text-align: center;
+
+      @media screen and (min-width: 768px) {
+        max-width: 340px;
+        text-align: center;
+      }
+
+      @media screen and (min-width: 992px) {
+        max-width: 540px;
+        text-align: center;
+      }
+    }
+
+    figcaption {
+      width: 100%;
+      float: left;
+
+      @media screen and (min-width: 768px) {
+        width: 100%;
+        float: left;
+      }
+
+
+      @media screen and (min-width: 992px) {
+        width: 190px;
+        float: right;
+      }
+    }
+
+    .graph-wrap {
+      width: 100%;
+      float: left;
+      overflow: hidden;
+
+      @media screen and (min-width: 768px) {
+        max-width: 100%;
+        width: 100%;
+        float: left;
+        margin-bottom: 20px;
+      }
+
+      @media screen and (min-width: 992px) {
+        max-width: 405px;
+        max-height: 230px;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      max-width: 300px;
+
+      @media screen and (min-width: 768px) {
+        margin-top: 0px;
+        width: 70%;
+      }
+
+
+      @media screen and (min-width: 992px) {
+        margin-top: 10px;
+      }
+    }
+
+    .legend, p {
+      float: left;
+
+
+      @media screen and (min-width: 992px) {
+        width: 100%;
+      }
+    }
+
+    ul {
+      @media screen and (min-width: 992px) {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .legend {
+    margin-bottom: 10px;
+    padding-right: 20px;
+    width: 150px;
+
+    @media screen and (min-width: 768px) {
+      margin-top: 0px;
+      margin: 0;
+    }
+
+    @media screen and (min-width: 992px) {
+      margin-top: 20px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    li {
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    p {
+      line-height: 21px;
+    }
+  }
+
+  .break-down {
+    @media screen and (min-width: 992px) {
+      padding-top: 17px;
+    }
+
+    h3 {
+      margin-top: 7px;
+      margin-bottom: 3px;
+      line-height: 33px;
+    }
+  }
+
+  .index-score {
+    overflow: hidden;
+    border-bottom: 1px solid $grey-border;
+    padding-bottom: 20px;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    .inner {
+      position: relative;
+      float: left;
+      width: 100%;
+      padding: 0 20px;
+      margin: 10px 0;
+
+      @media screen and (min-width: 768px) {
+        width: 490px;
+        float: right;
+      }
+
+      @media screen and (min-width: 992px) {
+        width: 570px;
+        margin: 24px 0 0;
+        float: right;
+      }
+    }
+
+    figure {
+      height: 46px;
+      @include clearfix;
+
+      @media screen and (min-width: 992px) {
+        height: auto;
+      }
+    }
+
+    figcaption {
+      float: left;
+      width: 100%;
+
+      @media screen and (min-width: 768px) {
+        float: left;
+        width: 30%;
+      }
+    }
+
+    h4 {
+      margin: 0;
+      padding-top: 10px;
+
+      @media screen and (min-width: 768px) {
+        padding-top: 18px;
+      }
+
+      @media screen and (min-width: 992px) {
+        padding-top: 34px;
+      }
+    }
+
+    .graph-wrap {
+      position: relative;
+      width: 100%;
+      height: 50px;
+      float: left;
+    }
+
+    .graph {
+      min-height: 20px;
+      width: 79%;
+      position: absolute;
+      left: 10px;
+
+      @media screen and (min-width: 768px) {
+        width: 90%;
+        left: 20px;
+      }
+
+      @media screen and (min-width: 992px) {
+        width: 92%;
+      }
+    }
+  }
+
+  .bar {
+    position: absolute;
+    width: 0%;
+    height: 46px;
+    transition: all 400ms ease;
+  }
+
+  .bar.perfect .left-half-circle .circle:after {
+    opacity: 0;
+  }
+
+  .caption {
+    position: absolute;
+    top: 10px;
+    z-index: 2;
+    text-align: left;
+    left: 0px;
+
+
+    @media screen and (min-width: 992px) {
+      text-align: left;
+    }
+
+    &:last-child {
+      margin-left: 27px;
+      text-align: right;
+
+      @media screen and (min-width: 768px) {
+        margin-left: 30px;
+      }
+    }
+  }
+
+  .mask {
+    width: 23px;
+    height: 46px;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+  }
+
+  .circle {
+    height: 46px;
+    width: 46px;
+    background: white;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .left-half-circle {
+    right: -23px;
+    overflow: visible;
+    z-index: 6;
+
+    span {
+      position: absolute;
+      text-align: center;
+      top: 10px;
+      width: 46px;
+      z-index: 10;
+      color: $green;
+      font-weight: 600;
+    }
+
+    .circle {
+      border: 5px solid $green;
+      left: 0;
+      top: 0px;
+
+      &:after {
+        background: white none repeat scroll 0 0;
+        border: 5px solid white;
+        border-radius: 0 50% 50% 0;
+        content: " ";
+        height: 46px;
+        position: absolute;
+        right: -15px;
+        top: -5px;
+        width: 33px;
+        transition: opacity 800ms;
+      }
+    }
+  }
+
+  .right-half-circle {
+    .circle {
+      border: 5px solid $grey-light;
+      right: 23px;
+      top: 0px;
+    }
+  }
+
+  .slider-progress {
+    height: 4px;
+    left: 0;
+    position: absolute;
+    top: 22px;
+    width: 100%;
+    z-index: 4;
+    background: $green;
+  }
+
+  .horizontal-bar {
+    float: left;
+    width: 90%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+
+    &:after {
+      content: " ";
+      height: 1px;
+      width: 483px;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 24px;
+      background: $grey-medium;
+    }
+
+    .icon-next {
+      font-weight: bolder;
+      color: $green;
+    }
+
+    .bar-end {
+      position: absolute;
+
+      &:first-child {
+        left: -13px;
+        top: 14px;
+        z-index: 5;
+      }
+
+      &:last-child {
+        right: -23px;
+
+        span {
+          top: 14px;
+        }
+      }
+    }
+  }
+
+  .cp-content-drawer {
+    border-bottom: 1px solid $grey-border;
+
+    @media screen and (min-width: 992px) {
+      padding-top: 0;
+    }
+
+    &:first-of-type {
+      border-bottom: 0;
+    }
+
+    > section {
+      width: 100%;
+      max-width: 725px;
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+      margin-bottom: 0px;
+    }
+  }
+}

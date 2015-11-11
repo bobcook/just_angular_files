@@ -1,1 +1,145 @@
-<h1>Assessment Results</h1>
+<div class="cp-assessment-results">
+  <section class="container">
+    <header>
+      <hgroup>
+        <h3>My Latest Score:</h3>
+        <h3 class="score">6.5</h3>
+        <p>Most Recent Assessment:</p>
+        <h4>June 20, 2015</h4>
+        <a href="#retakeAssessment" class="btn">Retake Assessment</a>
+        <a href="#viewFullAssessment">View Full Assessment History</a>
+      </hgroup>
+      <figure class="assessment-graph">
+        <h4>Projected Brain Health</h4>
+        <div class="graph-wrap">
+          <canvas id="canvas" height="229" width="405"></canvas>
+        </div>
+        <figcaption>
+          <div class="legend" id="legendDiv"></div>
+          <p>In volutpat aenean convallis nisl accumsan nullam. Vel sed ullamcorper libero sed tellus lorem ipsum dolor.</p>
+        </figcaption>
+      </figure>
+    </header>
+    <section class="break-down">
+      <header>
+        <h3>MyBrain Assessment Individual Indices:</h3>
+      </header>
+      <!--
+        I REPEAT
+      -->
+      <article class="index-score">
+        <figure>
+          <figcaption>
+            <!--
+              Indicie Title
+            -->
+            <h4>Indicie Title Here</h4>
+          </figcaption>
+          <div class="inner">
+            <!--
+              - note -
+               This caption is a child of .inner
+               while the next caption is a grand child.
+            -->
+            <div class="caption">
+              <span>Low</span>
+            </div>
+            <div class="graph-wrap">
+              <div class="graph">
+                <div class="horizontal-bar">
+                  <div class="bar-end low">
+                    <span class="icon-next"></span>
+                  </div>
+                  <div class="bar">
+                    <div class="slider-progress"></div>
+                    <div class="left-half-circle mask">
+                      <!--
+                        Indicie Score here
+                      -->
+                      <span class="indicie-score">7.5</span>
+                      <div class="circle"></div>
+                    </div>
+                  </div>
+                  <div class="bar-end high">
+                    <div class="right-half-circle mask">
+                      <div class="circle "></div>
+                    </div>
+                    <div class="caption">
+                      <span>High</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </figure>
+        <div class="cp-content-drawer">
+          <section>
+            <p>Short statement defining this index and indicating where this score falls in (low, middle or high of expected range, etc.).</p>
+            <!--
+              The href of the following a tag needs to be unique and pair with
+              the article id that immediately follows it
+            -->
+            <a class="toggleCaret" href="#indicieDrawer1" data-toggle="collapse"><span class="change-text" data-text-replace="See Less">See More</span><span class="caret caret-down"></span></a>
+            <article id="indicieDrawer1" class="collapse">
+              <p>Lorem ipsum dolor in Expected Range</p>
+              <p>Lorem ipsum dolor short description about the purpose and end goal of the challenge is. In volutpat aenean convallis nisl accumsan nullam. Vel sed ullamcorper libero sed tellus, velit orci non eu. Ipsum nec enim inceptos, mauris eu wisi orci sed.</p>
+              <p>In volutpat aenean convallis nisl accumsan nullam. Vel sed ullamcorper libero sed tellus, velit orci non eu. Ipsum nec enim inceptos, mauris eu wisi orci sed.</p>
+            </article>
+          </section>
+        </div>
+      </article>
+      <!--
+        I REPEAT
+      -->
+      <article class="index-score">
+        <figure>
+          <figcaption>
+            <h4>Indicie Title Here</h4>
+          </figcaption>
+          <div class="inner">
+            <div class="caption">
+              <span>Low</span>
+            </div>
+            <div class="graph-wrap">
+              <div class="graph">
+                <div class="horizontal-bar">
+                  <div class="bar-end low">
+                    <span class="icon-next"></span>
+                  </div>
+                  <div class="bar">
+                    <div class="slider-progress"></div>
+                    <div class="left-half-circle mask">
+                      <span class="indicie-score">11</span>
+                      <div class="circle"></div>
+                    </div>
+                  </div>
+                  <div class="bar-end high">
+                    <div class="right-half-circle mask">
+                      <div class="circle "></div>
+                    </div>
+                    <div class="caption">
+                      <span>High</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </figure>
+        <div class="cp-content-drawer">
+          <section>
+            <p>Short statement defining this index and indicating where this score falls in (low, middle or high of expected range, etc.).</p>
+            <a class="toggleCaret" href="#indicieDrawer2" data-toggle="collapse"><span class="change-text" data-text-replace="See Less">See More</span><span class="caret caret-down"></span></a>
+            <article id="indicieDrawer2" class="collapse">
+              <p>Lorem ipsum dolor in Expected Range</p>
+              <p>Lorem ipsum dolor short description about the purpose and end goal of the challenge is. In volutpat aenean convallis nisl accumsan nullam. Vel sed ullamcorper libero sed tellus, velit orci non eu. Ipsum nec enim inceptos, mauris eu wisi orci sed.</p>
+              <p>In volutpat aenean convallis nisl accumsan nullam. Vel sed ullamcorper libero sed tellus, velit orci non eu. Ipsum nec enim inceptos, mauris eu wisi orci sed.</p>
+            </article>
+          </section>
+        </div>
+      </article>
+    </section>
+  </section>
+</div>
