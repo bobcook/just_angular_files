@@ -6,10 +6,19 @@ module Api
         before_filter :authenticate_user!
 
         def create
-          # TODO: redirect based on which assessment the user is at
-          redirect_to Frontend::Paths.lookup(
-            :assessments, params[:assessmentCompleted]
-          )
+          render json: frontend_redirect_data.as_json, status: :ok
+        end
+
+        private
+
+        def frontend_redirect_data
+          # TODO: whitelist assessment names
+          { 'redirectUrl' => assessment_url }
+        end
+
+        def assessment_url
+          @assessment_url ||=
+            Frontend::Paths.lookup(:assessments, params[:assessmentCompleted])
         end
       end
     end

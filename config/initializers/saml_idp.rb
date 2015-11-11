@@ -26,7 +26,7 @@ SamlIdp.configure do |config|
       getter: -> (principal) { principal.last_name }
     },
     email: {
-      getter: -> (principal) { principal.email }
+      getter: -> (principal) { Apis::Mbs::User.for_user_model(principal).email }
     },
     uniqueuserid: {
       getter: -> (principal) { principal.id }
