@@ -15,7 +15,6 @@ const ReviewsController = function ($stateParams, $rootScope) {
     new this.reviewResource({
       [ `${contentName}Id` ]: $stateParams.id,
       recommend: this.recommend,
-      comment: this.comment,
     })
     .create()
     .then((newReview) => {

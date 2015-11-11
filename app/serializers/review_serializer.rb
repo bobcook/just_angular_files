@@ -1,4 +1,4 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :comment, :recommend
+  attributes :id, :recommend
   has_one :user
 end

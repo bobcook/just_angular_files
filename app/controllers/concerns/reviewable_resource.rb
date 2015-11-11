@@ -2,8 +2,7 @@ module ReviewableResource
   def create
     current_user.reviews.create(
       reviewable: reviewable_instance,
-      recommend: params[:review][:recommend],
-      comment: params[:review][:comment]
+      recommend: params[:review][:recommend]
     )
     head :created
   end

@@ -18,18 +18,12 @@
           <label for="no">No, I didn't like this</label>
         </span>
 
-        <div class="comment">
-          <label for="comment">Write a review (Optional):</label><br>
-          <textarea id="comment" ng-model="vm.comment"></textarea>
-        </div>
-
         <button class="btn" type="submit">Submit Review</button>
       </form>
     </header>
 
     <article class="review" ng-repeat="review in vm.reviews">
       <h4>{{review.user.firstName}} {{review.user.lastName}}</h4>
-      <p>{{review.comment}}</p>
       <footer>
         <p ng-if="review.recommend">
           <span class="icon-recommend"></span>

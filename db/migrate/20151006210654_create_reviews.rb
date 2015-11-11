@@ -3,6 +3,7 @@ class CreateReviews < ActiveRecord::Migration
     create_table :reviews do |t|
       t.references :user, index: true, foreign_key: true
       t.references :reviewable, polymorphic: true, index: true
+      # NOTE: comment field not being currently used
       t.string :comment
       t.boolean :recommend, null: false
 

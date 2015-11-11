@@ -188,6 +188,7 @@ ActiveRecord::Schema.define(version: 20151110012746) do
   end
 
   add_index "user_recipes", ["recipe_id"], name: "index_user_recipes_on_recipe_id", using: :btree
+  add_index "user_recipes", ["user_id", "recipe_id"], name: "index_user_recipes_on_user_id_and_recipe_id", unique: true, using: :btree
   add_index "user_recipes", ["user_id"], name: "index_user_recipes_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
