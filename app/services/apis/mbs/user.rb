@@ -19,6 +19,14 @@ module Apis
       def email
         @email ||= "user#{id}@example.com"
       end
+
+      def first_name
+        @first_name ||= 'AARP'
+      end
+
+      def last_name
+        @last_name ||= 'Member'
+      end
     end
   end
 end

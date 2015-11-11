@@ -20,29 +20,29 @@ SamlIdp.configure do |config|
 
   config.attributes = {
     firstname: {
-      getter: -> (principal) { principal.first_name }
+      getter: -> (user) { Apis::Mbs::User.for_user_model(user).first_name }
     },
     lastname: {
-      getter: -> (principal) { principal.last_name }
+      getter: -> (user) { Apis::Mbs::User.for_user_model(user).last_name }
     },
     email: {
-      getter: -> (principal) { Apis::Mbs::User.for_user_model(principal).email }
+      getter: -> (user) { Apis::Mbs::User.for_user_model(user).email }
     },
     uniqueuserid: {
-      getter: -> (principal) { principal.id }
+      getter: -> (user) { user.id }
     },
     jwtCredentials: {
-      getter: -> (principal) { UserJwt.for(principal) }
+      getter: -> (user) { UserJwt.for(user) }
     },
     # TODO: get these from user questionnaire
     gender: {
-      getter: -> (_principal) { 'MALE' }
+      getter: -> (_user) { 'MALE' }
     },
     yrofedu: {
       getter: -> (_prinicpal) { 16 }
     },
     hand: {
-      getter: -> (_principal) { 'RIGHT' }
+      getter: -> (_user) { 'RIGHT' }
     }
   }
 
