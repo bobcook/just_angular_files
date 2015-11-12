@@ -7,4 +7,8 @@ class Game < ActiveRecord::Base
   has_many :user_games, dependent: :destroy
   has_many :game_reviews, dependent: :destroy
   has_many :reviews, as: :reviewable, dependent: :destroy
+
+  def outdated?(date)
+    last_modified < date
+  end
 end

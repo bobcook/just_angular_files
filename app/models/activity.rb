@@ -16,4 +16,8 @@ class Activity < ActiveRecord::Base
   def binary?
     activity_tracker.binary?
   end
+
+  def outdated?(date)
+    last_modified < date
+  end
 end

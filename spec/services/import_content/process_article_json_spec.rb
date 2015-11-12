@@ -1,26 +1,26 @@
 require 'rails_helper'
 
-module ImportArticle
-  describe ProcessJson do
+module ImportContent
+  describe ProcessArticleJson do
     def make_subject
       cms_json = {
-        'jcr:title': 'blah title',
-        'PrintDate': Time.zone.now,
-        'cq:lastModified': Time.zone.now,
-        'jcr:uuid': 'abc123',
+        'content': [{
+          'mastheadTitle': 'blah title'
+        }],
+        'created': Time.zone.now,
+        'lastmodified': Time.zone.now,
         'url': 'http://blah.com',
-        'junk_field': 'blah'
+        'articleType': 'basic'
       }
 
-      ImportArticle::ProcessJson.new(cms_json)
+      ImportContent::ProcessArticleJson.new(cms_json)
     end
 
-    describe '#convert_article' do
+    describe '#convert_content' do
       it 'returns a hash that correspond to articles table columns' do
         def all_keys_exist?
           subject = make_subject
-
-          subject.convert_article.keys.all? do |key|
+          subject.convert_content.keys.all? do |key|
             Article.column_names.include?(key.to_s)
           end
         end

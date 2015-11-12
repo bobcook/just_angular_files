@@ -1,6 +1,6 @@
 module Apis
   module CMS
-    class Article
+    class Content
       attr_reader :api_url
 
       def initialize(api_url)
@@ -17,9 +17,9 @@ module Apis
       # NOTE: temporary method to add type to article json because the json
       # doesn't include type. Hopefully in the finalized api, type is included,
       # and we can just use json_payload
-      def json_payload_with_type(type)
+      def json_payload_with_type(article_type)
         json_with_type = json_payload
-        json_with_type['type'] = type
+        json_with_type['articleType'] = article_type
         json_with_type
       end
     end

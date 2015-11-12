@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-module ImportArticle
+module ImportContent
   describe Persist do
     def article_hash
       {
@@ -15,7 +15,7 @@ module ImportArticle
     end
 
     def make_subject
-      ImportArticle::Persist.new(article_hash, BasicArticle)
+      ImportContent::Persist.new(article_hash, Article, BasicArticle)
     end
 
     describe '#create_or_update' do
