@@ -2,55 +2,51 @@
   ng-style="{'background-image':'url(' + vm.mastHeadImage + ')'}"
   class="cp-lead-in-detail">
 
-  <section>
-    <div class="container">
-      <div class="info-block">
-        <header>
-          <h5>{{vm.topLeft}}</h5>
-          <span ng-if="vm.topRight">{{vm.topRight}}</span>
-        </header>
-        <article>
-          <h2 class="ellipsis">
-            {{vm.mastHeadTitle}}
-          </h2>
-        </article>
-        <div class="pillars" ss-pillars-display="vm.pillars"></div>
-      </div>
-      <footer>
-        <div class="effort"><span>{{vm.lowerLeft}}</span></div>
-        <div class="action-items">
-          <ss-save-user-content
-            ng-if="vm.activity"
-            ss-display-type="button"
-            ss-display-content="vm.saveButtonDisplayContent"
-            ss-is-user-namespace="vm.isUserNamespace"
-            ss-item="vm.activity"
-            ss-resource="vm.userResource"
-            ss-is-saved="vm.isSaved"
-            ss-plural-resource-name="vm.pluralResourceName"
-            ss-saved-item="vm.savedItem">
-          </ss-save-user-content>
-        </div>
-      </footer>
+  <section class="container">
+    <div class="info-block">
+      <header>
+        <h5>{{vm.topLeft}}</h5>
+        <span ng-if="vm.topRight">{{vm.topRight}}</span>
+      </header>
+      <article>
+        <h2 class="ellipsis">
+          {{vm.mastHeadTitle}}
+        </h2>
+      </article>
+      <div class="pillars" ss-pillars-display="vm.pillars"></div>
     </div>
+    <footer>
+      <div class="effort"><span>{{vm.lowerLeft}}</span></div>
+      <div class="action-items">
+        <ss-save-user-content
+          ng-if="vm.activity"
+          ss-display-type="button"
+          ss-display-content="vm.saveButtonDisplayContent"
+          ss-is-user-namespace="vm.isUserNamespace"
+          ss-item="vm.activity"
+          ss-resource="vm.userResource"
+          ss-is-saved="vm.isSaved"
+          ss-plural-resource-name="vm.pluralResourceName"
+          ss-saved-item="vm.savedItem">
+        </ss-save-user-content>
+      </div>
+    </footer>
   </section>
 </div>
 
-<!-- TODO: use a different class besides cp-content-drawer since this is not -->
-<!-- technically drawer content -->
 <div
   ng-if="!vm.savedItem"
-  class="cp-content-drawer">
+  class="cp-content-detail">
 
   <section class="container">
     <article>
-      <div ng-bind-html="vm.section1Body" ></div>
+      <div class="detail-text" ng-bind-html="vm.section1Body" ></div>
       <h4>Benefits to Brain Health</h4>
-      <div ng-bind-html="vm.benefitsToBrainHealth"></div>
+      <div class="detail-text" ng-bind-html="vm.benefitsToBrainHealth"></div>
       <hr>
       <h4>Want to dig a little deeper on this topic?</h4>
-      <div data-ng-bind-html="vm.sourceMaterialsCitation"></div>
-      <!-- TODO: proper styles for spacing before cp-content-group? -->
+      <div class="detail-source" data-ng-bind-html="vm.sourceMaterialsCitation"></div>
+      <a href="" onclick="window.print()">Print <span class="icon-print"></span></a>
       <hr>
     </article>
   </section>
@@ -105,10 +101,8 @@
 </div>
 
 <div class="cp-print-button">
-  <section>
-    <div class="print">
-      <a href="" onclick="window.print()">Print <span class="icon-print"></span></a>
-    </div>
+  <section class="container">
+    <a href="" onclick="window.print()">Print <span class="icon-print"></span></a>
   </section>
 </div>
 

@@ -1,16 +1,16 @@
 <div class="detail-activity-tracker {{ vm.activity.activityTracker.type}}">
-  <section>
+  <section class="container">
     <header>
       <hgroup>
-        <h2>Track When You Did This</h2>
-        <button ng-class="{ selected: vm.todayPeriod.isTracked }"
+        <h3>Track When You Did This</h3>
+        <button ng-class="{ tracked: vm.todayPeriod.isTracked }"
                 ng-click="vm.editPeriod(vm.todayPeriod)">
           <span ng-if="!vm.todayPeriod.isTracked">Track Today</span>
-          <span ng-if="vm.todayPeriod.isTracked">✓</span>
+          <span ng-if="vm.todayPeriod.isTracked" class="icon-check"></span>
         </button>
       </hgroup>
     </header>
-    <div ng-switch="vm.activity.activityTracker.type">
+    <div class="full-view" ng-switch="vm.activity.activityTracker.type">
       <ss-activity-tracker-binary
         ng-switch-when="binary"
         periods="vm.currentWeek"
@@ -22,17 +22,25 @@
         on-period-clicked="vm.editPeriod($period)">
       </ss-activity-tracker-quantity>
     </div>
-    <div>
-      <div ng-repeat="week in vm.periodsByWeek">
-        <button ng-class="{ selected: week == vm.currentWeek }"
-                ng-click="vm.selectWeek(week)">
-          Week {{$index + 1}}
-        </button>
-        <div ng-repeat="period in week">
-          {{period.date.format('dddd')}}
-          <span ng-if="period.isTracked">✓</span>
-          <span ng-if="!period.isTracked">✗</span>
+    <div class="snapshot">
+      <div class="item" 
+           ng-repeat="week in vm.periodsByWeek" 
+           ng-click="vm.selectWeek(week)"
+           ng-class="{ active: week == vm.currentWeek }">
+        <div class="tracker">
+          <ul>
+            <li 
+                ng-repeat="period in week"
+                ng-class="{ tracked: period.isTracked }">
+              <span>
+                <span class="indicator"></span>
+              </span>
+            </li>
+          </ul>
         </div>
+        <figcaption>
+          <span>Week {{$index + 1}}</span>
+        </figcaption>
       </div>
     </div>
   </section>

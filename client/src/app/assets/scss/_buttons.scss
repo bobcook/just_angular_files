@@ -41,14 +41,10 @@ button, .btn {
   }
 
   &.tracked {
-    min-width: 108px;
+    min-width: 124px;
 
     span {
       display: inline;
-
-      &:first-child {
-        display: none;
-      }
     }
 
     .icon-check {
@@ -56,6 +52,7 @@ button, .btn {
       vertical-align: middle;
       position: relative;
       top: -2px;
+      margin: 3px auto;
     }
   }
 }

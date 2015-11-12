@@ -1,10 +1,17 @@
-<ul>
-  <li ng-repeat="period in vm.periods">
-    <label>{{period.date.format('dd')}}</label>
-    <button ng-class="{ selected: period.isTracked }"
-            ng-click="vm.periodClicked({ $period: period })">
-      <span ng-if="period.isTracked">✓</span>
-      <span ng-if="!period.isTracked">+</span>
-    </button>
-  </li>
-</ul>
+<div class="item">
+  <div class="data full">
+    <div class="tracker">
+      <ul>
+        <li ng-repeat="period in vm.periods" ng-class="{ tracked: period.isTracked }">
+          <div class="indicator"
+               ng-click="vm.periodClicked({ $period: period })">
+            <span ng-if="period.isTracked" class="icon-check"></span>
+            <span ng-if="!period.isTracked" class="icon-plus"></span>
+          </div>
+          <label>{{period.date.format('dd')}}</label>
+        </li>
+      </ul>
+    </div>
+    <figcaption>Week 1: mo/dy - mo/dy</figcaption>
+  </div>
+</div>
