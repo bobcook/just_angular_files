@@ -37,7 +37,9 @@ module OmniAuth
       def request_phase
         referrer = full_host + script_name + callback_path
         response = api.login_from_provider(referrer: referrer)
-        redirect response.headers['location']
+        redirect_path =
+          response.headers['location'] + "&promo=#{promo_code_for_url}"
+        redirect redirect_path
       end
 
       def callback_phase
@@ -47,6 +49,16 @@ module OmniAuth
       end
 
       private
+
+      def promo_code_for_url
+        # TODO: based on vanity URL used, will eventually need to
+        # use different promo codes:
+        #
+        # SM-SS: normal traffic?
+        # SS-EMPLOYEE: employees?
+        # SS-BETA: beta users?
+        'SM-SS'
+      end
 
       def api
         @api ||= Apis::DSO.endpoints

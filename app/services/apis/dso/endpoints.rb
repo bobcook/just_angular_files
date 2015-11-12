@@ -42,9 +42,8 @@ module Apis
       def login_from_provider(options = {})
         with_provider_token do |token|
           referrer = options[:referrer] || login_callback_url
-          promo = options[:provider] || promo_code_for_url
           headers = { 'Authentication' => token }
-          params = { referrer: referrer, promo: promo }
+          params = { referrer: referrer }
 
           http.get(url(:login_from_provider), params, headers)
         end
@@ -75,16 +74,6 @@ module Apis
       end
 
       private
-
-      def promo_code_for_url
-        # TODO: based on vanity URL used, will eventually need to
-        # use different promo codes:
-        #
-        # SM-SS: normal traffic?
-        # SS-EMPLOYEE: employees?
-        # SS-BETA: beta users?
-        'SM-SS'
-      end
 
       def user_authed_request(user_token, verb, endpoint, _options = {})
         with_provider_token do |token|
