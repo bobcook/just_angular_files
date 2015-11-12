@@ -2,7 +2,7 @@ class UserActivity < ActiveRecord::Base
   belongs_to :user
   belongs_to :activity
   has_one :activity_reminder_setting
-  has_many :user_activity_periods
+  has_many :user_activity_periods, dependent: :destroy
 
   # TODO: error message not showing up
   validates :user_id, uniqueness: {

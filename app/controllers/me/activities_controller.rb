@@ -21,6 +21,14 @@ module Me
       end
     end
 
+    def destroy
+      user_activity = current_user.user_activities.find_by(
+        activity_id: params[:id]
+      )
+      user_activity.destroy
+      head :accepted
+    end
+
     private
 
     def activity

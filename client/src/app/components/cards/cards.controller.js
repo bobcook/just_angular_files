@@ -14,6 +14,7 @@ const CardsController = function ($pagination) {
 
   this.completed = false;
 
+  // TODO: extract out duplication here, in explore page, and dashboard
   this.setShownItems = (newItems) => {
     this.shownItems = newItems;
   };
@@ -26,6 +27,7 @@ const CardsController = function ($pagination) {
     return _.range(0, num);
   };
 
+  // TODO: extract out duplication here, in explore page, and dashboard
   this.itemsInRow = function (offset, items) {
     const chunks = _.chunk(items, this.perRow);
     const chunkNum = offset / this.perRow;

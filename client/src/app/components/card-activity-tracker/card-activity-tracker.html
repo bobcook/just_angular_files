@@ -1,0 +1,17 @@
+<div class="tracker">
+  <!--
+      .btn has class tracked
+    -->
+  <a class="btn"> <!-- + tracked -->
+    <span>I Did This Today</span>
+    <span class="icon-check"></span>
+  </a>
+  <ul>
+    <li
+      ng-repeat="period in vm.periodsThisWeek"
+      class="tracked"> <!-- + (empty), current-day, or future-day -->
+      <span class="indicator">{{vm.showDayFor(period)}}</span>
+    </li>
+  </ul>
+</div>
+

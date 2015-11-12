@@ -28,6 +28,19 @@ const UserActivity = function (API_URL, railsResourceFactory, railsSerializer) {
     return this.$delete(`${userActivityUrl}/${id}`);
   };
 
+  Object.defineProperty(UserActivity.prototype, 'uiSref', {
+    get: function () {
+      return `application.activity({ id: ${this.id} })`;
+    },
+  });
+
+  // TODO: refactor commonality w/ this and activity.js
+  Object.defineProperty(UserActivity.prototype, 'effortText', {
+    get: function () {
+      return `Effort: ${this.recommendedEffortFrequency}`;
+    },
+  });
+
   return UserActivity;
 };
 

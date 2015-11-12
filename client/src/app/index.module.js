@@ -69,13 +69,17 @@ import activityTrackerQuantity from
   './components/activity-tracker/quantity/quantity.js';
 import card from './components/card/card.js';
 import cards from './components/cards/cards.js';
+import cardActivityTracker from
+  './components/card-activity-tracker/card-activity-tracker.js';
 import contentDrawer from './components/content-drawer/content-drawer.js';
 import exploreContent from './components/explore-content/explore-content.js';
 import infoBox from './components/info-box/info-box.js';
 import modal from './components/modal/modal.js';
 import navPanel from './components/nav-panel/nav-panel.js';
+import navTabs from './components/nav-tabs/nav-tabs.js';
 import pillarsDisplay from './components/pillars-display/pillars.js';
 import pillarFilters from './components/pillar-filters/pillar-filters.js';
+import pillarScores from './components/pillar-scores/pillar-scores.js';
 import postHref from './common/directives/post-href.js';
 import relatedContent from './components/related-content/related-content.js';
 import reviews from './components/reviews/reviews.js';
@@ -84,7 +88,10 @@ import saveUserContent from
 import sideNav from './components/side-nav/side-nav.js';
 import socialLinks from './components/social-links/social-links.js';
 import topNav from './components/top-nav/top-nav.js';
-import navTabs from './components/nav-tabs/nav-tabs.js';
+import userDashboardCard from
+  './components/user-dashboard-cards/user-dashboard-card.js';
+import userDashboardCards from
+  './components/user-dashboard-cards/user-dashboard-cards.js';
 
 // controllers
 import ActivityController from './activities/activity.controller.js';
@@ -103,6 +110,8 @@ import ArticleModalController from './articles/article-modal.controller.js';
 import ArticlesController from './articles/articles.controller.js';
 import AssessmentsController from './assessments/assessments.controller.js';
 import CardController from './components/card/card.controller.js';
+import CardActivityTrackerController from
+  './components/card-activity-tracker/card-activity-tracker.controller.js';
 import CardsController from './components/cards/cards.controller.js';
 import ExploreContentController from
   './components/explore-content/explore-content.controller.js';
@@ -128,12 +137,19 @@ import SaveUserContentController from
 import SocialLinksController from
   './components/social-links/social-links.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
+import UserDashboardCardController from
+  './components/user-dashboard-cards/user-dashboard-card.controller.js';
+import UserDashboardCardsController from
+  './components/user-dashboard-cards/user-dashboard-cards.controller.js';
+import UserDashboardController from './me/working-on/user-dashboard.controller.js';
 import UserArticleController from './me/articles/user-article.controller.js';
 import UserArticlesController from './me/articles/user-articles.controller.js';
 import UserGameController from './me/games/user-game.controller.js';
 import UserGamesController from './me/games/user-games.controller.js';
 import UserRecipeController from './me/recipes/user-recipe.controller.js';
 import UserRecipesController from './me/recipes/user-recipes.controller.js';
+import PillarScoresController from
+  './components/pillar-scores/pillar-scores.controller.js';
 
 const app = angular.module('aarp-staying-sharp', [
   'angularModalService',
@@ -212,14 +228,17 @@ app
   .directive('ssActivityTrackerBinary', activityTrackerBinary)
   .directive('ssActivityTrackerQuantity', activityTrackerQuantity)
   .directive('ssCard', card)
+  .directive('ssCardActivityTracker', cardActivityTracker)
   .directive('ssCards', cards)
   .directive('ssContentDrawer', contentDrawer)
   .directive('ssExploreContent', exploreContent)
   .directive('ssInfoBox', infoBox)
   .directive('ssModal', modal)
+  .directive('ssNavTabs', navTabs)
   .directive('ssNavPanel', navPanel)
   .directive('ssPillarsDisplay', pillarsDisplay)
   .directive('ssPillarFilters', pillarFilters)
+  .directive('ssPillarScores', pillarScores)
   .directive('ssPostHref', postHref)
   .directive('ssRelatedContent', relatedContent)
   .directive('ssReviews', reviews)
@@ -227,7 +246,8 @@ app
   .directive('ssSocialLinks', socialLinks)
   .directive('ssSideNav', sideNav)
   .directive('ssTopNav', topNav)
-  .directive('ssNavTabs', navTabs)
+  .directive('ssUserDashboardCard', userDashboardCard)
+  .directive('ssUserDashboardCards', userDashboardCards)
 
   // controllers
   .controller('ActivityController', ActivityController)
@@ -245,6 +265,7 @@ app
   .controller('ArticlesController', ArticlesController)
   .controller('AssessmentsController', AssessmentsController)
   .controller('CardController', CardController)
+  .controller('CardActivityTrackerController', CardActivityTrackerController)
   .controller('CardsController', CardsController)
   .controller('ExploreContentController', ExploreContentController)
   .controller('GameController', GameController)
@@ -255,6 +276,7 @@ app
   .controller('LoginSuccessController', LoginSuccessController)
   .controller('LogoutController', LogoutController)
   .controller('NavPanelController', NavPanelController)
+  .controller('PillarScoresController', PillarScoresController)
   .controller('PillarFiltersController', PillarFiltersController)
   .controller('RecipeController', RecipeController)
   .controller('RecipeModalController', RecipeModalController)
@@ -265,6 +287,9 @@ app
   .controller('SocialLinksController', SocialLinksController)
   .controller('TopNavController', TopNavController)
   .controller('NavTabsController', NavTabsController)
+  .controller('UserDashboardCardController', UserDashboardCardController)
+  .controller('UserDashboardCardsController', UserDashboardCardsController)
+  .controller('UserDashboardController', UserDashboardController)
   .controller('UserArticleController', UserArticleController)
   .controller('UserArticlesController', UserArticlesController)
   .controller('UserGameController', UserGameController)

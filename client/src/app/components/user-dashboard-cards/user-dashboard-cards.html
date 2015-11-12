@@ -1,0 +1,24 @@
+<section class="info-box">
+  <div
+    ng-if="vm.shownItems.length === 0"
+    class="container">
+
+    <div class="content">
+      <h3>You haven't saved any activities yet</h3>
+      <a ui-sref="application.activities" class="btn">Explore Activities</a>
+    </div>
+  </div>
+</section>
+
+<div
+  ng-repeat="item in vm.shownItems"
+  ng-if="$index % vm.perRow == 0"
+  class="card-holder container article-holder">
+
+  <ss-user-dashboard-card
+    ng-repeat="card in vm.itemsInRow($parent.$index, vm.shownItems)"
+    ss-card-for="card"
+    ss-card-classes="vm.cardClasses"
+    ss-items="vm.items">
+  </ss-user-dashboard-card>
+</div>

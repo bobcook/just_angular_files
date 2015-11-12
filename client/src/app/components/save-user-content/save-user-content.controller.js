@@ -60,7 +60,9 @@ const SaveUserContentController = function ($state, $filter) {
       }
       // redirect to 'my/resources'
       if (this.isUserNamespace) {
-        $state.go(`application.user.${resourceName}s`);
+        const defaultSref = `application.user.${resourceName}s`;
+        const redirectSref = this.redirectSref || defaultSref;
+        $state.go(redirectSref);
       }
     });
   };

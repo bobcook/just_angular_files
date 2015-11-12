@@ -15,7 +15,7 @@ const ActivityModalController = function (Activity,
   this.resourceName = 'activity';
   this.pluralResourceName = 'activities';
   this.explorePath = `application.${this.pluralResourceName}`;
-  this.stayingSharpPath = `application.user.${this.pluralResourceName}`;
+  this.stayingSharpPath = "application.user.working-on";
 };
 
 export default ActivityModalController;

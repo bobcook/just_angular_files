@@ -1,0 +1,28 @@
+<div class="cp-lead-in navy-teal">
+  <div class="left"></div>
+  <div class="right"></div>
+  <!-- NEEDED: Load in assets from CMS for Lead-Ins -->
+  <div class="cp-lead-in-bg" style="background-image: url('app/assets/images/user-content/lead-in/short-navy-teal.png'), url('app/assets/images/user-content/example-ocean.png');">
+    <section class="container">
+      <div class="copy-wrap">
+        <div class="vertical-content">
+          <h2>My Staying Sharp</h2>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<ss-nav-tabs>
+</ss-nav-tabs>
+
+<ss-pillar-scores>
+</ss-pillar-scores>
+
+<!-- TODO change card classes once we know what to use -->
+<ss-user-dashboard-cards
+  ss-card-classes="activity-card small-card"
+  ss-per-page="6"
+  ss-per-row="3"
+  ss-items="vm.items">
+</ss-user-dashboard-cards>
