@@ -3,6 +3,6 @@
   ng-class="{ tracked: vm.isSaved }"
   class="btn tracking-btn">
 
-  <span>{{vm.displayContent['unsaved']}}</span>
-  <span>{{vm.displayContent['saved']}}</span>
+  <span ng-hide="vm.isSaved">{{vm.displayContent['unsaved']}}</span>
+  <span ng-show="vm.isSaved">{{vm.displayContent['saved']}}</span>
 </button>
