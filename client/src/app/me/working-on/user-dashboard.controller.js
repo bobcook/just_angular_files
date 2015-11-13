@@ -7,7 +7,7 @@ const UserDashboardController = function (UserActivity) {
     // TODO: make it so this normalization isn't necessary
     const makeActivity = function (activityData) {
       return new UserActivity(activityData);
-    }
+    };
     const activityData = response.data && response.data.activities;
     const rawActivities = activityData ? _.pluck(activityData, 'activity') : [];
     const activities = _.map(rawActivities, makeActivity);

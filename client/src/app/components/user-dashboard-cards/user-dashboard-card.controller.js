@@ -9,7 +9,7 @@ const UserDashboardCardController = function ($filter,
     return $filter('limitTo')(card.cardTitle, MAX_TITLE_LENGTH);
   };
 
-  const effortText = function (card) { return card.effortText };
+  const effortText = function (card) { return card.effortText; };
 
   // TODO: pull out common week calc logic from here,
   // card tracker controller, etc

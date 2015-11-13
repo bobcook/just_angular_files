@@ -3,7 +3,8 @@ const cardActivityTracker = function () {
     controller: 'CardActivityTrackerController',
     controllerAs: 'vm',
     bindToController: true,
-    templateUrl: 'app/components/card-activity-tracker/card-activity-tracker.html',
+    templateUrl:
+      'app/components/card-activity-tracker/card-activity-tracker.html',
     restrict: 'E',
     replace: true,
     scope: {
