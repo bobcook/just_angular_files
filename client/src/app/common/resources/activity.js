@@ -30,7 +30,7 @@ const Activity = function (API_URL, railsResourceFactory, railsSerializer) {
 
   Object.defineProperty(Activity.prototype, 'effortText', {
     get: function () {
-      return `Effort: ${this.recommendedEffortFrequency}`;
+      return `${this.recommendedEffortFrequency}`;
     },
   });
 
