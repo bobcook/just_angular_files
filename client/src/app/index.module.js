@@ -108,6 +108,7 @@ import ActivityTrackerQuantityEditPeriodController from
 import ArticleController from './articles/article.controller.js';
 import ArticleModalController from './articles/article-modal.controller.js';
 import ArticlesController from './articles/articles.controller.js';
+import AssessmentController from './assessments/assessment.controller.js';
 import AssessmentsController from './assessments/assessments.controller.js';
 import CardController from './components/card/card.controller.js';
 import CardActivityTrackerController from
@@ -264,6 +265,7 @@ app
   .controller('ArticleController', ArticleController)
   .controller('ArticleModalController', ArticleModalController)
   .controller('ArticlesController', ArticlesController)
+  .controller('AssessmentController', AssessmentController)
   .controller('AssessmentsController', AssessmentsController)
   .controller('CardController', CardController)
   .controller('CardActivityTrackerController', CardActivityTrackerController)
