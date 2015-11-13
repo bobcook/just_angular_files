@@ -2,17 +2,31 @@
   <!--
       .btn has class tracked
     -->
-  <a class="btn"> <!-- + tracked -->
+  <a
+    href=""
+    ng-click="vm.editPeriod(vm.todayPeriod())"
+    ng-class="{ tracked: vm.todayIsTracked() }"
+    class="btn">
+
     <span>I Did This Today</span>
     <span class="icon-check"></span>
   </a>
   <ul>
     <li
       ng-repeat="period in vm.periodsThisWeek"
-      class="tracked"> <!-- + (empty), current-day, or future-day -->
+      ng-class="{ 'future-day': !vm.isModifiable(period), tracked: vm.isTracked(period), 'current-day': vm.isToday(period) }">
       <span>
         <span class="indicator"></span>
         {{vm.showDayFor(period)}}
+      </span>
+    </li>
+    <!-- TODO better implementation -->
+    <li
+      ng-repeat="day in vm.outstandingDays()"
+      class="future-day">
+      <span>
+        <span class="indicator"></span>
+        {{day}}
       </span>
     </li>
   </ul>

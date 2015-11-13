@@ -24,10 +24,7 @@
     <section class="container">
       <ul>
         <li>
-          <a href="" title="" class="active">Activities (5 of 6)</a>
-        </li>
-        <li>
-          <a href="" title="" class="">Challenge (1 of 1)</a>
+        <a href="" title="" class="active">Activities ({{vm.numItems()}} of 6)</a>
         </li>
         <li class="info-button">
           <a title="" href="" data-target="#userMessageModal" data-toggle="modal">
@@ -42,11 +39,10 @@
     <section class="container">
       <div class="btn-group">
         <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-          <span data-bind="label">Activities (5 of 6)</span><span class="chevron-down"></span>
+          <span data-bind="label">Activities ({{vm.numItems()}} of 6)</span><span class="chevron-down"></span>
         </button>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="" title="" class="switch-click active">Activities (5 of 6)</a></li>
-          <li><a href="" title="" class="switch-click">Challenge (1 of 1)</a></li>
+          <li><a href="" title="" class="switch-click active">Activities ({{vm.numItems()}} of 6)</a></li>
         </ul>
       </div>
     </section>

@@ -13,6 +13,10 @@ const UserDashboardController = function (UserActivity) {
     const activities = _.map(rawActivities, makeActivity);
     this.items = activities;
   });
+
+  this.numItems = function () {
+    return _.size(this.items);
+  };
 };
 
 export default UserDashboardController;
