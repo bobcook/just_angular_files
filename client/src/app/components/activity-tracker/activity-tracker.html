@@ -8,6 +8,22 @@
           <span ng-if="!vm.todayPeriod.isTracked">Track Today</span>
           <span ng-if="vm.todayPeriod.isTracked" class="icon-check"></span>
         </button>
+				<div class="options">
+          <!-- XXX find out why this isn't updating the button in save-user-content.js -->
+          <div class="option-icons" ss-save-user-content
+            ss-display-type="icon"
+            ss-is-user-namespace="false"
+            ss-item="vm.activity"
+            ss-items="vm.items"
+            ss-resource="vm.activity.constructor"
+            ss-saved-item="vm.activity"
+            ss-is-saved="vm.isSaved"
+            ss-redirect-sref="application.activity({ id: {{vm.activity.id}}})"
+            ss-plural-resource-name="activities"
+            style="padding-top: 10px; margin-left: -3px;"> <!-- TODO do correctly -->
+          </div>
+          <!--<a href="#mySS"><span class="icon-settings"></span></a>-->
+				</div>
       </hgroup>
     </header>
     <div class="full-view" ng-switch="vm.activity.activityTracker.type">
@@ -23,13 +39,13 @@
       </ss-activity-tracker-quantity>
     </div>
     <div class="snapshot">
-      <div class="item" 
-           ng-repeat="week in vm.periodsByWeek" 
+      <div class="item"
+           ng-repeat="week in vm.periodsByWeek"
            ng-click="vm.selectWeek(week)"
            ng-class="{ active: week == vm.currentWeek }">
         <div class="tracker">
           <ul>
-            <li 
+            <li
                 ng-repeat="period in week"
                 ng-class="{ tracked: period.isTracked }">
               <span>
