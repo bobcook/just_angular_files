@@ -13,6 +13,7 @@ const userDashboardCards = function () {
       perPage: '=ssPerPage',
       perRow: '=ssPerRow',
       items: '=ssItems',
+      numItems: '&ssNumItems',
     },
     link: function (scope, element, attrs) {
       const setShownItems = function () {

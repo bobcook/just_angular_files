@@ -5,13 +5,23 @@ module Api
         include PaginatedResource
         include SaveableResource
 
-        def create
-          user_activity = resource.create(activity: instance_to_save)
+        MAX_ACTIVITIES_COUNT = 6 # TODO: move elsewhere
 
-          render json: user_activity, serializer: serializer, status: :created
+        def create
+          if user_at_max_activities?
+            head :no_content
+          else
+            user_activity = resource.create(activity: instance_to_save)
+
+            render json: user_activity, serializer: serializer, status: :created
+          end
         end
 
         private
+
+        def user_at_max_activities?
+          current_user.activities.count == MAX_ACTIVITIES_COUNT
+        end
 
         def instance
           @instance ||=

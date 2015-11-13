@@ -41,10 +41,14 @@ const SaveUserContentController = function ($state, $filter) {
     const args = {};
     args[resourceIdField] = this.item.id;
     new this.resource(args).create().then((response) => {
-      this.savedItem = _.isEmpty(response) ? null : response.data;
-      this.isSaved = true;
-      // show modal after saving
-      $state.go(`.${resourceName}-saved`);
+      if (response.status === 201) {
+        this.savedItem = _.isEmpty(response) ? null : response.data;
+        this.isSaved = true;
+        // show modal after saving
+        $state.go(`.${resourceName}-saved`);
+      } else {
+        $state.go(`.${resourceName}-save-failed`);
+      }
     });
   };
 

@@ -36,6 +36,12 @@ const routerConfig = function (stateHelperProvider,
               controller: 'ActivityModalController',
               controllerAs: 'vm',
             }),
+            modalStateHelperProvider({
+              name: 'activity-save-failed',
+              templateUrl: 'app/activities/activity-save-failed-modal.html',
+              controller: 'ActivityModalController',
+              controllerAs: 'vm',
+            }),
           ],
         },
         {
