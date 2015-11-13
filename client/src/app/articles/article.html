@@ -1,8 +1,6 @@
-<!--
-TODO: Image is broken, using temp for now.
-{{vm.article.mastHeadImage}}
--->
-<div style="background-image: url('app/assets/images/user-content/cards/card-lg.jpg')" class="cp-lead-in-detail">
+<div
+  ng-style="{'background-image':'url(' + vm.mastHeadImage + ')'}"
+  class="cp-lead-in-detail">
   <section class="container">
     <div class="info-block">
       <header>
