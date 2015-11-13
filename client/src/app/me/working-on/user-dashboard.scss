@@ -1,0 +1,44 @@
+.cp-tabs {
+  ul {
+    padding: 0;
+    margin: 20px 0;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      margin-left: 0px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+
+      @media screen and (min-width: 768px) {
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+    }
+
+    a {
+      border-bottom: 3px solid transparent;
+    }
+
+    a {
+      &.active, &:hover, &:focus {
+        color: #385D70;
+        border-bottom: 3px solid #385D70;
+        padding-bottom: 3px;
+
+        @media screen and (min-width: 768px) {
+          padding-bottom: 10px;
+        }
+      }
+
+      .info {
+        float: none;
+      }
+    }
+
+    .info-button a:hover,
+    .info-button a:focus {
+      border: none;
+    }
+  }
+}
