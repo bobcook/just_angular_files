@@ -6,7 +6,8 @@ const isOnlyChange = function (event) {
   return event.type === 'changed';
 };
 
-gulp.task('watch', ['scripts:watch', 'partials:watch', 'inject'], function () {
+gulp.task('watch', ['scripts:watch', 'partials:watch', 'other:watch', 'inject'],
+function () {
   gulp.watch([path.join(conf.paths.src, '/*.html'), 'bower.json'], ['inject']);
 
   gulp.watch([

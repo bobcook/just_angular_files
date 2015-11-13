@@ -82,6 +82,13 @@ gulp.task('other', function () {
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
 });
 
+gulp.task('other:watch', ['other'], function () {
+  gulp.watch([
+    path.join(conf.paths.src, '/**/*'),
+    path.join('!' + conf.paths.src, '/**/*.{html,css,js,scss}'),
+  ], ['other']);
+});
+
 gulp.task('clean', function (done) {
   $.del([
     path.join(conf.paths.dist, '/'),
