@@ -8,7 +8,7 @@ const ArticleModalController = function (Article,
     this.resource = response.data;
     this.resourceTitle = this.resource.title;
     this.resourceURL = $location.absUrl();
-    this.durationText = `Read time: ${this.resource.duration}`;
+    this.durationText = this.resource.duration;
   });
 
   this.closeModal = $currentModal.close;

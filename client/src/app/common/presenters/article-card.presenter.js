@@ -16,7 +16,7 @@ const ArticleCardPresenter = function ($filter,
       cardClasses: controller.cardClasses || 'article-card',
       cardContent: getTitle(article),
       cardTitle: article.title, // TODO: change when real content fields added
-      lowerLeft: `Read time: ${article.duration}`, // TODO: real implementation
+      lowerLeft: article.duration, // TODO: real implementation
     };
   };
 
