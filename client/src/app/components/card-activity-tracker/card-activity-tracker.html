@@ -10,7 +10,10 @@
     <li
       ng-repeat="period in vm.periodsThisWeek"
       class="tracked"> <!-- + (empty), current-day, or future-day -->
-      <span class="indicator">{{vm.showDayFor(period)}}</span>
+      <span>
+        <span class="indicator"></span>
+        {{vm.showDayFor(period)}}
+      </span>
     </li>
   </ul>
 </div>

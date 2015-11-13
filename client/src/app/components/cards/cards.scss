@@ -213,6 +213,7 @@
     border-bottom: 1px solid $grey-light;
     padding-top: 8px;
     padding-bottom: 6px;
+    @include clearfix;
 
     a {
       float: right;
@@ -230,6 +231,10 @@
           color: $grey-blue;
         }
       }
+    }
+    
+    .option-icons {
+      float: right;
     }
 
     [class^="icon-"] {
@@ -518,6 +523,12 @@
       @media screen and (min-width: 768px) {
         margin-top: 7px;
       }
+    }
+    
+    .tracker li > span {
+      width: 32px;
+      display: inline-block;
+      text-align: center;
     }
   }
 
