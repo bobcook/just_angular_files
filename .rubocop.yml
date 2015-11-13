@@ -16,6 +16,10 @@ MethodLength:
 DoubleNegation:
   Enabled: false
 
+ModuleLength:
+  Exclude:
+    - "spec/**/*"
+
 AllCops:
   Exclude:
     - "bin/**/*"

@@ -38,7 +38,8 @@ module Apis
             'url': 'http://www.aarp.org/content/specialized-membership/'\
               'staying-sharp/en/articles/info-2015/'\
               'are-you-a-daydreamer/_jcr_content.ss.json',
-            'type': 'article'
+            'type': 'article',
+            'articleType': 'basic'
           },
           {
             'url': 'http://www.aarp.org/content/specialized-membership/'\
@@ -126,12 +127,11 @@ module Apis
           {
             'url': 'http://www.aarp.org/content/specialized-membership/'\
               'staying-sharp/en/recipes/info-2015/'\
-              'green-smoothie3/_jcr_content.ss.json',
+              'green-smoothie/_jcr_content.ss.json',
             'type': 'recipe'
           },
           {
-            'url': 'http://www.aarp'\
-            '.org/content/specialized-membership/'\
+            'url': 'http://www.aarp.org/content/specialized-membership/'\
               'staying-sharp/en/games/info-2015/'\
               'elephant-memory-game/_jcr_content.ss.json',
             'type': 'game'

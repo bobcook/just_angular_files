@@ -11,7 +11,7 @@ module ImportContent
         published_at: json_payload[:created],
         last_modified: json_payload[:lastmodified],
         payload: json_payload[:content][0],
-        url: json_payload[:url]
+        cms_url: json_payload[:cms_url]
       }
     end
 
