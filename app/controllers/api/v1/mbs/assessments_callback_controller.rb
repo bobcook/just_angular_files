@@ -13,7 +13,10 @@ module Api
 
         def frontend_redirect_data
           # TODO: whitelist assessment names
-          { 'redirectUrl' => assessment_url }
+          {
+            'redirectUrl' => assessment_url,
+            'miniAssessmentStatusId' => params[:miniAssessmentStatusId]
+          }
         end
 
         def assessment_url
