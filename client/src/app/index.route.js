@@ -86,80 +86,52 @@ const routerConfig = function (stateHelperProvider,
           // TODO: come up with a better solution for the static instructions
           children: [
             {
-              name: 'choice-reaction-time',
-              url: '/74',
-              templateUrl: 'app/assessments/mbs/choice-reaction-time.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: 'continuous-performance',
-              url: '/79',
-              templateUrl: 'app/assessments/mbs/continuous-performance.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: 'digit-span',
-              url: '/27',
-              templateUrl: 'app/assessments/mbs/digit-span.html',
+              name: 'cognitive-flexibility',
+              url: '/cognitive-flexibility', // 57
+              templateUrl: 'app/assessments/mbs/cognitive-flexibility.html',
               controller: 'AssessmentController',
               controllerAs: 'vm',
             },
             {
               name: 'executive-function',
-              url: '/66',
+              url: '/executive-function', // 66
               templateUrl: 'app/assessments/mbs/executive-function.html',
               controller: 'AssessmentController',
               controllerAs: 'vm',
             },
             {
-              name: 'go-nogo',
-              url: '/go-nogo',
-              templateUrl: 'app/assessments/mbs/go-nogo.html',
+              name: 'processing-speed',
+              url: '/processing-speed', // 74
+              templateUrl: 'app/assessments/mbs/processing-speed.html',
               controller: 'AssessmentController',
               controllerAs: 'vm',
             },
             {
-              name: 'category-recognition-delayed',
-              url: '/76',
+              name: 'recall-memory',
+              url: '/recall-memory', // 75
+              templateUrl: 'app/assessments/mbs/recall-memory.html',
+              controller: 'AssessmentController',
+              controllerAs: 'vm',
+            },
+            {
+              name: 'recall-memory-delayed',
+              url: '/recall-memory-delayed', // 76
               templateUrl:
-                'app/assessments/mbs/category-recognition-delayed.html',
+                'app/assessments/mbs/recall-memory-delayed.html',
               controller: 'AssessmentController',
               controllerAs: 'vm',
             },
             {
-              name: 'category-recognition',
-              url: '/75',
-              templateUrl: 'app/assessments/mbs/category-recognition.html',
+              name: 'sustained-attention',
+              url: '/sustained-attention', // 79
+              templateUrl: 'app/assessments/mbs/sustained-attention.html',
               controller: 'AssessmentController',
               controllerAs: 'vm',
             },
             {
-              name: 'motor-tapping',
-              url: '/motor-tapping',
-              templateUrl: 'app/assessments/mbs/motor-tapping.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: 'switching-of-attention',
-              url: '/57',
-              templateUrl: 'app/assessments/mbs/switching-of-attention.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: 'verbal-interference',
-              url: '/verbal-interference',
-              templateUrl: 'app/assessments/mbs/verbal-interference.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: 'verbal-memory',
-              url: '/75',
-              templateUrl: 'app/assessments/mbs/verbal-interference.html',
+              name: 'working-memory',
+              url: '/working-memory', // 27
+              templateUrl: 'app/assessments/mbs/working-memory.html',
               controller: 'AssessmentController',
               controllerAs: 'vm',
             },

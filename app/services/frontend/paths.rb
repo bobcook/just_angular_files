@@ -3,7 +3,10 @@ module Frontend
     FRONTEND_PATHS = {
       login_failure: ->()      { '/callbacks/login-failure' },
       login_success: ->(token) { "/callbacks/login-success/#{token}" },
-      assessments: -> (id) { "/assessment/#{id}" }
+      assessments: lambda do |slug, completed_id|
+        "/assessment/#{slug}?completed=#{completed_id}"
+      end,
+      assessments_results: -> () { '/assessments-results' }
     }
 
     module_function
