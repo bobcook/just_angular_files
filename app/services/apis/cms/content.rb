@@ -16,15 +16,6 @@ module Apis
           .merge!(cms_url: api_url).body
       end
 
-      # NOTE: temporary method to add type to article json because the json
-      # doesn't include type. Hopefully in the finalized api, type is included,
-      # and we can just use json_payload
-      def json_payload_with_type(article_type)
-        json_with_type = json_payload
-        json_with_type[:articleType] = article_type
-        json_with_type
-      end
-
       private
 
       def response

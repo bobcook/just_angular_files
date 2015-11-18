@@ -3,18 +3,14 @@ class ImportContentItemJob < ActiveJob::Base
 
   # TODO: fix assignment too high error from rubocop
   def perform(content)
-    json_payload =
-      if content[:type] == 'article'
-        Apis::CMS::Content
-            .new(content[:url]).json_payload_with_type(content[:articleType])
-      else
-        Apis::CMS::Content.new(content[:url]).json_payload
-      end
-
-    hash = process_json(content[:type]).new(json_payload).convert_content
+    json_payload = Apis::CMS::Content.new(content[:url]).json_payload
+    hash =
+      process_json(content_type(json_payload)).new(json_payload).convert_content
 
     ImportContent::Persist
-      .new(hash, resource(content[:type]), article_type(json_payload))
+      .new(
+        hash, resource(content_type(json_payload)), article_type(json_payload)
+      )
       .create_or_update
   end
 
@@ -38,12 +34,15 @@ class ImportContentItemJob < ActiveJob::Base
     end
   end
 
+  def content_type(json_payload)
+    json_payload[:content][0][:type]
+  end
+
   def article_type(json_payload)
-    # TODO: change type options to match final api
-    case json_payload['articleType']
-    when 'slideshow' then SlideshowArticle
-    when 'video' then VideoArticle
-    when 'basic' then BasicArticle
+    # TODO: when api adds other article types, delete this conditional and
+    #  use a case statement to select article type
+    if json_payload[:content][0][:type] == 'article'
+      BasicArticle
     end
   end
 end

@@ -5,12 +5,12 @@ module ImportContent
     def make_subject
       cms_json = {
         'content': [{
-          'mastheadTitle': 'blah title'
+          'mastheadTitle': 'blah title',
+          'type': 'article'
         }],
         'created': Time.zone.now,
         'lastmodified': Time.zone.now,
-        'url': 'http://blah.com',
-        'articleType': 'basic'
+        'url': 'http://blah.com'
       }
 
       ImportContent::ProcessArticleJson.new(cms_json)
