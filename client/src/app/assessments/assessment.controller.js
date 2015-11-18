@@ -17,41 +17,43 @@ const AsssessmentController = function ($state, $stateParams, $location) {
       nextAssessmentId: PROCESSING_SPEED_ID,
       slug: 'processing-speed',
     },
-    ['id'+PROCESSING_SPEED_ID ]: {
+    [PROCESSING_SPEED_ID]: {
       nextAssessmentId: RECALL_MEMORY_ID,
       slug: 'recall-memory',
     },
-    ['id'+RECALL_MEMORY_ID] : {
+    [RECALL_MEMORY_ID] : {
       nextAssessmentId: SUSTAINED_ATTENTION_ID,
       slug: 'sustained-attention',
     },
-    ['id'+SUSTAINED_ATTENTION_ID] : {
+    [SUSTAINED_ATTENTION_ID] : {
       nextAssessmentId: WORKING_MEMORY_ID,
       slug: 'working-memory',
     },
-    ['id'+WORKING_MEMORY_ID] : {
+    [WORKING_MEMORY_ID] : {
       nextAssessmentId: COGNITIVE_FLEXIBILITY_ID,
       slug: 'cognitive-flexibility',
     },
-    ['id'+COGNITIVE_FLEXIBILITY_ID] : {
+    [COGNITIVE_FLEXIBILITY_ID] : {
       nextAssessmentId: EXECUTIVE_FUNCTION_ID,
       slug: 'executive-function',
     },
-    ['id'+EXECUTIVE_FUNCTION_ID] : {
+    [EXECUTIVE_FUNCTION_ID] : {
       nextAssessmentId: RECALL_MEMORY_DELAYED_ID,
       slug: 'recall-memory-delayed',
     },
-    ['id'+RECALL_MEMORY_DELAYED_ID] : { nextAssessmentId: null },
+    [RECALL_MEMORY_DELAYED_ID] : { nextAssessmentId: null },
   };
 
   const assessmentId = $location.url().split('/assessment/')[1];
 
-  if( assessmentId === CALIBRATION_ID) {
-    $state.go('application.assessment.' + ASSESSMENTS['calibration'].slug);
-  } else if( assessmentId === LAST_ASSESSMENT_ID) {
+  const assessment = ASSESSMENTS[Number(assessmentId)];
+
+  if (assessmentId === CALIBRATION_ID) {
+    $state.go(`application.assessment.${ASSESSMENTS['calibration'].slug}`);
+  } else if (assessmentId === LAST_ASSESSMENT_ID) {
     $state.go('application.assessments-results');
-  } else if(typeof Number(assessmentId) == 'number') {
-    $state.go('application.assessment.' + ASSESSMENTS['id' + Number(assessmentId)].slug);
+  } else if (assessment) {
+    $state.go(`application.assessment.${assessment.slug}`);
   }
 
   this.mbsUrl = 'https://stage.mybrainsolutions.com/MyBrain/'+
