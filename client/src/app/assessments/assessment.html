@@ -10,5 +10,5 @@
   </div>
 </form>
 
-<p><a ng-if="!vm.showResultsLink" href="{{vm.mbsUrl}}">Next Assessment</a></p>
+<p><a ng-if="!vm.showResultsLink" href="#" ng-click="vm.authForAssessments()">Next Assessment</a></p>
 <p><a ng-if="vm.showResultsLink" ui-sref="application.assessments-results">Results</a></p>

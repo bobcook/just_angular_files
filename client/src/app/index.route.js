@@ -86,27 +86,9 @@ const routerConfig = function (stateHelperProvider,
           // TODO: come up with a better solution for the static instructions
           children: [
             {
-              name: '11',
-              url: '/11', // calibration
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: '57',
-              url: '/57',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
               name: 'cognitive-flexibility',
               url: '/cognitive-flexibility', // 57
               templateUrl: 'app/assessments/mbs/cognitive-flexibility.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: '66',
-              url: '/66',
               controller: 'AssessmentController',
               controllerAs: 'vm',
             },
@@ -118,13 +100,6 @@ const routerConfig = function (stateHelperProvider,
               controllerAs: 'vm',
             },
             {
-              name: '74',
-              url: '/74',
-              templateUrl: 'app/assessments/mbs/processing-speed.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
               name: 'processing-speed',
               url: '/processing-speed', // 74
               templateUrl: 'app/assessments/mbs/processing-speed.html',
@@ -132,21 +107,9 @@ const routerConfig = function (stateHelperProvider,
               controllerAs: 'vm',
             },
             {
-              name: '75',
-              url: '/75',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
               name: 'recall-memory',
               url: '/recall-memory', // 75
               templateUrl: 'app/assessments/mbs/recall-memory.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: '76',
-              url: '/76', // 76
               controller: 'AssessmentController',
               controllerAs: 'vm',
             },
@@ -159,21 +122,9 @@ const routerConfig = function (stateHelperProvider,
               controllerAs: 'vm',
             },
             {
-              name: '79',
-              url: '/79',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
               name: 'sustained-attention',
               url: '/sustained-attention', // 79
               templateUrl: 'app/assessments/mbs/sustained-attention.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: '27',
-              url: '/27',
               controller: 'AssessmentController',
               controllerAs: 'vm',
             },
@@ -185,6 +136,12 @@ const routerConfig = function (stateHelperProvider,
               controllerAs: 'vm',
             },
           ],
+        },
+        {
+          name: 'assessments-callback',
+          url: '/assessments-callback',
+          controller: 'AssessmentsCallbackController',
+          controllerAs: 'vm',
         },
         {
           name: 'assessments-questionnaire',

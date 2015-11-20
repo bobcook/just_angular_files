@@ -111,6 +111,8 @@ import ArticleModalController from './articles/article-modal.controller.js';
 import ArticlesController from './articles/articles.controller.js';
 import AssessmentController from './assessments/assessment.controller.js';
 import AssessmentsController from './assessments/assessments.controller.js';
+import AssessmentsCallbackController from
+  './assessments/assessments-callback.controller.js';
 import CardController from './components/card/card.controller.js';
 import CardActivityTrackerController from
   './components/card-activity-tracker/card-activity-tracker.controller.js';
@@ -269,6 +271,7 @@ app
   .controller('ArticlesController', ArticlesController)
   .controller('AssessmentController', AssessmentController)
   .controller('AssessmentsController', AssessmentsController)
+  .controller('AssessmentsCallbackController', AssessmentsCallbackController)
   .controller('CardController', CardController)
   .controller('CardActivityTrackerController', CardActivityTrackerController)
   .controller('CardsController', CardsController)
