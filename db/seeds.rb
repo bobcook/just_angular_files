@@ -3,28 +3,33 @@ require_relative './seed_data/assessment_questions'
 pillar_data = [
   {
     name: 'Keeping Fit',
+    display_name: 'MOVE',
     description: 'Move your body to engage your mind.',
     slug: 'keeping_fit'
   },
   {
     name: 'Learning More',
+    display_name: 'DISCOVER',
     description: 'Challenge your brain through continuous learning.',
     slug: 'learning_more'
   },
   {
     name: 'Managing Stress',
+    display_name: 'RELAX',
     description: 'Keep stress levels down to allow your brain to relax ' \
                  'and recharge.',
     slug: 'managing_stress'
   },
   {
     name: 'Eating Right',
+    display_name: 'NOURISH',
     description: 'Feed your brain the foods and nutrients it needs to ' \
                  'function best.',
     slug: 'eating_right'
   },
   {
     name: 'Being Social',
+    display_name: 'CONNECT',
     description: 'Social connections help you feel vital and engaged.',
     slug: 'being_social'
   }

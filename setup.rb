@@ -32,4 +32,9 @@ env 'DSO_API',
             default: 'https://services.share.aarp.org/' \
                      'applications/CoreServices')
 
+env 'CMS_BASE_URL',
+    provide('AARP CMS base URL',
+            default: 'http://www.aarp.org/content/specialized-membership/' \
+                     'staying-sharp/en')
+
 rake 'db:setup'
