@@ -37,4 +37,9 @@ env 'CMS_BASE_URL',
             default: 'http://www.aarp.org/content/specialized-membership/' \
                      'staying-sharp/en')
 
+env 'MBS_API',
+    provide('Brain Solutions API base URL',
+            default: 'https://stage.mybrainsolutions.com/' \
+                     'services/SolutionsService.svc')
+
 rake 'db:setup'

@@ -37,6 +37,43 @@ describe User do
     end
   end
 
+  describe '#external_id' do
+    it 'is not set before save' do
+      subject = build(:user)
+      expect(subject.external_id).to be_blank
+    end
+
+    it 'is set after save' do
+      subject = create(:user)
+      expect(subject.external_id).not_to be_blank
+    end
+
+    it 'is the same after multiple saves' do
+      subject = create(:user)
+      before_save = subject.external_id
+      subject.save!
+      after_save = subject.external_id
+
+      expect(before_save).to eq(after_save)
+    end
+
+    it 'is the same after the email changes' do
+      subject = create(:user)
+      before_change = subject.external_id
+      subject.update(email: 'blahblah@example.com')
+      after_change = subject.external_id
+
+      expect(before_change).to eq(after_change)
+    end
+
+    it 'is unique per user' do
+      subject = create(:user)
+      other_subject = create(:user)
+
+      expect(subject.external_id).not_to eq(other_subject.external_id)
+    end
+  end
+
   describe 'validations' do
     describe 'user_activities' do
       it 'is valid if there are fewer than MAX_ACTIVITY_LIMIT' do

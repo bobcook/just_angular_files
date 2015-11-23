@@ -14,8 +14,7 @@ const addConstants = function (module) {
 
   const MbsRoutes = {
     TAKE_ASSESSMENTS:
-      'https://staging.mybrainsolutions.com/mybrain/MyBrainAssessment.aspx?' +
-        'start=true',
+      'https://stage.mybrainsolutions.com/MyBrain/MyBrainAssessment.aspx',
   };
 
   const constants = _.merge(

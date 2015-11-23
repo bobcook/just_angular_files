@@ -20,13 +20,13 @@ SamlIdp.configure do |config|
 
   config.attributes = {
     firstname: {
-      getter: -> (user) { Apis::Mbs::User.for_user_model(user).first_name }
+      getter: -> (user) { Apis::MBS::User.for_user_model(user).first_name }
     },
     lastname: {
-      getter: -> (user) { Apis::Mbs::User.for_user_model(user).last_name }
+      getter: -> (user) { Apis::MBS::User.for_user_model(user).last_name }
     },
     email: {
-      getter: -> (user) { Apis::Mbs::User.for_user_model(user).email }
+      getter: -> (user) { Apis::MBS::User.for_user_model(user).email }
     },
     uniqueuserid: {
       getter: -> (user) { user.id }
