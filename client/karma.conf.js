@@ -1,51 +1,56 @@
-var path = require('path');
-var conf = require('./gulp/conf');
+import path from 'path';
+import conf from './gulp/conf';
 
-var _ = require('lodash');
-var wiredep = require('wiredep');
+import _ from 'lodash';
+import wiredep from 'wiredep';
 
-function listFiles() {
-  var wiredepOptions = _.extend({}, conf.wiredep, {
+const listFiles = function () {
+  const wiredepOptions = _.extend({}, conf.wiredep, {
     dependencies: true,
-    devDependencies: true
+    devDependencies: true,
   });
 
   return wiredep(wiredepOptions).js
     .concat([
+      path.join(conf.paths.src, '/app/test-helper.mock.js'),
       path.join(conf.paths.tmp, '/serve/app/index.module.js'),
       path.join(conf.paths.src, '/**/*.spec.js'),
       path.join(conf.paths.src, '/**/*.mock.js'),
-      path.join(conf.paths.src, '/**/*.html')
+      path.join(conf.paths.src, '/**/*.html'),
     ]);
-}
+};
 
-module.exports = function(config) {
-
-  var configuration = {
+module.exports = function (config) {
+  const configuration = {
     files: listFiles(),
 
     singleRun: true,
 
     autoWatch: false,
 
-    frameworks: ['jasmine'],
+    frameworks: ['mocha', 'chai', 'sinon', 'sinon-chai'],
 
     ngHtml2JsPreprocessor: {
       stripPrefix: 'src/',
-      moduleName: 'client'
+      moduleName: 'client',
     },
 
     browsers : ['PhantomJS'],
 
     plugins : [
+      'karma-babel-preprocessor',
       'karma-phantomjs-launcher',
-      'karma-jasmine',
-      'karma-ng-html2js-preprocessor'
+      'karma-mocha',
+      'karma-chai',
+      'karma-sinon',
+      'karma-sinon-chai',
+      'karma-ng-html2js-preprocessor',
     ],
 
     preprocessors: {
-      'src/**/*.html': ['ng-html2js']
-    }
+      'src/**/*.js': ['babel'],
+      'src/**/*.html': ['ng-html2js'],
+    },
   };
 
   config.set(configuration);
