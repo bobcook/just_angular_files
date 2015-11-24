@@ -19,6 +19,8 @@
       </li>
     </ul>
 
-    <p><a class="btn" href="#" ui-sref="application.assessments-questionnaire({id: vm.firstAssessmentId })">Begin Assessments</a></p>
+    <p ng-if="vm.assessmentsCompleted"><a class="btn" href="#" ui-sref="application.assessments-questionnaire({id: vm.nextAssessmentId })" ng-click="vm.createUserAssessments()">Begin Assessments</a></p>
+
+    <p ng-if="!vm.assessmentsCompleted"><a class="btn" href="#" ui-sref="application.assessments-questionnaire({id: vm.nextAssessmentId })">Continue Assessments</a></p>
   </section>
 </div>

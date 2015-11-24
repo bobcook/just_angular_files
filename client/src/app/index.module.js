@@ -18,6 +18,7 @@ import ActivityTrackerResponse from
 import Article from './common/resources/article.js';
 import ArticleReview from './common/resources/article-review.js';
 import Assessment from './common/resources/assessment.js';
+import AssessmentResponse from './common/resources/assessment-response.js';
 import CurrentUser from './common/resources/current-user.js';
 import ExploreContent from './common/resources/explore-content.js';
 import Game from './common/resources/game.js';
@@ -30,6 +31,8 @@ import RelatedContentGames from './common/resources/related-content-games.js';
 import UserActivity from './common/resources/user-activity.js';
 import UserActivityPeriod from './common/resources/user-activity-period.js';
 import UserArticle from './common/resources/user-article.js';
+import UserAssessmentGroup from './common/resources/user-assessment-group.js';
+import UserAssessment from './common/resources/user-assessment.js';
 import UserGame from './common/resources/user-game.js';
 import UserRecipe from './common/resources/user-recipe.js';
 
@@ -191,6 +194,7 @@ app
   .factory('Article', Article)
   .factory('ArticleReview', ArticleReview)
   .factory('Assessment', Assessment)
+  .factory('AssessmentResponse', AssessmentResponse)
   .factory('CurrentUser', CurrentUser)
   .factory('ExploreContent', ExploreContent)
   .factory('Game', Game)
@@ -203,6 +207,8 @@ app
   .factory('UserActivity', UserActivity)
   .factory('UserActivityPeriod', UserActivityPeriod)
   .factory('UserArticle', UserArticle)
+  .factory('UserAssessmentGroup', UserAssessmentGroup)
+  .factory('UserAssessment', UserAssessment)
   .factory('UserGame', UserGame)
   .factory('UserRecipe', UserRecipe)
 

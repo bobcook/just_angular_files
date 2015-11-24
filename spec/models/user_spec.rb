@@ -13,6 +13,8 @@ describe User do
   it { should have_many(:articles).through(:user_articles) }
   it { should have_many(:user_games) }
   it { should have_many(:games).through(:user_games) }
+  it { should have_many(:user_assessment_groups) }
+  it { should have_many(:user_assessments).through(:user_assessment_groups) }
 
   describe '#max_activity_limit?' do
     limit = 3

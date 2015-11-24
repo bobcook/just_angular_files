@@ -1,10 +1,33 @@
 const AsssessmentsController = function ($assessmentsAuth,
+                                         UserAssessmentGroup,
                                          Assessment) {
   'ngInject';
 
-  Assessment.query().then((assessments) => {
-    this.firstAssessmentId =  _.pluck(assessments, 'id')[0];
+  UserAssessmentGroup.query().then((groups) => {
+    const lastGroup = groups[groups.length -1];
+    // TODO: might consider putting 'happy path' condition first
+    // resume existing assessments
+    if (lastGroup && lastGroup.completed === false) {
+      const nextAssessment =
+        lastGroup.userAssessments.find((userAssessment) => {
+          return userAssessment.completed === false;
+        });
+      this.nextAssessmentId = nextAssessment.assessmentId;
+      this.assessmentsCompleted = false;
+    // begin new assessments
+    } else {
+      Assessment.query().then((assessments) => {
+        this.nextAssessmentId = assessments[0].id;
+      });
+      this.assessmentsCompleted = true;
+    }
+
   });
+
+  this.createUserAssessments = function () {
+    new UserAssessmentGroup()
+    .create();
+  };
 };
 
 export default AsssessmentsController;

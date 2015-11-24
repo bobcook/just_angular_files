@@ -57,6 +57,9 @@ Rails.application.routes.draw do
       namespace :me, as: :my do
         resources :articles, only: [:index, :show, :create, :destroy]
         resources :activities, only: [:index, :show, :create, :destroy]
+        resources :assessment_groups, only: [:create, :index]
+        resources :assessment_responses, only: [:create]
+        resources :assessments, only: [:show, :update]
         resources :games, only: [:show, :index, :create, :destroy]
         resources :current_user, controller: 'current_user', only: :index
         resources :recipes, only: [:index, :show, :create, :destroy]

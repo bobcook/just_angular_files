@@ -1,5 +1,6 @@
 class UserAssessment < ActiveRecord::Base
-  belongs_to :user
+  has_one :user, through: :user_assessment_group
   has_many :assessment_responses
   belongs_to :assessment
+  belongs_to :user_assessment_group
 end
