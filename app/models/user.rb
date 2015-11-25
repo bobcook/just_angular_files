@@ -18,18 +18,13 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [:aarp]
 
   validate :not_over_max_activities
-
-  before_save :set_external_id
+  validates :external_id, uniqueness: true
 
   def max_activity_limit?
     user_activities.count >= MAX_ACTIVITY_LIMIT
   end
 
   private
-
-  def set_external_id
-    self.external_id ||= Apis::MBS::User.for_user_model(self).id
-  end
 
   def not_over_max_activities
     message = ''

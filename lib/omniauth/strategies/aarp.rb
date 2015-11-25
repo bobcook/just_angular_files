@@ -8,14 +8,16 @@ module OmniAuth
       attr_reader :user_info
 
       option :fields, [:ut]
-      option :uid_field, :email
+      option :uid_field, :external_id
 
       uid do
         request.params[options.uid_field.to_s]
       end
 
       info do
+        # TODO: change external_id if it isn't canonical
         {
+          external_id: user_info[:idpId],
           first_name: user_info[:firstName],
           last_name: user_info[:lastName],
           email: user_info[:email]

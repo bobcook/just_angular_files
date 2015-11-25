@@ -10,6 +10,7 @@ describe OmniauthCreation do
       default_info_attrs = {
         uid: 'email@example.com',
         email: 'email@example.com',
+        external_id: '016c4e57b117462a992de1f53de8c09e',
         first_name: 'FIRST',
         last_name: 'LAST'
       }
@@ -71,7 +72,7 @@ describe OmniauthCreation do
         existing_user = create(
           :user,
           provider: auth.provider,
-          uid: auth.info.email,
+          uid: auth.info.external_id,
           auth_token: auth.credentials.token
         )
         subject = test_class
@@ -86,7 +87,7 @@ describe OmniauthCreation do
         create(
           :user,
           provider: auth.provider,
-          uid: auth.info.email
+          uid: auth.info.external_id
         )
         subject = test_class
 

@@ -39,10 +39,13 @@ SamlIdp.configure do |config|
       getter: -> (_user) { 'MALE' }
     },
     yrofedu: {
-      getter: -> (_prinicpal) { 16 }
+      getter: -> (_user) { 16 }
     },
     hand: {
       getter: -> (_user) { 'RIGHT' }
+    },
+    baseurl: {
+      getter: -> (_user) { ENV.fetch('HOST') }
     }
   }
 

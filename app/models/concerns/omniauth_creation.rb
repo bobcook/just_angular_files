@@ -4,7 +4,7 @@ module OmniauthCreation
   class_methods do
     def from_omniauth(auth)
       found_user =
-        where(provider: auth.provider, uid: auth.info.email)
+        where(provider: auth.provider, uid: auth.info.external_id)
         .first_or_create do |user|
           user.assign_attributes(attrs_from_auth(auth))
         end
@@ -19,6 +19,7 @@ module OmniauthCreation
 
     def attrs_from_auth(auth)
       {
+        external_id: auth.info.external_id,
         email: auth.info.email,
         password: Devise.friendly_token[0, 20],
         first_name: auth.info.first_name,

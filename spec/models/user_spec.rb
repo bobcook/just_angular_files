@@ -38,16 +38,6 @@ describe User do
   end
 
   describe '#external_id' do
-    it 'is not set before save' do
-      subject = build(:user)
-      expect(subject.external_id).to be_blank
-    end
-
-    it 'is set after save' do
-      subject = create(:user)
-      expect(subject.external_id).not_to be_blank
-    end
-
     it 'is the same after multiple saves' do
       subject = create(:user)
       before_save = subject.external_id

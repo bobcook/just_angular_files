@@ -16,19 +16,18 @@ module Apis
 
       delegate :orig_id, :orig_email, :external_id, to: :attrs
 
+      alias_method :unique_id, :external_id
+
       def initialize(attrs = {})
         @attrs = OpenStruct.new(attrs)
       end
 
       def id
-        @id ||= email_digest
+        @id ||= unique_id
       end
 
-      # Use the MD5 hash of the user's email, which should
-      # still be consistent across dev / staging / prod,
-      # unlike IDs
       def email
-        @email ||= "user#{email_digest}@example.com"
+        @email ||= "user#{unique_id}@example.com"
       end
 
       def first_name
@@ -37,12 +36,6 @@ module Apis
 
       def last_name
         @last_name ||= 'Member'
-      end
-
-      private
-
-      def email_digest
-        @email_digest ||= external_id || Digest::MD5.hexdigest(orig_email)
       end
     end
   end
