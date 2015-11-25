@@ -1,16 +1,29 @@
-<form ng-submit="vm.submitForm()">
-  <div ng-repeat="question in vm.questions">
-    <label>{{question.text}}</label>
-    <div ng-if="question.answerOptions">
-      <div ng-repeat="option in question.answerOptions">
-        <input ng-model="vm.responses[question.id]" name="{{question.id}}" value="{{option}}" type="radio" >{{option}}
+<div ng-if="vm.showAssessment">
+  <form name="assessmentForm" novalidate ng-submit="vm.submitForm(assessmentForm.$valid)">
+    <div ng-repeat="question in vm.questions">
+      <label>{{question.text}}</label>
+      <!-- TODO: determine what type of errors to show if user doesn't answer
+      all the questions -->
+      <div ng-if="question.type === 'AssessmentQuestionDate'">
+        <input type="date" name="{{question.id}}" ng-model="vm.textResponses[question.id]" required>
       </div>
+      <div ng-if="question.type === 'AssessmentQuestionSelect'">
+        <select name="{{question.id}}" ng-model="vm.textResponses[question.id]" required>
+          <option ng-repeat="option in question.answerOptions" value="{{option}}">{{option}}</option>
+        </select>
+      </div>
+      <div ng-if="question.type === 'AssessmentQuestionRadio'">
+        <div ng-repeat="option in question.answerOptions">
+          <div ng-if="question.answerValues.length === 0">
+            <input name="{{question.id}}" value="{{option}}" ng-model="vm.textResponses[question.id]" type="radio" required>{{option}}
+          </div>
+          <div ng-if="question.answerValues.length > 0" >
+            <input name="{{question.id}}" value="{{option}}" ng-model="vm[question.id]" ng-click="vm.indexResponses[question.id]=$index" type="radio" required>{{option}}
+          </div>
+        </div>
+      </div>
+      <br>
     </div>
-    <br>
-  </div>
-  <input type="submit" value="Submit">
-</form>
-
-
-<p><a ng-if="!vm.showResultsLink" href="#" ng-click="vm.authForAssessments()">Next Assessment</a></p>
-<p><a ng-if="vm.showResultsLink" ui-sref="application.assessments-results">Results</a></p>
+    <input ng-disabled="assessmentForm.$invalid" type="submit" value="Submit">
+  </form>
+</div>

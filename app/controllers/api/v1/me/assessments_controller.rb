@@ -22,7 +22,8 @@ module Api
             :id,
             :completed,
             :user_assessment_group_id,
-            :assessment_id
+            :assessment_id,
+            :type
           )
         end
       end

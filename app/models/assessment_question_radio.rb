@@ -1,0 +1,2 @@
+class AssessmentQuestionRadio < AssessmentQuestion
+end

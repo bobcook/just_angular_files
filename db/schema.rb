@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123233333) do
+ActiveRecord::Schema.define(version: 20151130061900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20151123233333) do
     t.integer  "recommendation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
   end
 
   add_index "assessment_questions", ["assessment_id"], name: "index_assessment_questions_on_assessment_id", using: :btree
@@ -209,6 +210,7 @@ ActiveRecord::Schema.define(version: 20151123233333) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "last_mbs"
   end
 
   add_index "user_assessment_groups", ["user_id"], name: "index_user_assessment_groups_on_user_id", using: :btree

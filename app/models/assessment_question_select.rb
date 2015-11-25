@@ -1,0 +1,2 @@
+class AssessmentQuestionSelect < AssessmentQuestion
+end

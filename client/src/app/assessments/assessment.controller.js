@@ -1,75 +1,62 @@
 const AsssessmentController = function ($stateParams,
-                                        $location,
-                                        $assessmentsAuth,
                                         Assessment,
-                                        AssessmentResponse,
-                                        UserAssessmentGroup,
                                         UserAssessment,
+                                        AssessmentStatus,
                                         MbsRoutes) {
   'ngInject';
 
-  // TODO: keep track of which assessments have been completed to determine
-  // which assessment to show
-
   this.mbsUrl = MbsRoutes.TAKE_ASSESSMENTS;
+  // text responses for questions without scores
+  this.textResponses = {};
+  // index of each response for questions with scores
+  this.indexResponses = {};
+  // all the possible scores for questions with scores
+  let assessmentScores = {};
+  this.showAssessment = false;
+  const userAssessmentId = $stateParams.id;
+  let assessmentRedirect;
 
-  // TODO: dynamically get last questionnaire id
-  const LAST_QUESTIONNAIRE_ID = '3';
-  const assessmentId = $location.url().split('/assessment/')[1];
+  AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
+    const secondQuestionnaire =
+      AssessmentStatus.getQuestionnaires(lastGroup)[1];
+    assessmentRedirect =
+      AssessmentStatus.submitAssessmentRedirect(lastGroup, userAssessmentId);
+    this.showResultsLink = Number(userAssessmentId) === secondQuestionnaire.id;
+  });
 
-  this.showResultsLink = assessmentId === LAST_QUESTIONNAIRE_ID;
+  if (userAssessmentId) {
+    const currentUserAssessment = UserAssessment.get(userAssessmentId);
 
-  this.authForAssessments = function () {
-    $assessmentsAuth.authenticate();
-  };
-
-  this.userAssessmentId = 0;
-
-  // get UserAssessmentId so that we can save the responses.
-  // TODO: try to simplify this getting UserAssessmentId once we have the
-  // MBS assessments response done
-  UserAssessmentGroup.query().then((groups) => {
-    const lastGroup = groups[groups.length - 1];
-    const userAssessment =
-      lastGroup.userAssessments.find(function (assessment) {
-        return  assessment.assessmentId === Number($stateParams.id);
+    currentUserAssessment.then((userAssessment) => {
+      Assessment.get(userAssessment.assessmentId).then((assessment) => {
+        if (userAssessment.completed) {
+          return;
+        }
+        if (assessment.type === 'AssessmentQuestionnaire') {
+          this.showAssessment = true;
+          this.questions = assessment.assessmentQuestions;
+          assessmentScores = AssessmentStatus.getAssessmentScores(assessment);
+        }
       });
-    this.userAssessmentId = userAssessment.id;
-  });
-
-  // show questionnaire question that use radio buttons.
-  // TODO: show questionnaire question that use select dropdown.
-  // TODO: show MBS instruction for current assessment.
-  Assessment.get($stateParams.id).then((assessment) => {
-    if (assessment.type === 'AssessmentQuestionnaire') {
-      this.questions = assessment.assessmentQuestions;
-    }
-  });
-
-  const updateUserAssessment =  () => {
-    UserAssessment.get(this.userAssessmentId).then((userAssessment) => {
-      userAssessment.completed = true;
-      userAssessment.update();
     });
-  };
 
-  // TODO: validate that all questions have answers
-  const saveUserResponses =  () => {
-    for (const key in this.responses) {
-      new AssessmentResponse({
-        assessmentQuestionId: key,
-        response: this.responses[key],
-        userAssessmentId: this.userAssessmentId,
-      })
-      .create();
-    }
-  };
+    this.submitForm = function (isValid) {
+      if (isValid) {
+        currentUserAssessment.then(function (userAssessment) {
+          AssessmentStatus.updateCompletedUserAssessment(userAssessment);
+        });
 
-  this.responses = {};
-  this.submitForm = function () {
-    updateUserAssessment();
-    saveUserResponses();
-  };
+        AssessmentStatus
+          .saveTextResponses(this.textResponses, userAssessmentId);
+        AssessmentStatus
+          .saveIndexResponses(
+            this.indexResponses, assessmentScores, userAssessmentId
+          );
+
+        assessmentRedirect();
+      }
+    };
+  }
 
 };
 

@@ -61,8 +61,10 @@ import $pagination from './common/services/pagination.js';
 import $pillarFiltering from './common/services/pillar-filtering.js';
 import $postHref from './common/services/post-href.js';
 import $presenterUtils from './common/services/presenter-utils.js';
+import AssessmentStatus from './assessments/assessment-status.js';
 import authInterceptor from './common/services/auth-interceptor.js';
 import dependentMemoize from './common/services/dependent-memoize.js';
+import MBSAssessmentList from './assessments/mbs-assessment-list.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
 
 // directives
@@ -232,7 +234,9 @@ app
   .factory('$postHref', $postHref)
   .factory('$presenterUtils', $presenterUtils)
   .factory('authInterceptor', authInterceptor)
+  .factory('AssessmentStatus', AssessmentStatus)
   .factory('dependentMemoize', dependentMemoize)
+  .factory('MBSAssessmentList', MBSAssessmentList)
   .provider('modalStateHelper', modalStateHelper)
 
   // directives

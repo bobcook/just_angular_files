@@ -12,7 +12,24 @@ module Api
           render json: current_user.user_assessment_groups, status: :ok
         end
 
+        def update
+          assessment_group.update_attributes(group_params)
+          head :no_content
+        end
+
         private
+
+        def group_params
+          params[:assessment_group].permit(
+            :id,
+            :completed,
+            :last_mbs
+          )
+        end
+
+        def assessment_group
+          UserAssessmentGroup.find(params[:id])
+        end
 
         def create_user_assessment_group
           current_user.user_assessment_groups << UserAssessmentGroup.new

@@ -1,0 +1,2 @@
+class AssessmentQuestionDate < AssessmentQuestion
+end

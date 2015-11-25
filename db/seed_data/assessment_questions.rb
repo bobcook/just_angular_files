@@ -5,23 +5,43 @@ module SeedData
         {
           text: 'What is your date of birth?',
           order: 1,
-          assessment_id: 1
+          assessment_id: 1,
+          type: 'AssessmentQuestionDate'
         },
         {
           text: 'What is your height?',
           order: 2,
-          assessment_id: 1
+          answer_options: (48..84).map { |i| "#{i/12}-#{i%12}" },
+          assessment_id: 1,
+          type: 'AssessmentQuestionSelect'
         },
         {
           text: 'What is your weight?',
+          answer_options: (80..300).step(5).to_a,
           order: 3,
-          assessment_id: 1
+          assessment_id: 1,
+          type: 'AssessmentQuestionSelect'
         },
         {
           text: 'What is your gender?',
           answer_options: %w(female male),
           order: 4,
-          assessment_id: 1
+          assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
+        },
+        {
+          text: 'What is your years of education?',
+          answer_options: (1..30).to_a,
+          order: 5,
+          assessment_id: 1,
+          type: 'AssessmentQuestionSelect'
+        },
+        {
+          text: 'Are you right-handed or left-handed?',
+          answer_options: %w(right left),
+          order: 6,
+          assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
 
@@ -32,8 +52,9 @@ module SeedData
                              6\ -\ 7\ hours
                              8\ hours\ or\ more),
           answer_values: %w(4 3 2 1),
-          order: 5,
-          assessment_id: 1
+          order: 7,
+          assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How many relatives (by birth or marriage) do you see or hear from at least once a month',
@@ -42,8 +63,9 @@ module SeedData
                              1\ or\ 2
                              3\ or\ more),
           answer_values: %w(4 3 1),
-          order: 6,
-          assessment_id: 1
+          order: 8,
+          assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How many servings of fish (including shellfish) do you eat per week',
@@ -53,8 +75,9 @@ module SeedData
                              1\ serving
                              None),
           answer_values: %w(1 2 3 4),
-          order: 7,
-          assessment_id: 1
+          order: 9,
+          assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'On average, how many days per week do you walk at least 20 minutes at a time?',
@@ -64,8 +87,9 @@ module SeedData
                              3\ or\ 4\ days
                              5\ or\ more\ days),
           answer_values: %w(4 3 2 1),
-          order: 8,
-          assessment_id: 1
+          order: 10,
+          assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'Do you continue to get educated in the classroom, online, or on the job?',
@@ -74,8 +98,9 @@ module SeedData
                              Rarely
                              Often),
           answer_values: %w(4 3 1),
-          order: 9,
-          assessment_id: 1
+          order: 11,
+          assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How often do you take prescription or over-the-counter (OTC) medications to help you sleep',
@@ -84,8 +109,9 @@ module SeedData
                              Once\ in\ a\ while
                              Never),
           answer_values: %w(4 3 1),
-          order: 10,
-          assessment_id: 1
+          order: 12,
+          assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
 
         {
@@ -96,8 +122,9 @@ module SeedData
                              Often
                              Very\ often),
           answer_values: %w(4 3 2 1),
-          order: 11,
+          order: 13,
           assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'Do you take fish oil or omega-3 supplements',
@@ -105,8 +132,9 @@ module SeedData
           answer_options: %w(Yes
                              No),
           answer_values: %w(1 4),
-          order: 12,
+          order: 14,
           assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How much time do you spend per week doing aerobic exercise',
@@ -115,8 +143,9 @@ module SeedData
                              Less\ than\ 30\ minutes\ per\ week
                              30\ or\ more\ minutes\ per\ week),
           answer_values: %w(4 3 1),
-          order: 13,
+          order: 15,
           assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'Do you seek opportunities to learn new skills (languages, music, art, technology, sports, cooking, etc.)?',
@@ -125,8 +154,9 @@ module SeedData
                              Rarely
                              Often),
           answer_values: %w(4 3 1),
-          order: 14,
+          order: 16,
           assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How many of the following have you gone through in the past year: marital separation or divorce, retirement or loss of job, business failure, family conflict, major personal injury or illness, major violence, death or major illness of a spouse or close family member, or other major stress?',
@@ -135,8 +165,9 @@ module SeedData
                              1
                              2\ or\ more),
           answer_values: %w(1 3 4),
-          order: 15,
+          order: 17,
           assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How many relatives (by birth or marriage) do you feel you could reach out to for help or talk with about private matters',
@@ -145,8 +176,9 @@ module SeedData
                              1\ or\ 2
                              3\ or\ more),
           answer_values: %w(4 3 1),
-          order: 16,
+          order: 18,
           assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How many servings (about 1 oz) of nuts do you consume per week',
@@ -156,8 +188,9 @@ module SeedData
                              1\ serving
                              None),
           answer_values: %w(1 2 3 4),
-          order: 17,
+          order: 19,
           assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How much time do you spend per week doing weight or strength training',
@@ -166,8 +199,9 @@ module SeedData
                              Less\ than\ 30\ minutes\ per\ week
                              30\ or\ more\ minutes\ per\ week),
           answer_values: %w(4 3 1),
-          order: 18,
+          order: 20,
           assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'Do you generally attend cultural events (theatre, concerts, museums, galleries)?',
@@ -176,8 +210,9 @@ module SeedData
                              Rarely
                              Often),
           answer_values: %w(4 3 1),
-          order: 19,
+          order: 21,
           assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'In the last year, have you felt sad, down, or depressed for 2 weeks or more in a row?',
@@ -185,8 +220,9 @@ module SeedData
           answer_options: %w(Yes
                              No),
           answer_values: %w(4 1),
-          order: 20,
+          order: 22,
           assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'Which of the following most closely describes your parents\' relationship during your childhood',
@@ -196,8 +232,9 @@ module SeedData
                              No\ divorce/strife
                              Divorce/much\ strife),
           answer_values: %w(1 2 3 4),
-          order: 21,
+          order: 23,
           assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How many servings of processed foods (such as doughnuts, potato chips, desserts, etc.) do you eat per week?',
@@ -207,8 +244,9 @@ module SeedData
                              1\ serving
                              None),
           answer_values: %w(4 3 2 1),
-          order: 22,
+          order: 24,
           assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'Which of the following best describes your activity level at work',
@@ -218,8 +256,9 @@ module SeedData
                              Moderate\ (walk\ quite\ a\ bit\ without\ lifting\ or\ carrying\ heavy\ objects)
                              High\ (lots\ of\ walking\ and\ lifting,\ climbing\ stairs,\ or\ walking\ uphill)),
           answer_values: %w(4 3 2 1),
-          order: 23,
+          order: 25,
           assessment_id: 1,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'Do you routinely read newspapers, books, and magazines?',
@@ -228,8 +267,9 @@ module SeedData
                              Rarely
                              Often),
           answer_values: %w(4 3 1),
-          order: 24,
-          assessment_id: 1,
+          order: 1,
+          assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'In the last year, how much financial stress have you experienced?',
@@ -238,8 +278,9 @@ module SeedData
                              Moderate
                              High\ or\ severe),
           answer_values: %w(1 3 4),
-          order: 25,
-          assessment_id: 1,
+          order: 2,
+          assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'What is your relationship status',
@@ -249,8 +290,9 @@ module SeedData
                              Divorced
                              Widowed),
           answer_values: %w(1 1 3 3),
-          order: 26,
+          order: 3,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How often do you eat breakfast in a typical week',
@@ -260,8 +302,9 @@ module SeedData
                              2\ or\ 3\ days\ per\ week
                              Never),
           answer_values: %w(1 2 3 4),
-          order: 27,
+          order: 4,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How much time do you spend sitting every day, including time spent driving, working, watching TV, etc.?',
@@ -271,8 +314,9 @@ module SeedData
                              4\ to\ 6\ hours
                              7\ or\ more\ hours),
           answer_values: %w(1 2 3 4),
-          order: 28,
+          order: 5,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How often do you experience stress at home or work',
@@ -282,8 +326,9 @@ module SeedData
                              Often
                              Constantly),
           answer_values: %w(1 2 3 4),
-          order: 29,
+          order: 6,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'If you are married, what is your marriage like?',
@@ -292,8 +337,9 @@ module SeedData
                              So-so
                              Unhappy),
           answer_values: %w(1 3 4),
-          order: 30,
+          order: 7,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'If you are NOT married, what is your living arrangement?',
@@ -302,8 +348,9 @@ module SeedData
                              Live\ with\ partner
                              Live\ with\ roommate(s)),
           answer_values: %w(3 1 2),
-          order: 31,
+          order: 8,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How many servings of vegetables do you eat per day',
@@ -313,8 +360,9 @@ module SeedData
                              1\ serving
                              None),
           answer_values: %w(1 2 3 4),
-          order: 32,
+          order: 9,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'On average, how often do you do flexibility exercise?',
@@ -323,8 +371,9 @@ module SeedData
                              Less\ than\ 30\ minutes\ per\ week
                              30\ or\ more\ minutes\ per\ week),
           answer_values: %w(4 3 1),
-          order: 33,
+          order: 10,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'Of your friends, how many do you feel you could call on for help or to discuss private matters?',
@@ -333,8 +382,9 @@ module SeedData
                              1\ or\ 2
                              3\ or\ more),
           answer_values: %w(4 3 1),
-          order: 34,
+          order: 11,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'Do you take a supplement that contains at least 400 international units (IU) of vitamin D',
@@ -342,8 +392,9 @@ module SeedData
           answer_options: %w(Yes
                              No),
           answer_values: %w(1 4),
-          order: 35,
+          order: 12,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'Of your friends, how many do you see or hear from at least once a month?',
@@ -352,8 +403,9 @@ module SeedData
                              1\ or\ 2
                              3\ or\ more),
           answer_values: %w(4 3 1),
-          order: 36,
+          order: 13,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How many servings of processed meats do you have per week',
@@ -363,8 +415,9 @@ module SeedData
                              4\ or\ 5
                              3\ or\ less),
           answer_values: %w(4 3 2 1),
-          order: 37,
+          order: 14,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'When one of your friends or family members has an important decision to make, how often do they talk to you about it?',
@@ -374,8 +427,9 @@ module SeedData
                              Often
                              Very\ often),
           answer_values: %w(4 3 2 1),
-          order: 38,
+          order: 15,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How many servings of red meats do you have per week',
@@ -385,8 +439,9 @@ module SeedData
                              4\ or\ 5
                              3\ or\ less),
           answer_values: %w(4 3 2 1),
-          order: 39,
+          order: 16,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'When you have an important decision to make, how often do you talk to a friend about it?',
@@ -396,8 +451,9 @@ module SeedData
                              Often
                              Very\ often),
           answer_values: %w(4 3 2 1),
-          order: 40,
+          order: 17,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How many servings of legumes, such as beans, lentils, and chickpeas, do you eat per week?',
@@ -407,8 +463,9 @@ module SeedData
                              1\ serving
                              None),
           answer_values: %w(1 2 3 4),
-          order: 41,
+          order: 18,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How often do you participate in group activities (religious services, clubs, social groups, craft groups)?',
@@ -418,8 +475,9 @@ module SeedData
                              Often
                              Very\ often),
           answer_values: %w(4 3 2 1),
-          order: 42,
+          order: 19,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How many servings of poultry do you have per week',
@@ -429,8 +487,9 @@ module SeedData
                              1\ serving
                              None),
           answer_values: %w(1 2 3 4),
-          order: 43,
+          order: 20,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'Are you a vegetarian or vegan',
@@ -438,8 +497,9 @@ module SeedData
           answer_options: %w(Yes
                              No),
           answer_values: %w(1 3),
-          order: 44,
+          order: 21,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How many servings of dairy, such as milk, cheese, and yogurt, do you eat per week?',
@@ -448,8 +508,9 @@ module SeedData
                              1\ serving
                              None),
           answer_values: %w(1 3 4),
-          order: 45,
+          order: 22,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How many servings of fruit do you eat per day',
@@ -459,8 +520,9 @@ module SeedData
                              1\ serving
                              None),
           answer_values: %w(1 2 3 4),
-          order: 46,
+          order: 23,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'How many servings of whole grains, such as whole-wheat bread, 100% bran cereal, and brown rice, do you eat per day?',
@@ -470,8 +532,9 @@ module SeedData
                              1\ serving
                              None),
           answer_values: %w(1 2 3 4),
-          order: 47,
+          order: 24,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'Do you take other vitamins, minerals, or supplements?',
@@ -479,8 +542,9 @@ module SeedData
           answer_options: %w(Yes
                              No),
           answer_values: %w(1 4),
-          order: 48,
+          order: 25,
           assessment_id: 3,
+          type: 'AssessmentQuestionRadio'
         },
         {
           text: 'Processing Speed',
