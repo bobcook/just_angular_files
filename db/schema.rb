@@ -83,17 +83,19 @@ ActiveRecord::Schema.define(version: 20151130061900) do
 
   create_table "assessment_questions", force: :cascade do |t|
     t.string   "text"
-    t.string   "answer_options",    default: [],              array: true
-    t.string   "answer_values",     default: [],              array: true
-    t.integer  "order",                          null: false
+    t.string   "answer_options",              default: [],              array: true
+    t.string   "answer_values",               default: [],              array: true
+    t.integer  "order",                                    null: false
     t.integer  "assessment_id"
-    t.integer  "recommendation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "external_recommendation_id"
+    t.integer  "question_recommendations_id"
     t.string   "type"
   end
 
   add_index "assessment_questions", ["assessment_id"], name: "index_assessment_questions_on_assessment_id", using: :btree
+  add_index "assessment_questions", ["question_recommendations_id"], name: "index_assessment_questions_on_question_recommendations_id", using: :btree
 
   create_table "assessment_responses", force: :cascade do |t|
     t.integer  "assessment_question_id"
@@ -150,6 +152,18 @@ ActiveRecord::Schema.define(version: 20151130061900) do
     t.datetime "updated_at"
     t.string   "display_name"
   end
+
+  create_table "question_recommendations", force: :cascade do |t|
+    t.string   "external_id",            null: false
+    t.integer  "assessment_question_id"
+    t.integer  "recommendable_id"
+    t.string   "recommendable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "question_recommendations", ["assessment_question_id"], name: "index_question_recommendations_on_assessment_question_id", using: :btree
+  add_index "question_recommendations", ["recommendable_type", "recommendable_id"], name: "by_recommendable", using: :btree
 
   create_table "recipes", force: :cascade do |t|
     t.string   "title"

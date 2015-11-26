@@ -13,6 +13,7 @@ describe Article do
 
   it { should have_many(:pillar_categorizations) }
   it { should have_many(:pillars).through(:pillar_categorizations) }
+  it { should have_many(:question_recommendations) }
 
   it_behaves_like 'it fulfills the WithPillars interface', :basic_article
 

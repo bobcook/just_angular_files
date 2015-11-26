@@ -7,7 +7,7 @@ class ImportContentItemJob < ActiveJob::Base
     hash =
       process_json(content_type(json_payload)).new(json_payload).convert_content
 
-    importer = ImportContent::Persist.new(
+    importer = ImportContent::Importer.new(
       hash,
       resource(content_type(json_payload)),
       article_type(json_payload)

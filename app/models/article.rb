@@ -1,12 +1,15 @@
 class Article < ActiveRecord::Base
   include Publishable
   include WithPillars
+  include WithKeywords
 
   has_many :pillar_categorizations, as: :categorizable
   has_many :pillars, through: :pillar_categorizations
   has_many :user_articles, dependent: :destroy
   has_many :article_reviews, dependent: :destroy
   has_many :reviews, as: :reviewable, dependent: :destroy
+  has_many :question_recommendations, as: :recommendable
+  has_many :assessment_questions, through: :question_recommendations
 
   def outdated?(date)
     last_modified < date
@@ -16,9 +19,21 @@ class Article < ActiveRecord::Base
     %w(basic video slideshow)
   end
 
-  article_types.each do |article_type|
-    define_method "#{article_type}?" do
-      self.class.name.downcase.start_with?(article_type)
-    end
+  def basic?
+    class_is? 'basic'
+  end
+
+  def video?
+    class_is? 'video'
+  end
+
+  def slideshow?
+    class_is? 'slideshow'
+  end
+
+  private
+
+  def class_is?(type)
+    self.class.name.downcase.start_with?(type)
   end
 end
