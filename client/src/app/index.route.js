@@ -239,7 +239,7 @@ const routerConfig = function (stateHelperProvider,
         },
         {
           name: 'static',
-          url: '/',
+          url: '',
           template: '<div ui-view></div>',
           children: [
             {
