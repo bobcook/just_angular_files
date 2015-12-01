@@ -16,7 +16,7 @@
       <!-- TODO apply proper classes / styling -->
       <select
         name="pillar-filter-select"
-        ng-options="pillar.name for pillar in vm.pillars track by pillar.id"
+        ng-options="pillar.displayName for pillar in vm.pillars track by pillar.id"
         ng-model="vm.selectedPillar">
       </select>
     </div>
