@@ -6,7 +6,9 @@ const $pillarFiltering = function (Pillar, $q) {
       return this.pillarData.selectAll;
     }
 
-    return new Pillar({ id: 0, name: 'All Pillars', slug: 'all', displayName: 'ALL' });
+    return new Pillar({
+      id: 0, name: 'All Pillars', slug: 'all', displayName: 'ALL',
+    });
   };
 
   const makePillarData = function (allPillars) {
