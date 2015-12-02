@@ -22,8 +22,7 @@ module Api
         def group_params
           params[:assessment_group].permit(
             :id,
-            :completed,
-            :last_mbs
+            :completed
           )
         end
 

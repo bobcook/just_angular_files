@@ -74,64 +74,6 @@ const routerConfig = function (stateHelperProvider,
           controllerAs: 'vm',
         },
         {
-          name: 'assessments-mbs',
-          url: '/assessment',
-          template: '<div ui-view></div>',
-          // TODO: come up with a better solution for the static instructions
-          children: [
-            {
-              name: 'cognitive-flexibility',
-              url: '/cognitive-flexibility', // 57
-              templateUrl: 'app/assessments/mbs/cognitive-flexibility.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: 'executive-function',
-              url: '/executive-function', // 66
-              templateUrl: 'app/assessments/mbs/executive-function.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: 'processing-speed',
-              url: '/processing-speed', // 74
-              templateUrl: 'app/assessments/mbs/processing-speed.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: 'recall-memory',
-              url: '/recall-memory', // 75
-              templateUrl: 'app/assessments/mbs/recall-memory.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: 'recall-memory-delayed',
-              url: '/recall-memory-delayed', // 76
-              templateUrl:
-                'app/assessments/mbs/recall-memory-delayed.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: 'sustained-attention',
-              url: '/sustained-attention', // 79
-              templateUrl: 'app/assessments/mbs/sustained-attention.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-            {
-              name: 'working-memory',
-              url: '/working-memory', // 27
-              templateUrl: 'app/assessments/mbs/working-memory.html',
-              controller: 'AssessmentController',
-              controllerAs: 'vm',
-            },
-          ],
-        },
-        {
           name: 'assessments-callback',
           url: '/assessments-callback',
           controller: 'AssessmentsCallbackController',

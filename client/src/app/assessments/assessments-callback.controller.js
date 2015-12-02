@@ -6,12 +6,6 @@ const AsssessmentsCallbackController = function ($state,
   'ngInject';
 
   const assessmentId = $location.search().id;
-  const assessment = MBSAssessmentList.ASSESSMENTS[assessmentId];
-
-  // go to next mbs assessment
-  if (assessmentId !== MBSAssessmentList.LAST_MBS_ASSESSMENT_ID) {
-    $state.go(`application.assessments-mbs.${assessment.slug}`);
-  }
 
   AssessmentStatus.lastUserAssessmentGroup().then((group) => {
     // go to second questionnaire
@@ -29,9 +23,6 @@ const AsssessmentsCallbackController = function ($state,
         AssessmentStatus.updateCompletedUserAssessment(userAssessment);
       });
     }
-
-    // keep track of which MBS assessments have been completed
-    AssessmentStatus.updateLastMBS(group, assessmentId);
   });
 };
 

@@ -11,13 +11,6 @@ const AssessmentStatus = function ($assessmentsAuth,
     });
   };
 
-  const updateLastMBS = function (userAssessmentGroup, assessmentId) {
-    delete userAssessmentGroup.userAssessments;
-    delete userAssessmentGroup.completed;
-    userAssessmentGroup.lastMbs = assessmentId;
-    userAssessmentGroup.update();
-  };
-
   const getNextAssessment = function (assessmentGroup) {
     return assessmentGroup.userAssessments.find(function (userAssessment) {
       return !userAssessment.completed;
@@ -128,7 +121,6 @@ const AssessmentStatus = function ($assessmentsAuth,
   return {
     enqueueResultsUpdate: enqueueResultsUpdate,
     lastUserAssessmentGroup: lastUserAssessmentGroup,
-    updateLastMBS: updateLastMBS,
     getNextAssessment: getNextAssessment,
     updateCompletedUserAssessment: updateCompletedUserAssessment,
     getQuestionnaires: getQuestionnaires,

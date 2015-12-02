@@ -1,11 +1,9 @@
 const AsssessmentController = function ($stateParams,
                                         Assessment,
                                         UserAssessment,
-                                        AssessmentStatus,
-                                        MbsRoutes) {
+                                        AssessmentStatus) {
   'ngInject';
 
-  this.mbsUrl = MbsRoutes.TAKE_ASSESSMENTS;
   // text responses for questions without scores
   this.textResponses = {};
   // index of each response for questions with scores

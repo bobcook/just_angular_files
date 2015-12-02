@@ -1,5 +1,5 @@
 class UserAssessmentGroupSerializer < ActiveModel::Serializer
-  attributes :completed?, :last_mbs, :id
+  attributes :completed?, :id
   has_many :user_assessments, serializer: UserAssessmentSerializer
 
   def user_assessments

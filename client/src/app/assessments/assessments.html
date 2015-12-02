@@ -20,10 +20,8 @@
     </ul>
 
     <p ng-switch="vm.buttonState">
-      <a ng-switch-when="beginQuestionnaire" class="btn" href="#" ui-sref="application.assessments-questionnaire({id: vm.nextAssessmentId })">Begin Assessments</a>
-      <a ng-switch-when="continueQuestionnaire" class="btn" href="#" ui-sref="application.assessments-questionnaire({id: vm.nextAssessmentId })">Continue Assessments</a>
-      <a ng-switch-when="continueMBS" class="btn" href="#" ui-sref="application.assessments-mbs.{{vm.nextMBSAssessmentId}}">Continue Assessments</a>
-      <a ng-switch-when="beginMBS" class="btn" href="#" ng-click="vm.authForAssessments()">Continue Assessments</a>
+      <a ng-switch-when="Questionnaire" class="btn" href="#" ui-sref="application.assessments-questionnaire({id: vm.nextAssessmentId })">{{vm.buttonText}}</a>
+      <a ng-switch-when="MBS" class="btn" href="#" ng-click="vm.authForAssessments()">{{vm.buttonText}}</a>
     </p>
   </section>
 </div>

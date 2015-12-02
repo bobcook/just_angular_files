@@ -1,6 +1,5 @@
 const AsssessmentsController = function ($assessmentsAuth,
                                          AssessmentStatus,
-                                         MBSAssessmentList,
                                          UserAssessmentGroup) {
   'ngInject';
 
@@ -12,6 +11,9 @@ const AsssessmentsController = function ($assessmentsAuth,
   };
 
   const createAssessment = () => {
+    this.buttonText = 'Begin Assessment';
+    this.buttonState = 'Questionnaire';
+
     new UserAssessmentGroup()
     .create()
     .then(() => {
@@ -23,35 +25,23 @@ const AsssessmentsController = function ($assessmentsAuth,
   };
 
   const resumeAssessment = (userAssessmentGroup) => {
+    this.buttonText = 'Continue Assessment';
     const nextAssessment =
       AssessmentStatus.getNextAssessment(userAssessmentGroup);
 
-    // TODO: considering how to consolidate these type-based assessments actions
-    //  so there are fewer ifs
     if (nextAssessment.type === 'AssessmentMBS') {
-      // user already started mbs assessments
-      if (userAssessmentGroup.lastMbs) {
-        this.nextMBSAssessmentId =
-          MBSAssessmentList.ASSESSMENTS[userAssessmentGroup.lastMbs].slug;
-        this.buttonState = 'continueMBS';
-      // user has not started mbs assessments
-      } else {
-        this.buttonState = 'beginMBS';
-      }
-    // user already started the questionnare
+      this.buttonState = 'MBS';
     } else {
+      this.buttonState = 'Questionnaire';
       this.nextAssessmentId = nextAssessment.id;
-      this.buttonState = 'continueQuestionnaire';
     }
   };
 
   AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
-    if (lastGroup && !lastGroup.completed) {
-      resumeAssessment(lastGroup);
-    // user has not started the questionnaire
-    } else {
+    if (!lastGroup || lastGroup.completed) {
       createAssessment();
-      this.buttonState = 'beginQuestionnaire';
+    } else {
+      resumeAssessment(lastGroup);
     }
   });
 };
