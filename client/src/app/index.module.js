@@ -155,6 +155,8 @@ import UserDashboardController from
   './me/working-on/user-dashboard.controller.js';
 import UserArticleController from './me/articles/user-article.controller.js';
 import UserArticlesController from './me/articles/user-articles.controller.js';
+import UserAssessmentsController from
+  './me/assessments/user-assessments.controller.js';
 import UserGameController from './me/games/user-game.controller.js';
 import UserGamesController from './me/games/user-games.controller.js';
 import UserRecipeController from './me/recipes/user-recipe.controller.js';
@@ -312,6 +314,7 @@ app
   .controller('UserDashboardController', UserDashboardController)
   .controller('UserArticleController', UserArticleController)
   .controller('UserArticlesController', UserArticlesController)
+  .controller('UserAssessmentsController', UserAssessmentsController)
   .controller('UserGameController', UserGameController)
   .controller('UserGamesController', UserGamesController)
   .controller('UserRecipeController', UserRecipeController)
