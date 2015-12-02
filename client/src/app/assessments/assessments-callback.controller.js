@@ -23,6 +23,9 @@ const AsssessmentsCallbackController = function ($state,
         'application.assessments-questionnaire', { id: secondQuestionnaire.id }
       );
       UserAssessment.get(mbs.id).then((userAssessment) => {
+        // this is "fire and forget", so we're not using the returned promise
+        AssessmentStatus.enqueueResultsUpdate(userAssessment);
+
         AssessmentStatus.updateCompletedUserAssessment(userAssessment);
       });
     }

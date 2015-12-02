@@ -58,10 +58,11 @@ Rails.application.routes.draw do
         resources :articles, only: [:index, :show, :create, :destroy]
         resources :activities, only: [:index, :show, :create, :destroy]
         resources :assessment_groups, only: [:create, :index, :update]
-        resources :assessment_responses, only: [:create]
         resources :assessments, only: [:show, :update]
-        resources :games, only: [:show, :index, :create, :destroy]
+        resources :assessment_responses, only: [:create]
+        resources :assessment_results, only: [:create]
         resources :current_user, controller: 'current_user', only: :index
+        resources :games, only: [:show, :index, :create, :destroy]
         resources :recipes, only: [:index, :show, :create, :destroy]
         resources :user_activities, only: [:show]
         resources :user_activity_periods, only: [:update]

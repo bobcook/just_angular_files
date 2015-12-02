@@ -1,5 +1,6 @@
 const AssessmentStatus = function ($assessmentsAuth,
                                    $state,
+                                   $assessmentResults,
                                    UserAssessmentGroup,
                                    AssessmentResponse) {
   'ngInject';
@@ -112,7 +113,12 @@ const AssessmentStatus = function ($assessmentsAuth,
     return redirect;
   };
 
+  const enqueueResultsUpdate = function (userAssessment) {
+    return $assessmentResults.enqueueForRetrieval(userAssessment);
+  };
+
   return {
+    enqueueResultsUpdate: enqueueResultsUpdate,
     lastUserAssessmentGroup: lastUserAssessmentGroup,
     updateLastMBS: updateLastMBS,
     getNextAssessment: getNextAssessment,

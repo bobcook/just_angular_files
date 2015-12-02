@@ -55,6 +55,7 @@ import RecipePagePresenter from './common/presenters/recipe-page.presenter.js';
 // services
 import $auth from './common/services/auth.js';
 import $assessmentsAuth from './assessments/assessments-auth.js';
+import $assessmentResults from './common/services/assessment-results.js';
 import $currentModal from './common/services/current-modal.js';
 import $loadCurrentUser from './common/services/load-current-user.js';
 import $pagination from './common/services/pagination.js';
@@ -226,6 +227,7 @@ app
 
   // services
   .factory('$assessmentsAuth', $assessmentsAuth)
+  .factory('$assessmentResults', $assessmentResults)
   .factory('$auth', $auth)
   .factory('$currentModal', $currentModal)
   .factory('$loadCurrentUser', $loadCurrentUser)

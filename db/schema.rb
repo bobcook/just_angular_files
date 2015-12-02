@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130061900) do
+ActiveRecord::Schema.define(version: 20151202214953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -236,6 +236,8 @@ ActiveRecord::Schema.define(version: 20151130061900) do
     t.integer  "user_assessment_group_id"
     t.boolean  "completed"
     t.integer  "order"
+    t.json     "raw_results"
+    t.string   "external_session_id"
   end
 
   add_index "user_assessments", ["assessment_id"], name: "index_user_assessments_on_assessment_id", using: :btree
