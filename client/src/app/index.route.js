@@ -11,6 +11,15 @@ const routerConfig = function (stateHelperProvider,
     };
   };
 
+  const pillarFilterModal = function () {
+    return modalStateHelperProvider({
+      name: 'pillar-info',
+      templateUrl: 'app/components/pillar-filters/pillar-info-modal.html',
+      controller: 'PillarInfoModalController',
+      controllerAs: 'vm',
+    });
+  };
+
   stateHelperProvider
     .state({
       name: 'application',
@@ -50,6 +59,9 @@ const routerConfig = function (stateHelperProvider,
           templateUrl: 'app/activities/activities.html',
           controller: 'ActivitiesController',
           controllerAs: 'vm',
+          children: [
+            pillarFilterModal(),
+          ],
         },
         {
           name: 'article',
@@ -72,6 +84,9 @@ const routerConfig = function (stateHelperProvider,
           templateUrl: 'app/articles/articles.html',
           controller: 'ArticlesController',
           controllerAs: 'vm',
+          children: [
+            pillarFilterModal(),
+          ],
         },
         {
           name: 'assessments-callback',
@@ -143,6 +158,9 @@ const routerConfig = function (stateHelperProvider,
           templateUrl: 'app/games/games.html',
           controller: 'GamesController',
           controllerAs: 'vm',
+          children: [
+            pillarFilterModal(),
+          ],
         },
         {
           name: 'home',
@@ -150,6 +168,9 @@ const routerConfig = function (stateHelperProvider,
           templateUrl: 'app/home/home.html',
           controller: 'HomeController',
           controllerAs: 'vm',
+          children: [
+            pillarFilterModal(),
+          ],
         },
         {
           name: 'login-failure',
@@ -182,6 +203,9 @@ const routerConfig = function (stateHelperProvider,
           templateUrl: 'app/recipes/recipes.html',
           controller: 'RecipesController',
           controllerAs: 'vm',
+          children: [
+            pillarFilterModal(),
+          ],
         },
         {
           name: 'static',
@@ -223,6 +247,9 @@ const routerConfig = function (stateHelperProvider,
               templateUrl: 'app/me/articles/user-articles.html',
               controller: 'UserArticlesController',
               controllerAs: 'vm',
+              children: [
+                pillarFilterModal(),
+              ],
             },
             {
               name: 'assessments',
@@ -244,6 +271,9 @@ const routerConfig = function (stateHelperProvider,
               templateUrl: 'app/me/games/user-games.html',
               controller: 'UserGamesController',
               controllerAs: 'vm',
+              children: [
+                pillarFilterModal(),
+              ],
             },
             {
               name: 'recipe',
@@ -258,6 +288,9 @@ const routerConfig = function (stateHelperProvider,
               templateUrl: 'app/me/recipes/user-recipes.html',
               controller: 'UserRecipesController',
               controllerAs: 'vm',
+              children: [
+                pillarFilterModal(),
+              ],
             },
             {
               name: 'working-on',
@@ -265,6 +298,9 @@ const routerConfig = function (stateHelperProvider,
               templateUrl: 'app/me/working-on/user-dashboard.html',
               controller: 'UserDashboardController',
               controllerAs: 'vm',
+              children: [
+                pillarFilterModal(),
+              ],
             },
           ],
         },

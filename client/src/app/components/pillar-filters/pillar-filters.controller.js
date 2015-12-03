@@ -1,4 +1,5 @@
-const PillarFiltersController = function (Pillar, $pillarFiltering) {
+const PillarFiltersController = function (Pillar,
+                                          $pillarFiltering) {
   'ngInject';
 
   // Via ss-selectedPillar

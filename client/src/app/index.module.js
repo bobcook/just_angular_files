@@ -147,6 +147,8 @@ import OverallResultsController from
   './assessments/results/overall-results.controller.js';
 import PillarFiltersController from
   './components/pillar-filters/pillar-filters.controller.js';
+import PillarInfoModalController from
+  './components/pillar-filters/pillar-info-modal.controller.js';
 import RecipeController from './recipes/recipe.controller.js';
 import RecipeModalController from './recipes/recipe-modal.controller.js';
 import RecipesController from './recipes/recipes.controller.js';
@@ -316,6 +318,7 @@ app
   .controller('OverallResultsController', OverallResultsController)
   .controller('PillarScoresController', PillarScoresController)
   .controller('PillarFiltersController', PillarFiltersController)
+  .controller('PillarInfoModalController', PillarInfoModalController)
   .controller('RecipeController', RecipeController)
   .controller('RecipeModalController', RecipeModalController)
   .controller('RecipesController', RecipesController)

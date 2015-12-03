@@ -5,6 +5,11 @@
       <li><a href="" ng-click="vm.setSelectedPillar('all')"><span class="pillar all-options">ALL</span></a></li>
       <li class="hidden-xs"><span class="divider"></span></li>
       <li ng-repeat="pillar in vm.otherPillars"><a href="" class="{{pillar.slug | hyphenate}}" ng-click="vm.setSelectedPillar(pillar.slug)"><span class="pillar {{pillar.slug | hyphenate}}">{{pillar.displayName}}</span></a></li>
+      <li class="info-button">
+        <a ui-sref=".pillar-info">
+          <div class="info"><span class="icon-info"></span></div>
+        </a>
+      </li>
     </ul>
   </section>
 </div>
