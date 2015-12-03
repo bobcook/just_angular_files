@@ -10,6 +10,10 @@ class UserAssessmentGroup < ActiveRecord::Base
 
   validate :only_one_mbs_user_assesment
 
+  def self.upto_id(id)
+    where('user_assessment_groups.id <= :id', id: id)
+  end
+
   def completed?
     user_assessments.all?(&:completed?)
   end

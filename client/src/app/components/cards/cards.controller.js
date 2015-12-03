@@ -29,6 +29,7 @@ const CardsController = function ($pagination) {
 
   // TODO: extract out duplication here, in explore page, and dashboard
   this.itemsInRow = function (offset, items) {
+    if (_.isNull(items) || _.isUndefined(items)) { return []; }
     const chunks = _.chunk(items, this.perRow);
     const chunkNum = offset / this.perRow;
     return chunks[chunkNum];

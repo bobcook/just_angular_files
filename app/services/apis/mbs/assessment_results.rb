@@ -20,17 +20,23 @@ module Apis
         new(results_data)
       end
 
+      def self.neuro_category_names
+        [
+          :processing_speed,
+          :sustained_attention,
+          :working_memory,
+          :cognitive_flexibility,
+          :executive_function,
+          :recognition_memory
+        ]
+      end
+
       def any_content?
         !results_data.empty?
       end
 
       def overall_score
         @overall_score ||= parse_float(:overall_score)
-      end
-
-      def motor_coordination
-        @motor_coordination ||=
-          parse_float(:thinking_score_motor_coordination)
       end
 
       def processing_speed
@@ -43,29 +49,20 @@ module Apis
           parse_float(:thinking_score_sustained_attention)
       end
 
-      def controlled_attention
-        @controlled_attention ||=
-          parse_float(:thinking_score_controlled_attention)
-      end
-
-      def flexibility
-        @flexibility ||= parse_float(:thinking_score_flexibility)
-      end
-
-      def inhibition
-        @inhibition ||= parse_float(:thinking_score_inhibition)
-      end
-
       def working_memory
         @working_memory ||= parse_float(:thinking_score_working_memory)
       end
 
-      def recall_memory
-        @recall_memory ||= parse_float(:thinking_score_recall_memory)
+      def cognitive_flexibility
+        @cognitive_flexibility ||= parse_float(:thinking_score_flexibility)
       end
 
       def executive_function
         @executive_function ||= parse_float(:thinking_score_executive_function)
+      end
+
+      def recognition_memory
+        @recognition_memory ||= parse_float(:thinking_score_recall_memory)
       end
 
       private

@@ -105,7 +105,7 @@ const AssessmentStatus = function ($assessmentsAuth,
       };
     } else if (secondQuestionnaire.id  === Number(userAssessmentId)) {
       redirect = function () {
-        $state.go('application.assessment-results');
+        $state.go('application.assessment-results.overall');
       };
     } else {
       redirect = function () {};

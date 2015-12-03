@@ -4,6 +4,7 @@ module ImportContent
   module PillarMapping
     class << self
       delegate :slug_mapping, :name_mapping, :new_slug, :old_name, :new_name,
+               :new_slugs,
                to: :mapper
 
       def mapper
@@ -33,6 +34,10 @@ module ImportContent
 
           zipmap(old_names, new_names)
         end
+      end
+
+      def new_slugs
+        @new_slugs ||= slug_mapping.values
       end
 
       def new_slug(old_slug)

@@ -1,4 +1,4 @@
-const $pagination = function () {
+const $pagination = function ($q) {
   'ngInject';
 
   // TODO: change to ES6 class per this conversation
@@ -18,7 +18,7 @@ const $pagination = function () {
   };
 
   this.showMore = (page) => {
-    if (!this.displayShowMore) { return; }
+    if (!this.displayShowMore) { return $q.resolve(null); }
     const options = {
       page: page,
       perPage: this.perPage,

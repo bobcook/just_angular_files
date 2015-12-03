@@ -154,7 +154,23 @@ const routerConfig = function (stateHelperProvider,
         {
           name: 'assessment-results',
           url: '/assessment-results',
-          templateUrl: 'app/assessments/assessment-results.html',
+          template: '<div ui-view></div>',
+          children: [
+            {
+              name: 'overall',
+              url: '/overall',
+              templateUrl: 'app/assessments/results/overall.html',
+              controller: 'OverallResultsController',
+              controllerAs: 'vm',
+            },
+            {
+              name: 'neuroperformance',
+              url: '/neuroperformance',
+              templateUrl: 'app/assessments/results/neuroperformance.html',
+              controller: 'NeuroPerformanceController',
+              controllerAs: 'vm',
+            },
+          ],
         },
         {
           name: 'game',

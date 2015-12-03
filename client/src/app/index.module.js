@@ -19,15 +19,21 @@ import Article from './common/resources/article.js';
 import ArticleReview from './common/resources/article-review.js';
 import Assessment from './common/resources/assessment.js';
 import AssessmentResponse from './common/resources/assessment-response.js';
+import AssessmentResultCategory from
+  './common/resources/assessment-result-category';
 import CurrentUser from './common/resources/current-user.js';
 import ExploreContent from './common/resources/explore-content.js';
 import Game from './common/resources/game.js';
 import GameReview from './common/resources/game-review.js';
+import NeuroPerformanceResult from
+  './common/resources/neuro-performance-result.js';
 import Pillar from './common/resources/pillar.js';
 import Recipe from './common/resources/recipe.js';
 import RecipeReview from './common/resources/recipe-review.js';
 import RelatedContent from './common/resources/related-content.js';
 import RelatedContentGames from './common/resources/related-content-games.js';
+import ResultSectionController from
+  './components/assessment-results/result-section.controller.js';
 import UserActivity from './common/resources/user-activity.js';
 import UserActivityPeriod from './common/resources/user-activity-period.js';
 import UserArticle from './common/resources/user-article.js';
@@ -88,6 +94,7 @@ import pillarsDisplay from './components/pillars-display/pillars.js';
 import pillarFilters from './components/pillar-filters/pillar-filters.js';
 import pillarScores from './components/pillar-scores/pillar-scores.js';
 import postHref from './common/directives/post-href.js';
+import resultSection from './components/assessment-results/result-section.js';
 import relatedContent from './components/related-content/related-content.js';
 import reviews from './components/reviews/reviews.js';
 import saveUserContent from
@@ -134,6 +141,10 @@ import LoginSuccessController from './callbacks/login-success.controller.js';
 import LogoutController from './logout/logout.controller.js';
 import NavPanelController from './components/nav-panel/nav-panel.controller.js';
 import NavTabsController from './components/nav-tabs/nav-tabs.controller.js';
+import NeuroPerformanceController from
+  './assessments/results/neuroperformance.controller.js';
+import OverallResultsController from
+  './assessments/results/overall-results.controller.js';
 import PillarFiltersController from
   './components/pillar-filters/pillar-filters.controller.js';
 import RecipeController from './recipes/recipe.controller.js';
@@ -200,10 +211,12 @@ app
   .factory('ArticleReview', ArticleReview)
   .factory('Assessment', Assessment)
   .factory('AssessmentResponse', AssessmentResponse)
+  .factory('AssessmentResultCategory', AssessmentResultCategory)
   .factory('CurrentUser', CurrentUser)
   .factory('ExploreContent', ExploreContent)
   .factory('Game', Game)
   .factory('GameReview', GameReview)
+  .factory('NeuroPerformanceResult', NeuroPerformanceResult)
   .factory('Pillar', Pillar)
   .factory('Recipe', Recipe)
   .factory('RecipeReview', RecipeReview)
@@ -261,6 +274,7 @@ app
   .directive('ssPillarScores', pillarScores)
   .directive('ssPostHref', postHref)
   .directive('ssRelatedContent', relatedContent)
+  .directive('ssResultSection', resultSection)
   .directive('ssReviews', reviews)
   .directive('ssSaveUserContent', saveUserContent)
   .directive('ssSocialLinks', socialLinks)
@@ -298,12 +312,15 @@ app
   .controller('LoginSuccessController', LoginSuccessController)
   .controller('LogoutController', LogoutController)
   .controller('NavPanelController', NavPanelController)
+  .controller('NeuroPerformanceController', NeuroPerformanceController)
+  .controller('OverallResultsController', OverallResultsController)
   .controller('PillarScoresController', PillarScoresController)
   .controller('PillarFiltersController', PillarFiltersController)
   .controller('RecipeController', RecipeController)
   .controller('RecipeModalController', RecipeModalController)
   .controller('RecipesController', RecipesController)
   .controller('RelatedContentController', RelatedContentController)
+  .controller('ResultSectionController', ResultSectionController)
   .controller('ReviewsController', ReviewsController)
   .controller('SaveUserContentController', SaveUserContentController)
   .controller('SocialLinksController', SocialLinksController)

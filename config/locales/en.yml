@@ -19,6 +19,43 @@ en:
     pagination:
       per_page: 6
 
+  assessment_result_categories:
+    lifestyle:
+      nourish:
+        name: 'Nourish'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacinia lorem a nunc placerat aliquet. Curabitur non viverra ex. Quisque efficitur placerat metus, eget dapibus nunc fringilla a.'
+      discover:
+        name: 'Discover'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacinia lorem a nunc placerat aliquet. Curabitur non viverra ex. Quisque efficitur placerat metus, eget dapibus nunc fringilla a.'
+      connect:
+        name: 'Connect'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacinia lorem a nunc placerat aliquet. Curabitur non viverra ex. Quisque efficitur placerat metus, eget dapibus nunc fringilla a.'
+      move:
+        name: 'Move'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacinia lorem a nunc placerat aliquet. Curabitur non viverra ex. Quisque efficitur placerat metus, eget dapibus nunc fringilla a.'
+      relax:
+        name: 'Relax'
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam lacinia lorem a nunc placerat aliquet. Curabitur non viverra ex. Quisque efficitur placerat metus, eget dapibus nunc fringilla a.'
+    neuro:
+      processing_speed:
+        name: Processing Speed
+        description: "Processing speed includes tasks such as quickly searching for and responding tospecific information. Examples of processing speed are: the time that it takes you to make a straight-forward decision, or how fast you can complete a simple math problem."
+      sustained_attention:
+        name: Sustained Attention
+        description: "In order to stay on task and complete a goal, you must use sustained attention. An example is the act of reading a newspaper article. Which requires focusing onthe activity of reading long enough to complete the task."
+      working_memory:
+        name: Working Memory
+        description: "Working memory, is a system for temporarily storing and managing the information required to carry out complex cognitive tasks such as learning, reasoning, and comprehension."
+      cognitive_flexibility:
+        name: Cognitive Flexibility
+        description: "Cognitive flexibility enables you to switch your attention and adapt to something new."
+      executive_function:
+        name: Executive Function
+        description: "These skills enable you to plan, organize, remember things, prioritize, pay attention and get started on tasks. They also help you use information and experiences fromthe past to solve current problems."
+      recognition_memory:
+        name: Recognition Memory
+        description: "Short statement defining this index and indicating where this score falls in (low, middle or high of expected range, etc.) and additional information about this index."
+
   titles:
     application: Staying-sharp
 

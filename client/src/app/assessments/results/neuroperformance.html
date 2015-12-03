@@ -1,0 +1,34 @@
+<div class="cp-cross-link">
+  <section>
+    <a title="assessment-results" ui-sref="application.assessment-results.overall">
+      <span class="caret caret-left"></span>
+      <span>Return to Assessment Results</span>
+    </a>
+  </section>
+</div>
+
+<div class="cp-assessment-results detail">
+  <section class="container">
+    <header>
+      <h3>Neuroperformance Results</h3>
+      <p>How fluently different part of your brain perform mental tasks.
+      </p>
+    </header>
+
+    <section class="break-down">
+      <ss-result-section
+      ng-repeat="categoryResult in vm.categoryResults"
+      ss-category-result="categoryResult">
+      </ss-result-section>
+    </section>
+  </section>
+</div>
+
+<div class="cp-cross-link">
+  <section>
+    <a title="assessment-results" ui-sref="application.assessment-results.overall">
+      <span class="caret caret-left"></span>
+      <span>Return to Assessment Results</span>
+    </a>
+  </section>
+</div>

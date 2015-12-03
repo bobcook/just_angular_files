@@ -1,7 +1,7 @@
 <div class="cp-assessment-results landing">
   <section class="container">
     <header>
-      <h3>MyBrain Assessment Results</h3>
+      <h3>My Brain Assessment Results</h3>
       <p>The results of your scientifically validated assessment can be found below.</p>
     </header>
     <section class="summary">
@@ -35,6 +35,10 @@
           <li>Map out how to improve, prioritizing the recommended activities</li>
           <li>Build brain-healthy habits into your life, over time, to improve your score</li>
         </ul>
+        <p>Scroll down to see how you’ve performed in each area.</p>
+        <p>Based on your results, we’ve provided you with personalized
+        information and recommend activities to help you maintain a healthy
+        brain and improve your overall brain scores over time.</p>
       </div>
     </section>
     <section class="test-areas">
@@ -42,7 +46,7 @@
         <header>
           <h3>Neuroperformance</h3>
           <p>How effectively your brain performs tasks that are scientific indicators of brain health.</p>
-          <a ui-sref=".neuroperformance-details">My Neuroperformance Details</a>
+          <a ui-sref="application.assessment-results.neuroperformance">My Neuroperformance Details</a>
         </header>
         <figure>
           <!-- TODO: insert neuroperformance graph -->
@@ -51,9 +55,9 @@
       <div class="test-area">
         <header>
           <h3>Lifestyle</h3>
-          <p>How your daily patterns and choices across five focus areas contribute to the holistic
-          lifestyle that supports an active, healthy brain.</p>
-          <a ui-sref=".lifestyle-details">My Lifestyle Details</a>
+          <p>How your daily patterns and choices across five
+          focus areas contribute to the holistic lifestyle that supports an
+          active, healthy brain.</p>
         </header>
         <figure>
           <!-- TODO: insert lifestyle graph -->
@@ -64,8 +68,8 @@
     <!-- TODO: only show if user has 2 or more assessments -->
     <section class="assessment-history">
       <h3>My Brain Assessment Results History</h3>
-      <p>Track your performance and measure your progress as you incorporate recommendations into
-      your life and retake the assessment.</p>
+      <p>Track your performance and measure your progress as you incorporate
+      recommendations into your life and retake the assessment.</p>
       <figure class="assessment-graph">
         <!-- TODO: add assessment history graph -->
       </figure>
@@ -73,17 +77,39 @@
 
     <section class="my-future-brain">
       <h3>My Future Brain</h3>
-      <p>Your future is in your hands. A holistic approach to a brain-healthy lifestyle can actually enhance
-      brain performance as you age. While science shows that it is normal for our cognitive abilities to
-      decline over time, scientists also have good news. By making simple changes, you can make a tangible
-      difference in how independently and actively you continue to live, work and play. Act today.
-      Your brain will thank you tomorrow.</p>
+      <p>Your future is in your hands. A holistic approach to a brain-healthy
+      lifestyle can actually enhance brain performance as you age. While
+      science shows that it is normal for our cognitive abilities to decline
+      over time, scientists also have good news. By making simple changes, you
+      can make a tangible difference in how independently and actively you
+      continue to live, work and play. Act today. Your brain will thank you
+      tomorrow.</p>
       <figure class="my-future-brain-graph">
         <!-- TODO: show my future brain graph -->
       </figure>
     </section>
+
     <section>
       <a ui-sref="application.assessments" class="btn">Retake Assessment</a>
+    </section>
+  </section>
+
+  <div class="cp-content-group related-content">
+    <section class="container">
+      <header>
+        <h3>Based on your results, consider making these activities a priority:</h3>
+      </header>
+      <article>
+        <!-- TODO: add recommended activity cards -->
+        <ss-cards
+          ss-resource="vm.resource"
+          ss-per-page="6"
+          ss-per-row="3"
+          ss-card-classes="activity-card small-card"
+          ss-show-more="vm.shouldShowMore"
+          ss-items="vm.recommendedItems">
+        </ss-cards>
+      </article>
     </section>
   </section>
 </div>

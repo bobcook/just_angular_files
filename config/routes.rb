@@ -60,7 +60,17 @@ Rails.application.routes.draw do
         resources :assessment_groups, only: [:create, :index, :update]
         resources :assessments, only: [:show, :update]
         resources :assessment_responses, only: [:create]
-        resources :assessment_results, only: [:create]
+        resources :assessment_results, only: [:create] do
+          collection do
+            resource :categories,
+                     controller: 'assessment_results/categories',
+                     only: [:show]
+          end
+
+          resource :neuro_performance,
+                   controller: 'assessment_results/neuro_performance',
+                   only: [:show]
+        end
         resources :current_user, controller: 'current_user', only: :index
         resources :games, only: [:show, :index, :create, :destroy]
         resources :recipes, only: [:index, :show, :create, :destroy]
