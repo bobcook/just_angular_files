@@ -35,7 +35,8 @@
         ng-if="vm.isGame">
         <div class="play-btn">
           <a
-            ui-sref="{{vm.card.playUiSref}}"
+            href="{{vm.card.externalUrl}}"
+            target = "_blank"
             class="btn green-btn">
             Play Game
           </a>

@@ -7,7 +7,7 @@ class GameSerializer < ActiveModel::Serializer
   has_many :pillars
 
   def call_to_action_url
-    object.payload['callToActionUrl']
+    object.payload['callToActionURL']
   end
 
   def difficulty_level

@@ -21,7 +21,7 @@
     </header>
     <footer>
       <h4>Interested in playing this game?</h4>
-      <button ng-if="vm.game" ui-sref="{{vm.game.playUiSref}}" class="btn green-btn"><span>Play Game</span></button>
+      <a ng-if="vm.game" target="_blank" href="{{vm.game.callToActionUrl}}" class="btn green-btn"><span>Play Game</span></a>
       <ss-save-user-content
         ng-if="vm.game"
         ss-display-type="button"

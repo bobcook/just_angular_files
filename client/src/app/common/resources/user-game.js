@@ -36,9 +36,9 @@ const UserGame = function (API_URL, railsResourceFactory, railsSerializer) {
     },
   });
 
-  Object.defineProperty(UserGame.prototype, 'playUiSref', {
+  Object.defineProperty(UserGame.prototype, 'externalUrl', {
     get: function () {
-      return `application.game-play({ id: ${this.id} })`;
+      return this.callToActionUrl;
     },
   });
 
