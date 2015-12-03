@@ -1,7 +1,7 @@
 module Api
   module V1
     module Me
-      class AssessmentResponsesController < Api::V1::BaseController
+      class AssessmentResponsesController < Api::V1::Me::BaseController
         def create
           AssessmentResponse.create(response_params)
           head :created

@@ -18,8 +18,10 @@ const AsssessmentsController = function ($assessmentsAuth,
     .create()
     .then(() => {
       AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
-        const assessment = AssessmentStatus.getNextAssessment(lastGroup);
-        this.nextAssessmentId = assessment.id;
+        if (lastGroup) {
+          const assessment = AssessmentStatus.getNextAssessment(lastGroup);
+          this.nextAssessmentId = assessment.id;
+        }
       });
     });
   };

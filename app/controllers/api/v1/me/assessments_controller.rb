@@ -1,7 +1,7 @@
 module Api
   module V1
     module Me
-      class AssessmentsController < Api::V1::BaseController
+      class AssessmentsController < Api::V1::Me::BaseController
         def show
           render json: user_asessment, status: :ok
         end
