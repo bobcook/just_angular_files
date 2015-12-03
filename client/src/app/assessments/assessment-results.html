@@ -1,0 +1,89 @@
+<div class="cp-assessment-results landing">
+  <section class="container">
+    <header>
+      <h3>MyBrain Assessment Results</h3>
+      <p>The results of your scientifically validated assessment can be found below.</p>
+    </header>
+    <section class="summary">
+      <div class="scoring-info">
+        <div class="score">
+          <h3>6.5<span>Overall Score</span></h3>
+        </div>
+      </div>
+      <div class="scoring-info with-action">
+        <div class="note">
+          <p>Most Recent Assessment: June 20, 2015</p>
+        </div>
+        <div class="retake">
+          <a ui-sref="application.assessments" class="btn">Retake Assessment</a>
+        </div>
+      </div>
+      <div class="scoring-info">
+        <h4>What Do These Numbers Mean?</h4>
+        <p>The questions you answered and tasks you performed measured your strengths in two vital areas:
+        Neuroperformance, or how your brain works and Lifestyle, those activities in your everyday
+        life that support brain health.</p>
+        <p>We combined these results to give you one simple score.
+        The graphs below indicate how you scored relative to others in your age group.
+        Because science tells us that some cognitive functions decline as we age, while
+        others remain stable, comparing your score to others of the same age is a valuable gauge.</p>
+      </div>
+      <div class="scoring-info">
+        <h4>You Should Use These Numbers To:</h4>
+        <ul>
+          <li>Gain insight into strengths and target areas where you can improve</li>
+          <li>Map out how to improve, prioritizing the recommended activities</li>
+          <li>Build brain-healthy habits into your life, over time, to improve your score</li>
+        </ul>
+      </div>
+    </section>
+    <section class="test-areas">
+      <div class="test-area">
+        <header>
+          <h3>Neuroperformance</h3>
+          <p>How effectively your brain performs tasks that are scientific indicators of brain health.</p>
+          <a ui-sref=".neuroperformance-details">My Neuroperformance Details</a>
+        </header>
+        <figure>
+          <!-- TODO: insert neuroperformance graph -->
+        </figure>
+      </div>
+      <div class="test-area">
+        <header>
+          <h3>Lifestyle</h3>
+          <p>How your daily patterns and choices across five focus areas contribute to the holistic
+          lifestyle that supports an active, healthy brain.</p>
+          <a ui-sref=".lifestyle-details">My Lifestyle Details</a>
+        </header>
+        <figure>
+          <!-- TODO: insert lifestyle graph -->
+        </figure>
+      </div>
+    </section>
+
+    <!-- TODO: only show if user has 2 or more assessments -->
+    <section class="assessment-history">
+      <h3>My Brain Assessment Results History</h3>
+      <p>Track your performance and measure your progress as you incorporate recommendations into
+      your life and retake the assessment.</p>
+      <figure class="assessment-graph">
+        <!-- TODO: add assessment history graph -->
+      </figure>
+    </section>
+
+    <section class="my-future-brain">
+      <h3>My Future Brain</h3>
+      <p>Your future is in your hands. A holistic approach to a brain-healthy lifestyle can actually enhance
+      brain performance as you age. While science shows that it is normal for our cognitive abilities to
+      decline over time, scientists also have good news. By making simple changes, you can make a tangible
+      difference in how independently and actively you continue to live, work and play. Act today.
+      Your brain will thank you tomorrow.</p>
+      <figure class="my-future-brain-graph">
+        <!-- TODO: show my future brain graph -->
+      </figure>
+    </section>
+    <section>
+      <a ui-sref="application.assessments" class="btn">Retake Assessment</a>
+    </section>
+  </section>
+</div>

@@ -152,9 +152,9 @@ const routerConfig = function (stateHelperProvider,
           templateUrl: 'app/assessments/assessments.html',
         },
         {
-          name: 'assessments-results',
-          url: '/assessments-results',
-          templateUrl: 'app/assessments/assessments-results.html',
+          name: 'assessment-results',
+          url: '/assessment-results',
+          templateUrl: 'app/assessments/assessment-results.html',
         },
         {
           name: 'game',
