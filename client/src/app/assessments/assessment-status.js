@@ -117,6 +117,14 @@ const AssessmentStatus = function ($assessmentsAuth,
     return $assessmentResults.enqueueForRetrieval(userAssessment);
   };
 
+  const hasCompletedAssessments = function () {
+    return UserAssessmentGroup.query().then((groups) => {
+      return groups.filter(function (group) {
+        return group.completed;
+      }).length > 0;
+    });
+  };
+
   return {
     enqueueResultsUpdate: enqueueResultsUpdate,
     lastUserAssessmentGroup: lastUserAssessmentGroup,
@@ -131,6 +139,7 @@ const AssessmentStatus = function ($assessmentsAuth,
     saveUserResponse: saveUserResponse,
     getResponseScore: getResponseScore,
     submitAssessmentRedirect: submitAssessmentRedirect,
+    hasCompletedAssessments: hasCompletedAssessments,
   };
 };
 

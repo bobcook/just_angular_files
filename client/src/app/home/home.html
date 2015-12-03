@@ -16,7 +16,12 @@
   ss-selected-pillar="vm.selectedPillar">
 </ss-pillar-filters>
 
-<ss-info-box>
+<ss-info-box ng-show="vm.hasCompletedAssessments">
+  <h3 translate>info.explore_staying_sharp</h3>
+  <p translate>info.science_based_activities</p>
+</ss-info-box>
+
+<ss-info-box ng-hide="vm.hasCompletedAssessments">
   <h3 translate>info.improve_your_holistic_brain_health</h3>
   <p translate>info.ready_set_start</p>
   <button type="button" ui-sref="application.assessments">Start Now</button>

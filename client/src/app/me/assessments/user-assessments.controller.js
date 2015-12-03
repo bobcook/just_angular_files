@@ -1,10 +1,8 @@
-const UserAssessmentController = function (UserAssessmentGroup) {
+const UserAssessmentController = function (AssessmentStatus) {
   'ngInject';
 
-  UserAssessmentGroup.query().then((groups) => {
-    this.hasAssessments = groups.filter(function (group) {
-      return group.completed;
-    }).length > 0;
+  AssessmentStatus.hasCompletedAssessments().then((result) => {
+    this.hasCompletedAssessments = result;
   });
 
 };
