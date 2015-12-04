@@ -27,10 +27,16 @@
 <div class="slide-menu-options" ng-switch="vm.currentRoute">
   <section ng-switch-when="root">
     <ul class="primary-nav-options">
-      <li class="primary-level">
-        <a href="#" ng-click="vm.currentRoute = 'explore'">
-          Explore <span class="caret caret-right"></span>
-        </a>
+      <li class="primary-level" ng-click="explore=!explore" ng-class="{active:explore}">
+        <a href="#">Explore <span class="caret" ng-class="{'caret-down':!explore,'caret-up':explore}"></span></a>
+        <ul class="tertiary-level">
+          <li><a ui-sref="application.home" ng-click="vm.close()">All Content</a></li>
+          <li><a ui-sref="application.articles" ng-click="vm.close()">Articles</a></li>
+          <li><a ui-sref="application.recipes" ng-click="vm.close()">Recipes</a></li>
+          <!-- TODO: only allow paid users to see actitivies -->
+          <li><a ui-sref="application.activities" ng-click="vm.close()">Activities</a></li>
+          <li><a ui-sref="application.games" ng-click="vm.close()">Games</a></li>
+        </ul>
       </li>
       <li class="primary-level">
         <a ui-sref="application.user.working-on" ng-click="vm.close()">My Staying Sharp</a>
@@ -57,52 +63,19 @@
       <li class="primary-level">
         <a ui-sref="application.assessments" ng-click="vm.close()">Assessments</a>
       </li>
-      <li class="primary-level">
-        <a href="#" ng-click="vm.currentRoute = 'how-it-works'">
-          How It Works <span class="caret caret-right"></span>
+      <li class="primary-level" ng-click="howitworks=!howitworks" ng-class="{active:howitworks}">
+        <a href="#">
+          How It Works <span class="caret" ng-class="{'caret-down':!howitworks,'caret-up':howitworks}"></span>
         </a>
-      </li>
-      <li class="secondary-level">
-        <a ui-sref="application.join-staying-sharp">Join Staying Sharp</a>
-      </li>
-      <li class="secondary-level">
-        <a ui-sref="application.give-staying-sharp">Give Staying Sharp</a>
-      </li>
-    </ul>
-  </section>
-  <section class="nav-panel-subsection" ng-switch-when="explore">
-    <ul class="primary-nav-options">
-      <li class="primary-level">
-        <a href="#" ng-click="vm.currentRoute = 'root'">
-          <span class="caret caret-left"></span> Explore
-        </a>
-      </li>
-      <li class="tertiary-level last">
-        <ul>
-          <li><a ui-sref="application.home" ng-click="vm.close()">All Content</a></li>
-          <li><a ui-sref="application.articles" ng-click="vm.close()">Articles</a></li>
-          <li><a ui-sref="application.recipes" ng-click="vm.close()">Recipes</a></li>
-          <!-- TODO: only allow paid users to see actitivies -->
-          <li><a ui-sref="application.activities" ng-click="vm.close()">Activities</a></li>
-          <li><a ui-sref="application.games" ng-click="vm.close()">Games</a></li>
-        </ul>
-      </li>
-    </ul>
-  </section>
-  <section class="nav-panel-subsection" ng-switch-when="how-it-works">
-    <ul class="primary-nav-options">
-      <li class="primary-level">
-        <a href="#" ng-click="vm.currentRoute = 'root'">
-          <span class="caret caret-left"></span> How It Works
-        </a>
-      </li>
-      <li class="tertiary-level last">
-        <ul>
+        <ul class="tertiary-level">
           <li><a ui-sref="application.what-is-brain-health" ng-click="vm.close()">What is Brain Health</a></li>
           <li><a ui-sref="application.learn-more-about-staying-sharp" ng-click="vm.close()">Learn More About Staying Sharp</a></li>
           <li><a ui-sref="application.using-staying-sharp" ng-click="vm.close()">Using Staying Sharp</a></li>
           <li><a ui-sref="application.connected-apps" ng-click="vm.close()">Connected Apps</a></li>
-        </ul>
+        </li>
+      </li>
+      <li class="secondary-level">
+        <a ui-sref="application.join-staying-sharp">Join Staying Sharp</a>
       </li>
     </ul>
   </section>
