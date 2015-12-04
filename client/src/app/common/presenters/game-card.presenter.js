@@ -9,7 +9,6 @@ const GameCardPresenter = function ($presenterUtils,
       cardClasses: controller.cardClasses || 'game-card',
       cardContent: '',
       cardTitle: game.title, // TODO: change when real content fields added
-      lowerLeft: `Level: ${game.difficultyLevel}`, // TODO: real implementation
       pillars: null,
       isGame: true,
     };
