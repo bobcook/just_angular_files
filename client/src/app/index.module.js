@@ -32,8 +32,6 @@ import Recipe from './common/resources/recipe.js';
 import RecipeReview from './common/resources/recipe-review.js';
 import RelatedContent from './common/resources/related-content.js';
 import RelatedContentGames from './common/resources/related-content-games.js';
-import ResultSectionController from
-  './components/assessment-results/result-section.controller.js';
 import UserActivity from './common/resources/user-activity.js';
 import UserActivityPeriod from './common/resources/user-activity-period.js';
 import UserArticle from './common/resources/user-article.js';
@@ -154,6 +152,10 @@ import RecipeModalController from './recipes/recipe-modal.controller.js';
 import RecipesController from './recipes/recipes.controller.js';
 import RelatedContentController from
   './components/related-content/related-content.controller.js';
+import ResultSectionController from
+  './components/assessment-results/result-section.controller.js';
+import RetakeAssessmentModalController from
+  './assessments/retake-assessment-modal.controller.js';
 import ReviewsController from './components/reviews/reviews.controller.js';
 import SaveUserContentController from
   './components/save-user-content/save-user-content.controller.js';
@@ -324,6 +326,8 @@ app
   .controller('RecipesController', RecipesController)
   .controller('RelatedContentController', RelatedContentController)
   .controller('ResultSectionController', ResultSectionController)
+  .controller('RetakeAssessmentModalController',
+     RetakeAssessmentModalController)
   .controller('ReviewsController', ReviewsController)
   .controller('SaveUserContentController', SaveUserContentController)
   .controller('SocialLinksController', SocialLinksController)

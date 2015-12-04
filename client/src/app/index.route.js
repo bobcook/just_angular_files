@@ -119,6 +119,14 @@ const routerConfig = function (stateHelperProvider,
               templateUrl: 'app/assessments/results/overall.html',
               controller: 'OverallResultsController',
               controllerAs: 'vm',
+              children: [
+                modalStateHelperProvider({
+                  name: 'retake-assessment',
+                  templateUrl: 'app/assessments/retake-assessment-modal.html',
+                  controller: 'RetakeAssessmentModalController',
+                  controllerAs: 'vm',
+                }),
+              ],
             },
             {
               name: 'neuroperformance',
