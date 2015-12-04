@@ -66,7 +66,10 @@ import $pagination from './common/services/pagination.js';
 import $pillarFiltering from './common/services/pillar-filtering.js';
 import $postHref from './common/services/post-href.js';
 import $presenterUtils from './common/services/presenter-utils.js';
+import $promise from './common/services/promise.js';
 import AssessmentStatus from './assessments/assessment-status.js';
+import AssessmentResultQueries from
+  './assessments/results/queries.js';
 import authInterceptor from './common/services/auth-interceptor.js';
 import dependentMemoize from './common/services/dependent-memoize.js';
 import MBSAssessmentList from './assessments/mbs-assessment-list.js';
@@ -83,6 +86,8 @@ import cards from './components/cards/cards.js';
 import cardActivityTracker from
   './components/card-activity-tracker/card-activity-tracker.js';
 import contentDrawer from './components/content-drawer/content-drawer.js';
+import currentNeuroResultsChart from
+  './components/charts/current-neuro-results.chart.js';
 import exploreContent from './components/explore-content/explore-content.js';
 import infoBox from './components/info-box/info-box.js';
 import modal from './components/modal/modal.js';
@@ -128,6 +133,8 @@ import CardController from './components/card/card.controller.js';
 import CardActivityTrackerController from
   './components/card-activity-tracker/card-activity-tracker.controller.js';
 import CardsController from './components/cards/cards.controller.js';
+import CurrentNeuroResultsController from
+  './components/charts/current-neuro-results.controller.js';
 import ExploreContentController from
   './components/explore-content/explore-content.controller.js';
 import GameController from './games/game.controller.js';
@@ -182,6 +189,7 @@ import PillarScoresController from
 const app = angular.module('aarp-staying-sharp', [
   'angularModalService',
   'pascalprecht.translate', // aka angular-translate
+  'highcharts-ng',
   'ngAnimate',
   'ngSanitize',
   'ngStorage',
@@ -253,9 +261,11 @@ app
   .factory('$pagination', $pagination)
   .factory('$pillarFiltering', $pillarFiltering)
   .factory('$postHref', $postHref)
+  .factory('$promise', $promise)
   .factory('$presenterUtils', $presenterUtils)
   .factory('authInterceptor', authInterceptor)
   .factory('AssessmentStatus', AssessmentStatus)
+  .factory('AssessmentResultQueries', AssessmentResultQueries)
   .factory('dependentMemoize', dependentMemoize)
   .factory('MBSAssessmentList', MBSAssessmentList)
   .provider('modalStateHelper', modalStateHelper)
@@ -268,6 +278,7 @@ app
   .directive('ssCardActivityTracker', cardActivityTracker)
   .directive('ssCards', cards)
   .directive('ssContentDrawer', contentDrawer)
+  .directive('ssCurrentNeuroResultsChart', currentNeuroResultsChart)
   .directive('ssExploreContent', exploreContent)
   .directive('ssInfoBox', infoBox)
   .directive('ssModal', modal)
@@ -307,6 +318,7 @@ app
   .controller('CardController', CardController)
   .controller('CardActivityTrackerController', CardActivityTrackerController)
   .controller('CardsController', CardsController)
+  .controller('CurrentNeuroResultsController', CurrentNeuroResultsController)
   .controller('ExploreContentController', ExploreContentController)
   .controller('GameController', GameController)
   .controller('GameModalController', GameModalController)

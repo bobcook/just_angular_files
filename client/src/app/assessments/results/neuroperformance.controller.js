@@ -1,6 +1,5 @@
 const NeuroPerformanceController = function (AssessmentResultCategory,
-                                             AssessmentStatus,
-                                             NeuroPerformanceResult) {
+                                             AssessmentResultQueries) {
   'ngInject';
 
   const makeCategoryWithResult = function (category, neuroResults) {
@@ -10,9 +9,9 @@ const NeuroPerformanceController = function (AssessmentResultCategory,
     };
   };
 
-  const getLatestUserAssessmentGroup = () => {
-    return AssessmentStatus.lastUserAssessmentGroup().then((group) => {
-      this.userAssessmentGroup = group;
+  const getNeuroResults = function () {
+    return AssessmentResultQueries.accumulatedQueries().then(function (vals) {
+      return vals.neuroResults;
     });
   };
 
@@ -20,13 +19,6 @@ const NeuroPerformanceController = function (AssessmentResultCategory,
     return AssessmentResultCategory.neuroPerformance().then((categories) => {
       this.neuroCategories = categories;
     });
-  };
-
-  const getNeuroResults = () => {
-    const params = {
-      userAssessmentGroupId: this.userAssessmentGroup.id,
-    };
-    return NeuroPerformanceResult.query({}, params);
   };
 
   const setCategoryResults = (neuroResultsHistory) => {
@@ -37,8 +29,7 @@ const NeuroPerformanceController = function (AssessmentResultCategory,
     });
   };
 
-  getLatestUserAssessmentGroup()
-    .then(getNeuroCategories)
+  getNeuroCategories()
     .then(getNeuroResults)
     .then(setCategoryResults);
 };

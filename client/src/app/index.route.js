@@ -116,7 +116,7 @@ const routerConfig = function (stateHelperProvider,
             {
               name: 'overall',
               url: '/overall',
-              templateUrl: 'app/assessments/results/overall.html',
+              templateUrl: 'app/assessments/results/overall-results.html',
               controller: 'OverallResultsController',
               controllerAs: 'vm',
               children: [
