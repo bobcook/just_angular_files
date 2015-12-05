@@ -1,0 +1,58 @@
+.cp-cross-link {
+  padding: 20px 0 10px 0;
+  background: #fff;
+
+  .container {
+    border: 1px solid #5684A9;
+    border-radius: 2px;
+    padding: 13px 0;
+    margin: 0 10px;
+
+    @media screen and (min-width: 768px) {
+      margin: 0 auto;
+    }
+  }
+
+  a {
+    margin-left: 13px;
+    display: block;
+
+    &:hover .caret-left {
+      border-right: 5px solid #385D70;
+      transition: all 1s ease-in-out;
+    }
+
+    span {
+      float: left;
+      display: inline;
+
+      &:first-child {
+        width: 1%;
+
+        @media screen and (min-width: 768px) {
+          width: 2%;
+        }
+      }
+
+      &:last-child {
+        padding-left: 4%;
+        width: 95%;
+
+        @media screen and (min-width: 768px) {
+          padding-left: 1%;
+          width: 95%;
+        }
+      }
+    }
+  }
+
+  .caret-left {
+    border-right: 5px solid #5684A9;
+    margin-top: 7px;
+
+    @media screen and (min-width: 768px) {
+      border-right: 5px solid #5684A9;
+      margin-top: 6px;
+    }
+  }
+}
