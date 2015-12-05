@@ -1,19 +1,23 @@
 const AsssessmentController = function ($stateParams,
+                                        $featureDetection,
                                         Assessment,
                                         UserAssessment,
                                         AssessmentStatus) {
   'ngInject';
 
+  let assessmentScores = {};
+  const userAssessmentId = $stateParams.id;
+  let assessmentRedirect;
+  const currentUserAssessment = UserAssessment.get(userAssessmentId);
+
+  this.showAssessment = false;
   // text responses for questions without scores
   this.textResponses = {};
   // index of each response for questions with scores
   this.indexResponses = {};
   // all the possible scores for questions with scores
-  let assessmentScores = {};
   this.showAssessment = false;
-  const userAssessmentId = $stateParams.id;
-  let assessmentRedirect;
-  const currentUserAssessment = UserAssessment.get(userAssessmentId);
+  this.isTouchDevice = $featureDetection.isTouchDevice();
 
   const assessmentFlowSetup = (lastGroup) => {
     const secondQuestionnaire =
@@ -53,13 +57,14 @@ const AsssessmentController = function ($stateParams,
     assessmentRedirect();
   };
 
-  AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
-    if (!lastGroup) { return; };
+  if (!this.isTouchDevice) {
+    AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
+      if (!lastGroup) { return; };
 
-    assessmentFlowSetup(lastGroup);
-    getQuestionnaireQuestions();
-  });
-
+      assessmentFlowSetup(lastGroup);
+      getQuestionnaireQuestions();
+    });
+  }
 };
 
 export default AsssessmentController;

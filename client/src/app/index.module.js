@@ -63,6 +63,7 @@ import $auth from './common/services/auth.js';
 import $assessmentsAuth from './assessments/assessments-auth.js';
 import $assessmentResults from './common/services/assessment-results.js';
 import $currentModal from './common/services/current-modal.js';
+import $featureDetection from './common/services/feature-detection.js';
 import $loadCurrentUser from './common/services/load-current-user.js';
 import $pagination from './common/services/pagination.js';
 import $pillarFiltering from './common/services/pillar-filtering.js';
@@ -278,6 +279,7 @@ app
   .factory('$assessmentResults', $assessmentResults)
   .factory('$auth', $auth)
   .factory('$currentModal', $currentModal)
+  .factory('$featureDetection', $featureDetection)
   .factory('$loadCurrentUser', $loadCurrentUser)
   .factory('$pagination', $pagination)
   .factory('$pillarFiltering', $pillarFiltering)

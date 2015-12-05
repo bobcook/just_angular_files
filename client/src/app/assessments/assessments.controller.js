@@ -1,4 +1,5 @@
 const AsssessmentsController = function ($assessmentsAuth,
+                                         $featureDetection,
                                          AssessmentStatus,
                                          UserAssessmentGroup) {
   'ngInject';
@@ -9,6 +10,8 @@ const AsssessmentsController = function ($assessmentsAuth,
     this.showMBSAuthLink = false;
     $assessmentsAuth.authenticate();
   };
+
+  this.isTouchDevice = $featureDetection.isTouchDevice();
 
   const createAssessment = () => {
     this.buttonText = 'Begin Assessment';
@@ -39,14 +42,15 @@ const AsssessmentsController = function ($assessmentsAuth,
     }
   };
 
-  AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
-    if (!lastGroup || lastGroup.completed) {
-      createAssessment();
-    } else {
-      resumeAssessment(lastGroup);
-    }
-  });
+  if (!this.isTouchDevice) {
+    AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
+      if (!lastGroup || lastGroup.completed) {
+        createAssessment();
+      } else {
+        resumeAssessment(lastGroup);
+      }
+    });
+  }
 };
 
 export default AsssessmentsController;
-

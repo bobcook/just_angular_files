@@ -1,5 +1,10 @@
 <div class="cp-assessment-questions">
   <section class="container">
+    <ss-info-box ng-show="vm.isTouchDevice">
+      <p translate>info.touch_device_warning</p>
+      <a ui-sref="application.home" class="btn">Explore Staying Sharp</a>
+    </ss-info-box>
+
     <div ng-if="vm.showAssessment" class="form-wrap">
 
       <h1>The Brain Health Assessment</h1>
