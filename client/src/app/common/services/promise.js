@@ -28,7 +28,7 @@ const $promise = function ($q) {
   const as = function (key, promiseFn, context) {
     context = context || this;
 
-    return function(objs) {
+    return function (objs) {
       const promise = promiseFn.call(context, objs);
       return promise.then(function (result) {
         const keyedResult = _.object([key], [result]);

@@ -1,46 +1,12 @@
 <article class="index-score">
   <figure>
     <figcaption>
-      <!--
-        Indicie Title
-      -->
       <h4>{{vm.category.name}}</h4>
     </figcaption>
-    <div class="inner">
-      <div class="caption">
-        <span>Low</span>
-      </div>
-      <div class="graph-wrap">
-        <div class="graph">
-          <div class="horizontal-bar">
-            <div class="bar-end low">
-              <span class="icon-next"></span>
-            </div>
-            <div class="bar">
-              <div class="slider-progress"></div>
-              <div class="left-half-circle mask">
-                <!--
-                  Indicie Score here
-                -->
-                <span class="indicie-score">{{vm.score}}</span>
-                <div class="circle"></div>
-              </div>
-            </div>
-            <div class="bar-end high">
-              <div class="right-half-circle mask">
-                <div class="circle "></div>
-              </div>
-              <div class="caption">
-                <span>High</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="zone-legend">
-        <span>Optimal Zone</span>
-      </div>
-    </div>
+    <ss-result-index-chart
+      score="vm.score"
+      index="vm.index">
+    </ss-result-index-chart>
   </figure>
   <div class="cp-content-drawer">
     <section>
@@ -48,4 +14,3 @@
     </section>
   </div>
 </article>
-

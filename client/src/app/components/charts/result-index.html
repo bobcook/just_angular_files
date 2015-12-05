@@ -1,0 +1,32 @@
+<div class="inner">
+  <div class="caption">
+    <span>Low</span>
+  </div>
+  <div class="graph-wrap">
+    <div class="graph" >
+      <div class="horizontal-bar">
+        <div class="bar-end low">
+          <span class="icon-next"></span>
+        </div>
+        <div ng-class="{bar: true, perfect: vm.isPerfectScore}" id="result-index-{{vm.index}}" style="width: {{vm.scorePercent}}%;">
+          <div class="slider-progress"></div>
+          <div class="left-half-circle mask">
+            <span class="indicie-score">{{vm.score}}</span>
+            <div class="circle"></div>
+          </div>
+        </div>
+        <div class="bar-end high">
+          <div class="right-half-circle mask">
+            <div class="circle "></div>
+          </div>
+          <div class="caption">
+            <span>High</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="zone-legend">
+    <span>Optimal Zone</span>
+  </div>
+</div>

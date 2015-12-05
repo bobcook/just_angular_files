@@ -100,6 +100,7 @@ import pillarsDisplay from './components/pillars-display/pillars.js';
 import pillarFilters from './components/pillar-filters/pillar-filters.js';
 import pillarScores from './components/pillar-scores/pillar-scores.js';
 import postHref from './common/directives/post-href.js';
+import resultIndexChart from './components/charts/result-index.chart.js';
 import resultSection from './components/assessment-results/result-section.js';
 import relatedContent from './components/related-content/related-content.js';
 import reviews from './components/reviews/reviews.js';
@@ -166,6 +167,8 @@ import RelatedContentController from
   './components/related-content/related-content.controller.js';
 import ResultSectionController from
   './components/assessment-results/result-section.controller.js';
+import ResultIndexController from
+  './components/charts/result-index.controller.js';
 import RetakeAssessmentModalController from
   './assessments/retake-assessment-modal.controller.js';
 import ReviewsController from './components/reviews/reviews.controller.js';
@@ -296,6 +299,7 @@ app
   .directive('ssPillarScores', pillarScores)
   .directive('ssPostHref', postHref)
   .directive('ssRelatedContent', relatedContent)
+  .directive('ssResultIndexChart', resultIndexChart)
   .directive('ssResultSection', resultSection)
   .directive('ssReviews', reviews)
   .directive('ssSaveUserContent', saveUserContent)
@@ -348,6 +352,7 @@ app
   .controller('RecipeModalController', RecipeModalController)
   .controller('RecipesController', RecipesController)
   .controller('RelatedContentController', RelatedContentController)
+  .controller('ResultIndexController', ResultIndexController)
   .controller('ResultSectionController', ResultSectionController)
   .controller('RetakeAssessmentModalController',
      RetakeAssessmentModalController)

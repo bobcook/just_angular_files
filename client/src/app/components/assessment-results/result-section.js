@@ -8,6 +8,7 @@ const resultSection = function () {
     replace: true,
     scope: {
       categoryResult: '=ssCategoryResult',
+      index: '=',
     },
   };
 };

@@ -17,8 +17,9 @@
 
     <section class="break-down">
       <ss-result-section
-      ng-repeat="categoryResult in vm.categoryResults"
-      ss-category-result="categoryResult">
+        ng-repeat="categoryResult in vm.categoryResults"
+        ss-category-result="categoryResult"
+        index="$index">
       </ss-result-section>
     </section>
   </section>
