@@ -99,6 +99,7 @@ import currentNeuroResultsChart from
   './components/charts/current-neuro-results.chart.js';
 import exploreContent from './components/explore-content/explore-content.js';
 import infoBox from './components/info-box/info-box.js';
+import leadIn from './components/lead-in/lead-in.js';
 import modal from './components/modal/modal.js';
 import myFutureBrainChart from './components/charts/my-future-brain.chart.js';
 import navPanel from './components/nav-panel/nav-panel.js';
@@ -306,6 +307,7 @@ app
   .directive('ssCurrentNeuroResultsChart', currentNeuroResultsChart)
   .directive('ssExploreContent', exploreContent)
   .directive('ssInfoBox', infoBox)
+  .directive('ssLeadIn', leadIn)
   .directive('ssModal', modal)
   .directive('ssMyFutureBrainChart', myFutureBrainChart)
   .directive('ssNavTabs', navTabs)
