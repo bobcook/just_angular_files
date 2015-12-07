@@ -1,5 +1,6 @@
 const OverallResultsController = function (Activity,
-                                           AssessmentResultQueries) {
+                                           AssessmentResultQueries,
+                                           $promise) {
   'ngInject';
 
   const queries = AssessmentResultQueries;
@@ -11,14 +12,32 @@ const OverallResultsController = function (Activity,
     this.recommendedItems = activities.data;
   });
 
-  const setNeuroResults = () => {
+  const accumulatedQueries = () => {
+    if (!_.isUndefined(this.accumulatedQueries)) {
+      return $promise.of(this.accumulatedQueries);
+    }
+
     return queries.accumulatedQueries().then((vals) => {
+      this.accumulatedQueries = vals;
+      return vals;
+    });
+  };
+
+  const setNeuroResults = () => {
+    return accumulatedQueries().then((vals) => {
       this.allNeuroResults = vals.neuroResults;
       this.latestNeuroResults = _.first(this.allNeuroResults);
     });
   };
 
-  setNeuroResults();
+  const setLifestyleResults = () => {
+    return accumulatedQueries().then((vals) => {
+      this.allLifestyleResults = vals.lifestyleResults;
+      this.latestLifestyleResults = _.first(this.allLifestyleResults);
+    });
+  };
+
+  setNeuroResults().then(setLifestyleResults);
 };
 
 export default OverallResultsController;

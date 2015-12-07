@@ -1,4 +1,4 @@
-const CurrentNeuroResultsController = function () {
+const CurrentLifestyleResultsController = function () {
   'ngInject';
 
   const getChartConfig = (data) => {
@@ -15,20 +15,12 @@ const CurrentNeuroResultsController = function () {
         xAxis: {
           lineColor: '#c0c1c2',
           categories: [
-            'Processing<br />Speed',
-            'Sustained<br />Attention',
-            'Working<br />Memory',
-            'Cognitive<br />Flexibility',
-            'Executive<br />Function',
-            'Recognition<br />Memory',
+            'Nourish',
+            'Learn',
+            'Connect',
+            'Move',
+            'Relax',
           ],
-          labels: {
-            rotation: 0,
-            style: {
-              'text-align': 'center',
-            },
-            useHTML : true,
-          },
           tickLength: 0,
         },
         yAxis: {
@@ -47,7 +39,7 @@ const CurrentNeuroResultsController = function () {
             value: 6.5,
             width: 2,
           }],
-          tickPositions: [0,10],
+          tickPositions: [0, 10],
           gridLineWidth: 0,
         },
         credits: {
@@ -67,10 +59,10 @@ const CurrentNeuroResultsController = function () {
               '#6caeb6 ',
               '#6b7f8e ',
             ],
-            color: '#6b7f8e',
             pointPadding: 0.05,
           },
           series: {
+            colorByPoint: true,
             states: {
               hover: {
                 enabled: false,
@@ -82,25 +74,24 @@ const CurrentNeuroResultsController = function () {
           enabled: false,
         },
       },
-      title: {
-        text: null,
-      },
+      series: data,
       subtitle: {
         text: null,
       },
-      series: data,
+      title: {
+        text: null,
+      },
     };
   };
 
-  this.updateChartConfig = (neuroResults) => {
+  this.updateChartConfig = (lifestyleResults) => {
     // TODO: make more dynamic
-    const data = _.values(_.pick(neuroResults, [
-      'processingSpeed',
-      'sustainedAttention',
-      'workingMemory',
-      'cognitiveFlexibility',
-      'executiveFunction',
-      'recognitionMemory',
+    const data = _.values(_.pick(lifestyleResults, [
+      'move',
+      'discover',
+      'relax',
+      'nourish',
+      'connect',
     ]));
 
     const consumableData = [ { 'data': data } ];
@@ -109,4 +100,4 @@ const CurrentNeuroResultsController = function () {
   };
 };
 
-export default CurrentNeuroResultsController;
+export default CurrentLifestyleResultsController;

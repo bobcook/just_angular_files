@@ -9,7 +9,7 @@ const $promise = function ($q) {
   const accumulateHelper = function (startPromise, promiseFns) {
     return _.reduce(
       promiseFns,
-      function(accPromise, nextPromiseFn) {
+      function (accPromise, nextPromiseFn) {
         return accPromise.then(function (accValues) {
           return nextPromiseFn(accValues).then(function (nextValue) {
             const toReturn = _.merge({}, accValues, nextValue);

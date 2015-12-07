@@ -23,4 +23,13 @@ class AssessmentQuestion < ActiveRecord::Base
            source_type: 'Activity'
 
   belongs_to :assessment
+
+  def recommend(content)
+    question_recommendations.create(recommendable: content)
+  end
+
+  # TODO: SQL-ish way?
+  def recommended_content
+    question_recommendations.map(&:recommendable)
+  end
 end

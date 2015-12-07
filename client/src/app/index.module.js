@@ -25,6 +25,7 @@ import CurrentUser from './common/resources/current-user.js';
 import ExploreContent from './common/resources/explore-content.js';
 import Game from './common/resources/game.js';
 import GameReview from './common/resources/game-review.js';
+import LifestyleResult from'./common/resources/lifestyle-result.js';
 import NeuroPerformanceResult from
   './common/resources/neuro-performance-result.js';
 import Pillar from './common/resources/pillar.js';
@@ -86,6 +87,8 @@ import cards from './components/cards/cards.js';
 import cardActivityTracker from
   './components/card-activity-tracker/card-activity-tracker.js';
 import contentDrawer from './components/content-drawer/content-drawer.js';
+import currentLifestyleResultsChart from
+  './components/charts/current-lifestyle-results.chart.js';
 import currentNeuroResultsChart from
   './components/charts/current-neuro-results.chart.js';
 import exploreContent from './components/explore-content/explore-content.js';
@@ -133,6 +136,8 @@ import CardController from './components/card/card.controller.js';
 import CardActivityTrackerController from
   './components/card-activity-tracker/card-activity-tracker.controller.js';
 import CardsController from './components/cards/cards.controller.js';
+import CurrentLifestyleResultsController from
+  './components/charts/current-lifestyle-results.controller.js';
 import CurrentNeuroResultsController from
   './components/charts/current-neuro-results.controller.js';
 import ExploreContentController from
@@ -228,6 +233,7 @@ app
   .factory('ExploreContent', ExploreContent)
   .factory('Game', Game)
   .factory('GameReview', GameReview)
+  .factory('LifestyleResult', LifestyleResult)
   .factory('NeuroPerformanceResult', NeuroPerformanceResult)
   .factory('Pillar', Pillar)
   .factory('Recipe', Recipe)
@@ -278,6 +284,7 @@ app
   .directive('ssCardActivityTracker', cardActivityTracker)
   .directive('ssCards', cards)
   .directive('ssContentDrawer', contentDrawer)
+  .directive('ssCurrentLifestyleResultsChart', currentLifestyleResultsChart)
   .directive('ssCurrentNeuroResultsChart', currentNeuroResultsChart)
   .directive('ssExploreContent', exploreContent)
   .directive('ssInfoBox', infoBox)
@@ -318,6 +325,10 @@ app
   .controller('CardController', CardController)
   .controller('CardActivityTrackerController', CardActivityTrackerController)
   .controller('CardsController', CardsController)
+  .controller(
+    'CurrentLifestyleResultsController',
+    CurrentLifestyleResultsController
+  )
   .controller('CurrentNeuroResultsController', CurrentNeuroResultsController)
   .controller('ExploreContentController', ExploreContentController)
   .controller('GameController', GameController)

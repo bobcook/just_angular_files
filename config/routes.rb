@@ -70,6 +70,9 @@ Rails.application.routes.draw do
           resource :neuro_performance,
                    controller: 'assessment_results/neuro_performance',
                    only: [:show]
+          resource :lifestyle,
+                   controller: 'assessment_results/lifestyle',
+                   only: [:show]
         end
         resources :current_user, controller: 'current_user', only: :index
         resources :games, only: [:show, :index, :create, :destroy]

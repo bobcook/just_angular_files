@@ -14,6 +14,13 @@ class UserAssessmentGroup < ActiveRecord::Base
     where('user_assessment_groups.id <= :id', id: id)
   end
 
+  # TODO: do in query
+  def lifestyle_user_assessments
+    user_assessments.reject do |ua|
+      ua == mbs_user_assessment
+    end
+  end
+
   def completed?
     user_assessments.all?(&:completed?)
   end
