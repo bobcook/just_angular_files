@@ -79,6 +79,12 @@ form {
   margin-top: 10px;
   margin-bottom: 10px;
 
+  &.inline {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 30px;
+  }
+
   label {
     min-height: 20px;
     padding-left: 20px;
@@ -88,7 +94,7 @@ form {
   }
 }
 
-.radio + .radio, .checkbox + .checkbox {
+.radio + .radio:not('.inline'), .checkbox + .checkbox:not('.inline') {
   margin-top: -5px;
 }
 
@@ -113,6 +119,10 @@ input[type="radio"], input[type="checkbox"] {
 .form-input-wrap {
   padding-top: 10px;
   padding-bottom: 10px;
+
+  p {
+    margin: 0;
+  }
 }
 
 .select-wrap {

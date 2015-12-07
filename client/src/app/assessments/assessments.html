@@ -1,27 +1,52 @@
-<div class="cp-assessments">
+<div class="cp-lead-in yellow-teal tall">
+  <div class="left"></div>
+  <div class="right"></div>
+  <div class="cp-lead-in-bg" style="background-image: url('app/assets/images/user-content/lead-in/tall-yellow-teal.png'), url('app/assets/images/user-content/example-couple.png');">
+    <section class="container">
+      <div class="copy-wrap">
+        <div class="vertical-content">
+          <h2>Welcome to the Brain Health Assessment</h2>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="cp-assessment-intro">
   <section class="container">
 
-    <h1>Assessment</h1>
-
-    <p>MyBrain Assessment is a scientifically validated tool to assess how your brain functions. It is powered by Brain Resource® & the Brain Resource® International Database. Your results from the assessment will be automatically uploaded and scored against your peers in the database (same age, gender & education level).</p>
-
-
-    <p>To take the assessment, you need:</p>
-    <ul>
-      <li>30 minutes of uninterrupted time</li>
-      <li>One of our supported browsers
-        <ul>
-          <li>Chrome</li>
-          <li>Safari</li>
-          <li>Firefox</li>
-          <li>Internet Explorer</li>
-        </ul>
-      </li>
-    </ul>
-
-    <p ng-switch="vm.buttonState">
+    <div ng-switch="vm.buttonState">
       <a ng-switch-when="Questionnaire" class="btn" href="#" ui-sref="application.assessments-questionnaire({id: vm.nextAssessmentId })">{{vm.buttonText}}</a>
       <a ng-switch-when="MBS" class="btn" href="#" ng-click="vm.authForAssessments()">{{vm.buttonText}}</a>
-    </p>
+    </div>
+
+    <div class="assessment-description">
+
+      <h1>About the Brain Health Assessment</h1>
+
+      <p>MyBrain Assessment is a scientifically validated tool to assess how your brain functions. It is powered by Brain Resource® & the Brain Resource® International Database. Your results from the assessment will be automatically uploaded and scored against your peers in the database (same age, gender & education level).</p>
+
+
+      <p>To take the assessment, you need:</p>
+      <ul>
+        <li>30 minutes of uninterrupted time</li>
+        <li>One of our supported browsers
+          <ul>
+            <li>Chrome</li>
+            <li>Safari</li>
+            <li>Firefox</li>
+            <li>Internet Explorer</li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+
+
+    <div ng-switch="vm.buttonState">
+      <a ng-switch-when="Questionnaire" class="btn" href="#" ui-sref="application.assessments-questionnaire({id: vm.nextAssessmentId })">{{vm.buttonText}}</a>
+      <a ng-switch-when="MBS" class="btn" href="#" ng-click="vm.authForAssessments()">{{vm.buttonText}}</a>
+    </div>
+
   </section>
 </div>

@@ -1,29 +1,46 @@
-<div ng-if="vm.showAssessment">
-  <form name="assessmentForm" novalidate ng-submit="vm.submitForm(assessmentForm.$valid)">
-    <div ng-repeat="question in vm.questions">
-      <label>{{question.text}}</label>
-      <!-- TODO: determine what type of errors to show if user doesn't answer
-      all the questions -->
-      <div ng-if="question.type === 'AssessmentQuestionDate'">
-        <input type="date" name="{{question.id}}" ng-model="vm.textResponses[question.id]" required>
-      </div>
-      <div ng-if="question.type === 'AssessmentQuestionSelect'">
-        <select name="{{question.id}}" ng-model="vm.textResponses[question.id]" required>
-          <option ng-repeat="option in question.answerOptions" value="{{option}}">{{option}}</option>
-        </select>
-      </div>
-      <div ng-if="question.type === 'AssessmentQuestionRadio'">
-        <div ng-repeat="option in question.answerOptions">
-          <div ng-if="question.answerValues.length === 0">
-            <input name="{{question.id}}" value="{{option}}" ng-model="vm.textResponses[question.id]" type="radio" required>{{option}}
-          </div>
-          <div ng-if="question.answerValues.length > 0" >
-            <input name="{{question.id}}" value="{{option}}" ng-model="vm[question.id]" ng-click="vm.indexResponses[question.id]=$index" type="radio" required>{{option}}
+<div class="cp-assessment-questions">
+  <section class="container">
+    <div ng-if="vm.showAssessment" class="form-wrap">
+
+      <h1>The Brain Health Assessment</h1>
+
+      <form name="assessmentForm" novalidate ng-submit="vm.submitForm(assessmentForm.$valid)">
+
+        <h4>The Basics About You:</h4>
+
+        <div ng-repeat="question in vm.questions">
+          <div class="row">
+            <!-- TODO: determine what type of errors to show if user doesn't answer
+            all the questions -->
+            <div ng-if="question.type === 'AssessmentQuestionDate'" class="form-input-wrap col-6">
+                <label>{{question.text}}</label>
+              <input type="date" name="{{question.id}}" ng-model="vm.textResponses[question.id]" required>
+            </div>
+            <div ng-if="question.type === 'AssessmentQuestionSelect'" class="form-input-wrap select-wrap col-6">
+                <label>{{question.text}}</label>
+                <select class="form-control" name="{{question.id}}" ng-model="vm.textResponses[question.id]" required>
+                  <option ng-repeat="option in question.answerOptions" value="{{option}}">{{option}}</option>
+              </div>
+            </div>
+            <div ng-if="question.type === 'AssessmentQuestionRadio'" class="form-input-wrap radio-wrap col-12">
+              <p>{{question.text}}</p>
+              <div ng-repeat="option in question.answerOptions" class="radio inline">
+                <div ng-if="question.answerValues.length === 0">
+                  <label>
+                    <input name="{{question.id}}" value="{{option}}" ng-model="vm.textResponses[question.id]" type="radio" required>{{option}}
+                  </label>
+                </div>
+                <div ng-if="question.answerValues.length > 0">
+                  <label>
+                    <input name="{{question.id}}" value="{{option}}" ng-model="vm[question.id]" ng-click="vm.indexResponses[question.id]=$index" type="radio" required>{{option}}
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <br>
+        <button ng-disabled="assessmentForm.$invalid" type="submit" class="btn">Submit</button>
+      </form>
     </div>
-    <input ng-disabled="assessmentForm.$invalid" type="submit" value="Submit">
-  </form>
+  </section>
 </div>
