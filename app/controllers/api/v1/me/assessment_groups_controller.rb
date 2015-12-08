@@ -1,7 +1,7 @@
 module Api
   module V1
     module Me
-      class AssessmentGroupsController < Api::V1::BaseController
+      class AssessmentGroupsController < Api::V1::Me::BaseController
         def create
           last_group = create_user_assessment_group
           create_user_assessments(last_group)

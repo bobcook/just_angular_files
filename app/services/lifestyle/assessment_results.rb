@@ -44,6 +44,7 @@ module Lifestyle
     end
 
     def avg_of(scorables)
+      return 0 if scorables.empty?
       scores = scorables.map(&:score)
       result = scores.inject(0.0) { |a, e| a + e } / scores.size
       result.try { |r| r.round(2) } || 0
