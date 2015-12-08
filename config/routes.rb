@@ -73,6 +73,9 @@ Rails.application.routes.draw do
           resource :lifestyle,
                    controller: 'assessment_results/lifestyle',
                    only: [:show]
+          resource :user_info,
+                   controller: 'assessment_results/user_info',
+                   only: [:show]
         end
         resources :current_user, controller: 'current_user', only: :index
         resources :games, only: [:show, :index, :create, :destroy]

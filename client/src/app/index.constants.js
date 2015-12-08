@@ -19,6 +19,7 @@ const addConstants = function (module) {
     {
       'ApiRoutes': ApiRoutes,
       '$moment': moment,
+      '$stats': ss,
     }
   );
 

@@ -1,4 +1,4 @@
-const $pillarFiltering = function (Pillar, $q) {
+const $pillarFiltering = function (Pillar, $filter, $q) {
   'ngInject';
 
   const getSelectAllPillar = () => {
@@ -39,6 +39,16 @@ const $pillarFiltering = function (Pillar, $q) {
     const findPillar = (pillars) => {
       return _.find(this.pillarData.pillars, function (pillar) {
         return pillar.slug === pillarSlug;
+      });
+    };
+
+    return this.getPillarData().then(findPillar);
+  };
+
+  this.pillarByDisplayName = (displayName) => {
+    const findPillar = (pillars) => {
+      return _.find(this.pillarData.pillars, function (pillar) {
+        return pillar.displayName === $filter('upcase')(displayName);
       });
     };
 

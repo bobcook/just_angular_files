@@ -7,6 +7,19 @@ const NeuroPerformanceResult = function (API_URL, railsResourceFactory) {
          `{{userAssessmentGroupId}}/neuro_performance`,
   });
 
+  Object.defineProperty(NeuroPerformanceResult.prototype, 'scores', {
+    get: function () {
+      return _.pick(this, [
+        'processingSpeed',
+        'sustainedAttention',
+        'workingMemory',
+        'cognitiveFlexibility',
+        'executiveFunction',
+        'recognitionMemory',
+      ]);
+    },
+  });
+
   return NeuroPerformanceResult;
 };
 

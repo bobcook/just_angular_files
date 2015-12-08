@@ -1,6 +1,7 @@
 const AssessmentResultQueries = function (AssessmentStatus,
                                           LifestyleResult,
                                           NeuroPerformanceResult,
+                                          UserInfo,
                                           $promise) {
   'ngInject';
 
@@ -30,6 +31,16 @@ const AssessmentResultQueries = function (AssessmentStatus,
     return LifestyleResult.query({}, params);
   };
 
+  const getUserInfo = function (state) {
+    const group = state.group;
+
+    const params = {
+      userAssessmentGroupId: group.id,
+    };
+
+    return UserInfo.query({}, params);
+  };
+
   const accumulatedQueries = function (state) {
     state = state || {};
 
@@ -45,6 +56,7 @@ const AssessmentResultQueries = function (AssessmentStatus,
     getLatestUserAssessmentGroup: getLatestUserAssessmentGroup,
     getLifestyleResults: getLifestyleResults,
     getNeuroResults: getNeuroResults,
+    getUserInfo: getUserInfo,
   };
 };
 

@@ -7,6 +7,18 @@ const LifestyleResult = function (API_URL, railsResourceFactory) {
          `{{userAssessmentGroupId}}/lifestyle`,
   });
 
+  Object.defineProperty(LifestyleResult.prototype, 'scores', {
+    get: function () {
+      return _.pick(this, [
+        'move',
+        'discover',
+        'relax',
+        'nourish',
+        'connect',
+      ]);
+    },
+  });
+
   return LifestyleResult;
 };
 

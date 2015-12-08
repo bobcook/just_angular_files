@@ -39,6 +39,7 @@ import UserArticle from './common/resources/user-article.js';
 import UserAssessmentGroup from './common/resources/user-assessment-group.js';
 import UserAssessment from './common/resources/user-assessment.js';
 import UserGame from './common/resources/user-game.js';
+import UserInfo from './common/resources/user-info.js';
 import UserRecipe from './common/resources/user-recipe.js';
 
 // presenters
@@ -71,8 +72,11 @@ import $promise from './common/services/promise.js';
 import AssessmentStatus from './assessments/assessment-status.js';
 import AssessmentResultQueries from
   './assessments/results/queries.js';
+import AssessmentResultScores from
+  './assessments/results/scores.js';
 import authInterceptor from './common/services/auth-interceptor.js';
 import dependentMemoize from './common/services/dependent-memoize.js';
+import FutureBrainStats from './components/charts/future-brain-stats.js';
 import MBSAssessmentList from './assessments/mbs-assessment-list.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
 
@@ -94,6 +98,7 @@ import currentNeuroResultsChart from
 import exploreContent from './components/explore-content/explore-content.js';
 import infoBox from './components/info-box/info-box.js';
 import modal from './components/modal/modal.js';
+import myFutureBrainChart from './components/charts/my-future-brain.chart.js';
 import navPanel from './components/nav-panel/nav-panel.js';
 import navTabs from './components/nav-tabs/nav-tabs.js';
 import pillarsDisplay from './components/pillars-display/pillars.js';
@@ -150,6 +155,8 @@ import GamesController from './games/games.controller.js';
 import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
 import LogoutController from './logout/logout.controller.js';
+import MyFutureBrainController from
+  './components/charts/my-future-brain.controller.js';
 import NavPanelController from './components/nav-panel/nav-panel.controller.js';
 import NavTabsController from './components/nav-tabs/nav-tabs.controller.js';
 import NeuroPerformanceController from
@@ -249,6 +256,7 @@ app
   .factory('UserAssessmentGroup', UserAssessmentGroup)
   .factory('UserAssessment', UserAssessment)
   .factory('UserGame', UserGame)
+  .factory('UserInfo', UserInfo)
   .factory('UserRecipe', UserRecipe)
 
   // presenters
@@ -275,7 +283,9 @@ app
   .factory('authInterceptor', authInterceptor)
   .factory('AssessmentStatus', AssessmentStatus)
   .factory('AssessmentResultQueries', AssessmentResultQueries)
+  .factory('AssessmentResultScores', AssessmentResultScores)
   .factory('dependentMemoize', dependentMemoize)
+  .factory('FutureBrainStats', FutureBrainStats)
   .factory('MBSAssessmentList', MBSAssessmentList)
   .provider('modalStateHelper', modalStateHelper)
 
@@ -292,6 +302,7 @@ app
   .directive('ssExploreContent', exploreContent)
   .directive('ssInfoBox', infoBox)
   .directive('ssModal', modal)
+  .directive('ssMyFutureBrainChart', myFutureBrainChart)
   .directive('ssNavTabs', navTabs)
   .directive('ssNavPanel', navPanel)
   .directive('ssPillarsDisplay', pillarsDisplay)
@@ -342,6 +353,7 @@ app
   .controller('HomeController', HomeController)
   .controller('LoginSuccessController', LoginSuccessController)
   .controller('LogoutController', LogoutController)
+  .controller('MyFutureBrainController', MyFutureBrainController)
   .controller('NavPanelController', NavPanelController)
   .controller('NeuroPerformanceController', NeuroPerformanceController)
   .controller('OverallResultsController', OverallResultsController)
