@@ -29,6 +29,15 @@ module Apis
           expect(subject.latest_assessment_num).to eq(expected)
         end
 
+        it 'takes the highest by integer value, not string value' do
+          num_entries = 21
+          assessment_data = make_stubbed_assessment_data(num_entries)
+          subject = make_subject(assessment_data)
+          expected = (num_entries - 1).to_s
+
+          expect(subject.latest_assessment_num).to eq(expected)
+        end
+
         it 'is nil if there are no historic assessments' do
           assessment_data = []
           subject = make_subject(assessment_data)

@@ -45,7 +45,7 @@ module Apis
       def entries
         @entries ||=
           assessment_list_data.map(&method(:make_entry))
-          .sort_by(&:assessment_number)
+          .sort_by { |entry| entry.assessment_number.to_i }
           .reverse
       end
 
