@@ -59,7 +59,7 @@ module OmniAuth
         # SM-SS: normal traffic?
         # SS-EMPLOYEE: employees?
         # SS-BETA: beta users?
-        'SM-SS'
+        'SS-EMPLOYEE'
       end
 
       def api

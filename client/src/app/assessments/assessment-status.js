@@ -112,7 +112,7 @@ const AssessmentStatus = function ($assessmentsAuth,
 
   const hasCompletedAssessments = function () {
     return UserAssessmentGroup.query().then((groups) => {
-      return groups.filter(function (group) {
+      return _.filter(groups, function (group) {
         return group.completed;
       }).length > 0;
     });
