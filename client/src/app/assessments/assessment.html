@@ -9,18 +9,20 @@
         <h4>The Basics About You:</h4>
 
         <div ng-repeat="question in vm.questions">
+
           <div class="row">
             <!-- TODO: determine what type of errors to show if user doesn't answer
             all the questions -->
+
             <div ng-if="question.type === 'AssessmentQuestionDate'" class="form-input-wrap col-6">
-                <label>{{question.text}}</label>
+              <label>{{question.text}}</label>
               <input type="date" name="{{question.id}}" ng-model="vm.textResponses[question.id]" required>
             </div>
             <div ng-if="question.type === 'AssessmentQuestionSelect'" class="form-input-wrap select-wrap col-6">
-                <label>{{question.text}}</label>
-                <select class="form-control" name="{{question.id}}" ng-model="vm.textResponses[question.id]" required>
-                  <option ng-repeat="option in question.answerOptions" value="{{option}}">{{option}}</option>
-              </div>
+              <label>{{question.text}}</label>
+              <select class="form-control" name="{{question.id}}" ng-model="vm.textResponses[question.id]" required>
+                <option ng-repeat="option in question.answerOptions" value="{{option}}">{{option}}</option>
+              </select>
             </div>
             <div ng-if="question.type === 'AssessmentQuestionRadio'" class="form-input-wrap radio-wrap col-12">
               <p>{{question.text}}</p>
@@ -37,9 +39,10 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <button ng-disabled="assessmentForm.$invalid" type="submit" class="btn">Submit</button>
+          </div><!-- end row -->
+        </div><!-- end ng-repeat -->
+
+        <input ng-disabled="assessmentForm.$invalid" type="submit" class="btn" value="Submit">
       </form>
     </div>
   </section>
