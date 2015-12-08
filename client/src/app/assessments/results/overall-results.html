@@ -7,7 +7,8 @@
     <section class="summary">
       <div class="scoring-info">
         <div class="score">
-          <h3>6.5<span>Overall Score</span></h3>
+          <h3 ng-if="!vm.overallScore">...<span>Calculating Your Score</span></h3>
+          <h3 ng-if="vm.overallScore">{{vm.overallScore}}<span>Overall Score</span></h3>
         </div>
         <div class="note">
 					<p>How You Compare with Other’s: 40th percentile (within your age)</p>

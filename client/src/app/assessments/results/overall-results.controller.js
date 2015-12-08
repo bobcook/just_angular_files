@@ -37,7 +37,23 @@ const OverallResultsController = function (Activity,
     });
   };
 
-  setNeuroResults().then(setLifestyleResults);
+  const scoresAvg = function (scoresHash) {
+    const numEntries = _.size(scoresHash);
+    if (numEntries === 0) { return 0; }
+
+    return _.sum(scoresHash) / numEntries;
+  };
+
+  const setOverallScore = () => {
+    const allResults =
+      _.merge({}, this.latestNeuroResults, this.latestLifestyleResults);
+
+    this.overallScore = _.round(scoresAvg(allResults), 1);
+  };
+
+  setNeuroResults()
+    .then(setLifestyleResults)
+    .then(setOverallScore)
 };
 
 export default OverallResultsController;
