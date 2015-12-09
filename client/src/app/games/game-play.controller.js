@@ -7,8 +7,8 @@ const GamePlayController = function (Game,
     this.game = response.data;
   });
 
-  // NOTE: previousUrl can be '/games', '/me/games', '/game/:id',
-  // or '/me/game/:id'
+  // NOTE: previousUrl can be '/games', '/me/games', '/games/:id',
+  // or '/me/games/:id'
   this.previousUrl = previousState.url || '/games';
 };
 
