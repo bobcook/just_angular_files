@@ -59,6 +59,30 @@
     padding-left: 15px;
     padding-right: 15px;
   }
+
+  .date-picker {
+    width: 100%;
+    display: block;
+    clear: both;
+    @include clearfix;
+
+    .form-control {
+      float: left;
+      margin: 0 1.5%
+    }
+
+    .day {
+      width: 31%;
+      margin-left: 0;
+    }
+    .month {
+      width: 31.5%;
+    }
+    .year {
+      width: 31.5%;
+      margin-right: 0;
+    }
+  }
 }
 
 .cp-assessment-results {

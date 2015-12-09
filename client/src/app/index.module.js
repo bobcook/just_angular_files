@@ -213,6 +213,7 @@ const app = angular.module('aarp-staying-sharp', [
   'ui.router.stateHelper',
   'ui.select',
   '720kb.socialshare',
+  'ngComboDatePicker',
 ]);
 
 addConstants(app);

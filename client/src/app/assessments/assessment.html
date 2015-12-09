@@ -15,7 +15,14 @@
 
           <div ng-if="question.type === 'AssessmentQuestionDate'" class="form-input-wrap col-6">
             <label>{{question.text}}</label>
-            <input type="date" name="{{question.id}}" ng-model="vm.textResponses[question.id]" required>
+            <ng-combo-date-picker
+              ng-model="vm.textResponses[question.id]"
+              ng-attrs-date='{"class": "form-control day"}'
+              ng-attrs-month='{"class": "form-control month"}'
+              ng-attrs-year='{"class": "form-control year"}'
+              class="date-picker"
+              name="{{question.id}}">
+            </ng-combo-date-picker>
           </div>
           <div ng-if="question.type === 'AssessmentQuestionSelect'" class="form-input-wrap select-wrap col-6">
             <label>{{question.text}}</label>
