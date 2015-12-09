@@ -258,6 +258,11 @@ const routerConfig = function (stateHelperProvider,
               url: '/terms-of-service',
               templateUrl: 'app/static/terms-of-service.html',
             },
+            {
+              name: 'what-is-staying-sharp',
+              url: '/what-is-staying-sharp',
+              templateUrl: 'app/static/what-is-staying-sharp.html',
+            },
           ],
         },
         {
