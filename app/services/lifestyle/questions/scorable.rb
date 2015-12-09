@@ -40,13 +40,13 @@ module Lifestyle
       # * Only processing scores for radio button questions
       # * Radio button question values are 1-(2,3,4)
       def calc_score(raw_response_value)
-        response_value = raw_response_value.to_f
-        values = answer_values.map(&:to_f)
-        max_value = values.max
-        one_point_score = 10.0 / (max_value - 1.0)
-
-        result = ((response_value - 1.0) * one_point_score)
-        result.nan? ? 0.0 : result
+        response_value = raw_response_value.to_i
+        {
+          1 => 10,
+          2 => 6.67,
+          3 => 3.33,
+          4 => 0
+        }[response_value]
       end
 
       private

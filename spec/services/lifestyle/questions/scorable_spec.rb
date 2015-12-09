@@ -80,18 +80,18 @@ module Lifestyle
             create(:assessment_question, answer_values: %w(1 2))
           end
 
-          it 'normalizes a 1 to a 0' do
+          it 'normalizes a 1 to a 10' do
             question = make_question
             subject = make_subject(question)
 
-            expect(subject.calc_score(1)).to be_within(0.01).of(0)
+            expect(subject.calc_score(1)).to be_within(0.01).of(10)
           end
 
-          it 'normalizes a 2 to a 10' do
+          it 'normalizes a 2 to a 6.67' do
             question = make_question
             subject = make_subject(question)
 
-            expect(subject.calc_score(2)).to be_within(0.01).of(10.0)
+            expect(subject.calc_score(2)).to be_within(0.01).of(6.67)
           end
         end
 
@@ -100,25 +100,25 @@ module Lifestyle
             create(:assessment_question, answer_values: %w(1 2 3))
           end
 
-          it 'normalizes a 1 to a 0' do
+          it 'normalizes a 1 to a 10' do
             question = make_question
             subject = make_subject(question)
 
-            expect(subject.calc_score(1)).to be_within(0.01).of(0)
+            expect(subject.calc_score(1)).to be_within(0.01).of(10)
           end
 
-          it 'normalizes a 2 to a 3.33' do
+          it 'normalizes a 2 to a 6.67' do
             question = make_question
             subject = make_subject(question)
 
-            expect(subject.calc_score(2)).to be_within(0.01).of(5.0)
+            expect(subject.calc_score(2)).to be_within(0.01).of(6.67)
           end
 
-          it 'normalizes a 3 to 6.67' do
+          it 'normalizes a 3 to 3.33' do
             question = make_question
             subject = make_subject(question)
 
-            expect(subject.calc_score(3)).to be_within(0.01).of(10.0)
+            expect(subject.calc_score(3)).to be_within(0.01).of(3.33)
           end
 
           context 'answers are not contiguous' do
@@ -126,25 +126,25 @@ module Lifestyle
               create(:assessment_question, answer_values: %w(1 3 4))
             end
 
-            it 'normalizes a 1 to a 0' do
+            it 'normalizes a 1 to a 10' do
               question = make_question
               subject = make_subject(question)
 
-              expect(subject.calc_score(1)).to be_within(0.01).of(0)
+              expect(subject.calc_score(1)).to be_within(0.01).of(10)
             end
 
-            it 'normalizes a 3 to 6.67' do
+            it 'normalizes a 3 to 3.33' do
               question = make_question
               subject = make_subject(question)
 
-              expect(subject.calc_score(3)).to be_within(0.01).of(6.67)
+              expect(subject.calc_score(3)).to be_within(0.01).of(3.33)
             end
 
-            it 'normalizes a 4 to 10' do
+            it 'normalizes a 4 to 0' do
               question = make_question
               subject = make_subject(question)
 
-              expect(subject.calc_score(4)).to be_within(0.01).of(10.0)
+              expect(subject.calc_score(4)).to be_within(0.01).of(0)
             end
           end
         end
@@ -154,32 +154,32 @@ module Lifestyle
             create(:assessment_question, answer_values: %w(1 2 3 4))
           end
 
-          it 'normalizes a 1 to a 0' do
+          it 'normalizes a 1 to a 10' do
             question = make_question
             subject = make_subject(question)
 
-            expect(subject.calc_score(1)).to be_within(0.01).of(0)
+            expect(subject.calc_score(1)).to be_within(0.01).of(10)
           end
 
-          it 'normalizes a 2 to a 3.33' do
+          it 'normalizes a 2 to a 6.67' do
             question = make_question
             subject = make_subject(question)
 
-            expect(subject.calc_score(2)).to be_within(0.01).of(3.33)
+            expect(subject.calc_score(2)).to be_within(0.01).of(6.67)
           end
 
-          it 'normalizes a 3 to 6.67' do
+          it 'normalizes a 3 to 3.33' do
             question = make_question
             subject = make_subject(question)
 
-            expect(subject.calc_score(3)).to be_within(0.01).of(6.67)
+            expect(subject.calc_score(3)).to be_within(0.01).of(3.33)
           end
 
-          it 'normalizes a 4 to 10.0' do
+          it 'normalizes a 4 to 0' do
             question = make_question
             subject = make_subject(question)
 
-            expect(subject.calc_score(4)).to be_within(0.01).of(10.0)
+            expect(subject.calc_score(4)).to be_within(0.01).of(0)
           end
         end
       end
