@@ -11,7 +11,7 @@ module AssessmentResults
     describe '#ready?' do
       it 'calls Apis::MBS::Endpoints#all_assessments' do
         subject = make_subject(user)
-        endpoints = double
+        endpoints = double(assessment_result: {})
         assessment_history = double(body: {})
         allow(subject).to receive(:mbs_api).and_return(endpoints)
 
