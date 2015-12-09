@@ -10,12 +10,14 @@ module Apis
       def self.from_assessment_data(data)
         data = data.body if data.respond_to?(:body)
 
-        assessment_list_data =
+        data =
           data
           .fetch('assessment_num_status_contract', {})
           .fetch('assessment_num_xml', {})
           .fetch('assessment', {})
           .fetch('assessment_data', {})
+
+        assessment_list_data = data.is_a?(Array) ? data : [data]
 
         new(assessment_list_data)
       end
