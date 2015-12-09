@@ -16,7 +16,7 @@ const ActivityPagePresenter = function ($filter,
       pluralResourceName: 'activities',
       saveButtonDisplayContent: {
         unsaved: 'Save & Work on This',
-        saved: 'Working on It',
+        saved: 'Stop Working on This',
       },
     };
   };
