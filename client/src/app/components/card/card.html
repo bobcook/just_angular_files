@@ -1,4 +1,7 @@
-<div class="cp-card {{vm.cardClasses}}" style="background-image: url('{{vm.cardImage}}'); background-repeat: no-repeat;">
+<div
+  class="cp-card {{vm.cardClasses}}"
+  ng-style="{'background-image':'url({{vm.cardImage}})'}">
+
   <a class="card-link" ui-sref="{{vm.resourcePath}}"></a>
   <div class="color-fill"></div>
   <section>
@@ -6,7 +9,7 @@
       <header>
         <h5>{{vm.upperLeft}}</h5>
         <span ng-if="vm.upperRight">{{vm.upperRight}}</span>
-        <img ng-if="vm.isGame" src="http://placehold.it/75x75" alt="">
+        <img ng-if="vm.isGame" src="{{vm.cardImage}}" alt="">
       </header>
       <article>
         <h4><a ui-sref="{{vm.resourcePath}}">{{vm.cardTitle}}</a></h4>

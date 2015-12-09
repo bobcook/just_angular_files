@@ -232,7 +232,7 @@
         }
       }
     }
-    
+
     .option-icons {
       float: right;
     }
@@ -524,7 +524,7 @@
         margin-top: 7px;
       }
     }
-    
+
     .tracker li > span {
       width: 32px;
       display: inline-block;
@@ -591,19 +591,20 @@
     padding-top: 0;
     height: auto;
     border: 1px solid $grey-border;
-    
+    background-image: none !important;
+
     @media screen and (min-width: 768px) {
       width: 49%;
       margin-left: 2%;
       float: left;
     }
-    
+
     &:nth-child(odd) {
       @media screen and (min-width: 768px) {
         margin-left: 0;
       }
     }
-    
+
     > section {
       padding: 0;
     }
@@ -621,6 +622,8 @@
         position: absolute;
         right: 15px;
         border-radius: 50%;
+        max-width: 75px;
+        max-height: 75px;
       }
     }
 
