@@ -20,6 +20,33 @@ const routerConfig = function (stateHelperProvider,
     });
   };
 
+  const assessmentResultsStates = function () {
+    return [
+      {
+        name: 'overall',
+        url: '/overall',
+        templateUrl: 'app/assessments/results/overall-results.html',
+        controller: 'OverallResultsController',
+        controllerAs: 'vm',
+        children: [
+          modalStateHelperProvider({
+            name: 'retake-assessment',
+            templateUrl: 'app/assessments/retake-assessment-modal.html',
+            controller: 'RetakeAssessmentModalController',
+            controllerAs: 'vm',
+          }),
+        ],
+      },
+      {
+        name: 'neuroperformance',
+        url: '/neuroperformance',
+        templateUrl: 'app/assessments/results/neuroperformance.html',
+        controller: 'NeuroPerformanceController',
+        controllerAs: 'vm',
+      },
+    ];
+  };
+
   stateHelperProvider
     .state({
       name: 'application',
@@ -112,30 +139,7 @@ const routerConfig = function (stateHelperProvider,
           name: 'assessment-results',
           url: '/assessment-results',
           template: '<div ui-view></div>',
-          children: [
-            {
-              name: 'overall',
-              url: '/overall',
-              templateUrl: 'app/assessments/results/overall-results.html',
-              controller: 'OverallResultsController',
-              controllerAs: 'vm',
-              children: [
-                modalStateHelperProvider({
-                  name: 'retake-assessment',
-                  templateUrl: 'app/assessments/retake-assessment-modal.html',
-                  controller: 'RetakeAssessmentModalController',
-                  controllerAs: 'vm',
-                }),
-              ],
-            },
-            {
-              name: 'neuroperformance',
-              url: '/neuroperformance',
-              templateUrl: 'app/assessments/results/neuroperformance.html',
-              controller: 'NeuroPerformanceController',
-              controllerAs: 'vm',
-            },
-          ],
+          children: assessmentResultsStates(),
         },
         {
           name: 'game',
@@ -265,6 +269,7 @@ const routerConfig = function (stateHelperProvider,
               templateUrl: 'app/me/assessments/user-assessments.html',
               controller: 'UserAssessmentsController',
               controllerAs: 'vm',
+              children: assessmentResultsStates(),
             },
             {
               name: 'game',
