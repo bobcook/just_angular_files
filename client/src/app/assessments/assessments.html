@@ -15,37 +15,72 @@
 <div class="cp-assessment-intro">
   <section class="container">
 
-    <div ng-switch="vm.buttonState">
-      <a ng-switch-when="Questionnaire" class="btn" href="#" ui-sref="application.assessments-questionnaire({id: vm.nextAssessmentId })">{{vm.buttonText}}</a>
-      <a ng-switch-when="MBS" class="btn" href="#" ng-click="vm.authForAssessments()">{{vm.buttonText}}</a>
-    </div>
-
     <div class="assessment-description">
 
-      <h1>About the Brain Health Assessment</h1>
+      <h2>About the Brain Health Assessment</h2>
 
-      <p>MyBrain Assessment is a scientifically validated tool to assess how your brain functions. It is powered by Brain Resource® & the Brain Resource® International Database. Your results from the assessment will be automatically uploaded and scored against your peers in the database (same age, gender & education level).</p>
+      <div ng-switch="vm.buttonState">
+        <a ng-switch-when="Questionnaire" class="btn" href="#" ui-sref="application.assessments-questionnaire({id: vm.nextAssessmentId })">{{vm.buttonText}}</a>
+        <a ng-switch-when="MBS" class="btn" href="#" ng-click="vm.authForAssessments()">{{vm.buttonText}}</a>
+      </div>
 
+      <p>
+        You are about to take a very important step toward maintaining good brain health. Taking the Staying Sharp Brain Health Assessment will provide insight into how your brain does its work, including storing memories, maintaining attention and performing other cognitive functions.
+      </p>
 
-      <p>To take the assessment, you need:</p>
+      <p>
+        Over about 20-30 minutes, you will answer questions and perform tasks developed by scientists that will help you understand how your brain functions in different areas and how your lifestyle supports your brain health. After you complete the assessment, you will receive a detailed results report and personalized recommendations that can help you improve your brain health over time.
+      </p>
+
+      <h3>What does the Brain Health Assessment measure?</h3>
+
+      <p>
+        The same way you can clock how fast you run, weigh how heavy you are, or evaluate eyesight and hearing, the assessment has been formulated by scientists to measure how your brain works. Your brain health score will uncover how your brain performs across six neuroperformance indicators that measure cognitive performance, including:
+      </p>
+
       <ul>
-        <li>30 minutes of uninterrupted time</li>
-        <li>One of our supported browsers
-          <ul>
-            <li>Chrome</li>
-            <li>Safari</li>
-            <li>Firefox</li>
-            <li>Internet Explorer</li>
-          </ul>
-        </li>
+        <li>Working Memory</li>
+        <li>Recognition Memory</li>
+        <li>Executive Function</li>
+        <li>Sustained Attention</li>
+        <li>Processing Speed</li>
+        <li>Cognitive Flexibility</li>
       </ul>
 
-    </div>
+      <p>
+        Your overall score also takes into account your age and the elements of your lifestyle that support and improve brain health. Additionally, individual scores within each neuroperformance category provide deeper insight into your brain’s strengths and opportunities for growth.
+      </p>
+
+      <h3>How do I get started?</h3>
+
+      <p>
+        Simply make yourself comfortable in a spot where you can concentrate for 20 to 30 minutes. It’s best to take the assessment on a computer as the neuroperformance section of the assessment is not yet available on mobile devices. If you are on a mobile device, you can complete the multiple choice questions now and we’ll save your progress so you can do the neuroperformance section when you have access to a computer.
+      </p>
+
+      <p>
+        The assessment begins with a series of simple multiple choice lifestyle questions, followed by a series of 6 interactive neuroperfomance tests. Then a few more quick multiple choice questions before you get to see your results!
+      </p>
+
+      <h3>The Assessment Results</h3>
+
+      <p>
+        The report you receive once you complete the assessment will illustrate your strengths and where there is room to improve, with all scores based on your current age.
+      </p>
+
+      <p>
+        The recommendations we provide are prioritized according to your brain health profile to help you effectively boost and maintain brain health. Articles, games, recipes, activities and challenges: everything we offer is customized by your assessment results and backed by the latest brain science.
+      </p>
 
 
-    <div ng-switch="vm.buttonState">
-      <a ng-switch-when="Questionnaire" class="btn" href="#" ui-sref="application.assessments-questionnaire({id: vm.nextAssessmentId })">{{vm.buttonText}}</a>
-      <a ng-switch-when="MBS" class="btn" href="#" ng-click="vm.authForAssessments()">{{vm.buttonText}}</a>
+      <div ng-switch="vm.buttonState">
+        <a ng-switch-when="Questionnaire" class="btn" href="#" ui-sref="application.assessments-questionnaire({id: vm.nextAssessmentId })">{{vm.buttonText}}</a>
+        <a ng-switch-when="MBS" class="btn" href="#" ng-click="vm.authForAssessments()">{{vm.buttonText}}</a>
+      </div>
+
+      <p>
+        <small>The Brain Health Assessment and content are offered for informational purposes and to educate subscribers on brain health.  Please seek the advice of a physician for diagnosis and treatment of specific medical needs and health conditions.</small>
+      </p>
+
     </div>
 
   </section>

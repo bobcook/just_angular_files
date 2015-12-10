@@ -7,13 +7,10 @@
   }
 
   .assessment-description {
-    padding: 15px 0;
-    margin: 30px auto;
-    border-top: 1px solid $grey-border;
-    border-bottom: 1px solid $grey-border;
+    margin: 15px auto;
 
-    h1 {
-      font-size: 24px;
+    .btn {
+      margin: 30px 0 36px;
     }
 
     ul {
