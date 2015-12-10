@@ -17,16 +17,14 @@
 
   .logo {
     text-align: center;
+    display: block;
+    width: 161px;
+    height: 42px;
 
     @media screen and (min-width: 768px) {
       float: left;
       padding-left: 0;
       text-align: left;
-    }
-
-    img {
-      width: 168px;
-      height: 47px;
     }
   }
 

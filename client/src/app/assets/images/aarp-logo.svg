@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="64 -9 161.4 42" style="enable-background:new 64 -9 161.4 42;" xml:space="preserve">
+<svg version="1.1" x="0px" y="0px" viewBox="64 -9 161.4 42">
 <style type="text/css">
 	.st0{fill:#90837A;}
 	.st1{fill:#FFC50A;}
@@ -158,4 +155,5 @@
 		<path class="st5" d="M222.8,3.1h0.6l0.6,1.7l0.6-1.7h0.6v2.4H225v-2l0,0l-0.7,2H224l-0.7-2l0,0v2h-0.4L222.8,3.1L222.8,3.1z"/>
 	</g>
 </g>
+<image src="app/assets/images/aarp-logo.png" xlink:href="">
 </svg>

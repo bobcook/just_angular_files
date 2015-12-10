@@ -14,28 +14,13 @@
   }
 
   .logo {
+    display: block;
     width: auto;
-    padding: 6px 0;
+    margin: 9px 0 8px;
     cursor: pointer;
     float: left;
-    width: 55%;
-
-    h1 {
-      /* Fallback for browsers without svg support */
-      background-image: url("assets/images/aarp-logo.png");
-      background-image: url("assets/images/aarp-logo.svg"), linear-gradient(transparent, transparent);
-      background-position: left center;
-      background-size: 161px 42px;
-      width: 161px;
-      height: 42px;
-      padding: 0;
-      margin: 0;
-      @include hide-text();
-    }
-
-    a {
-      display: block;
-    }
+    width: 161px;
+    height: 42px;
   }
 }
 
