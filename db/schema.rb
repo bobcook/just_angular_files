@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202221600) do
+ActiveRecord::Schema.define(version: 20151210022624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,9 +92,11 @@ ActiveRecord::Schema.define(version: 20151202221600) do
     t.string   "external_recommendation_id"
     t.integer  "question_recommendations_id"
     t.string   "type"
+    t.integer  "pillar_id"
   end
 
   add_index "assessment_questions", ["assessment_id"], name: "index_assessment_questions_on_assessment_id", using: :btree
+  add_index "assessment_questions", ["pillar_id"], name: "index_assessment_questions_on_pillar_id", using: :btree
   add_index "assessment_questions", ["question_recommendations_id"], name: "index_assessment_questions_on_question_recommendations_id", using: :btree
 
   create_table "assessment_responses", force: :cascade do |t|
@@ -290,6 +292,7 @@ ActiveRecord::Schema.define(version: 20151202221600) do
   add_foreign_key "activity_tracker_responses", "activity_tracker_questions"
   add_foreign_key "activity_tracker_responses", "user_activity_periods"
   add_foreign_key "assessment_questions", "assessments"
+  add_foreign_key "assessment_questions", "pillars"
   add_foreign_key "assessment_responses", "assessment_questions"
   add_foreign_key "assessment_responses", "user_assessments"
   add_foreign_key "reviews", "users"

@@ -1,6 +1,7 @@
 class AssessmentQuestion < ActiveRecord::Base
   has_many :assessment_responses
   has_many :question_recommendations, dependent: :destroy
+  belongs_to :pillar
 
   has_many :recommended_recipes,
            through: :question_recommendations,

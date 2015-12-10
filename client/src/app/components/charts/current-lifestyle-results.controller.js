@@ -16,7 +16,7 @@ const CurrentLifestyleResultsController = function () {
           lineColor: '#c0c1c2',
           categories: [
             'Nourish',
-            'Learn',
+            'Discover',
             'Connect',
             'Move',
             'Relax',

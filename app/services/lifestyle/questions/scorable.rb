@@ -19,16 +19,7 @@ module Lifestyle
       # * Pillar is determined by looking at all recommended content
       #   and getting the pillar in majority
       def pillar
-        @pillar ||= begin
-          (_, pillar_group) =
-            question
-            .recommended_content
-            .flat_map(&:pillars)
-            .group_by(&:id)
-            .max_by(&:count)
-
-          pillar_group.first
-        end
+        @pillar ||= question.pillar
       end
 
       def score

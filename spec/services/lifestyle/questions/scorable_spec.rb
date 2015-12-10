@@ -27,50 +27,12 @@ module Lifestyle
       end
 
       describe '#pillar' do
-        it 'is the most common pillar for all QuestionRecommendations' do
-          first_pillar = Pillar.first
-          second_pillar = Pillar.second
-
-          first_content = create(
-            :activity,
-            pillars: [first_pillar, second_pillar]
-          )
-          second_content = create(
-            :recipe,
-            pillars: [first_pillar]
-          )
-          third_content = create(
-            :basic_article,
-            pillars: [first_pillar]
-          )
-          recommendables = [first_content, second_content, third_content]
-
-          question = create(:assessment_question)
-          recommendables.each { |r| question.recommend(r) }
+        it 'takes the pillar from the question' do
+          pillar = create(:pillar)
+          question = create(:assessment_question, pillar: pillar)
 
           subject = make_subject(question)
-          expect(subject.pillar).to eql(first_pillar)
-        end
-
-        it 'takes the first pillar when there is a tie' do
-          first_pillar = Pillar.first
-          second_pillar = Pillar.second
-
-          first_content = create(
-            :activity,
-            pillars: [first_pillar, second_pillar]
-          )
-          second_content = create(
-            :recipe,
-            pillars: [first_pillar, second_pillar]
-          )
-          recommendables = [first_content, second_content]
-
-          question = create(:assessment_question)
-          recommendables.each { |r| question.recommend(r) }
-
-          subject = make_subject(question)
-          expect(subject.pillar).to eql(first_pillar)
+          expect(subject.pillar).to eql(pillar)
         end
       end
 
