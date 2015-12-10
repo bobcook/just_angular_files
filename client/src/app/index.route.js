@@ -52,7 +52,7 @@ const routerConfig = function (stateHelperProvider,
       name: 'application',
       templateUrl: 'app/layouts/application.html',
       // NOTE: can access current user in the controller using currentUser
-      // or $rootsScope.$currentUser
+      // or $rootScope.$currentUser
       resolve: {
         currentUser: function ($loadCurrentUser) {
           return $loadCurrentUser();
@@ -142,6 +142,22 @@ const routerConfig = function (stateHelperProvider,
           children: assessmentResultsStates(),
         },
         {
+          name: 'employee',
+          url: '/employee',
+          template: '',
+          onEnter: function ($vanityUrlCheck) {
+            $vanityUrlCheck.redirectIfVanityUrl();
+          },
+        },
+        {
+          name: 'employees',
+          url: '/employees',
+          template: '',
+          onEnter: function ($vanityUrlCheck) {
+            $vanityUrlCheck.redirectIfVanityUrl();
+          },
+        },
+        {
           name: 'game',
           url: '/game/:id',
           templateUrl: 'app/games/game.html',
@@ -183,6 +199,9 @@ const routerConfig = function (stateHelperProvider,
           children: [
             pillarFilterModal(),
           ],
+          onEnter: function ($vanityUrlCheck) {
+            $vanityUrlCheck.redirectIfVanityUrl();
+          },
         },
         {
           name: 'login-failure',

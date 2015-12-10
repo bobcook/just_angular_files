@@ -79,6 +79,7 @@ import dependentMemoize from './common/services/dependent-memoize.js';
 import FutureBrainStats from './components/charts/future-brain-stats.js';
 import MBSAssessmentList from './assessments/mbs-assessment-list.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
+import $vanityUrlCheck from './common/services/vanity-url-check.js';
 
 // directives
 import activityTracker from './components/activity-tracker/activity-tracker.js';
@@ -86,6 +87,7 @@ import activityTrackerBinary from
   './components/activity-tracker/binary/binary.js';
 import activityTrackerQuantity from
   './components/activity-tracker/quantity/quantity.js';
+import autoRedirect from './common/directives/auto-redirect.js';
 import card from './components/card/card.js';
 import cards from './components/cards/cards.js';
 import cardActivityTracker from
@@ -281,6 +283,7 @@ app
   .factory('$postHref', $postHref)
   .factory('$promise', $promise)
   .factory('$presenterUtils', $presenterUtils)
+  .factory('$vanityUrlCheck', $vanityUrlCheck)
   .factory('authInterceptor', authInterceptor)
   .factory('AssessmentStatus', AssessmentStatus)
   .factory('AssessmentResultQueries', AssessmentResultQueries)
@@ -294,6 +297,7 @@ app
   .directive('ssActivityTracker', activityTracker)
   .directive('ssActivityTrackerBinary', activityTrackerBinary)
   .directive('ssActivityTrackerQuantity', activityTrackerQuantity)
+  .directive('ssAutoRedirect', autoRedirect)
   .directive('ssCard', card)
   .directive('ssCardActivityTracker', cardActivityTracker)
   .directive('ssCards', cards)

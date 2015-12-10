@@ -1,14 +1,24 @@
-const HomeController = function (ExploreContent,
-                                 AssessmentStatus) {
+const HomeController = function (AssessmentStatus,
+                                 ExploreContent,
+                                 $rootScope) {
   'ngInject';
 
-  AssessmentStatus.hasCompletedAssessments().then((result) => {
-    this.hasCompletedAssessments = result;
-  });
+  const currentUser = $rootScope.$currentUser;
 
- // pass values to directive
+  const setHasCompletedAssessments = () => {
+    return AssessmentStatus.hasCompletedAssessments().then((result) => {
+      this.hasCompletedAssessments = result;
+    });
+  };
+
   this.selectedPillar = null; // Will be overwritten by pillar filters
   this.resource = ExploreContent;
+
+  // TODO: change once actual auth / permissions in place?
+  //
+  // Need to allow non-logged in users to see the homepage, but
+  // hasCompletedAssessments is a restricted route
+  if (currentUser.isLoggedIn) { setHasCompletedAssessments(); }
 };
 
 export default HomeController;
