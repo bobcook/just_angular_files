@@ -1,0 +1,123 @@
+.cp-additional-content {
+  background: $white;
+
+  &.border-bottom {
+    .container {
+      border-bottom: 1px solid $grey-border;
+    }
+  }
+
+  article {
+    padding: 15px 0 25px;
+    @include clearfix;
+  }
+
+  header {
+    padding: 15px 0 25px;
+  }
+
+  .width-80, p {
+    width: 100%;
+
+    @media screen and (min-width: 768px) {
+      width: 81%;
+    }
+  }
+
+  .copy-w-img {
+    border-bottom: 1px solid $grey-border;
+    padding: 20px 0 20px 0;
+
+    @media screen and (min-width: 768px) {
+      padding: 20px 0 40px 0;
+    }
+
+    h3 {
+      margin: 0 0 15px 0;
+    }
+
+    .left {
+      width: 100%;
+      float: left;
+
+      @media screen and (min-width: 768px) {
+        width: 65%;
+        margin-right: 3%;
+      }
+    }
+
+    .right {
+      width: 100%;
+      float: left;
+
+      @media screen and (min-width: 768px) {
+        width: 32%;
+      }
+    }
+
+    img {
+      @media screen and (min-width: 768px) {
+        width: 100%;
+      }
+    }
+  }
+
+  .copy-w-icons {
+    padding: 35px 0 12px;
+
+    @media screen and (min-width: 768px) {
+      padding: 40px 0;
+    }
+
+    h3 {
+      margin: 0 0 15px 0;
+    }
+
+    ul {
+      padding: 10px 0;
+      list-style: none;
+    }
+
+    li {
+      padding: 10px 0;
+      clear: both;
+    }
+
+    .pillar-info {
+      width: 70%;
+      float: left;
+
+      @media screen and (min-width: 768px) {
+        width: 92%;
+      }
+
+      h4 {
+        margin: 0;
+      }
+    }
+
+    .icon-block-wrap {
+      @media screen and (min-width: 768px) {
+        width: 8%;
+      }
+    }
+
+    .icon-block {
+      float: left;
+      padding: 14px 0;
+      text-align: center;
+      width: 50px;
+      margin-right: 20px;
+      border-radius: 2px;
+    }
+
+    [class^="icon-"], [class*=" icon-"] {
+      font-size: 38px;
+      line-height: 22px;
+    }
+  }
+
+  .explore {
+    padding-top: 40px;
+  }
+}

@@ -135,12 +135,36 @@
   content: "\e61b";
 }
 
-.icon-plus:before {
-  content: "\e61d";
+.icon-relax:before {
+  content: "\e610";
+}
+
+.icon-discover:before {
+  content: "\e611";
+}
+
+.icon-move:before {
+  content: "\e612";
+}
+
+.icon-nourish:before {
+  content: "\e613";
 }
 
 .icon-print:before {
   content: "\e61c";
+}
+
+.icon-connect:before {
+  content: "\e614";
+}
+
+.icon-plus:before {
+  content: "\e61d";
+}
+
+.icon-games:before {
+  content: "\e900";
 }
 
 .icon-delete:hover,
@@ -178,6 +202,26 @@
 }
 
 .icon-block.managing-stress {
+  background-color: $yellow;
+}
+
+.icon-block.connect {
+  background-color: $grey-blue;
+}
+
+.icon-block.nourish {
+  background-color: $fountain-blue;
+}
+
+.icon-block.move {
+  background-color: $red;
+}
+
+.icon-block.discover {
+  background-color: $orange;
+}
+
+.icon-block.relax {
   background-color: $yellow;
 }
 
