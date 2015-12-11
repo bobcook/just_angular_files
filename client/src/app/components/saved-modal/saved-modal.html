@@ -1,27 +1,24 @@
 <ss-modal>
-  <div class="content">
+  <div class="content saved">
     <div class="header">
-      <a href="#" aria-label="Close" ng-click="vm.closeModal()">
-        <span class="icon-close" ></span>
-      </a>
+      <button class="close" aria-label="Close" ng-click="vm.closeModal()">
+        <span aria-hidden="true">×</span>
+      </button>
       <div class="header-content">
-        <h5>{{vm.resourceName | capitalize}} Saved</h5>
-        <h3>{{vm.resourceTitle}}</h3>
-        <span ng-if="vm.durationText" class="effort">{{vm.durationText}}</span>
+        <h3>{{vm.resourceName | capitalize}} Saved</h3>
       </div>
     </div>
     <div class="body">
-      <p>This {{vm.resourceName | downcase}} has been stored in the “Saved {{vm.pluralResourceName | capitalize}}” section of My Staying Sharp.</p>
+      <p>Find it any time in “Saved {{vm.pluralResourceName | capitalize}} section of My Staying Sharp.</p>
     </div>
-    <hr>
     <div class="footer">
-      <a
+      <button
         ng-if="vm.explorePath"
         ui-sref="{{vm.explorePath}}"
         class="btn">
 
         Explore More {{vm.pluralResourceName | capitalize}}
-      </a>
+      </button>
       <a
         ng-if="vm.stayingSharpPath"
         ui-sref="{{vm.stayingSharpPath}}">

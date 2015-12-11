@@ -1,54 +1,192 @@
-$modal-background-color: #fff;
-$modal-cellophane-color: #000;
-$modal-margin-top: 100px;
-$modal-opacity: 0.4;
-$modal-transition-duration: 0.25s;
-$modal-width: 800px;
-
 .modal {
-  background-color: $modal-background-color;
+  border-radius: 2px;
+  border: none;
+  background-color: $white;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-  left: calc(50% - #{$modal-width / 2});
-  padding: 10px 20px;
   position: fixed;
-  top: $modal-margin-top;
-  width: $modal-width;
-  z-index: 100;
+  width: auto;
+  margin: 10px;
+  z-index: 601;
+  top: 0;
+  left: 0;
+
+  @media (min-width: 768px) {
+    width: 600px;
+    margin: 30px auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media screen and (min-width: 992px) {
+    min-width: 820px;
+  }
+
+  .header {
+    border-bottom: 0;
+    padding: 20px 20px 10px 20px;
+    position: relative;
+
+    .close {
+      font-size: 30px;
+      position: absolute;
+      right: 19px;
+      top: 11px;
+      font-weight: normal;
+      color: $metal;
+      padding: 0;
+      opacity: 1;
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      -webkit-appearance: none;
+
+      &:hover, &:focus {
+        color: $grey-medium;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+
+    .header-content {
+      width: 90%;
+    }
+
+    h5 {
+      margin-top: 6px;
+    }
+
+    h3 {
+      margin-top: 5px;
+      margin-bottom: 8px;
+    }
+  }
+
+  .body {
+    padding: 0px 0px 8px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+  .right-footer {
+    margin-top: 5px;
+
+    @media screen and (min-width: 768px) {
+      float: right;
+    }
+
+    span {
+      padding-left: 0;
+      padding-right: 0;
+
+      &:first-of-type {
+        padding-left: 0;
+      }
+    }
+  }
+
+  .footer {
+    text-align: left;
+    border-top: 0;
+    padding: 25px 0px 15px 0px;
+    margin-top: 21px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-top: 1px solid $grey-border;
+    clear: both;
+
+    a {
+      display: block;
+
+      @media screen and (min-width: 768px) {
+        display: inline;
+      }
+    }
+
+    .btn {
+      margin-top: -5px;
+      margin-bottom: 15px;
+
+      @media screen and (min-width: 768px) {
+        margin-bottom: 0px;
+      }
+    }
+
+    .checkbox-wrap {
+      text-align: right;
+    }
+
+    .left-margin {
+      margin-left: 20px;
+    }
+
+    span {
+      padding: 0 22px;
+    }
+  }
+
+  .content {
+    &.saved {
+      .header-content {
+        margin-bottom: 10px;
+        width: 90%;
+      }
+
+      .btn {
+        margin-right: 22px;
+      }
+
+      input[type="checkbox"] {
+        margin-left: 6px;
+      }
+    }
+  }
 }
 
 .modal-cellophane {
-  background-color: $modal-cellophane-color;
+  background-color: $black;
   height: 100%;
   left: 0%;
-  opacity: $modal-opacity;
+  opacity: 0.4;
   position: fixed;
   top: 0%;
   width: 100%;
-  z-index: 90;
+  z-index: 600;
 }
 
 ss-modal.ng-enter {
-  animation: fade-in $modal-transition-duration ease-in-out;
+  animation: fade-in 300ms ease-in-out;
 
   .modal {
-    animation: modal-slide-in $modal-transition-duration ease-out;
+    animation: modal-slide-in 300ms ease-out;
   }
 }
 
 ss-modal.ng-leave {
-  animation: fade-out $modal-transition-duration ease-in-out;
+  animation: fade-out 300ms ease-in-out;
 
   .modal {
-    animation: modal-slide-out $modal-transition-duration ease-in;
+    animation: modal-slide-out 300ms ease-in;
   }
 }
 
 @keyframes modal-slide-in {
-  from { top: -20%; }
-  to { top: $modal-margin-top; }
+  from {
+    top: -20%;
+  }
+  to {
+    top: 0;
+  }
 }
 
 @keyframes modal-slide-out {
-  from { top: $modal-margin-top; }
-  to { top: -20%; }
+  from {
+    top: 0;
+  }
+  to {
+    top: -20%;
+  }
 }
