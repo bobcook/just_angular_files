@@ -7,6 +7,7 @@ const activityTracker = function () {
     bindToController: true,
     scope: {
       activity: '=',
+      isSaved: '=ssIsSaved'
     },
   };
 };
