@@ -32,14 +32,14 @@
 </div>
 
 <div class="cp-article-partner">
-  <section class="container">
+  <section class="container" ng-show="vm.article.contentSourceBrandingImage">
     <div class="left">
       <!-- TODO: Text for article partner -->
       <p>An Article from our partner:</p>
     </div>
     <div class="right">
       <!-- TODO: Image/logo for article partner -->
-      <img src="app/assets/images/article-partner-example.png" alt="">
+      <img ng-src="{{vm.article.contentSourceBrandingImage}}" alt="">
     </div>
     <hr>
   </section>

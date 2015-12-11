@@ -6,12 +6,18 @@ class ArticleSerializer < ActiveModel::Serializer
   attributes :id, :card_title, :card_image, :title, :type, :body_image,
              :description, :duration, :effort, :mast_head_image,
              :mast_head_title, :section1_body, :section2_body,
-             :source_materials_citation
+             :source_materials_citation, :content_source_branding_image
 
   has_many :pillars
 
+  CMS_BASE = 'http://www.aarp.org'
+
   def body_image
     object.payload['bodyImage']
+  end
+
+  def content_source_branding_image
+    common.send(:image_url, object.payload['contentSourceBrandingImage'])
   end
 
   def duration
