@@ -2,7 +2,7 @@
   <div class="container">
 
     <header>
-      <h3>{{ vm.recommendPercentage() }} Liked This:</h3>
+      <h3>{{ vm.recommendPercentage() }} Liked This</h3>
 
       <form ng-hide="vm.userHasReviewed()" ng-submit="vm.submitReview()">
 
@@ -21,20 +21,5 @@
         <button class="btn" type="submit">Submit Review</button>
       </form>
     </header>
-
-    <article class="review" ng-repeat="review in vm.reviews">
-      <h4>{{review.user.firstName}} {{review.user.lastName}}</h4>
-      <footer>
-        <p ng-if="review.recommend">
-          <span class="icon-recommend"></span>
-          Yes, I liked this
-        </p>
-        <p ng-if="!review.recommend">
-          <span class="icon-dislike"></span>
-          No, I disliked it
-        </p>
-      </footer>
-    </article>
-
   </div>
 </div>

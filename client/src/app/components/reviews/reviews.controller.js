@@ -2,12 +2,13 @@ const ReviewsController = function ($stateParams, $rootScope) {
   'ngInject';
 
   const contentName = this.resource.contentName.toLowerCase();
+  let reviews;
 
   // display all reviews
   this.reviewResource
   .query({}, { [ `${contentName}Id` ]: $stateParams.id })
-  .then((reviews) => {
-    this.reviews = reviews;
+  .then((data) => {
+    reviews = data;
   });
 
   // review the resource
@@ -19,27 +20,25 @@ const ReviewsController = function ($stateParams, $rootScope) {
     .create()
     .then((newReview) => {
       newReview.user = {};
-      newReview.user.firstName = $rootScope.$currentUser.firstName;
-      newReview.user.lastName = $rootScope.$currentUser.lastName;
       newReview.user.id = $rootScope.$currentUser.id;
-      this.reviews.push(newReview);
+      reviews.push(newReview);
     });
   };
 
   // check if user has reviewed the resource
   this.userHasReviewed = () => {
-    if (!this.reviews || this.reviews.length === 0) { return false; }
-    return this.reviews.some((review) => {
+    if (!reviews || reviews.length === 0) { return false; }
+    return reviews.some((review) => {
       return review.user.id === $rootScope.$currentUser.id;
     });
   };
 
   this.recommendPercentage = () => {
-    if (!this.reviews) { return null; }
+    if (!reviews) { return null; }
 
-    const results = this.reviews.filter(function (review) {
+    const results = reviews.filter(function (review) {
       return review.recommend;
-    }).length / this.reviews.length;
+    }).length / reviews.length;
 
     return formatPercent(results);
   };
