@@ -30,6 +30,9 @@ const $vanityUrlCheck = function (ApiRoutes,
     'http://staging.aarp-staying-sharp.divshot.io',
     'http://staging.aarp-staying-sharp.divshot.io/employee',
     'http://staging.aarp-staying-sharp.divshot.io/employees',
+    'http://localhost:9000',
+    'http://localhost:9000/employee',
+    'http://localhost:9000/employees',
   ];
 
   const userLoggedIn = function () {
@@ -68,12 +71,18 @@ const $vanityUrlCheck = function (ApiRoutes,
 
   const redirectIfVanityUrl = function () {
     const currentUrl = $location.absUrl();
+    console.log(currentUrl);
+    const redirectUrl =
+      _.includes(currentUrl, 'employee') ?
+      `${ApiRoutes.AARP_AUTH}?promo=SS-EMPLOYEE` :
+      `${ApiRoutes.AARP_AUTH}?promo=SM-SS`;
+
 
     console.log(`Attempting redirect to ${LOGIN_URL}`);
 
     if (isVanityUrl(currentUrl) && !userLoggedIn()) {
       console.log('Check passed; redirecting');
-      $postHref(LOGIN_URL, {});
+      $postHref(redirectUrl, {});
     }
   };
 

@@ -1,7 +1,7 @@
 const TopNavController = function (ApiRoutes) {
   'ngInject';
 
-  this.loginUrl = ApiRoutes.AARP_AUTH;
+  this.loginUrl = `${ApiRoutes.AARP_AUTH}?promo=SM-SS`;
 
   this.isMenuOpen = false;
   this.isSearchOpen = false;
