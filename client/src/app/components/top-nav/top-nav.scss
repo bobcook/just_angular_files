@@ -124,6 +124,10 @@
 .global-header.logged-in .icon-search-container {
   border-left: none;
 }
+// TODO: Remove when search is added back
+.global-header.logged-in .navbar-toggle {
+  border-left: none;
+}
 
 .search-bar {
   background: $white;
