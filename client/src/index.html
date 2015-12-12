@@ -6,7 +6,40 @@
     <title>AARP Staying Sharp</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <script src="/__/env.js"></script>
+    <script>
+      (function(window){
+        'use strict';
+
+        const envVars = {
+          local: {
+            'API_URL': 'http://localhost:3000',
+          },
+          dev: {
+            'API_URL': 'https://aarp-staying-sharp-stg.herokuapp.com',
+          },
+          staging: {
+            'API_URL': 'https://aarp-staying-sharp-stg.herokuapp.com',
+          },
+          production: {
+            'API_URL': 'https://aarp-staying-sharp-prod.herokuapp.com',
+          },
+        };
+
+        const envs = {
+          'localhost:9000': 'local',
+          'development.aarp-staying-sharp.divshot.io': 'dev',
+          'staging.aarp-staying-sharp.divshot.io': 'staging',
+          'production.aarp-staying-sharp.divshot.io': 'production',
+          'aarp-ss-stg.firebaseapp.com': 'staging',
+          'mystayingsharp.org': 'production',
+        };
+
+        const currentEnvUrl = window.location;
+        const currentEnv = envs[currentEnvUrl.host];
+        window.__env = {};
+        window.__env.API_URL = envVars[currentEnv].API_URL;
+      }(window));
+    </script>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->

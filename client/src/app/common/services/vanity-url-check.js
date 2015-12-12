@@ -42,7 +42,7 @@ const $vanityUrlCheck = function (ApiRoutes,
   // $location only lets you manipulate the current URL...needed a
   // way to parse arbitrary URLs
   const makeUrl = function (urlString) {
-    return $('<a>', { href: urlString } )[0];
+    return $('<a>', { href: urlString })[0];
   };
 
   const isVanityUrl = function (origUrl) {

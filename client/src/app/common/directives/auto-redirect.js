@@ -14,7 +14,7 @@ const autoRedirect = function ($window) {
         // Log so it's apparent why the browser is auto-redirecting
         console.log(`autoRedirect directive now redirecting to ${scope.url}`);
 
-        $window.location = scope.url
+        $window.location = scope.url;
       }
     },
   };
