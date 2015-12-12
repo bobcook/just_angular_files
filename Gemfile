@@ -4,6 +4,12 @@ source 'https://nyvTgvizKAKWAVynPmpS@gem.fury.io/jdwolk/' do
   gem 'wippersnapper', '~> 0.1.0'
 end
 
+source 'https://download:' \
+       '46772c3be10bea64e52689cfa8e493478163f533f935ee4deef1556ebdaa81bc@' \
+       'www.phusionpassenger.com/enterprise_gems' do
+  gem 'passenger-enterprise-server', group: :production
+end
+
 ruby `cat .ruby-version`.strip
 
 gem 'active_model_serializers', '~> 0.8.0'
@@ -60,7 +66,10 @@ group :test do
   gem 'timecop', '~> 0.8.0'
 end
 
-group :staging, :production do
+group :staging do
   gem 'passenger', '~> 5.0.15'
+end
+
+group :staging, :production do
   gem 'rails_12factor', '~> 0.0.3'
 end
