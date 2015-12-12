@@ -42,4 +42,9 @@ env 'MBS_API',
             default: 'https://stage.mybrainsolutions.com/' \
                      'services/SolutionsService.svc')
 
+env 'MBS_AUTH',
+    provide('Brain Solutions authentication URL',
+            default: 'https://stage.mybrainsolutions.com/' \
+                     'SSO/AARP.aspx')
+
 rake 'db:setup'
