@@ -63,6 +63,7 @@ const AsssessmentController = function ($stateParams,
 
       assessmentFlowSetup(lastGroup);
       getQuestionnaireQuestions();
+      this.submitButtonText = AssessmentStatus.setSubmitButtonText(lastGroup);
     });
   }
 };

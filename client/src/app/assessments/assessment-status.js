@@ -120,6 +120,15 @@ const AssessmentStatus = function ($assessmentsAuth,
     });
   };
 
+  const setSubmitButtonText = function (lastGroup) {
+    const questionnaires =  getQuestionnaires(lastGroup);
+    if (!questionnaires[0].completed) {
+      return 'Start Neuroperformance Tests';
+    } else {
+      return 'Get Your Results';
+    }
+  };
+
   return {
     enqueueResultsUpdate: enqueueResultsUpdate,
     lastUserAssessmentGroup: lastUserAssessmentGroup,
@@ -134,6 +143,7 @@ const AssessmentStatus = function ($assessmentsAuth,
     getResponseScore: getResponseScore,
     submitAssessmentRedirect: submitAssessmentRedirect,
     hasCompletedAssessments: hasCompletedAssessments,
+    setSubmitButtonText: setSubmitButtonText,
   };
 };
 
