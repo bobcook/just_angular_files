@@ -22,7 +22,7 @@ const DefaultCardPresenter = function ($filter) {
   const lowerLeft = defaultReturn;
 
   const lowerRight = function (resource) {
-    return '85%'; // TODO: actual content
+    // TODO: actual content
   };
 
   const pillars = function (resource) { return resource.pillars; };
