@@ -70,6 +70,7 @@ import $pillarFiltering from './common/services/pillar-filtering.js';
 import $postHref from './common/services/post-href.js';
 import $presenterUtils from './common/services/presenter-utils.js';
 import $promise from './common/services/promise.js';
+import $url from './common/services/url.js';
 import AssessmentStatus from './assessments/assessment-status.js';
 import AssessmentResultQueries from
   './assessments/results/queries.js';
@@ -81,6 +82,7 @@ import FutureBrainStats from './components/charts/future-brain-stats.js';
 import MBSAssessmentList from './assessments/mbs-assessment-list.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
 import $vanityUrlCheck from './common/services/vanity-url-check.js';
+import vanityUrlInterceptor from './common/services/vanity-url-interceptor.js';
 
 // directives
 import activityTracker from './components/activity-tracker/activity-tracker.js';
@@ -285,6 +287,7 @@ app
   .factory('$pillarFiltering', $pillarFiltering)
   .factory('$postHref', $postHref)
   .factory('$promise', $promise)
+  .factory('$url', $url)
   .factory('$presenterUtils', $presenterUtils)
   .factory('$vanityUrlCheck', $vanityUrlCheck)
   .factory('authInterceptor', authInterceptor)
@@ -294,6 +297,7 @@ app
   .factory('dependentMemoize', dependentMemoize)
   .factory('FutureBrainStats', FutureBrainStats)
   .factory('MBSAssessmentList', MBSAssessmentList)
+  .factory('vanityUrlInterceptor', vanityUrlInterceptor)
   .provider('modalStateHelper', modalStateHelper)
 
   // directives

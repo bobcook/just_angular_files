@@ -145,17 +145,11 @@ const routerConfig = function (stateHelperProvider,
           name: 'employee',
           url: '/employee',
           template: '',
-          onEnter: function ($vanityUrlCheck) {
-            $vanityUrlCheck.redirectIfVanityUrl();
-          },
         },
         {
           name: 'employees',
           url: '/employees',
           template: '',
-          onEnter: function ($vanityUrlCheck) {
-            $vanityUrlCheck.redirectIfVanityUrl();
-          },
         },
         {
           name: 'game',
@@ -199,9 +193,6 @@ const routerConfig = function (stateHelperProvider,
           children: [
             pillarFilterModal(),
           ],
-          onEnter: function ($vanityUrlCheck) {
-            $vanityUrlCheck.redirectIfVanityUrl();
-          },
         },
         {
           name: 'login-failure',

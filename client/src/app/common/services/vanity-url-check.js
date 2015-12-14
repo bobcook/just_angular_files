@@ -1,14 +1,20 @@
-// TODO: clean up once done QAing
 const $vanityUrlCheck = function (ApiRoutes,
                                   $location,
                                   $postHref,
-                                  $rootScope) {
+                                  $rootScope,
+                                  $url) {
   'ngInject';
 
   const LOGIN_URL = ApiRoutes.AARP_AUTH;
 
+  const REDIRECT_DOMAIN = 'https://stayingsharp.aarp.org';
+
   // Protocol doesn't matter since we're not checking for it,
-  // but still needed for URL constructor
+  // but still needed for constructing URLs
+  const VANITY_DOMAINS = [
+    'https://mystayingsharp.org',
+  ];
+
   const VANITY_URLS = [
     'http://www.mystayingsharp.org',
     'http://www.mystayingsharp.org/employee',
@@ -36,61 +42,60 @@ const $vanityUrlCheck = function (ApiRoutes,
   ];
 
   const userLoggedIn = function () {
-    return $rootScope.$currentUser.isLoggedIn;
+    return $rootScope.$currentUser && $rootScope.$currentUser.isLoggedIn;
   };
 
-  // $location only lets you manipulate the current URL...needed a
-  // way to parse arbitrary URLs
-  const makeUrl = function (urlString) {
-    return $('<a>', { href: urlString })[0];
+  const isVanityUrl = function (checkUrlStr) {
+    return $url.urlHas($url.matchingHostAndPathname, checkUrlStr, VANITY_URLS);
   };
 
-  const isVanityUrl = function (origUrl) {
-    const url = makeUrl(origUrl);
-    console.log('Orig URL');
-    console.log('Host: ', url.host);
-    console.log('Pathname: ', url.pathname);
-    console.log('\n');
-    console.dir(url);
-
-    return _.any(VANITY_URLS, function (origCheckUrl) {
-      const checkUrl = makeUrl(origCheckUrl);
-      console.log('Check URL');
-      console.log('CheckHost: ', checkUrl.host);
-      console.log('CheckPathname: ', checkUrl.pathname);
-      console.log('\n');
-
-      return url.host === checkUrl.host && url.pathname === checkUrl.pathname;
-    });
+  const isVanityDomain = function (origUrl) {
+    return $url.urlHas($url.matchingHost, origUrl, VANITY_DOMAINS);
   };
 
-  const locationIsVanityUrl = function () {
-    const currentUrl = $location.absUrl();
-    return isVanityUrl(currentUrl) && !userLoggedIn();
+  const locationIsVanityDomain = function () {
+    return isVanityDomain($location.absUrl());
   };
 
   const redirectIfVanityUrl = function () {
     const currentUrl = $location.absUrl();
-    console.log(currentUrl);
     const redirectUrl =
       _.includes(currentUrl, 'employee') ?
       `${ApiRoutes.AARP_AUTH}?promo=SS-EMPLOYEE` :
       `${ApiRoutes.AARP_AUTH}?promo=SM-SS`;
 
-
-    console.log(`Attempting redirect to ${LOGIN_URL}`);
-
-    if (isVanityUrl(currentUrl) && !userLoggedIn()) {
+    const result = isVanityUrl(currentUrl) && !userLoggedIn()
+    if (result) {
       console.log('Check passed; redirecting');
       $postHref(redirectUrl, {});
     }
+    return result;
+  };
+
+  const redirectIfVanityDomain = function () {
+    const result = locationIsVanityDomain()
+    if (result) {
+      const currentUrl = $location.absUrl();
+      const destUrl = REDIRECT_DOMAIN;
+      const newUrl = $url.copyPathFrom(currentUrl, destUrl);
+
+      console.log(`Was vanity domain; redirecting to ${newUrl}`);
+      window.location = newUrl;
+    };
+    return result;
+  };
+
+  const redirectIfNeeded = function () {
+    return redirectIfVanityDomain() || redirectIfVanityUrl();
   };
 
   return {
-    vanityUrls: VANITY_URLS,
-    locationIsVanityUrl: locationIsVanityUrl,
     isVanityUrl: isVanityUrl,
+    isVanityDomain: isVanityDomain,
+    locationIsVanityDomain: locationIsVanityDomain,
     redirectIfVanityUrl: redirectIfVanityUrl,
+    redirectIfNeeded: redirectIfNeeded,
+    vanityUrls: VANITY_URLS,
   };
 };
 
