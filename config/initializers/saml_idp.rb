@@ -29,7 +29,7 @@ SamlIdp.configure do |config|
       getter: -> (user) { Apis::MBS::User.for_user_model(user).email }
     },
     uniqueuserid: {
-      getter: -> (user) { user.id }
+      getter: -> (user) { Apis::MBS::User.for_user_model(user).id }
     },
     jwtCredentials: {
       getter: -> (user) { UserJwt.for(user) }

@@ -7,14 +7,13 @@ module Apis
       def self.for_user_model(user)
         new(
           orig_id: user.id,
-          orig_email: user.email,
           external_id: user.external_id
         )
       end
 
       attr_reader :attrs
 
-      delegate :orig_id, :orig_email, :external_id, to: :attrs
+      delegate :orig_id, :external_id, to: :attrs
 
       alias_method :unique_id, :external_id
 
