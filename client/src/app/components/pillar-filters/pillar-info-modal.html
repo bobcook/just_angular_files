@@ -1,17 +1,77 @@
 <ss-modal>
-  <div class="content">
+  <div class="content pillar-description">
+    <div class="content">
     <div class="header">
-      <a href="#" aria-label="Close" ng-click="vm.closeModal()">
-        <span class="icon-close" ></span>
-      </a>
+      <button class="close" aria-label="Close" ng-click="vm.closeModal()">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="header-content">
+        <h3>Holistic Approach to Brain Health</h3>
+        <p>Research suggests that playing games isn't enough to sustain a truly healthy brain. Instead, Staying Sharp
+          includes resources and things to do across 5 areas:</p>
+      </div>
     </div>
-
     <div class="body">
-      <p><b>Move:</b> Studies show that even small amounts of regular exercise like walking can positively impact brain health.</p>
-      <p><b>Discover:</b> Research shows that trying new things, like learning a language or starting a new hobby, strengthens our brains.</p>
-      <p><b>Relax:</b> Several studies indicate sleep and stress management improve brain health.</p>
-      <p><b>Nourish:</b> Science shows that certain elements in food – from omega-3 fatty acids to vitamin E – can positively impact brain health.</p>
-      <p><b>Connect:</b> Research shows that staying socially connected to other people supports a healthy brain.</p>
+      <ul>
+        <li>
+          <span class="move icon-block">
+            <span class="icon-move"></span>
+          </span>
+          <div class="pillar-info">
+            <h4>Move</h4>
+            <p>Studies show that even small amounts of regular exercise like walking can positively impact brain health.</p>
+          </div>
+        </li>
+        <li>
+          <span class="discover icon-block">
+            <span class="icon-discover"></span>
+          </span>
+          <div class="pillar-info">
+            <h4>Discover</h4>
+            <p>Research shows that trying new things, like learning a language or starting a new hobby, strengthens our brains.</p>
+          </div>
+        </li>
+        <li>
+          <span class="relax icon-block">
+            <span class="icon-relax"></span>
+          </span>
+          <div class="pillar-info">
+            <h4>Relax
+            </h4>
+            <p>Several studies indicate sleep and stress management improve brain health.</p>
+          </div>
+        </li>
+        <li>
+          <span class="nourish icon-block">
+            <span class="icon-nourish"></span>
+          </span>
+          <div class="pillar-info">
+            <h4>Nourish</h4>
+            <p>Science shows that certain elements in food – from omega-3 fatty acids to vitamin E – can positively impact brain health.</p>
+          </div>
+        </li>
+        <li>
+          <span class="connect icon-block">
+            <span class="icon-connect"></span>
+          </span>
+          <div class="pillar-info">
+            <h4>Connect</h4>
+            <p>Research shows that staying socially connected to other people supports a healthy brain.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="footer">
+      <button
+        class="btn"
+        ui-sref="application.user.working-on"
+        ng-click="vm.closeModal()" href="/me/working-on">
+        Go to My Staying Sharp
+      </button>
+      <span class="hidden-xs">Or</span>
+      <a data-dismiss="modal" aria-label="Close" ng-click="vm.closeModal()">
+        Continue Exploring
+      </a>
     </div>
   </div>
 </ss-modal>
