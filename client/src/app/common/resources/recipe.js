@@ -1,4 +1,4 @@
-const Recipe = function (API_URL, railsResourceFactory, railsSerializer) {
+const Recipe = function (API_URL, railsResourceFactory, railsSerializer, Slug) {
   'ngInject';
 
   const recipesURL = `${API_URL}/api/v1/recipes`;
@@ -25,7 +25,8 @@ const Recipe = function (API_URL, railsResourceFactory, railsSerializer) {
   // Computed properties
   Object.defineProperty(Recipe.prototype, 'uiSref', {
     get: function () {
-      return `application.recipe({ id: ${this.id} })`;
+      const slug = Slug.slugify(this.cardTitle);
+      return `application.recipe({ id: ${this.id}, slug: '${slug}' })`;
     },
   });
 

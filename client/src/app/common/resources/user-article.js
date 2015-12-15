@@ -1,4 +1,7 @@
-const UserArticle = function (API_URL, railsResourceFactory, railsSerializer) {
+const UserArticle = function (API_URL,
+                              railsResourceFactory,
+                              railsSerializer,
+                              Slug) {
   'ngInject';
 
   const userArticleUrl = `${API_URL}/api/v1/me/articles`;
@@ -32,7 +35,8 @@ const UserArticle = function (API_URL, railsResourceFactory, railsSerializer) {
 
   Object.defineProperty(UserArticle.prototype, 'uiSref', {
     get: function () {
-      return `application.user.article({ id: ${this.id} })`;
+      const slug = Slug.slugify(this.cardTitle);
+      return `application.user.article({ id: ${this.id}, slug: '${slug}' })`;
     },
   });
 
