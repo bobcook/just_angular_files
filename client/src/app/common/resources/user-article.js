@@ -21,7 +21,7 @@ const UserArticle = function (API_URL, railsResourceFactory, railsSerializer) {
   UserArticle.include({
     contentName: 'Article',
     // TODO: real cardImage
-    cardImage: 'http://i.istockimg.com/file_thumbview_approve/23264892/6' +
+    cardImage: '//i.istockimg.com/file_thumbview_approve/23264892/6' +
                 '/stock-photo-23264892-elderly-women-gardening.jpg',
   });
 

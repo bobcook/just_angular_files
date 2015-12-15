@@ -21,7 +21,7 @@ const UserGame = function (API_URL, railsResourceFactory, railsSerializer) {
   UserGame.include({
     contentName: 'Game',
     // TODO: real cardImage
-    cardImage: 'http://i.istockimg.com/file_thumbview_approve/23264892/6' +
+    cardImage: '//i.istockimg.com/file_thumbview_approve/23264892/6' +
                 '/stock-photo-23264892-elderly-women-gardening.jpg',
   });
 
