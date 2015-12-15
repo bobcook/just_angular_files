@@ -15,4 +15,41 @@ describe('$url', function () {
       expect(result).to.eq(expectedUrl);
     });
   });
+
+  describe('makeUrl', function () {
+    context('on IE', function () {
+      const elementFn = function (href) {
+        const split = href.split('.com');
+        const host = split[0].split('http://')[1] + '.com';
+        const pathname = split[1].slice(1); // missing leading '/'
+
+        return {
+          host: host,
+          pathname: pathname,
+        };
+      };
+
+      describe('pathname', function () {
+        it('returns the path with a leading slash', function () {
+          const href = 'http://example.com/a/cool/path';
+          const expected = '/a/cool/path';
+          const result = this.$url.makeUrl(href, elementFn).pathname;
+
+          expect(result).to.eq(expected);
+        });
+      });
+    });
+
+    context('on sane browsers', function () {
+      describe('pathname', function () {
+        it('returns the path with a leading slash', function () {
+          const href = 'http://example.com/a/cool/path';
+          const expected = '/a/cool/path';
+          const result = this.$url.makeUrl(href).pathname;
+
+          expect(result).to.eq(expected);
+        });
+      });
+    });
+  });
 });

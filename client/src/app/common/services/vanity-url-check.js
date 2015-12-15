@@ -64,7 +64,7 @@ const $vanityUrlCheck = function (ApiRoutes,
       `${ApiRoutes.AARP_AUTH}?promo=SS-EMPLOYEE` :
       `${ApiRoutes.AARP_AUTH}?promo=SM-SS`;
 
-    const result = isVanityUrl(currentUrl) && !userLoggedIn()
+    const result = isVanityUrl(currentUrl) && !userLoggedIn();
     if (result) {
       console.log('Check passed; redirecting');
       $postHref(redirectUrl, {});
@@ -73,7 +73,7 @@ const $vanityUrlCheck = function (ApiRoutes,
   };
 
   const redirectIfVanityDomain = function () {
-    const result = locationIsVanityDomain()
+    const result = locationIsVanityDomain();
     if (result) {
       const currentUrl = $location.absUrl();
       const destUrl = REDIRECT_DOMAIN;
