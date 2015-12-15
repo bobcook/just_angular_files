@@ -2,9 +2,6 @@ const PillarFiltersController = function (Pillar,
                                           $pillarFiltering) {
   'ngInject';
 
-  // Via ss-selectedPillar
-  this.selectedPillar = this.selectedPillar || null;
-
   this.setSelectedPillar = (pillarSlug) => {
     $pillarFiltering.pillarBySlug(pillarSlug).then((pillar) => {
       this.selectedPillar = pillar || this.selectAll;
@@ -16,6 +13,8 @@ const PillarFiltersController = function (Pillar,
       this.pillars = pillarData.pillars;
       this.selectAll = pillarData.selectAll;
       this.otherPillars = pillarData.otherPillars;
+      // Via ss-selectedPillar
+      this.selectedPillar = this.selectedPillar || this.selectAll;
     });
   };
 
