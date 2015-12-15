@@ -79,6 +79,7 @@ import AssessmentResultScores from
 import authInterceptor from './common/services/auth-interceptor.js';
 import dependentMemoize from './common/services/dependent-memoize.js';
 import FutureBrainStats from './components/charts/future-brain-stats.js';
+import httpsInterceptor from './common/services/https-interceptor.js';
 import MBSAssessmentList from './assessments/mbs-assessment-list.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
 import $vanityUrlCheck from './common/services/vanity-url-check.js';
@@ -297,6 +298,7 @@ app
   .factory('AssessmentResultScores', AssessmentResultScores)
   .factory('dependentMemoize', dependentMemoize)
   .factory('FutureBrainStats', FutureBrainStats)
+  .factory('httpsInterceptor', httpsInterceptor)
   .factory('MBSAssessmentList', MBSAssessmentList)
   .factory('vanityUrlInterceptor', vanityUrlInterceptor)
   .provider('modalStateHelper', modalStateHelper)

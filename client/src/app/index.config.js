@@ -6,6 +6,7 @@ const config = function ($httpProvider,
                          ApiRoutes) {
   'ngInject';
 
+  $httpProvider.interceptors.push('httpsInterceptor');
   $httpProvider.interceptors.push('vanityUrlInterceptor');
   $httpProvider.interceptors.push('authInterceptor');
 

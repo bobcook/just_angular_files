@@ -40,7 +40,8 @@ const $url = function () {
       elementFn || function (href) { return $('<a>', { href: href })[0]; };
 
     const element = elementFn(urlString);
-    element.pathname = normalizePathname(element.pathname);
+    const pathname = normalizePathname(element.pathname);
+    element.pathname = pathname;
     return element;
   };
 
@@ -67,7 +68,8 @@ const $url = function () {
   const copyPathFrom = function (srcUrlStr, destUrlStr) {
     const srcUrl = makeUrl(srcUrlStr);
     const destUrl = makeUrl(destUrlStr);
-    const pathToAdd = srcUrl.pathname.slice(1);
+    const path = srcUrl.pathname;
+    const pathToAdd = _.startsWith(path, '/') ? path.slice(1) : path;
 
     return destUrl.href + pathToAdd;
   };
