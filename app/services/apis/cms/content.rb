@@ -11,6 +11,7 @@ module Apis
       end
 
       def json_payload
+        return if response.body.blank?
         normalize_pillars(response) if response_pillars
         response
           .merge!(cms_url: api_url).body

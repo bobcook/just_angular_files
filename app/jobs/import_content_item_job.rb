@@ -1,9 +1,12 @@
 class ImportContentItemJob < ActiveJob::Base
+  class EmptyCMSContent < RuntimeError; end
+
   queue_as :default
 
   # TODO: fix assignment too high error from rubocop
   def perform(content)
     json_payload = Apis::CMS::Content.new(content[:url]).json_payload
+    fail(EmptyCMSContent) if json_payload.blank?
     hash =
       process_json(content_type(json_payload)).new(json_payload).convert_content
 
