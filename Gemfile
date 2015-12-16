@@ -6,9 +6,7 @@ end
 
 source 'https://download:' \
        '46772c3be10bea64e52689cfa8e493478163f533f935ee4deef1556ebdaa81bc@' \
-       'www.phusionpassenger.com/enterprise_gems' do
-  gem 'passenger-enterprise-server', group: :production
-end
+       'www.phusionpassenger.com/enterprise_gems'
 
 ruby `cat .ruby-version`.strip
 
@@ -67,7 +65,11 @@ group :test do
 end
 
 group :staging do
-  gem 'passenger', '~> 5.0.15'
+  gem 'passenger', '>= 5.0.22'
+end
+
+group :production do
+  gem 'passenger-enterprise-server', '>= 5.0.22'
 end
 
 group :staging, :production do
