@@ -37,6 +37,10 @@ env 'CMS_BASE_URL',
             default: 'http://www.aarp.org/content/specialized-membership/' \
                      'staying-sharp/en')
 
+env 'CMS_IMAGES_BASE_URL',
+    provide('AARP images CMS base URL',
+            default: '//aarp.org')
+
 env 'MBS_API',
     provide('Brain Solutions API base URL',
             default: 'https://stage.mybrainsolutions.com/' \

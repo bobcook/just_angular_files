@@ -1,7 +1,7 @@
 class CommonContent
   attr_reader :object
 
-  CMS_BASE = 'http://www.aarp.org'
+  CMS_BASE = ENV.fetch('CMS_IMAGES_BASE_URL')
 
   def initialize(object)
     @object = object
