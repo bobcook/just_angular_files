@@ -2,6 +2,7 @@ const OverallResultsController = function (Activity,
                                            AssessmentResultQueries,
                                            AssessmentResultScores,
                                            ExploreContent,
+                                           RecommendedContent,
                                            $moment,
                                            $pillarFiltering,
                                            $promise) {
@@ -54,37 +55,13 @@ const OverallResultsController = function (Activity,
       );
   };
 
-  // TODO: Replace w/ real recommended content -- this
-  // currently just looks for highest pillar and gets
-  // activities w/ that pillar
   const setRecommendedContent = () => {
-    const exploreParams = {
-      activities: 25,
-      articles: 0,
-      recipes: 0,
-      games: 0,
-    };
-
-    const highestPillar =
-      _.find(_.pairs(this.latestLifestyleResults.scores), (vals) => {
-        const name = vals[0];
-        const score = vals[1];
-        return score === _.max(this.latestLifestyleResults.scores);
-      })[0];
-
-    $pillarFiltering.pillarByDisplayName(highestPillar).then((pillar) => {
-      ExploreContent.query(exploreParams).then((result) => {
-        const activities = result.data.activities;
-
-        $pillarFiltering.filterByPillar(pillar, activities).then((filtered) => {
-          this.recommendedItems = filtered;
-        });
-      });
+    RecommendedContent.query().then((recs) => {
+      this.recommendedItems = recs;
     });
   };
 
-  // TODO: determine real recommended content
-  this.resource = Activity;
+  this.resource = RecommendedContent;
   this.shouldShowMore = false;
 
   this.showResultHistory = function () {

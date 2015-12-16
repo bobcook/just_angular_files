@@ -80,6 +80,7 @@ Rails.application.routes.draw do
         resources :current_user, controller: 'current_user', only: :index
         resources :games, only: [:show, :index, :create, :destroy]
         resources :recipes, only: [:index, :show, :create, :destroy]
+        resources :recommended_content, only: [:index]
         resources :user_activities, only: [:show]
         resources :user_activity_periods, only: [:update]
       end

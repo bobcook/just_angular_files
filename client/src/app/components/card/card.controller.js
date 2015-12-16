@@ -7,7 +7,10 @@ const CardController = function ($filter,
   'ngInject';
 
   const getPresenter = () => {
-    switch (this.card.contentName) {
+    const contentName = this.card.recommendableType ?
+      this.card.recommendableType : this.card.contentName;
+
+    switch (contentName) {
     case 'Activity': return ActivityCardPresenter;
     case 'Article': return ArticleCardPresenter;
     case 'Game': return GameCardPresenter;
@@ -16,7 +19,9 @@ const CardController = function ($filter,
     };
   };
 
-  getPresenter().forController(this, this.card);
+  const content = this.card.recommendable ? this.card.recommendable : this.card;
+
+  getPresenter().forController(this, content);
 };
 
 export default CardController;

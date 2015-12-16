@@ -31,6 +31,7 @@ import NeuroPerformanceResult from
 import Pillar from './common/resources/pillar.js';
 import Recipe from './common/resources/recipe.js';
 import RecipeReview from './common/resources/recipe-review.js';
+import RecommendedContent from './common/resources/recommended-content.js';
 import RelatedContent from './common/resources/related-content.js';
 import RelatedContentGames from './common/resources/related-content-games.js';
 import UserActivity from './common/resources/user-activity.js';
@@ -257,6 +258,7 @@ app
   .factory('Pillar', Pillar)
   .factory('Recipe', Recipe)
   .factory('RecipeReview', RecipeReview)
+  .factory('RecommendedContent', RecommendedContent)
   .factory('RelatedContent', RelatedContent)
   .factory('RelatedContentGames', RelatedContentGames)
   .factory('UserActivity', UserActivity)
