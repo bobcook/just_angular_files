@@ -7,42 +7,23 @@ const $vanityUrlCheck = function (ApiRoutes,
 
   const LOGIN_URL = ApiRoutes.AARP_AUTH;
 
-  const REDIRECT_DOMAIN = 'https://stayingsharp.aarp.org';
+  const DEFAULT_REDIRECT_URL = 'https://stayingsharp.aarp.org';
 
   // Protocol doesn't matter since we're not checking for it,
   // but still needed for constructing URLs
-  const VANITY_DOMAINS = [
-    'https://mystayingsharp.org',
-  ];
+  const VANITY_DOMAIN_REDIRECTS = {
+    'https://mystayingsharp.org': 'https://stayingsharp.aarp.org',
+    'https://test-mystayingsharp.org': 'https://stayingsharp.test-aarp.org',
+  };
 
-  const VANITY_URLS = [
-    'https://www.mystayingsharp.org',
-    'https://www.mystayingsharp.org/employee',
-    'https://www.mystayingsharp.org/employees',
-    'https://www.mystayingsharp.org/ssmember',
-    'https://www.mystayingsharp.org/ssmembers',
-    'https://mystayingsharp.org',
-    'https://mystayingsharp.org/employee',
-    'https://mystayingsharp.org/employees',
-    'https://mystayingsharp.org/ssmember',
-    'https://mystayingsharp.org/ssmembers',
+  const VANITY_DOMAINS = _.keys(VANITY_DOMAIN_REDIRECTS);
 
-    'https://www.stayingsharp.aarp.org',
-    'https://www.stayingsharp.aarp.org/employee',
-    'https://www.stayingsharp.aarp.org/employees',
-    'https://www.stayingsharp.aarp.org/ssmember',
-    'https://www.stayingsharp.aarp.org/ssmembers',
-    'https://stayingsharp.aarp.org',
-    'https://stayingsharp.aarp.org/employee',
-    'https://stayingsharp.aarp.org/employees',
-    'https://stayingsharp.aarp.org/ssmember',
-    'https://stayingsharp.aarp.org/ssmembers',
-
-    'https://aarp-ss-stg.firebaseapp.com',
-    'https://aarp-ss-stg.firebaseapp.com/employee',
-    'https://aarp-ss-stg.firebaseapp.com/employees',
-    'https://aarp-ss-stg.firebaseapp.com/ssmember',
-    'https://aarp-ss-stg.firebaseapp.com/ssmembers',
+  const VANITY_SIGNUP_PATHS = [
+    '/',
+    '/employee',
+    '/employees',
+    '/ssmember',
+    '/ssmembers',
   ];
 
   const userLoggedIn = function () {
@@ -50,15 +31,56 @@ const $vanityUrlCheck = function (ApiRoutes,
   };
 
   const isVanityUrl = function (checkUrlStr) {
-    return $url.urlHas($url.matchingHostAndPathname, checkUrlStr, VANITY_URLS);
+    return $url.urlHas($url.matchingPathname, checkUrlStr, VANITY_SIGNUP_PATHS);
   };
 
+  // TODO: remove if/when redirection occurs at another level (i.e. DNS or S3)
   const isVanityDomain = function (origUrl) {
     return $url.urlHas($url.matchingHost, origUrl, VANITY_DOMAINS);
   };
 
+  // TODO: remove if/when redirection occurs at another level (i.e. DNS or S3)
   const locationIsVanityDomain = function () {
     return isVanityDomain($location.absUrl());
+  };
+
+  // TODO: remove if/when redirection occurs at another level (i.e. DNS or S3)
+  const redirectIfVanityDomain = function () {
+    const result = locationIsVanityDomain();
+
+    if (result) {
+      const currentUrl = $location.absUrl();
+      const destDomain = redirectDomainFor(currentUrl);
+      const newUrl = $url.copyPathFrom(currentUrl, destDomain);
+
+      console.log(`Was vanity domain; redirecting to ${newUrl}`);
+      window.location = newUrl;
+    };
+    return result;
+  };
+
+  // TODO: remove if/when redirection occurs at another level (i.e. DNS or S3)
+  const redirectDomainFor = function (domain) {
+    domain = _.endsWith(domain, '/')
+           ? _.dropRight(domain, 1).join('')
+           : domain;
+
+    const includesDomain = function (_redirect, checkDomain) {
+      return _.includes(checkDomain, domain);
+    };
+
+    return _.find(VANITY_DOMAIN_REDIRECTS, includesDomain) ||
+           DEFAULT_REDIRECT_URL;
+  };
+
+  const redirectIfVanityUrl = function () {
+    const currentUrl = $location.absUrl();
+    const result = isVanityUrl(currentUrl) && !userLoggedIn();
+    if (result) {
+      console.log('Check passed; redirecting');
+      $postHref(redirectUrlFor(currentUrl), {});
+    }
+    return result;
   };
 
   const redirectUrlFor = function (currentUrl) {
@@ -76,29 +98,6 @@ const $vanityUrlCheck = function (ApiRoutes,
     return `${ApiRoutes.AARP_AUTH}?promo=${promo}`;
   };
 
-  const redirectIfVanityUrl = function () {
-    const currentUrl = $location.absUrl();
-    const result = isVanityUrl(currentUrl) && !userLoggedIn();
-    if (result) {
-      console.log('Check passed; redirecting');
-      $postHref(redirectUrlFor(currentUrl), {});
-    }
-    return result;
-  };
-
-  const redirectIfVanityDomain = function () {
-    const result = locationIsVanityDomain();
-    if (result) {
-      const currentUrl = $location.absUrl();
-      const destUrl = REDIRECT_DOMAIN;
-      const newUrl = $url.copyPathFrom(currentUrl, destUrl);
-
-      console.log(`Was vanity domain; redirecting to ${newUrl}`);
-      window.location = newUrl;
-    };
-    return result;
-  };
-
   const redirectIfNeeded = function () {
     return redirectIfVanityDomain() || redirectIfVanityUrl();
   };
@@ -110,7 +109,6 @@ const $vanityUrlCheck = function (ApiRoutes,
     redirectIfVanityUrl: redirectIfVanityUrl,
     redirectIfNeeded: redirectIfNeeded,
     redirectUrlFor: redirectUrlFor,
-    vanityUrls: VANITY_URLS,
   };
 };
 

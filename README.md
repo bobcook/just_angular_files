@@ -14,15 +14,38 @@ $ npm install
 
 ## Frontend
 
-The frontend application is an Angular app located in the `client/` directory. The app is built with Gulp and structured for deployment with [Divshot][divshot]. To set up the frontend application, run `npm install` in the root directory, which will install Node and Bower dependencies and build the client code.
+The frontend application is an Angular app located in the `client/` directory. The app is built with Gulp and structured for deployment to AWS S3 + Cloudfront. To set up the frontend application, run `npm install` in the root directory, which will install Node and Bower dependencies and build the client code.
 
-There are a variety of Gulp tasks for development purposes. All the Gulp tasks should be run in the `client/` directory. To run a server that watches for changes, run `gulp serve`. To deploy to Divshot, use `gulp deploy` once you are logged in to the Divshot CLI.
+There are a variety of Gulp tasks for development purposes. All the Gulp tasks should be run in the `client/` directory. To run a server that watches for changes, run `gulp serve`.
 
-Environment variables are injected into the app from an `.env.json` file in the `client/` directory. All values will be included as injectable constants exposed to Angular. The following is a list of required environment variables:
+To deploy to AWS, use `gulp deploy`. See the section on [Deployment Configuration]() for more details.
 
-- `API_URL` — Should be set to the URL of the backend (Rails) server. For example, if Rails is running on port 3000, it should be set to `http://localhost:3000`.
+### Deployment Configuration
 
-[divshot]: https://divshot.com
+To deploy to AWS S3 + Cloudfront, you'll need a file at `client/aws.json` that looks like the following:
+
+```json
+{
+  "production": {
+    "region": "us-west-2",
+    "accessKeyId": "ACCESS_KEY_ID",
+    "secretAccessKey": "SECRET_ACCESS_KEY",
+    "distributionId": "ID_OF_CLOUDFRONT_DISTRIBUTION",
+    "bucket": "NAME_OF_S3_BUCKET",
+    "params": {
+      "Bucket": "NAME_OF_S3_BUCKET_AGAIN"
+   }
+  },
+  "staging": {}, // Staging environment configs go here
+  "dev": {}, // Dev environment configs go here
+}
+```
+
+`gulp deploy` will deploy to the staging environment by default. To build and deploy to another environment, pass the `--env` flag, i.e.
+
+```sh
+$ gulp deploy --env production
+```
 
 ## Backend
 

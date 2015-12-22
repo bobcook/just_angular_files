@@ -42,3 +42,5 @@ zeus.json
 /client/.env.json
 /client/gulp.dot
 /client/gulp.png
+/client/aws.json
+/client/.awspublish*

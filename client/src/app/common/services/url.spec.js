@@ -1,8 +1,10 @@
 describe('$url', function () {
   beforeEach(loadApp);
 
-  beforeEach(inject(function($url) {
-    this.$url = $url;
+  let $url;
+
+  beforeEach(inject(function(_$url_) {
+    $url = _$url_;
   }));
 
   describe('copyPathFrom', function () {
@@ -10,7 +12,7 @@ describe('$url', function () {
       const srcUrl = 'http://example.com/some/cool/path';
       const destUrl = 'http://other.example.com';
       const expectedUrl = 'http://other.example.com/some/cool/path';
-      const result = this.$url.copyPathFrom(srcUrl, destUrl);
+      const result = $url.copyPathFrom(srcUrl, destUrl);
 
       expect(result).to.eq(expectedUrl);
     });
@@ -33,7 +35,7 @@ describe('$url', function () {
         it('returns the path with a leading slash', function () {
           const href = 'http://example.com/a/cool/path';
           const expected = '/a/cool/path';
-          const result = this.$url.makeUrl(href, elementFn).pathname;
+          const result = $url.makeUrl(href, elementFn).pathname;
 
           expect(result).to.eq(expected);
         });
@@ -45,10 +47,49 @@ describe('$url', function () {
         it('returns the path with a leading slash', function () {
           const href = 'http://example.com/a/cool/path';
           const expected = '/a/cool/path';
-          const result = this.$url.makeUrl(href).pathname;
+          const result = $url.makeUrl(href).pathname;
 
           expect(result).to.eq(expected);
         });
+      });
+    });
+  });
+
+  describe('matchingPathname', function () {
+    const makeUrl = function (urlString) { return $url.makeUrl(urlString) };
+    context('given a pathname', function () {
+      it('is true when the given url has the pathname', function () {
+        const pathname = '/employee';
+        const url = makeUrl('https://www.example.com/employee');
+        const result = $url.matchingPathname(url, pathname);
+
+        expect(result).to.eq(true);
+      });
+
+      it('is false otherwise', function () {
+        const pathname = '/notthesame';
+        const url = makeUrl('https://www.example.com/employee');
+        const result = $url.matchingPathname(url, pathname);
+
+        expect(result).to.eq(false);
+      });
+    });
+
+    context('given a URL', function () {
+      it('is true when the given url has the pathname', function () {
+        const baseUrl = makeUrl('https://www.blargh.com/employee');
+        const checkUrl = makeUrl('https://www.example.com/employee');
+        const result = $url.matchingPathname(baseUrl, checkUrl);
+
+        expect(result).to.eq(true);
+      });
+
+      it('is false otherwise', function () {
+        const pathname = 'https://www.example.com/notthesame';
+        const url = makeUrl('https://www.example.com/employee');
+        const result = $url.matchingPathname(url, pathname);
+
+        expect(result).to.eq(false);
       });
     });
   });

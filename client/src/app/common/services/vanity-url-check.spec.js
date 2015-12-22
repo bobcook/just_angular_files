@@ -9,14 +9,14 @@ describe('$vanityUrlCheck', function () {
 
   describe('.isVanityUrl', function () {
     it('is true when passed a vanity url', function () {
-      const vanityUrl = 'http://mystayingsharp.org';
+      const vanityUrl = 'http://mystayingsharp.org/employee';
       const result = $vanityUrlCheck.isVanityUrl(vanityUrl);
 
       expect(result).to.eq(true);
     });
 
     it('is false when not passed a vanity url', function () {
-      const nonVanityUrl = 'www.example.com';
+      const nonVanityUrl = 'https://mystayingsharp.org/articles';
       const result = $vanityUrlCheck.isVanityUrl(nonVanityUrl);
 
       expect(result).to.eq(false);

@@ -49,18 +49,22 @@ const $url = function () {
     const checkUrl = makeUrl(checkUrlStr);
 
     return _.any(otherUrlStrs, function (otherUrlStr) {
-      const otherUrl = makeUrl(otherUrlStr);
+      const otherUrl = _.startsWith(otherUrlStr, 'http')
+                     ? makeUrl(otherUrlStr)
+                     : otherUrlStr;
 
       return predFn(checkUrl, otherUrl);
     });
   };
 
   const matchingHost = function (checkUrl, otherUrl) {
-    return checkUrl.host === otherUrl.host;
+    const otherHost = otherUrl.host ? otherUrl.host : otherUrl;
+    return checkUrl.host === otherHost;
   };
 
   const matchingPathname = function (checkUrl, otherUrl) {
-    return checkUrl.pathname === otherUrl.pathname;
+    const otherPathname = otherUrl.pathname ? otherUrl.pathname : otherUrl;
+    return checkUrl.pathname === otherPathname;
   };
 
   const matchingHostAndPathname = andAll(matchingHost, matchingPathname);

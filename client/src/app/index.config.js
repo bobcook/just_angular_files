@@ -16,7 +16,7 @@ const config = function ($httpProvider,
     .useSanitizeValueStrategy('sanitize')
     .preferredLanguage('en');
 
-  $locationProvider.html5Mode(true);
+  $locationProvider.html5Mode(true).hashPrefix('!');
 
   $logProvider.debugEnabled(true);
 

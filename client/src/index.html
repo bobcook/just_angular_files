@@ -6,9 +6,8 @@
     <title>AARP Staying Sharp</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-
-    <!-- AARP Omniture Vendor Name -->
     <meta name="s6" id="metaS6" content="sharecare">
+    <meta name="google-site-verification" content="80jH64oU4ngTWPiS3zTPVBnKGvZk_5T_h07Xdw_cizA" />
 
     <script>
       (function (window) {
@@ -23,6 +22,11 @@
             'API_URL': 'https://aarp-staying-sharp-dev.herokuapp.com',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
           },
+          // TODO: remove once everything migrated to s3
+          devS3: {
+            'API_URL': 'https://aarp-staying-sharp-dev-s3.herokuapp.com',
+            'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
+          },
           staging: {
             'API_URL': 'https://aarp-staying-sharp-stg.herokuapp.com',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
@@ -35,13 +39,19 @@
 
         var envs = {
           'localhost:9000': 'local',
+
+          'test-mystayingsharp.org': 'devS3',
+          'stayingsharp.test-aarp.org': 'devS3',
+
           'development.aarp-staying-sharp.divshot.io': 'dev',
           'staging.aarp-staying-sharp.divshot.io': 'staging',
           'production.aarp-staying-sharp.divshot.io': 'production',
+
+          'aarp-ss-dev.firebaseapp.com': 'dev',
           'aarp-ss-stg.firebaseapp.com': 'staging',
           'aarp-ss-prod.firebaseapp.com': 'production',
-          'aarp-ss-dev.firebaseapp.com': 'dev',
           'aarp-staying-sharp.firebaseapp.com': 'production',
+
           'mystayingsharp.org': 'production',
           'stayingsharp.aarp.org': 'production',
         };
