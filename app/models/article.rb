@@ -2,6 +2,8 @@ class Article < ActiveRecord::Base
   include Publishable
   include WithPillars
   include WithKeywords
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   has_many :pillar_categorizations, as: :categorizable
   has_many :pillars, through: :pillar_categorizations
