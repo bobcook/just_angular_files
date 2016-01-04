@@ -14,7 +14,7 @@ const AssessmentStatus = function ($assessmentsAuth,
   };
 
   const getNextAssessment = function (assessmentGroup) {
-    return assessmentGroup.userAssessments.find(function (userAssessment) {
+    return _.find(assessmentGroup.userAssessments, function (userAssessment) {
       return !userAssessment.completed;
     });
   };
@@ -27,25 +27,22 @@ const AssessmentStatus = function ($assessmentsAuth,
   };
 
   const getQuestionnaires = function (assessmentGroup) {
-    return assessmentGroup.userAssessments.filter(function (userAssessment) {
+    return _.filter(assessmentGroup.userAssessments, function (userAssessment) {
       return userAssessment.type === 'AssessmentQuestionnaire';
     });
   };
 
   const getMBS = function (assessmentGroup) {
-    return assessmentGroup.userAssessments.find(function (userAssessment) {
+    return _.find(assessmentGroup.userAssessments, function (userAssessment) {
       return userAssessment.type === 'AssessmentMBS';
     });
   };
 
   const getAssessmentScores = function (assessment) {
-    const scores = {};
-    assessment.assessmentQuestions.forEach(function (question) {
-      if (question.answerValues.length > 0) {
-        scores[question.id] = question.answerValues;
-      }
-    });
-    return scores;
+    return _.chain(assessment.assessmentQuestions)
+      .filter(question => question.answerValues.length > 0)
+      .zipObject(question => [scores[question.id], question.answerValues])
+      .value();
   };
 
   const saveUserResponse = function (questionId, response, userAssessmentId) {
