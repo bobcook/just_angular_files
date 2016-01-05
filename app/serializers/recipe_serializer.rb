@@ -1,11 +1,12 @@
 class RecipeSerializer < ActiveModel::Serializer
   delegate :card_image, :card_title, :description, :duration, :id,
            :mast_head_image, :mast_head_title, :payload, :section1_body, :title,
-           to: :common
+           :source_materials_citation, to: :common
 
   attributes :card_image, :card_title, :description, :duration, :id,
              :ingredients, :instructions, :mast_head_image,
-             :mast_head_title, :payload, :section1_body
+             :mast_head_title, :payload, :section1_body,
+             :source_materials_citation
 
   has_many :pillars
 
