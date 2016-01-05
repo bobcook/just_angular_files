@@ -17,6 +17,28 @@ describe WithPillars do
     num.times.map { make_subject(args) }
   end
 
+  describe '.maybe_for_pillar' do
+    before(:each) do
+      Pillar.default_types.each do |slug|
+        create("#{slug}_pillar")
+      end
+    end
+
+    it 'returns all resources if no pillar is given' do
+      resources = make_multiple(3)
+
+      expect(test_class.maybe_for_pillar(nil))
+        .to match_array(resources)
+    end
+
+    it 'calls .for_pillar if a pillar is given' do
+      pillar = Pillar.find_by!(slug: Pillar.default_types.first)
+      expect(test_class).to receive(:for_pillar)
+
+      test_class.maybe_for_pillar(pillar)
+    end
+  end
+
   describe '.for_pillar' do
     before(:each) do
       Pillar.default_types.each do |slug|
@@ -24,8 +46,8 @@ describe WithPillars do
       end
     end
 
-    it 'returns activities with the given pillar' do
-      pillar = Pillar.find_by(slug: Pillar.default_types.first)
+    it 'returns resources with the given pillar' do
+      pillar = Pillar.find_by!(slug: Pillar.default_types.first)
       other_pillar = Pillar.find_by(slug: Pillar.default_types.last)
 
       with_pillar = make_multiple(2, pillars: [pillar])

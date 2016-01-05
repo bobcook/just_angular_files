@@ -5,8 +5,45 @@ describe ExploreContent do
 
   def make_subject
     ExploreContent.new(
-      games: limit, articles: limit, recipes: limit, activites: limit
+      games: limit, articles: limit, recipes: limit, activities: limit
     )
+  end
+
+  ExploreContent::RESOURCE_NAMES.each do |resource_name|
+    plural_name = resource_name.to_s.pluralize.to_sym
+
+    describe "\##{plural_name}" do
+      it 'returns resources from all pillars when no pillar is provided' do
+        resources = [
+          create(resource_name, pillars: [create(:pillar)]),
+          create(resource_name, pillars: [create(:pillar)])
+        ]
+
+        instance = ExploreContent.new(resource_name => 2)
+
+        expect(instance.send(plural_name).map(&:id))
+          .to match_array resources.map(&:id)
+      end
+
+      it 'returns resources only from the provided pillar' do
+        pillar = create :pillar
+
+        resources = [
+          create(resource_name, pillars: [create(:pillar)]),
+          create(resource_name, pillars: [pillar]),
+          create(resource_name, pillars: [create(:pillar)]),
+          create(resource_name, pillars: [create(:pillar), pillar]),
+          create(resource_name, pillars: [create(:pillar)])
+        ]
+
+        expected_resources = resources.select { |r| r.pillars.include? pillar }
+
+        instance = ExploreContent.new(resource_name => 2, pillar: pillar)
+
+        expect(instance.send(plural_name).map(&:id))
+          .to match_array expected_resources.map(&:id)
+      end
+    end
   end
 
   describe '#all_last_page?' do

@@ -14,13 +14,15 @@ const CardsController = function ($pagination) {
 
   this.completed = false;
 
+  let paginator;
+
   // TODO: extract out duplication here, in explore page, and dashboard
   this.setShownItems = (newItems) => {
     this.shownItems = newItems;
   };
 
   this.showMore = () => {
-    showMore($pagination.page + 1);
+    showMore(paginator.page + 1);
   };
 
   this.range = function (num) {
@@ -36,19 +38,19 @@ const CardsController = function ($pagination) {
   };
 
   const showMore = (page) => {
-    $pagination.showMore(page).then((items) => {
+    paginator.showMore(page).then((items) => {
       this.items = items;
-      this.completed = $pagination.completed;
+      this.completed = paginator.completed;
     });
   };
 
-  $pagination.init({
+  paginator = $pagination.create({
     displayShowMore: this.displayShowMore,
     perPage: this.perPage,
     resource: this.resource,
   });
 
-  showMore($pagination.page);
+  showMore(paginator.page);
 
 };
 

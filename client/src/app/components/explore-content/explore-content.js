@@ -11,18 +11,6 @@ const exploreContent = function ($pillarFiltering) {
       resource: '=ssResource',
       selectedPillar: '=ssSelectedPillar',
     },
-    link: function (scope, element, attrs) {
-      const setShownItems = function () {
-        $pillarFiltering
-          .filterMixedContentByPillar(scope.vm.selectedPillar, scope.vm.items)
-          .then((filteredItems) => {
-            scope.vm.setShownItems(filteredItems);
-          });
-      };
-
-      scope.$watch('vm.selectedPillar', setShownItems);
-      scope.$watch('vm.items', setShownItems);
-    },
   };
 };
 

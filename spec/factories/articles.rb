@@ -6,6 +6,7 @@ FactoryGirl.define do
 
     last_modified { Time.current }
     published_at { Time.current }
+    type { "#{Article.article_types.sample}_article".camelize }
     sequence(:title) { |n| "Article #{n}" }
     sequence(:payload) do |n|
       {
@@ -60,7 +61,9 @@ FactoryGirl.define do
       underscored_name = "#{article_type}_article"
       klass = underscored_name.camelize.constantize
 
-      factory underscored_name, class: klass
+      factory underscored_name, class: klass do
+        type underscored_name.camelize
+      end
     end
   end
 end

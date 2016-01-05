@@ -29,19 +29,6 @@ const $vanityUrlCheck = function (ApiRoutes,
     'https://stayingsharp.aarp.org',
     'https://stayingsharp.aarp.org/employee',
     'https://stayingsharp.aarp.org/employees',
-     // TODO: remove these after done QAing
-    'https://development.aarp-staying-sharp.divshot.io',
-    'https://development.aarp-staying-sharp.divshot.io/employee',
-    'https://development.aarp-staying-sharp.divshot.io/employees',
-    'https://staging.aarp-staying-sharp.divshot.io',
-    'https://staging.aarp-staying-sharp.divshot.io/employee',
-    'https://staging.aarp-staying-sharp.divshot.io/employees',
-    'https://localhost:9000',
-    'https://localhost:9000/employee',
-    'https://localhost:9000/employees',
-    'https://jordanielwolk.ngrok.com',
-    'https://jordanielwolk.ngrok.com/employee',
-    'https://jordanielwolk.ngrok.com/employees',
   ];
 
   const userLoggedIn = function () {

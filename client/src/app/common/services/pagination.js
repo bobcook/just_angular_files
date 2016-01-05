@@ -1,51 +1,59 @@
 const $pagination = function ($q) {
   'ngInject';
 
-  // TODO: change to ES6 class per this conversation
-  // https://github.com/philosophie/aarp-staying-sharp/
-  // pull/97#discussion_r44610726
-
   const MorePages = {};
   const NoMorePages = {};
 
-  this.init = (options) => {
-    this.displayShowMore = options.displayShowMore;
-    this.perPage = options.perPage;
-    this.resource = options.resource;
-    this.page = 0;
-    this.items = [];
-    this.completed = false;
-  };
+  const create = (options) => {
+    const displayShowMore = options.displayShowMore;
+    const perPage = options.perPage;
+    const resource = options.resource;
+    const params = options.params || {};
 
-  this.showMore = (page) => {
-    if (!this.displayShowMore) { return $q.resolve(null); }
-    const options = {
-      page: page,
-      perPage: this.perPage,
+    let completed = false;
+    let items = [];
+    let page = 0;
+
+    const actionFor = function (response) {
+      return (response.status === 200) ? NoMorePages : MorePages;
     };
-    return this.resource.query(options).then(interpretResponse);
+
+    const interpretResponse = function (response) {
+      return interpret(actionFor(response), response);
+    };
+
+    const interpret = (action, response) => {
+      if (action === NoMorePages) { completed = true; }
+      return concatNextPage(response.data);
+    };
+
+    const concatNextPage = (newItems) => {
+      page += 1;
+      items = items.concat(newItems);
+      return items;
+    };
+
+    const showMore = (page) => {
+      if (!displayShowMore) { return $q.resolve(null); }
+      const options = _.merge({}, params, {
+        page: page,
+        perPage: perPage,
+      });
+      return resource.query(options).then(interpretResponse);
+    };
+
+    const paginator = { showMore };
+
+    Object.defineProperties(paginator, {
+      completed: { get: () => completed },
+      items:     { get: () => items },
+      page:      { get: () => page },
+    });
+
+    return paginator;
   };
 
-  const actionFor = function (response) {
-    return (response.status === 200) ? NoMorePages : MorePages;
-  };
-
-  const interpretResponse = function (response) {
-    return interpret(actionFor(response), response);
-  };
-
-  const interpret = (action, response) => {
-    if (action === NoMorePages) { this.completed = true; }
-    return concatNextPage(response.data);
-  };
-
-  const concatNextPage = (items) => {
-    this.page += 1;
-    this.items = this.items.concat(items);
-    return this.items;
-  };
-
-  return this;
+  return { create };
 };
 
 export default $pagination;
