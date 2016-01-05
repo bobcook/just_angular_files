@@ -17,18 +17,6 @@ const cards = function ($pillarFiltering) {
       displayShowMore: '=?ssShowMore',
       items: '=?ssItems',
     },
-    link: function (scope, element, attrs) {
-      const setShownItems = function () {
-        $pillarFiltering
-          .filterByPillar(scope.vm.selectedPillar, scope.vm.items)
-          .then((filteredItems) => {
-            scope.vm.setShownItems(filteredItems);
-          });
-      };
-
-      scope.$watch('vm.selectedPillar', setShownItems);
-      scope.$watch('vm.items', setShownItems);
-    },
   };
 };
 

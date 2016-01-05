@@ -1,4 +1,4 @@
-const CardsController = function ($pagination) {
+const CardsController = function ($pagination, $scope) {
   'ngInject';
 
   this.selectedPillar = this.selectedPillar || null; // Via ss-selected-pillar
@@ -7,8 +7,7 @@ const CardsController = function ($pagination) {
   this.perRow = this.perRow || 2; // Defined via ss-per-row
   this.cardClasses = this.cardClasses || ''; // Defined via ss-card-classes
   this.items = this.items || []; // Defined via ss-items
-  this.shownItems = this.items; // For restricting items based on filters
-  if (_.isUndefined(this.displayShowMore) || _.isNull(this.displayShowMore)) {
+  if (this.displayShowMore == null) {
     this.displayShowMore = true; // Defined via ss-show-more
   }
 
@@ -16,22 +15,13 @@ const CardsController = function ($pagination) {
 
   let paginator;
 
-  // TODO: extract out duplication here, in explore page, and dashboard
-  this.setShownItems = (newItems) => {
-    this.shownItems = newItems;
-  };
-
   this.showMore = () => {
     showMore(paginator.page + 1);
   };
 
-  this.range = function (num) {
-    return _.range(0, num);
-  };
-
   // TODO: extract out duplication here, in explore page, and dashboard
   this.itemsInRow = function (offset, items) {
-    if (_.isNull(items) || _.isUndefined(items)) { return []; }
+    if (items == null) { return []; }
     const chunks = _.chunk(items, this.perRow);
     const chunkNum = offset / this.perRow;
     return chunks[chunkNum];
@@ -44,14 +34,22 @@ const CardsController = function ($pagination) {
     });
   };
 
-  paginator = $pagination.create({
-    displayShowMore: this.displayShowMore,
-    perPage: this.perPage,
-    resource: this.resource,
-  });
+  const refreshItems = () => {
+    const pillar = this.selectedPillar && this.selectedPillar.slug !== 'all'
+                 ? this.selectedPillar.slug
+                 : null;
 
-  showMore(paginator.page);
+    paginator = $pagination.create({
+      displayShowMore: this.displayShowMore,
+      perPage: this.perPage,
+      resource: this.resource,
+      params: { pillar },
+    });
 
+    showMore(paginator.page);
+  };
+
+  $scope.$watch(() => this.selectedPillar, refreshItems);
 };
 
 export default CardsController;

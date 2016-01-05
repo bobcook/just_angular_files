@@ -1,6 +1,6 @@
 <section class="info-box">
   <div
-    ng-if="vm.shownItems.length === 0"
+    ng-if="vm.items.length === 0"
     class="container">
 
     <div class="content">
@@ -10,12 +10,12 @@
 </section>
 
 <div
-  ng-repeat="item in vm.shownItems"
+  ng-repeat="item in vm.items"
   ng-if="$index % vm.perRow == 0"
   class="card-holder container article-holder">
 
   <ss-card
-    ng-repeat="card in vm.itemsInRow($parent.$index, vm.shownItems)"
+    ng-repeat="card in vm.itemsInRow($parent.$index, vm.items)"
     ss-card-for="card"
     ss-card-classes="vm.cardClasses"
     ss-is-user-namespace="vm.isUserNamespace"

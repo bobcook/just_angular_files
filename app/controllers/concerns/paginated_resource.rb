@@ -33,7 +33,8 @@ module PaginatedResource
   end
 
   def sorted_collection
-    @sorted_collection ||= resource.newest_first
+    @sorted_collection ||=
+      resource.maybe_for_pillar(params[:pillar]).newest_first
   end
 
   def collection
