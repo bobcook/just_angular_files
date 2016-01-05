@@ -9,7 +9,7 @@
       <header>
         <h5>{{vm.upperLeft}}</h5>
         <span ng-if="vm.upperRight">{{vm.upperRight}}</span>
-        <img ng-if="vm.isGame" src="{{vm.cardImage}}" alt="">
+        <img ng-if="vm.isGame" ng-src="{{vm.cardImage}}" alt="">
       </header>
       <article>
         <h4><a ui-sref="{{vm.resourcePath}}">{{vm.cardTitle}}</a></h4>
