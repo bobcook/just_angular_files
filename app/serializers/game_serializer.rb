@@ -2,16 +2,12 @@ class GameSerializer < ActiveModel::Serializer
   delegate :card_image, :description, :id, to: :common
 
   attributes :id, :title, :call_to_action_url, :card_image,
-             :card_title, :description, :game_type, :content_source_branding
+             :card_title, :description, :game_type
 
   has_many :pillars
 
   def call_to_action_url
     object.payload['callToActionURL']
-  end
-
-  def content_source_branding
-    object.payload['contentSourceBranding']
   end
 
   def game_type
