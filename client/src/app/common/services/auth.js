@@ -1,4 +1,4 @@
-const $auth = function (ApiRoutes, $http, $localStorage) {
+const $auth = function (ApiRoutes, $http, $localStorage, $promise) {
   'ngInject';
 
   let $storage = $localStorage.auth;
@@ -19,12 +19,8 @@ const $auth = function (ApiRoutes, $http, $localStorage) {
     },
 
     destroySession: function () {
-      return $http.delete(ApiRoutes.SESSION_DESTROY, {
-        headers: { Accept: 'application/json' },
-      }).then(function () {
-        delete $storage.sessionToken;
-        return true;
-      });
+      delete $storage.sessionToken;
+      return $promise.of(true);
     },
 
     sessionExists: function () {

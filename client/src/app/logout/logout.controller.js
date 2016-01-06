@@ -2,7 +2,9 @@ const LogoutController = function ($auth, $log, $state) {
   'ngInject';
 
   $auth.destroySession().then(function () {
-    $state.go('application.home');
+    window.location.href =
+      'http://www.aarp.org/online-community/forward/logout.action' +
+      `?referrer=${window.location.protocol}//${window.location.host}`;
   }, function (response) {
     $log.error(response);
     $state.go('application.home');
