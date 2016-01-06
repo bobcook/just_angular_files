@@ -5,7 +5,7 @@ source 'https://nyvTgvizKAKWAVynPmpS@gem.fury.io/jdwolk/' do
 end
 
 source 'https://download:' \
-       '46772c3be10bea64e52689cfa8e493478163f533f935ee4deef1556ebdaa81bc@' \
+       'bc5c876f48bf9bf9f0345486356ed815917f3d3194159a85d2e41cf3d29d177f@' \
        'www.phusionpassenger.com/enterprise_gems'
 
 ruby `cat .ruby-version`.strip
