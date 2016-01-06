@@ -41,11 +41,15 @@
   <section class="container">
     <article>
       <div class="detail-text" ng-bind-html="vm.section1Body" ></div>
-      <h4>Benefits to Brain Health</h4>
-      <div class="detail-text" ng-bind-html="vm.benefitsToBrainHealth"></div>
+      <div ng-if="vm.benefitsToBrainHealth">
+        <h4>Benefits to Brain Health</h4>
+        <div class="detail-text" ng-bind-html="vm.benefitsToBrainHealth"></div>
+      </div>
       <hr>
-      <h4>Want to dig a little deeper on this topic?</h4>
-      <div class="detail-source" data-ng-bind-html="vm.sourceMaterialsCitation"></div>
+      <div ng-if="vm.sourceMaterialsCitation">
+        <h4>Want to dig a little deeper on this topic?</h4>
+        <div class="detail-source" ng-bind-html="vm.sourceMaterialsCitation"></div>
+      </div>
       <a href="" onclick="window.print()">Print <span class="icon-print"></span></a>
       <hr>
     </article>

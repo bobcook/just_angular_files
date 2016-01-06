@@ -51,8 +51,10 @@
       <div class="detail-text" ng-bind-html="vm.article.section1Body" ></div>
       <img class="detail-image" ng-src="{{vm.article.bodyImage}}" alt="">
       <hr>
-      <div class="detail-source" data-ng-bind-html="vm.article.sourceMaterialsCitation"></div>
-      <hr>
+      <div ng-if="vm.article.sourceMaterialsCitation">
+        <div class="detail-source" ng-bind-html="vm.article.sourceMaterialsCitation"></div>
+        <hr>
+      </div>
     </article>
   </section>
 </div>
