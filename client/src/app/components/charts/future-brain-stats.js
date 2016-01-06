@@ -70,7 +70,7 @@ const FutureBrainStats = function (API_URL,
   // * Potential: we're showing 80th percentile, NOT neuro score of 8.0
   const getAgeProgressions = function (neuroResultOverall) {
     return $p.accumulate({}, [
-      $p.as('potential', () => ageProgression(POTENTIAL_SCORE)),
+      $p.as('optimal', () => ageProgression(POTENTIAL_SCORE)),
       $p.as('current', () => ageProgression(neuroResultOverall)),
     ]);
   };

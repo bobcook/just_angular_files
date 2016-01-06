@@ -4,7 +4,7 @@ const MyFutureBrainController = function (AssessmentResultScores,
   'ngInject';
 
   const COLORS = {
-    potential: '#56aa56',
+    optimal: '#56aa56',
     current: '#9dced3',
   };
 
