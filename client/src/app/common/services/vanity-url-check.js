@@ -19,16 +19,24 @@ const $vanityUrlCheck = function (ApiRoutes,
     'https://www.mystayingsharp.org',
     'https://www.mystayingsharp.org/employee',
     'https://www.mystayingsharp.org/employees',
+    'https://www.mystayingsharp.org/ssmember',
+    'https://www.mystayingsharp.org/ssmembers',
     'https://mystayingsharp.org',
     'https://mystayingsharp.org/employee',
     'https://mystayingsharp.org/employees',
+    'https://mystayingsharp.org/ssmember',
+    'https://mystayingsharp.org/ssmembers',
 
     'https://www.stayingsharp.aarp.org',
     'https://www.stayingsharp.aarp.org/employee',
     'https://www.stayingsharp.aarp.org/employees',
+    'https://www.stayingsharp.aarp.org/ssmember',
+    'https://www.stayingsharp.aarp.org/ssmembers',
     'https://stayingsharp.aarp.org',
     'https://stayingsharp.aarp.org/employee',
     'https://stayingsharp.aarp.org/employees',
+    'https://stayingsharp.aarp.org/ssmember',
+    'https://stayingsharp.aarp.org/ssmembers',
   ];
 
   const userLoggedIn = function () {
@@ -47,17 +55,27 @@ const $vanityUrlCheck = function (ApiRoutes,
     return isVanityDomain($location.absUrl());
   };
 
+  const redirectUrlFor = function (currentUrl) {
+    const fragmentsAndPromos = {
+      employee: 'SS-EMPLOYEE',
+      ssmember: 'SS-BETA',
+    };
+
+    const includesFragment = function (_promo, fragment) {
+      return _.includes(currentUrl, fragment);
+    };
+
+    const promo = _.find(fragmentsAndPromos, includesFragment) || 'SM-SS';
+
+    return `${ApiRoutes.AARP_AUTH}?promo=${promo}`;
+  };
+
   const redirectIfVanityUrl = function () {
     const currentUrl = $location.absUrl();
-    const redirectUrl =
-      _.includes(currentUrl, 'employee') ?
-      `${ApiRoutes.AARP_AUTH}?promo=SS-EMPLOYEE` :
-      `${ApiRoutes.AARP_AUTH}?promo=SM-SS`;
-
     const result = isVanityUrl(currentUrl) && !userLoggedIn();
     if (result) {
       console.log('Check passed; redirecting');
-      $postHref(redirectUrl, {});
+      $postHref(redirectUrlFor(currentUrl), {});
     }
     return result;
   };
@@ -85,6 +103,7 @@ const $vanityUrlCheck = function (ApiRoutes,
     locationIsVanityDomain: locationIsVanityDomain,
     redirectIfVanityUrl: redirectIfVanityUrl,
     redirectIfNeeded: redirectIfNeeded,
+    redirectUrlFor: redirectUrlFor,
     vanityUrls: VANITY_URLS,
   };
 };

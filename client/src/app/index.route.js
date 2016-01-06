@@ -230,6 +230,16 @@ const routerConfig = function (stateHelperProvider,
           ],
         },
         {
+          name: 'ssmember',
+          url: '/ssmember',
+          template: '',
+        },
+        {
+          name: 'ssmembers',
+          url: '/ssmembers',
+          template: '',
+        },
+        {
           name: 'static',
           url: '',
           template: '<div ui-view></div>',
