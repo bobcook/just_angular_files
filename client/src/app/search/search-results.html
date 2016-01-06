@@ -1,0 +1,49 @@
+<ss-pillar-filters
+  ss-selected-pillar="vm.selectedPillar">
+</ss-pillar-filters>
+
+<div class="search-results">
+
+  <div class="container result blank">
+    <p>
+      <ng-pluralize
+        count="vm.totalCount"
+        when="{
+          '0': 'No search results found.',
+          '1': 'Found 1 result',
+          'other': 'Found {{vm.totalCount | number}} results'}">
+      </ng-pluralize>
+    </p>
+  </div>
+
+  <div class="container result"
+       dir-paginate="result in vm.results | itemsPerPage: vm.perPage"
+       total-items="vm.totalCount"
+       current-page="vm.currentPage">
+
+    <div class="info-block">
+      <header>
+        <div class="card-detail-img" style="background-image: url('{{result.cardImage}}'); background-repeat: no-repeat; background-position: top center;"></div>
+        <h5>{{result.contentType}}</h5>
+        <h4><a ui-sref="{{result.uiSref}}"> {{result.cardTitle}}</a></h4>
+      </header>
+      <article class="description">
+        <p>{{result.description}}</p>
+        <div class="micro">
+          <span>{{result.effort}}</span>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      <div ss-pillars-display="result.pillars" class="pillars"></div>
+    </footer>
+
+  </div>
+
+  <div class="container pagination-container">
+    <dir-pagination-controls on-page-change="vm.pageChanged(newPageNumber)">
+    </dir-pagination-controls>
+  </div>
+
+</div>

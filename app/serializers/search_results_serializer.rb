@@ -1,0 +1,38 @@
+class SearchResultsSerializer < ActiveModel::Serializer
+  delegate :card_image, :description, :id, to: :common
+  attributes :id, :title, :card_image, :card_title, :description, :content_type,
+             :effort, :slug
+
+  has_many :pillars
+
+  def card_title
+    title = object.payload['cardTitle']
+    title.present? ? title : object.title
+  end
+
+  def content_type
+    case object.class.name
+    when 'BasicArticle'
+      'Article'
+    else
+      object.class.name
+    end
+  end
+
+  def effort
+    case object.class.name
+    when 'BasicArticle'
+      object.payload['effort/readTime']
+    when 'Recipe'
+      object.payload['prepTime']
+    when 'Activity'
+      common.effort
+    end
+  end
+
+  private
+
+  def common
+    @common ||= CommonContent.new(object)
+  end
+end

@@ -1,4 +1,4 @@
-const TopNavController = function (ApiRoutes) {
+const TopNavController = function (ApiRoutes, $state) {
   'ngInject';
 
   this.loginUrl = `${ApiRoutes.AARP_AUTH}?promo=SM-SS`;
@@ -6,7 +6,16 @@ const TopNavController = function (ApiRoutes) {
   this.isMenuOpen = false;
   this.isSearchOpen = false;
 
-  this.searchCategories = ['All content', 'Option 1', 'Option 2'];
+  this.submitSearch = function () {
+    this.isSearchOpen = false;
+    $state.go(
+      'application.search-results',
+      { q: this.keywords, type: _.snakeCase(this.selectedSearchCategory) }
+    );
+  };
+
+  this.searchCategories =
+    ['All content', 'Articles', 'Activities', 'Games', 'Recipes'];
   this.selectedSearchCategory = 'All content';
 };
 

@@ -15,8 +15,6 @@ gem 'airbrake', '~> 4.3.0'
 gem 'bitmask_attributes', '~> 1.0.0'
 gem 'bundler', '>= 1.8.4'
 gem 'devise', '~> 3.5.2'
-gem 'elasticsearch-model', '~> 0.1.8'
-gem 'elasticsearch-rails', '~> 0.1.8'
 gem 'factory_girl_rails', '~> 4.5.0'
 gem 'faraday', '~> 0.9.1'
 gem 'faraday_middleware', '~> 0.10.0'
@@ -40,6 +38,9 @@ gem 'saml_idp', '~> 0.2.1'
 gem 'sidekiq', '~> 3.5.0'
 gem 'therubyracer', '~> 0.12.2'
 gem 'unicorn', '~> 4.9.0'
+# elasticsearch gems must come after pagination gem
+gem 'elasticsearch-model', '~> 0.1.8'
+gem 'elasticsearch-rails', '~> 0.1.8'
 
 group :development do
   gem 'better_errors', '~> 2.1.1'

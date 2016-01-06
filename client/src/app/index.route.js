@@ -230,6 +230,13 @@ const routerConfig = function (stateHelperProvider,
           ],
         },
         {
+          name: 'search-results',
+          url: '/search-results?q&type',
+          templateUrl: 'app/search/search-results.html',
+          controller: 'SearchResultsController',
+          controllerAs: 'vm',
+        },
+        {
           name: 'ssmember',
           url: '/ssmember',
           template: '',

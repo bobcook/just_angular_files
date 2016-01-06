@@ -1,0 +1,175 @@
+.search-results {
+
+  .container {
+    background: $white;
+    padding: 20px 0 0 0;
+    margin: 0 auto;
+
+    &.pagination-container {
+      background: none;
+      padding: 0;
+    }
+  }
+
+  .info-block {
+    @include clearfix;
+
+    @media screen and (min-width: 768px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    @media screen and (min-width: 992px) {
+      position: relative;
+    }
+  }
+
+  .result {
+    margin: 10px 10px;
+    border: 1px solid $grey-border;
+    border-radius: 2px;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+
+    @media screen and (min-width: 768px) {
+      margin: 10px auto;
+    }
+
+    @media screen and (min-width: 992px) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &.blank {
+      background: none;
+      border: none;
+    }
+  }
+
+  header {
+    width: 100%;
+    float: none;
+    margin-bottom: 10px;
+
+    @media screen and (min-width: 992px) {
+      width: 50%;
+      padding-right: 4%;
+      float: left;
+      margin-bottom: 20px;
+    }
+  }
+
+  article {
+    width: 100%;
+    float: none;
+    margin-bottom: 20px;
+
+    @media screen and (min-width: 992px) {
+      width: 50%;
+      float: left;
+    }
+
+    p {
+      font-size: 14px;
+
+      @media screen and (min-width: 768px) {
+        width: 60%;
+      }
+
+      @media screen and (min-width: 992px) {
+        width: 100%;
+      }
+    }
+  }
+
+  .description {
+    margin-top: 10px;
+  }
+
+  footer {
+    border-top: 1px solid $grey-border;
+    clear: both;
+    width: 100%;
+    margin-top: 0;
+    padding: 10px 0 10px 15px;
+  }
+
+  .card-detail-img {
+    height: 125px;
+    width: 125px;
+    float: none;
+    background-size: 200%;
+    margin-right: 15px;
+
+    @media screen and (min-width: 992px) {
+      float: left;
+    }
+  }
+
+  h4 {
+    margin-top: 10px;
+    float: none;
+
+    &:hover {
+      color: $grey-blue;
+    }
+
+    a {
+      color: $grey-dark;
+    }
+  }
+
+  h5 {
+    margin-top: 10px;
+    float: none;
+
+    @media screen and (min-width: 992px) {
+      margin-top: 0;
+    }
+  }
+
+  .proof, .effort {
+    margin-top: 5px;
+    margin-bottom: 15px;
+
+    @media screen and (min-width: 992px) {
+      margin-bottom: 5px;
+    }
+  }
+
+  .effort {
+    font-weight: bold;
+    float: left;
+  }
+
+  .proof {
+    float: right;
+    font-size: 12px;
+    font-weight: bold;
+
+    @media screen and (min-width: 992px) {
+      position: absolute;
+      bottom: 16px;
+      right: 20px;
+      margin-bottom: 0;
+    }
+  }
+
+  .icon-recommend {
+    font-size: 12px;
+  }
+
+  .search-page-search-bar {
+    background: $white;
+    border-top: 1px solid $grey-border;
+    border-bottom: 1px solid $grey-border;
+  }
+
+  .micro {
+    position: absolute;
+    font-size: 12px;
+    bottom: 16px;
+    left: 155px;
+  }
+}

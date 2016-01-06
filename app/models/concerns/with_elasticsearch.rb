@@ -3,7 +3,8 @@ module WithElasticsearch
 
   included do
     include Elasticsearch::Model
-    index_name index_name
+    index_name "ss_#{name.downcase.pluralize}_#{Rails.env}"
+
     after_save { elasticsearch_indexer('index') }
     after_destroy { elasticsearch_indexer('delete') }
   end

@@ -34,6 +34,7 @@ import RecipeReview from './common/resources/recipe-review.js';
 import RecommendedContent from './common/resources/recommended-content.js';
 import RelatedContent from './common/resources/related-content.js';
 import RelatedContentGames from './common/resources/related-content-games.js';
+import Search from './common/resources/search.js';
 import UserActivity from './common/resources/user-activity.js';
 import UserActivityPeriod from './common/resources/user-activity-period.js';
 import UserArticle from './common/resources/user-article.js';
@@ -83,6 +84,7 @@ import FutureBrainStats from './components/charts/future-brain-stats.js';
 import httpsInterceptor from './common/services/https-interceptor.js';
 import MBSAssessmentList from './assessments/mbs-assessment-list.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
+import PerformSearch from './search/perform-search.js';
 import $vanityUrlCheck from './common/services/vanity-url-check.js';
 import vanityUrlInterceptor from './common/services/vanity-url-interceptor.js';
 
@@ -189,6 +191,8 @@ import RetakeAssessmentModalController from
 import ReviewsController from './components/reviews/reviews.controller.js';
 import SaveUserContentController from
   './components/save-user-content/save-user-content.controller.js';
+import SearchResultsController from
+  './search/search-results.controller.js';
 import SocialLinksController from
   './components/social-links/social-links.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
@@ -222,6 +226,7 @@ const app = angular.module('aarp-staying-sharp', [
   'ui.select',
   '720kb.socialshare',
   'ngComboDatePicker',
+  'angularUtils.directives.dirPagination',
 ]);
 
 addConstants(app);
@@ -260,6 +265,7 @@ app
   .factory('RecommendedContent', RecommendedContent)
   .factory('RelatedContent', RelatedContent)
   .factory('RelatedContentGames', RelatedContentGames)
+  .factory('Search', Search)
   .factory('UserActivity', UserActivity)
   .factory('UserActivityPeriod', UserActivityPeriod)
   .factory('UserArticle', UserArticle)
@@ -301,6 +307,7 @@ app
   .factory('FutureBrainStats', FutureBrainStats)
   .factory('httpsInterceptor', httpsInterceptor)
   .factory('MBSAssessmentList', MBSAssessmentList)
+  .factory('PerformSearch', PerformSearch)
   .factory('vanityUrlInterceptor', vanityUrlInterceptor)
   .provider('modalStateHelper', modalStateHelper)
 
@@ -387,6 +394,7 @@ app
      RetakeAssessmentModalController)
   .controller('ReviewsController', ReviewsController)
   .controller('SaveUserContentController', SaveUserContentController)
+  .controller('SearchResultsController', SearchResultsController)
   .controller('SocialLinksController', SocialLinksController)
   .controller('TopNavController', TopNavController)
   .controller('NavTabsController', NavTabsController)
