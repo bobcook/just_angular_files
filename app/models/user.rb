@@ -26,6 +26,15 @@ class User < ActiveRecord::Base
     user_activities.count >= MAX_ACTIVITY_LIMIT
   end
 
+  def engagement_level
+    case
+    when user_activities.present?                  then 3
+    when user_assessment_groups.any?(&:completed?) then 2
+    when user_assessment_groups.present?           then 1
+    else                                                0
+    end
+  end
+
   private
 
   def not_over_max_activities
