@@ -25,6 +25,8 @@ const runBlock = function ($log, $window, $rootScope, $location) {
       search: querystring,
       url: $location.absUrl(),
     });
+
+    s.t({ pageName: path });
     // end of Segment.io analytics
   });
 
