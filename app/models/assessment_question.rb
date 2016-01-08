@@ -1,5 +1,5 @@
 class AssessmentQuestion < ActiveRecord::Base
-  has_many :assessment_responses
+  has_many :assessment_responses, dependent: :destroy
   has_many :question_recommendations, dependent: :destroy
   belongs_to :pillar
 
