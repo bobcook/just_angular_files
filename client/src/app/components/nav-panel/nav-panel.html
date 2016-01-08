@@ -50,7 +50,7 @@
           <li>
             <a ui-sref="application.user.articles" ng-click="vm.close()"><span class=" icon icon-saved-articles"></span>Saved Articles</a>
           </li>
-          <li>
+          <li ng-if="this.hasCompletedAssessments">
             <a ui-sref="application.user.assessments.overall" ng-click="vm.close()"><span class="icon icon-assessment-results"></span>Saved Assessments</a>
           </li>
           <li>
