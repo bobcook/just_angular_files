@@ -37,6 +37,12 @@ const $vanityUrlCheck = function (ApiRoutes,
     'https://stayingsharp.aarp.org/employees',
     'https://stayingsharp.aarp.org/ssmember',
     'https://stayingsharp.aarp.org/ssmembers',
+
+    'https://aarp-ss-stg.firebaseapp.com',
+    'https://aarp-ss-stg.firebaseapp.com/employee',
+    'https://aarp-ss-stg.firebaseapp.com/employees',
+    'https://aarp-ss-stg.firebaseapp.com/ssmember',
+    'https://aarp-ss-stg.firebaseapp.com/ssmembers',
   ];
 
   const userLoggedIn = function () {
