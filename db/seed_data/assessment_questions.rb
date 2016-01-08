@@ -355,22 +355,10 @@ module SeedData
           pillar_id: 3
         },
         {
-          text: 'If you are married, what is your marriage like?',
-          external_recommendation_id: '00203',
-          answer_options: %w(Happy
-                             So-so
-                             Unhappy),
-          answer_values: %w(1 3 4),
-          order: 7,
-          assessment_id: 3,
-          type: 'AssessmentQuestionRadio',
-          pillar_id: 5
-        },
-        {
-          text: 'If you are NOT married, what is your living arrangement?',
+          text: 'What is your living arrangement?',
           external_recommendation_id: '00204',
           answer_options: %w(Live\ alone
-                             Live\ with\ partner
+                             Live\ with\ partner/spouse
                              Live\ with\ roommate(s)),
           answer_values: %w(3 1 2),
           order: 8,
