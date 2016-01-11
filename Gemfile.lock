@@ -108,19 +108,6 @@ GEM
       json
       thread
       thread_safe
-    elasticsearch (1.0.15)
-      elasticsearch-api (= 1.0.15)
-      elasticsearch-transport (= 1.0.15)
-    elasticsearch-api (1.0.15)
-      multi_json
-    elasticsearch-model (0.1.8)
-      activesupport (> 3)
-      elasticsearch (> 0.4)
-      hashie
-    elasticsearch-rails (0.1.8)
-    elasticsearch-transport (1.0.15)
-      faraday
-      multi_json
     erubis (2.7.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -377,8 +364,6 @@ DEPENDENCIES
   database_cleaner (~> 1.4.1)
   devise (~> 3.5.2)
   dotenv-rails (~> 2.0.2)
-  elasticsearch-model (~> 0.1.8)
-  elasticsearch-rails (~> 0.1.8)
   factory_girl_rails (~> 4.5.0)
   faraday (~> 0.9.1)
   faraday_middleware (~> 0.10.0)
