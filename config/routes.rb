@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resource :home, controller: 'home', only: :show
   resources :activities, only: [:index, :show]
 
+  resource :search, controller: 'search', only: [:show]
   resource :assessment, controller: 'assessment', only: [:show] do
     # TODO: revisit when we do assessments
     get :question
@@ -51,7 +52,6 @@ Rails.application.routes.draw do
                   only: [:create, :index]
       end
       resources :related_content, controller: 'related_content', only: [:index]
-      resources :search, only: [:index]
       resource :explore_content, controller: 'explore_content', only: :show
 
       namespace :me, as: :my do
