@@ -1,6 +1,7 @@
 const AssessmentStatus = function ($assessmentsAuth,
                                    $state,
                                    $assessmentResults,
+                                   $q,
                                    UserAssessmentGroup,
                                    AssessmentResponse) {
   'ngInject';
@@ -46,7 +47,7 @@ const AssessmentStatus = function ($assessmentsAuth,
   };
 
   const saveUserResponse = function (questionId, response, userAssessmentId) {
-    new AssessmentResponse({
+    return new AssessmentResponse({
       assessmentQuestionId: questionId,
       response: response,
       userAssessmentId: userAssessmentId,
@@ -57,20 +58,20 @@ const AssessmentStatus = function ($assessmentsAuth,
   // TODO: Currently we are storing date as a string. Might reconsider
   // how to process dates if we add assessment reporting later on.
   const saveTextResponses = function (textResponses, userAssessmentId) {
-    for (const questionId in textResponses) {
+    return $q.all(_.map(textResponses, (questionId) => {
       const response = textResponses[questionId];
-      saveUserResponse(questionId, response, userAssessmentId);
-    }
+      return saveUserResponse(questionId, response, userAssessmentId);
+    }));
   };
 
   const saveIndexResponses = function (indexResponses,
                                        assessmentScores,
                                        userAssessmentId) {
-    for (const questionId in indexResponses) {
+    return $q.all(_.map(indexResponses, (questionId) => {
       const response =
         getResponseScore(indexResponses, assessmentScores, questionId);
-      saveUserResponse(questionId, response, userAssessmentId);
-    }
+      return saveUserResponse(questionId, response, userAssessmentId);
+    }));
   };
 
   // finds the score for a particular response

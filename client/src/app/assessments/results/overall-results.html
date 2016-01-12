@@ -7,8 +7,8 @@
     <section class="summary">
       <div class="scoring-info">
         <div class="score">
-          <h3 ng-if="!vm.overallScore">...<span>Calculating Your Score</span></h3>
-          <h3 ng-if="vm.overallScore">{{vm.overallScore}}<span>Overall Score</span></h3>
+          <h3 ng-if="vm.overallScore == null">...<span>Calculating Your Score</span></h3>
+          <h3 ng-if="vm.overallScore != null">{{vm.overallScore}}<span>Overall Score</span></h3>
         </div>
       </div>
       <div class="scoring-info with-action">

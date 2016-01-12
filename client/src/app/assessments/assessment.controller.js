@@ -1,5 +1,6 @@
 const AsssessmentController = function ($stateParams,
                                         $featureDetection,
+                                        $q,
                                         Assessment,
                                         UserAssessment,
                                         AssessmentStatus) {
@@ -45,16 +46,17 @@ const AsssessmentController = function ($stateParams,
   this.submitForm = function (isValid) {
     if (!isValid) { return; }
 
-    currentUserAssessment.then(function (userAssessment) {
-      AssessmentStatus.updateCompletedUserAssessment(userAssessment);
-    });
-
-    AssessmentStatus.saveTextResponses(this.textResponses, userAssessmentId);
-    AssessmentStatus.saveIndexResponses(
-      this.indexResponses, assessmentScores, userAssessmentId
-    );
-
-    assessmentRedirect();
+    currentUserAssessment.then((userAssessment) => {
+      return $q.all([
+        AssessmentStatus.updateCompletedUserAssessment(userAssessment),
+        AssessmentStatus.saveTextResponses(
+          this.textResponses, userAssessmentId
+        ),
+        AssessmentStatus.saveIndexResponses(
+          this.indexResponses, assessmentScores, userAssessmentId
+        ),
+      ]);
+    }).then(assessmentRedirect);
   };
 
   if (!this.isTouchDevice) {
