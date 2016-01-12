@@ -1,6 +1,7 @@
 require 'rails_helper'
 require_relative './publishable_shared_examples'
 require_relative './with_pillars_shared_examples'
+require_relative './elasticsearch_shared_examples'
 
 describe Article do
   def last_week
@@ -49,4 +50,6 @@ describe Article do
       :published_at
     )
   end
+
+  it_behaves_like 'it calls ElasticsearchIndexer', :article
 end

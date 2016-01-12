@@ -1,6 +1,7 @@
 require 'rails_helper'
 require_relative './publishable_shared_examples'
 require_relative './with_pillars_shared_examples'
+require_relative './elasticsearch_shared_examples'
 
 describe Game do
   it { should have_many(:pillar_categorizations) }
@@ -23,4 +24,6 @@ describe Game do
       :published_at
     )
   end
+
+  it_behaves_like 'it calls ElasticsearchIndexer', :game
 end

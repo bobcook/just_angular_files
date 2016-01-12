@@ -6,7 +6,7 @@ describe UserArticle do
 
   it 'validates uniqueness of user and article' do
     user = create(:user)
-    article = create(:article, type: :basic)
+    article = create(:article, type: :BasicArticle)
 
     user_article_1 = create(:user_article, user: user, article: article)
     expect(user_article_1).to be_valid

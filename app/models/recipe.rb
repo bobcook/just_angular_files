@@ -2,6 +2,7 @@ class Recipe < ActiveRecord::Base
   include Publishable
   include WithPillars
   include WithKeywords
+  include WithElasticsearch
 
   has_many :pillar_categorizations, as: :categorizable
   has_many :pillars, through: :pillar_categorizations
