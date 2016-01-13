@@ -22,6 +22,7 @@
             <label>{{question.text}}</label>
             <ng-combo-date-picker
               ng-model="vm.textResponses[question.id]"
+              ng-date="{{ vm.defaultBirthdate.toString() }}"
               ng-attrs-date='{"class": "form-control day"}'
               ng-attrs-month='{"class": "form-control month"}'
               ng-attrs-year='{"class": "form-control year"}'
