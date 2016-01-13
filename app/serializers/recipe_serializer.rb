@@ -5,7 +5,7 @@ class RecipeSerializer < ActiveModel::Serializer
 
   attributes :card_image, :card_title, :description, :duration, :id,
              :ingredients, :instructions, :mast_head_image,
-             :mast_head_title, :payload, :section1_body
+             :mast_head_title, :payload, :section1_body, :slug
 
   has_many :pillars
 

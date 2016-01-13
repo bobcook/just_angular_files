@@ -25,7 +25,8 @@ module PaginatedResource
   end
 
   def instance
-    @instance ||= resource.includes(instance_includes).find_by(id: params[:id])
+    @instance ||=
+      resource.includes(instance_includes).find_by(slug: params[:id])
   end
 
   def instance_includes

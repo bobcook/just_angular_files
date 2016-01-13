@@ -5,7 +5,7 @@ class ArticleSerializer < ActiveModel::Serializer
 
   attributes :id, :card_title, :card_image, :title, :type, :body_image,
              :description, :duration, :effort, :mast_head_image,
-             :mast_head_title, :section1_body, :section2_body,
+             :mast_head_title, :section1_body, :section2_body, :slug,
              :source_materials_citation, :content_source_branding_image
 
   has_many :pillars

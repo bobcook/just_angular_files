@@ -1,7 +1,6 @@
 const Activity = function (API_URL,
                            railsResourceFactory,
-                           railsSerializer,
-                           Slug) {
+                           railsSerializer) {
   'ngInject';
 
   const Activity = railsResourceFactory({
@@ -27,8 +26,7 @@ const Activity = function (API_URL,
   // Computed properties
   Object.defineProperty(Activity.prototype, 'uiSref', {
     get: function () {
-      const slug = Slug.slugify(this.cardTitle);
-      return `application.activity({ id: ${this.id}, slug: '${slug}' })`;
+      return `application.activity({ id: '${this.slug}' })`;
     },
   });
 

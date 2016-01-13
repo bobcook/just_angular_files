@@ -18,7 +18,8 @@ module ReviewableResource
 
   def reviewable_instance
     @reviewable_instance ||=
-      reviewable_resource_type.find(params["#{reviewable_resource_name}_id"])
+      reviewable_resource_type
+      .friendly.find(params["#{reviewable_resource_name}_id"])
   end
 
   def reviewable_resource_type

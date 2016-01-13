@@ -22,7 +22,11 @@ const SaveUserContentController = function ($state, $filter) {
   if (this.isUserNamespace) {
     this.isSaved = true;
   } else {
-    this.resource.get(this.item.id).then((response) => {
+    // Activity actually uses UserActivity as the resource. Therefore we have to
+    //  get by "this.item.id" instead of "this.item.slug"
+    const id =
+      this.resource.contentName === 'Activity' ? this.item.id : this.item.slug;
+    this.resource.get(id).then((response) => {
       this.savedItem = response.data;
       this.isSaved = response.status === 200;
     });

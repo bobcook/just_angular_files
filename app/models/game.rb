@@ -4,6 +4,9 @@ class Game < ActiveRecord::Base
   include WithKeywords
   include WithElasticsearch
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   has_many :pillar_categorizations, as: :categorizable
   has_many :pillars, through: :pillar_categorizations
   has_many :user_games, dependent: :destroy

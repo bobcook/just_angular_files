@@ -12,7 +12,7 @@ module Api
           recipe = create(:recipe)
           serialized = RecipeSerializer.new(recipe).to_json
 
-          get :show, id: recipe.id
+          get :show, id: recipe.slug
           expect(response.body).to eql(serialized)
         end
 

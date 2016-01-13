@@ -31,7 +31,8 @@ module Api
         end
 
         def instance_to_save
-          @instance_to_save ||= Activity.find(params[:activity][:activity_id])
+          @instance_to_save ||=
+            Activity.friendly.find(params[:activity][:activity_id])
         end
 
         def resource
