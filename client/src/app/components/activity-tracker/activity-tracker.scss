@@ -47,18 +47,6 @@
   }
 }
 
-.quantity-tracker {
-  li {
-    height: 150px;
-  }
-
-  .tracker-bar {
-    background-color: green;
-    margin-left: 10px;
-    width: 30px;
-  }
-}
-
 .detail-activity-tracker {
   min-width: 320px;
   padding: 10px 0;
@@ -118,7 +106,7 @@
     padding: 15px 0;
   }
 
-
+  
   .item {
     margin: 0 10px;
     overflow: hidden;
@@ -223,7 +211,7 @@
       border: 1px solid $grey-border;
       border-radius: 0 0px 3px 3px;
       border-top: none;
-
+      
       border-radius: 3px;
       text-align: center;
 
@@ -368,13 +356,13 @@
       font-size: 12px;
       font-weight: 600;
     }
-
+    
     .tracker li {
       padding: 0;
       display: inline-block;
       vertical-align: top;
       margin: 6px 5px;
-
+      
       > span {
         padding: 0;
       }
