@@ -13,13 +13,13 @@
   ng-repeat="item in vm.items"
   ng-if="$index % vm.perRow == 0"
   class="card-holder container article-holder">
-
   <ss-card
     ng-repeat="card in vm.itemsInRow($parent.$index, vm.items)"
     ss-card-for="card"
     ss-card-classes="vm.cardClasses"
     ss-is-user-namespace="vm.isUserNamespace"
     ss-items="vm.items"
+    ss-last-item="vm.items.length - 1 === $index + $parent.$index && vm.completed"
     ss-resource="vm.resource">
   </ss-card>
 </div>

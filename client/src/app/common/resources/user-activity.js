@@ -18,11 +18,13 @@ const UserActivity = function (API_URL,
   // "Class-level" properties
   UserActivity.extend({
     contentName: 'Activity',
+    pluralContentName: 'Activities',
   });
 
   // "Instance-level" properties
   UserActivity.include({
     contentName: 'Activity',
+    pluralContentName: 'Activities',
   });
 
   // Computed properties

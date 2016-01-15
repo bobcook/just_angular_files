@@ -17,11 +17,13 @@ const UserGame = function (API_URL,
   // "Class-level" properties
   UserGame.extend({
     contentName: 'Game',
+    pluralContentName: 'Games',
   });
 
   // "Instance-level" properties
   UserGame.include({
     contentName: 'Game',
+    pluralContentName: 'Games',
     // TODO: real cardImage
     cardImage: '//i.istockimg.com/file_thumbview_approve/23264892/6' +
                 '/stock-photo-23264892-elderly-women-gardening.jpg',

@@ -10,6 +10,7 @@ const userDashboardCard = function () {
       card: '=ssCardFor',
       cardClasses: '=ssCardClasses',
       items: '=ssItems',
+      lastItem: '=ssLastItem',
     },
   };
 };

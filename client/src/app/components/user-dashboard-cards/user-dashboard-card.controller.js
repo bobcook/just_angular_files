@@ -3,6 +3,7 @@ const UserDashboardCardController = function ($filter,
   'ngInject';
 
   const MAX_TITLE_LENGTH = 80;
+  const MAX_USER_ACTIVITIES = 6;
 
   // TODO: pull out commonality w/ normal cards
   const cardTitle = function (card) {
@@ -32,6 +33,10 @@ const UserDashboardCardController = function ($filter,
   this.isUserNamespace = true;
   this.items = this.items || []; // via ss-items
   this.card = this.card || null; // via ss-card-for
+
+  this.showEncouragementMessage = function () {
+    return (this.items.length < MAX_USER_ACTIVITIES) && this.lastItem;
+  };
 
   this.header = {
     upperLeft: this.card.contentName,

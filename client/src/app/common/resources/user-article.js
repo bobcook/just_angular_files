@@ -17,11 +17,13 @@ const UserArticle = function (API_URL,
   // "Class-level" properties
   UserArticle.extend({
     contentName: 'Article',
+    pluralContentName: 'Articles',
   });
 
   // "Instance-level" properties
   UserArticle.include({
     contentName: 'Article',
+    pluralContentName: 'Articles',
     // TODO: real cardImage
     cardImage: '//i.istockimg.com/file_thumbview_approve/23264892/6' +
                 '/stock-photo-23264892-elderly-women-gardening.jpg',

@@ -19,38 +19,7 @@
     ng-repeat="card in vm.itemsInRow($parent.$index, vm.shownItems)"
     ss-card-for="card"
     ss-card-classes="vm.cardClasses"
-    ss-items="vm.items">
+    ss-items="vm.items"
+    ss-last-item="vm.shownItems.length - 1 === $index + $parent.$index">
   </ss-user-dashboard-card>
 </div>
-
-<!--
-<div class="messaging-card small-card"
-  ng-if="vm.numItems() < 6">
-
-  <section>
-    <div class="info-block">
-      <header>
-        <span class="move icon-block">
-          <span class="icon-move"></span>
-        </span>
-        <span class="discover icon-block">
-          <span class="icon-discover"></span>
-        </span>
-        <span class="relax icon-block">
-          <span class="icon-relax"></span>
-        </span>
-        <span class="nourish icon-block">
-          <span class="icon-nourish"></span>
-        </span>
-        <span class="connect icon-block">
-          <span class="icon-connect"></span>
-        </span>
-      </header>
-      <article>
-        <h4>Work on another activity!</h4>
-        <a ui-sref="application.activities" class="btn">Explore Activities</a>
-      </article>
-    </div>
-  </section>
-</div>
--->

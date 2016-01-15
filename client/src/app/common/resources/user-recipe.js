@@ -17,11 +17,13 @@ const UserRecipe = function (API_URL,
   // "Class-level" properties
   UserRecipe.extend({
     contentName: 'Recipe',
+    pluralContentName: 'Recipes',
   });
 
   // "Instance-level" properties
   UserRecipe.include({
     contentName: 'Recipe',
+    pluralContentName: 'Recipes',
     // TODO: real cardImage
     cardImage: 'https://d2izl3afq8akgg.cloudfront.net/' +
                'wp-content/uploads/2013/12/Blueberries-008.jpg',
