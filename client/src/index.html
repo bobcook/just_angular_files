@@ -14,22 +14,30 @@
       (function (window) {
         'use strict';
 
+        var AdobeDTMLink = '//assets.adobedtm.com/' +
+          '2755d5b313381183ec8ddef72ce582193e25b5a4/' +
+          'satelliteLib-805aa8204ac81b4deda113894acff79bf57258a9';
+
         var envVars = {
           local: {
             'API_URL': 'http://localhost:3000',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
+            'AdobeDTM' : AdobeDTMLink + '-staging.js',
           },
           dev: {
             'API_URL': 'https://aarp-staying-sharp-dev.herokuapp.com',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
+            'AdobeDTM' : AdobeDTMLink + '-staging.js',
           },
           staging: {
             'API_URL': 'https://aarp-staying-sharp-stg.herokuapp.com',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
+            'AdobeDTM' : AdobeDTMLink + '-staging.js',
           },
           production: {
             'API_URL': 'https://aarp-staying-sharp-prod.herokuapp.com',
             'GoogleAnalytics' : 'IPHoz63oJsFGXbNMCSjmsa0MxYx4XlkQ',
+            'AdobeDTM' : AdobeDTMLink,
           },
         };
 
@@ -50,9 +58,13 @@
         var currentEnv = envs[currentEnvUrl.host];
         window.__env = {};
         window.__env.API_URL = envVars[currentEnv].API_URL;
-        window.__env.GoogleAnalytics = envVars[currentEnv].GoogleAnalytics
+        window.__env.GoogleAnalytics = envVars[currentEnv].GoogleAnalytics;
+        window.__env.AdobeDTM = envVars[currentEnv].AdobeDTM;
       }(window));
     </script>
+    <script src=window.__env.AdobeDTM></script>
+
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
