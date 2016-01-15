@@ -9,7 +9,7 @@ const runBlock = function ($log, $window, $rootScope, $location) {
     // scroll to top of page
     $window.scrollTo(0, 0);
 
-    // begin of analytics
+    // begin of Segment.io analytics
     const path = $location.path();
     const url = $location.url();
 
@@ -19,11 +19,6 @@ const runBlock = function ($log, $window, $rootScope, $location) {
     const referrer = fromState.name ?
       `${$location.protocol()}://${$location.host()}/#${fromState.url}` : '';
 
-    // begin of Adobe DTM analytics
-    _satellite.track(url);
-    // end of Adobe DTM analytics
-
-    // begin of Segment.io analytics
     analytics.page({
       path: path,
       referrer: referrer,
