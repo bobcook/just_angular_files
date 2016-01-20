@@ -20,7 +20,8 @@ module OmniAuth
           external_id: user_info[:idpId],
           first_name: user_info[:firstName],
           last_name: user_info[:lastName],
-          email: user_info[:email]
+          email: user_info[:email],
+          membership_status: user_info[:membership_status]
         }
       end
 
@@ -45,12 +46,23 @@ module OmniAuth
       end
 
       def callback_phase
-        response = api.user(user_token)
-        @user_info = response.body[:user]
+        user_response = api.user(user_token)
+        membership_response = api.specialized_membership_info(user_token)
+
+        @user_info = user_response.body[:user].try do |user_info|
+          user_info.merge(
+            membership_status: membership_status(membership_response)
+          )
+        end
+
         super
       end
 
       private
+
+      def membership_status(response)
+        Apis::DSO::MembershipStatusParser.parse(response)
+      end
 
       def promo_code_for_url
         # TODO: based on vanity URL used, will eventually need to

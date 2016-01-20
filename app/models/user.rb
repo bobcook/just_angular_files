@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:aarp]
 
+  as_enum :membership_status, prospect: 0, paid: 1, lead: 2
+
   validate :not_over_max_activities
   validates :external_id, uniqueness: true
 
@@ -33,6 +35,10 @@ class User < ActiveRecord::Base
     when user_assessment_groups.present?           then 1
     else                                                0
     end
+  end
+
+  def expired?
+    lead?
   end
 
   private

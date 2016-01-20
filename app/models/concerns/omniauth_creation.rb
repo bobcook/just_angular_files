@@ -9,9 +9,12 @@ module OmniauthCreation
           user.assign_attributes(attrs_from_auth(auth))
         end
 
-      # In either case, update the auth token
+      # In either case, update the given credentials
       found_user.tap do |user|
-        user.update_attributes(auth_token: auth.credentials.token)
+        user.update_attributes(
+          auth_token: auth.credentials.token,
+          membership_status: auth.info.membership_status
+        )
       end
     end
 

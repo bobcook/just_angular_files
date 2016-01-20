@@ -36,6 +36,7 @@ gem 'redis-rails', '~> 4.0.0'
 gem 'ruby-saml', '~> 1.0.0'
 gem 'saml_idp', '~> 0.2.1'
 gem 'sidekiq', '~> 3.5.0'
+gem 'simple_enum', '~> 2.3'
 gem 'therubyracer', '~> 0.12.2'
 gem 'unicorn', '~> 4.9.0'
 # elasticsearch gems must come after pagination gem
