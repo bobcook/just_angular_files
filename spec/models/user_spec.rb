@@ -39,6 +39,52 @@ describe User do
     end
   end
 
+  describe '#engagement_level' do
+    let(:user) { create(:user) }
+    let(:user_assessment_group) { create(:user_assessment_group) }
+
+    it 'returns 0 if user has no assessments' do
+      user = create(:user)
+
+      expect(user.engagement_level).to eq(0)
+    end
+
+    it 'returns 1 if user completed an user assessment' do
+      create(:user_assessment,
+             user_assessment_group: user_assessment_group,
+             completed: true)
+      create(:user_assessment,
+             user_assessment_group: user_assessment_group,
+             completed: false)
+      user.user_assessment_groups << user_assessment_group
+
+      expect(user.reload.engagement_level).to eq(1)
+    end
+
+    it 'returns 2 if user completed an user assessment group' do
+      2.times do
+        create(:user_assessment,
+               user_assessment_group: user_assessment_group,
+               completed: true)
+      end
+      user.user_assessment_groups << user_assessment_group
+
+      expect(user.reload.engagement_level).to eq(2)
+    end
+
+    it 'returns 3 if user completed an user assessment group & an activity' do
+      2.times do
+        create(:user_assessment,
+               user_assessment_group: user_assessment_group,
+               completed: true)
+      end
+      user.user_assessment_groups << user_assessment_group
+      user.user_activities << create(:user_activity)
+
+      expect(user.reload.engagement_level).to eq(3)
+    end
+  end
+
   describe '#external_id' do
     it 'is the same after multiple saves' do
       subject = create(:user)

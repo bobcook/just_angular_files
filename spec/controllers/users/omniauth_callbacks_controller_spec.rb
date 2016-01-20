@@ -11,6 +11,7 @@ describe Users::OmniauthCallbacksController do
       it 'encodes the user id in a JWT' do
         user = create(:user)
         allow(User).to receive(:from_omniauth).and_return(user)
+        allow_any_instance_of(EngagementEmails).to receive(:send_later)
         expect(JsonWebToken).to receive(:encode).and_return(user_id: user.id)
 
         get :aarp
@@ -22,11 +23,22 @@ describe Users::OmniauthCallbacksController do
         allow(User).to receive(:from_omniauth).and_return(user)
         allow(ClaimTokenHolder)
           .to receive(:create_from_auth_token!).and_return(token_holder)
+        allow_any_instance_of(EngagementEmails).to receive(:send_later)
         expected_path =
           Frontend::Paths.lookup(:login_success, token_holder.claim_token)
 
         get :aarp
         expect(response).to redirect_to(expected_path)
+      end
+
+      it 'creates an engagement email' do
+        user = create(:user, last_sign_in_at: Time.now)
+        allow(User).to receive(:from_omniauth).and_return(user)
+        email = double
+        allow(EngagementEmails).to receive(:new).and_return(email)
+
+        expect(email).to receive(:send_later)
+        get :aarp
       end
     end
 

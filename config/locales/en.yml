@@ -5,6 +5,8 @@ en:
         "%m/%d/%Y"
       with_weekday:
         "%a %m/%d/%y"
+      aarp_api:
+        "%FT%TZ"
 
   time:
     formats:

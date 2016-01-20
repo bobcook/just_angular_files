@@ -12,7 +12,9 @@ module Api
             head :no_content
           else
             user_activity = resource.create(activity: instance_to_save)
-
+            if engagement_email.update_activity_status?
+              engagement_email.send_later
+            end
             render json: user_activity, serializer: serializer, status: :created
           end
         end
@@ -50,6 +52,10 @@ module Api
 
         def saveable_resource_type
           Activity
+        end
+
+        def engagement_email
+          EngagementEmails.new(current_user)
         end
       end
     end

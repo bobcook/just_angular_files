@@ -22,7 +22,7 @@ class UserAssessmentGroup < ActiveRecord::Base
   end
 
   def completed?
-    user_assessments.all?(&:completed?)
+    user_assessments.any? && user_assessments.all?(&:completed?)
   end
 
   private

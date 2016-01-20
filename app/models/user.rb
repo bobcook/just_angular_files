@@ -30,10 +30,10 @@ class User < ActiveRecord::Base
 
   def engagement_level
     case
-    when user_activities.present?                  then 3
-    when user_assessment_groups.any?(&:completed?) then 2
-    when user_assessment_groups.present?           then 1
-    else                                                0
+    when complete_level_three  then 3
+    when complete_level_two    then 2
+    when complete_level_one    then 1
+    else                            0
     end
   end
 
@@ -42,6 +42,18 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def complete_level_three
+    user_assessment_groups.any?(&:completed?) && user_activities.present?
+  end
+
+  def complete_level_two
+    user_assessment_groups.any?(&:completed?)
+  end
+
+  def complete_level_one
+    user_assessments.any?(&:completed?)
+  end
 
   def not_over_max_activities
     message = ''

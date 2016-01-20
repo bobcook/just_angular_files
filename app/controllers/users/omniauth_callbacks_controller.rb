@@ -2,6 +2,8 @@ module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     def aarp
       if user.persisted?
+        engagement_email(user).send_later
+
         token_holder = create_token_holder_for! user
         path = Frontend::Paths.lookup(:login_success, token_holder.claim_token)
         redirect_to path
@@ -18,6 +20,10 @@ module Users
 
     def create_token_holder_for!(user)
       ClaimTokenHolder.create_from_auth_token!(UserJwt.for(user))
+    end
+
+    def engagement_email(user)
+      EngagementEmails.new(user)
     end
   end
 end

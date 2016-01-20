@@ -6,5 +6,6 @@ FactoryGirl.define do
     sequence(:external_id) { |n| "016c4e57b117462a992de1f53de8c09#{n}" }
     password 'password'
     membership_status :prospect
+    last_sign_in_at Time.zone.now
   end
 end
