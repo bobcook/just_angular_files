@@ -55,6 +55,10 @@ class CommonContent
     payload['description']
   end
 
+  def recommend_percentage
+    object.recommend_percentage
+  end
+
   def payload
     @payload ||= object.payload
   end

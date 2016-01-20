@@ -1,8 +1,8 @@
 class GameSerializer < ActiveModel::Serializer
-  delegate :card_image, :description, :id, to: :common
+  delegate :card_image, :description, :id, :recommend_percentage, to: :common
 
   attributes :id, :title, :call_to_action_url, :card_image,
-             :card_title, :description, :game_type, :slug
+             :card_title, :description, :game_type, :recommend_percentage, :slug
 
   has_many :pillars
 

@@ -3,6 +3,7 @@ class Game < ActiveRecord::Base
   include WithPillars
   include WithKeywords
   include WithElasticsearch
+  include WithReviews
 
   extend FriendlyId
   friendly_id :title, use: :slugged

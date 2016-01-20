@@ -22,7 +22,9 @@ const DefaultCardPresenter = function ($filter) {
   const lowerLeft = defaultReturn;
 
   const lowerRight = function (resource) {
-    // TODO: actual content
+    if (_.isNumber(resource.recommendPercentage)) {
+      return `${resource.recommendPercentage * 100}%`;
+    }
   };
 
   const pillars = function (resource) { return resource.pillars; };
