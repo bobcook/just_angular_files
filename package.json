@@ -65,7 +65,7 @@
     "node-sass": "^3.3.3",
     "require-dir": "~0.3.0",
     "rimraf": "~2.5.0",
-    "run-sequence": "^1.1.4",
+    "run-sequence": "~1.1.5",
     "simple-statistics": "~1.0.1",
     "sinon": "^1.17.2",
     "superstatic": "^2.2.2",

@@ -13,7 +13,6 @@ const $vanityUrlCheck = function (ApiRoutes,
   // but still needed for constructing URLs
   const VANITY_DOMAIN_REDIRECTS = {
     'https://mystayingsharp.org': 'https://stayingsharp.aarp.org',
-    'https://test-mystayingsharp.org': 'https://stayingsharp.test-aarp.org',
   };
 
   const VANITY_DOMAINS = _.keys(VANITY_DOMAIN_REDIRECTS);
