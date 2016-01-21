@@ -65,6 +65,7 @@
     padding: 0px 0px 8px;
     margin-left: 20px;
     margin-right: 20px;
+    @include clearfix;
 
     p {
       margin-bottom: 0;
@@ -141,6 +142,37 @@
 
       input[type="checkbox"] {
         margin-left: 6px;
+      }
+    }
+
+    &.track-duration {
+      .unit-wrap {
+        display: inline-block;
+        vertical-align: top;
+        min-width: 30%;
+      }
+
+      .input-wrap {
+        display: inline-block;
+        vertical-align: bottom;
+        padding-right: 10px;
+        padding-bottom: 15px;
+
+        @media (min-width: 768px) {
+          padding-bottom: 0;
+        }
+      }
+
+      .unit {
+        display: inline-block;
+        vertical-align: bottom;
+        margin-bottom: 6px;
+        font-size: 14px;
+        padding-right: 25px;
+      }
+
+      .footer {
+        margin-top: 10px;
       }
     }
   }

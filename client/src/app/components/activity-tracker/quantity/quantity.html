@@ -1,13 +1,35 @@
-<ul>
-  <li ng-repeat="period in vm.periods">
-    <label>{{period.date.format('dd')}}</label>
-    <span ng-if="period.isTracked"
-          ng-click="vm.periodClicked({ $period: period })">
-      {{period.activityTrackerResponses[0].response | number}}
-    </span>
-    <button ng-if="!period.isTracked"
-            ng-click="vm.periodClicked({ $period: period })">
-      +
-    </button>
-  </li>
-</ul>
+<div class="item">
+  <div class="data full">
+    <div class="tracker">
+      <ul>
+        <li ng-repeat="period in vm.periods" ng-class="{ tracked: period.isTracked }">
+          <span class="bar"
+                title="{{period.activityTrackerResponses[0].response}}"
+                ng-if="period.isTracked"
+                ng-click="vm.periodClicked({ $period: period })">
+            <span class="fill"
+                  ng-style="vm.periodHeight(period.activityTrackerResponses[0].response)">
+            </span>
+          </span>
+          <div class="indicator" ng-if="!period.isTracked">
+            <span class="icon-plus"
+                  ng-click="vm.periodClicked({ $period: period })">
+            </span>
+          </div>
+          <label>{{period.date.format('dd')}}</label>
+        </li>
+      </ul>
+    </div>
+    <figcaption>
+      <div class="value-scale">
+        <ul>
+          <li class="max">{{vm.activityResponseMax()}}</li>
+          <li class="min">0</li>
+        </ul>
+      </div>
+      <p>
+        <span class="week">Week 1</span>:  mo/dy - mo/dy
+      </p>
+    </figcaption>
+  </div>
+</div>

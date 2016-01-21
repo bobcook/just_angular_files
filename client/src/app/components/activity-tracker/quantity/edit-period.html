@@ -1,13 +1,32 @@
 <ss-modal on-close="vm.close()">
-  <h1>Track</h1>
-
-  <div ng-repeat="response in vm.period.activityTrackerResponses">
-    <h3>{{response.activityTrackerQuestion.text}}</h3>
-    <input
-      type="number" min="0" max="{{vm.maxValue}}"
-      ng-model="response.response"
-      ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+  <div class="content track-duration">
+    <div class="header">
+      <button class="close" aria-label="Close" ng-click="vm.close()">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="header-content">
+        <h3>Track Duration</h3>
+      </div>
+    </div>
+    <div class="body">
+      <form>
+        <div class="form-row">
+          <div class="unit-wrap" ng-repeat="response in vm.period.activityTrackerResponses">
+            <div class="input-wrap">
+              <label>{{response.activityTrackerQuestion.text}}</label>
+              <input type="number" min="0" max="{{vm.maxValue}}"
+                     ng-model="response.response"
+                     ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
+            </div>
+            <span class="unit">Units</span>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="footer">
+      <button ng-click="vm.close()">
+        Save
+      </button>
+    </div>
   </div>
-
-  <button ng-click="vm.close()">Close</button>
 </ss-modal>
