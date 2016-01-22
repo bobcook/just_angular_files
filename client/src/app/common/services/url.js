@@ -28,21 +28,26 @@ const $url = function () {
   };
 
   const normalizePathname = function (pathname) {
-    if (_.isEmpty(pathname)) { return ''; };
+    if (_.isEmpty(pathname)) { return '/'; };
     return _.startsWith(pathname, '/') ? pathname : `/${pathname}`;
   };
 
   // $location only lets you manipulate the current URL...needed a
   // way to parse arbitrary URLs
   const makeUrl = function (urlString, elementFn) {
-    // TODO use URL parsing lib (urijs?) instead of this hack
     elementFn =
       elementFn || function (href) { return $('<a>', { href: href })[0]; };
 
     const element = elementFn(urlString);
     const pathname = normalizePathname(element.pathname);
-    element.pathname = pathname;
-    return element;
+    return {
+      host: element.host,
+      hostname: element.hostname,
+      href: element.href,
+      origin: element.origin,
+      pathname: pathname,
+      protocol: element.protocol,
+    };
   };
 
   const urlHas = function (predFn, checkUrlStr, otherUrlStrs) {
