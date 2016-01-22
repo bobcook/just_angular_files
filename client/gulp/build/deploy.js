@@ -12,6 +12,7 @@ const rimraf = require('rimraf'); // deprecated; should replace w/ del
 const s3ChangeIndex = require('gulp-s3-index');
 const spawn = require('child_process').spawn;
 const through = require('through2');
+const filter = require('gulp-filter');
 const RevAll = require('gulp-rev-all');
 
 const fetch = function (obj, key, defaultVal) {
@@ -41,24 +42,26 @@ const getAwsConf = function (filePath, env) {
 gulp.task('deploy', ['build'], function() {
   const env = getEnv();
   const awsConf = getAwsConf('aws.json', env);
-
-  gutil.log(`Pushing to ${env} environment`);
-
-  // create a new publisher using S3 options
-  // http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#constructor-property
   const publisher = awspublish.create(awsConf);
-
   const headers = {
     'Cache-Control': 'max-age=3600, no-transform, public',
   };
+
+  // Only want to version non-images since image names can be dynamic
+  // and won't be found by gulp rev-all
+  const allExceptImages =
+    filter(['*', '!assets/images/*'], { restore: true });
 
   // Appends content hash to filenames and re-writes references;
   // Gets around needing to invalidate Cloudfront cache on every deploy
   const revAll = new RevAll();
 
-  return gulp.src(path.join(conf.paths.dist, '/**/*'))
-    .pipe(revAll.revision())
+  gutil.log(`Pushing to ${env} environment`);
 
+  return gulp.src(path.join(conf.paths.dist, '/**/*'))
+    .pipe(allExceptImages)
+    .pipe(revAll.revision())
+    .pipe(allExceptImages.restore)
     .pipe(publisher.publish(headers))
 
     // Uncomment to make files on S3 match local versions;
