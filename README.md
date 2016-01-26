@@ -12,6 +12,25 @@ $ nvm use
 $ npm install
 ```
 
+install Elasticsearch
+
+```bash
+$ brew install elasticsearch
+```
+
+Import AARP CMS content. The content will automatically be added to Elasticsearch.
+
+```bash
+$ bundle exec sidekiq -q default -q mailers
+$ bin/rake content_feeds:import
+```
+
+If you already have CMS content, but need to add the content to elasticsearch.
+
+```bash
+$ bin/rake elasticsearch:index
+```
+
 ## Frontend
 
 The frontend application is an Angular app located in the `client/` directory. The app is built with Gulp and structured for deployment to AWS S3 + Cloudfront. To set up the frontend application, run `npm install` in the root directory, which will install Node and Bower dependencies and build the client code.

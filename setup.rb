@@ -51,4 +51,8 @@ env 'MBS_AUTH',
             default: 'https://stage.mybrainsolutions.com/' \
                      'SSO/AARP.aspx')
 
+env 'FRONTEND_URL', provide('Frontend Url', default: 'http://localhost:9000')
+env 'ELASTICSEARCH_HOST',
+    provide('Elasticsearch Url', default: 'localhost:9200')
+
 rake 'db:setup'
