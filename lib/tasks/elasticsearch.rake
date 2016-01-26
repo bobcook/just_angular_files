@@ -12,6 +12,8 @@ namespace :elasticsearch do
       )
     end
 
+    puts "Start indexing: #{Rails.env}, #{ENV.fetch('ELASTICSEARCH_HOST')}"
+
     [Article, Activity, Game, Recipe].each do |resource|
       create_index(resource)
       resource.import index: index_name(resource)

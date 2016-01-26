@@ -62,5 +62,8 @@ module StayingSharp
     config.cache_store =
       :redis_store,
       ENV['REDISCLOUD_URL'] || 'redis://127.0.0.1:6379/0/myapp'
+
+    Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['ELASTICSEARCH_HOST']
+
   end
 end
