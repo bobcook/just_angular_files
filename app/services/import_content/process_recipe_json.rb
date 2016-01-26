@@ -9,7 +9,7 @@ module ImportContent
         title: json_payload[:content][0][:mastheadTitle],
         prep_time: json_payload[:content][0][:prepTime],
         published_at: json_payload[:created],
-        last_modified: json_payload[:lastmodified],
+        last_modified: json_payload[:lastModified],
         payload: json_payload[:content][0],
         cms_url: json_payload[:cms_url]
       }

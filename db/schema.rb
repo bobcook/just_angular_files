@@ -11,22 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120232857) do
+ActiveRecord::Schema.define(version: 20160126114927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
     t.string   "title"
-    t.string   "recommended_effort_time"
-    t.string   "recommended_effort_frequency"
+    t.string   "recommended_effort"
     t.json     "payload"
     t.integer  "activity_tracker_id"
     t.integer  "points"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "published_at",                 null: false
-    t.datetime "last_modified",                null: false
+    t.datetime "published_at",        null: false
+    t.datetime "last_modified",       null: false
     t.string   "cms_url"
     t.string   "slug"
   end

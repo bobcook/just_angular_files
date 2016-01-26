@@ -5,8 +5,7 @@ FactoryGirl.define do
     end
 
     title 'activity title'
-    recommended_effort_time '30 minutes'
-    recommended_effort_frequency '1 x weekly'
+    recommended_effort '30 minutes / 1 x weekly'
     points '10 pts'
     activity_tracker # TODO: randomize type?
 

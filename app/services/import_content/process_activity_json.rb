@@ -7,10 +7,9 @@ module ImportContent
     def convert_content
       {
         title: json_payload[:content][0][:mastheadTitle],
-        recommended_effort_time: json_payload[:content][0][:effort],
-        recommended_effort_frequency: json_payload[:content][0][:effort],
+        recommended_effort: json_payload[:content][0][:effort],
         published_at: json_payload[:created],
-        last_modified: json_payload[:lastmodified],
+        last_modified: json_payload[:lastModified],
         payload: json_payload[:content][0],
         cms_url: json_payload[:cms_url],
         activity_tracker_id: activity_tracker_id

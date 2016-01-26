@@ -41,7 +41,7 @@ const UserActivity = function (API_URL,
   // TODO: refactor commonality w/ this and activity.js
   Object.defineProperty(UserActivity.prototype, 'effortText', {
     get: function () {
-      return `Effort: ${this.recommendedEffortFrequency}`;
+      return `Effort: ${this.recommendedEffort}`;
     },
   });
 

@@ -22,7 +22,7 @@ module Roles
     end
 
     def lower_left
-      resource.try(:recommended_effort_time) || resource.try(:read_time)
+      resource.try(:recommended_effort) || resource.try(:read_time)
     end
 
     def card_title

@@ -32,7 +32,7 @@ const Activity = function (API_URL,
 
   Object.defineProperty(Activity.prototype, 'effortText', {
     get: function () {
-      return `${this.recommendedEffortFrequency}`;
+      return `${this.recommendedEffort}`;
     },
   });
 
