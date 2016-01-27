@@ -12,24 +12,31 @@ $ nvm use
 $ npm install
 ```
 
-install Elasticsearch
-
+### Install Elasticsearch
 ```bash
 $ brew install elasticsearch
 ```
 
-Import AARP CMS content. The content will automatically be added to Elasticsearch.
+### Import AARP CMS content. The content will automatically be added to Elasticsearch.
 
 ```bash
 $ bundle exec sidekiq -q default -q mailers
 $ bin/rake content_feeds:import
 ```
 
-If you already have CMS content, but need to add the content to elasticsearch.
+### If you already have CMS content, but need to add the content to elasticsearch.
 
 ```bash
 $ bin/rake elasticsearch:index
 ```
+
+## Local Development
+you will need all these processes running for local development:
+
+1. `$ bundle exec rails s`
+1. `$ bundle exec sidekiq -q default -q mailers`
+1. `$ cd client && gulp serve`
+1. `$ elasticsearch` <= only needed if not running as a daemon
 
 ## Frontend
 
