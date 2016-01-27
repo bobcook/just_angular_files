@@ -44,8 +44,21 @@ const AsssessmentController = function ($stateParams,
     });
   };
 
+  const scrollToInvalid = () => {
+    const elInvalid = $('form').find('.ng-invalid');
+    const headerHeight = $('.global-header').height() + 40;
+    if (elInvalid.length) {
+      $('html, body').animate({
+        scrollTop: $(angular.element(elInvalid[0])).offset().top - headerHeight,
+      }, 'slow');
+    }
+  };
+
   this.submitForm = function (isValid) {
-    if (!isValid) { return; }
+    if (!isValid) {
+      scrollToInvalid();
+      return;
+    }
 
     currentUserAssessment.then((userAssessment) => {
       return $q.all([

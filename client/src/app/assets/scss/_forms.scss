@@ -82,7 +82,7 @@ form {
   }
 
   .error, .ng-invalid {
-    label {
+    > label, p.question-text {
       color: $red;
     }
   }
