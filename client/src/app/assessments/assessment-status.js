@@ -2,6 +2,8 @@ const AssessmentStatus = function ($assessmentsAuth,
                                    $state,
                                    $assessmentResults,
                                    $q,
+                                   $rootScope,
+                                   $timeout,
                                    UserAssessmentGroup,
                                    AssessmentResponse) {
   'ngInject';
@@ -87,6 +89,14 @@ const AssessmentStatus = function ($assessmentsAuth,
     }
   };
 
+  const setAssessmentResultsDelay = function () {
+    $rootScope.$currentUser.awaitingAssessmentResults = true;
+    const minutesToShowMessage = 15;
+    $timeout(function () {
+      $rootScope.$currentUser.awaitingAssessmentResults = false;
+    },  minutesToShowMessage * 60  * 1000);
+  };
+
   const submitAssessmentRedirect = function (group, userAssessmentId) {
     let redirect;
     const secondQuestionnaire = getQuestionnaires(group)[1];
@@ -98,7 +108,8 @@ const AssessmentStatus = function ($assessmentsAuth,
       };
     } else if (secondQuestionnaire.id  === Number(userAssessmentId)) {
       redirect = function () {
-        $state.go('application.assessment-results.overall');
+        setAssessmentResultsDelay();
+        $state.go('application.home');
       };
     } else {
       redirect = function () {};
