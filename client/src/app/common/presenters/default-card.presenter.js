@@ -23,7 +23,7 @@ const DefaultCardPresenter = function ($filter) {
 
   const lowerRight = function (resource) {
     if (_.isNumber(resource.recommendPercentage)) {
-      return `${resource.recommendPercentage * 100}%`;
+      return `${Math.round(resource.recommendPercentage * 100)}%`;
     }
   };
 
