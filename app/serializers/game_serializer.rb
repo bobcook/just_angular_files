@@ -3,7 +3,7 @@ class GameSerializer < ActiveModel::Serializer
 
   attributes :id, :title, :call_to_action_url, :card_image, :card_title,
              :description, :game_type, :recommend_percentage, :slug,
-             :game_provider
+             :game_provider, :content_source_branding
 
   has_many :pillars
 
@@ -21,6 +21,10 @@ class GameSerializer < ActiveModel::Serializer
 
   def game_provider
     object.payload['difficultyLevel']
+  end
+
+  def content_source_branding
+    object.payload['contentSourceBranding']
   end
 
   private

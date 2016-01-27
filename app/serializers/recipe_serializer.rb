@@ -6,7 +6,8 @@ class RecipeSerializer < ActiveModel::Serializer
 
   attributes :card_image, :card_title, :description, :duration, :id,
              :ingredients, :instructions, :mast_head_image, :mast_head_title,
-             :recommend_percentage, :section1_body, :slug
+             :recommend_percentage, :section1_body, :slug,
+             :source_materials_citation
 
   has_many :pillars
 
@@ -24,6 +25,10 @@ class RecipeSerializer < ActiveModel::Serializer
 
   def instructions
     object.payload['prep/cookingInstructions']
+  end
+
+  def source_materials_citation
+    object.payload['sourceMaterialsCitation']
   end
 
   private
