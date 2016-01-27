@@ -2,6 +2,7 @@ module Api
   module V1
     module Mbs
       class SamlIdpController < SamlIdp::IdpController
+        after_action :allow_iframe, only: :create
         before_action :authenticate_user!
 
         def create
@@ -45,6 +46,10 @@ module Api
         def get_audience_uri(opts)
           opts[:audience_uri] || saml_request.issuer ||
             saml_acs_url[%r{^(.*?//.*?/)}, 1]
+        end
+
+        def allow_iframe
+          response.headers.except! 'X-Frame-Options'
         end
       end
     end

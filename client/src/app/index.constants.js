@@ -5,10 +5,10 @@ const addConstants = function (module) {
 
   const ApiRoutes = {
     AARP_AUTH: `${API_URL}/api/v1/users/auth/aarp`,
-    ASSESSMENTS_SAML_REQUEST: `${API_URL}/api/v1/mbs/assessments_login`,
-    ASSESSMENTS_AUTH: `${API_URL}/api/v1/mbs/auth`,
     AUTH_TOKEN: ({ id }) => `${API_URL}/api/v1/auth_tokens/${id}`,
     COPY: `${API_URL}/api/v1/copy`,
+    MBS_AUTH: `${API_URL}/api/v1/mbs/auth`,
+    MBS_SAML_REQUEST: `${API_URL}/api/v1/mbs/saml_request`,
     MY_ASSESSMENT_RESULTS: `${API_URL}/api/v1/me/assessment_results`,
     SESSION_DESTROY: `${API_URL}/api/v1/users/auth`,
   };

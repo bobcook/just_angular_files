@@ -1,6 +1,9 @@
 <div class="cp-games-embed-details">
   <section class="container">
     <h2>Game: {{vm.game.title}}</h2>
-    <iframe src="{{vm.game.call_to_action_url}}"></iframe>
+    <iframe ng-if="vm.game.title"
+            ng-src="{{vm.iframeSource}}"
+            data-auth-token="{{vm.authToken}}"
+            data-game-name="{{vm.game.title}}"></iframe>
   </section>
 </div>

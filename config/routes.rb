@@ -93,7 +93,7 @@ Rails.application.routes.draw do
       namespace :mbs do
         post '/auth' => 'saml_idp#create'
         get '/metadata' => 'saml_idp#show'
-        post '/assessments_login' => 'saml#create'
+        post '/saml_request' => 'saml#create'
         post '/assessments_callback' => 'assessments_callback#create'
       end
     end

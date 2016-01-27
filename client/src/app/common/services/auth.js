@@ -18,6 +18,10 @@ const $auth = function (ApiRoutes, $http, $localStorage, $promise) {
       });
     },
 
+    setSessionToken: function (token) {
+      $storage.sessionToken = token;
+    },
+
     destroySession: function () {
       delete $storage.sessionToken;
       return $promise.of(true);

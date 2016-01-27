@@ -24,7 +24,6 @@ const CardController = function ($filter,
   };
 
   const content = this.card.recommendable ? this.card.recommendable : this.card;
-
   getPresenter().forController(this, content);
 };
 

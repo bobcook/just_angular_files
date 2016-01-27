@@ -2,7 +2,6 @@ const Game = function (API_URL, railsResourceFactory, railsSerializer) {
   'ngInject';
 
   const gamesUrl = `${API_URL}/api/v1/games`;
-
   const Game = railsResourceFactory({
     name: 'game',
     url: `${gamesUrl}/{{id}}`,
@@ -34,7 +33,11 @@ const Game = function (API_URL, railsResourceFactory, railsSerializer) {
 
   Object.defineProperty(Game.prototype, 'externalUrl', {
     get: function () {
-      return this.callToActionUrl;
+      if (this.gameProvider === 'HN') {
+        return this.callToActionUrl;
+      } else {
+        return `/game-play/${this.slug}`;
+      }
     },
   });
 

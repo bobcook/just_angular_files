@@ -352,6 +352,13 @@ const routerConfig = function (stateHelperProvider,
       ],
     })
     .state({
+      name: 'game-iframe',
+      url: '/game-iframe',
+      templateUrl: 'app/game-iframe/iframe.html',
+      controller: 'GameIframeController',
+      controllerAs: 'vm',
+    })
+    .state({
       name: 'logout',
       url: '/logout',
       controller: 'LogoutController',

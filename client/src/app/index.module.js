@@ -66,6 +66,7 @@ import $assessmentsAuth from './assessments/assessments-auth.js';
 import $assessmentResults from './common/services/assessment-results.js';
 import $currentModal from './common/services/current-modal.js';
 import $featureDetection from './common/services/feature-detection.js';
+import $gamesAuth from './games/games-auth';
 import $loadCurrentUser from './common/services/load-current-user.js';
 import $pagination from './common/services/pagination.js';
 import $pillarFiltering from './common/services/pillar-filtering.js';
@@ -161,6 +162,7 @@ import CurrentNeuroResultsController from
 import ExploreContentController from
   './components/explore-content/explore-content.controller.js';
 import GameController from './games/game.controller.js';
+import GameIframeController from './game-iframe/game-iframe.controller.js';
 import GameModalController from './games/game-modal.controller.js';
 import GamePlayController from './games/game-play.controller.js';
 import GamesController from './games/games.controller.js';
@@ -293,6 +295,7 @@ app
   .factory('$auth', $auth)
   .factory('$currentModal', $currentModal)
   .factory('$featureDetection', $featureDetection)
+  .factory('$gamesAuth', $gamesAuth)
   .factory('$loadCurrentUser', $loadCurrentUser)
   .factory('$pagination', $pagination)
   .factory('$pillarFiltering', $pillarFiltering)
@@ -374,6 +377,7 @@ app
   .controller('CurrentNeuroResultsController', CurrentNeuroResultsController)
   .controller('ExploreContentController', ExploreContentController)
   .controller('GameController', GameController)
+  .controller('GameIframeController', GameIframeController)
   .controller('GameModalController', GameModalController)
   .controller('GamePlayController', GamePlayController)
   .controller('GamesController', GamesController)

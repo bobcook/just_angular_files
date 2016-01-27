@@ -1,6 +1,8 @@
 const GamePlayController = function (Game,
+                                     $state,
                                      $stateParams,
-                                     previousState) {
+                                     previousState,
+                                     $auth) {
   'ngInject';
 
   Game.get($stateParams.id).then((response) => {
@@ -10,6 +12,9 @@ const GamePlayController = function (Game,
   // NOTE: previousUrl can be '/games', '/me/games', '/games/:id',
   // or '/me/games/:id'
   this.previousUrl = previousState.url || '/games';
+
+  this.iframeSource = $state.get('game-iframe').url;
+  this.authToken = $auth.sessionToken();
 };
 
 export default GamePlayController;
