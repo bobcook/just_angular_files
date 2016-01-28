@@ -19,7 +19,7 @@ const AsssessmentController = function ($stateParams,
   // all the possible scores for questions with scores
   this.showAssessment = false;
   this.isTouchDevice = $featureDetection.isTouchDevice();
-  this.defaultBirthdate = new Date('1955-01-01 0:00:00');
+  this.defaultBirthdate = new Date('1955-01-01T00:00:00');
 
   const assessmentFlowSetup = (lastGroup) => {
     const secondQuestionnaire =

@@ -67,6 +67,31 @@ form {
     cursor: pointer;
     margin-top: 2px;
   }
+
+  select {
+    &:-moz-focusring {
+      color: transparent;
+      text-shadow: 0 0 0 $black;
+    }
+  }
+
+  input, select, textarea, .form-control {
+    &.ng-invalid {
+      border-color: $alert;
+    }
+  }
+
+  .error, .ng-invalid {
+    label {
+      color: $red;
+    }
+  }
+
+  &.ng-invalid {
+    .required-text {
+      color: $red;
+    }
+  }
 }
 
 .checkbox-wrap {
