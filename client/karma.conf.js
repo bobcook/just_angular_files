@@ -35,11 +35,11 @@ module.exports = function (config) {
       moduleName: 'client',
     },
 
-    browsers : ['PhantomJS'],
+    browsers : ['Chrome'],
 
     plugins : [
       'karma-babel-preprocessor',
-      'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
       'karma-mocha',
       'karma-chai',
       'karma-sinon',

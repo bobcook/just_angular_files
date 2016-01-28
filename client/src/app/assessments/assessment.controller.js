@@ -6,7 +6,6 @@ const AsssessmentController = function ($stateParams,
                                         AssessmentStatus) {
   'ngInject';
 
-  let assessmentScores = {};
   const userAssessmentId = $stateParams.id;
   let assessmentRedirect;
   const currentUserAssessment = UserAssessment.get(userAssessmentId);
@@ -38,7 +37,6 @@ const AsssessmentController = function ($stateParams,
         if (assessment.type === 'AssessmentQuestionnaire') {
           this.showAssessment = true;
           this.questions = assessment.assessmentQuestions;
-          assessmentScores = AssessmentStatus.getAssessmentScores(assessment);
         }
       });
     });
@@ -54,6 +52,18 @@ const AsssessmentController = function ($stateParams,
     }
   };
 
+  this.collectIndexResponses = (userAssessment) => {
+    return Assessment.get(userAssessment.assessmentId).then((assessment) => {
+      const scores = (assessment.type === 'AssessmentQuestionnaire')
+                   ? AssessmentStatus.getAssessmentScores(assessment)
+                   : {};
+
+      return AssessmentStatus.saveIndexResponses(
+        this.indexResponses, scores, userAssessmentId
+      );
+    });
+  };
+
   this.submitForm = function (isValid) {
     if (!isValid) {
       scrollToInvalid();
@@ -66,9 +76,7 @@ const AsssessmentController = function ($stateParams,
         AssessmentStatus.saveTextResponses(
           this.textResponses, userAssessmentId
         ),
-        AssessmentStatus.saveIndexResponses(
-          this.indexResponses, assessmentScores, userAssessmentId
-        ),
+        this.collectIndexResponses(userAssessment),
       ]);
     }).then(assessmentRedirect);
   };

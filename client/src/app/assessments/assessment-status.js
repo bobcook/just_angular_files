@@ -44,7 +44,8 @@ const AssessmentStatus = function ($assessmentsAuth,
   const getAssessmentScores = function (assessment) {
     return _.chain(assessment.assessmentQuestions)
       .filter(question => question.answerValues.length > 0)
-      .zipObject(question => [scores[question.id], question.answerValues])
+      .map(question => [question.id, question.answerValues])
+      .zipObject()
       .value();
   };
 
@@ -53,15 +54,13 @@ const AssessmentStatus = function ($assessmentsAuth,
       assessmentQuestionId: questionId,
       response: response,
       userAssessmentId: userAssessmentId,
-    })
-    .create();
+    }).create();
   };
 
   // TODO: Currently we are storing date as a string. Might reconsider
   // how to process dates if we add assessment reporting later on.
   const saveTextResponses = function (textResponses, userAssessmentId) {
-    return $q.all(_.map(textResponses, (questionId) => {
-      const response = textResponses[questionId];
+    return $q.all(_.map(textResponses, (response, questionId) => {
       return saveUserResponse(questionId, response, userAssessmentId);
     }));
   };
@@ -69,7 +68,7 @@ const AssessmentStatus = function ($assessmentsAuth,
   const saveIndexResponses = function (indexResponses,
                                        assessmentScores,
                                        userAssessmentId) {
-    return $q.all(_.map(indexResponses, (questionId) => {
+    return $q.all(_.map(indexResponses, (_response, questionId) => {
       const response =
         getResponseScore(indexResponses, assessmentScores, questionId);
       return saveUserResponse(questionId, response, userAssessmentId);
@@ -86,6 +85,9 @@ const AssessmentStatus = function ($assessmentsAuth,
     const index = indexResponses[questionId];
     if (scores[questionId]) {
       return scores[questionId][index];
+    } else {
+      // TODO: log this with Airbrake when it's integrated
+      console.error('missing score');
     }
   };
 
