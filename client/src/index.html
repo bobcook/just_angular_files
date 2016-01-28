@@ -22,26 +22,31 @@
             'API_URL': 'http://localhost:3000',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'AdobeDTM' : AdobeDTMLink + '-staging.js',
+            'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
           },
           dev: {
             'API_URL': 'https://aarp-staying-sharp-dev.herokuapp.com',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'AdobeDTM' : AdobeDTMLink + '-staging.js',
+            'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
           },
           // TODO: remove once everything migrated to s3
           devS3: {
             'API_URL': 'https://aarp-staying-sharp-dev-s3.herokuapp.com',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
+            'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
           },
           staging: {
             'API_URL': 'https://aarp-staying-sharp-stg.herokuapp.com',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'AdobeDTM' : AdobeDTMLink + '-staging.js',
+            'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
           },
           production: {
             'API_URL': 'https://aarp-staying-sharp-prod.herokuapp.com',
             'GoogleAnalytics' : 'IPHoz63oJsFGXbNMCSjmsa0MxYx4XlkQ',
             'AdobeDTM' : AdobeDTMLink,
+            'accountUrl': 'https://secure.aarp.org/applications/account/myAccount.action',
           },
         };
 
@@ -69,6 +74,7 @@
         window.__env.API_URL = envVars[currentEnv].API_URL;
         window.__env.GoogleAnalytics = envVars[currentEnv].GoogleAnalytics;
         window.__env.AdobeDTM = envVars[currentEnv].AdobeDTM;
+        window.__env.accountUrl = envVars[currentEnv].accountUrl;
       }(window));
     </script>
     <script>
