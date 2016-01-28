@@ -1,4 +1,4 @@
-<div class="detail-activity-tracker {{ vm.activity.activityTracker.type}}">
+<div class="detail-activity-tracker {{vm.chartType}}">
   <section class="container">
     <header>
       <hgroup>
@@ -35,6 +35,7 @@
       <ss-activity-tracker-quantity
         ng-switch-default
         periods="vm.currentWeek"
+        type="vm.activity.activityTracker.type"
         on-period-clicked="vm.editPeriod($period)">
       </ss-activity-tracker-quantity>
     </div>
@@ -61,3 +62,4 @@
     </div>
   </section>
 </div>
+

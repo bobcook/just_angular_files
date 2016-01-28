@@ -13,12 +13,11 @@
         <div class="form-row">
           <div class="unit-wrap" ng-repeat="response in vm.period.activityTrackerResponses">
             <div class="input-wrap">
-              <label>{{response.activityTrackerQuestion.text}}</label>
               <input type="number" min="0" max="{{vm.maxValue}}"
                      ng-model="response.response"
                      ng-model-options="{ updateOn: 'default blur', debounce: { default: 500, blur: 0 } }">
             </div>
-            <span class="unit">Units</span>
+            <span class="unit">{{vm.type}}</span>
           </div>
         </div>
       </form>

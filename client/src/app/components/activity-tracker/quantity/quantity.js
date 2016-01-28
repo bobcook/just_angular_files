@@ -8,6 +8,7 @@ const activityTrackerQuantity = function () {
     scope: {
       periodClicked: '&onPeriodClicked',
       periods: '=',
+      type: '=',
     },
   };
 };

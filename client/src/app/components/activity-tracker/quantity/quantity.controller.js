@@ -1,5 +1,4 @@
 const ActivityTrackerQuantityController = function () {
-
   const periods = this.periods;
   this.activityResponseMax = () => {
     const responses = _.map(

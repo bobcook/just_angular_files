@@ -6,6 +6,7 @@ const ActivityTrackerQuantityEditPeriodController = function ($scope,
 
   this.close = close;
   this.period = period;
+  this.type = type.split('_')[1];
 
   if (type === 'scale') {
     this.maxValue = 5;

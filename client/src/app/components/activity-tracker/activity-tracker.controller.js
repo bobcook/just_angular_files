@@ -48,15 +48,20 @@ const ActivityTrackerController = function (ModalService,
       return _.map(sortedGroups, daysForGroup);
     });
 
+  this.chartType =
+    this.activity.activityTracker.type === 'binary' ? 'binary' : 'bar-chart';
+
   this.editPeriod = (period) => {
     const type = this.activity.activityTracker.type;
-    switch (type) {
-    case 'binary':
+    switch (true) {
+    case /binary/.test(type):
       toggleBinaryPeriod(period);
       break;
-    case 'quantity':
-    case 'scale':
+    case /quantity/.test(type):
       openQuantityModal(period, type);
+      break;
+    case /scale/.test(type):
+      openScaleModal(period, type);
       break;
     }
   };
@@ -72,6 +77,15 @@ const ActivityTrackerController = function (ModalService,
       controller: 'ActivityTrackerQuantityEditPeriodController',
       controllerAs: 'vm',
       templateUrl: 'app/components/activity-tracker/quantity/edit-period.html',
+      inputs: { period, type },
+    });
+  };
+
+  const openScaleModal = function (period, type) {
+    ModalService.showModal({
+      controller: 'ActivityTrackerQuantityEditPeriodController',
+      controllerAs: 'vm',
+      templateUrl: 'app/components/activity-tracker/scale/edit-period.html',
       inputs: { period, type },
     });
   };

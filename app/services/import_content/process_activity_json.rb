@@ -18,11 +18,12 @@ module ImportContent
 
     private
 
-    # TODO: Currently we only have binary trackers so hardcoding '1' for the id
-    # will work. When we add other activity tracker types, we need to grab the
-    # real id.
+    def activity_tracker_cms
+      json_payload[:content][0][:description].strip
+    end
+
     def activity_tracker_id
-      1
+      ActivityTracker.find_by(cms_name: activity_tracker_cms).try(:id)
     end
 
     attr_reader :json_payload
