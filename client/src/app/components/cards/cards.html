@@ -19,9 +19,18 @@
     ss-card-classes="vm.cardClasses"
     ss-is-user-namespace="vm.isUserNamespace"
     ss-items="vm.items"
-    ss-last-item="vm.items.length - 1 === $index + $parent.$index && vm.completed"
     ss-resource="vm.resource">
   </ss-card>
+  <ss-encouragement-message
+    ng-if="vm.showInlineEncouragementMessage($index)"
+    ss-resource="vm.resource">
+  </ss-encouragement-message>
+</div>
+<div class="card-holder container article-holder"
+     ng-if="vm.showStandAloneEncouragementMessage()">
+  <ss-encouragement-message
+    ss-resource="vm.resource">
+  </ss-encouragement-message>
 </div>
 
 <div class="info-box">

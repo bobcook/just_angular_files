@@ -11,7 +11,6 @@ const card = function () {
       cardClasses: '=ssCardClasses',
       isUserNamespace: '=ssIsUserNamespace',
       items: '=ssItems',
-      lastItem: '=ssLastItem',
       resource: '=ssResource',
     },
   };

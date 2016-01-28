@@ -1,26 +1,29 @@
-<section>
-  <div class="info-block">
-    <header>
-      <span class="move icon-block">
-        <span class="icon-move"></span>
-      </span>
-      <span class="discover icon-block">
-        <span class="icon-discover"></span>
-      </span>
-      <span class="relax icon-block">
-        <span class="icon-relax"></span>
-      </span>
-      <span class="nourish icon-block">
-        <span class="icon-nourish"></span>
-      </span>
-      <span class="connect icon-block">
-        <span class="icon-connect"></span>
-      </span>
-    </header>
-    <article>
-      <h4>Work on another {{vm.card.contentName.toLowerCase()}}!</h4>
-      <a ui-sref="application.{{vm.card.pluralContentName.toLowerCase()}}" class="btn">
-        Explore {{vm.card.pluralContentName}}</a>
-    </article>
-  </div>
-</section>
+<div class="cp-card messaging-card"
+     ng-class="{'small-card': vm.resource.contentName === 'Activity'}">
+  <section>
+    <div class="info-block">
+      <header>
+        <span class="move icon-block">
+          <span class="icon-move"></span>
+        </span>
+        <span class="discover icon-block">
+          <span class="icon-discover"></span>
+        </span>
+        <span class="relax icon-block">
+          <span class="icon-relax"></span>
+        </span>
+        <span class="nourish icon-block">
+          <span class="icon-nourish"></span>
+        </span>
+        <span class="connect icon-block">
+          <span class="icon-connect"></span>
+        </span>
+      </header>
+      <article>
+        <div class="content">{{vm.message}}</div>
+        <a ui-sref="application.{{vm.resource.pluralContentName.toLowerCase()}}" class="btn">
+          Explore {{vm.resource.pluralContentName}}</a>
+      </article>
+    </div>
+  </section>
+</div>

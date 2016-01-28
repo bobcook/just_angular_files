@@ -1,63 +1,54 @@
-<div>
-  <div
-    class="cp-card {{vm.cardClasses}}"
-    ng-style="{'background-image':'url({{vm.cardImage}})'}">
+<div
+  class="cp-card {{vm.cardClasses}}"
+  ng-style="{'background-image':'url({{vm.cardImage}})'}">
 
-    <a class="card-link" ui-sref="{{vm.resourcePath}}"></a>
-    <div class="color-fill"></div>
-    <section>
-      <div class="info-block">
-        <header>
-          <h5>{{vm.upperLeft}}</h5>
-          <span ng-if="vm.upperRight">{{vm.upperRight}}</span>
-          <img ng-if="vm.isGame" ng-src="{{vm.cardImage}}" alt="">
-        </header>
-        <article>
-          <h4><a ui-sref="{{vm.resourcePath}}">{{vm.cardTitle}}</a></h4>
-          <ss-save-user-content
-            ng-if="vm.isUserNamespace"
-            ss-display-type="icon"
-            ss-is-user-namespace="vm.isUserNamespace"
-            ss-item="vm.card"
-            ss-items="vm.items"
-            ss-resource="vm.resource"
-            ss-plural-resource-name="vm.pluralResourceName">
-          </ss-save-user-content>
+  <a class="card-link" ui-sref="{{vm.resourcePath}}"></a>
+  <div class="color-fill"></div>
+  <section>
+    <div class="info-block">
+      <header>
+        <h5>{{vm.upperLeft}}</h5>
+        <span ng-if="vm.upperRight">{{vm.upperRight}}</span>
+        <img ng-if="vm.isGame" ng-src="{{vm.cardImage}}" alt="">
+      </header>
+      <article>
+        <h4><a ui-sref="{{vm.resourcePath}}">{{vm.cardTitle}}</a></h4>
+        <ss-save-user-content
+          ng-if="vm.isUserNamespace"
+          ss-display-type="icon"
+          ss-is-user-namespace="vm.isUserNamespace"
+          ss-item="vm.card"
+          ss-items="vm.items"
+          ss-resource="vm.resource"
+          ss-plural-resource-name="vm.pluralResourceName">
+        </ss-save-user-content>
 
-          <div>{{vm.cardContent}}</div>
-          <div class="effort">
-            <span>{{vm.lowerLeft}}</span>
-          </div>
-          <div class="proof" ng-show="vm.lowerRight">
-            <span class="icon-recommend"></span>
-            <span>{{vm.lowerRight}}</span>
-          </div>
-        </article>
+        <div>{{vm.cardContent}}</div>
+        <div class="effort">
+          <span>{{vm.lowerLeft}}</span>
+        </div>
+        <div class="proof" ng-show="vm.lowerRight">
+          <span class="icon-recommend"></span>
+          <span>{{vm.lowerRight}}</span>
+        </div>
+      </article>
 
-        <footer
-          ng-if="vm.isGame">
-          <div class="play-btn">
-            <a
-              ng-href="{{vm.card.externalUrl}}"
-              target = "_blank"
-              class="btn green-btn">
-              Play Game
-            </a>
-          </div>
-        </footer>
-        <footer
-          ng-if="!vm.isGame"
-          ss-pillars-display="vm.pillars"
-          class="pillars">
-        </footer>
-      </div>
-    </section>
-  </div>
-
-  <div
-    class="cp-card messaging-card small-card"
-    ng-include="'app/components/encouragement-message/encouragement-message.html'"
-    ng-show="vm.showEncouragementMessage()">
-  </div>
-
+      <footer
+        ng-if="vm.isGame">
+        <div class="play-btn">
+          <a
+            href="{{vm.card.externalUrl}}"
+            target = "_blank"
+            class="btn green-btn">
+            Play Game
+          </a>
+        </div>
+      </footer>
+      <footer
+        ng-if="!vm.isGame"
+        ss-pillars-display="vm.pillars"
+        class="pillars">
+      </footer>
+    </div>
+  </section>
 </div>

@@ -19,7 +19,17 @@
     ng-repeat="card in vm.itemsInRow($parent.$index, vm.shownItems)"
     ss-card-for="card"
     ss-card-classes="vm.cardClasses"
-    ss-items="vm.items"
-    ss-last-item="vm.shownItems.length - 1 === $index + $parent.$index">
+    ss-items="vm.items">
   </ss-user-dashboard-card>
+
+  <ss-encouragement-message
+    ng-if="vm.showInlineEncouragementMessage($parent.$index)"
+    ss-resource="vm.resource">
+  </ss-encouragement-message>
+</div>
+<div class="card-holder container article-holder"
+     ng-if="vm.showStandAloneEncouragementMessage()">
+  <ss-encouragement-message
+    ss-resource="vm.resource">
+  </ss-encouragement-message>
 </div>

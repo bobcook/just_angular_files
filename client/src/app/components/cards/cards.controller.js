@@ -27,6 +27,27 @@ const CardsController = function ($pagination, $scope) {
     return chunks[chunkNum];
   };
 
+  this.showInlineEncouragementMessage = (index) => {
+    return this.isUserNamespace &&
+      this.completed &&
+      !noRemainder() &&
+      lastItem(index);
+  };
+
+  this.showStandAloneEncouragementMessage = () => {
+    return this.isUserNamespace &&
+      this.completed &&
+      noRemainder();
+  };
+
+  const noRemainder = () => {
+    return this.items.length % this.perRow === 0;
+  };
+
+  const lastItem = (index) => {
+    return this.items.length - 1 === index;
+  };
+
   const showMore = (page) => {
     paginator.showMore(page).then((items) => {
       this.items = items;

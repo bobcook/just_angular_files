@@ -17,6 +17,8 @@ const UserDashboardController = function (UserActivity) {
   this.numItems = function () {
     return _.size(this.items);
   };
+
+  this.resource = UserActivity;
 };
 
 export default UserDashboardController;

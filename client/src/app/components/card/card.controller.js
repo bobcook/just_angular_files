@@ -6,10 +6,6 @@ const CardController = function ($filter,
                                  RecipeCardPresenter) {
   'ngInject';
 
-  this.showEncouragementMessage = function () {
-    return this.isUserNamespace && this.lastItem;
-  };
-
   const getPresenter = () => {
     const contentName = this.card.recommendableType ?
       this.card.recommendableType : this.card.contentName;

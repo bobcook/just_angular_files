@@ -107,6 +107,8 @@ import currentLifestyleResultsChart from
   './components/charts/current-lifestyle-results.chart.js';
 import currentNeuroResultsChart from
   './components/charts/current-neuro-results.chart.js';
+import encouragementMessage from
+  './components/encouragement-message/encouragement-message.js';
 import exploreContent from './components/explore-content/explore-content.js';
 import infoBox from './components/info-box/info-box.js';
 import leadIn from './components/lead-in/lead-in.js';
@@ -159,6 +161,8 @@ import CurrentLifestyleResultsController from
   './components/charts/current-lifestyle-results.controller.js';
 import CurrentNeuroResultsController from
   './components/charts/current-neuro-results.controller.js';
+import EncouragementMessageController from
+  './components/encouragement-message/encouragement-message.controller.js';
 import ExploreContentController from
   './components/explore-content/explore-content.controller.js';
 import GameController from './games/game.controller.js';
@@ -328,6 +332,7 @@ app
   .directive('ssContentDrawer', contentDrawer)
   .directive('ssCurrentLifestyleResultsChart', currentLifestyleResultsChart)
   .directive('ssCurrentNeuroResultsChart', currentNeuroResultsChart)
+  .directive('ssEncouragementMessage', encouragementMessage)
   .directive('ssExploreContent', exploreContent)
   .directive('ssInfoBox', infoBox)
   .directive('ssLeadIn', leadIn)
@@ -375,6 +380,7 @@ app
     CurrentLifestyleResultsController
   )
   .controller('CurrentNeuroResultsController', CurrentNeuroResultsController)
+  .controller('EncouragementMessageController', EncouragementMessageController)
   .controller('ExploreContentController', ExploreContentController)
   .controller('GameController', GameController)
   .controller('GameIframeController', GameIframeController)
