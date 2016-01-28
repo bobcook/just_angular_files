@@ -7,7 +7,6 @@ const $loadCurrentUser = function (CurrentUser, $rootScope) {
   };
 
   return function (user) {
-
     // when user attemps to logs in, $rootScope.$currentUser set to '' (falsey).
     // update $rootScope.$currentUser after user logs in.
     if (user) {

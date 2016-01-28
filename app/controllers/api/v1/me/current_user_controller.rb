@@ -14,6 +14,11 @@ module Api
             head :no_content
           end
         end
+
+        # angular-rails-resource does not yet support singular resources
+        # this alias can be removed when this functionality is released:
+        # https://github.com/FineLinePrototyping/angularjs-rails-resource/tree/bbcfbcc816429bc348b825b526de06da0f0bd447
+        alias_method :show, :index
       end
     end
   end
