@@ -42,28 +42,40 @@
       <li class="tertiary-level">
         <ul>
           <li>
-            <a ui-sref="application.user.working-on" ng-click="vm.close()"><span class="icon icon-activities-stats"></span>What I'm Working On</a>
+            <a ui-sref="application.user.working-on" ng-click="vm.close()">
+              <span class="icon icon-activities-stats"></span>My Activities
+            </a>
           </li>
           <li>
-            <a ui-sref="application.user.recipes" ng-click="vm.close()"><span class="icon icon-saved-recipes"></span>Saved Recipes</a>
+            <a ui-sref="application.user.recipes" ng-click="vm.close()">
+              <span class="icon icon-saved-recipes"></span>My Recipes
+            </a>
           </li>
           <li>
-            <a ui-sref="application.user.articles" ng-click="vm.close()"><span class=" icon icon-saved-articles"></span>Saved Articles</a>
+            <a ui-sref="application.user.articles" ng-click="vm.close()">
+              <span class=" icon icon-saved-articles"></span>My Articles
+            </a>
+          </li>
+          <li>
+            <a ui-sref="application.user.games" ng-click="vm.close()">
+              <span class="icon icon-games"></span>My Games
+            </a>
           </li>
           <li ng-if="this.hasCompletedAssessments">
-            <a ui-sref="application.user.assessments.overall" ng-click="vm.close()"><span class="icon icon-assessment-results"></span>Saved Assessments</a>
-          </li>
-          <li>
-            <a ui-sref="application.user.games" ng-click="vm.close()"><span class="icon icon-saved-games"></span>Saved Games</a>
+            <a ui-sref="application.user.assessments.overall" ng-click="vm.close()">
+              <span class="icon icon-assessment-results"></span>My Assessments
+            </a>
           </li>
         </ul>
       </li>
       <li class="primary-level">
-        <a ui-sref="application.assessments" ng-click="vm.close()">Assessments</a>
+        <a ui-sref="application.assessments" ng-click="vm.close()">
+          Take the Assessment
+        </a>
       </li>
       <li class="primary-level" ng-click="howitworks=!howitworks" ng-class="{active:howitworks}">
         <a href="#">
-          How It Works <span class="caret" ng-class="{'caret-down':!howitworks,'caret-up':howitworks}"></span>
+          About Staying Sharp <span class="caret" ng-class="{'caret-down':!howitworks,'caret-up':howitworks}"></span>
         </a>
         <ul class="tertiary-level">
           <li><a href="https://stayingsharp.zendesk.com/home" ng-click="vm.close()">FAQs</a></li>
