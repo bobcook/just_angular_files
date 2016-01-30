@@ -16,13 +16,10 @@
         <p class="required-text"><small>All fields required</small></p>
 
         <div ng-repeat="question in vm.questions" class="row">
-
-          <!-- TODO: determine what type of errors to show if user doesn't answer
-          all the questions -->
-
+          <!-- date picker -->
           <div class="form-input-wrap col-6"
                ng-if="question.type === 'AssessmentQuestionDate'"
-               ng-class="{error: assessmentForm[question.id].$error.required}">
+               ng-class="{error: assessmentForm.$submitted && assessmentForm[question.id].$error.required}">
             <label>{{question.text}}</label>
             <ng-combo-date-picker
               ng-model="vm.textResponses[question.id]"
@@ -34,17 +31,19 @@
               name="{{question.id}}">
             </ng-combo-date-picker>
           </div>
+          <!-- select -->
           <div class="form-input-wrap select-wrap col-6"
                ng-if="question.type === 'AssessmentQuestionSelect'"
-               ng-class="{error: assessmentForm[question.id].$error.required}">
+               ng-class="{error: assessmentForm.$submitted && assessmentForm[question.id].$error.required}">
             <label>{{question.text}}</label>
             <select class="form-control" name="{{question.id}}" ng-model="vm.textResponses[question.id]" required>
               <option ng-repeat="option in question.answerOptions" value="{{option}}">{{option}}</option>
             </select>
           </div>
+          <!-- radio buttons -->
           <div class="form-input-wrap radio-wrap"
                ng-if="question.type === 'AssessmentQuestionRadio'"
-               ng-class="{error: assessmentForm[question.id].$error.required}">
+               ng-class="{error: assessmentForm.$submitted && assessmentForm[question.id].$error.required}">
             <p class="question-text">{{question.text}}</p>
             <div ng-repeat="option in question.answerOptions" class="radio inline">
               <div ng-if="question.answerValues.length === 0">
