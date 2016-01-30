@@ -6,7 +6,6 @@ const FutureBrainStats = function (API_URL,
 
   const $p = $promise;
 
-  const POTENTIAL_SCORE = 7.19; // Gives 80th percentile
   const FUTURE_BRAIN_DATA = 'future_brain_data.json';
 
   // Hardcoded constants of ppl who take assessment
@@ -65,12 +64,8 @@ const FutureBrainStats = function (API_URL,
     });
   };
 
-  // Assumes:
-  //
-  // * Potential: we're showing 80th percentile, NOT neuro score of 8.0
   const getAgeProgressions = function (neuroResultOverall) {
     return $p.accumulate({}, [
-      $p.as('optimal', () => ageProgression(POTENTIAL_SCORE)),
       $p.as('current', () => ageProgression(neuroResultOverall)),
     ]);
   };
