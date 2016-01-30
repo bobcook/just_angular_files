@@ -50,7 +50,11 @@ gulp.task('deploy', ['build'], function() {
   // Only want to version non-images since image names can be dynamic
   // and won't be found by gulp rev-all
   const allExceptImages =
-    filter(['*', '!assets/images/*'], { restore: true });
+    filter([
+      '*',
+      '!assets/images/*',
+      '!future_brain_data.json',
+    ], { restore: true });
 
   // Appends content hash to filenames and re-writes references;
   // Gets around needing to invalidate Cloudfront cache on every deploy
