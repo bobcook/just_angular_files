@@ -1,7 +1,7 @@
 const TopNavController = function (ApiRoutes, $state) {
   'ngInject';
 
-  this.loginUrl = `${ApiRoutes.AARP_AUTH}?promo=SM-SS`;
+  this.loginUrl = `${ApiRoutes.AARP_AUTH}?promo=SS-BETA`;
 
   this.isMenuOpen = false;
   this.isSearchOpen = false;
@@ -12,6 +12,10 @@ const TopNavController = function (ApiRoutes, $state) {
       'application.search-results',
       { q: this.keywords, type: _.snakeCase(this.selectedSearchCategory) }
     );
+  };
+
+  this.showInTopNav = function () {
+    return $state.$current.url.source !== '/see-you-in-march';
   };
 
   this.searchCategories =

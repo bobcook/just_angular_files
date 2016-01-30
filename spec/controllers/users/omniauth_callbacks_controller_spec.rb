@@ -18,7 +18,7 @@ describe Users::OmniauthCallbacksController do
       end
 
       it 'redirects to the login success path on the frontend' do
-        user = create(:user)
+        user = create(:user, membership_status: :paid)
         token_holder = double(claim_token: 'CLAIM_TOKEN')
         allow(User).to receive(:from_omniauth).and_return(user)
         allow(ClaimTokenHolder)

@@ -86,11 +86,11 @@ describe('$vanityUrlCheck', function () {
       expect(hasPromoCode(result, 'SS-BETA')).to.eq(true);
     });
 
-    it('has the SM-SS promo code for all other URLs', function () {
+    it('has the SS-BETA promo code for all other URLs', function () {
       const currentUrl = 'http://example.com/foobar'
       const result = $vanityUrlCheck.redirectUrlFor(currentUrl);
 
-      expect(hasPromoCode(result, 'SM-SS')).to.eq(true);
+      expect(hasPromoCode(result, 'SS-BETA')).to.eq(true);
     });
   });
 });

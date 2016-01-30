@@ -274,6 +274,16 @@ const routerConfig = function (stateHelperProvider,
           ],
         },
         {
+          name: 'unpaid-login-success',
+          url: '/callbacks/unpaid-login-success/:claimToken',
+          controller: 'LoginSuccessController',
+        },
+        {
+          name: 'unpaid-user-home',
+          url: '/see-you-in-march',
+          templateUrl: 'app/home/unpaid-user-home.html',
+        },
+        {
           name: 'user',
           url: '/me',
           templateUrl: 'app/layouts/user.html',

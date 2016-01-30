@@ -92,7 +92,7 @@ const $vanityUrlCheck = function (ApiRoutes,
       return _.includes(currentUrl, fragment);
     };
 
-    const promo = _.find(fragmentsAndPromos, includesFragment) || 'SM-SS';
+    const promo = _.find(fragmentsAndPromos, includesFragment) || 'SS-BETA';
 
     return `${ApiRoutes.AARP_AUTH}?promo=${promo}`;
   };

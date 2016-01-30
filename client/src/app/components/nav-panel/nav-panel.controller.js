@@ -1,7 +1,7 @@
 const NavPanelController = function (ApiRoutes, AssessmentStatus, $rootScope) {
   'ngInject';
 
-  this.loginUrl = `${ApiRoutes.AARP_AUTH}?promo=SM-SS`;
+  this.loginUrl = `${ApiRoutes.AARP_AUTH}?promo=SS-BETA`;
   this.currentRoute = 'root';
   this.accountUrl = window.__env.accountUrl;
 
