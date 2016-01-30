@@ -1,4 +1,7 @@
-const SaveUserContentController = function ($state, $filter) {
+const SaveUserContentController = function ($state,
+                                            $filter,
+                                            $loadCurrentUser,
+                                            $rootScope) {
   'ngInject';
 
   const defaultContent = function (resourceName) {
@@ -6,6 +9,10 @@ const SaveUserContentController = function ($state, $filter) {
       'unsaved': `Save to My ${$filter('capitalize')(resourceName)}`,
       'saved': `Remove from Saved ${$filter('capitalize')(resourceName)}`,
     };
+  };
+
+  const updateEngagementLevel = function () {
+    $loadCurrentUser($rootScope.$currentUser);
   };
 
   const resourceName =
@@ -46,6 +53,9 @@ const SaveUserContentController = function ($state, $filter) {
     args[resourceIdField] = this.item.id;
     new this.resource(args).create().then((response) => {
       if (response.status === 201) {
+        if (resourceName === 'activity') {
+          updateEngagementLevel();
+        }
         this.savedItem = _.isEmpty(response) ? null : response.data;
         this.isSaved = true;
         // show modal after saving
@@ -58,6 +68,9 @@ const SaveUserContentController = function ($state, $filter) {
 
   this.delete = function () {
     this.resource.delete(this.item.id).then(() => {
+      if (resourceName === 'activity') {
+        updateEngagementLevel();
+      }
       this.savedItem = null;
       this.isSaved = false;
       // remove item from index

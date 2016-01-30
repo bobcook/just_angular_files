@@ -4,6 +4,7 @@ const AssessmentStatus = function ($assessmentsAuth,
                                    $q,
                                    $rootScope,
                                    $timeout,
+                                   $loadCurrentUser,
                                    UserAssessmentGroup,
                                    AssessmentResponse) {
   'ngInject';
@@ -23,10 +24,11 @@ const AssessmentStatus = function ($assessmentsAuth,
   };
 
   const updateCompletedUserAssessment = function (userAssessment) {
-    delete userAssessment.assessment;
-    delete userAssessment.type;
     userAssessment.completed = true;
-    userAssessment.update();
+    userAssessment.update().then(function () {
+      // reload user to get current engagement level
+      $loadCurrentUser($rootScope.$currentUser);
+    });
   };
 
   const getQuestionnaires = function (assessmentGroup) {

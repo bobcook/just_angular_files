@@ -7,7 +7,7 @@ module Api
         end
 
         def update
-          user_asessment.update(assessment_params)
+          user_asessment.update(completed: assessment_params[:completed])
           if engagement_email.update_assessment_status?
             engagement_email.send_later
           end
@@ -26,7 +26,14 @@ module Api
             :completed,
             :user_assessment_group_id,
             :assessment_id,
-            :type
+            :type,
+            assessment: [
+              :id,
+              :name,
+              :order,
+              :created_at,
+              :updated_at
+            ]
           )
         end
 
