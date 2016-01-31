@@ -1,4 +1,5 @@
-const CardActivityTrackerController = function ($filter,
+const CardActivityTrackerController = function (ActivityPeriodActions,
+                                                $filter,
                                                 $moment,
                                                 dependentMemoize) {
   'ngInject';
@@ -33,13 +34,6 @@ const CardActivityTrackerController = function ($filter,
 
   const nonPastPeriods = function (periods) {
     return _.filter(periods, notAfterToday);
-  };
-
-  // TODO: consolidate this and other toggleBinaryPeriod
-  const toggleBinaryPeriod = function (period) {
-    const response = period.activityTrackerResponses[0];
-    response.response = response.response === 0 ? 1 : 0;
-    period.update();
   };
 
   dependentMemoize.defineProperty(
@@ -98,7 +92,10 @@ const CardActivityTrackerController = function ($filter,
     return this.todayPeriod() && this.isTracked(this.todayPeriod());
   };
 
-  this.editPeriod = toggleBinaryPeriod;
+  this.editPeriod = function (period) {
+    const trackerType = this.activity.activityTracker.type;
+    return ActivityPeriodActions.edit(trackerType, period);
+  };
 };
 
 export default CardActivityTrackerController;

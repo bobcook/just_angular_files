@@ -1,4 +1,4 @@
-const ActivityTrackerController = function (ModalService,
+const ActivityTrackerController = function (ActivityPeriodActions,
                                             $moment,
                                             $scope,
                                             dependentMemoize) {
@@ -51,43 +51,9 @@ const ActivityTrackerController = function (ModalService,
   this.chartType =
     this.activity.activityTracker.type === 'binary' ? 'binary' : 'bar-chart';
 
-  this.editPeriod = (period) => {
-    const type = this.activity.activityTracker.type;
-    switch (true) {
-    case /binary/.test(type):
-      toggleBinaryPeriod(period);
-      break;
-    case /quantity/.test(type):
-      openQuantityModal(period, type);
-      break;
-    case /scale/.test(type):
-      openScaleModal(period, type);
-      break;
-    }
-  };
-
-  const toggleBinaryPeriod = function (period) {
-    const response = period.activityTrackerResponses[0];
-    response.response = response.response === 0 ? 1 : 0;
-    period.update();
-  };
-
-  const openQuantityModal = function (period, type) {
-    ModalService.showModal({
-      controller: 'ActivityTrackerQuantityEditPeriodController',
-      controllerAs: 'vm',
-      templateUrl: 'app/components/activity-tracker/quantity/edit-period.html',
-      inputs: { period, type },
-    });
-  };
-
-  const openScaleModal = function (period, type) {
-    ModalService.showModal({
-      controller: 'ActivityTrackerQuantityEditPeriodController',
-      controllerAs: 'vm',
-      templateUrl: 'app/components/activity-tracker/scale/edit-period.html',
-      inputs: { period, type },
-    });
+  this.editPeriod = function (period) {
+    const trackerType = this.activity.activityTracker.type;
+    return ActivityPeriodActions.edit(trackerType, period);
   };
 
   // can't use dependentMemoize here because this.currentWeek isn't read-only

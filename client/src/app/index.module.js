@@ -74,6 +74,8 @@ import $presenterUtils from './common/services/presenter-utils.js';
 import $promise from './common/services/promise.js';
 import $url from './common/services/url.js';
 import AssessmentStatus from './assessments/assessment-status.js';
+import ActivityPeriodActions
+  from './common/services/activity-period-actions.js';
 import AssessmentResultQueries from
   './assessments/results/queries.js';
 import AssessmentResultScores from
@@ -300,6 +302,7 @@ app
   .factory('$presenterUtils', $presenterUtils)
   .factory('$vanityUrlCheck', $vanityUrlCheck)
   .factory('authInterceptor', authInterceptor)
+  .factory('ActivityPeriodActions', ActivityPeriodActions)
   .factory('AssessmentStatus', AssessmentStatus)
   .factory('AssessmentResultQueries', AssessmentResultQueries)
   .factory('AssessmentResultScores', AssessmentResultScores)
