@@ -18,7 +18,7 @@ const modal = function ($state) {
             || $(container).has(event.target).length > 0;
       };
 
-      const mouseUp = function (event) {
+      const mouseDown = function (event) {
         if (!containerContainsEvent(modalElement, event)) {
           close();
           removeListeners();
@@ -41,11 +41,11 @@ const modal = function ($state) {
       };
 
       const removeListeners = function () {
-        $(document).off('mouseup', mouseUp);
+        $(document).off('mousedown', mouseDown);
         $(document).off('keyup', keyUp);
       };
 
-      $(document).on('mouseup', mouseUp);
+      $(document).on('mousedown', mouseDown);
       $(document).on('keyup', keyUp);
 
       scope.$on('$destroy', removeListeners);
