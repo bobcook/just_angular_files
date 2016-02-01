@@ -40,6 +40,19 @@ describe Users::OmniauthCallbacksController do
         expect(email).to receive(:send_later)
         get :aarp
       end
+
+      it 'creates an engagement email for first time logins' do
+        user = create(:user, last_sign_in_at: nil)
+        allow(User).to receive(:from_omniauth).and_return(user)
+        http = double
+        allow(http).to receive(:post)
+        email = EngagementEmails.new(user, http: http)
+        allow_any_instance_of(EngagementEmails)
+          .to receive(:send_later).and_return(email)
+
+        expect { email.send }.to_not raise_error
+        get :aarp
+      end
     end
 
     context 'user is not persisted' do

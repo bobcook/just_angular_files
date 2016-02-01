@@ -63,7 +63,12 @@ class EngagementEmails
   end
 
   def last_login
-    current_user.last_sign_in_at.strftime(aarp_date_format)
+    last_signin = current_user.last_sign_in_at
+    if last_signin
+      last_signin.strftime(aarp_date_format)
+    else
+      Time.zone.now.strftime(aarp_date_format)
+    end
   end
 
   def last_update_date
