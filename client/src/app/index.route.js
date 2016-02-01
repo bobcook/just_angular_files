@@ -364,8 +364,8 @@ const routerConfig = function (stateHelperProvider,
     .state({
       name: 'game-iframe',
       url: '/game-iframe',
-      templateUrl: 'app/game-iframe/iframe.html',
-      controller: 'GameIframeController',
+      templateUrl: 'app/game-iframe/game-iframe-content.html',
+      controller: 'GameIframeContentController',
       controllerAs: 'vm',
     })
     .state({

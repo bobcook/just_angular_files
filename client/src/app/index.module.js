@@ -110,6 +110,7 @@ import currentNeuroResultsChart from
 import encouragementMessage from
   './components/encouragement-message/encouragement-message.js';
 import exploreContent from './components/explore-content/explore-content.js';
+import gameIframe from './games/game-iframe.js';
 import infoBox from './components/info-box/info-box.js';
 import leadIn from './components/lead-in/lead-in.js';
 import modal from './components/modal/modal.js';
@@ -166,7 +167,9 @@ import EncouragementMessageController from
 import ExploreContentController from
   './components/explore-content/explore-content.controller.js';
 import GameController from './games/game.controller.js';
-import GameIframeController from './game-iframe/game-iframe.controller.js';
+import GameIframeController from './games/game-iframe.controller.js';
+import GameIframeContentController
+  from './game-iframe/game-iframe-content.controller.js';
 import GameModalController from './games/game-modal.controller.js';
 import GamePlayController from './games/game-play.controller.js';
 import GamesController from './games/games.controller.js';
@@ -334,6 +337,7 @@ app
   .directive('ssCurrentNeuroResultsChart', currentNeuroResultsChart)
   .directive('ssEncouragementMessage', encouragementMessage)
   .directive('ssExploreContent', exploreContent)
+  .directive('ssGameIframe', gameIframe)
   .directive('ssInfoBox', infoBox)
   .directive('ssLeadIn', leadIn)
   .directive('ssModal', modal)
@@ -384,6 +388,7 @@ app
   .controller('ExploreContentController', ExploreContentController)
   .controller('GameController', GameController)
   .controller('GameIframeController', GameIframeController)
+  .controller('GameIframeContentController', GameIframeContentController)
   .controller('GameModalController', GameModalController)
   .controller('GamePlayController', GamePlayController)
   .controller('GamesController', GamesController)
