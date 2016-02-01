@@ -252,6 +252,11 @@ const routerConfig = function (stateHelperProvider,
           template: '<div ui-view></div>',
           children: [
             {
+              name: 'faq',
+              url: '/faq',
+              templateUrl: 'app/static/faq.html',
+            },
+            {
               name: 'privacy-policy',
               url: '/privacy-policy',
               templateUrl: 'app/static/privacy-policy.html',
