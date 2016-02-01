@@ -19,20 +19,22 @@ const runBlock = function ($log, $window, $rootScope, $location) {
     const referrer = fromState.name ?
       `${$location.protocol()}://${$location.host()}/#${fromState.url}` : '';
 
-    // begin of Adobe DTM analytics
-    _satellite.track(url);
-    // end of Adobe DTM analytics
+    if (window.location.hostname !== 'localhost') {
+      // begin of Adobe DTM analytics
+      _satellite.track(url);
+      // end of Adobe DTM analytics
 
-    // begin of Segment.io analytics
-    analytics.page({
-      path: path,
-      referrer: referrer,
-      search: querystring,
-      url: $location.absUrl(),
-    });
+      // begin of Segment.io analytics
+      analytics.page({
+        path: path,
+        referrer: referrer,
+        search: querystring,
+        url: $location.absUrl(),
+      });
 
-    s.t({ pageName: path });
-    // end of Segment.io analytics
+      s.t({ pageName: path });
+      // end of Segment.io analytics
+    }
   });
 
   $log.debug('runBlock end');
