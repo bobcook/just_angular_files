@@ -1,7 +1,11 @@
 const GamePlayController = function (Game,
                                      $stateParams,
+                                     $featureDetection,
                                      previousState) {
+
   'ngInject';
+
+  this.isTouchDevice = $featureDetection.isTouchDevice();
 
   Game.get($stateParams.id).then((response) => {
     this.game = response.data;
