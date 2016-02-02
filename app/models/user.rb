@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
     lead?
   end
 
+  def last_completed_user_assessment_group
+    user_assessment_groups.reverse.find(&:completed?)
+  end
+
   private
 
   def complete_level_three

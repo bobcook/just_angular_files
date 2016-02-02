@@ -14,7 +14,8 @@ module Api
         private
 
         def user_assessments
-          current_user.user_assessment_groups.last.user_assessments
+          return [] unless current_user.last_completed_user_assessment_group
+          current_user.last_completed_user_assessment_group.user_assessments
         end
 
         def assesssment_responses

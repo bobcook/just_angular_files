@@ -2,7 +2,8 @@ const AssessmentResultQueries = function (AssessmentStatus,
                                           LifestyleResult,
                                           NeuroPerformanceResult,
                                           UserInfo,
-                                          $promise) {
+                                          $promise,
+                                          $q) {
   'ngInject';
 
   const $p = $promise;
@@ -12,6 +13,7 @@ const AssessmentResultQueries = function (AssessmentStatus,
   };
 
   const getNeuroResults = function (state) {
+    if (!state.group) { return $q.reject(); }
     const group = state.group;
 
     const params = {
@@ -22,6 +24,7 @@ const AssessmentResultQueries = function (AssessmentStatus,
   };
 
   const getLifestyleResults = function (state) {
+    if (!state.group) { return $q.reject(); }
     const group = state.group;
 
     const params = {
@@ -32,6 +35,7 @@ const AssessmentResultQueries = function (AssessmentStatus,
   };
 
   const getUserInfo = function (state) {
+    if (!state.group) { return $q.reject(); }
     const group = state.group;
 
     const params = {

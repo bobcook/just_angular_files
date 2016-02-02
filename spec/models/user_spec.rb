@@ -139,4 +139,64 @@ describe User do
       end
     end
   end
+
+  describe '#last_completed_user_assessment_group' do
+    let(:subject) { create(:user) }
+
+    context 'with incomplete assessment group' do
+      let!(:assessment_group) { create(:user_assessment_group, user: subject) }
+
+      it 'does not return assessment group' do
+        expect(subject.last_completed_user_assessment_group).to be_nil
+      end
+    end
+
+    context 'with partially complete assessment group' do
+      let!(:assessment_group) { create(:user_assessment_group, user: subject) }
+      let!(:assessment_1) do
+        create(
+          :user_assessment,
+          user_assessment_group: assessment_group,
+          completed: true
+        )
+      end
+
+      let!(:assessment_2) do
+        create(
+          :user_assessment,
+          user_assessment_group: assessment_group,
+          completed: true
+        )
+      end
+
+      let!(:assessment_3) do
+        create(
+          :user_assessment,
+          user_assessment_group: assessment_group,
+          completed: false
+        )
+      end
+
+      it 'does not return assessment group' do
+        expect(subject.last_completed_user_assessment_group).to be_nil
+      end
+    end
+
+    context 'with complete assessment group' do
+      let!(:assessment_group) { create(:user_assessment_group, user: subject) }
+
+      it 'does not return assessment group' do
+        create_list(
+          :user_assessment,
+          3,
+          completed: true,
+          user_assessment_group: assessment_group
+        )
+
+        expect(subject.last_completed_user_assessment_group).to eq(
+          assessment_group
+        )
+      end
+    end
+  end
 end

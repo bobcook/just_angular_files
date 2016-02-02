@@ -5,7 +5,8 @@ const OverallResultsController = function (Activity,
                                            RecommendedContent,
                                            $moment,
                                            $pillarFiltering,
-                                           $promise) {
+                                           $promise,
+                                           $q) {
   'ngInject';
 
   const queries = AssessmentResultQueries;
@@ -24,6 +25,8 @@ const OverallResultsController = function (Activity,
     return queries.accumulatedQueries().then((vals) => {
       this.accumulatedQueries = vals;
       return vals;
+    }, function () {
+      return $q.reject('no user assessments');
     });
   };
 
