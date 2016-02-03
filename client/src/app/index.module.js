@@ -179,7 +179,6 @@ import LogoutController from './logout/logout.controller.js';
 import MyFutureBrainController from
   './components/charts/my-future-brain.controller.js';
 import NavPanelController from './components/nav-panel/nav-panel.controller.js';
-import NavTabsController from './components/nav-tabs/nav-tabs.controller.js';
 import NeuroPerformanceController from
   './assessments/results/neuroperformance.controller.js';
 import OverallResultsController from
@@ -415,7 +414,6 @@ app
   .controller('SearchResultsController', SearchResultsController)
   .controller('SocialLinksController', SocialLinksController)
   .controller('TopNavController', TopNavController)
-  .controller('NavTabsController', NavTabsController)
   .controller('UserDashboardCardController', UserDashboardCardController)
   .controller('UserDashboardCardsController', UserDashboardCardsController)
   .controller('UserDashboardController', UserDashboardController)

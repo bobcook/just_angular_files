@@ -1,66 +1,47 @@
 <div class="cp-navigation-tabs">
   <section class="container">
     <div class="tab-list">
-      <!-- TODO: This is shown when user is logged in but not a paid member.
       <ul>
         <li>
-          <a href="" title="Account Information">
-            <span class="icon-account"></span>
-            <span class="hidden-xs hidden-sm">Account Information</span>
-          </a>
-        </li>
-        <li>
-          <a href="" title="Subscription">
-            <span class="icon-subscriptions"></span>
-            <span class="hidden-xs hidden-sm">Subscription</span>
-          </a>
-        </li>
-        <li>
-          <a href="" title="Preferences">
-            <span class="icon-settings"></span>
-            <span class="hidden-xs hidden-sm">Preferences</span>
-          </a>
-        </li>
-        <li>
-          <a href="" title="My Connected Apps">
-            <span class="icon-connected-apps"></span>
-            <span class="hidden-xs hidden-sm">My Connected Apps</span>
-          </a>
-        </li>
-      </ul>
-      -->
-      <!-- TODO: This is shown when user is logged AND a paid member. -->
-      <ul>
-        <li>
-          <a ui-sref="application.user.working-on" title="What I’m Working On">
+          <a ui-sref="application.user.working-on"
+             ng-class="{active : activeTab == 'activities'}"
+             title="My Activities">
             <span class="icon-activities-stats"></span>
-            <span class="hidden-xs hidden-sm">What I’m Working On</span>
+            <span class="hidden-xs hidden-sm">My Activities</span>
             </a>
           </li>
         <li>
-          <a ui-sref="application.user.recipes" title="Saved Recipes">
+          <a ui-sref="application.user.recipes"
+             ng-class="{active : activeTab == 'recipes'}"
+             title="My Recipes">
            <span class="icon-saved-recipes"></span>
-           <span class="hidden-xs hidden-sm">Saved Recipes</span>
+           <span class="hidden-xs hidden-sm">My Recipes</span>
           </a>
         </li>
         <li>
-          <a ui-sref="application.user.articles" title="Saved Articles">
+          <a ui-sref="application.user.articles"
+             ng-class="{active : activeTab == 'articles'}"
+             title="My Articles">
             <span class="icon-saved-articles"></span>
-            <span class="hidden-xs hidden-sm">Saved Articles</span>
+            <span class="hidden-xs hidden-sm">My Articles</span>
             </a>
           </li>
         <li>
-          <a ui-sref="application.user.assessments.overall" title="Assessment">
+          <a ui-sref="application.user.assessments.overall"
+             ng-class="{active : activeTab == 'assessments'}"
+             title="My Assessment Results">
             <span class="icon-assessment-results"></span>
-            <span class="hidden-xs hidden-sm">Assessment</span>
+            <span class="hidden-xs hidden-sm">My Assessment Results</span>
             </a>
           </li>
         <li>
-          <a ui-sref="application.user.games" title="Games">
+          <a ui-sref="application.user.games"
+             ng-class="{active : activeTab == 'games'}"
+             title="My Games">
             <span class="icon-games"></span>
-            <span class="hidden-xs hidden-sm">Games</span>
+            <span class="hidden-xs hidden-sm">My Games</span>
             </a>
-          </li>
+        </li>
       </ul>
     </div>
   </section>

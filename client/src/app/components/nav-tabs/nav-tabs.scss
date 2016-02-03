@@ -42,7 +42,7 @@
       background: white;
       padding-bottom: 3px;
 
-      &:hover, &:focus {
+      &:hover, &:focus, &.active {
         padding-bottom: 22px;
         border-bottom: 4px solid #30383d;
         color: #30383d;
