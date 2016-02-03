@@ -7,13 +7,12 @@
 
 <div class="cp-assessment-intro">
   <section class="container">
-    <ss-info-box ng-show="vm.isTouchDevice">
-      <p translate>info.touch_device_warning_assessments</p>
+    <ss-info-box ng-hide="vm.hasFlash">
+      <p translate>info.missing_flash_warning_assessments</p>
       <a ui-sref="application.home" class="btn">Explore Staying Sharp</a>
     </ss-info-box>
 
-    <div ng-hide="vm.isTouchDevice">
-
+    <div ng-show="vm.hasFlash">
       <div class="assessment-description">
 
         <h2>About the Brain Health Assessment</h2>

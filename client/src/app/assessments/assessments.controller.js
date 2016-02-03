@@ -11,7 +11,7 @@ const AsssessmentsController = function ($assessmentsAuth,
     $assessmentsAuth.authenticate();
   };
 
-  this.isTouchDevice = $featureDetection.isTouchDevice();
+  this.hasFlash = $featureDetection.hasFlash();
 
   const createAssessment = () => {
     this.buttonText = 'Begin Assessment';
@@ -42,7 +42,7 @@ const AsssessmentsController = function ($assessmentsAuth,
     }
   };
 
-  if (!this.isTouchDevice) {
+  if (this.hasFlash) {
     AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
       if (!lastGroup || lastGroup.completed) {
         createAssessment();

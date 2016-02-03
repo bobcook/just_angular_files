@@ -1,7 +1,10 @@
 const GamePlayController = function (Game,
                                      $stateParams,
+                                     $featureDetection,
                                      previousState) {
   'ngInject';
+
+  this.hasFlash = $featureDetection.hasFlash();
 
   Game.get($stateParams.id).then((response) => {
     this.game = response.data;

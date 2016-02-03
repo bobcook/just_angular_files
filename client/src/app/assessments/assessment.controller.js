@@ -10,14 +10,14 @@ const AsssessmentController = function ($stateParams,
   let assessmentRedirect;
   const currentUserAssessment = UserAssessment.get(userAssessmentId);
 
-  this.showAssessment = false;
   // text responses for questions without scores
   this.textResponses = {};
   // index of each response for questions with scores
   this.indexResponses = {};
   // all the possible scores for questions with scores
   this.showAssessment = false;
-  this.isTouchDevice = $featureDetection.isTouchDevice();
+  this.hasFlash = $featureDetection.hasFlash();
+
   this.defaultBirthdate = new Date('1955-01-01T00:00:00');
 
   const assessmentFlowSetup = (lastGroup) => {
@@ -81,7 +81,7 @@ const AsssessmentController = function ($stateParams,
     }).then(assessmentRedirect);
   };
 
-  if (!this.isTouchDevice) {
+  if (this.hasFlash) {
     AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
       if (!lastGroup) { return; };
 

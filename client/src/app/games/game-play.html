@@ -1,5 +1,10 @@
 <div class="cp-games-embed-details">
-  <section class="container">
+  <section class="container" ng-hide="vm.hasFlash">
+    <ss-info-box >
+      <p translate>info.missing_flash_warning_games</p>
+    </ss-info-box>
+  </section>
+  <section class="container" ng-show="vm.hasFlash">
     <h2>Game: {{vm.game.title}}</h2>
     <ss-game-iframe
       ng-if="vm.game.title"
