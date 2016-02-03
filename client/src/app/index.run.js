@@ -20,9 +20,6 @@ const runBlock = function ($log, $window, $rootScope, $location) {
       `${$location.protocol()}://${$location.host()}/#${fromState.url}` : '';
 
     if (window.location.hostname !== 'localhost') {
-      // begin of Adobe DTM analytics
-      _satellite.track(url);
-      // end of Adobe DTM analytics
 
       // begin of Segment.io analytics
       analytics.page({
@@ -34,6 +31,10 @@ const runBlock = function ($log, $window, $rootScope, $location) {
 
       s.t({ pageName: path });
       // end of Segment.io analytics
+
+      // begin of Adobe DTM analytics
+      _satellite.track(url);
+      // end of Adobe DTM analytics
     }
   });
 
