@@ -9,10 +9,12 @@
   active-tab="assessments">
 </ss-nav-tabs>
 
-<ss-info-box ng-hide="vm.hasCompletedAssessments">
+<ss-info-box ng-show="vm.showAssessmentBanner">
   <h3 translate>info.better_brain_starts_here</h3>
   <p translate>info.take_the_assessment</p>
-  <button type="button" ui-sref="application.assessments">Start Now</button>
+  <button type="button" ui-sref="application.assessments">Begin Assessment</button>
 </ss-info-box>
 
-<div ui-view></div>
+<div ng-show="vm.showAssessmentResults">
+  <div ui-view></div>
+</div>

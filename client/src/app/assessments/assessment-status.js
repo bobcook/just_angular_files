@@ -136,6 +136,15 @@ const AssessmentStatus = function ($assessmentsAuth,
     }
   };
 
+  const showAssessmentBanner =
+    function (hasCompleted, lastIsStarted, lastIsCompleted) {
+      return hasCompleted && lastIsStarted && !lastIsCompleted || !hasCompleted;
+    };
+
+  const showAssessmentResults = function (hasCompleted) {
+    return hasCompleted;
+  };
+
   return {
     enqueueResultsUpdate: enqueueResultsUpdate,
     lastUserAssessmentGroup: lastUserAssessmentGroup,
@@ -151,6 +160,8 @@ const AssessmentStatus = function ($assessmentsAuth,
     submitAssessmentRedirect: submitAssessmentRedirect,
     hasCompletedAssessments: hasCompletedAssessments,
     setSubmitButtonText: setSubmitButtonText,
+    showAssessmentBanner: showAssessmentBanner,
+    showAssessmentResults: showAssessmentResults,
   };
 };
 

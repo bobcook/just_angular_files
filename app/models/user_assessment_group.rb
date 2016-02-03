@@ -25,6 +25,10 @@ class UserAssessmentGroup < ActiveRecord::Base
     user_assessments.any? && user_assessments.all?(&:completed?)
   end
 
+  def started?
+    user_assessments.any? && user_assessments.any?(&:completed?)
+  end
+
   private
 
   def only_one_mbs_user_assesment
