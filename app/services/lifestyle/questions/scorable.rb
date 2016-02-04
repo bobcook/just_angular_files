@@ -1,7 +1,21 @@
 module Lifestyle
   module Questions
     class Scorable
-      class UnprocessableResponseValue < RuntimeError; end
+      class UnprocessableResponseValue < RuntimeError
+        attr_reader :question, :response
+
+        def initialize(question, response)
+          @question = question
+          @response = response
+        end
+
+        def message
+          "UnprocessableResponseValue (`#{response.response}`) " \
+          "for question `#{question.text}` in UserAssessment " \
+          "#{response.user_assessment.id}"
+        end
+      end
+
       class QuestionResponseMismatched < RuntimeError; end
 
       attr_reader :question, :response
@@ -10,7 +24,7 @@ module Lifestyle
         @question = assessment_question
         @response = assessment_response
         fail QuestionResponseMismatched unless matches?(question, response)
-        fail UnprocessableResponseValue unless valid_value?(response.response)
+        assert_response_valid!(question, response)
       end
 
       # Assumes:
@@ -41,6 +55,11 @@ module Lifestyle
       end
 
       private
+
+      def assert_response_valid!(question, response)
+        valid = valid_value?(response.response)
+        fail(UnprocessableResponseValue.new(question, response)) unless valid
+      end
 
       def answer_values
         @answer_values ||= question.answer_values
