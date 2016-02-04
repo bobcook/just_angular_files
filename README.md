@@ -46,33 +46,6 @@ There are a variety of Gulp tasks for development purposes. All the Gulp tasks s
 
 To deploy to AWS, use `gulp deploy`. See the section on [Deployment Configuration]() for more details.
 
-### Deployment Configuration
-
-To deploy to AWS S3 + Cloudfront, you'll need a file at `client/aws.json` that looks like the following:
-
-```json
-{
-  "production": {
-    "region": "us-west-2",
-    "accessKeyId": "ACCESS_KEY_ID",
-    "secretAccessKey": "SECRET_ACCESS_KEY",
-    "distributionId": "ID_OF_CLOUDFRONT_DISTRIBUTION",
-    "bucket": "NAME_OF_S3_BUCKET",
-    "params": {
-      "Bucket": "NAME_OF_S3_BUCKET_AGAIN"
-   }
-  },
-  "staging": {}, // Staging environment configs go here
-  "dev": {}, // Dev environment configs go here
-}
-```
-
-`gulp deploy` will deploy to the staging environment by default. To build and deploy to another environment, pass the `--env` flag, i.e.
-
-```sh
-$ gulp deploy --env production
-```
-
 ## Backend
 
 The backend is a Rails API structured for deployment on Heroku.
@@ -129,6 +102,42 @@ its own with `$ rubocop`.
 
 [rubocop]: https://github.com/bbatsov/rubocop
 
-## Browser Compatibility
 
-TODO: Add your team's agreed upon policy here.
+## Deployment Procedure
+### Frontend Deployment Configuration
+
+To deploy to AWS S3 + Cloudfront, you'll need a file at `client/aws.json` that looks like the following:
+
+```json
+{
+  "production": {
+    "region": "us-west-2",
+    "accessKeyId": "ACCESS_KEY_ID",
+    "secretAccessKey": "SECRET_ACCESS_KEY",
+    "distributionId": "ID_OF_CLOUDFRONT_DISTRIBUTION",
+    "bucket": "NAME_OF_S3_BUCKET",
+    "params": {
+      "Bucket": "NAME_OF_S3_BUCKET_AGAIN"
+   }
+  },
+  "staging": {}, // Staging environment configs go here
+  "dev": {}, // Dev environment configs go here
+}
+```
+
+`gulp deploy` will deploy to the staging environment by default. To build and deploy to another environment, pass the `--env` flag, i.e.
+
+```sh
+$ gulp deploy --env <ENVIRONMENT>
+```
+
+### Production Deployment Procedure
+1. QA has accepted all stories in staging
+1. Release manager creates an update to the CHANGELOG
+  - should describe all new functionality being delivered
+  - include sha
+  - include links to accepted stories
+1. Release manager creates a new tag corresponds to the new section of the CHANGELOG
+1. Push production branch to heroku
+1. Push frontend to aws with `$ gulp deploy --env production`
+1. Push frontend to firebase with: `$ firebase deploy -f aarp-ss-prod`
