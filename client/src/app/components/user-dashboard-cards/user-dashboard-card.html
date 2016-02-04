@@ -1,45 +1,43 @@
-<div>
-  <div class="cp-card tracker-card small-card" style="background-image: url('{{vm.cardImage}}'); background-repeat: no-repeat;">
-    <a href="#link-to-card-content"></a>
-    <div class="color-fill"></div>
-    <section>
-      <div class="info-block">
-        <header>
-          <h5>{{vm.header.upperLeft}}</h5>
-        </header>
-        <article>
-          <h4><a ui-sref="{{vm.resourcePath}}">{{vm.header.cardTitle}}</a></h4>
-        </article>
-        <footer>
-          <div class="effort">
-            <span>{{vm.body.upperLeft}}</span>
-          </div>
-          <div class="proof">
-            <span>{{vm.body.upperRight}}</span>
-          </div>
+<div class="cp-card tracker-card small-card" style="background-image: url('{{vm.cardImage}}'); background-repeat: no-repeat;">
+  <a href="#link-to-card-content"></a>
+  <div class="color-fill"></div>
+  <section>
+    <div class="info-block">
+      <header>
+        <h5>{{vm.header.upperLeft}}</h5>
+      </header>
+      <article>
+        <h4><a ui-sref="{{vm.resourcePath}}">{{vm.header.cardTitle}}</a></h4>
+      </article>
+      <footer>
+        <div class="effort">
+          <span>{{vm.body.upperLeft}}</span>
+        </div>
+        <div class="proof">
+          <span>{{vm.body.upperRight}}</span>
+        </div>
 
-          <ss-card-activity-tracker
-            ss-activity="vm.card">
-          </ss-card-activity-tracker>
+        <ss-card-activity-tracker
+          ss-activity="vm.card">
+        </ss-card-activity-tracker>
 
-          <div class="options">
-            <a ui-sref="{{vm.resourcePath}}">View Full Details</a>
-            <div class="option-icons" ss-save-user-content
-              ss-display-type="icon"
-              ss-is-user-namespace="vm.isUserNamespace"
-              ss-item="vm.card"
-              ss-items="vm.items"
-              ss-resource="vm.resource"
-              ss-redirect-sref="application.user.working-on"
-              ss-plural-resource-name="vm.pluralResourceName">
-            </div>
+        <div class="options">
+          <a ui-sref="{{vm.resourcePath}}">View Full Details</a>
+          <div class="option-icons" ss-save-user-content
+            ss-display-type="icon"
+            ss-is-user-namespace="vm.isUserNamespace"
+            ss-item="vm.card"
+            ss-items="vm.items"
+            ss-resource="vm.resource"
+            ss-redirect-sref="application.user.working-on"
+            ss-plural-resource-name="vm.pluralResourceName">
           </div>
-          <div
-            ss-pillars-display="vm.footer.pillars"
-            class="pillars">
-          </div>
-        </footer>
-      </div>
-    </section>
-  </div>
+        </div>
+        <div
+          ss-pillars-display="vm.footer.pillars"
+          class="pillars">
+        </div>
+      </footer>
+    </div>
+  </section>
 </div>
