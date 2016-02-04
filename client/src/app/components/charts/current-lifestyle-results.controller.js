@@ -52,12 +52,12 @@ const CurrentLifestyleResultsController = function () {
           column: {
             borderWidth: 0,
             colors: [
-              '#d1282c ',
-              '#e2ad24 ',
-              '#375e71 ',
-              '#e7763d ',
-              '#6caeb6 ',
-              '#6b7f8e ',
+              '#cf2a2b',
+              '#e6763e',
+              '#e2ad0e',
+              '#6dafb7',
+              '#385d70',
+              '#6b7f8e',
             ],
             pointPadding: 0.05,
           },
