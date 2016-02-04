@@ -37,4 +37,13 @@ namespace :data_migration do
       end
     end
   end
+
+  desc 'change Assessment order'
+  task change_assessment_order: :environment do
+    q1 = Assessment.find_by(name: 'Questionnaire 1')
+    q1.update(order: 2)
+
+    mbs = Assessment.find_by(name: 'MBS')
+    mbs.update(order: 1)
+  end
 end

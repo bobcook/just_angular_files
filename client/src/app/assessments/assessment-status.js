@@ -93,14 +93,6 @@ const AssessmentStatus = function ($assessmentsAuth,
     }
   };
 
-  const setAssessmentResultsDelay = function () {
-    $rootScope.$currentUser.awaitingAssessmentResults = true;
-    const minutesToShowMessage = 15;
-    $timeout(function () {
-      $rootScope.$currentUser.awaitingAssessmentResults = false;
-    },  minutesToShowMessage * 60  * 1000);
-  };
-
   const submitAssessmentRedirect = function (group, userAssessmentId) {
     let redirect;
     const secondQuestionnaire = getQuestionnaires(group)[1];
@@ -108,12 +100,14 @@ const AssessmentStatus = function ($assessmentsAuth,
 
     if (firstQuestionnaire.id === Number(userAssessmentId)) {
       redirect = function () {
-        $assessmentsAuth.authenticate();
+        $state.go('application.assessments-questionnaire',
+          { id: secondQuestionnaire.id }
+        );
+
       };
     } else if (secondQuestionnaire.id  === Number(userAssessmentId)) {
       redirect = function () {
-        setAssessmentResultsDelay();
-        $state.go('application.home');
+        $state.go('application.assessment-results.overall');
       };
     } else {
       redirect = function () {};
@@ -136,7 +130,7 @@ const AssessmentStatus = function ($assessmentsAuth,
   const setSubmitButtonText = function (lastGroup) {
     const questionnaires =  getQuestionnaires(lastGroup);
     if (!questionnaires[0].completed) {
-      return 'Start Neuroperformance Tests';
+      return 'Continue';
     } else {
       return 'Get Your Results';
     }

@@ -15,7 +15,7 @@ const AsssessmentsController = function ($assessmentsAuth,
 
   const createAssessment = () => {
     this.buttonText = 'Begin Assessment';
-    this.buttonState = 'Questionnaire';
+    this.buttonState = 'MBS';
 
     new UserAssessmentGroup()
     .create()

@@ -22,11 +22,6 @@
   <button type="button" ui-sref="application.assessments">Finish Assessment</button>
 </ss-info-box>
 
-<ss-info-box ng-show="$root.$currentUser.awaitingAssessmentResults && !vm.close">
-  <p translate>info.congratulations_youve_completed</p>
-  <a class="btn" ng-click="vm.close = true">Explore Now</a>
-</ss-info-box>
-
 <ss-info-box ng-show="vm.hasCompletedAssessments && !$root.$currentUser.awaitingAssessmentResults">
   <p translate>info.thank_you_for_participating</p>
   <a class="btn" href="http://sharenet/MemOpts/SitePages/StayingSharpFeedbackForm.aspx">Provide Feedback</a>
