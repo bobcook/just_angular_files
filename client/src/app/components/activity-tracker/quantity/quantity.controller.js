@@ -1,5 +1,11 @@
-const ActivityTrackerQuantityController = function () {
-  const periods = this.periods;
+const ActivityTrackerQuantityController = function ($scope) {
+  'ngInject';
+
+  let periods = this.periods;
+  $scope.$parent.$watch('vm.currentWeek', function (updatedPeriods) {
+    periods = updatedPeriods;
+  });
+
   this.activityResponseMax = () => {
     const responses = _.map(
       periods,
@@ -14,7 +20,6 @@ const ActivityTrackerQuantityController = function () {
       'height': percentage + '%',
     };
   };
-
 };
 
 export default ActivityTrackerQuantityController;

@@ -40,8 +40,17 @@ const ActivityTrackerController = function (ActivityPeriodActions,
       // year + week combo into a number, ensuring the year is the most
       // significant by putting it ahead of the week while it is still a string.
       const groups = _.groupBy(periods, function (period) {
-        const yearPart = period.date.year();
-        const weekPart = period.date.startOf('week').week();
+        let yearPart = period.date.year();
+        let weekPart = period.date.startOf('week').week();
+
+        // For the last week of the year, we want to group the days of the week
+        // from the previous year and the current year.
+        if (period.date.year() !== period.date.startOf('week').year()) {
+          yearPart = period.date.startOf('week').year();
+        }
+
+        weekPart = _.padLeft(weekPart, 2, '0');
+
         return `${yearPart}${weekPart}`;
       });
       const sortedGroups = _.sortBy(_.pairs(groups), g => _.parseInt(g[0]));
