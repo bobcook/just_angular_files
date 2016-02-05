@@ -15,11 +15,11 @@ const CurrentLifestyleResultsController = function () {
         xAxis: {
           lineColor: '#c0c1c2',
           categories: [
-            'Nourish',
-            'Discover',
-            'Connect',
             'Move',
+            'Discover',
             'Relax',
+            'Nourish',
+            'Connect',
           ],
           tickLength: 0,
         },
