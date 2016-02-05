@@ -33,32 +33,30 @@ class EngagementEmails
 
   def ss_data
     {
-      initiateEngagement: {
-        idpId: current_user.uid,
-        dataExtension: 'SM_1398936_SS_Sharecare_User_Data_DE',
-        personalizers: [
-          {
-            key: 'First_Name',
-            value: current_user.first_name
-          },
-          {
-            key: 'Last_Login',
-            value: last_login
-          },
-          {
-            key: 'Last_Update_Date',
-            value: last_update_date
-          },
-          {
-            key: 'Engagement_Level',
-            value: current_user.engagement_level
-          },
-          {
-            key: 'Subscription_Plan',
-            value: current_user.membership_status.to_s
-          }
-        ]
-      }
+      idpId: current_user.uid,
+      dataExtension: ENV.fetch('DSO_MAIL_DATA_EXTENSION'),
+      personalizers: [
+        {
+          key: 'First_Name',
+          value: current_user.first_name
+        },
+        {
+          key: 'Last_Login',
+          value: last_login
+        },
+        {
+          key: 'Last_Update_Date',
+          value: last_update_date
+        },
+        {
+          key: 'Engagement_Level',
+          value: current_user.engagement_level
+        },
+        {
+          key: 'Subscription_Plan',
+          value: current_user.membership_status.to_s
+        }
+      ]
     }
   end
 
@@ -76,6 +74,6 @@ class EngagementEmails
   end
 
   def ss_endpoint
-    "#{ENV.fetch('DSO_API')}/gems/initiateEngagement"
+    ENV.fetch('DSO_MAIL_API')
   end
 end

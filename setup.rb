@@ -55,4 +55,12 @@ env 'FRONTEND_URL', provide('Frontend Url', default: 'http://localhost:9000')
 env 'ELASTICSEARCH_HOST',
     provide('Elasticsearch Url', default: 'localhost:9200')
 
+env 'DSO_MAIL_API',
+    provide('Engagement Email endpoint',
+            default: 'https://services.share-pi.aarp.org/applications/'\
+                     'CoreServices/WSOWebService/gems/initiateEngagement')
+
+env 'DSO_MAIL_DATA_EXTENSION',
+    provide('Engagement email data extension',
+            default: 'SM_1398936_SS_Sharecare_User_Data_DE')
 rake 'db:setup'
