@@ -77,4 +77,20 @@ namespace :data_migration do
       q.update(text: "#{question}?")
     end
   end
+
+  desc 'delete some questionnaire 1 questions'
+  task delete_questionnaire_1_questions: :environment do
+    questions = [
+      'What is your height?',
+      'What is your weight?',
+      'What is your gender?',
+      'What is your years of education?',
+      'Are you right-handed or left-handed?'
+    ]
+
+    questions.each do |question|
+      q = AssessmentQuestion.find_by(text: question)
+      q.destroy
+    end
+  end
 end

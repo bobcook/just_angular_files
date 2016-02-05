@@ -9,41 +9,6 @@ module SeedData
           type: 'AssessmentQuestionDate'
         },
         {
-          text: 'What is your height?',
-          order: 2,
-          answer_options: (48..84).map { |i| "#{i/12}-#{i%12}" },
-          assessment_id: 1,
-          type: 'AssessmentQuestionSelect'
-        },
-        {
-          text: 'What is your weight?',
-          answer_options: (80..300).step(5).to_a,
-          order: 3,
-          assessment_id: 1,
-          type: 'AssessmentQuestionSelect'
-        },
-        {
-          text: 'What is your gender?',
-          answer_options: %w(female male),
-          order: 4,
-          assessment_id: 1,
-          type: 'AssessmentQuestionRadio'
-        },
-        {
-          text: 'What is your years of education?',
-          answer_options: (1..30).to_a,
-          order: 5,
-          assessment_id: 1,
-          type: 'AssessmentQuestionSelect'
-        },
-        {
-          text: 'Are you right-handed or left-handed?',
-          answer_options: %w(right left),
-          order: 6,
-          assessment_id: 1,
-          type: 'AssessmentQuestionRadio'
-        },
-        {
 
           text: 'On a typical day, about how many hours do you sleep?',
           external_recommendation_id: '00105',
