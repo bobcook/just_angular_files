@@ -58,7 +58,7 @@ module SeedData
           pillar_id: 3
         },
         {
-          text: 'How many relatives (by birth or marriage) do you see or hear from at least once a month',
+          text: 'How many relatives (by birth or marriage) do you see or hear from at least once a month?',
           external_recommendation_id: '00205',
           answer_options: %w(None
                              1\ or\ 2
@@ -70,7 +70,7 @@ module SeedData
           pillar_id: 5
         },
         {
-          text: 'How many servings of fish (including shellfish) do you eat per week',
+          text: 'How many servings of fish (including shellfish) do you eat per week?',
           external_recommendation_id: '00313',
           answer_options: %w(4\ or\ more\ servings
                              2\ or\ 3\ servings
@@ -108,7 +108,7 @@ module SeedData
           pillar_id: 2
         },
         {
-          text: 'How often do you take prescription or over-the-counter (OTC) medications to help you sleep',
+          text: 'How often do you take prescription or over-the-counter (OTC) medications to help you sleep?',
           external_recommendation_id: '00106',
           answer_options: %w(Almost\ every\ day
                              Once\ in\ a\ while
@@ -120,7 +120,7 @@ module SeedData
           pillar_id: 3
         },
         {
-          text: 'How often do you talk to or see the relative with whom you have the most contact',
+          text: 'How often do you talk to or see the relative with whom you have the most contact?',
           external_recommendation_id: '00207',
           answer_options: %w(Never
                              Seldom
@@ -133,7 +133,7 @@ module SeedData
           pillar_id: 5
         },
         {
-          text: 'Do you take fish oil or omega-3 supplements',
+          text: 'Do you take fish oil or omega-3 supplements?',
           external_recommendation_id: '00314',
           answer_options: %w(Yes
                              No),
@@ -144,7 +144,7 @@ module SeedData
           pillar_id: 4
         },
         {
-          text: 'How much time do you spend per week doing aerobic exercise',
+          text: 'How much time do you spend per week doing aerobic exercise?',
           external_recommendation_id: '00402',
           answer_options: %w(None
                              Less\ than\ 30\ minutes\ per\ week
@@ -180,7 +180,7 @@ module SeedData
           pillar_id: 3
         },
         {
-          text: 'How many relatives (by birth or marriage) do you feel you could reach out to for help or talk with about private matters',
+          text: 'How many relatives (by birth or marriage) do you feel you could reach out to for help or talk with about private matters?',
           external_recommendation_id: '00206',
           answer_options: %w(None
                              1\ or\ 2
@@ -192,7 +192,7 @@ module SeedData
           pillar_id: 5
         },
         {
-          text: 'How many servings (about 1 oz) of nuts do you consume per week',
+          text: 'How many servings (about 1 oz) of nuts do you consume per week?',
           external_recommendation_id: '00307',
           answer_options: %w(4\ or\ more\ servings
                              2\ or\ 3\ servings
@@ -205,7 +205,7 @@ module SeedData
           pillar_id: 4
         },
         {
-          text: 'How much time do you spend per week doing weight or strength training',
+          text: 'How much time do you spend per week doing weight or strength training?',
           external_recommendation_id: '00403',
           answer_options: %w(None
                              Less\ than\ 30\ minutes\ per\ week
@@ -266,7 +266,7 @@ module SeedData
           pillar_id: 4
         },
         {
-          text: 'Which of the following best describes your activity level at work',
+          text: 'Which of the following best describes your activity level at work?',
           external_recommendation_id: '00405',
           answer_options: %w(Sedentary\ (mostly\ at\ a\ desk)
                              Low\ (requires\ some\ light\ walking)
@@ -303,7 +303,7 @@ module SeedData
           pillar_id: 3
         },
         {
-          text: 'What is your relationship status',
+          text: 'What is your relationship status?',
           external_recommendation_id: '00202',
           answer_options: %w(Married\ or\ lifelong\ cohabitation
                              Never\ married
@@ -316,7 +316,7 @@ module SeedData
           pillar_id: 5
         },
         {
-          text: 'How often do you eat breakfast in a typical week',
+          text: 'How often do you eat breakfast in a typical week?',
           external_recommendation_id: '00301',
           answer_options: %w(Everyday
                              4\ or\ more\ days\ per\ week
@@ -342,7 +342,7 @@ module SeedData
           pillar_id: 1
         },
         {
-          text: 'How often do you experience stress at home or work',
+          text: 'How often do you experience stress at home or work?',
           external_recommendation_id: '00103',
           answer_options: %w(Never
                              Sometimes
@@ -367,7 +367,7 @@ module SeedData
           pillar_id: 5
         },
         {
-          text: 'How many servings of vegetables do you eat per day',
+          text: 'How many servings of vegetables do you eat per day?',
           external_recommendation_id: '00304',
           answer_options: %w(4\ or\ more\ servings
                              2\ or\ 3\ servings
@@ -404,7 +404,7 @@ module SeedData
           pillar_id: 5
         },
         {
-          text: 'Do you take a supplement that contains at least 400 international units (IU) of vitamin D',
+          text: 'Do you take a supplement that contains at least 400 international units (IU) of vitamin D?',
           external_recommendation_id: '00315',
           answer_options: %w(Yes
                              No),
@@ -427,7 +427,7 @@ module SeedData
           pillar_id: 5
         },
         {
-          text: 'How many servings of processed meats do you have per week',
+          text: 'How many servings of processed meats do you have per week?',
           external_recommendation_id: '00312',
           answer_options: %w(8\ or\ more\ servings
                              6\ or\ 7\ servings
@@ -453,7 +453,7 @@ module SeedData
           pillar_id: 5
         },
         {
-          text: 'How many servings of red meats do you have per week',
+          text: 'How many servings of red meats do you have per week?',
           external_recommendation_id: '00310',
           answer_options: %w(8\ or\ more\ servings
                              6\ or\ 7\ servings
@@ -505,7 +505,7 @@ module SeedData
           pillar_id: 5
         },
         {
-          text: 'How many servings of poultry do you have per week',
+          text: 'How many servings of poultry do you have per week?',
           external_recommendation_id: '00311',
           answer_options: %w(4\ or\ more\ servings
                              2\ or\ 3\ servings
@@ -518,7 +518,7 @@ module SeedData
           pillar_id: 4
         },
         {
-          text: 'Are you a vegetarian or vegan',
+          text: 'Are you a vegetarian or vegan?',
           external_recommendation_id: '00309',
           answer_options: %w(Yes
                              No),
@@ -541,7 +541,7 @@ module SeedData
           pillar_id: 4
         },
         {
-          text: 'How many servings of fruit do you eat per day',
+          text: 'How many servings of fruit do you eat per day?',
           external_recommendation_id: '00303',
           answer_options: %w(4\ or\ more\ servings
                              2\ or\ 3\ servings

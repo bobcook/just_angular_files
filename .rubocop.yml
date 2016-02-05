@@ -32,3 +32,4 @@ AllCops:
     - "app/services/import_content/process_activity_json.rb"
     - "app/services/import_content/process_recipe_json.rb"
     - "app/jobs/import_content_item_job.rb"
+    - "lib/tasks/data_migration.rake"

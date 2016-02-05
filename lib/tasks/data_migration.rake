@@ -46,4 +46,35 @@ namespace :data_migration do
     mbs = Assessment.find_by(name: 'MBS')
     mbs.update(order: 1)
   end
+
+  desc 'add question marks to end of questions'
+  task add_question_marks: :environment do
+    questions = [
+      'How many relatives (by birth or marriage) do you see or hear from at least once a month',
+      'How many servings of fish (including shellfish) do you eat per week',
+      'How often do you take prescription or over-the-counter (OTC) medications to help you sleep',
+      'How often do you talk to or see the relative with whom you have the most contact',
+      'Do you take fish oil or omega-3 supplements',
+      'How much time do you spend per week doing aerobic exercise',
+      'How many relatives (by birth or marriage) do you feel you could reach out to for help or talk with about private matters',
+      'How many servings (about 1 oz) of nuts do you consume per week',
+      'How much time do you spend per week doing weight or strength training',
+      'Which of the following best describes your activity level at work',
+      'What is your relationship status',
+      'How often do you eat breakfast in a typical week',
+      'How often do you experience stress at home or work',
+      'How many servings of vegetables do you eat per day',
+      'Do you take a supplement that contains at least 400 international units (IU) of vitamin D',
+      'How many servings of processed meats do you have per week',
+      'How many servings of red meats do you have per week',
+      'How many servings of poultry do you have per week',
+      'Are you a vegetarian or vegan',
+      'How many servings of fruit do you eat per day'
+    ]
+
+    questions.each do |question|
+      q = AssessmentQuestion.find_by(text: question)
+      q.update(text: "#{question}?")
+    end
+  end
 end
