@@ -1,35 +1,42 @@
-const $userStatusRedirectCheck = function ($injector,
-                                          $location,
-                                          $rootScope,
+const $userStatusRedirectCheck = function ($location,
+                                          $state,
+                                          $q,
+                                          $timeout,
                                           ApiRoutes,
                                           $postHref) {
   'ngInject';
 
-  const unpaidPathName = 'application.unpaid-user-home';
-  // NOTE: must use $injector.get('$state') instead of $state to avoid circular
-  // dependencies when using this service in an interceptor
-  const getURL = function (pathName) {
-    return $injector.get('$state').get(pathName).url.split('/:')[0];
+  const unpaidPathName = 'unpaid-user-home';
+
+  // TODO: consider pushing the promise success / failure to
+  // callsites so it's apparent _why_ we're succeeding / rejecting
+  const redirectIfUnpaid = function (currentUser) {
+    if (currentUser.isPaid) {
+      return $q.when();
+    } else {
+      $timeout(redirectUnpaid);
+      return $q.reject();
+    }
   };
 
   const redirectLogin = function () {
-    $postHref(`${ApiRoutes.AARP_AUTH}?promo=SS-BETA`, {});
-  };
+    const currentPath = $location.path();
 
-  const shouldRedirectUnpaid = function () {
-    return $rootScope.$currentUser && !$rootScope.$currentUser.isPaid &&
-      $location.path() !== getURL(unpaidPathName);
+    $timeout(function () {
+      $postHref(
+        ApiRoutes.AARP_AUTH, { promo: 'SS-BETA', redirectPath: currentPath }
+      );
+    });
+    return $q.reject();
   };
 
   const redirectUnpaid = function () {
-    // set $location.path to avoid endless redirect loop on initial page load
-    $location.path(getURL(unpaidPathName));
-    $injector.get('$state').go(unpaidPathName);
+    $state.go(unpaidPathName);
   };
 
   return {
+    redirectIfUnpaid: redirectIfUnpaid,
     redirectLogin: redirectLogin,
-    shouldRedirectUnpaid: shouldRedirectUnpaid,
     redirectUnpaid: redirectUnpaid,
   };
 };

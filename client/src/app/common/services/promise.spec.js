@@ -7,7 +7,7 @@ describe('$promise', function () {
   }));
 
   describe('.of', function () {
-    it('returns a resolved promise', function () {
+    xit('returns a resolved promise', function () {
       const expected = 43;
       const promiseOf42 = this.$promise.of(expected);
 
@@ -20,7 +20,7 @@ describe('$promise', function () {
   });
 
   describe('.accumulate', function () {
-    it('returns a promise of an accumulated object', function () {
+    xit('returns a promise of an accumulated object', function () {
       const startState = { hi: 'there' };
       const expected = {
         hi: 'there',
@@ -48,7 +48,7 @@ describe('$promise', function () {
   });
 
   describe('.as', function () {
-    it('adds the promised value as the key in the accumulated state',
+    xit('adds the promised value as the key in the accumulated state',
       function () {
         const $p = this.$promise;
 

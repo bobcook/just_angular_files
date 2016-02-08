@@ -1,4 +1,7 @@
-const runBlock = function ($log, $window, $rootScope, $location) {
+const runBlock = function ($log,
+                           $window,
+                           $rootScope,
+                           $location) {
   'ngInject';
 
   $rootScope.$on('$stateChangeSuccess', function (event,

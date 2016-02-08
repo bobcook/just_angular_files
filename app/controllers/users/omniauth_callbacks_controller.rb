@@ -16,7 +16,11 @@ module Users
 
     def redirect_path(token_holder)
       if user.paid?
-        Frontend::Paths.lookup(:login_success, token_holder.claim_token)
+        Frontend::Paths.lookup(
+          :login_success,
+          token_holder.claim_token,
+          login_success_redirect_path
+        )
       else
         Frontend::Paths.lookup(:unpaid_login_success, token_holder.claim_token)
       end
@@ -24,6 +28,12 @@ module Users
 
     def user
       @user ||= User.from_omniauth(auth_data)
+    end
+
+    def login_success_redirect_path
+      request.env
+        .fetch('omniauth.params', {})
+        .fetch('redirectPath', nil)
     end
 
     def auth_data

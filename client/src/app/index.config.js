@@ -7,7 +7,6 @@ const config = function ($httpProvider,
   'ngInject';
 
   $httpProvider.interceptors.push('httpsInterceptor');
-  $httpProvider.interceptors.push('vanityUrlInterceptor');
   $httpProvider.interceptors.push('authInterceptor');
 
   $translateProvider

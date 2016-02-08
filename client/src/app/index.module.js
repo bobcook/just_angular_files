@@ -92,7 +92,6 @@ import httpsInterceptor from './common/services/https-interceptor.js';
 import MBSAssessmentList from './assessments/mbs-assessment-list.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
 import PerformSearch from './search/perform-search.js';
-import vanityUrlInterceptor from './common/services/vanity-url-interceptor.js';
 
 // directives
 import activityTracker from './components/activity-tracker/activity-tracker.js';
@@ -325,7 +324,6 @@ app
   .factory('httpsInterceptor', httpsInterceptor)
   .factory('MBSAssessmentList', MBSAssessmentList)
   .factory('PerformSearch', PerformSearch)
-  .factory('vanityUrlInterceptor', vanityUrlInterceptor)
   .provider('modalStateHelper', modalStateHelper)
 
   // directives

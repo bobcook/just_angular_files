@@ -47,6 +47,18 @@ const routerConfig = function (stateHelperProvider,
     ];
   };
 
+  const redirectIfNeeded = function ($userStatusRedirectCheck,
+                                     $vanityUrlCheck,
+                                     currentUser) {
+    if ($vanityUrlCheck.redirectIfNeeded()) {
+      return;
+    } else if (currentUser) {
+      return $userStatusRedirectCheck.redirectIfUnpaid(currentUser);
+    } else {
+      return $userStatusRedirectCheck.redirectLogin();
+    }
+  };
+
   stateHelperProvider
     .state({
       name: 'application',
@@ -57,6 +69,7 @@ const routerConfig = function (stateHelperProvider,
         currentUser: function ($loadCurrentUser) {
           return $loadCurrentUser();
         },
+        redirectIfNeeded: redirectIfNeeded,
       },
       children: [
         {
@@ -200,11 +213,6 @@ const routerConfig = function (stateHelperProvider,
           templateUrl: 'app/login-failure/login-failure.html',
         },
         {
-          name: 'login-success',
-          url: '/callbacks/login-success/:claimToken',
-          controller: 'LoginSuccessController',
-        },
-        {
           name: 'recipe',
           url: '/recipes/:id',
           templateUrl: 'app/recipes/recipe.html',
@@ -267,16 +275,6 @@ const routerConfig = function (stateHelperProvider,
               templateUrl: 'app/static/what-is-staying-sharp.html',
             },
           ],
-        },
-        {
-          name: 'unpaid-login-success',
-          url: '/callbacks/unpaid-login-success/:claimToken',
-          controller: 'LoginSuccessController',
-        },
-        {
-          name: 'unpaid-user-home',
-          url: '/see-you-in-march',
-          templateUrl: 'app/home/unpaid-user-home.html',
         },
         {
           name: 'user',
@@ -356,6 +354,24 @@ const routerConfig = function (stateHelperProvider,
         },
       ],
     })
+    .state({
+      name: 'login-success',
+      url: '/callbacks/login-success/:claimToken?redirectPath',
+      controller: 'LoginSuccessController',
+    })
+
+    .state({
+      name: 'unpaid-user-home',
+      url: '/see-you-in-march',
+      templateUrl: 'app/home/unpaid-user-home.html',
+    })
+
+    .state({
+      name: 'unpaid-login-success',
+      url: '/callbacks/unpaid-login-success/:claimToken',
+      controller: 'LoginSuccessController',
+    })
+
     .state({
       name: 'game-iframe',
       url: '/game-iframe',

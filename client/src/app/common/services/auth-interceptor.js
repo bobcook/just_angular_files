@@ -1,6 +1,5 @@
 const authInterceptor = function ($localStorage,
-                                  $injector,
-                                  $userStatusRedirectCheck) {
+                                  $injector) {
   'ngInject';
 
   return {
@@ -16,12 +15,6 @@ const authInterceptor = function ($localStorage,
 
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
-      } else {
-        $userStatusRedirectCheck.redirectLogin();
-      }
-
-      if ($userStatusRedirectCheck.shouldRedirectUnpaid()) {
-        $userStatusRedirectCheck.redirectUnpaid();
       }
 
       return config;
