@@ -74,6 +74,8 @@ import $postHref from './common/services/post-href.js';
 import $presenterUtils from './common/services/presenter-utils.js';
 import $promise from './common/services/promise.js';
 import $url from './common/services/url.js';
+import $userStatusRedirectCheck
+  from './common/services/user-status-redirect-check.js';
 import AssessmentStatus from './assessments/assessment-status.js';
 import ActivityPeriodActions
   from './common/services/activity-period-actions.js';
@@ -309,6 +311,7 @@ app
   .factory('$promise', $promise)
   .factory('$url', $url)
   .factory('$presenterUtils', $presenterUtils)
+  .factory('$userStatusRedirectCheck', $userStatusRedirectCheck)
   .factory('$vanityUrlCheck', $vanityUrlCheck)
   .factory('authInterceptor', authInterceptor)
   .factory('ActivityPeriodActions', ActivityPeriodActions)
