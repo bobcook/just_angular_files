@@ -63,6 +63,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'hashie', '~> 3.4.2'
   gem 'database_cleaner', '~> 1.4.1'
   gem 'rspec-sidekiq', '~> 2.1.0'
   gem 'shoulda-matchers', '~> 2.8.0', require: false

@@ -3,14 +3,7 @@ class LatestAssessmentResultsJob < ActiveJob::Base
 
   class IncompleteMBSResults < RuntimeError; end
 
-  # Leverages sidekiq's 'automatic job retries' when exceptions are thrown
-  # to wait for results from MBS if they aren't ready yet.
-  #
-  # First retry after ~15 seconds, then 16, 31, ...
-  #
-  # See:
-  # https://github.com/mperham/sidekiq/wiki/Error-Handling#automatic-job-retry
-  def perform(user, user_assessment)
+  def perform(user, user_assessment, retries: 20)
     latest = latest_results_for(user)
 
     if latest.ready?
@@ -20,12 +13,20 @@ class LatestAssessmentResultsJob < ActiveJob::Base
         assessment_session_name: latest.assessment_session_name,
         assessment_results: latest.assessment_results.try(:results_data)
       )
+    elsif retries > 0
+      schedule_retry(user, user_assessment, retries)
     else
       fail IncompleteMBSResults
     end
   end
 
   private
+
+  def schedule_retry(user, user_assessment, retries)
+    LatestAssessmentResultsJob
+      .set(wait: 30.seconds)
+      .perform_later(user, user_assessment, retries - 1)
+  end
 
   def latest_results_for(user)
     AssessmentResults::Latest.new(user)
