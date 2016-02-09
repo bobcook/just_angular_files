@@ -9,7 +9,10 @@ module Api
         end
 
         def index
-          render json: current_user.user_assessment_groups, status: :ok
+          render(
+            json: current_user.user_assessment_groups.order(created_at: :desc),
+            status: :ok
+          )
         end
 
         def update

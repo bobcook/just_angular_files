@@ -12,7 +12,7 @@ const AssessmentStatus = function ($assessmentsAuth,
   const lastUserAssessmentGroup = function () {
     return UserAssessmentGroup.query().then(function (groups) {
       if (groups) {
-        return groups[groups.length - 1];
+        return groups[0];
       }
     });
   };
