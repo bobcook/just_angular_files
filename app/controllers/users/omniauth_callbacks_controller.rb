@@ -7,6 +7,7 @@ module Users
         token_holder = create_token_holder_for! user
         redirect_to redirect_path(token_holder)
       else
+        notify_airbrake(BadOmniauthData.new(auth_data))
         redirect_to Frontend::Paths.lookup(:login_failure)
       end
     end
@@ -22,7 +23,11 @@ module Users
     end
 
     def user
-      @user ||= User.from_omniauth(request.env['omniauth.auth'])
+      @user ||= User.from_omniauth(auth_data)
+    end
+
+    def auth_data
+      @auth_data ||= request.env['omniauth.auth']
     end
 
     def create_token_holder_for!(user)
@@ -31,6 +36,19 @@ module Users
 
     def engagement_email(user)
       EngagementEmails.new(user)
+    end
+
+    class BadOmniauthData < RuntimeError
+      attr_reader :omniauth_data
+
+      def initialize(omniauth_data)
+        @omniauth_data = omniauth_data
+      end
+
+      def message
+        'Could not create or modify User due to bad omniauth data: ' \
+        "#{omniauth_data}"
+      end
     end
   end
 end

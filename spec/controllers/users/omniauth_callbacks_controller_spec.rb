@@ -64,6 +64,16 @@ describe Users::OmniauthCallbacksController do
         get :aarp
         expect(response).to redirect_to(expected_path)
       end
+
+      it 'logs an error to Airbrake' do
+        user = double(persisted?: false)
+        allow(User).to receive(:from_omniauth).and_return(user)
+
+        expect_any_instance_of(Users::OmniauthCallbacksController)
+          .to receive(:notify_airbrake)
+
+        get :aarp
+      end
     end
   end
 end

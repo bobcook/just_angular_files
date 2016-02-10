@@ -51,6 +51,7 @@ module OmniAuth
 
         @user_info = user_response.body[:user].try do |user_info|
           user_info.merge(
+            email: email(membership_response),
             membership_status: membership_status(membership_response)
           )
         end
@@ -59,6 +60,10 @@ module OmniAuth
       end
 
       private
+
+      def email(response)
+        Apis::DSO::EmailParser.parse(response)
+      end
 
       def membership_status(response)
         Apis::DSO::MembershipStatusParser.parse(response)
