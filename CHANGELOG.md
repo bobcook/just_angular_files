@@ -1,3 +1,7 @@
+v0.1.1 Various bug fixes
+* https://trello.com/c/YwcZIFhD/429-bug-always-creating-new-assessments-instead-of-using-existing-assessments-on-prod
+* https://trello.com/c/XomaLetQ/430-bug-new-accounts-are-seeing-please-log-in-page-regardless-of-subscription-status
+
 v0.1.0: First tagged production comit
 * c7db33b Delete unnecessary questions
 * 6db4c98 fix engagement email api endpoint and json format
