@@ -76,6 +76,8 @@ import $promise from './common/services/promise.js';
 import $url from './common/services/url.js';
 import $userStatusRedirectCheck
   from './common/services/user-status-redirect-check.js';
+import $vanityUrlCheck from './common/services/vanity-url-check.js';
+import $windowResize from './common/services/window-resize.js';
 import AssessmentStatus from './assessments/assessment-status.js';
 import ActivityPeriodActions
   from './common/services/activity-period-actions.js';
@@ -90,7 +92,6 @@ import httpsInterceptor from './common/services/https-interceptor.js';
 import MBSAssessmentList from './assessments/mbs-assessment-list.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
 import PerformSearch from './search/perform-search.js';
-import $vanityUrlCheck from './common/services/vanity-url-check.js';
 import vanityUrlInterceptor from './common/services/vanity-url-interceptor.js';
 
 // directives
@@ -313,6 +314,7 @@ app
   .factory('$presenterUtils', $presenterUtils)
   .factory('$userStatusRedirectCheck', $userStatusRedirectCheck)
   .factory('$vanityUrlCheck', $vanityUrlCheck)
+  .factory('$windowResize', $windowResize)
   .factory('authInterceptor', authInterceptor)
   .factory('ActivityPeriodActions', ActivityPeriodActions)
   .factory('AssessmentStatus', AssessmentStatus)

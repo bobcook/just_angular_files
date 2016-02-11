@@ -1,4 +1,4 @@
-const currentLifestyleResultsChart = function () {
+const currentLifestyleResultsChart = function ($timeout, $windowResize) {
   'ngInject';
 
   return {
@@ -13,9 +13,22 @@ const currentLifestyleResultsChart = function () {
     link: function (scope, element, attrs) {
       const updateChartConfig = function (newLifestyleResults) {
         scope.vm.updateChartConfig(newLifestyleResults);
+
+        // When chart is initially loaded, sizes are off -- want them
+        // to be consistently the same size as when resizing the page.
+        // See https://github.com/pablojim/highcharts-ng/issues/300
+        $timeout(setChartSize, 0);
+      };
+
+      const setChartSize = function () {
+        scope.vm.chart.setSize(439, 439);
       };
 
       scope.$watch('vm.lifestyleResults', updateChartConfig);
+
+      // This gets around a bug where chart heights grow indefinitely
+      // as page is resized
+      $windowResize.bind(setChartSize);
     },
   };
 };

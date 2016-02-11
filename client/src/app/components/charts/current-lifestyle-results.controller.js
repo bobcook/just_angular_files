@@ -81,6 +81,9 @@ const CurrentLifestyleResultsController = function () {
       title: {
         text: null,
       },
+      func: (chart) => {
+        this.chart = chart;
+      },
     };
   };
 

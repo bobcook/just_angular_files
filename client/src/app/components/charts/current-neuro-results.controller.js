@@ -89,6 +89,9 @@ const CurrentNeuroResultsController = function () {
         text: null,
       },
       series: data,
+      func: (chart) => {
+        this.chart = chart;
+      },
     };
   };
 
