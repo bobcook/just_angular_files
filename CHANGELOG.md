@@ -1,3 +1,7 @@
+v0.1.2 Fix for chart height on page resize bug + anonymous / first half of non-paid redirect logic
+* https://trello.com/c/0xkRakUl/422-bug-neuro-lifestyle-bar-charts-responsive-behavior
+* abd8ba6 / https://trello.com/c/e7Zq1X2U/426-as-a-user-directed-to-a-specific-page-of-the-site-i-should-return-to-that-page-after-logging-in
+
 v0.1.1 Various bug fixes
 * https://trello.com/c/YwcZIFhD/429-bug-always-creating-new-assessments-instead-of-using-existing-assessments-on-prod
 * https://trello.com/c/XomaLetQ/430-bug-new-accounts-are-seeing-please-log-in-page-regardless-of-subscription-status
