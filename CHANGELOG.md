@@ -1,3 +1,6 @@
+v0.1.4 Fix for IE paid vanity url redirect bug
+* https://trello.com/c/1DUUOc6y/433-bug-if-a-user-is-currently-logged-in-visiting-the-site-or-vanities-in-ie-creates-a-redirect-loop
+
 v0.1.3 Second half of non-paid redirect logic
 * https://trello.com/c/e7Zq1X2U/426-8-as-a-user-directed-to-a-specific-page-of-the-site-i-should-return-to-that-page-after-logging-in
 
