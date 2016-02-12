@@ -3,14 +3,26 @@ const LoginSuccessController = function ($loadCurrentUser,
                                          $location,
                                          $stateParams,
                                          $rootScope,
-                                         $auth) {
+                                         $scope,
+                                         $auth,
+                                         $timeout) {
   'ngInject';
+
+  const goToRedirectPath = function (redirectPath) {
+    const doRedirect = function () {
+      redirectPath = redirectPath || '/';
+      $location.url(redirectPath);
+      $scope.$apply();
+    };
+
+    $timeout(doRedirect); // Wait for current digest cycle before redirecting
+  };
 
   if ($stateParams.claimToken) {
     $auth.createSession($stateParams.claimToken).then(function () {
       $loadCurrentUser($rootScope.$currentUser).then(function () {
         if ($rootScope.$currentUser.membershipStatus === 'paid') {
-          window.location = $stateParams.redirectPath;
+          goToRedirectPath($stateParams.redirectPath);
         } else {
           $state.go('unpaid-user-home');
         }

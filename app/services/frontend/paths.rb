@@ -2,8 +2,9 @@ module Frontend
   module Paths
     FRONTEND_PATHS = {
       login_failure: ->()      { '/callbacks/login-failure' },
-      login_success: lambda do |token, redirectPath|
-        "/callbacks/login-success/#{token}?redirectPath=#{redirectPath}"
+      login_success: lambda do |token, redirect_path|
+        url = "/callbacks/login-success/#{token}"
+        redirect_path ? "#{url}?redirectPath=#{redirect_path}" : url
       end,
       unpaid_login_success: lambda do |token|
         "/callbacks/unpaid-login-success/#{token}"
