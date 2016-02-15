@@ -23,30 +23,40 @@
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'AdobeDTM' : AdobeDTMLink + '-staging.js',
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
+            'airbrakeProjectId': 114751,
+            'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
           },
           dev: {
             'API_URL': 'https://aarp-staying-sharp-dev.herokuapp.com',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'AdobeDTM' : AdobeDTMLink + '-staging.js',
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
+            'airbrakeProjectId': 114751,
+            'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
           },
           // TODO: remove once everything migrated to s3
           devS3: {
             'API_URL': 'https://aarp-staying-sharp-dev-s3.herokuapp.com',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
+            'airbrakeProjectId': 114751,
+            'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
           },
           staging: {
             'API_URL': 'https://aarp-staying-sharp-stg.herokuapp.com',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'AdobeDTM' : AdobeDTMLink + '-staging.js',
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
+            'airbrakeProjectId': 114751,
+            'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
           },
           production: {
             'API_URL': 'https://aarp-staying-sharp-prod.herokuapp.com',
             'GoogleAnalytics' : 'IPHoz63oJsFGXbNMCSjmsa0MxYx4XlkQ',
             'AdobeDTM' : AdobeDTMLink + '.js',
             'accountUrl': 'https://secure.aarp.org/applications/account/myAccount.action',
+            'airbrakeProjectId': 114752,
+            'airbrakeProjectKey': '8385a658a0b9e4d16094ce0a28b75317',
           },
         };
 
@@ -75,6 +85,11 @@
         window.__env.GoogleAnalytics = envVars[currentEnv].GoogleAnalytics;
         window.__env.AdobeDTM = envVars[currentEnv].AdobeDTM;
         window.__env.accountUrl = envVars[currentEnv].accountUrl;
+        window.__env.airbrakeConfig = {
+          id: envVars[currentEnv].airbrakeProjectId,
+          key: envVars[currentEnv].airbrakeProjectKey,
+        };
+        window.__env.envName = currentEnv;
       }(window));
     </script>
     <script>

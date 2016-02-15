@@ -12,6 +12,7 @@ window.loadApp = function () {
     $provide.factory('mockTranslationLoader', function ($q) {
       return function () { return $q.when({}); };
     });
+    $provide.value('Airbrake', {});
     $translateProvider.useLoader('mockTranslationLoader');
   });
 };

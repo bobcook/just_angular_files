@@ -76,6 +76,7 @@ import $promise from './common/services/promise.js';
 import $url from './common/services/url.js';
 import $vanityUrlCheck from './common/services/vanity-url-check.js';
 import $windowResize from './common/services/window-resize.js';
+import Airbrake from './common/services/airbrake.js';
 import AssessmentStatus from './assessments/assessment-status.js';
 import ActivityPeriodActions
   from './common/services/activity-period-actions.js';
@@ -314,6 +315,7 @@ app
   .factory('$windowResize', $windowResize)
   .factory('authInterceptor', authInterceptor)
   .factory('ActivityPeriodActions', ActivityPeriodActions)
+  .factory('Airbrake', Airbrake)
   .factory('AssessmentStatus', AssessmentStatus)
   .factory('AssessmentResultQueries', AssessmentResultQueries)
   .factory('AssessmentResultScores', AssessmentResultScores)

@@ -6,7 +6,8 @@ const AssessmentStatus = function ($assessmentsAuth,
                                    $timeout,
                                    $loadCurrentUser,
                                    UserAssessmentGroup,
-                                   AssessmentResponse) {
+                                   AssessmentResponse,
+                                   Airbrake) {
   'ngInject';
 
   const lastUserAssessmentGroup = function () {
@@ -88,8 +89,7 @@ const AssessmentStatus = function ($assessmentsAuth,
     if (scores[questionId]) {
       return scores[questionId][index];
     } else {
-      // TODO: log this with Airbrake when it's integrated
-      console.error('missing score');
+      Airbrake.client.notify(new Error('missing score'));
     }
   };
 
