@@ -26,11 +26,16 @@ module Apis
       end
 
       def content_item_slugs
-        response.body.keys.reject { |key| key.start_with?('jcr') }
+        if response.ok?
+          response.body.keys.reject { |key| key.start_with?('jcr') }
+        else
+          Airbrake.notify("No feed found for #{@api_url}")
+          []
+        end
       end
 
       def response
-        Apis::Response.from_faraday(http.get(api_url))
+        @response ||= Apis::Response.from_faraday(http.get(api_url))
       end
     end
   end
