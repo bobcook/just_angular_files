@@ -8,12 +8,15 @@
 
 import gutil from 'gulp-util';
 
+const path = require('path');
+
 exports.isDevelopment = process.env.NODE_ENV !== 'production';
 
 /**
  *  The main paths of your project handle these with care
  */
 exports.paths = {
+  root: path.resolve('../'),
   src: 'src',
   dist: 'dist',
   tmp: '.tmp',

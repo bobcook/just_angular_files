@@ -157,10 +157,25 @@ And you'll also need a file at `client/aws.json` that looks like the following:
 
 (be sure to use same ACCESS_KEY_ID and SECRET_ACCESS_KEY that you used to configure aws cli)
 
-`gulp deploy` will deploy to the staging environment by default. To build and deploy to another environment, pass the `--env` flag, i.e.
+To build and deploy:
 
 ```sh
 $ gulp deploy --env <ENVIRONMENT>
+```
+
+### Staging Deployment Procedure
+
+CI will deploy the staging environment automatically on `gulp deploy --env staging`.
+
+CI requires the follow environment variables to successfully deploy the frontend
+to AWS:
+
+```sh
+AWS-BUILD-S3-BUCKET
+AWS-BUILD-S3-BUCKET-REGION
+AWS-BUILD-ACCESS-KEY-ID
+AWS-BUILD-SECRET-ACCESS-KEY
+AWS-BUILD-CLOUDFRONT-DISTRIBUTION
 ```
 
 ### Production Deployment Procedure

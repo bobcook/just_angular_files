@@ -7,41 +7,42 @@ const cloudfront = require('gulp-cloudfront');
 const fs = require('fs');
 const gutil = require('gulp-util');
 const minimist = require('minimist');
-const revOutdated = require('gulp-rev-outdated');
 const rimraf = require('rimraf'); // deprecated; should replace w/ del
 const s3ChangeIndex = require('gulp-s3-index');
 const spawn = require('child_process').spawn;
-const through = require('through2');
 const filter = require('gulp-filter');
 const RevAll = require('gulp-rev-all');
+const utils = require('./build-utils.js');
+const awsConfigBuilder = require('./aws-config-builder.js');
 
-const fetch = function (obj, key, defaultVal) {
-  const result = obj[key] || defaultVal;
-  if (result) {
-    return result;
-  } else {
-    throw `Key '${key}' was not present`;
-  }
-};
+const dotEnvPath = path.join(conf.paths.root, '.env');
+const env = utils.fileExists(dotEnvPath)
+            ? require('dotenv').config({ path: dotEnvPath })
+            : process.env;
 
-const getEnv = function () {
+const getEnvName = function () {
   const knownOptions = {
     string: 'env',
     default: { env: 'staging' }
   };
   const options = minimist(process.argv.slice(2), knownOptions);
-  return fetch(options, 'env');
+  return utils.fetch(options, 'env');
 };
 
-const getAwsConf = function (filePath, env) {
+const getAwsConf = function (filePath, envName) {
   gutil.log('Reading aws.json');
-  const awsConfAllEnvs = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  return fetch(awsConfAllEnvs, env);
+  try {
+    const awsConfAllEnvs = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    return utils.fetch(awsConfAllEnvs, envName);
+  } catch(_err) {
+    gutil.log('No aws.json found; reading from project .env');
+    return awsConfigBuilder.build(env);
+  }
 };
 
 gulp.task('deploy', ['build'], function() {
-  const env = getEnv();
-  const awsConf = getAwsConf('aws.json', env);
+  const envName = getEnvName();
+  const awsConf = getAwsConf('aws.json', envName);
   const publisher = awspublish.create(awsConf);
   const headers = {
     'Cache-Control': 'max-age=3600, no-transform, public',
@@ -60,23 +61,13 @@ gulp.task('deploy', ['build'], function() {
   // Gets around needing to invalidate Cloudfront cache on every deploy
   const revAll = new RevAll();
 
-  gutil.log(`Pushing to ${env} environment`);
+  gutil.log(`Pushing to ${envName} environment`);
 
   return gulp.src(path.join(conf.paths.dist, '/**/*'))
     .pipe(allExceptImages)
     .pipe(revAll.revision())
     .pipe(allExceptImages.restore)
     .pipe(publisher.publish(headers))
-
-    // Uncomment to make files on S3 match local versions;
-    // should run clean:old beforehand
-    //
-    // XXX: caution -- Cloudfront takes a few
-    // minutes to catch up, so if you delete files
-    // it's expecting to be in S3, site will be unusable. Should
-    // only run during low-traffic periods, or else figure out
-    // how to remove files that aren't currently referenced by Cloudfront
-    //.pipe(publisher.sync())
 
     // create a cache file to speed up consecutive uploads
     .pipe(publisher.cache())
@@ -89,26 +80,4 @@ gulp.task('deploy', ['build'], function() {
 
     // Change Cloudfront's default root object to match the newly versioned one
     .pipe(cloudfront(awsConf));
-});
-
-const cleaner = function () {
-  return through.obj(function (file, enc, cb){
-    rimraf(
-      path.resolve((file.cwd || process.cwd()), file.path),
-      function (err) {
-        if (err) {
-          this.emit('error', new gutil.PluginError('Cleanup old files', err));
-        }
-        this.push(file);
-        cb();
-      }.bind(this)
-    );
-  });
-};
-
-// Cleans outdated files (locally) in /dist
-gulp.task('clean:old', function (done) {
-  return gulp.src(path.join(conf.paths.dist, '/**/*'), { read: false })
-    .pipe(revOutdated(2))
-    .pipe(cleaner());
 });
