@@ -57,7 +57,7 @@ en:
         description: "These skills enable you to plan, organize, remember things, prioritize, pay attention and get started on tasks. They also help you use information and experiences fromthe past to solve current problems."
       recognition_memory:
         name: Recognition Memory
-        description: "Short statement defining this index and indicating where this score falls in (low, middle or high of expected range, etc.) and additional information about this index."
+        description: "Recognition memory helps you recall important factual information, build rich positive memories of experiences, and work more effectively without having to do ‘look ups.’"
 
   titles:
     application: Staying-sharp
