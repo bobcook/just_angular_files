@@ -97,6 +97,13 @@ describe('$vanityUrlCheck', function () {
       expect(hasPromoCode(result, 'SS-BETA')).to.eq(true);
     });
 
+    it ('has the BTABND promo code for /betabound', function () {
+      const currentUrl = 'http://example.com/betabound';
+      const result = $vanityUrlCheck.redirectUrlFor(currentUrl);
+
+      expect(hasPromoCode(result, 'BTABND')).to.eq(true);
+    })
+
     it('has the SS-BETA promo code for all other URLs', function () {
       const currentUrl = 'http://example.com/foobar'
       const result = $vanityUrlCheck.redirectUrlFor(currentUrl);

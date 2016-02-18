@@ -19,6 +19,7 @@ const $vanityUrlCheck = function (ApiRoutes,
 
   const VANITY_SIGNUP_PATHS = [
     '/',
+    '/betabound',
     '/employee',
     '/employees',
     '/ssmember',
@@ -90,6 +91,7 @@ const $vanityUrlCheck = function (ApiRoutes,
     const fragmentsAndPromos = {
       employee: 'SS-EMPLOYEE',
       ssmember: 'SS-BETA',
+      betabound: 'BTABND',
     };
 
     const includesFragment = function (_promo, fragment) {
