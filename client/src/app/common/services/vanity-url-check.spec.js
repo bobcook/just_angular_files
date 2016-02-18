@@ -1,10 +1,21 @@
 describe('$vanityUrlCheck', function () {
   beforeEach(loadApp);
 
+  let $location;
   let $vanityUrlCheck;
+  let $postHref;
+  let $rootScope;
 
-  beforeEach(inject(function (_$vanityUrlCheck_) {
+  beforeEach(inject(function (
+    _$vanityUrlCheck_,
+    _$location_,
+    _$postHref_,
+    _$rootScope_
+  ) {
     $vanityUrlCheck = _$vanityUrlCheck_;
+    $location = _$location_;
+    $postHref = _$postHref_;
+    $rootScope = _$rootScope_;
   }));
 
   describe('.isVanityUrl', function () {
@@ -91,6 +102,28 @@ describe('$vanityUrlCheck', function () {
       const result = $vanityUrlCheck.redirectUrlFor(currentUrl);
 
       expect(hasPromoCode(result, 'SS-BETA')).to.eq(true);
+    });
+  });
+
+  describe('.redirectIfVanityUrl', function () {
+    context('with vanity url and logged in', function () {
+      it('redirects for /employee', function () {
+        $rootScope.$currentUser = { isLoggedIn: true };
+        $location.path('/employee');
+
+        $vanityUrlCheck.redirectIfVanityUrl();
+
+        expect($vanityUrlCheck.redirectIfVanityUrl()).to.eq(true);
+        expect($location.path()).to.eq('/');
+      });
+    });
+
+    context('without vanity url', function () {
+      it('return false', function () {
+        $location.path('/foobar');
+
+        expect($vanityUrlCheck.redirectIfVanityUrl()).to.eq(false);
+      });
     });
   });
 });

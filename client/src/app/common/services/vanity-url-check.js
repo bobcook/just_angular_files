@@ -74,12 +74,16 @@ const $vanityUrlCheck = function (ApiRoutes,
 
   const redirectIfVanityUrl = function () {
     const currentUrl = $location.absUrl();
-    const result = isVanityUrl(currentUrl) && !userLoggedIn();
-    if (result) {
-      console.log('Check passed; redirecting');
+    const isVanity = isVanityUrl(currentUrl);
+    const isLoggedin = userLoggedIn();
+
+    if (isVanity && isLoggedin) {
+      $location.path('/');
+    } else if (isVanity && !isLoggedin) {
       $postHref(redirectUrlFor(currentUrl), {});
     }
-    return result;
+
+    return isVanity;
   };
 
   const redirectUrlFor = function (currentUrl) {
