@@ -1,8 +1,16 @@
 const runBlock = function ($log,
                            $window,
                            $rootScope,
+                           PermissionStore,
                            $location) {
   'ngInject';
+
+  PermissionStore.definePermission(
+    'foo', function (stateParams) { return true; }
+  );
+  PermissionStore.definePermission(
+    'bar', function (stateParams) { return false; }
+  );
 
   $rootScope.$on('$stateChangeSuccess', function (event,
                                                   toState,

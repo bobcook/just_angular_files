@@ -74,8 +74,6 @@ import $postHref from './common/services/post-href.js';
 import $presenterUtils from './common/services/presenter-utils.js';
 import $promise from './common/services/promise.js';
 import $url from './common/services/url.js';
-import $userStatusRedirectCheck
-  from './common/services/user-status-redirect-check.js';
 import $vanityUrlCheck from './common/services/vanity-url-check.js';
 import $windowResize from './common/services/window-resize.js';
 import AssessmentStatus from './assessments/assessment-status.js';
@@ -233,6 +231,7 @@ const app = angular.module('aarp-staying-sharp', [
   'ngSanitize',
   'ngStorage',
   'rails', // aka angular-rails-resource
+  'permission',
   'ui.router',
   'ui.router.stateHelper',
   'ui.select',
@@ -311,7 +310,6 @@ app
   .factory('$promise', $promise)
   .factory('$url', $url)
   .factory('$presenterUtils', $presenterUtils)
-  .factory('$userStatusRedirectCheck', $userStatusRedirectCheck)
   .factory('$vanityUrlCheck', $vanityUrlCheck)
   .factory('$windowResize', $windowResize)
   .factory('authInterceptor', authInterceptor)

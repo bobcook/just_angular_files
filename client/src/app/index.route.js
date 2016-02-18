@@ -47,15 +47,28 @@ const routerConfig = function (stateHelperProvider,
     ];
   };
 
-  const redirectIfNeeded = function ($userStatusRedirectCheck,
+  const redirectIfNeeded = function ($location,
+                                     $q,
+                                     $timeout,
+                                     $postHref,
+                                     ApiRoutes,
+                                     $userStatusRedirectCheck,
                                      $vanityUrlCheck,
                                      currentUser) {
+
     if ($vanityUrlCheck.redirectIfNeeded()) {
       return;
-    } else if (currentUser) {
-      return $userStatusRedirectCheck.redirectIfUnpaid(currentUser);
-    } else {
-      return $userStatusRedirectCheck.redirectLogin();
+    }
+
+    if (!currentUser) {
+      const currentPath = $location.path();
+
+      $timeout(function () {
+        $postHref(
+          ApiRoutes.AARP_AUTH, { promo: 'SS-BETA', redirectPath: currentPath }
+        );
+      });
+      return $q.reject();
     }
   };
 
@@ -203,6 +216,12 @@ const routerConfig = function (stateHelperProvider,
           templateUrl: 'app/home/home.html',
           controller: 'HomeController',
           controllerAs: 'vm',
+          data: {
+            permissions: {
+              only: ['foo'],
+              redirectTo: 'application.games',
+            },
+          },
           children: [
             pillarFilterModal(),
           ],
