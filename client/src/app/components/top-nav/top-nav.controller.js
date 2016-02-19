@@ -5,6 +5,12 @@ const TopNavController = function (ApiRoutes, $state, dsoAuth) {
 
   this.isMenuOpen = false;
   this.isSearchOpen = false;
+  const promo = 'foo';
+  const campaignURL = 'foo';
+  const callbackUrl = 'foo';
+  this.subscribeUrl = `https://appsec-s.aarp.org/smembership/subscription?` +
+                        `promo=${promo}&campaignURL=${campaignURL}&` +
+                        `ref=${callbackUrl}`;
 
   this.submitSearch = function () {
     this.isSearchOpen = false;

@@ -5,6 +5,7 @@
 
     <div class="nav-options">
       <ul>
+        <li permission only="'unpaid'" class="hidden-xs"><a class="text-link" ng-href="{{vm.subscribeUrl}}">Join Staying Sharp</a></li>
         <li ng-if="!$root.$currentUser.isLoggedIn" class="bullet hidden-xs">•</li>
         <li ng-if="!$root.$currentUser.isLoggedIn" class="hidden-xs"><a class="text-link" href='' ng-click="vm.login()">Login</a></li>
         <li>

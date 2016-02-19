@@ -12,12 +12,6 @@ const CurrentUser = function (API_URL, railsResourceFactory, $auth) {
     },
   });
 
-  Object.defineProperty(CurrentUser.prototype, 'isPaid', {
-    get: function () {
-      return this.membershipStatus === 'paid';
-    },
-  });
-
   return CurrentUser;
 };
 
