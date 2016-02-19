@@ -52,7 +52,6 @@ const routerConfig = function (stateHelperProvider,
                                      $timeout,
                                      $postHref,
                                      ApiRoutes,
-                                     $userStatusRedirectCheck,
                                      $vanityUrlCheck,
                                      currentUser) {
 
