@@ -18,7 +18,6 @@ const $vanityUrlCheck = function (ApiRoutes,
   const VANITY_DOMAINS = _.keys(VANITY_DOMAIN_REDIRECTS);
 
   const VANITY_SIGNUP_PATHS = [
-    '/',
     '/betabound',
     '/employee',
     '/employees',

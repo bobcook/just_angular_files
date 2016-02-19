@@ -21,11 +21,7 @@ const LoginSuccessController = function ($loadCurrentUser,
   if ($stateParams.claimToken) {
     $auth.createSession($stateParams.claimToken).then(function () {
       $loadCurrentUser($rootScope.$currentUser).then(function () {
-        if ($rootScope.$currentUser.membershipStatus === 'paid') {
-          goToRedirectPath($stateParams.redirectPath);
-        } else {
-          $state.go('unpaid-user-home');
-        }
+        goToRedirectPath($stateParams.redirectPath);
       }, function (){
         // TODO: might need rethink how to handle login failures
         $state.go('application.login-failure');

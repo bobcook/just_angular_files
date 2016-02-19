@@ -15,15 +15,11 @@ module Users
     private
 
     def redirect_path(token_holder)
-      if user.paid?
-        Frontend::Paths.lookup(
-          :login_success,
-          token_holder.claim_token,
-          login_success_redirect_path
-        )
-      else
-        Frontend::Paths.lookup(:unpaid_login_success, token_holder.claim_token)
-      end
+      Frontend::Paths.lookup(
+        :login_success,
+        token_holder.claim_token,
+        login_success_redirect_path
+      )
     end
 
     def user

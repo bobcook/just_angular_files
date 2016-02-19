@@ -19,7 +19,7 @@
       <div class="effort"><span>{{vm.lowerLeft}}</span></div>
       <div class="action-items">
         <ss-save-user-content
-          ng-if="vm.activity"
+          ng-if="$root.$currentUser && vm.activity"
           ss-display-type="button"
           ss-display-content="vm.saveButtonDisplayContent"
           ss-is-user-namespace="vm.isUserNamespace"
@@ -91,7 +91,7 @@
       <h4>Interested in working on this activity?</h4>
       <!-- TODO side effects on saving activity, i.e. activity trackers -->
       <ss-save-user-content
-        ng-if="vm.activity"
+        ng-if="$root.$currentUser && vm.activity"
         ss-display-type="button"
         ss-display-content="vm.saveButtonDisplayContent"
         ss-is-user-namespace="vm.isUserNamespace"

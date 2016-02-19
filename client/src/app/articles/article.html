@@ -19,7 +19,7 @@
       <div class="effort"><span>{{vm.article.effort}}</span></div>
       <div class="action-items">
         <ss-save-user-content
-          ng-if="vm.article"
+          ng-if="$root.$currentUser && vm.article"
           ss-display-type="button"
           ss-is-user-namespace="vm.isUserNamespace"
           ss-item="vm.article"
@@ -67,7 +67,7 @@
     </header>
     <footer>
       <ss-save-user-content
-        ng-if="vm.article"
+        ng-if="$root.$currentUser && vm.article"
         ss-display-type="button"
         ss-is-user-namespace="vm.isUserNamespace"
         ss-item="vm.article"

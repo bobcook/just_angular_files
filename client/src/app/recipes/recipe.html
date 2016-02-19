@@ -20,7 +20,7 @@
         <div class="effort"><span>{{vm.lowerLeft}}</span></div>
         <div class="action-items">
           <ss-save-user-content
-            ng-if="vm.recipe"
+            ng-if="$root.$currentUser && vm.recipe"
             ss-display-type="button"
             ss-is-user-namespace="vm.isUserNamespace"
             ss-item="vm.recipe"
@@ -58,7 +58,7 @@
     <footer>
       <h4>Interested saving or sharing this recipe?</h4>
       <ss-save-user-content
-        ng-if="vm.recipe"
+        ng-if="$root.$currentUser && vm.recipe"
         ss-display-type="button"
         ss-is-user-namespace="vm.isUserNamespace"
         ss-item="vm.recipe"

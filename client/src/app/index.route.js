@@ -58,17 +58,6 @@ const routerConfig = function (stateHelperProvider,
     if ($vanityUrlCheck.redirectIfNeeded()) {
       return;
     }
-
-    if (!currentUser) {
-      const currentPath = $location.path();
-
-      $timeout(function () {
-        $postHref(
-          ApiRoutes.AARP_AUTH, { promo: 'SS-BETA', redirectPath: currentPath }
-        );
-      });
-      return $q.reject();
-    }
   };
 
   stateHelperProvider
@@ -215,12 +204,6 @@ const routerConfig = function (stateHelperProvider,
           templateUrl: 'app/home/home.html',
           controller: 'HomeController',
           controllerAs: 'vm',
-          data: {
-            permissions: {
-              only: ['foo'],
-              redirectTo: 'application.games',
-            },
-          },
           children: [
             pillarFilterModal(),
           ],
@@ -375,18 +358,6 @@ const routerConfig = function (stateHelperProvider,
     .state({
       name: 'login-success',
       url: '/callbacks/login-success/:claimToken?redirectPath',
-      controller: 'LoginSuccessController',
-    })
-
-    .state({
-      name: 'unpaid-user-home',
-      url: '/see-you-in-march',
-      templateUrl: 'app/home/unpaid-user-home.html',
-    })
-
-    .state({
-      name: 'unpaid-login-success',
-      url: '/callbacks/unpaid-login-success/:claimToken',
       controller: 'LoginSuccessController',
     })
 

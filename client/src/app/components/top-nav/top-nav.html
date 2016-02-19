@@ -6,13 +6,13 @@
     <div class="nav-options">
       <ul>
         <li ng-if="!$root.$currentUser.isLoggedIn" class="bullet hidden-xs">•</li>
-        <li ng-if="!$root.$currentUser.isLoggedIn" class="hidden-xs"><a class="text-link" ng-href="{{vm.loginUrl}}">Login</a></li>
-        <li ng-if="vm.showInTopNav()">
+        <li ng-if="!$root.$currentUser.isLoggedIn" class="hidden-xs"><a class="text-link" href='' ng-click="vm.login()">Login</a></li>
+        <li>
           <span class="icon-search-container">
             <button class="icon-search" ng-click="vm.isSearchOpen = !vm.isSearchOpen"></button>
           </span>
         </li>
-        <li ng-if="vm.showInTopNav()">
+        <li>
           <button class="navbar-toggle" ng-click="vm.isMenuOpen = !vm.isMenuOpen">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar top-bar"></span>

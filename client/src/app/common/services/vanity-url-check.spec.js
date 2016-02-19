@@ -120,7 +120,7 @@ describe('$vanityUrlCheck', function () {
 
         $vanityUrlCheck.redirectIfVanityUrl();
 
-        expect($vanityUrlCheck.redirectIfVanityUrl()).to.eq(true);
+        expect($vanityUrlCheck.redirectIfVanityUrl()).to.eq(false);
         expect($location.path()).to.eq('/');
       });
     });

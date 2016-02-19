@@ -20,7 +20,7 @@
       <h4>Interested in playing this game?</h4>
       <a ng-if="vm.game" target="_blank" ng-href="{{vm.game.externalUrl}}" class="btn green-btn"><span>Play Game</span></a>
       <ss-save-user-content
-        ng-if="vm.game"
+        ng-if="$root.$currentUser && vm.game"
         ss-display-type="button"
         ss-is-user-namespace="vm.isUserNamespace"
         ss-item="vm.game"

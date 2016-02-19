@@ -1,7 +1,11 @@
-const NavPanelController = function (ApiRoutes, AssessmentStatus, $rootScope) {
+const NavPanelController = function ($rootScope,
+                                     ApiRoutes,
+                                     AssessmentStatus,
+                                     dsoAuth) {
   'ngInject';
 
-  this.loginUrl = `${ApiRoutes.AARP_AUTH}?promo=SS-BETA`;
+  this.login = dsoAuth.login;
+
   this.currentRoute = 'root';
   this.accountUrl = window.__env.accountUrl;
 

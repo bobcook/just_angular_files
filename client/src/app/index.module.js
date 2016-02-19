@@ -86,6 +86,7 @@ import AssessmentResultScores from
   './assessments/results/scores.js';
 import authInterceptor from './common/services/auth-interceptor.js';
 import dependentMemoize from './common/services/dependent-memoize.js';
+import dsoAuth from './common/services/dso-auth.js';
 import FutureBrainStats from './components/charts/future-brain-stats.js';
 import httpsInterceptor from './common/services/https-interceptor.js';
 import MBSAssessmentList from './assessments/mbs-assessment-list.js';
@@ -319,6 +320,7 @@ app
   .factory('AssessmentStatus', AssessmentStatus)
   .factory('AssessmentResultQueries', AssessmentResultQueries)
   .factory('AssessmentResultScores', AssessmentResultScores)
+  .factory('dsoAuth', dsoAuth)
   .factory('dependentMemoize', dependentMemoize)
   .factory('FutureBrainStats', FutureBrainStats)
   .factory('httpsInterceptor', httpsInterceptor)

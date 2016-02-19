@@ -6,9 +6,6 @@ module Frontend
         url = "/callbacks/login-success/#{token}"
         redirect_path ? "#{url}?redirectPath=#{redirect_path}" : url
       end,
-      unpaid_login_success: lambda do |token|
-        "/callbacks/unpaid-login-success/#{token}"
-      end,
       assessments: lambda do |slug, completed_id|
         "/assessment/#{slug}?completed=#{completed_id}"
       end,
