@@ -25,6 +25,20 @@ const ExploreContent = function (API_URL,
     }),
   });
 
+  // "Instance-level" properties
+  ExploreContent.include({
+    paidGames: function paidGames() {
+      return this.games.filter(function (game) {
+        return game.gameType.toLowerCase() === 'paid';
+      });
+    },
+    freeGames: function freeGames() {
+      return this.games.filter(function (game) {
+        return game.gameType.toLowerCase() !== 'paid';
+      });
+    },
+  });
+
   return ExploreContent;
 };
 

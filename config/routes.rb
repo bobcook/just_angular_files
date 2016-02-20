@@ -96,6 +96,11 @@ Rails.application.routes.draw do
         post '/saml_request' => 'saml#create'
         post '/assessments_callback' => 'assessments_callback#create'
       end
+
+      namespace :policies do
+        resource :paid, only: [:show]
+        resource :unpaid, only: [:show]
+      end
     end
   end
 
