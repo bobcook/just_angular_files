@@ -110,7 +110,16 @@ its own with `$ rubocop`.
 ## Deployment Procedure
 ### Frontend Deployment Configuration
 
-To deploy to AWS S3 + Cloudfront, you'll need a file at `client/aws.json` that looks like the following:
+To deploy to AWS S3 + Cloudfront, you'll need to configure aws client:
+
+```bash
+$ brew up
+$ brew install aws-cfn-tools awscli
+$ aws configure
+```
+(you'll need ACCESS_KEY_ID and SECRET_ACCESS_KEY to configure, choose defaults for all other options)
+
+And you'll also need a file at `client/aws.json` that looks like the following:
 
 ```json
 {
@@ -128,6 +137,8 @@ To deploy to AWS S3 + Cloudfront, you'll need a file at `client/aws.json` that l
   "dev": {}, // Dev environment configs go here
 }
 ```
+
+(be sure to use same ACCESS_KEY_ID and SECRET_ACCESS_KEY that you used to configure aws cli)
 
 `gulp deploy` will deploy to the staging environment by default. To build and deploy to another environment, pass the `--env` flag, i.e.
 
