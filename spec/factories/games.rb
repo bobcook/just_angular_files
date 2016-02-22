@@ -30,6 +30,33 @@ FactoryGirl.define do
       }
     end
 
+    trait :paid do
+      sequence(:payload) do |n|
+        {
+          title: "Game #{n}",
+          type: 'games',
+          description: 'Train your mental calculation and multi-step ' \
+            ' processing skills by discovering math formulas. ' \
+            ' The game presents variousnumbers and four standard' \
+            ' mathematical functions: +,-, x, and /.',
+          bodyImage: 'http://www.aarp.org/ content/dam/'\
+            'specialized-membership/' \
+            'staying-sharp/games/info-2015/gamebody-image.jpg',
+          cardImage: 'http://www.aarp.org/content/dam/specialized-membership/' \
+            'staying-sharp/games/info-2015/gamecard-image.jpg',
+          callToActionUrl: 'http://braingames1.aarp.org/countdown.html',
+          contentSourceBranding: '',
+          difficultyLevel: 'Medium',
+          activityName: '',
+          gameType: ['Paid'],
+          keywords: 'brain games, happy neuron, brain health',
+          seoTitle: 'Staying Sharp Brain Games',
+          seoDescription: 'Brain Games: Test Your Memory, Attention, Language' \
+            ' Skills – Staying Sharp'
+        }
+      end
+    end
+
     after(:create) do |game, evaluator|
       unless evaluator.pillars.present?
         pillars = Pillar.default_types.map do |slug|

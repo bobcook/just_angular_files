@@ -3,13 +3,13 @@ module Api
     module Policies
       class PaidsController < Api::V1::BaseController
         def show
-          render json: { access: paid_user? }
+          render json: { access: user_policy.paid? }
         end
 
         private
 
-        def paid_user?
-          current_user.present? && current_user.paid?
+        def user_policy
+          @user_polcy ||= UserPolicies.new(current_user)
         end
       end
     end

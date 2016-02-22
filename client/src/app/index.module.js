@@ -22,6 +22,7 @@ import AssessmentResponse from './common/resources/assessment-response.js';
 import AssessmentResultCategory from
   './common/resources/assessment-result-category';
 import CurrentUser from './common/resources/current-user.js';
+import CurrentUserPolicy from './common/resources/current-user-policy.js';
 import ExploreContent from './common/resources/explore-content.js';
 import Game from './common/resources/game.js';
 import GameReview from './common/resources/game-review.js';
@@ -268,6 +269,7 @@ app
   .factory('AssessmentResponse', AssessmentResponse)
   .factory('AssessmentResultCategory', AssessmentResultCategory)
   .factory('CurrentUser', CurrentUser)
+  .factory('CurrentUserPolicy', CurrentUserPolicy)
   .factory('ExploreContent', ExploreContent)
   .factory('Game', Game)
   .factory('GameReview', GameReview)

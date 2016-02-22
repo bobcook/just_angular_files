@@ -4,12 +4,10 @@ const userPolicies = function userPolicies($http,
                                            API_URL) {
   'ngInject';
 
-  const policies = ['paid', 'unpaid'];
+  const policyNames = ['paid', 'unpaid'];
 
   const definePermissions = function definePermissions() {
-    for (const policy of policies) {
-      definePermission(policy);
-    };
+    _.each(policyNames, definePermission);
   };
 
   const definePermission = function definePermission(policyName) {
@@ -20,9 +18,9 @@ const userPolicies = function userPolicies($http,
     );
   };
 
-  const policyPromise = function policyPromise(policyName) {
-    return $q(function (resolve, reject) {
-      getPolicy(policyName).then(function (res) {
+  const policyPromise = (policyName) => {
+    return $q((resolve, reject) => {
+      getPolicy(policyName).then((res) => {
         if (res.data.access) {
           resolve(res.data.access);
         } else {

@@ -1,8 +1,12 @@
-const TopNavController = function (ApiRoutes, $state, dsoAuth) {
+const TopNavController = function (ApiRoutes,
+                                   $state,
+                                   dsoAuth,
+                                   CurrentUserPolicy) {
   'ngInject';
 
   this.login = dsoAuth.login;
 
+  this.searchCategories = ['All content'];
   this.isMenuOpen = false;
   this.isSearchOpen = false;
   const promo = 'foo';
@@ -20,8 +24,11 @@ const TopNavController = function (ApiRoutes, $state, dsoAuth) {
     );
   };
 
-  this.searchCategories =
-    ['All content', 'Articles', 'Activities', 'Games', 'Recipes'];
+  CurrentUserPolicy.get().then((policy) => {
+    this.searchCategories =
+      this.searchCategories.concat(policy.accessibleContent);
+  });
+
   this.selectedSearchCategory = 'All content';
 };
 

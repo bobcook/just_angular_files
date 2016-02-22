@@ -98,6 +98,7 @@ Rails.application.routes.draw do
       end
 
       namespace :policies do
+        resource :current_user, only: [:show]
         resource :paid, only: [:show]
         resource :unpaid, only: [:show]
       end

@@ -36,17 +36,66 @@ module Api
           expect(obj['items'].length).to be(0)
         end
 
-        it 'returns matched records for all content types' do
-          create_content
-          index_content
+        context 'for paid user' do
+          let(:user) { create(:user, membership_status: :paid) }
+          before { login_user(user) }
+          it 'returns matched records for all content types' do
+            create_content
+            index_content
 
-          params = {
-            keywords: 'fish'
-          }
-          get(:index, params)
-          obj = JSON.parse(response.body)
+            params = {
+              keywords: 'fish'
+            }
+            get(:index, params)
+            obj = JSON.parse(response.body)
 
-          expect(obj['items'].length).to be(4)
+            expect(obj['items'].length).to be(4)
+          end
+
+          it 'gets paid and free games' do
+            create(:game, :paid, title: 'Fish Paid Game')
+            create_content
+            index_content
+
+            params = {
+              keywords: 'fish',
+              content_type: 'games'
+            }
+            get(:index, params)
+            obj = JSON.parse(response.body)
+
+            expect(obj['items'].length).to be(2)
+          end
+        end
+
+        context 'for unpaid user' do
+          it 'returns matched records for all content types' do
+            create_content
+            index_content
+
+            params = {
+              keywords: 'fish'
+            }
+            get(:index, params)
+            obj = JSON.parse(response.body)
+
+            expect(obj['items'].length).to be(2)
+          end
+
+          it 'gets paid and free games' do
+            create(:game, :paid, title: 'Fish Paid Game')
+            create_content
+            index_content
+
+            params = {
+              keywords: 'fish',
+              content_type: 'games'
+            }
+            get(:index, params)
+            obj = JSON.parse(response.body)
+
+            expect(obj['items'].length).to be(1)
+          end
         end
 
         context 'content type is passed in' do

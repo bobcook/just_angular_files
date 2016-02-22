@@ -3,13 +3,13 @@ module Api
     module Policies
       class UnpaidsController < Api::V1::BaseController
         def show
-          render json: { access: unpaid_user? }
+          render json: { access: user_policy.unpaid? }
         end
 
         private
 
-        def unpaid_user?
-          current_user.nil? || !current_user.paid?
+        def user_policy
+          @user_polcy ||= UserPolicies.new(current_user)
         end
       end
     end

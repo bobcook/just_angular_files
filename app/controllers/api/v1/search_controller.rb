@@ -32,7 +32,7 @@ module Api
       end
 
       def query_string
-        params[:pillar].nil? ? match_query : match_query.merge(filter_query)
+        match_query.merge(filter_query)
       end
 
       def match_query
@@ -67,12 +67,48 @@ module Api
         pillar.downcase.split.push(new_name)
       end
 
+      def games_filter
+        {
+          bool: {
+            should: [
+              {
+                missing: {
+                  field: 'payload.gameType'
+                }
+              },
+              {
+                term: {
+                  'payload.gameType': 'free'
+                }
+              }
+            ]
+          }
+        }
+      end
+
+      def pillar_filter
+        { terms: { 'payload.brainHealthPillar': selected_pillar } }
+      end
+
       def filter_query
         {
           filter: {
-            terms: { 'payload.brainHealthPillar': selected_pillar }
+            bool: {
+              must: combined_filters
+            }
           }
         }
+      end
+
+      def combined_filters
+        filters = []
+        filters << pillar_filter if params[:pillar].present?
+        filters << games_filter if user_policy.unpaid?
+        filters
+      end
+
+      def games?
+        params[:content_type] == 'games'
       end
 
       def resources
@@ -80,14 +116,30 @@ module Api
         when 'articles'
           [Article]
         when 'recipes'
-          [Recipe]
+          recipes
         when 'games'
           [Game]
         when 'activities'
-          [Activity]
+          activities
         else
-          [Activity, Article, Game, Recipe]
+          user_policy.paid? ? all_resources : [Article, Game]
         end
+      end
+
+      def recipes
+        user_policy.paid? ? [Recipe] : []
+      end
+
+      def activities
+        user_policy.paid? ? [Activity] : []
+      end
+
+      def all_resources
+        [Activity, Article, Game, Recipe]
+      end
+
+      def user_policy
+        @user_policy ||= UserPolicies.new(current_user)
       end
     end
   end
