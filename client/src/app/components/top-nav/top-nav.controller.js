@@ -9,9 +9,9 @@ const TopNavController = function (ApiRoutes,
   this.searchCategories = ['All content'];
   this.isMenuOpen = false;
   this.isSearchOpen = false;
-  const promo = 'foo';
-  const campaignURL = 'foo';
-  const callbackUrl = 'foo';
+  const promo = 'SM-SS';
+  const campaignURL = 'default';
+  const callbackUrl = 'https://stayingsharp.aarp.org';
   this.subscribeUrl = `https://appsec-s.aarp.org/smembership/subscription?` +
                         `promo=${promo}&campaignURL=${campaignURL}&` +
                         `ref=${callbackUrl}`;
