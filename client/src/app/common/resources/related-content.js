@@ -7,8 +7,7 @@ const RelatedContent = function (API_URL,
 
   const defaults = {
     activities: 5,
-    articles: 5,
-    recipes: 5,
+    articles: 8,
   };
 
   const RelatedContent = railsResourceFactory({

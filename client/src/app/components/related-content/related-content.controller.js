@@ -2,9 +2,14 @@ const RelatedContentController = function (RelatedContent,
                                            RelatedContentGames) {
   'ngInject';
 
-  const NUM_TOP_ITEMS = 2;
-  const NUM_BOTTOM_ITEMS = 3;
-  const NUM_RELATED_GAMES = 2;
+  const NUM_ARTICLES = 2;
+  const NUM_ACTIVITIES = 3;
+
+  const articlesForRows = function (articles, range) {
+    const start = i => i * NUM_ARTICLES;
+    const end = i => start(i) + NUM_ARTICLES;
+    return _.map(range, i => _.slice(articles, start(i), end(i)));
+  };
 
   this.loadResource = (resource) => {
     if (_.isUndefined(resource)) { return; }
@@ -19,12 +24,12 @@ const RelatedContentController = function (RelatedContent,
     };
 
     const setRelatedContent = (content) => {
-      const topItems = content.articles.length > 0 ?
-        content.articles.concat(content.recipes) : content.games;
-      const bottomItems = content.activities || [];
+      const articles = content.articles || [];
+      const activities = content.activities || [];
 
-      this.topItems = _.take(_.shuffle(topItems), NUM_TOP_ITEMS);
-      this.bottomItems = _.take(_.shuffle(bottomItems), NUM_BOTTOM_ITEMS);
+      this.articles = _.flatten(articlesForRows(articles, [0]));
+      this.unpaidArticles = articlesForRows(articles, [1, 2]);
+      this.activities = _.take(_.shuffle(activities), NUM_ACTIVITIES);
     };
 
     getRelatedContent().then(setRelatedContent);
@@ -32,4 +37,3 @@ const RelatedContentController = function (RelatedContent,
 };
 
 export default RelatedContentController;
-

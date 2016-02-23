@@ -1,14 +1,19 @@
-<div class="cp-content-group related-content" ng-if="vm.topItems.length > 0 || vm.bottomItems.length > 0">
+<div class="cp-content-group related-content" ng-if="vm.articles.length > 0 || vm.activities.length > 0">
   <section class="container">
     <header>
       <h3>Similar to This:</h3>
     </header>
     <article>
       <div class="card-holder">
-         <ss-card ng-repeat="card in vm.topItems" ss-card-for="card"></ss-card>
+         <ss-card ng-repeat="card in vm.articles" ss-card-for="card"></ss-card>
       </div>
-      <div class="card-holder">
-        <ss-card ng-repeat="card in vm.bottomItems" ss-card-for="card"></ss-card>
+      <div permission only="'unpaid'" ng-repeat="row in vm.unpaidArticles">
+        <div class="card-holder">
+           <ss-card ng-repeat="card in row" ss-card-for="card"></ss-card>
+        </div>
+      </div>
+      <div class="card-holder" permission only="'paid'">
+        <ss-card ng-repeat="card in vm.activities" ss-card-for="card"></ss-card>
       </div>
     </article>
   </section>
