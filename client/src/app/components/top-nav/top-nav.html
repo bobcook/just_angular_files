@@ -3,7 +3,7 @@
 
     <a ui-sref="application.home" class="logo" ng-include="'app/assets/images/aarp-logo.svg'"></a>
 
-    <div class="nav-options">
+    <div class="nav-options" ng-if="!vm.isGamePlayView">
       <ul>
         <li permission only="'unpaid'" class="hidden-xs"><a class="text-link" ng-href="{{vm.subscribeUrl}}">Join Staying Sharp</a></li>
         <li ng-if="!$root.$currentUser.isLoggedIn" class="bullet hidden-xs">•</li>
@@ -21,6 +21,25 @@
             <span class="icon-bar bottom-bar"></span>
             <span class="menu-label">Menu</span>
           </button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="games-header" ng-if="vm.isGamePlayView">
+      <ul>
+        <li>
+          <span>Hello, {{$root.$currentUser.firstName}}!</span>
+        </li>
+        <li>
+          <a ui-sref="application.static.terms-of-service">Terms of Service</a>
+        </li>
+        <li>
+          <span class="bullet">•</span>
+          <a ui-sref="application.static.privacy-policy">Privacy Policy</a>
+        </li>
+        <li>
+          <span class="bullet">•</span>
+          <a href="#">Exit</a>
         </li>
       </ul>
     </div>

@@ -1,10 +1,12 @@
 const TopNavController = function (ApiRoutes,
                                    $state,
+                                   $rootScope,
                                    dsoAuth,
                                    CurrentUserPolicy) {
   'ngInject';
 
   this.login = dsoAuth.login;
+  this.isGamePlayView = $rootScope.isGamePlayView;
 
   this.searchCategories = ['All content'];
   this.isMenuOpen = false;
