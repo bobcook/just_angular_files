@@ -93,6 +93,8 @@ import httpsInterceptor from './common/services/https-interceptor.js';
 import MBSAssessmentList from './assessments/mbs-assessment-list.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
 import PerformSearch from './search/perform-search.js';
+import subscribeModalService from
+  './common/services/subscribe-modal-service.js';
 import userPolicies from './common/services/user-policies.js';
 
 // directives
@@ -133,6 +135,7 @@ import saveUserContent from
   './components/save-user-content/save-user-content.js';
 import sideNav from './components/side-nav/side-nav.js';
 import socialLinks from './components/social-links/social-links.js';
+import subscribeModal from './components/subscribe-modal/subscribe-modal.js';
 import topNav from './components/top-nav/top-nav.js';
 import userDashboardCard from
   './components/user-dashboard-cards/user-dashboard-card.js';
@@ -210,6 +213,10 @@ import SearchResultsController from
 import SocialLinksController from
   './components/social-links/social-links.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
+import SubscribeModalController from
+  './components/subscribe-modal/subscribe-modal.controller.js';
+import SubscribeResourceModalController from
+  './subscribe/subscribe-resource-modal.controller.js';
 import UserDashboardCardController from
   './components/user-dashboard-cards/user-dashboard-card.controller.js';
 import UserDashboardCardsController from
@@ -329,6 +336,7 @@ app
   .factory('httpsInterceptor', httpsInterceptor)
   .factory('MBSAssessmentList', MBSAssessmentList)
   .factory('PerformSearch', PerformSearch)
+  .factory('subscribeModalService', subscribeModalService)
   .factory('userPolicies', userPolicies)
   .provider('modalStateHelper', modalStateHelper)
 
@@ -363,6 +371,7 @@ app
   .directive('ssSaveUserContent', saveUserContent)
   .directive('ssSocialLinks', socialLinks)
   .directive('ssSideNav', sideNav)
+  .directive('ssSubscribeModal', subscribeModal)
   .directive('ssTopNav', topNav)
   .directive('ssUserDashboardCard', userDashboardCard)
   .directive('ssUserDashboardCards', userDashboardCards)
@@ -423,6 +432,9 @@ app
   .controller('SearchResultsController', SearchResultsController)
   .controller('SocialLinksController', SocialLinksController)
   .controller('TopNavController', TopNavController)
+  .controller('SubscribeModalController', SubscribeModalController)
+  .controller('SubscribeResourceModalController',
+    SubscribeResourceModalController)
   .controller('UserDashboardCardController', UserDashboardCardController)
   .controller('UserDashboardCardsController', UserDashboardCardsController)
   .controller('UserDashboardController', UserDashboardController)

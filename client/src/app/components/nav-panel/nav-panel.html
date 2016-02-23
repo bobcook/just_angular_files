@@ -39,22 +39,33 @@
             <span class="icon icon-assessment-results"></span>All Content
           </a></li>
           <!-- TODO: only allow paid users to see actitivies -->
-          <li><a ui-sref="application.activities" ng-click="vm.close()">
-            <span class="icon icon-activities-stats"></span>Activities
-          </a></li>
+          <li>
+            <a ui-sref="application.activities" ng-click="vm.close()" permission only="'paid'">
+              <span class="icon icon-activities-stats"></span>Activities
+            </a>
+            <a ng-click="vm.showSubscribeModal('activities')" permission only="'unpaid'">
+              <span class="icon icon-activities-stats"></span>Activities
+            </a>
+          </li>
           <li><a ui-sref="application.articles" ng-click="vm.close()">
             <span class=" icon icon-saved-articles"></span>Articles
           </a></li>
-          <li><a ui-sref="application.recipes" ng-click="vm.close()">
-            <span class="icon icon-saved-recipes"></span>Recipes
-          </a></li>
+          <li>
+            <a ui-sref="application.recipes" ng-click="vm.close()" permission only="'paid'">
+              <span class="icon icon-saved-recipes"></span>Recipes
+            </a>
+            <a ng-click="vm.showSubscribeModal('recipes')" permission only="'unpaid'">
+              <span class="icon icon-saved-recipes"></span>Recipes
+            </a>
+          </li>
           <li><a ui-sref="application.games" ng-click="vm.close()">
             <span class="icon icon-games"></span>Games
           </a></li>
         </ul>
       </li>
       <li class="primary-level">
-        <a ui-sref="application.user.working-on" ng-click="vm.close()">My Staying Sharp</a>
+        <a ui-sref="application.user.working-on" permission only="'paid'" ng-click="vm.close()">My Staying Sharp</a>
+        <a permission only="'unpaid'" ng-click="vm.showSubscribeModal('me')">My Staying Sharp</a>
       </li>
       <li class="tertiary-level" ng-if="$root.$currentUser.isLoggedIn">
         <ul>

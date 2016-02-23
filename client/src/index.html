@@ -25,6 +25,9 @@
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
             'airbrakeProjectId': 114751,
             'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
+            'dsoSubscribePromo': 'SM-SS',
+            'dsoSubscribeCampaigneUrl': 'default',
+            'dsoSubscribeCallbackUrl': 'https://stayingsharp.aarp.org',
           },
           dev: {
             'API_URL': 'https://aarp-staying-sharp-dev.herokuapp.com',
@@ -33,6 +36,9 @@
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
             'airbrakeProjectId': 114751,
             'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
+            'dsoSubscribePromo': 'SM-SS',
+            'dsoSubscribeCampaigneUrl': 'default',
+            'dsoSubscribeCallbackUrl': 'https://stayingsharp.aarp.org',
           },
           // TODO: remove once everything migrated to s3
           devS3: {
@@ -41,6 +47,9 @@
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
             'airbrakeProjectId': 114751,
             'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
+            'dsoSubscribePromo': 'SM-SS',
+            'dsoSubscribeCampaigneUrl': 'default',
+            'dsoSubscribeCallbackUrl': 'https://stayingsharp.aarp.org',
           },
           staging: {
             'API_URL': 'https://aarp-staying-sharp-stg.herokuapp.com',
@@ -49,6 +58,9 @@
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
             'airbrakeProjectId': 114751,
             'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
+            'dsoSubscribePromo': 'SM-SS',
+            'dsoSubscribeCampaigneUrl': 'default',
+            'dsoSubscribeCallbackUrl': 'https://stayingsharp.aarp.org',
           },
           production: {
             'API_URL': 'https://aarp-staying-sharp-prod.herokuapp.com',
@@ -57,6 +69,9 @@
             'accountUrl': 'https://secure.aarp.org/applications/account/myAccount.action',
             'airbrakeProjectId': 114752,
             'airbrakeProjectKey': '8385a658a0b9e4d16094ce0a28b75317',
+            'dsoSubscribePromo': 'SM-SS',
+            'dsoSubscribeCampaigneUrl': 'default',
+            'dsoSubscribeCallbackUrl': 'https://stayingsharp.aarp.org',
           },
         };
 
@@ -90,6 +105,11 @@
           key: envVars[currentEnv].airbrakeProjectKey,
         };
         window.__env.envName = currentEnv;
+        window.__env.dsoSubscribe = {
+          promo: envVars[currentEnv].dsoSubscribePromo,
+          campaignUrl: envVars[currentEnv].dsoSubscribeCampaigneUrl,
+          callbackUrl: envVars[currentEnv].dsoSubscribeCallbackUrl,
+        }
       }(window));
     </script>
     <script>

@@ -178,6 +178,10 @@
   }
 }
 
+.subscribe-modal {
+  z-index: 9999;
+}
+
 .modal-cellophane {
   background-color: $black;
   height: 100%;

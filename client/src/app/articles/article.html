@@ -19,6 +19,7 @@
       <div class="effort"><span>{{vm.article.effort}}</span></div>
       <div class="action-items">
         <ss-save-user-content
+          permission only="'paid'"
           ng-if="$root.$currentUser && vm.article"
           ss-display-type="button"
           ss-is-user-namespace="vm.isUserNamespace"
@@ -26,6 +27,7 @@
           ss-resource="vm.userResource"
           ss-plural-resource-name="vm.pluralResourceName">
         </ss-save-user-content>
+        <button ng-click="vm.openSubscribeModal('articles')" permission only="'unpaid'">Save</button>
       </div>
     </footer>
   </section>
@@ -67,6 +69,7 @@
     </header>
     <footer>
       <ss-save-user-content
+        permission only="'paid'"
         ng-if="$root.$currentUser && vm.article"
         ss-display-type="button"
         ss-is-user-namespace="vm.isUserNamespace"
@@ -74,6 +77,7 @@
         ss-resource="vm.userResource"
         ss-plural-resource-name="vm.pluralResourceName">
       </ss-save-user-content>
+      <button ng-click="vm.openSubscribeModal('articles')" permission only="'unpaid'">Save</button>
     </footer>
   </section>
 </div>

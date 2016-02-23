@@ -9,12 +9,7 @@ const TopNavController = function (ApiRoutes,
   this.searchCategories = ['All content'];
   this.isMenuOpen = false;
   this.isSearchOpen = false;
-  const promo = 'SM-SS';
-  const campaignURL = 'default';
-  const callbackUrl = 'https://stayingsharp.aarp.org';
-  this.subscribeUrl = `https://appsec-s.aarp.org/smembership/subscription?` +
-                        `promo=${promo}&campaignURL=${campaignURL}&` +
-                        `ref=${callbackUrl}`;
+  this.subscribeUrl = dsoAuth.dsoSubscribeAuth;
 
   this.submitSearch = function () {
     this.isSearchOpen = false;

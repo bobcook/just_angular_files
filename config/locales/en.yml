@@ -81,3 +81,17 @@ en:
   explanation:
     activities: "Hundreds of activities, all based on the latest scientific understanding of how to maintain a healthy brain. Save activities that interest you and track them on your My Staying Sharp page. For holistic brain health, do activities across the 5 areas of brain health."
     recipes: "Aliquam placerat velit at justo porta, vel luctus erat aliquet. Etiam elementum convallis lectus quis luctus. Duis faucibus magna in tincidunt malesuada. Praesent at dolor et est molestie ullamcorper. Vestibulum pellentesque imperdiet mollis. Vivamus consectetur felis velit, ac imperdiet enim maximus et. Maecenas scelerisque dolor sed ullamcorper pulvinar."
+
+  subscribe_modal:
+    activities:
+      body_text: "Better brain health starts with a single step. Join now to access hundreds of simple, fun activities designed to boost your brain power."
+      button_text: "Get Started"
+    articles:
+      body_text: "Provide an email address to save your favorite articles and games. You'll also be able to comment, recommend and share content."
+      button_text: "Create a Free Account"
+    me:
+      body_text: "Better brain health starts with a single step. Join now to access hundreds of simple, fun activities and recipes designed to boost your brain power."
+      button_text: "Get Sharp"
+    recipes:
+      body_text: "Eat your way to brilliance.  Join now to access all of our delicious, brain healthy recipes."
+      button_text: "Get Cookin'"
