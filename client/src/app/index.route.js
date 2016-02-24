@@ -156,6 +156,11 @@ const routerConfig = function (stateHelperProvider,
           children: assessmentResultsStates(),
         },
         {
+          name: 'betabound',
+          url: '/betabound',
+          template: '',
+        },
+        {
           name: 'employee',
           url: '/employee',
           template: '',
