@@ -62,6 +62,23 @@ The auth token itself is encoded into a JWT, but the JWT is too long to fit in a
 
 ## ThirdParty Dependencies
 
+### Build dependencies
+
+We use gulp to build our frontend app. This leverages the npm ecosystem, which can be somewhat unreliable.
+
+To ensure that everyone gets the same npm dependencies, we have included a `npm-shrinkwrap.json` to lock
+versions.
+
+When adding or updating build dependencies, do the following:
+
+1. "npm install" in the package root to make sure you have current versions of all dependencies.
+1. "npm install --save <PACKAGE NAME>" to save a new package, if necessary
+1. Validate that the package works as expected with the new dependencies.
+1. Run "npm shrinkwrap --dev", and commit the new npm-shrinkwrap.json.
+
+See https://nodejs.org/en/blog/npm/managing-node-js-dependencies-with-shrinkwrap for a more in-depth
+explanation of npm shrinkwrap.
+
 ### Azul7 Frontend Components
 
 Azul7 has provided a majority of the frontend assets needed for the app via
