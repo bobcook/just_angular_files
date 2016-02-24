@@ -26,21 +26,37 @@
 <div class="slide-menu-options" ng-switch="vm.currentRoute">
   <section ng-switch-when="root">
     <ul class="primary-nav-options">
-      <li class="primary-level" ng-click="explore=!explore" ng-class="{active:explore}">
-        <a href="#">Explore <span class="caret" ng-class="{'caret-down':!explore,'caret-up':explore}"></span></a>
+      <li class="primary-level"
+          ng-click="explore = !explore"
+          ng-class="{active: !explore, default: explore}">
+        <a href="#">
+          Explore <span class="caret"
+                    ng-class="{'caret-down': explore, 'caret-up': !explore}">
+                  </span>
+        </a>
         <ul class="tertiary-level">
-          <li><a ui-sref="application.home" ng-click="vm.close()">All Content</a></li>
-          <li><a ui-sref="application.articles" ng-click="vm.close()">Articles</a></li>
-          <li><a ui-sref="application.recipes" ng-click="vm.close()">Recipes</a></li>
+          <li><a ui-sref="application.home" ng-click="vm.close()">
+            <span class="icon icon-assessment-results"></span>All Content
+          </a></li>
           <!-- TODO: only allow paid users to see actitivies -->
-          <li><a ui-sref="application.activities" ng-click="vm.close()">Activities</a></li>
-          <li><a ui-sref="application.games" ng-click="vm.close()">Games</a></li>
+          <li><a ui-sref="application.activities" ng-click="vm.close()">
+            <span class="icon icon-activities-stats"></span>Activities
+          </a></li>
+          <li><a ui-sref="application.articles" ng-click="vm.close()">
+            <span class=" icon icon-saved-articles"></span>Articles
+          </a></li>
+          <li><a ui-sref="application.recipes" ng-click="vm.close()">
+            <span class="icon icon-saved-recipes"></span>Recipes
+          </a></li>
+          <li><a ui-sref="application.games" ng-click="vm.close()">
+            <span class="icon icon-games"></span>Games
+          </a></li>
         </ul>
       </li>
       <li class="primary-level">
         <a ui-sref="application.user.working-on" ng-click="vm.close()">My Staying Sharp</a>
       </li>
-      <li class="tertiary-level">
+      <li class="tertiary-level" ng-if="$root.$currentUser.isLoggedIn">
         <ul>
           <li>
             <a ui-sref="application.user.working-on" ng-click="vm.close()">
