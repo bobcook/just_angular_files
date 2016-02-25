@@ -1,4 +1,4 @@
-const NavPanelController = function($rootScope,
+const NavPanelController = function ($rootScope,
   AssessmentStatus,
   subscribeModalService,
   dsoAuth) {
