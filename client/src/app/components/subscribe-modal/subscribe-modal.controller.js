@@ -3,6 +3,8 @@ const SubscribeModalController = function (dsoAuth) {
 
   this.subscribeUrl = dsoAuth.dsoSubscribeAuth;
   this.login = dsoAuth.login;
+
+  console.log(this);
 };
 
 export default SubscribeModalController;

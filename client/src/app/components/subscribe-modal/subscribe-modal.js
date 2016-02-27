@@ -9,6 +9,7 @@ const subscribeModal = function () {
     scope: {
       bodyText: '=ssBodyText',
       buttonText: '=ssButtonText',
+      auth: '&ssAuth',
       close: '&ssCloseFn',
     },
   };
