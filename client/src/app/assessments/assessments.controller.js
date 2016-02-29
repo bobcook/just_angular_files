@@ -20,7 +20,7 @@ const AsssessmentsController = function ($assessmentsAuth,
     new UserAssessmentGroup()
     .create()
     .then(() => {
-      AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
+      AssessmentStatus.lastCompletedUserAssessmentGroup().then((lastGroup) => {
         if (lastGroup) {
           const assessment = AssessmentStatus.getNextAssessment(lastGroup);
           this.nextAssessmentId = assessment.id;

@@ -1,6 +1,7 @@
 const OverallResultsController = function (Activity,
                                            AssessmentResultQueries,
                                            AssessmentResultScores,
+                                           AssessmentStatus,
                                            ExploreContent,
                                            RecommendedContent,
                                            $moment,

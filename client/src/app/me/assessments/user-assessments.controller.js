@@ -11,15 +11,13 @@ const UserAssessmentController = function (AssessmentStatus, $q) {
     const hasCompleted = results[0];
     const lastUserAssessment = results[1] || {};
 
-    this.showAssessmentBanner =
-      AssessmentStatus.showAssessmentBanner(
-        hasCompleted,
-        lastUserAssessment.started,
-        lastUserAssessment.completed
-      );
+    this.showAssessmentBanner = _.isEmpty(lastUserAssessment);
+    this.showFinishAssessmentBanner =
+      !_.isUndefined(lastUserAssessment) &&
+      !lastUserAssessment.completed;
 
-    this.showAssessmentResults =
-      AssessmentStatus.showAssessmentResults(hasCompleted);
+    this.showAssessmentResults = hasCompleted;
+
   });
 };
 

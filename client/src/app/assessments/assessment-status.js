@@ -10,11 +10,21 @@ const AssessmentStatus = function ($assessmentsAuth,
                                    Airbrake) {
   'ngInject';
 
+  const lastCompletedUserAssessmentGroup = function () {
+    return UserAssessmentGroup.query().then(function (groups) {
+      if (!_.isEmpty(groups)) {
+        return groups.filter(function (group) {
+          return group.completed === true;
+        })[0];
+      }
+    });
+  };
+
   const lastUserAssessmentGroup = function () {
     return UserAssessmentGroup.query().then(function (groups) {
-      if (groups) {
+      if (!_.isEmpty(groups)) {
         return groups[0];
-      }
+      };
     });
   };
 
@@ -136,17 +146,9 @@ const AssessmentStatus = function ($assessmentsAuth,
     }
   };
 
-  const showAssessmentBanner =
-    function (hasCompleted, lastIsStarted, lastIsCompleted) {
-      return hasCompleted && lastIsStarted && !lastIsCompleted || !hasCompleted;
-    };
-
-  const showAssessmentResults = function (hasCompleted) {
-    return hasCompleted;
-  };
-
   return {
     enqueueResultsUpdate: enqueueResultsUpdate,
+    lastCompletedUserAssessmentGroup: lastCompletedUserAssessmentGroup,
     lastUserAssessmentGroup: lastUserAssessmentGroup,
     getNextAssessment: getNextAssessment,
     updateCompletedUserAssessment: updateCompletedUserAssessment,
@@ -160,8 +162,6 @@ const AssessmentStatus = function ($assessmentsAuth,
     submitAssessmentRedirect: submitAssessmentRedirect,
     hasCompletedAssessments: hasCompletedAssessments,
     setSubmitButtonText: setSubmitButtonText,
-    showAssessmentBanner: showAssessmentBanner,
-    showAssessmentResults: showAssessmentResults,
   };
 };
 

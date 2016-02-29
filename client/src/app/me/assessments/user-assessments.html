@@ -15,6 +15,40 @@
   <button type="button" ui-sref="application.assessments">Begin Assessment</button>
 </ss-info-box>
 
+<div class="card-holder container finish-assessment-box" ng-show="vm.showFinishAssessmentBanner">
+  <div class="cp-card messaging-card">
+    <section>
+      <div class="box-body">
+        <header>
+          <span class="move icon-block">
+            <span class="icon-move"></span>
+          </span>
+          <span class="discover icon-block">
+            <span class="icon-discover"></span>
+          </span>
+          <span class="relax icon-block">
+            <span class="icon-relax"></span>
+          </span>
+          <span class="nourish icon-block">
+            <span class="icon-nourish"></span>
+          </span>
+          <span class="connect icon-block">
+            <span class="icon-connect"></span>
+          </span>
+        </header>
+        <article>
+          <div class="content">
+            <p translate permission only="'paid'">info.continue_assessment.paid</p>
+            <a ui-sref="application.assessments" class="btn" permission only="'paid'">Finish Assessment</a>
+            <p translate permission only="'unpaid'">info.continue_assessment.unpaid</p>
+            <a ui-sref="application.assessments" class="btn" permission only="'unpaid'">Subscribe and Finish Assessment</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
+
 <div ng-show="vm.showAssessmentResults">
   <div ui-view></div>
 </div>

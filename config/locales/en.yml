@@ -77,6 +77,9 @@ en:
     only_available_internal: "Please note, this feedback form is only accessible from inside the AARP network"
     missing_flash_warning_assessments:  "We're sorry, but the assessment requires Flash and may not be available on this device. If you're on an iPhone or other mobile device, please try again on a Mac or Windows PC.<br><br>If you're on a Mac or Windows PC and you still receive this message, please download Flash <a href='https://get.adobe.com/flashplayer/' target='_blank'>here</a> and then reload this page."
     missing_flash_warning_games: "We're sorry, but these games require Flash and may not be available on this device. If you're on an iPhone or other mobile device, please try again on a Mac or Windows PC.<br><br>If you're on a Mac or Windows PC and you still receive this message, please download Flash <a href='https://get.adobe.com/flashplayer/' target='_blank'>here</a> and then reload this page."
+    continue_assessment:
+      paid: "You're almost there! Finish your Brain Health Assessment to get your brain health score, a detailed report revealing how your brain works and personalized recommendations for improving and maintaining your cognitive abilities. We've even saved your place for you."
+      unpaid: "You're almost there! Subscribe now to compete your Brain Health Assessment and get your brain health score, a detailed report revealing how your brain works and personalized recommendations for improving and maintaining your cognitive abilities."
 
   explanation:
     activities: "Hundreds of activities, all based on the latest scientific understanding of how to maintain a healthy brain. Save activities that interest you and track them on your My Staying Sharp page. For holistic brain health, do activities across the 5 areas of brain health."

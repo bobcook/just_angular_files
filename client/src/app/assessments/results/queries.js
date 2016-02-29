@@ -9,7 +9,7 @@ const AssessmentResultQueries = function (AssessmentStatus,
   const $p = $promise;
 
   const getLatestUserAssessmentGroup = function () {
-    return AssessmentStatus.lastUserAssessmentGroup();
+    return AssessmentStatus.lastCompletedUserAssessmentGroup();
   };
 
   const getNeuroResults = function (state) {
