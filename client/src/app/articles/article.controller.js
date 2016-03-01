@@ -1,7 +1,7 @@
 const ArticleController = function (Article,
                                     ArticleReview,
                                     UserArticle,
-                                    subscribeModalService,
+                                    dsoModalService,
                                     $stateParams) {
   'ngInject';
 
@@ -10,7 +10,7 @@ const ArticleController = function (Article,
     this.article = article.data;
   });
 
-  this.openSubscribeModal = subscribeModalService.show;
+  this.openSubscribeModal = dsoModalService.show;
 
   // pass values to directive
   this.isContentDrawerOpen = false;

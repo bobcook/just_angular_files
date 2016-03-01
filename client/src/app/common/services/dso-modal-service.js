@@ -1,4 +1,4 @@
-const subscribeModalService = function (ModalService) {
+const dsoModalService = function (ModalService) {
   'ngInject';
 
   const show = function (resource) {
@@ -13,4 +13,4 @@ const subscribeModalService = function (ModalService) {
   };
 };
 
-export default subscribeModalService;
+export default dsoModalService;

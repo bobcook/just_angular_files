@@ -1,6 +1,6 @@
-const subscribeModal = function () {
+const dsoModal = function () {
   return {
-    templateUrl: 'app/components/subscribe-modal/subscribe-modal.html',
+    templateUrl: 'app/components/dso-modal/dso-modal.html',
     restrict: 'E',
     replace: true,
     scope: {
@@ -13,4 +13,4 @@ const subscribeModal = function () {
   };
 };
 
-export default subscribeModal;
+export default dsoModal;

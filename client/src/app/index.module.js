@@ -93,8 +93,8 @@ import httpsInterceptor from './common/services/https-interceptor.js';
 import MBSAssessmentList from './assessments/mbs-assessment-list.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
 import PerformSearch from './search/perform-search.js';
-import subscribeModalService from
-  './common/services/subscribe-modal-service.js';
+import dsoModalService from
+  './common/services/dso-modal-service.js';
 import userPolicies from './common/services/user-policies.js';
 
 // directives
@@ -135,7 +135,7 @@ import saveUserContent from
   './components/save-user-content/save-user-content.js';
 import sideNav from './components/side-nav/side-nav.js';
 import socialLinks from './components/social-links/social-links.js';
-import subscribeModal from './components/subscribe-modal/subscribe-modal.js';
+import dsoModal from './components/dso-modal/dso-modal.js';
 import topNav from './components/top-nav/top-nav.js';
 import userDashboardCard from
   './components/user-dashboard-cards/user-dashboard-card.js';
@@ -214,7 +214,7 @@ import SocialLinksController from
   './components/social-links/social-links.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
 import DsoModalController from
-  './dso-modal/dso-modal.controller.js';
+  './components/dso-modal/dso-modal.controller.js';
 import UserDashboardCardController from
   './components/user-dashboard-cards/user-dashboard-card.controller.js';
 import UserDashboardCardsController from
@@ -334,7 +334,7 @@ app
   .factory('httpsInterceptor', httpsInterceptor)
   .factory('MBSAssessmentList', MBSAssessmentList)
   .factory('PerformSearch', PerformSearch)
-  .factory('subscribeModalService', subscribeModalService)
+  .factory('dsoModalService', dsoModalService)
   .factory('userPolicies', userPolicies)
   .provider('modalStateHelper', modalStateHelper)
 
@@ -369,7 +369,7 @@ app
   .directive('ssSaveUserContent', saveUserContent)
   .directive('ssSocialLinks', socialLinks)
   .directive('ssSideNav', sideNav)
-  .directive('ssSubscribeModal', subscribeModal)
+  .directive('ssDsoModal', dsoModal)
   .directive('ssTopNav', topNav)
   .directive('ssUserDashboardCard', userDashboardCard)
   .directive('ssUserDashboardCards', userDashboardCards)
