@@ -34,8 +34,12 @@ env 'DSO_API',
 
 env 'CMS_BASE_URL',
     provide('AARP CMS base URL',
-            default: 'http://www.aarp.org/content/specialized-membership/' \
-                     'staying-sharp/en')
+            default: 'http://www.aarp.org/')
+
+env 'CMS_CONTENT_FEED_ENDPOINT',
+    provide('AARP CMS content feed endpoint',
+            default: 'http://www.aarp.org/etc/aarp/datashare/staying-sharp/' \
+                     'stayingSharp.json')
 
 env 'CMS_IMAGES_BASE_URL',
     provide('AARP images CMS base URL',
