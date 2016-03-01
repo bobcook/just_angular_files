@@ -7,7 +7,7 @@ const dsoModalService = function (ModalService, dsoAuth) {
       controller: 'DsoModalController',
       inputs: {
         resource: resource,
-        authFuction: dsoAuth.login,
+        authFunction: dsoAuth.login,
       },
     });
   };

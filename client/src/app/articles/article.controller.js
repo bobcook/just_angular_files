@@ -10,7 +10,7 @@ const ArticleController = function (Article,
     this.article = article.data;
   });
 
-  this.openSubscribeModal = dsoModalService.show;
+  this.openSubscribeModal = dsoModalService.showRegisterModal;
 
   // pass values to directive
   this.isContentDrawerOpen = false;
