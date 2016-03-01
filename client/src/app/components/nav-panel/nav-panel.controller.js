@@ -4,7 +4,7 @@ const NavPanelController = function ($rootScope,
   dsoAuth) {
   'ngInject';
 
-  this.showSubscribeModal = dsoModalService.show;
+  this.showSubscribeModal = dsoModalService.showSubscribeModal;
 
   this.login = dsoAuth.login;
 

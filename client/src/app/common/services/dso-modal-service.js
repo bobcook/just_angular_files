@@ -1,15 +1,31 @@
-const dsoModalService = function (ModalService) {
+const dsoModalService = function (ModalService, dsoAuth) {
   'ngInject';
 
-  const show = function (resource) {
+  const showRegisterModal = function (resource) {
     ModalService.showModal({
-      templateUrl: `app/${resource}/subscribe-modal.html`,
+      templateUrl: 'app/components/dso-modal/dso-modal.html',
       controller: 'DsoModalController',
+      inputs: {
+        resource: resource,
+        authFuction: dsoAuth.login,
+      },
+    });
+  };
+
+  const showSubscribeModal = function (resource) {
+    ModalService.showModal({
+      templateUrl: 'app/components/dso-modal/dso-modal.html',
+      controller: 'DsoModalController',
+      inputs: {
+        resource: resource,
+        authFunction: dsoAuth.subscribe,
+      },
     });
   };
 
   return {
-    show: show,
+    showRegisterModal: showRegisterModal,
+    showSubscribeModal: showSubscribeModal,
   };
 };
 
