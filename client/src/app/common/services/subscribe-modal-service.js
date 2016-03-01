@@ -4,7 +4,7 @@ const subscribeModalService = function (ModalService) {
   const show = function (resource) {
     ModalService.showModal({
       templateUrl: `app/${resource}/subscribe-modal.html`,
-      controller: 'SubscribeResourceModalController',
+      controller: 'DsoModalController',
     });
   };
 

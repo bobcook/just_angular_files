@@ -213,10 +213,8 @@ import SearchResultsController from
 import SocialLinksController from
   './components/social-links/social-links.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
-import SubscribeModalController from
-  './components/subscribe-modal/subscribe-modal.controller.js';
-import SubscribeResourceModalController from
-  './subscribe/subscribe-resource-modal.controller.js';
+import DsoModalController from
+  './dso-modal/dso-modal.controller.js';
 import UserDashboardCardController from
   './components/user-dashboard-cards/user-dashboard-card.controller.js';
 import UserDashboardCardsController from
@@ -432,9 +430,8 @@ app
   .controller('SearchResultsController', SearchResultsController)
   .controller('SocialLinksController', SocialLinksController)
   .controller('TopNavController', TopNavController)
-  .controller('SubscribeModalController', SubscribeModalController)
-  .controller('SubscribeResourceModalController',
-    SubscribeResourceModalController)
+  .controller('DsoModalController',
+    DsoModalController)
   .controller('UserDashboardCardController', UserDashboardCardController)
   .controller('UserDashboardCardsController', UserDashboardCardsController)
   .controller('UserDashboardController', UserDashboardController)

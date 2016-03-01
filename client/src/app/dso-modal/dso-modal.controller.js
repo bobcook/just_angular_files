@@ -1,4 +1,4 @@
-const SubscribeResourceModalController = function ($scope, dsoAuth, close) {
+const DsoModalController = function ($scope, dsoAuth, close) {
   'ngInject';
 
   $scope.close = close;
@@ -7,4 +7,4 @@ const SubscribeResourceModalController = function ($scope, dsoAuth, close) {
   $scope.subscribe = dsoAuth.dsoSubScribeAuth;
 };
 
-export default SubscribeResourceModalController;
+export default DsoModalController;
