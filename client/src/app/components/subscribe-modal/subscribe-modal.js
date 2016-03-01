@@ -11,6 +11,7 @@ const subscribeModal = function () {
       buttonText: '=ssButtonText',
       auth: '&ssAuth',
       close: '&ssCloseFn',
+      login: '&ssLogin',
     },
   };
 };
