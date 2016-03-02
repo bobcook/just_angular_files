@@ -135,7 +135,6 @@ import saveUserContent from
   './components/save-user-content/save-user-content.js';
 import sideNav from './components/side-nav/side-nav.js';
 import socialLinks from './components/social-links/social-links.js';
-import dsoModal from './components/dso-modal/dso-modal.js';
 import topNav from './components/top-nav/top-nav.js';
 import userDashboardCard from
   './components/user-dashboard-cards/user-dashboard-card.js';
@@ -369,7 +368,6 @@ app
   .directive('ssSaveUserContent', saveUserContent)
   .directive('ssSocialLinks', socialLinks)
   .directive('ssSideNav', sideNav)
-  .directive('ssDsoModal', dsoModal)
   .directive('ssTopNav', topNav)
   .directive('ssUserDashboardCard', userDashboardCard)
   .directive('ssUserDashboardCards', userDashboardCards)
