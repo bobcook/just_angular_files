@@ -95,3 +95,6 @@ en:
     recipes:
       body_text: "Eat your way to brilliance.  Join now to access all of our delicious, brain healthy recipes."
       button_text: "Get Cookin'"
+    games:
+      body_text: "Provide an email address to save your favorite articles and games. You'll also be able to comment, recommend and share content."
+      button_text: "Create a Free Account"

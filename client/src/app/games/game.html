@@ -19,6 +19,7 @@
     <footer>
       <h4>Interested in playing this game?</h4>
       <a ng-if="vm.game" target="_blank" ng-href="{{vm.game.externalUrl}}" class="btn green-btn"><span>Play Game</span></a>
+      <button ng-click="vm.openRegisterModal('games')" ng-if="!$root.$currentUser" class="btn btn-primary">Save Game</button>
       <ss-save-user-content
         ng-if="$root.$currentUser && vm.game"
         ss-display-type="button"
