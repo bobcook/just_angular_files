@@ -3,6 +3,7 @@ class ExploreContent
 
   def initialize(params)
     @game_count = params[:games].to_i
+    @free_game_count = params[:free_games].to_i
     @article_count = params[:articles].to_i
     @recipe_count = params[:recipes].to_i
     @activity_count = params[:activities].to_i
@@ -21,6 +22,13 @@ class ExploreContent
     sorted_content(Game, game_count)
   end
 
+  def free_games
+    sorted_content(
+      Game.where("payload ->> 'gameType'= 'Free'"),
+      free_game_count
+    )
+  end
+
   def articles
     sorted_content(Article, article_count)
   end
@@ -35,8 +43,8 @@ class ExploreContent
 
   private
 
-  attr_accessor :game_count, :article_count, :recipe_count, :activity_count,
-                :page, :pillar
+  attr_accessor :game_count, :free_game_count, :article_count, :recipe_count,
+                :activity_count, :page, :pillar
 
   def sorted_content(resource, per_page)
     resource

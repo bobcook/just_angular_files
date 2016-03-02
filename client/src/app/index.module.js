@@ -25,6 +25,7 @@ import CurrentUser from './common/resources/current-user.js';
 import CurrentUserPolicy from './common/resources/current-user-policy.js';
 import ExploreContent from './common/resources/explore-content.js';
 import Game from './common/resources/game.js';
+import FreeGame from './common/resources/free-game.js';
 import GameReview from './common/resources/game-review.js';
 import LifestyleResult from'./common/resources/lifestyle-result.js';
 import NeuroPerformanceResult from
@@ -276,6 +277,7 @@ app
   .factory('CurrentUserPolicy', CurrentUserPolicy)
   .factory('ExploreContent', ExploreContent)
   .factory('Game', Game)
+  .factory('FreeGame', FreeGame)
   .factory('GameReview', GameReview)
   .factory('LifestyleResult', LifestyleResult)
   .factory('NeuroPerformanceResult', NeuroPerformanceResult)

@@ -32,7 +32,7 @@ const userPolicies = function userPolicies($http,
 
   const getPolicy = function getPolicy(policyName) {
     const url = `${API_URL}/api/v1/policies/${policyName}`;
-    return $http.get(url);
+    return $http.get(url, { cache: true });
   };
 
   return {

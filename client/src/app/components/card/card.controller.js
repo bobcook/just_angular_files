@@ -14,6 +14,7 @@ const CardController = function ($filter,
     case 'Activity': return ActivityCardPresenter;
     case 'Article': return ArticleCardPresenter;
     case 'Game': return GameCardPresenter;
+    case 'FreeGame': return GameCardPresenter;
     case 'Recipe': return RecipeCardPresenter;
     default: return DefaultCardPresenter;
     };

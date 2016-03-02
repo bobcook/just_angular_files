@@ -22,6 +22,8 @@ const ExploreContentController = function ($pagination, $scope) {
   };
 
   const refreshItems = () => {
+    if (!this.selectedPillar) { return; }
+
     const pillar = this.selectedPillar && this.selectedPillar.slug !== 'all'
                  ? this.selectedPillar.slug
                  : null;

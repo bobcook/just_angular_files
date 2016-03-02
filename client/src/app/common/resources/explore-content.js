@@ -10,6 +10,7 @@ const ExploreContent = function (API_URL,
     games: 2,
     activities: 3,
     recipes: 2,
+    freeGames: 2,
   };
 
   const ExploreContent = railsResourceFactory({
@@ -22,21 +23,8 @@ const ExploreContent = function (API_URL,
       this.resource('articles', 'Article');
       this.resource('recipes', 'Recipe');
       this.resource('games', 'Game');
+      this.resource('freeGames', 'FreeGame');
     }),
-  });
-
-  // "Instance-level" properties
-  ExploreContent.include({
-    paidGames: function paidGames() {
-      return this.games.filter(function (game) {
-        return game.gameType.toLowerCase() === 'paid';
-      });
-    },
-    freeGames: function freeGames() {
-      return this.games.filter(function (game) {
-        return game.gameType.toLowerCase() !== 'paid';
-      });
-    },
   });
 
   return ExploreContent;
