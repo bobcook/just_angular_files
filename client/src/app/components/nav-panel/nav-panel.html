@@ -67,35 +67,6 @@
         <a ui-sref="application.user.working-on" permission only="'paid'" ng-click="vm.close()">My Staying Sharp</a>
         <a permission only="'unpaid'" ng-click="vm.showSubscribeModal('me')">My Staying Sharp</a>
       </li>
-      <li class="tertiary-level" ng-if="$root.$currentUser.isLoggedIn">
-        <ul>
-          <li>
-            <a ui-sref="application.user.working-on" ng-click="vm.close()">
-              <span class="icon icon-activities-stats"></span>My Activities
-            </a>
-          </li>
-          <li>
-            <a ui-sref="application.user.recipes" ng-click="vm.close()">
-              <span class="icon icon-saved-recipes"></span>My Recipes
-            </a>
-          </li>
-          <li>
-            <a ui-sref="application.user.articles" ng-click="vm.close()">
-              <span class=" icon icon-saved-articles"></span>My Articles
-            </a>
-          </li>
-          <li>
-            <a ui-sref="application.user.games" ng-click="vm.close()">
-              <span class="icon icon-games"></span>My Games
-            </a>
-          </li>
-          <li>
-            <a ui-sref="application.user.assessments.overall" ng-click="vm.close()">
-              <span class="icon icon-assessment-results"></span>My Assessment Results
-            </a>
-          </li>
-        </ul>
-      </li>
       <li class="primary-level">
         <a ui-sref="application.assessments" ng-click="vm.close()">
           Take the Assessment
