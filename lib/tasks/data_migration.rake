@@ -1,5 +1,23 @@
 # TODO: remove this code after migrating
 namespace :data_migration do
+  desc 'reset content'
+  task reset_content: :environment do
+    puts 'destroying all activities'
+    Activity.where(created_at: 2.days.ago..Time.zone.now).destroy_all
+
+    puts 'destroying all games...'
+    Game.where(created_at: 2.days.ago..Time.zone.now).destroy_all
+
+    puts 'destroying all recipes...'
+    Recipe.where(created_at: 2.days.ago..Time.zone.now).destroy_all
+
+    puts 'destroying all articles...'
+    Article.where(created_at: 2.days.ago..Time.zone.now).destroy_all
+
+    puts 'importing content...'
+    ImportContentJob.perform_later
+  end
+
   desc 'set last_modified date to a year ago'
   task update_last_modified: :environment do
     Activity.find_each do |activity|
