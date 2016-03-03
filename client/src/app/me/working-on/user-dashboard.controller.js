@@ -1,5 +1,8 @@
-const UserDashboardController = function (UserActivity) {
+const UserDashboardController = function (UserActivity,
+                                          restrictedRedirectService) {
   'ngInject';
+
+  restrictedRedirectService.check();
 
   this.items = null;
 

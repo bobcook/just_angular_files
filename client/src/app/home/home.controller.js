@@ -1,6 +1,10 @@
 const HomeController = function (AssessmentStatus,
                                  ExploreContent,
-                                 $rootScope) {
+                                 $rootScope,
+                                 $state,
+                                 $stateParams,
+                                 ModalService,
+                                 $location) {
   'ngInject';
 
   const currentUser = $rootScope.$currentUser;
@@ -10,6 +14,14 @@ const HomeController = function (AssessmentStatus,
       this.hasCompletedAssessments = result;
     });
   };
+
+  if ($stateParams.restrictedRedirect === 'true') {
+    ModalService.showModal({
+      templateUrl: 'app/home/restricted-redirect-modal.html',
+      controller: 'RestrictedRedirectContoller',
+    });
+    $location.search('restrictedRedirect', null);
+  }
 
   this.selectedPillar = null; // Will be overwritten by pillar filters
   this.resource = ExploreContent;

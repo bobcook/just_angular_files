@@ -1,8 +1,11 @@
 const UserGameController = function (Game,
                                      GameReview,
                                      UserGame,
+                                     restrictedRedirectService,
                                      $stateParams) {
   'ngInject';
+
+  restrictedRedirectService.check();
 
   // get one game
   UserGame.get($stateParams.id).then((game) => {

@@ -1,0 +1,19 @@
+<div>
+  <div class="modal subscribe-modal">
+    <div class="content">
+      <div class="header">
+        <button class="close" aria-label="Close" ng-click="close()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="body">
+        <p>Welcome to Staying Sharp. This page is available to Staying Sharp subscribers. Sign up now and get on your way to better brain health.</p>
+      </div>
+      <div class="footer">
+        <button ng-click="authFunction()" class="btn btn-primary">Get Started</button>
+        <small ng-hide="$root.$currentUser">Already have an account? <a href="#" ng-click="login()">Log in here</a></small>
+      </div>
+    </div>
+  </div>
+  <div class="modal-cellophane"></div>
+</div>

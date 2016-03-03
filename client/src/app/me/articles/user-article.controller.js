@@ -1,8 +1,11 @@
 const UserArticleController = function (Article,
                                        ArticleReview,
                                        UserArticle,
+                                       restrictedRedirectService,
                                        $stateParams) {
   'ngInject';
+
+  restrictedRedirectService.check();
 
   // get one article
   UserArticle.get($stateParams.id).then((article) => {

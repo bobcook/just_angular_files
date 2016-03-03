@@ -97,6 +97,8 @@ import PerformSearch from './search/perform-search.js';
 import dsoModalService from
   './common/services/dso-modal-service.js';
 import userPolicies from './common/services/user-policies.js';
+import restrictedRedirectService from
+  './common/services/restricted-redirect-service.js';
 
 // directives
 import activityTracker from './components/activity-tracker/activity-tracker.js';
@@ -203,6 +205,8 @@ import ResultSectionController from
   './components/assessment-results/result-section.controller.js';
 import ResultIndexController from
   './components/charts/result-index.controller.js';
+import RestrictedRedirectContoller from
+  './home/restrcted-redirect.controller.js';
 import RetakeAssessmentModalController from
   './assessments/retake-assessment-modal.controller.js';
 import ReviewsController from './components/reviews/reviews.controller.js';
@@ -337,6 +341,7 @@ app
   .factory('PerformSearch', PerformSearch)
   .factory('dsoModalService', dsoModalService)
   .factory('userPolicies', userPolicies)
+  .factory('restrictedRedirectService', restrictedRedirectService)
   .provider('modalStateHelper', modalStateHelper)
 
   // directives
@@ -423,6 +428,7 @@ app
   .controller('RelatedContentController', RelatedContentController)
   .controller('ResultIndexController', ResultIndexController)
   .controller('ResultSectionController', ResultSectionController)
+  .controller('RestrictedRedirectContoller', RestrictedRedirectContoller)
   .controller('RetakeAssessmentModalController',
      RetakeAssessmentModalController)
   .controller('ReviewsController', ReviewsController)

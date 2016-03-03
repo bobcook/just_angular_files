@@ -1,5 +1,7 @@
-const UserGamesController = function (UserGame) {
+const UserGamesController = function (UserGame, restrictedRedirectService) {
   'ngInject';
+
+  restrictedRedirectService.check();
 
   // pass values to directive
   this.isUserNamespace = true;

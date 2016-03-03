@@ -2,7 +2,8 @@ const runBlock = function ($log,
                            $window,
                            $rootScope,
                            userPolicies,
-                           $location) {
+                           $location,
+                           $state) {
   'ngInject';
 
   userPolicies.definePermissions();

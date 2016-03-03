@@ -205,7 +205,7 @@ const routerConfig = function (stateHelperProvider,
         },
         {
           name: 'home',
-          url: '/',
+          url: '/?restrictedRedirect',
           templateUrl: 'app/home/home.html',
           controller: 'HomeController',
           controllerAs: 'vm',

@@ -2,8 +2,11 @@ const UserRecipeController = function (Recipe,
                                        RecipePagePresenter,
                                        RecipeReview,
                                        UserRecipe,
+                                       restrictedRedirectService,
                                        $stateParams) {
   'ngInject';
+
+  restrictedRedirectService.check();
 
   // get one recipe
   UserRecipe.get($stateParams.id).then((recipe) => {

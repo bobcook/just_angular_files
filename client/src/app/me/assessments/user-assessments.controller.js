@@ -1,5 +1,9 @@
-const UserAssessmentController = function (AssessmentStatus, $q) {
+const UserAssessmentController = function (AssessmentStatus,
+                                           restrictedRedirectService,
+                                           $q) {
   'ngInject';
+
+  restrictedRedirectService.check();
 
   this.showAssessmentBanner = false;
   this.showAssessmentResults = false;
