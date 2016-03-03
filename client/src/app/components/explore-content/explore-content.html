@@ -18,14 +18,14 @@
        ss-card-for="card">
       </ss-card>
   </div>
-  <div class="card-holder">
+  <div class="card-holder" permission only="'paid'">
     <ss-card
-      permission only="'paid'"
       ng-repeat="card in page.games"
       ss-card-for="card">
     </ss-card>
+  </div>
+  <div class="card-holder" permission only="'unpaid'">
     <ss-card
-      permission only="'unpaid'"
       ng-repeat="card in page.freeGames"
       ss-card-for="card">
     </ss-card>
