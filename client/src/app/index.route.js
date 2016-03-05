@@ -365,7 +365,6 @@ const routerConfig = function (stateHelperProvider,
       url: '/callbacks/login-success/:claimToken?redirectPath',
       controller: 'LoginSuccessController',
     })
-
     .state({
       name: 'game-iframe',
       url: '/game-iframe',
@@ -379,6 +378,12 @@ const routerConfig = function (stateHelperProvider,
       controller: 'LogoutController',
     });
 
+  $urlRouterProvider.when('/ssologin?link&intcmp', function ($match,
+                                                      $stateParams,
+                                                      dsoAuth) {
+    dsoAuth.login($match.intcmp, $match.link);
+    return '/';
+  });
   $urlRouterProvider.otherwise('/');
 };
 
