@@ -241,6 +241,7 @@ const app = angular.module('aarp-staying-sharp', [
   'pascalprecht.translate', // aka angular-translate
   'highcharts-ng',
   'ngAnimate',
+  'ngCookies',
   'ngSanitize',
   'ngStorage',
   'rails', // aka angular-rails-resource

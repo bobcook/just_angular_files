@@ -1,4 +1,4 @@
-const dsoAuth = function ($location, ApiRoutes, $postHref, dsoSubscribe) {
+const dsoAuth = function ($location, $cookies, ApiRoutes, $postHref, dsoSubscribe) {
   'ngInject';
 
   const login = function (promo = 'SS-BETA', redirectPath = $location.path()) {
@@ -9,7 +9,7 @@ const dsoAuth = function ($location, ApiRoutes, $postHref, dsoSubscribe) {
 
   const dsoSubscribeAuth = `https://appsec-s.aarp.org/smembership/` +
                          `subscription?promo=${dsoSubscribe.promo}&` +
-                         `campaignURL=${dsoSubscribe.campaignUrl}&` +
+                         `campaignURL=${$cookies.get('campaignURL')}&` +
                          `ref=${dsoSubscribe.callbackUrl}`;
 
   return {

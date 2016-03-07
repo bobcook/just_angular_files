@@ -3,10 +3,17 @@ const runBlock = function ($log,
                            $rootScope,
                            userPolicies,
                            $location,
+                           $cookies,
                            $state) {
   'ngInject';
 
   userPolicies.definePermissions();
+
+  const campaignURL = $location.search().campaignURL;
+  if (!_.isUndefined(campaignURL)) {
+    const options = { expires: new Date(moment().add(14, 'days'))};
+    $cookies.put('campaignURL', campaignURL, options);
+  }
 
   $rootScope.$on('$stateChangeSuccess', function (event,
                                                   toState,
