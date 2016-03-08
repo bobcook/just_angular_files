@@ -378,10 +378,10 @@ const routerConfig = function (stateHelperProvider,
       controller: 'LogoutController',
     });
 
-  $urlRouterProvider.when('/ssologin?link&intcmp', function ($match,
+  $urlRouterProvider.when('/ssologin?link', function ($match,
                                                       $stateParams,
                                                       dsoAuth) {
-    dsoAuth.login($match.intcmp, $match.link);
+    dsoAuth.login($match.link);
     return '/';
   });
   $urlRouterProvider.otherwise('/');

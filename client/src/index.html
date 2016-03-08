@@ -26,6 +26,7 @@
             'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
             'dsoSubscribePromo': 'SM-SS',
             'dsoSubscribeCallbackUrl': 'https://stayingsharp.aarp.org',
+            'dsoSubscribeDomain': 'https://appsec-s.aarp.org',
           },
           dev: {
             'API_URL': 'https://aarp-staying-sharp-dev.herokuapp.com',
@@ -36,6 +37,7 @@
             'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
             'dsoSubscribePromo': 'SM-SS',
             'dsoSubscribeCallbackUrl': 'https://stayingsharp.aarp.org',
+            'dsoSubscribeDomain': 'https://appsec-s.aarp.org',
           },
           // TODO: remove once everything migrated to s3
           devS3: {
@@ -46,6 +48,7 @@
             'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
             'dsoSubscribePromo': 'SM-SS',
             'dsoSubscribeCallbackUrl': 'https://stayingsharp.aarp.org',
+            'dsoSubscribeDomain': 'https://appsec-s.aarp.org',
           },
           staging: {
             'API_URL': 'https://aarp-staying-sharp-stg.herokuapp.com',
@@ -56,6 +59,7 @@
             'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
             'dsoSubscribePromo': 'SM-SS',
             'dsoSubscribeCallbackUrl': 'https://stayingsharp.aarp.org',
+            'dsoSubscribeDomain': 'https://appsec-s.aarp.org',
           },
           production: {
             'API_URL': 'https://aarp-staying-sharp-prod.herokuapp.com',
@@ -66,6 +70,7 @@
             'airbrakeProjectKey': '8385a658a0b9e4d16094ce0a28b75317',
             'dsoSubscribePromo': 'SM-SS',
             'dsoSubscribeCallbackUrl': 'https://stayingsharp.aarp.org',
+            'dsoSubscribeDomain': 'https://appsec.aarp.org',
           },
         };
 
@@ -100,6 +105,7 @@
         };
         window.__env.envName = currentEnv;
         window.__env.dsoSubscribe = {
+          domain: envVars[currentEnv].dsoSubscribeDomain,
           promo: envVars[currentEnv].dsoSubscribePromo,
           callbackUrl: envVars[currentEnv].dsoSubscribeCallbackUrl,
         }
