@@ -72,6 +72,14 @@ const routerConfig = function (stateHelperProvider,
         },
         redirectIfNeeded: redirectIfNeeded,
       },
+      onEnter: function (ModalService, $rootScope) {
+        if ($rootScope.$currentUser) {
+          ModalService.showModal({
+            templateUrl: 'app/components/beta-modal/beta-modal.html',
+            controller: 'BetaModalController',
+          });
+        }
+      },
       children: [
         {
           name: 'activity',
