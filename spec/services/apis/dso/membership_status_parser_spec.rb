@@ -13,7 +13,7 @@ module Apis
             Apis::Response.new(
               status: status,
               body: {
-                getSpecializedMembershipInfo: {
+                getSpecializedMembershipStatus: {
                   specializedMembershipStatusList: {
                     specializedMembershipStatus: {
                       membershipStatus: status_str
@@ -37,7 +37,7 @@ module Apis
             Apis::Response.new(
               status: 401,
               body: {
-                getSpecializedMembershipInfo: {
+                getSpecializedMembershipStatus: {
                   specializedMembershipStatusList: {
                     specializedMembershipStatus: {
                       membershipStatus: 'PROSPECT'
@@ -61,7 +61,7 @@ module Apis
             Apis::Response.new(
               status: status,
               body: {
-                getSpecializedMembershipInfo: {
+                getSpecializedMembershipStatus: {
                   specializedMembershipStatusList: {
                     specializedMembershipStatus: {
                       membershipStatus: status_str

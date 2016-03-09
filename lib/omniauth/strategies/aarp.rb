@@ -47,11 +47,10 @@ module OmniAuth
 
       def callback_phase
         user_response = api.user(user_token)
-        membership_response = api.specialized_membership_info(user_token)
+        membership_response = api.specialized_membership_status(user_token)
 
         @user_info = user_response.body[:user].try do |user_info|
           user_info.merge(
-            email: email(membership_response),
             membership_status: membership_status(membership_response)
           )
         end

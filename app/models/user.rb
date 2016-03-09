@@ -17,7 +17,9 @@ class User < ActiveRecord::Base
   has_many :user_assessments, through: :user_assessment_groups
 
   devise :database_authenticatable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: [:aarp]
+         :omniauthable,
+         omniauth_providers: [:aarp],
+         authentication_keys: [:external_id]
 
   as_enum :membership_status, prospect: 0, paid: 1, lead: 2
 
@@ -43,6 +45,10 @@ class User < ActiveRecord::Base
 
   def last_completed_user_assessment_group
     user_assessment_groups.reverse.find(&:completed?)
+  end
+
+  def email_required?
+    false
   end
 
   private

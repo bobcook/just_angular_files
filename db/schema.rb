@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160129200315) do
+ActiveRecord::Schema.define(version: 20160309150147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -276,7 +276,7 @@ ActiveRecord::Schema.define(version: 20160129200315) do
     t.string   "auth_token"
     t.string   "provider"
     t.string   "uid"
-    t.string   "email",                default: "", null: false
+    t.string   "email",                default: ""
     t.string   "encrypted_password",   default: "", null: false
     t.datetime "remember_created_at"
     t.integer  "sign_in_count",        default: 0,  null: false
@@ -289,8 +289,6 @@ ActiveRecord::Schema.define(version: 20160129200315) do
     t.string   "external_id"
     t.integer  "membership_status_cd"
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "activity_reminder_settings", "user_activities"
   add_foreign_key "activity_tracker_questions", "activity_trackers"

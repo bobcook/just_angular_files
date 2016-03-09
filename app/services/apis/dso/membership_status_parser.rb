@@ -25,8 +25,8 @@ module Apis
 
       def raw_status
         @raw_status ||=
-          response.body
-          .fetch(:getSpecializedMembershipInfo, {})
+          response.body.with_indifferent_access
+          .fetch(:getSpecializedMembershipStatus, {})
           .fetch(:specializedMembershipStatusList, {})
           .fetch(:specializedMembershipStatus, {})
           .fetch(:membershipStatus, nil)
