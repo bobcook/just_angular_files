@@ -11,8 +11,8 @@ const dsoAuth = function ($location,
     );
   };
 
-  const dsoSubscribeAuth = function (redirectPath) {
-    const ssologinPath = buildSSOLoginPath(redirectPath);
+  const dsoSubscribeAuth = function () {
+    const ssologinPath = buildSSOLoginPath($location.path());
     const campaignURL = $cookies.get('campaignURL') || 'BT1';
     return `${dsoSubscribe.domain}/smembership/` +
     `subscription?promo=${dsoSubscribe.promo}&` +

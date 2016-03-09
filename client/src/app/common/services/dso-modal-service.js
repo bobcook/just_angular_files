@@ -1,4 +1,4 @@
-const dsoModalService = function (ModalService, dsoAuth) {
+const dsoModalService = function ($window, ModalService, dsoAuth) {
   'ngInject';
 
   const showRegisterModal = function (resource) {
@@ -18,9 +18,13 @@ const dsoModalService = function (ModalService, dsoAuth) {
       controller: 'DsoModalController',
       inputs: {
         resource: resource,
-        authFunction: dsoAuth.subscribe,
+        authFunction: subscribe,
       },
     });
+  };
+
+  const subscribe = function () {
+    $window.location.href = dsoAuth.dsoSubscribeAuth();
   };
 
   return {
