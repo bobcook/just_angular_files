@@ -13,9 +13,10 @@ const dsoAuth = function ($location,
 
   const dsoSubscribeAuth = function (redirectPath) {
     const ssologinPath = buildSSOLoginPath(redirectPath);
+    const campaignURL = $cookies.get('campaignURL') || 'BT1';
     return `${dsoSubscribe.domain}/smembership/` +
     `subscription?promo=${dsoSubscribe.promo}&` +
-    `campaignURL=${$cookies.get('campaignURL')}&` +
+    `campaignURL=${campaignURL}&` +
     `ref=${ssologinPath}`;
   };
 
