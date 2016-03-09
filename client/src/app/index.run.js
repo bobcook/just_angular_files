@@ -11,7 +11,7 @@ const runBlock = function ($log,
 
   const campaignURL = $location.search().campaignURL;
   if (!_.isUndefined(campaignURL)) {
-    const options = { expires: new Date(moment().add(14, 'days'))};
+    const options = { expires: new Date(moment().add(14, 'days')) };
     $cookies.put('campaignURL', campaignURL, options);
   }
 

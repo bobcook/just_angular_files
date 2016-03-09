@@ -1,6 +1,7 @@
 const TopNavController = function (ApiRoutes,
                                    $state,
                                    $rootScope,
+                                   $location,
                                    dsoAuth,
                                    CurrentUserPolicy) {
   'ngInject';
@@ -11,7 +12,7 @@ const TopNavController = function (ApiRoutes,
   this.searchCategories = ['All content'];
   this.isMenuOpen = false;
   this.isSearchOpen = false;
-  this.subscribeUrl = dsoAuth.dsoSubscribeAuth;
+  this.subscribeUrl = dsoAuth.dsoSubscribeAuth($location.path());
 
   this.submitSearch = function () {
     this.isSearchOpen = false;
