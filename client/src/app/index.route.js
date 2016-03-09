@@ -389,8 +389,8 @@ const routerConfig = function (stateHelperProvider,
   $urlRouterProvider.when('/ssologin?link', function ($match,
                                                       $stateParams,
                                                       dsoAuth) {
-    dsoAuth.login($match.link);
-    return '/';
+    const redirectUrl = $match.link || '/';
+    dsoAuth.login(redirectUrl);
   });
   $urlRouterProvider.otherwise('/');
 };
