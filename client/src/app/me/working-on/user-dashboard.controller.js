@@ -2,7 +2,7 @@ const UserDashboardController = function (UserActivity,
                                           restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.check();
+  restrictedRedirectService.checkAnonymous();
 
   this.items = null;
 

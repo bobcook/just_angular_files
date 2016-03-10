@@ -64,8 +64,8 @@
         </ul>
       </li>
       <li class="primary-level">
-        <a ui-sref="application.user.working-on" permission only="'paid'" ng-click="vm.close()">My Staying Sharp</a>
-        <a permission only="'unpaid'" ng-click="vm.showSubscribeModal('me')">My Staying Sharp</a>
+        <a ui-sref="application.user.working-on" ng-if="$root.$currentUser" ng-click="vm.close()">My Staying Sharp</a>
+        <a ng-if="!$root.$currentUser" ng-click="vm.showSubscribeModal('me')">My Staying Sharp</a>
       </li>
       <li class="primary-level">
         <a ui-sref="application.assessments" ng-click="vm.close()">

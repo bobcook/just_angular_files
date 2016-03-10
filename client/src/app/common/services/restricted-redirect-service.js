@@ -7,8 +7,15 @@ const restrictedRedirectService = function ($state, $rootScope) {
     }
   };
 
+  const checkAnonymous = function checkAnonymous(){
+    if (!$rootScope.$currentUser) {
+      $state.go('application.home', { restrictedRedirect: true });
+    }
+  };
+
   return {
     check: check,
+    checkAnonymous: checkAnonymous,
   };
 };
 
