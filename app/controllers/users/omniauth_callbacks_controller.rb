@@ -18,7 +18,8 @@ module Users
       Frontend::Paths.lookup(
         :login_success,
         token_holder.claim_token,
-        login_success_redirect_path
+        login_success_redirect_path,
+        promo_code
       )
     end
 
@@ -30,6 +31,12 @@ module Users
       request.env
         .fetch('omniauth.params', {})
         .fetch('redirectPath', nil)
+    end
+
+    def promo_code
+      request.env
+        .fetch('omniauth.params', {})
+        .fetch('promo', nil)
     end
 
     def auth_data

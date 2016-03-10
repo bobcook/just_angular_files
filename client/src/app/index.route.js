@@ -227,6 +227,11 @@ const routerConfig = function (stateHelperProvider,
           templateUrl: 'app/login-failure/login-failure.html',
         },
         {
+          name: 'lead-beta-landing',
+          url: '/lead-beta-landing',
+          templateUrl: 'app/landing/lead-beta-landing.html',
+        },
+        {
           name: 'recipe',
           url: '/recipes/:id',
           templateUrl: 'app/recipes/recipe.html',
@@ -370,7 +375,7 @@ const routerConfig = function (stateHelperProvider,
     })
     .state({
       name: 'login-success',
-      url: '/callbacks/login-success/:claimToken?redirectPath',
+      url: '/callbacks/login-success/:claimToken?redirectPath&promo',
       controller: 'LoginSuccessController',
     })
     .state({

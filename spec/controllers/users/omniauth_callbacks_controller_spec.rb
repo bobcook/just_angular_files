@@ -25,7 +25,12 @@ describe Users::OmniauthCallbacksController do
           .to receive(:create_from_auth_token!).and_return(token_holder)
         allow_any_instance_of(EngagementEmails).to receive(:send_later)
         expected_path =
-          Frontend::Paths.lookup(:login_success, token_holder.claim_token, nil)
+          Frontend::Paths.lookup(
+            :login_success,
+            token_holder.claim_token,
+            nil,
+            nil
+          )
 
         get :aarp
         expect(response).to redirect_to(expected_path)

@@ -15,7 +15,22 @@ const LoginSuccessController = function ($loadCurrentUser,
       $scope.$apply();
     };
 
-    $timeout(doRedirect); // Wait for current digest cycle before redirecting
+    if (isLeadBetaUser()) {
+      $timeout(goToLeadBetaLanding);
+    } else {
+      $timeout(doRedirect); // Wait for current digest cycle before redirecting
+    }
+  };
+
+  const isLeadBetaUser = function () {
+    const isBetaPromo = $stateParams.promo === 'SS-BETA';
+    const isLeadStatus = $rootScope.$currentUser.membershipStatus === 'lead';
+    return isLeadStatus && isBetaPromo;
+  };
+
+  const goToLeadBetaLanding = function () {
+    $location.url('/lead-beta-landing');
+    $scope.$apply();
   };
 
   if ($stateParams.claimToken) {
