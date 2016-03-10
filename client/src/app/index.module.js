@@ -86,6 +86,8 @@ import AssessmentResultQueries from
   './assessments/results/queries.js';
 import AssessmentResultScores from
   './assessments/results/scores.js';
+import assessmentStates from
+  './assessments/assessment-engagement-states.js';
 import authInterceptor from './common/services/auth-interceptor.js';
 import dependentMemoize from './common/services/dependent-memoize.js';
 import dsoAuth from './common/services/dso-auth.js';
@@ -108,6 +110,8 @@ import activityTrackerBinary from
   './components/activity-tracker/binary/binary.js';
 import activityTrackerQuantity from
   './components/activity-tracker/quantity/quantity.js';
+import assessmentButton from
+  './assessments/assessment-button/assessment-button.js';
 import autoRedirect from './common/directives/auto-redirect.js';
 import card from './components/card/card.js';
 import cards from './components/cards/cards.js';
@@ -165,6 +169,8 @@ import AssessmentController from './assessments/assessment.controller.js';
 import AssessmentsController from './assessments/assessments.controller.js';
 import AssessmentsCallbackController from
   './assessments/assessments-callback.controller.js';
+import AssessmentButtonController from
+  './assessments/assessment-button/assessment-button.controller.js';
 import BetaModalController from
   './components/beta-modal/beta-modal.controller.js';
 import CardController from './components/card/card.controller.js';
@@ -339,6 +345,7 @@ app
   .factory('AssessmentStatus', AssessmentStatus)
   .factory('AssessmentResultQueries', AssessmentResultQueries)
   .factory('AssessmentResultScores', AssessmentResultScores)
+  .factory('assessmentStates', assessmentStates)
   .factory('dsoAuth', dsoAuth)
   .factory('dependentMemoize', dependentMemoize)
   .factory('FutureBrainStats', FutureBrainStats)
@@ -355,6 +362,7 @@ app
   .directive('ssActivityTracker', activityTracker)
   .directive('ssActivityTrackerBinary', activityTrackerBinary)
   .directive('ssActivityTrackerQuantity', activityTrackerQuantity)
+  .directive('ssAssessmentButton', assessmentButton)
   .directive('ssAutoRedirect', autoRedirect)
   .directive('ssCard', card)
   .directive('ssCardActivityTracker', cardActivityTracker)
@@ -403,6 +411,7 @@ app
   .controller('AssessmentController', AssessmentController)
   .controller('AssessmentsController', AssessmentsController)
   .controller('AssessmentsCallbackController', AssessmentsCallbackController)
+  .controller('AssessmentButtonController', AssessmentButtonController)
   .controller('BetaModalController', BetaModalController)
   .controller('CardController', CardController)
   .controller('CardActivityTrackerController', CardActivityTrackerController)

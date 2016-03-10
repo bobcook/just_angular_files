@@ -399,6 +399,9 @@ const routerConfig = function (stateHelperProvider,
     const redirectUrl = $match.link || '/';
     dsoAuth.login(redirectUrl);
   });
+  $urlRouterProvider.when('/begin-assessment', function ($assessmentsAuth) {
+    $assessmentsAuth.authenticate();
+  });
   $urlRouterProvider.otherwise('/');
 };
 

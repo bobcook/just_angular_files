@@ -2,9 +2,7 @@
   <div class="left"></div>
   <div class="right"></div>
   <div class="cp-lead-in-bg"
-    ng-style="{
-      'background-image': 'url(app/assets/images/lead-in-colors/{{leadHeight}}-{{leadColor}}.png), url(app/assets/images/{{leadImage}})'
-    }">
+    ng-style="leadImage ? { 'background-image': 'url(app/assets/images/lead-in-colors/{{leadHeight}}-{{leadColor}}.png), url(app/assets/images/{{leadImage}})'} : {}">
     <section class="container">
       <div class="copy-wrap">
         <div class="vertical-content">

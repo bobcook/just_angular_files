@@ -1,83 +1,187 @@
 <ss-lead-in
-  lead-color="yellow-teal"
-  lead-image="banner-assessment.jpg"
-  lead-height="tall"
-  lead-title="Welcome to the Brain Health Assessment">
+  lead-color="teal"
+  lead-height="short"
+  lead-title="Brain Health Assessment">
 </ss-lead-in>
 
-<div class="cp-assessment-intro">
+<div class="cp-centered-leadin">
   <section class="container">
+
     <ss-info-box ng-hide="vm.hasFlash">
       <p translate>info.missing_flash_warning_assessments</p>
       <a ui-sref="application.home" class="btn">Explore Staying Sharp</a>
     </ss-info-box>
 
     <div ng-show="vm.hasFlash">
-      <div class="assessment-description">
-
-        <h2>About the Brain Health Assessment</h2>
-
-        <div ng-switch="vm.buttonState">
-          <a ng-switch-when="Questionnaire" class="btn" href="#" ui-sref="application.assessments-questionnaire({id: vm.nextAssessmentId })">{{vm.buttonText}}</a>
-          <a ng-switch-when="MBS" class="btn" href="#" ng-click="vm.authForAssessments()">{{vm.buttonText}}</a>
-        </div>
-
+      <div class="img-block">
+        <img src="app/assets/images/leadin-bike.jpg" alt="">
+      </div>
+      <div class="copy-block">
+        <h2 class="jumbo">Better Brain Health Starts Here.</h2>
         <p>
-          You are about to take a very important step toward maintaining good brain health. Taking the Staying Sharp Brain Health Assessment will provide insight into how your brain does its work, including storing memories, maintaining attention and performing other cognitive functions.
-        </p>
-
-        <p>
-          Over about 20-30 minutes, you will answer questions and perform tasks developed by scientists that will help you understand how your brain functions in different areas and how your lifestyle supports your brain health. After you complete the assessment, you will receive a detailed results report and personalized recommendations that can help you improve your brain health over time.
-        </p>
-
-        <h3>What does the Brain Health Assessment measure?</h3>
-
-        <p>
-          The same way you can clock how fast you run, weigh how heavy you are, or evaluate eyesight and hearing, the assessment has been formulated by scientists to measure how your brain works. Your brain health score will uncover how your brain performs across six neuroperformance indicators that measure cognitive performance, including:
-        </p>
-
-        <ul>
-          <li>Working Memory</li>
-          <li>Recognition Memory</li>
-          <li>Executive Function</li>
-          <li>Sustained Attention</li>
-          <li>Processing Speed</li>
-          <li>Cognitive Flexibility</li>
-        </ul>
-
-        <p>
-          Your overall score also takes into account your age and the elements of your lifestyle that support and improve brain health. Additionally, individual scores within each neuroperformance category provide deeper insight into your brain’s strengths and opportunities for growth.
-        </p>
-
-        <h3>How do I get started?</h3>
-
-        <p>
-          Simply make yourself comfortable in a spot where you can concentrate for 20 to 30 minutes. It’s best to take the assessment on a computer as the neuroperformance section of the assessment is not yet available on mobile devices. If you are on a mobile device, you can complete the multiple choice questions now and we’ll save your progress so you can do the neuroperformance section when you have access to a computer.
-        </p>
-
-        <p>
-          The assessment begins with a series of simple multiple choice lifestyle questions, followed by a series of 6 interactive neuroperfomance tests. Then a few more quick multiple choice questions before you get to see your results!
-        </p>
-
-        <h3>The Assessment Results</h3>
-
-        <p>
-          The report you receive once you complete the assessment will illustrate your strengths and where there is room to improve, with all scores based on your current age.
-        </p>
-
-        <p>
-          The recommendations we provide are prioritized according to your brain health profile to help you effectively boost and maintain brain health. Articles, games, recipes, activities and challenges: everything we offer is customized by your assessment results and backed by the latest brain science.
-        </p>
-
-        <div ng-switch="vm.buttonState">
-          <a ng-switch-when="Questionnaire" class="btn" href="#" ui-sref="application.assessments-questionnaire({id: vm.nextAssessmentId })">{{vm.buttonText}}</a>
-          <a ng-switch-when="MBS" class="btn" href="#" ng-click="vm.authForAssessments()">{{vm.buttonText}}</a>
-        </div>
-
-        <p>
-          <small>The Brain Health Assessment and content are offered for informational purposes and to educate subscribers on brain health.  Please seek the advice of a physician for diagnosis and treatment of specific medical needs and health conditions.</small>
+          Join Staying Sharp to take the Brain Health Assessment and receive a detailed
+          results report that will provide insight into how your brain works and how your
+          lifestyle supports cognitive performance.
         </p>
       </div>
+      <div class="cta-block">
+        <ss-assessment-button></ss-assessment-button>
+      </div>
     </div>
+  </section>
+</div>
+
+<div class="cp-additional-content assessment-steps grey-background">
+  <section class="slim">
+    <h3>The assessment</h3>
+    <a href="#requiredTechnology"
+       data-toggle="modal"
+       data-target="#requiredTechnology">See required technology</a>
+    <p class="width-98">
+      Over about 20-30 minutes, you will answer questions and perform tasks
+      developed by scientists that will help you understand how your brain
+      functions in different areas and how your lifestyle supports your brain
+      health.
+    </p>
+    <article class="copy-w-aside">
+      <div class="steps">
+        <div class="step step-1">
+          <span class="step-number">
+            1
+          </span>
+          <div class="copy">
+            <h5>Lifestyle<br>Questionaire</h5>
+            <h6 class="step-time">
+              <span class="icon-time"></span>10 - 15 minutes
+            </h6>
+          </div>
+        </div>
+        <div class="step step-2">
+          <span class="step-number">
+            2
+          </span>
+          <div class="copy">
+            <h5>Neuroperformance<br>Test</h5>
+            <h6 class="step-time">
+              <span class="icon-time"></span>10 - 15 minutes
+            </h6>
+          </div>
+        </div>
+        <div class="step step-3">
+          <span class="step-number">
+            3
+          </span>
+          <div class="copy">
+            <h5>System<br>Analysis</h5>
+            <h6 class="step-time">
+              <span class="icon-time"></span>10 - 15 minutes
+            </h6>
+          </div>
+        </div>
+      </div>
+      <aside class="blueaside">
+        <h4>Brain Health Score</h4>
+        <p>Science based results and personalized recommendations</p>
+      </aside>
+    </article>
+  </section>
+</div>
+
+<div class="cp-content-drawer blue-drawer">
+  <section class="slim">
+    <a class="toggle-content-link"
+       ng-click="vm.isContentDrawerOpen = !vm.isContentDrawerOpen">
+      <span ng-if="!vm.isContentDrawerOpen" class="change-text">
+        Show Details<span class="icon icon-down"></span>
+      </span>
+      <span ng-if="vm.isContentDrawerOpen" class="change-text">
+        Hide Details<span class="icon icon-up"></span>
+      </span>
+    </a>
+    <article ss-content-drawer="vm.isContentDrawerOpen"
+             ss-drawer-class="results-detail">
+      <h3>Results specifically for you</h3>
+      <p>The Brain Health Assessment gauges your brain's cognitive performance
+        and provides insight into how your lifestyle supports brain health.
+        Using this information, Staying Sharp will provide
+        "personalized recommendations based on your assessment.</p>
+      <p class="pull-in">You personalized report will include:<br>
+        <strong>
+          Brain Health Score, Lifestyle Score, Neuroperformance Score.
+        </strong>
+      </p>
+      <div class="cp-assessment-preview">
+        <div class="lifestyle">
+          <div class="row dials">
+            <div class="img-block">
+              <img src="app/assets/images/results-preview-dials.jpg" alt="">
+            </div>
+            <header>
+              <div class="step">
+                <span class="step-number small">1</span>
+                <h5>Lifestyle<br>Score</h5>
+              </div>
+              <div class="note">
+                <h6>Explanation or callout of this section</h6>
+              </div>
+            </header>
+          </div>
+          <div class="row dial">
+            <div class="img-block">
+              <img src="app/assets/images/results-preview-dial.jpg" alt="">
+            </div>
+            <header>
+              <div class="note">
+                <h6>
+                  <span class="h5 color-charcoal">Brain Health Score</span><br>
+                  is a combination of the lifestyle questionare, the
+                  neuroperformance test and algorithms (copy needed)
+                </h6>
+              </div>
+            </header>
+          </div>
+        </div>
+        <div class="neuroperformance">
+          <div class="row breakdown">
+            <div class="img-block">
+              <img src="app/assets/images/results-preview-breakdown.jpg" alt="">
+              <p class="foot-note">
+                example of test result <span class="triangle"></span>
+              </p>
+            </div>
+            <header>
+              <div class="step">
+                <span class="step-number small">2</span>
+                <h5>Neuroperformance<br>Score</h5>
+              </div>
+              <div class="note">
+                <h6>Explanation or callout of this section</h6>
+              </div>
+            </header>
+          </div>
+        </div>
+        <div class="system">
+          <div class="row">
+            <header>
+              <div class="step">
+                <span class="step-number small">3</span>
+                <h5>System<br>Analysis</h5>
+              </div>
+              <div class="note">
+                <h6>
+                  Nunc at velit auctor, euismod ex eget, gravida lectus.
+                  Vestibulum finibus justo a ipsum egestas, interdum faucibus
+                  orci fringilla. Lorem ipsum dolor sit amet, consectetur
+                  adipiscing elit.
+                </h6>
+              </div>
+            </header>
+          </div>
+        </div>
+      </div>
+      <div class="cta-block">
+        <ss-assessment-button></ss-assessment-button>
+      </div>
+    </article>
   </section>
 </div>

@@ -39,6 +39,34 @@
     }
   }
 
+  &.short {
+
+    .container {
+      height: auto;
+      padding-top: 21px;
+      padding-bottom: 21px;
+
+      @media screen and (min-width: 767px) {
+        height: 68px;
+      }
+
+      h2 {
+        max-width: none;
+        width: 100%;
+        margin: 0;
+        font-weight: 300;
+        line-height: 1;
+        font-size: 24px;
+      }
+    }
+  }
+
+  &.teal {
+    .left, .right {
+      background: $glacier;
+    }
+  }
+
   &.navy-teal {
     .left {
       background: $navy;

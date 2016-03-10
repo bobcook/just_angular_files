@@ -135,6 +135,14 @@
   content: "\e61b";
 }
 
+.icon-down:before {
+  content: "\e902";
+}
+
+.icon-up:before {
+  content: "\e903";
+}
+
 .icon-relax:before {
   content: "\e610";
 }
@@ -165,6 +173,10 @@
 
 .icon-games:before {
   content: "\e900";
+}
+
+.icon-time:before {
+  content: "\e901";
 }
 
 .icon-delete:hover,
