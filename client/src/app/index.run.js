@@ -45,10 +45,6 @@ const runBlock = function ($log,
 
       s.t({ pageName: path });
       // end of Segment.io analytics
-
-      // begin of Adobe DTM analytics
-      _satellite.track(url);
-      // end of Adobe DTM analytics
     }
   });
 
