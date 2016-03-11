@@ -1,4 +1,5 @@
 const TopNavController = function (ApiRoutes,
+                                   $scope,
                                    $state,
                                    $rootScope,
                                    $location,
@@ -8,6 +9,10 @@ const TopNavController = function (ApiRoutes,
 
   this.login = dsoAuth.login;
   this.isGamePlayView = $rootScope.isGamePlayView;
+
+  $scope.$on('$stateChangeSuccess', () => {
+    this.subscribeUrl = dsoAuth.dsoSubscribeAuth();
+  });
 
   this.searchCategories = ['All content'];
   this.isMenuOpen = false;
