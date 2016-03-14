@@ -1,5 +1,23 @@
 # TODO: remove this code after migrating
 namespace :data_migration do
+  desc 'reset all content'
+  task reset_all_content: :environment do
+    puts 'destroying activities...'
+    Activity.destroy_all
+
+    puts 'desotrying games...'
+    Game.destroy_all
+
+    puts 'destroying recipes...'
+    Recipe.destroy_all
+
+    puts 'desotrying articles...'
+    Article.desotry_all
+
+    puts 'importing content...'
+    ImportContentJob.perform_later
+  end
+
   desc 'reset content'
   task reset_content: :environment do
     puts 'destroying all activities'

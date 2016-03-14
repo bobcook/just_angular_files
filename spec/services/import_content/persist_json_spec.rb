@@ -8,13 +8,14 @@ module ImportContent
 
     let(:today) { Time.zone.now.noon }
     let(:cms_url) { 'http://blah.com' }
+    let(:slug) { 'slug' }
 
     def content_hash
       {
         title: 'blah title',
         published_at: today,
         last_modified: today,
-        cms_url: cms_url,
+        slug: slug,
         payload: { brainHealthPillar: [pillar1.name, pillar2.name] },
         type: 'BasicArticle'
       }
@@ -43,7 +44,7 @@ module ImportContent
       context 'when imported article is in the database' do
         context 'and has not been modified' do
           let!(:article) do
-            create(:basic_article, last_modified: today, cms_url: cms_url)
+            create(:basic_article, last_modified: today, slug: slug)
           end
 
           it 'article is not updated' do
@@ -67,7 +68,7 @@ module ImportContent
           it 'article is updated' do
             create(
               :basic_article,
-              last_modified: yesterday, cms_url: cms_url,
+              last_modified: yesterday, slug: slug,
               pillars: [pillar1, pillar2]
             )
             subject = make_subject
@@ -80,7 +81,7 @@ module ImportContent
           it 'old pillars are deleted' do
             create(
               :basic_article,
-              last_modified: yesterday, cms_url: cms_url,
+              last_modified: yesterday, slug: slug,
               pillars: [pillar1, pillar2, pillar3]
             )
             make_subject.import
@@ -92,7 +93,7 @@ module ImportContent
           it 'new pillars are added' do
             create(
               :basic_article,
-              last_modified: yesterday, cms_url: cms_url, pillars: [pillar1]
+              last_modified: yesterday, slug: slug, pillars: [pillar1]
             )
             make_subject.import
 
@@ -103,7 +104,7 @@ module ImportContent
           it 'old pillars are deleted and new pillars are added' do
             create(
               :basic_article,
-              last_modified: yesterday, cms_url: cms_url,
+              last_modified: yesterday, slug: slug,
               pillars: [pillar2, pillar3]
             )
             make_subject.import
@@ -120,7 +121,7 @@ module ImportContent
             title: 'blah title',
             published_at: today,
             last_modified: today,
-            cms_url: cms_url,
+            slug: slug,
             payload: { 'a' => 1 }
           }
         end

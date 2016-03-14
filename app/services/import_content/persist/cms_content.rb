@@ -25,6 +25,10 @@ module ImportContent
         raw_content_hash[:cms_url]
       end
 
+      def slug
+        raw_content_hash[:slug]
+      end
+
       def last_modified
         raw_content_hash[:last_modified]
       end

@@ -70,7 +70,7 @@ module ImportContent
     end
 
     def find_existing_content(content_class)
-      content_class.find_by(cms_url: cms_content.cms_url)
+      content_class.find_by(slug: cms_content.slug)
     end
   end
 end
