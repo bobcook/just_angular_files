@@ -82,7 +82,7 @@ const AsssessmentController = function ($stateParams,
   };
 
   if (this.hasFlash) {
-    AssessmentStatus.lastCompletedUserAssessmentGroup().then((lastGroup) => {
+    AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
       if (!lastGroup) { return; };
 
       assessmentFlowSetup(lastGroup);

@@ -1,10 +1,11 @@
 const FreeGame = function (API_URL, railsResourceFactory) {
   'ngInject';
 
-  const gamesUrl = `${API_URL}/api/v1/games`;
+  const gamesUrl = `${API_URL}/api/v1/free_games`;
   const FreeGame = railsResourceFactory({
     name: 'freeGame',
     url: `${gamesUrl}/{{id}}`,
+    fullResponse: true,
   });
 
   // "Instance-level" properties

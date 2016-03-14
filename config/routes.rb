@@ -43,6 +43,9 @@ Rails.application.routes.draw do
       resources :games, only: [:index, :show] do
         resources :reviews, controller: 'games/reviews', only: [:create, :index]
       end
+      resources :free_games, only: [:index, :show] do
+        resources :reviews, controller: 'games/reviews', only: [:create, :index]
+      end
       resource :copy, controller: 'copy', only: :show
       resources :pillars, only: [:index]
       resources :recipes, only: [:index, :show] do

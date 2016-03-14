@@ -10,11 +10,24 @@
   ss-selected-pillar="vm.selectedPillar">
 </ss-pillar-filters>
 
-<ss-cards
-  ss-card-classes="game-card"
-  ss-is-user-namespace="vm.isUserNamespace"
-  ss-per-page="8"
-  ss-per-row="2"
-  ss-resource="vm.resource"
-  ss-selected-pillar="vm.selectedPillar">
-</ss-cards>
+<div permission only="'paid'">
+  <ss-cards
+    ss-card-classes="game-card"
+    ss-is-user-namespace="vm.isUserNamespace"
+    ss-per-page="8"
+    ss-per-row="2"
+    ss-resource="vm.paidResource"
+    ss-selected-pillar="vm.selectedPillar">
+  </ss-cards>
+</div>
+
+<div permission only="'unpaid'">
+  <ss-cards
+    ss-card-classes="game-card"
+    ss-is-user-namespace="vm.isUserNamespace"
+    ss-per-page="8"
+    ss-per-row="2"
+    ss-resource="vm.freeResource"
+    ss-selected-pillar="vm.selectedPillar">
+  </ss-cards>
+</div>
