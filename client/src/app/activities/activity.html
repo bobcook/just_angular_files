@@ -34,10 +34,14 @@
   </section>
 </div>
 
-<div
-  ng-if="!vm.savedItem"
-  class="cp-content-detail">
+<div class="container">
+  <a class="toggle-content-link" ng-click="vm.isContentDrawerOpen = !vm.isContentDrawerOpen">
+    <span ng-if="!vm.isContentDrawerOpen" class="change-text">Show Activity Details<span class="caret caret-down"></span></span>
+    <span ng-if="vm.isContentDrawerOpen" class="change-text">Hide Activity Details<span class="caret caret-up"></span></span>
+  </a>
+</div>
 
+<div ss-content-drawer="vm.isContentDrawerOpen">
   <section class="container">
     <article>
       <div class="detail-text" ng-bind-html="vm.section1Body" ></div>
@@ -61,11 +65,8 @@
   class="cp-content-drawer">
 
   <section class="container">
-    <a class="toggle-content-link" ng-click="vm.isContentDrawerOpen = !vm.isContentDrawerOpen">
-      <span ng-if="!vm.isContentDrawerOpen" class="change-text">Show Activity Details<span class="caret caret-down"></span></span>
-      <span ng-if="vm.isContentDrawerOpen" class="change-text">Hide Activity Details<span class="caret caret-up"></span></span>
-    </a>
-    <article ss-content-drawer="vm.isContentDrawerOpen" ss-drawer-class="">
+
+    <article >
       <ss-activity-tracker
         ss-is-saved="vm.isSaved"
         activity="vm.savedItem">
