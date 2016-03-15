@@ -277,6 +277,8 @@ const routerConfig = function (stateHelperProvider,
           name: 'static',
           url: '',
           template: '<div ui-view></div>',
+          controller: 'StaticController',
+          controllerAs: 'vm',
           children: [
             {
               name: 'privacy-policy',

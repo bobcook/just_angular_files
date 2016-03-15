@@ -220,6 +220,7 @@ import SearchResultsController from
   './search/search-results.controller.js';
 import SocialLinksController from
   './components/social-links/social-links.controller.js';
+import StaticController from './static/static.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
 import DsoModalController from
   './components/dso-modal/dso-modal.controller.js';
@@ -442,6 +443,7 @@ app
   .controller('SaveUserContentController', SaveUserContentController)
   .controller('SearchResultsController', SearchResultsController)
   .controller('SocialLinksController', SocialLinksController)
+  .controller('StaticController', StaticController)
   .controller('TopNavController', TopNavController)
   .controller('DsoModalController',
     DsoModalController)
