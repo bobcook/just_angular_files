@@ -3,7 +3,7 @@ const UserAssessmentController = function (AssessmentStatus,
                                            $q) {
   'ngInject';
 
-  restrictedRedirectService.check();
+  restrictedRedirectService.filterUnpaidUsers();
 
   this.showAssessmentBanner = false;
   this.showAssessmentResults = false;

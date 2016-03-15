@@ -11,6 +11,11 @@ const dsoAuth = function ($location,
     );
   };
 
+  const dsoRegister = function () {
+    return `https://login.aarp.org/online-community` +
+    `/register/index?promo=SM-SS&referrer=${$location.path()}`;
+  };
+
   const dsoSubscribeAuth = function () {
     const ssologinPath = buildSSOLoginPath($location.path());
     const campaignURL = $cookies.get('campaignURL') || 'BT1';
@@ -29,6 +34,7 @@ const dsoAuth = function ($location,
   return {
     login: login,
     dsoSubscribeAuth: dsoSubscribeAuth,
+    dsoRegister: dsoRegister,
   };
 };
 

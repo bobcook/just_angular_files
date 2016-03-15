@@ -87,17 +87,17 @@ en:
 
   subscribe_modal:
     activities:
-      body_text: "Better brain health starts with a single step. Join now to access hundreds of simple, fun activities designed to boost your brain power."
-      button_text: "Get Started"
+      body_text: "Join now to access hundreds of simple, fun activities designed to boost your brain power."
+      button_text: "Join and Stay Sharp"
     articles:
       body_text: "Provide an email address to save your favorite articles and games. You'll also be able to comment, recommend and share content."
       button_text: "Create a Free Account"
     me:
-      body_text: "Better brain health starts with a single step. Join now to access hundreds of simple, fun activities and recipes designed to boost your brain power."
-      button_text: "Get Sharp"
+      body_text: "Join now to access the My Staying Sharp dashboard where you can save and easily access all of your favorite science-based articles, brain-food recipes and Brain Health Assessment results."
+      button_text: "Join and Stay Sharp"
     recipes:
-      body_text: "Eat your way to brilliance.  Join now to access all of our delicious, brain healthy recipes."
-      button_text: "Get Cookin'"
+      body_text: "Join now to access delicious, healthy, brain-boosting recipes"
+      button_text: "Join and Get Cookin'"
     games:
       body_text: "Provide an email address to save your favorite articles and games. You'll also be able to comment, recommend and share content."
       button_text: "Create a Free Account"

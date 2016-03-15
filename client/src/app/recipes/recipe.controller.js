@@ -2,8 +2,11 @@ const RecipeController = function (Recipe,
                                    RecipePagePresenter,
                                    RecipeReview,
                                    UserRecipe,
-                                   $stateParams) {
+                                   $stateParams,
+                                   restrictedRedirectService) {
   'ngInject';
+
+  restrictedRedirectService.filterUnpaidUsers('application.recipes');
 
   Recipe.get($stateParams.id).then((recipe) => {
     this.recipe = recipe.data;

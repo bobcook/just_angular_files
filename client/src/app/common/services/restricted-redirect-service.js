@@ -1,21 +1,30 @@
-const restrictedRedirectService = function ($state, $rootScope) {
+const restrictedRedirectService = function ($state, $rootScope, $location) {
   'ngInject';
 
-  const check = function check(){
-    if ($rootScope.$currentUser.membershipStatus !== 'paid') {
-      $state.go('application.home', { restrictedRedirect: true });
+  const unpaidUser = () => $rootScope.$currentUser.membershipStatus !== 'paid';
+
+  const anonymousUser = () => !$rootScope.$currentUser;
+
+  const redirect = function redirect(clause, redirectPath) {
+    if (clause()) {
+      $state.go(redirectPath, { restrictedRedirect: true });
     }
   };
 
-  const checkAnonymous = function checkAnonymous(){
-    if (!$rootScope.$currentUser) {
-      $state.go('application.home', { restrictedRedirect: true });
-    }
-  };
+  const filterUnpaidUsers =
+    function filterUnpaidUsers(redirectPath = 'application.home'){
+      redirect(unpaidUser, redirectPath);
+    };
+
+  const filterAnonymous =
+    function filterAnonymous(redirectPath = 'application.home'){
+      redirect(anonymousUser, redirectPath);
+    };
 
   return {
-    check: check,
-    checkAnonymous: checkAnonymous,
+    redirect: redirect,
+    filterUnpaidUsers: filterUnpaidUsers,
+    filterAnonymous: filterAnonymous,
   };
 };
 

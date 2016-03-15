@@ -1,7 +1,7 @@
 const UserGamesController = function (UserGame, restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.check();
+  restrictedRedirectService.filterUnpaidUsers();
 
   // pass values to directive
   this.isUserNamespace = true;

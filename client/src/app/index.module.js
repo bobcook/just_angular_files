@@ -97,6 +97,8 @@ import PerformSearch from './search/perform-search.js';
 import dsoModalService from
   './common/services/dso-modal-service.js';
 import userPolicies from './common/services/user-policies.js';
+import restrictedRedirectModalService from
+  './common/services/restricted-redirect-modal-service.js';
 import restrictedRedirectService from
   './common/services/restricted-redirect-service.js';
 
@@ -344,6 +346,7 @@ app
   .factory('PerformSearch', PerformSearch)
   .factory('dsoModalService', dsoModalService)
   .factory('userPolicies', userPolicies)
+  .factory('restrictedRedirectModalService', restrictedRedirectModalService)
   .factory('restrictedRedirectService', restrictedRedirectService)
   .provider('modalStateHelper', modalStateHelper)
 

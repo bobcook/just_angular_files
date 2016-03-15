@@ -5,7 +5,7 @@ const UserArticleController = function (Article,
                                        $stateParams) {
   'ngInject';
 
-  restrictedRedirectService.check();
+  restrictedRedirectService.filterUnpaidUsers();
 
   // get one article
   UserArticle.get($stateParams.id).then((article) => {

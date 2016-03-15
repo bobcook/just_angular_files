@@ -1,7 +1,7 @@
 const UserRecipesController = function (UserRecipe, restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.check();
+  restrictedRedirectService.filterUnpaidUsers();
 
   // pass values to directive
   this.isUserNamespace = true;

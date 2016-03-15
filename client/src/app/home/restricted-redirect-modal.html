@@ -11,7 +11,9 @@
       </div>
       <div class="footer">
         <button ng-click="authFunction()" class="btn btn-primary">Get Started</button>
-        <small ng-hide="$root.$currentUser">Already have an account? <a href="#" ng-click="login()">Log in here</a></small>
+        <small>Not ready to join? </small>
+        <small ng-hide="$root.$currentUser"><a href="#" ng-click="register()">Create a free account </a></small>
+        <small ng-hide="$root.$currentUser"><a href="#" ng-click="login()">or Log in here</a></small>
       </div>
     </div>
   </div>
