@@ -10,7 +10,7 @@ const assessmentStates = function () {
 
   const getState = function (assessmentGroup) {
     if (!assessmentGroup) {
-      return states.notStarted
+      return states.notStarted;
     } else if (assessmentGroup.completed) {
       return states.completed;
     } else {

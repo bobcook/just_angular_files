@@ -630,7 +630,6 @@
   padding: 0;
 }
 
-
 .cp-assessment-preview {
   padding: 30px 0 0;
 
@@ -714,7 +713,7 @@
   }
 
   .triangle {
-    border-bottom-color: #77bcc5;
+    border-bottom-color: $glacier;
     border-width: 0 7px 12px 7px;
     display: inline-block;
     margin-left: 5px;
@@ -722,8 +721,8 @@
 
   .system {
     margin-top: 30px;
-    border-top: 1px dotted #8E8E8E;
-    border-bottom: 1px dotted #8E8E8E;
+    border-top: 1px dotted $grey-medium;
+    border-bottom: 1px dotted $grey-medium;
 
     @media screen and (min-width: 768px) {
       margin-top: 37px;
@@ -777,7 +776,7 @@
       &:after {
         position: absolute;
         content: '';
-        background-color: #30383d;
+        background-color: $metal;
         height: 1px;
         width: 164px;
         left: 0;
@@ -788,7 +787,7 @@
     h5 {
       margin-top: 0;
       margin-bottom: 0;
-      color: #30383d;
+      color: $metal;
       display: inline-block;
 
       @media screen and (min-width: 768px) {
@@ -822,7 +821,7 @@
       &:after {
         position: absolute;
         content: '';
-        background-color: #30383d;
+        background-color: $metal;
       }
 
       &:before {
