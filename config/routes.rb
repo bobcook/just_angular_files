@@ -62,7 +62,7 @@ Rails.application.routes.draw do
         resources :activities, only: [:index, :show, :create, :destroy]
         resources :assessment_groups, only: [:create, :index, :update]
         resources :assessments, only: [:show, :update]
-        resources :assessment_responses, only: [:create]
+        resources :assessment_responses, only: [:index, :create]
         resources :assessment_results, only: [:create] do
           collection do
             resource :categories,

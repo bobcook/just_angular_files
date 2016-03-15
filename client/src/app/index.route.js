@@ -145,7 +145,7 @@ const routerConfig = function (stateHelperProvider,
         },
         {
           name: 'assessments-questionnaire',
-          url: '/assessments/:id',
+          url: '/assessments/:id?pillarName',
           controller: 'AssessmentController',
           controllerAs: 'vm',
           templateUrl: 'app/assessments/assessment.html',

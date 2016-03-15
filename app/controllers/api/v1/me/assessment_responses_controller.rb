@@ -7,6 +7,15 @@ module Api
           head :created
         end
 
+        def index
+          assessment_response = AssessmentResponse.where(
+            user_assessment_id: params[:user_assessment_id],
+            assessment_question_id: params[:assessment_question_id]
+          )
+
+          respond_with assessment_response
+        end
+
         private
 
         def response_params

@@ -46,9 +46,8 @@ activity_tracker_names.each do |name|
 end
 
 assessments = [
-  { name: 'MBS', order: 1, id: 2, type: 'AssessmentMBS' },
-  { name: 'Questionnaire 1', order: 2, id: 1, type: 'AssessmentQuestionnaire' },
-  { name: 'Questionnaire 2', order: 3, id: 3, type: 'AssessmentQuestionnaire' },
+  { name: 'MBS', order: 1, type: 'AssessmentMBS' },
+  { name: 'Questionnaire', order: 2, type: 'AssessmentQuestionnaire' }
 ]
 
 puts 'Seeding Assessments'

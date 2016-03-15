@@ -54,9 +54,10 @@ const AssessmentStatus = function ($assessmentsAuth,
     });
   };
 
-  const getAssessmentScores = function (assessment) {
+  const getAssessmentScores = function (assessment, pillarName) {
     return _.chain(assessment.assessmentQuestions)
       .filter(question => question.answerValues.length > 0)
+      .filter(question => question.pillarName == pillarName)
       .map(question => [question.id, question.answerValues])
       .zipObject()
       .value();
@@ -74,7 +75,16 @@ const AssessmentStatus = function ($assessmentsAuth,
   // how to process dates if we add assessment reporting later on.
   const saveTextResponses = function (textResponses, userAssessmentId) {
     return $q.all(_.map(textResponses, (response, questionId) => {
-      return saveUserResponse(questionId, response, userAssessmentId);
+      AssessmentResponse.query({
+        user_assessment_id: userAssessmentId,
+        assessment_question_id: questionId
+      }).then((res) => {
+        if (!_.isEmpty(res)) {
+          return res[0];
+        } else {
+          return saveUserResponse(questionId, response, userAssessmentId);
+        }
+      });
     }));
   };
 
@@ -84,7 +94,17 @@ const AssessmentStatus = function ($assessmentsAuth,
     return $q.all(_.map(indexResponses, (_response, questionId) => {
       const response =
         getResponseScore(indexResponses, assessmentScores, questionId);
-      return saveUserResponse(questionId, response, userAssessmentId);
+
+      AssessmentResponse.query({
+        user_assessment_id: userAssessmentId,
+        assessment_question_id: questionId
+      }).then((res) => {
+        if (!_.isEmpty(res)) {
+          return res[0];
+        } else {
+          return saveUserResponse(questionId, response, userAssessmentId);
+        }
+      });
     }));
   };
 

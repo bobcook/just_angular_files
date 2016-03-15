@@ -1,4 +1,10 @@
 .cp-pillar-filter {
+
+  .inactive {
+    pointer-events: none;
+    cursor: default;
+  }
+
   padding-top: 10px;
   padding-bottom: 10px;
   background: $white;
@@ -106,13 +112,13 @@
       border-bottom: 4px solid transparent;
     }
 
-    &:hover, &:focus, .active {
+    &:hover, &:focus, &.active {
       @media screen and (min-width: 768px) {
         padding-bottom: 20px;
       }
     }
 
-    &:hover, &:focus{
+    &:hover, &:focus, &.active {
       &.all-options {
         @media screen and (min-width: 768px) {
           border-color: $metal;
@@ -120,7 +126,7 @@
       }
     }
 
-    &:hover, &:focus{
+    &:hover, &:focus, &.active {
       &.move, &.keeping-fit {
         @media screen and (min-width: 768px) {
           border-color: $red;
@@ -128,7 +134,7 @@
       }
     }
 
-    &:hover, &:focus {
+    &:hover, &:focus, &.active {
       &.discover, &.learning-more {
         @media screen and (min-width: 768px) {
           border-color: $orange;
@@ -136,7 +142,7 @@
       }
     }
 
-    &:hover, &:focus {
+    &:hover, &:focus, &.active {
       &.relax, &.managing-stress {
         @media screen and (min-width: 768px) {
           border-color: $yellow;
@@ -144,7 +150,7 @@
       }
     }
 
-    &:hover, &:focus {
+    &:hover, &:focus, &.active {
       &.nourish, &.eating-right {
         @media screen and (min-width: 768px) {
           border-color: $fountain-blue;
@@ -152,7 +158,7 @@
       }
     }
 
-    &:hover, &:focus {
+    &:hover, &:focus, &.active {
       &.connect, &.being-social {
         @media screen and (min-width: 768px) {
           border-color: $grey-blue;
@@ -263,23 +269,23 @@
   margin-right: 5px;
   border-radius: 1px;
 
-  &.being-social, &.pillar-blue-dark {
+  &.connect, &.being-social, &.pillar-blue-dark {
     background-color: $grey-blue;
   }
 
-  &.eating-right, &.pillar-blue-medium {
+  &.nourish, &.eating-right, &.pillar-blue-medium {
     background-color: $fountain-blue;
   }
 
-  &.keeping-fit, &.pillar-red {
+  &.move, &.keeping-fit, &.pillar-red {
     background-color: $red;
   }
 
-  &.learning-more, &.pillar-orange {
+  &.discover, &.learning-more, &.pillar-orange {
     background-color: $orange;
   }
 
-  &.managing-stress, &.pillar-yellow {
+  &.relax, &.managing-stress, &.pillar-yellow {
     background-color: $yellow;
   }
 }

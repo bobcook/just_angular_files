@@ -1,11 +1,16 @@
 module SeedData
   module AssessmentQuestions
     def self.seed
+      assessment = AssessmentQuestionnaire.first_or_create do |assessment|
+        assessment.name = 'Questionnaire'
+        assessment.order = 2
+      end
+
       [
         {
           text: 'What is your date of birth?',
           order: 1,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionDate'
         },
         {
@@ -18,7 +23,7 @@ module SeedData
                              8\ hours\ or\ more),
           answer_values: %w(4 3 2 1),
           order: 7,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 3
         },
@@ -30,7 +35,7 @@ module SeedData
                              3\ or\ more),
           answer_values: %w(4 3 1),
           order: 8,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 5
         },
@@ -43,7 +48,7 @@ module SeedData
                              None),
           answer_values: %w(1 2 3 4),
           order: 9,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -56,7 +61,7 @@ module SeedData
                              5\ or\ more\ days),
           answer_values: %w(4 3 2 1),
           order: 10,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 1
         },
@@ -68,7 +73,7 @@ module SeedData
                              Often),
           answer_values: %w(4 3 1),
           order: 11,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 2
         },
@@ -80,7 +85,7 @@ module SeedData
                              Never),
           answer_values: %w(4 3 1),
           order: 12,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 3
         },
@@ -93,7 +98,7 @@ module SeedData
                              Very\ often),
           answer_values: %w(4 3 2 1),
           order: 13,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 5
         },
@@ -104,7 +109,7 @@ module SeedData
                              No),
           answer_values: %w(1 4),
           order: 14,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -116,7 +121,7 @@ module SeedData
                              30\ or\ more\ minutes\ per\ week),
           answer_values: %w(4 3 1),
           order: 15,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 1
         },
@@ -128,7 +133,7 @@ module SeedData
                              Often),
           answer_values: %w(4 3 1),
           order: 16,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 2
         },
@@ -140,7 +145,7 @@ module SeedData
                              2\ or\ more),
           answer_values: %w(1 3 4),
           order: 17,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 3
         },
@@ -152,7 +157,7 @@ module SeedData
                              3\ or\ more),
           answer_values: %w(4 3 1),
           order: 18,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 5
         },
@@ -165,7 +170,7 @@ module SeedData
                              None),
           answer_values: %w(1 2 3 4),
           order: 19,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -177,7 +182,7 @@ module SeedData
                              30\ or\ more\ minutes\ per\ week),
           answer_values: %w(4 3 1),
           order: 20,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 1
         },
@@ -189,7 +194,7 @@ module SeedData
                              Often),
           answer_values: %w(4 3 1),
           order: 21,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 2
         },
@@ -200,7 +205,7 @@ module SeedData
                              No),
           answer_values: %w(4 1),
           order: 22,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 3
         },
@@ -213,7 +218,7 @@ module SeedData
                              Divorce/much\ strife),
           answer_values: %w(1 2 3 4),
           order: 23,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 5
         },
@@ -226,7 +231,7 @@ module SeedData
                              None),
           answer_values: %w(4 3 2 1),
           order: 24,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -239,7 +244,7 @@ module SeedData
                              High\ (lots\ of\ walking\ and\ lifting,\ climbing\ stairs,\ or\ walking\ uphill)),
           answer_values: %w(4 3 2 1),
           order: 25,
-          assessment_id: 1,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 1
         },
@@ -251,7 +256,7 @@ module SeedData
                              Often),
           answer_values: %w(4 3 1),
           order: 1,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 2
         },
@@ -263,7 +268,7 @@ module SeedData
                              High\ or\ severe),
           answer_values: %w(1 3 4),
           order: 2,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 3
         },
@@ -276,7 +281,7 @@ module SeedData
                              Widowed),
           answer_values: %w(1 1 3 3),
           order: 3,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 5
         },
@@ -289,7 +294,7 @@ module SeedData
                              Never),
           answer_values: %w(1 2 3 4),
           order: 4,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -302,7 +307,7 @@ module SeedData
                              7\ or\ more\ hours),
           answer_values: %w(1 2 3 4),
           order: 5,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 1
         },
@@ -315,7 +320,7 @@ module SeedData
                              Constantly),
           answer_values: %w(1 2 3 4),
           order: 6,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 3
         },
@@ -327,7 +332,7 @@ module SeedData
                              Live\ with\ roommate(s)),
           answer_values: %w(3 1 2),
           order: 8,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 5
         },
@@ -340,7 +345,7 @@ module SeedData
                              None),
           answer_values: %w(1 2 3 4),
           order: 9,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -352,7 +357,7 @@ module SeedData
                              30\ or\ more\ minutes\ per\ week),
           answer_values: %w(4 3 1),
           order: 10,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 1
         },
@@ -364,7 +369,7 @@ module SeedData
                              3\ or\ more),
           answer_values: %w(4 3 1),
           order: 11,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 5
         },
@@ -375,7 +380,7 @@ module SeedData
                              No),
           answer_values: %w(1 4),
           order: 12,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -387,7 +392,7 @@ module SeedData
                              3\ or\ more),
           answer_values: %w(4 3 1),
           order: 13,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 5
         },
@@ -400,7 +405,7 @@ module SeedData
                              3\ or\ less),
           answer_values: %w(4 3 2 1),
           order: 14,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -413,7 +418,7 @@ module SeedData
                              Very\ often),
           answer_values: %w(4 3 2 1),
           order: 15,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 5
         },
@@ -426,7 +431,7 @@ module SeedData
                              3\ or\ less),
           answer_values: %w(4 3 2 1),
           order: 16,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -439,7 +444,7 @@ module SeedData
                              Very\ often),
           answer_values: %w(4 3 2 1),
           order: 17,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 5
         },
@@ -452,7 +457,7 @@ module SeedData
                              None),
           answer_values: %w(1 2 3 4),
           order: 18,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -465,7 +470,7 @@ module SeedData
                              Very\ often),
           answer_values: %w(4 3 2 1),
           order: 19,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 5
         },
@@ -478,7 +483,7 @@ module SeedData
                              None),
           answer_values: %w(1 2 3 4),
           order: 20,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -489,7 +494,7 @@ module SeedData
                              No),
           answer_values: %w(1 3),
           order: 21,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -501,7 +506,7 @@ module SeedData
                              None),
           answer_values: %w(1 3 4),
           order: 22,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -514,7 +519,7 @@ module SeedData
                              None),
           answer_values: %w(1 2 3 4),
           order: 23,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -527,7 +532,7 @@ module SeedData
                              None),
           answer_values: %w(1 2 3 4),
           order: 24,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },
@@ -538,7 +543,7 @@ module SeedData
                              No),
           answer_values: %w(1 4),
           order: 25,
-          assessment_id: 3,
+          assessment_id: assessment.id,
           type: 'AssessmentQuestionRadio',
           pillar_id: 4
         },

@@ -1,5 +1,40 @@
 # TODO: remove this code after migrating
 namespace :data_migration do
+  desc 'Merge the two assessments into one'
+  task delete_old_assessments: :environment do
+    q1 = Assessment.find_by(name: 'Questionnaire 1')
+    q2 = Assessment.find_by(name: 'Questionnaire 2')
+    puts "deleting old assessments"
+    q1.destroy
+    q2.destroy
+    puts "deleted old assessments"
+  end
+
+  task merge_assessments: :environment do
+    assessment = Assessment.create(id: 4, name: 'Questionnaire', order: 2, type: 'AssessmentQuestionnaire')
+
+    puts "updating assessment_questions"
+    assessment_questions = AssessmentQuestion.includes(:assessment).where(assessments: {name: ['Questionnaire 1', 'Questionnaire 2']})
+    assessment_questions.each do |question|
+      question.update(assessment: assessment)
+      puts("updated assessment_question ##{question.id}")
+    end
+
+    q1 = Assessment.find_by(name: 'Questionnaire 1')
+    puts("updating user_assessments for #{q1.name}")
+    q1.user_assessments.each do |user_assessment|
+      user_assessment.update(assessment: assessment)
+      puts("updated user_assessment ##{user_assessment.id}")
+    end
+
+    q2 = Assessment.find_by(name: 'Questionnaire 2')
+    puts("updating user_assessments for #{q2.name}")
+    q2.user_assessments.each do |user_assessment|
+      user_assessment.update(assessment: assessment)
+      puts("updated user_assessment ##{user_assessment.id}")
+    end
+  end
+
   desc 'reset all content'
   task reset_all_content: :environment do
     puts 'destroying activities...'

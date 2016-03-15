@@ -52,6 +52,22 @@
     font-size: 28px;
   }
 
+  .header-container {
+    border-bottom: 1px solid $grey-border;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+  }
+
+  .assessment-header {
+    width: 50%;
+    float: left;
+  }
+
+  .cp-pillar-filter {
+    float: right;
+    border: none;
+  }
+
   .form-input-wrap.radio-wrap {
     padding-left: 15px;
     padding-right: 15px;
