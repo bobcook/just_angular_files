@@ -80,6 +80,10 @@ en:
     continue_assessment:
       paid: "You're almost there! Finish your Brain Health Assessment to get your brain health score, a detailed report revealing how your brain works and personalized recommendations for improving and maintaining your cognitive abilities. We've even saved your place for you."
       unpaid: "You're almost there! Subscribe now to compete your Brain Health Assessment and get your brain health score, a detailed report revealing how your brain works and personalized recommendations for improving and maintaining your cognitive abilities."
+    assessment_see_results:
+      headline: "It's time to see your Brain Health Score"
+      body_text: "You did the work, now see the results. Join now to get your brain health score and review a detailed results report."
+      button_text: "Join and get my score"
 
   explanation:
     activities: "Hundreds of activities, all based on the latest scientific understanding of how to maintain a healthy brain. Save activities that interest you and track them on your My Staying Sharp page. For holistic brain health, do activities across the 5 areas of brain health."

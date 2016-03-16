@@ -1,12 +1,21 @@
 const UserAssessmentController = function (AssessmentStatus,
                                            restrictedRedirectService,
-                                           $q) {
+                                           $q,
+                                           $rootScope,
+                                           dsoAuth) {
   'ngInject';
 
-  restrictedRedirectService.filterUnpaidUsers();
+  restrictedRedirectService.filterAnonymous();
+
+  const isRegisteredUser = function () {
+    return $rootScope.$currentUser &&
+      $rootScope.$currentUser.membershipStatus !== 'paid';
+  };
 
   this.showAssessmentBanner = false;
   this.showAssessmentResults = false;
+  this.showSystemMessaging = false;
+  this.subscribeUrl = dsoAuth.dsoSubscribeAuth();
 
   $q.all([
     AssessmentStatus.hasCompletedAssessments(),
@@ -21,7 +30,7 @@ const UserAssessmentController = function (AssessmentStatus,
       !lastUserAssessment.completed;
 
     this.showAssessmentResults = hasCompleted;
-
+    this.showSystemMessaging = isRegisteredUser() && hasCompleted;
   });
 };
 

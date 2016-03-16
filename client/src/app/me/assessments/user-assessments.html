@@ -9,6 +9,12 @@
   active-tab="assessments">
 </ss-nav-tabs>
 
+<ss-info-box ng-show="vm.showSystemMessaging">
+  <h3 translate>info.assessment_see_results.headline</h3>
+  <p translate>info.assessment_see_results.body_text</p>
+  <button type="button" ng-href="{{vm.subscribeUrl}}" translate>info.assessment_see_results.button_text</button>
+</ss-info-box>
+
 <ss-info-box ng-show="vm.showAssessmentBanner">
   <h3 translate>info.better_brain_starts_here</h3>
   <p translate>info.take_the_assessment</p>
