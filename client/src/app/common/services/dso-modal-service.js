@@ -1,7 +1,9 @@
 const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
   'ngInject';
 
-  const showRegisterModal = function (resource, guard = () => false) {
+  const showRegisterModal = function (resource,
+                                      guard = () => false,
+                                      redirectPath = $location.path()) {
     if (guard()) { return; }
 
     ModalService.showModal({
@@ -10,13 +12,16 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
       inputs: {
         resource: resource,
         authFunction: dsoAuth.login,
+        redirectPath: redirectPath,
       },
     });
 
     clearPath();
   };
 
-  const showSubscribeModal = function (resource, guard = () => false) {
+  const showSubscribeModal = function (resource,
+                                       guard = () => false,
+                                       redirectPath = $location.path()) {
     if (guard()) { return; }
 
     ModalService.showModal({
@@ -25,6 +30,7 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
       inputs: {
         resource: resource,
         authFunction: subscribe,
+        redirectPath: redirectPath,
       },
     });
 
@@ -33,8 +39,8 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
 
   const clearPath = () => $location.search('restrictedRedirect', null);
 
-  const subscribe = function () {
-    $window.location.href = dsoAuth.dsoSubscribeAuth();
+  const subscribe = function (redirectPath = $location.path()) {
+    $window.location.href = dsoAuth.dsoSubscribeAuth(redirectPath);
   };
 
   return {

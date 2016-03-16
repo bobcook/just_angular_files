@@ -27,9 +27,9 @@
   <section ng-switch-when="root">
     <ul class="primary-nav-options">
       <li class="primary-level"
-          ng-click="explore = !explore"
+
           ng-class="{active: !explore, default: explore}">
-        <a href="#">
+        <a href="#" ng-click="explore = !explore">
           Explore <span class="caret"
                     ng-class="{'caret-down': explore, 'caret-up': !explore}">
                   </span>
@@ -43,7 +43,7 @@
             <a ui-sref="application.activities" ng-click="vm.close()" permission only="'paid'">
               <span class="icon icon-activities-stats"></span>Activities
             </a>
-            <a ng-click="vm.showSubscribeModal('activities')" permission only="'unpaid'">
+            <a ng-click="vm.showSubscribeModal('activities', vm.subscribeGuard, '/activities')" permission only="'unpaid'">
               <span class="icon icon-activities-stats"></span>Activities
             </a>
           </li>
@@ -54,7 +54,7 @@
             <a ui-sref="application.recipes" ng-click="vm.close()" permission only="'paid'">
               <span class="icon icon-saved-recipes"></span>Recipes
             </a>
-            <a ng-click="vm.showSubscribeModal('recipes')" permission only="'unpaid'">
+            <a ng-click="vm.showSubscribeModal('recipes', vm.subscribeGuard, '/recipes')" permission only="'unpaid'">
               <span class="icon icon-saved-recipes"></span>Recipes
             </a>
           </li>
