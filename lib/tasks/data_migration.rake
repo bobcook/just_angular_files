@@ -12,7 +12,7 @@ namespace :data_migration do
     Recipe.destroy_all
 
     puts 'desotrying articles...'
-    Article.desotry_all
+    Article.destroy_all
 
     puts 'importing content...'
     ImportContentJob.perform_later
