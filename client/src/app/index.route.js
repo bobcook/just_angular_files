@@ -203,7 +203,7 @@ const routerConfig = function (stateHelperProvider,
         },
         {
           name: 'games',
-          url: '/games',
+          url: '/games?restrictedRedirect',
           templateUrl: 'app/games/games.html',
           controller: 'GamesController',
           controllerAs: 'vm',

@@ -4,23 +4,20 @@ const GameController = function (Game,
                                  dsoModalService,
                                  $stateParams,
                                  $state,
-                                 $rootScope) {
+                                 $rootScope,
+                                 restrictedRedirectService) {
   'ngInject';
 
   Game.get($stateParams.id).then((response) => {
     this.game = response.data;
 
-    if (isPaidGame(this.game) && !isPaidUser()) {
-      $state.go('application.home', { restrictedRedirect: true });
+    if (isPaidGame(this.game)) {
+      restrictedRedirectService.filterUnpaidUsers('application.games');
     };
   });
 
   const isPaidGame = function (game) {
     return game.gameType === 'Paid';
-  };
-
-  const isPaidUser = function () {
-    return $rootScope.$currentUser.membershipStatus === 'paid';
   };
 
   this.openRegisterModal = dsoModalService.showRegisterModal;

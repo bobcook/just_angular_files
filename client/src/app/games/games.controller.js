@@ -1,5 +1,11 @@
-const GamesController = function (Game, FreeGame) {
+const GamesController = function (Game,
+                                  FreeGame,
+                                  dsoModalService,
+                                  $stateParams) {
   'ngInject';
+
+  const guard = () => $stateParams.restrictedRedirect !== 'true';
+  dsoModalService.showSubscribeModal('games', guard);
 
   // pass values to directive
   this.isUserNamespace = false;
