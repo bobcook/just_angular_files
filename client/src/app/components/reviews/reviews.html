@@ -17,8 +17,8 @@
           <input type="radio" name="recommend" ng-value="false" id="no" ng-model="vm.recommend">
           <label for="no">No, I didn't like this</label>
         </span>
-
-        <button class="btn" type="submit">Submit Review</button>
+        <button ng-if="$root.$currentUser" class="btn" type="submit">Submit Review</button>
+        <a ng-if="!$root.$currentUser" class="btn" href="#" ng-click="vm.showRegisterModal('review')">Submit Review</a>
       </form>
     </header>
   </div>

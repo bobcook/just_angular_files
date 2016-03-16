@@ -14,6 +14,7 @@ const DsoModalController = function ($scope,
   $scope.bodyText = `subscribe_modal.${resource}.body_text`;
   $scope.authFunction = authFunction;
   $scope.redirectPath = redirectPath;
+  $scope.resource = resource;
 };
 
 export default DsoModalController;

@@ -1,4 +1,4 @@
-const ReviewsController = function ($stateParams, $rootScope) {
+const ReviewsController = function ($stateParams, $rootScope, dsoModalService) {
   'ngInject';
 
   const contentName = this.resource.contentName.toLowerCase();
@@ -42,6 +42,8 @@ const ReviewsController = function ($stateParams, $rootScope) {
 
     return formatPercent(results);
   };
+
+  this.showRegisterModal = dsoModalService.showRegisterModal;
 
   // TODO: consider moving formatPercent to filter
   const formatPercent = function (decimalNumber) {

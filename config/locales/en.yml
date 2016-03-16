@@ -105,3 +105,6 @@ en:
     games:
       body_text: "Provide an email address to save your favorite articles and games. You'll also be able to comment, recommend and share content."
       button_text: "Create a Free Account"
+    review:
+      body_text: "The Staying Sharp community wants to hear what you think! Create a free account to recommend and save articles and games."
+      button_text: "Create a free account"
