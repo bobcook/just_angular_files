@@ -1,8 +1,11 @@
-const UserAssessmentController = function (AssessmentStatus,
+const UserAssessmentController = function ($assessmentsAuth,
+                                           AssessmentStatus,
                                            restrictedRedirectService,
+                                           assessmentStates,
                                            $q,
                                            $rootScope,
-                                           dsoAuth) {
+                                           dsoAuth,
+                                           assessmentLinkManager) {
   'ngInject';
 
   restrictedRedirectService.filterAnonymous();
@@ -16,6 +19,12 @@ const UserAssessmentController = function (AssessmentStatus,
   this.showAssessmentResults = false;
   this.showSystemMessaging = false;
   this.subscribeUrl = dsoAuth.dsoSubscribeAuth();
+  this.states = assessmentStates.states;
+  this.assessmentState;
+  this.authForAssessments = $assessmentsAuth.authenticate;
+  assessmentLinkManager.getAssessmentLink().then((result) => {
+    this.assessmentLink = result;
+  });
 
   $q.all([
     AssessmentStatus.hasCompletedAssessments(),
@@ -30,7 +39,8 @@ const UserAssessmentController = function (AssessmentStatus,
       !lastUserAssessment.completed;
 
     this.showAssessmentResults = hasCompleted;
-    this.showSystemMessaging = isRegisteredUser() && hasCompleted;
+    this.showSystemMessaging = isRegisteredUser();
+    this.assessmentState = assessmentStates.getState(lastUserAssessment);
   });
 };
 

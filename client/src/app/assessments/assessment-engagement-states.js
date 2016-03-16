@@ -9,7 +9,7 @@ const assessmentStates = function () {
   };
 
   const getState = function (assessmentGroup) {
-    if (!assessmentGroup) {
+    if (!assessmentGroup || _.isEmpty(assessmentGroup)) {
       return states.notStarted;
     } else if (assessmentGroup.completed) {
       return states.completed;

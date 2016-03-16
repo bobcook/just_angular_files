@@ -82,10 +82,10 @@ import Airbrake from './common/services/airbrake.js';
 import AssessmentStatus from './assessments/assessment-status.js';
 import ActivityPeriodActions
   from './common/services/activity-period-actions.js';
-import AssessmentResultQueries from
-  './assessments/results/queries.js';
-import AssessmentResultScores from
-  './assessments/results/scores.js';
+import AssessmentResultQueries from './assessments/results/queries.js';
+import AssessmentResultScores from './assessments/results/scores.js';
+import assessmentLinkManager from
+  './common/services/assessment-link-manager.js';
 import assessmentStates from
   './assessments/assessment-engagement-states.js';
 import authInterceptor from './common/services/auth-interceptor.js';
@@ -345,6 +345,7 @@ app
   .factory('AssessmentStatus', AssessmentStatus)
   .factory('AssessmentResultQueries', AssessmentResultQueries)
   .factory('AssessmentResultScores', AssessmentResultScores)
+  .factory('assessmentLinkManager', assessmentLinkManager)
   .factory('assessmentStates', assessmentStates)
   .factory('dsoAuth', dsoAuth)
   .factory('dependentMemoize', dependentMemoize)
