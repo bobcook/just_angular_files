@@ -5,7 +5,7 @@ const dsoAuth = function ($location,
                           dsoSubscribe) {
   'ngInject';
 
-  const login = function (redirectPath = $location.path(), promo = 'SS-BETA') {
+  const login = function (redirectPath = $location.path(), promo = 'SM-SS') {
     $postHref(
       ApiRoutes.AARP_AUTH, { promo: promo, redirectPath: redirectPath }
     );
