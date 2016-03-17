@@ -10,6 +10,8 @@ const NavPanelController = function ($rootScope,
 
   this.subscribeGuard = function () { return false; }
 
+  this.subscribeUrl = dsoAuth.dsoSubscribeAuth();
+
   this.currentRoute = 'root';
   this.accountUrl = window.__env.accountUrl;
 
