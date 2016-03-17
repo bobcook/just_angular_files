@@ -8,7 +8,11 @@ const TopNavController = function (ApiRoutes,
   'ngInject';
 
   this.login = dsoAuth.login;
+
   this.isGamePlayView = $rootScope.isGamePlayView;
+  this.gamePlayFalse = function () {
+    $rootScope.isGamePlayView = false;
+  };
 
   $scope.$on('$stateChangeSuccess', () => {
     this.subscribeUrl = dsoAuth.dsoSubscribeAuth();

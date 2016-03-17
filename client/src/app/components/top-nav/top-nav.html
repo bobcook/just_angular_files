@@ -1,9 +1,12 @@
 <section class="global-header" ng-class="{'logged-in':$root.$currentUser.isLoggedIn}">
   <nav class="container">
 
-    <a ui-sref="application.home" class="logo" ng-include="'app/assets/images/aarp-logo.svg'"></a>
+    <a ui-sref="application.home"
+       class="logo"
+       ng-click="vm.gamePlayFalse()"
+       ng-include="'app/assets/images/aarp-logo.svg'"></a>
 
-    <div class="nav-options" ng-if="!vm.isGamePlayView">
+    <div class="nav-options" ng-if="!$root.isGamePlayView">
       <ul>
         <li permission only="'unpaid'" class="hidden-xs"><a class="text-link" ng-href="{{vm.subscribeUrl}}">Join Staying Sharp</a></li>
         <li ng-if="!$root.$currentUser.isLoggedIn" class="bullet hidden-xs">•</li>
@@ -25,21 +28,21 @@
       </ul>
     </div>
 
-    <div class="games-header" ng-if="vm.isGamePlayView">
+    <div class="games-header" ng-if="$root.isGamePlayView">
       <ul>
         <li>
           <span>Hello, {{$root.$currentUser.firstName}}!</span>
         </li>
         <li>
-          <a ui-sref="application.static.terms-of-service">Terms of Service</a>
+          <a ng-click="vm.gamePlayFalse()" ui-sref="application.static.terms-of-service">Terms of Service</a>
         </li>
         <li>
           <span class="bullet">•</span>
-          <a ui-sref="application.static.privacy-policy">Privacy Policy</a>
+          <a ng-click="vm.gamePlayFalse()" ui-sref="application.static.privacy-policy">Privacy Policy</a>
         </li>
         <li>
           <span class="bullet">•</span>
-          <a href="#">Exit</a>
+          <a ng-click="vm.gamePlayFalse()" ui-sref="application.home">Exit</a>
         </li>
       </ul>
     </div>
