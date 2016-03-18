@@ -8,7 +8,7 @@ const NavPanelController = function ($rootScope,
 
   this.login = dsoAuth.login;
 
-  this.subscribeGuard = function () { return false; }
+  this.subscribeGuard = function () { return false; };
 
   this.subscribeUrl = dsoAuth.dsoSubscribeAuth();
 

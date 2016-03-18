@@ -22,7 +22,7 @@ const assessmentLinkManager = function (AssessmentStatus,
   const questionnaireRedirect = function () {
     lastUserAssessmentGroupPromise.then((lastGroup) => {
       const next = AssessmentStatus.getNextAssessment(lastGroup);
-      $state.go('application.assessments-questionnaire', {id: next.id });
+      $state.go('application.assessments-questionnaire', { id: next.id });
     });
   };
 
@@ -50,14 +50,14 @@ const assessmentLinkManager = function (AssessmentStatus,
   const getAssessmentLink = function () {
     return lastUserAssessmentGroupPromise.then((lastGroup) => {
       switch (assessmentStates.getState(lastGroup)) {
-        case assessmentStates.states.notStarted:
-          return startAssessment;
-        case assessmentStates.states.started:
-          return continueAssessment(lastGroup);
-        case assessmentStates.states.completed:
-          return startAssessment;
-        default:
-          return register;
+      case assessmentStates.states.notStarted:
+        return startAssessment;
+      case assessmentStates.states.started:
+        return continueAssessment(lastGroup);
+      case assessmentStates.states.completed:
+        return startAssessment;
+      default:
+        return register;
       }
     }, (_err) => {
       return register;
