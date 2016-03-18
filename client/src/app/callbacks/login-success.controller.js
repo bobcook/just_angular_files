@@ -25,7 +25,9 @@ const LoginSuccessController = function ($loadCurrentUser,
   const isLeadBetaUser = function () {
     const isBetaPromo = $stateParams.promo === 'SS-BETA';
     const isLeadStatus = $rootScope.$currentUser.membershipStatus === 'lead';
-    return isLeadStatus && isBetaPromo;
+    const isProspectStatus =
+      $rootScope.$currentUser.membershipStatus === 'prospect';
+    return (isLeadStatus || isProspectStatus) && isBetaPromo;
   };
 
   const goToLeadBetaLanding = function () {
