@@ -25,7 +25,10 @@ const Recipe = function (API_URL, railsResourceFactory, railsSerializer) {
   // Computed properties
   Object.defineProperty(Recipe.prototype, 'uiSref', {
     get: function () {
-      return `application.recipe({ id: '${this.slug}' })`;
+      const query =
+        `{id: '${this.slug}', ` +
+        `pillar: '${this.pathPillar}', year: '${this.pathYear}'}`;
+      return `application.recipe(${query})`;
     },
   });
 

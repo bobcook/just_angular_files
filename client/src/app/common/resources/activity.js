@@ -26,7 +26,10 @@ const Activity = function (API_URL,
   // Computed properties
   Object.defineProperty(Activity.prototype, 'uiSref', {
     get: function () {
-      return `application.activity({ id: '${this.slug}' })`;
+      const query =
+        `{id: '${this.slug}', ` +
+        `pillar: '${this.pathPillar}', year: '${this.pathYear}'}`;
+      return `application.activity(${query})`;
     },
   });
 

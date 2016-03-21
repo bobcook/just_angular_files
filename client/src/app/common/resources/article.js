@@ -25,7 +25,10 @@ const Article = function (API_URL,
   // Computed properties
   Object.defineProperty(Article.prototype, 'uiSref', {
     get: function () {
-      return `application.article({ id: '${this.slug}' })`;
+      const query =
+        `{id: '${this.slug}', ` +
+        `pillar: '${this.pathPillar}', year: '${this.pathYear}'}`;
+      return `application.article(${query})`;
     },
   });
 

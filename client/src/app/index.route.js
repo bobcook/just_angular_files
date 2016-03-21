@@ -82,8 +82,30 @@ const routerConfig = function (stateHelperProvider,
       },
       children: [
         {
-          name: 'activity',
+          // TODO: Delete this route after redirects propegate
+          name: 'activity-old',
           url: '/activities/:id',
+          templateUrl: 'app/activities/activity.html',
+          controller: 'ActivityController',
+          controllerAs: 'vm',
+          children: [
+            modalStateHelperProvider({
+              name: 'activity-saved',
+              templateUrl: 'app/components/saved-modal/saved-modal.html',
+              controller: 'ActivityModalController',
+              controllerAs: 'vm',
+            }),
+            modalStateHelperProvider({
+              name: 'activity-save-failed',
+              templateUrl: 'app/activities/activity-save-failed-modal.html',
+              controller: 'ActivityModalController',
+              controllerAs: 'vm',
+            }),
+          ],
+        },
+        {
+          name: 'activity',
+          url: '/activities/:pillar/:year/:id.html',
           templateUrl: 'app/activities/activity.html',
           controller: 'ActivityController',
           controllerAs: 'vm',
@@ -113,8 +135,24 @@ const routerConfig = function (stateHelperProvider,
           ],
         },
         {
-          name: 'article',
+          // TODO: Delete this route after redirects propegate
+          name: 'article-old',
           url: '/articles/:id',
+          templateUrl: 'app/articles/article.html',
+          controller: 'ArticleController',
+          controllerAs: 'vm',
+          children: [
+            modalStateHelperProvider({
+              name: 'article-saved',
+              templateUrl: 'app/components/saved-modal/saved-modal.html',
+              controller: 'ArticleModalController',
+              controllerAs: 'vm',
+            }),
+          ],
+        },
+        {
+          name: 'article',
+          url: '/articles/:pillar/:year/:id.html',
           templateUrl: 'app/articles/article.html',
           controller: 'ArticleController',
           controllerAs: 'vm',
@@ -179,8 +217,24 @@ const routerConfig = function (stateHelperProvider,
           template: '',
         },
         {
-          name: 'game',
+          // TODO: Delete this route after redirects propegate
+          name: 'game-old',
           url: '/games/:id',
+          templateUrl: 'app/games/game.html',
+          controller: 'GameController',
+          controllerAs: 'vm',
+          children: [
+            modalStateHelperProvider({
+              name: 'game-saved',
+              templateUrl: 'app/components/saved-modal/saved-modal.html',
+              controller: 'GameModalController',
+              controllerAs: 'vm',
+            }),
+          ],
+        },
+        {
+          name: 'game',
+          url: '/games/:pillar/:year/:id.html',
           templateUrl: 'app/games/game.html',
           controller: 'GameController',
           controllerAs: 'vm',
@@ -232,8 +286,24 @@ const routerConfig = function (stateHelperProvider,
           templateUrl: 'app/landing/lead-beta-landing.html',
         },
         {
-          name: 'recipe',
+          // TODO: Delete this route after redirects propegate
+          name: 'recipe-old',
           url: '/recipes/:id',
+          templateUrl: 'app/recipes/recipe.html',
+          controller: 'RecipeController',
+          controllerAs: 'vm',
+          children: [
+            modalStateHelperProvider({
+              name: 'recipe-saved',
+              templateUrl: 'app/components/saved-modal/saved-modal.html',
+              controller: 'RecipeModalController',
+              controllerAs: 'vm',
+            }),
+          ],
+        },
+        {
+          name: 'recipe',
+          url: '/recipes/:pillar/:year/:id.html',
           templateUrl: 'app/recipes/recipe.html',
           controller: 'RecipeController',
           controllerAs: 'vm',

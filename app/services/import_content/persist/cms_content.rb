@@ -10,6 +10,7 @@ module ImportContent
       def content_hash
         @content_hash ||=
           raw_content_hash.select { |item| item != :brainHealthPillar }
+          .merge(slug: slug)
       end
 
       def pillar_names
@@ -26,7 +27,7 @@ module ImportContent
       end
 
       def slug
-        raw_content_hash[:slug]
+        %r{/\d\d\/(.+)/}.match(raw_content_hash[:cms_url])[1]
       end
 
       def last_modified

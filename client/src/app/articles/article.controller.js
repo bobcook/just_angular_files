@@ -5,8 +5,9 @@ const ArticleController = function (Article,
                                     $stateParams) {
   'ngInject';
 
+  const id = $stateParams.id.replace('.html', '');
   // get one article
-  Article.get($stateParams.id).then((article) => {
+  Article.get(id).then((article) => {
     this.article = article.data;
   });
 

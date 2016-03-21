@@ -8,6 +8,9 @@ FactoryGirl.define do
     recommended_effort '30 minutes / 1 x weekly'
     points '10 pts'
     activity_tracker # TODO: randomize type?
+    cms_url 'http://www.aarp.org/content/specialized-membership/' \
+            'staying-sharp/en/act/connect/16/gratitude-peace-of-mind' \
+            '/_jcr_content.ss.json'
 
     sequence(:payload) do |n|
       {

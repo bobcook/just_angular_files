@@ -1,4 +1,6 @@
 class ArticleSerializer < ActiveModel::Serializer
+  include PathUtils
+
   delegate :id, :card_image, :description, :mast_head_image, :mast_head_title,
            :recommend_percentage, :section1_body, :section2_body,
            :source_materials_citation,
@@ -8,7 +10,7 @@ class ArticleSerializer < ActiveModel::Serializer
              :description, :duration, :effort, :mast_head_image,
              :mast_head_title, :recommend_percentage, :section1_body,
              :section2_body, :slug, :source_materials_citation,
-             :content_source_branding_image
+             :content_source_branding_image, :path_pillar, :path_year
 
   has_many :pillars
 

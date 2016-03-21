@@ -8,6 +8,9 @@ FactoryGirl.define do
     last_modified { Time.current }
     published_at { Time.current }
     prep_time '5 mins.'
+    cms_url 'http://www.aarp.org/content/specialized-membership/' \
+            'staying-sharp/en/act/connect/16/gratitude-peace-of-mind' \
+            '/_jcr_content.ss.json'
     sequence(:payload) do |n|
       example_instructions = [
         'Start Grill',

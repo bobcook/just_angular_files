@@ -8,7 +8,8 @@ const RecipeController = function (Recipe,
 
   restrictedRedirectService.filterUnpaidUsers('application.recipes');
 
-  Recipe.get($stateParams.id).then((recipe) => {
+  const id = $stateParams.id.replace('.html', '');
+  Recipe.get(id).then((recipe) => {
     this.recipe = recipe.data;
     RecipePagePresenter.forController(this, this.recipe);
   });

@@ -8,7 +8,8 @@ const ActivityController = function (Activity,
 
   restrictedRedirectService.filterUnpaidUsers('application.activities');
 
-  Activity.get($stateParams.id).then((activity) => {
+  const id = $stateParams.id.replace('.html', '');
+  Activity.get(id).then((activity) => {
     this.activity = activity.data;
     ActivityPagePresenter.forController(this, this.activity);
   });

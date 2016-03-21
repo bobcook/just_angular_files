@@ -8,7 +8,8 @@ const GameController = function (Game,
                                  restrictedRedirectService) {
   'ngInject';
 
-  Game.get($stateParams.id).then((response) => {
+  const id = $stateParams.id.replace('.html', '');
+  Game.get(id).then((response) => {
     this.game = response.data;
 
     if (isPaidGame(this.game)) {

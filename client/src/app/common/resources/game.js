@@ -27,7 +27,10 @@ const Game = function (API_URL, railsResourceFactory, railsSerializer) {
   // Computed properties
   Object.defineProperty(Game.prototype, 'uiSref', {
     get: function () {
-      return `application.game({ id: '${this.slug}' })`;
+      const query =
+        `{id: '${this.slug}', ` +
+        `pillar: '${this.pathPillar}', year: '${this.pathYear}'}`;
+      return `application.game(${query})`;
     },
   });
 

@@ -7,7 +7,11 @@ module ImportContent
     let!(:pillar3) { create(:eating_right_pillar) }
 
     let(:today) { Time.zone.now.noon }
-    let(:cms_url) { 'http://blah.com' }
+    let(:cms_url) do
+      'http://www.aarp.org/content/specialized-membership/' \
+        'staying-sharp/en/act/connect/16/gratitude-peace-of-mind' \
+        '/_jcr_content.ss.json'
+    end
     let(:slug) { 'slug' }
 
     def content_hash
@@ -16,6 +20,7 @@ module ImportContent
         published_at: today,
         last_modified: today,
         slug: slug,
+        cms_url: cms_url,
         payload: { brainHealthPillar: [pillar1.name, pillar2.name] },
         type: 'BasicArticle'
       }
@@ -122,7 +127,8 @@ module ImportContent
             published_at: today,
             last_modified: today,
             slug: slug,
-            payload: { 'a' => 1 }
+            payload: { 'a' => 1 },
+            cms_url: cms_url
           }
         end
 

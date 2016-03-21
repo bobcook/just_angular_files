@@ -57,7 +57,7 @@ const AssessmentStatus = function ($assessmentsAuth,
   const getAssessmentScores = function (assessment, pillarName) {
     return _.chain(assessment.assessmentQuestions)
       .filter(question => question.answerValues.length > 0)
-      .filter(question => question.pillarName == pillarName)
+      .filter(question => question.pillarName === pillarName)
       .map(question => [question.id, question.answerValues])
       .zipObject()
       .value();
@@ -76,8 +76,8 @@ const AssessmentStatus = function ($assessmentsAuth,
   const saveTextResponses = function (textResponses, userAssessmentId) {
     return $q.all(_.map(textResponses, (response, questionId) => {
       AssessmentResponse.query({
-        user_assessment_id: userAssessmentId,
-        assessment_question_id: questionId
+        userAssessmentId: userAssessmentId,
+        assessmentQuestionId: questionId,
       }).then((res) => {
         if (!_.isEmpty(res)) {
           return res[0];
@@ -96,8 +96,8 @@ const AssessmentStatus = function ($assessmentsAuth,
         getResponseScore(indexResponses, assessmentScores, questionId);
 
       AssessmentResponse.query({
-        user_assessment_id: userAssessmentId,
-        assessment_question_id: questionId
+        userAssessmentId: userAssessmentId,
+        assessmentQuestionId: questionId,
       }).then((res) => {
         if (!_.isEmpty(res)) {
           return res[0];

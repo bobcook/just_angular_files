@@ -1,4 +1,6 @@
 class RecipeSerializer < ActiveModel::Serializer
+  include PathUtils
+
   delegate :card_image, :card_title, :description, :duration, :id,
            :mast_head_image, :mast_head_title, :recommend_percentage,
            :section1_body, :title,
@@ -7,7 +9,7 @@ class RecipeSerializer < ActiveModel::Serializer
   attributes :card_image, :card_title, :description, :duration, :id,
              :ingredients, :instructions, :mast_head_image, :mast_head_title,
              :recommend_percentage, :section1_body, :slug,
-             :source_materials_citation
+             :source_materials_citation, :path_pillar, :path_year
 
   has_many :pillars
 
