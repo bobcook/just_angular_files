@@ -73,6 +73,8 @@ const ActivityTrackerController = function (ActivityPeriodActions,
   this.selectWeek = (week) => {
     this.currentWeek = week;
   };
+
+  this.todayDate = new Date();
 };
 
 export default ActivityTrackerController;
