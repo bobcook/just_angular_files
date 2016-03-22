@@ -4,7 +4,6 @@ const restrictedRedirectModalService = function ($stateParams,
                                                  dsoModalService) {
   'ngInject';
 
-
   const showModal = function () {
     const resource = $stateParams.restrictedRedirect;
     if (resource) {

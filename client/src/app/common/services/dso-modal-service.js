@@ -11,7 +11,7 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
       controller: 'DsoModalController',
       inputs: {
         resource: resource,
-        authFunction: dsoAuth.login,
+        authFunction: register,
         redirectPath: redirectPath,
       },
     });
@@ -41,6 +41,10 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
 
   const subscribe = function (redirectPath = $location.path()) {
     $window.location.href = dsoAuth.dsoSubscribeAuth(redirectPath);
+  };
+
+  const register = function (redirectPath = $location.path()) {
+    $window.location.href = dsoAuth.dsoRegisterAuth(redirectPath);
   };
 
   return {
