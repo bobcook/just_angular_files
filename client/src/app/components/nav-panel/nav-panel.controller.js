@@ -19,6 +19,7 @@ const NavPanelController = function ($rootScope,
   this.isUserWithBilling = function () {
     return $rootScope.$currentUser &&
       (
+        $rootScope.$currentUser.isPaid() &&
         !$rootScope.$currentUser.isBetaUser() &&
         !$rootScope.$currentUser.isEmployeeUser()
       );

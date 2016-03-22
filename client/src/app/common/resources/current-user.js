@@ -20,9 +20,14 @@ const CurrentUser = function (API_URL, railsResourceFactory, $auth, $cookies) {
     return $cookies.get('promoCode') === 'SS-EMPLOYEE';
   };
 
+  const isPaid = function () {
+    return this.memebershipStatus === 'paid';
+  };
+
   CurrentUser.include({
     isBetaUser: isBetaUser,
     isEmployeeUser: isEmployeeUser,
+    isPaid: isPaid,
   });
 
   return CurrentUser;
