@@ -1,10 +1,9 @@
 const ActivitiesController = function (Activity,
                                        $stateParams,
-                                       dsoModalService) {
+                                       restrictedRedirectService) {
   'ngInject';
 
-  const guard = () => $stateParams.restrictedRedirect !== 'true';
-  dsoModalService.showSubscribeModal('activities', guard);
+  restrictedRedirectService.filterUnpaidUsers('activities');
 
   this.selectedPillar = null; // Will be overwritten by pillar filters
   this.resource = Activity;

@@ -5,20 +5,20 @@ const restrictedRedirectService = function ($state, $rootScope, $location) {
 
   const anonymousUser = () => !$rootScope.$currentUser;
 
-  const redirect = function redirect(clause, redirectPath) {
+  const redirect = function redirect(clause, redirectPath, resource) {
     if (clause()) {
-      $state.go(redirectPath, { restrictedRedirect: true });
+      $state.go(redirectPath, { restrictedRedirect: resource });
     }
   };
 
   const filterUnpaidUsers =
-    function filterUnpaidUsers(redirectPath = 'application.home'){
-      redirect(unpaidUser, redirectPath);
+    function filterUnpaidUsers(resource){
+      redirect(unpaidUser, 'application.home', resource);
     };
 
   const filterAnonymous =
-    function filterAnonymous(redirectPath = 'application.home'){
-      redirect(anonymousUser, redirectPath);
+    function filterAnonymous(resource){
+      redirect(anonymousUser, 'application.home', resource);
     };
 
   return {

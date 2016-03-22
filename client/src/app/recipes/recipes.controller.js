@@ -2,11 +2,11 @@ const RecipesController = function (Recipe,
                                     $rootScope,
                                     $state,
                                     $stateParams,
-                                    dsoModalService) {
+                                    dsoModalService,
+                                    restrictedRedirectService) {
   'ngInject';
 
-  const guard = () => $stateParams.restrictedRedirect !== 'true';
-  dsoModalService.showSubscribeModal('recipes', guard);
+  restrictedRedirectService.filterUnpaidUsers('recipes');
 
   this.selectedPillar = null; // Will be overwritten by pillar filters
   this.resource = Recipe;

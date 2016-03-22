@@ -6,7 +6,7 @@ const UserRecipeController = function (Recipe,
                                        $stateParams) {
   'ngInject';
 
-  restrictedRedirectService.filterUnpaidUsers();
+  restrictedRedirectService.filterUnpaidUsers('me');
 
   // get one recipe
   UserRecipe.get($stateParams.id).then((recipe) => {

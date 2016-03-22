@@ -5,7 +5,7 @@ const UserGameController = function (Game,
                                      $stateParams) {
   'ngInject';
 
-  restrictedRedirectService.filterUnpaidUsers();
+  restrictedRedirectService.filterUnpaidUsers('me');
 
   // get one game
   UserGame.get($stateParams.id).then((game) => {

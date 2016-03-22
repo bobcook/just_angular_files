@@ -1,16 +1,14 @@
 const restrictedRedirectModalService = function ($stateParams,
                                                  $location,
-                                                 ModalService) {
+                                                 ModalService,
+                                                 dsoModalService) {
   'ngInject';
 
-  const isRestrictedRedirect = () => $stateParams.restrictedRedirect === 'true';
 
   const showModal = function () {
-    if (isRestrictedRedirect()) {
-      ModalService.showModal({
-        templateUrl: 'app/home/restricted-redirect-modal.html',
-        controller: 'RestrictedRedirectContoller',
-      });
+    const resource = $stateParams.restrictedRedirect;
+    if (resource) {
+      dsoModalService.showSubscribeModal(resource);
     }
     $location.search('restrictedRedirect', null);
   };
