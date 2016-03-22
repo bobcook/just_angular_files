@@ -72,8 +72,10 @@ const routerConfig = function (stateHelperProvider,
         },
         redirectIfNeeded: redirectIfNeeded,
       },
-      onEnter: function (ModalService, $rootScope) {
-        if ($rootScope.$currentUser) {
+      onEnter: function (ModalService, $rootScope, $cookies) {
+        const visited = !!$cookies.get('betaModal');
+        if ($rootScope.$currentUser && !visited) {
+          $cookies.put('betaModal', true);
           ModalService.showModal({
             templateUrl: 'app/components/beta-modal/beta-modal.html',
             controller: 'BetaModalController',
