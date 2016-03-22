@@ -22,6 +22,7 @@
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'AdobeDTM' : AdobeDTMLink + '-staging.js',
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
+            'billingUrl': 'https://appsec-s.aarp.org/smembership/update',
             'airbrakeProjectId': 114751,
             'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
             'dsoSubscribePromo': 'SM-SS',
@@ -34,6 +35,7 @@
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'AdobeDTM' : AdobeDTMLink + '-staging.js',
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
+            'billingUrl': 'https://appsec-s.aarp.org/smembership/update',
             'airbrakeProjectId': 114751,
             'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
             'dsoSubscribePromo': 'SM-SS',
@@ -46,6 +48,7 @@
             'API_URL': 'https://aarp-staying-sharp-dev-s3.herokuapp.com',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
+            'billingUrl': 'https://appsec-s.aarp.org/smembership/update',
             'airbrakeProjectId': 114751,
             'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
             'dsoSubscribePromo': 'SM-SS',
@@ -58,6 +61,7 @@
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'AdobeDTM' : AdobeDTMLink + '-staging.js',
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
+            'billingUrl': 'https://appsec-s.aarp.org/smembership/update',
             'airbrakeProjectId': 114751,
             'airbrakeProjectKey': 'f8d2d6bd92cccbc3f2e5d86591a9a620',
             'dsoSubscribePromo': 'SM-SS',
@@ -70,6 +74,7 @@
             'GoogleAnalytics' : 'IPHoz63oJsFGXbNMCSjmsa0MxYx4XlkQ',
             'AdobeDTM' : AdobeDTMLink + '.js',
             'accountUrl': 'https://secure.aarp.org/applications/account/myAccount.action',
+            'billingUrl': 'https://appsec.aarp.org/smembership/update',
             'airbrakeProjectId': 114752,
             'airbrakeProjectKey': '8385a658a0b9e4d16094ce0a28b75317',
             'dsoSubscribePromo': 'SM-SS',
@@ -116,6 +121,9 @@
         };
         window.__env.dsoRegister = {
           domain: envVars[currentEnv].dsoRegisterDomain,
+        };
+        window.__env.dsoBilling = {
+          url: envVars[currentEnv].billingUrl,
         };
       }(window));
     </script>

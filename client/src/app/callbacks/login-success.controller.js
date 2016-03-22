@@ -5,7 +5,8 @@ const LoginSuccessController = function ($loadCurrentUser,
                                          $rootScope,
                                          $scope,
                                          $auth,
-                                         $timeout) {
+                                         $timeout,
+                                         $cookies) {
   'ngInject';
 
   const goToRedirectPath = function (redirectPath) {
@@ -27,7 +28,7 @@ const LoginSuccessController = function ($loadCurrentUser,
     const isLeadStatus = $rootScope.$currentUser.membershipStatus === 'lead';
     const isProspectStatus =
       $rootScope.$currentUser.membershipStatus === 'prospect';
-    return (isLeadStatus || isProspectStatus) && isBetaPromo;
+    return (isProspectStatus) && isBetaPromo;
   };
 
   const goToLeadBetaLanding = function () {
@@ -35,9 +36,32 @@ const LoginSuccessController = function ($loadCurrentUser,
     $scope.$apply();
   };
 
+  const existingPromo = function () {
+    return $cookies.get('promoCode');
+  };
+
+  const incomingPromo = function () {
+    return $stateParams.promo;
+  };
+
+  const removePromoCookie = function () {
+    if (existingPromo()) {
+      $cookies.remove('promoCode');
+    }
+  };
+
+  const savePromo = function () {
+    if (incomingPromo()) {
+      $cookies.put('promoCode', incomingPromo());
+    } else {
+      removePromoCookie();
+    };
+  };
+
   if ($stateParams.claimToken) {
     $auth.createSession($stateParams.claimToken).then(function () {
       $loadCurrentUser($rootScope.$currentUser).then(function () {
+        savePromo();
         goToRedirectPath($stateParams.redirectPath);
       }, function (){
         // TODO: might need rethink how to handle login failures

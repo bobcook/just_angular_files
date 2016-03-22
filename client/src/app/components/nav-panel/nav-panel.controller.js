@@ -1,7 +1,7 @@
 const NavPanelController = function ($rootScope,
-  AssessmentStatus,
-  dsoModalService,
-  dsoAuth) {
+                                     AssessmentStatus,
+                                     dsoModalService,
+                                     dsoAuth) {
   'ngInject';
 
   this.showSubscribeModal = dsoModalService.showSubscribeModal;
@@ -14,6 +14,15 @@ const NavPanelController = function ($rootScope,
 
   this.currentRoute = 'root';
   this.accountUrl = window.__env.accountUrl;
+  this.billingUrl = dsoAuth.dsoBillingPath();
+
+  this.isUserWithBilling = function () {
+    return $rootScope.$currentUser &&
+      (
+        !$rootScope.$currentUser.isBetaUser() &&
+        !$rootScope.$currentUser.isEmployeeUser()
+      );
+  };
 
   if ($rootScope.$currentUser.isLoggedIn) {
     AssessmentStatus.hasCompletedAssessments().then((completed) => {

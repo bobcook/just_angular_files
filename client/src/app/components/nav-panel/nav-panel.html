@@ -20,6 +20,10 @@
       <li>
         <a ng-if="$root.$currentUser.isLoggedIn" href="{{vm.accountUrl}}">Account</a>
       </li>
+      <li ng-if="vm.isUserWithBilling()" class="bullet">•</li>
+      <li ng-if="vm.isUserWithBilling()">
+        <a href="{{vm.billingUrl}}">Billing</a>
+      </li>
     </ul>
   </div>
 </section>

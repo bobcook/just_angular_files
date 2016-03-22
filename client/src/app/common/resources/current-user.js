@@ -1,4 +1,4 @@
-const CurrentUser = function (API_URL, railsResourceFactory, $auth) {
+const CurrentUser = function (API_URL, railsResourceFactory, $auth, $cookies) {
   'ngInject';
 
   const CurrentUser = railsResourceFactory({
@@ -10,6 +10,19 @@ const CurrentUser = function (API_URL, railsResourceFactory, $auth) {
     get: function () {
       return $auth.sessionExists();
     },
+  });
+
+  const isBetaUser = function () {
+    return $cookies.get('promoCode') === 'SS-BETA';
+  };
+
+  const isEmployeeUser = function () {
+    return $cookies.get('promoCode') === 'SS-EMPLOYEE';
+  };
+
+  CurrentUser.include({
+    isBetaUser: isBetaUser,
+    isEmployeeUser: isEmployeeUser,
   });
 
   return CurrentUser;

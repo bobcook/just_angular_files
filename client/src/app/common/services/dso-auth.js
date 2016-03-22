@@ -1,15 +1,22 @@
 const dsoAuth = function ($location,
                           $cookies,
+                          $state,
                           ApiRoutes,
                           $postHref,
                           dsoSubscribe,
-                          dsoRegister) {
+                          dsoRegister,
+                          dsoBilling) {
   'ngInject';
 
   const login = function (redirectPath = $location.path(), promo = 'SM-SS') {
     $postHref(
       ApiRoutes.AARP_AUTH, { promo: promo, redirectPath: redirectPath }
     );
+  };
+
+  const dsoBillingPath = function (promo = 'SM-SS') {
+    const ssologinPath = buildSSOLoginPath($state.href('application.home'));
+    return `${dsoBilling.url}?promo=${promo}&ref=${ssologinPath}`;
   };
 
   const dsoRegisterAuth = function (redirectPath = $location.path(),
@@ -38,6 +45,7 @@ const dsoAuth = function ($location,
     login: login,
     dsoSubscribeAuth: dsoSubscribeAuth,
     dsoRegisterAuth: dsoRegisterAuth,
+    dsoBillingPath: dsoBillingPath,
   };
 };
 
