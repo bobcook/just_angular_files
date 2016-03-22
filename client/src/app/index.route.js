@@ -204,6 +204,13 @@ const routerConfig = function (stateHelperProvider,
           children: assessmentResultsStates(),
         },
         {
+          name: 'assessment-completion',
+          url: '/assessment-completion',
+          controller: 'AssessmentCompletionController',
+          controllerAs: 'vm',
+          templateUrl: 'app/assessments/assessment-completion.html',
+        },
+        {
           name: 'betabound',
           url: '/betabound',
           template: '',

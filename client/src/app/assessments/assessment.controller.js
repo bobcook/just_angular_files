@@ -158,7 +158,7 @@ const AsssessmentController = function ($stateParams,
     if (isPaidUser()) {
       $state.go('application.user.assessments');
     } else {
-      $state.go('application.assessments');
+      $state.go('application.assessment-completion');
     }
   };
 
