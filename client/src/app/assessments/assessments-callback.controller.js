@@ -9,7 +9,8 @@ const AsssessmentsCallbackController = function ($state,
 
   const assessmentId = $location.search().id;
 
-  AssessmentStatus.lastCompletedUserAssessmentGroup().then((group) => {
+
+  AssessmentStatus.lastUserAssessmentGroup().then((group) => {
     if (assessmentId === MBSAssessmentList.LAST_MBS_ASSESSMENT_ID) {
       const nextAssessment = AssessmentStatus.getQuestionnaires(group)[0];
       const mbs = AssessmentStatus.getMBS(group);
