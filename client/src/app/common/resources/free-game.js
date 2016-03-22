@@ -19,7 +19,10 @@ const FreeGame = function (API_URL, railsResourceFactory) {
   // Computed properties
   Object.defineProperty(FreeGame.prototype, 'uiSref', {
     get: function () {
-      return `application.game({ id: '${this.slug}' })`;
+      const query =
+        `{id: '${this.slug}', ` +
+        `pillar: '${this.pathPillar}', year: '${this.pathYear}'}`;
+      return `application.game(${query})`;
     },
   });
 
