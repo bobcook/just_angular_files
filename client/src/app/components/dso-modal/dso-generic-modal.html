@@ -1,0 +1,52 @@
+<div>
+  <div class="modal subscribe-modal">
+    <div class="content">
+      <div class="header">
+        <button class="close" aria-label="Close" ng-click="close()">
+          <span area-hidden="true">x</span>
+        </button>
+      </div>
+      <div class="body">
+        <!-- Anonymous users -->
+        <div ng-if="!$root.$currentUser">
+          <!-- Register -->
+          <div ng-if="forRegister()">
+            <p>Welcome to Staying Sharp. Please create a free account to view this page.</p>
+          </div>
+
+          <!-- Subscribe -->
+          <div ng-if="!forRegister()">
+            Welcome to Staying Sharp. This page is available to Staying Sharp subscribers. Sign up now and get on your way to better brain health.
+          </div>
+        </div>
+
+        <!-- Registered users -->
+        <div ng-if="$root.$currentUser">
+          Welcome to Staying Sharp. This page is available to Staying Sharp subscribers. Sign up now and get on your way to better brain health.
+        </div>
+      </div>
+      <div class="footer">
+        <!-- Anonymous users -->
+        <div ng-if="!$root.$currentUser">
+          <!-- Register -->
+          <div ng-if="forRegister()">
+            <a href="{{registerUrl}}" class="btn">Create a free Account</a>
+            <small>Already have an account? <a href="#" ng-click="login(redirectPath)">Login</a> now.</small>
+          </div>
+
+          <!-- Subscribe -->
+          <div ng-if="!forRegister()">
+            <a href="{{subscribeUrl}}" class="btn">Get Started</a>
+            <small>Already have an account? <a href="#" ng-click="login(redirectPath)">Login</a> now.</small>
+          </div>
+        </div>
+
+        <!-- Registered users -->
+        <div ng-if="$root.$currentUser">
+          <a href="{{subscribeUrl}}" class="btn">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-cellophane"></div>
+</div>

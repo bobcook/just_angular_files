@@ -7,8 +7,12 @@ const OverallResultsController = function (Activity,
                                            $moment,
                                            $pillarFiltering,
                                            $promise,
-                                           $q) {
+                                           $q,
+                                           $location,
+                                           restrictedRedirectService) {
   'ngInject';
+
+  restrictedRedirectService.filterUnpaidUsers('activities', $location.path());
 
   const queries = AssessmentResultQueries;
 

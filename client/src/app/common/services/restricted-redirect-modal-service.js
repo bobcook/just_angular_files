@@ -6,10 +6,14 @@ const restrictedRedirectModalService = function ($stateParams,
 
   const showModal = function () {
     const resource = $stateParams.restrictedRedirect;
-    if (resource) {
+    const genericRedirect = $stateParams.genericRedirect;
+    if (genericRedirect && resource) {
+      dsoModalService.showGenericPaywallModal(resource, genericRedirect);
+    } else if (resource) {
       dsoModalService.showSubscribeModal(resource);
     }
     $location.search('restrictedRedirect', null);
+    $location.search('genericRedirect', null);
   };
 
   return {

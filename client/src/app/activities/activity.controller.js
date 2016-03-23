@@ -3,10 +3,11 @@ const ActivityController = function (Activity,
                                      ActivityReview,
                                      UserActivity,
                                      $stateParams,
+                                     $location,
                                      restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.filterUnpaidUsers('activities');
+  restrictedRedirectService.filterUnpaidUsers('activities', $location.path());
 
   const id = $stateParams.id.replace('.html', '');
   Activity.get(id).then((activity) => {

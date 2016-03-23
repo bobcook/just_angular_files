@@ -5,6 +5,7 @@ const GameController = function (Game,
                                  $stateParams,
                                  $state,
                                  $rootScope,
+                                 $location,
                                  restrictedRedirectService) {
   'ngInject';
 
@@ -13,7 +14,7 @@ const GameController = function (Game,
     this.game = response.data;
 
     if (isPaidGame(this.game)) {
-      restrictedRedirectService.filterUnpaidUsers('games');
+      restrictedRedirectService.filterUnpaidUsers('games', $location.path());
     };
   });
 

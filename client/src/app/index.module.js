@@ -183,6 +183,10 @@ import CurrentLifestyleResultsController from
   './components/charts/current-lifestyle-results.controller.js';
 import CurrentNeuroResultsController from
   './components/charts/current-neuro-results.controller.js';
+  import DsoModalController from
+  './components/dso-modal/dso-modal.controller.js';
+  import DsoGenericMocalController from
+  './components/dso-modal/dso-generic-modal.controller.js';
 import EncouragementMessageController from
   './components/encouragement-message/encouragement-message.controller.js';
 import ExploreContentController from
@@ -230,8 +234,6 @@ import SocialLinksController from
   './components/social-links/social-links.controller.js';
 import StaticController from './static/static.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
-import DsoModalController from
-  './components/dso-modal/dso-modal.controller.js';
 import UserDashboardCardController from
   './components/user-dashboard-cards/user-dashboard-card.controller.js';
 import UserDashboardCardsController from
@@ -425,6 +427,8 @@ app
     CurrentLifestyleResultsController
   )
   .controller('CurrentNeuroResultsController', CurrentNeuroResultsController)
+  .controller('DsoModalController', DsoModalController)
+  .controller('DsoGenericMocalController', DsoGenericMocalController)
   .controller('EncouragementMessageController', EncouragementMessageController)
   .controller('ExploreContentController', ExploreContentController)
   .controller('GameController', GameController)
@@ -458,8 +462,6 @@ app
   .controller('SocialLinksController', SocialLinksController)
   .controller('StaticController', StaticController)
   .controller('TopNavController', TopNavController)
-  .controller('DsoModalController',
-    DsoModalController)
   .controller('UserDashboardCardController', UserDashboardCardController)
   .controller('UserDashboardCardsController', UserDashboardCardsController)
   .controller('UserDashboardController', UserDashboardController)

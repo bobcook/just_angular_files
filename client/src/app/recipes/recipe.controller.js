@@ -3,10 +3,11 @@ const RecipeController = function (Recipe,
                                    RecipeReview,
                                    UserRecipe,
                                    $stateParams,
+                                   $location,
                                    restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.filterUnpaidUsers('recipes');
+  restrictedRedirectService.filterUnpaidUsers('recipes', $location.path());
 
   const id = $stateParams.id.replace('.html', '');
   Recipe.get(id).then((recipe) => {

@@ -37,6 +37,21 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
     clearPath();
   };
 
+  const showGenericPaywallModal = function (resource,
+                                            resourcePath,
+                                            guard = () => false) {
+    if (guard()) { return; }
+
+    ModalService.showModal({
+      templateUrl: 'app/components/dso-modal/dso-generic-modal.html',
+      controller: 'DsoGenericMocalController',
+      inputs: {
+        resource: resource,
+        resourcePath: resourcePath,
+      },
+    });
+  };
+
   const clearPath = () => $location.search('restrictedRedirect', null);
 
   const subscribe = function (redirectPath = $location.path()) {
@@ -50,6 +65,7 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
   return {
     showRegisterModal: showRegisterModal,
     showSubscribeModal: showSubscribeModal,
+    showGenericPaywallModal: showGenericPaywallModal,
   };
 };
 
