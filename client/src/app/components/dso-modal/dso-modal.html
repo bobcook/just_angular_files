@@ -13,11 +13,11 @@
         <button ng-click="authFunction(redirectPath)" class="btn btn-primary" translate>{{buttonText}}</button>
         <span ng-switch="resource">
           <small ng-switch-when="me">Not ready to join? <a ng-href="{{registerUrl}}">Create a free account</a> or <a href="#" ng-click="login()">login now</a></small>
-          <small ng-switch-when="recipes">Already have an account? <a href="#" ng-click="login()">Login here</a></small>
-          <small ng-switch-when="activities">Already have an account? <a href="#" ng-click="login()">Login here</a></small>
+          <small ng-switch-when="recipes">Already have an account? <a href="#" ng-click="login('/recipes')">Login here</a></small>
+          <small ng-switch-when="activities">Already have an account? <a href="#" ng-click="login('/activities')">Login here</a></small>
           <small ng-switch-when="review">Already have an account? <a href="#" ng-click="login()">Login here</a></small>
-          <small ng-switch-when="articles">Already have an account? <a href="#" ng-click="login()">Login here</a></small>
-          <small ng-switch-when="games">Already have an account? <a href="#" ng-click="login()">Login here</a></small>
+          <small ng-switch-when="games">Already have an account? <a href="#" ng-click="login('/games')">Login here</a></small>
+          <small ng-switch-when="articles">Already have an account? <a href="#" ng-click="login('/articles')">Login here</a></small>
         </span>
       </div>
     </div>
