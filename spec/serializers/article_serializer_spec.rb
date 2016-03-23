@@ -14,7 +14,7 @@ describe ArticleSerializer do
 
   describe '#path_pillar' do
     it 'extracts the pillar from the cms_url' do
-      expect(subject.path_pillar).to eq('art')
+      expect(subject.path_pillar).to eq('connect')
     end
   end
 end

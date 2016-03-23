@@ -1,6 +1,6 @@
 module PathUtils
   def path_pillar
-    %r{/\w\w/(\w+)/}.match(object.cms_url)[1]
+    %r{(\w+)/\d\d/}.match(object.cms_url)[1]
   end
 
   def path_year
