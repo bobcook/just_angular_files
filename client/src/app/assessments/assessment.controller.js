@@ -57,10 +57,8 @@ const AsssessmentController = function ($stateParams,
   ];
 
   const getPillar = (pillarName) => {
-    return this.tabData.find((tab) => {
-      if (tab.pillar === pillarName) {
-        return tab;
-      }
+    return _.find(this.tabData, (tab) => {
+      return tab.pillar === pillarName;
     });
   };
 
@@ -173,10 +171,8 @@ const AsssessmentController = function ($stateParams,
   };
 
   this.getActivePillar = () => {
-    return this.tabData.find((tab) => {
-      if (tab.pillar === this.activePillar.pillar) {
-        return tab;
-      }
+    return _.find(this.tabData, (tab) => {
+      return tab.pillar === this.activePillar.pillar;
     });
   };
 
@@ -215,7 +211,6 @@ const AsssessmentController = function ($stateParams,
 
   if (this.hasFlash) {
     this.activePillar = getActivePillar();
-
     AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
       if (!lastGroup) { return; };
 

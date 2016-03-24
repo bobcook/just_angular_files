@@ -1,13 +1,12 @@
 <div class="cp-assessment-questions">
   <section class="container">
-    <ss-info-box ng-hide="vm.hasFlash">
+    <ss-info-box ng-if="!vm.hasFlash">
       <p translate>info.missing_flash_warning_assessments</p>
       <a ui-sref="application.home" class="btn">Explore Staying Sharp</a>
     </ss-info-box>
 
     <div ng-if="vm.showAssessment" class="form-wrap">
       <h1>The Brain Health Assessment</h1>
-
 
       <div class="container header-container">
         <header class="assessment-header">
@@ -28,9 +27,10 @@
         </div>
       </div>
 
+
       <div>
         <div ng-repeat="(pillarName, questions) in vm.questionsByPillarName">
-          <div ng-show="pillarName === vm.activePillar.pillar">
+          <div ng-if="pillarName === vm.activePillar.pillar">
             <form name="vm[pillarName + 'AssessmentForm']" ng-submit="vm.validateForm(vm[pillarName + 'AssessmentForm'])" novalidate>
               <div ng-repeat="question in questions" class="row">
                 <!-- date picker -->
