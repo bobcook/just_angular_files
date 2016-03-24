@@ -183,10 +183,10 @@ import CurrentLifestyleResultsController from
   './components/charts/current-lifestyle-results.controller.js';
 import CurrentNeuroResultsController from
   './components/charts/current-neuro-results.controller.js';
-  import DsoModalController from
-  './components/dso-modal/dso-modal.controller.js';
-  import DsoGenericMocalController from
-  './components/dso-modal/dso-generic-modal.controller.js';
+import DsoModalController from
+'./components/dso-modal/dso-modal.controller.js';
+import DsoGenericMocalController from
+'./components/dso-modal/dso-generic-modal.controller.js';
 import EncouragementMessageController from
   './components/encouragement-message/encouragement-message.controller.js';
 import ExploreContentController from
