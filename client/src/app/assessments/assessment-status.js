@@ -64,11 +64,13 @@ const AssessmentStatus = function ($assessmentsAuth,
   };
 
   const saveUserResponse = function (questionId, response, userAssessmentId) {
-    return new AssessmentResponse({
+    const assessmentResponse = new AssessmentResponse({
       assessmentQuestionId: questionId,
       response: response,
       userAssessmentId: userAssessmentId,
-    }).create();
+    });
+    return assessmentResponse.create();
+
   };
 
   // TODO: Currently we are storing date as a string. Might reconsider

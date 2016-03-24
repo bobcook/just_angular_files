@@ -117,7 +117,7 @@ const AsssessmentController = function ($stateParams,
   };
 
   const responsesForQuestionIds = (responses, questionIds) => {
-    return _.pick(responses, (v, k) => questionIds.includes(Number(k)));
+    return _.pick(responses, (v, k) => _.includes(questionIds, Number(k)));
   };
 
   this.collectIndexResponses = (userAssessment) => {

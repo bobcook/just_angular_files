@@ -11,7 +11,7 @@ const DsoGenericMocalController = function ($state,
   $scope.redirectPath = resourcePath;
 
   $scope.forRegister = function () {
-    return registerResources.includes(resource);
+    return _.includes(registerResources, resource);
   };
 
   $scope.close = close;
