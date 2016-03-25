@@ -4,6 +4,7 @@ const assessmentLinkManager = function (AssessmentStatus,
                                         $window,
                                         dsoAuth,
                                         UserAssessmentGroup,
+                                        restrictedRedirectService,
                                         assessmentStates) {
   'ngInject';
 
@@ -11,8 +12,7 @@ const assessmentLinkManager = function (AssessmentStatus,
     AssessmentStatus.lastUserAssessmentGroup();
 
   const register = function () {
-    const url = $state.get('application.assessments').url;
-    $window.location.href = dsoAuth.dsoRegisterAuth(url);
+    $window.location.href = dsoAuth.dsoRegisterAuth('/begin-assessment');
   };
 
   const authForAssessments = function () {
@@ -47,6 +47,19 @@ const assessmentLinkManager = function (AssessmentStatus,
     }
   };
 
+  const redirectToAssessment = function () {
+    AssessmentStatus.lastUserAssessmentGroup().then(function (group) {
+      const notStarted =
+        assessmentStates.getState(group) === assessmentStates.states.notStarted;
+
+      if (notStarted) {
+        startAssessment();
+      } else {
+        continueAssessment(group)();
+      }
+    });
+  };
+
   const getAssessmentLink = function () {
     return lastUserAssessmentGroupPromise.then((lastGroup) => {
       switch (assessmentStates.getState(lastGroup)) {
@@ -67,6 +80,7 @@ const assessmentLinkManager = function (AssessmentStatus,
   return {
     getAssessmentLink: getAssessmentLink,
     getNextAssessment: getNextAssessment,
+    redirectToAssessment: redirectToAssessment,
   };
 };
 

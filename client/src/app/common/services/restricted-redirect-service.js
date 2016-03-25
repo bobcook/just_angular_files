@@ -26,19 +26,21 @@ const restrictedRedirectService = function ($state, $rootScope, $location) {
     }
   };
 
-  const filterUnpaidUsers =
-    function filterUnpaidUsers(resource, resourcePath){
-      if (resourcePath) {
-        redirectGeneric(unpaidUser, 'application.home', resource, resourcePath);
-      } else {
-        redirect(unpaidUser, 'application.home', resource);
-      }
-    };
+  const filterUnpaidUsers = function filterUnpaidUsers(resource, resourcePath){
+    if (resourcePath) {
+      redirectGeneric(unpaidUser, 'application.home', resource, resourcePath);
+    } else {
+      redirect(unpaidUser, 'application.home', resource);
+    }
+  };
 
-  const filterAnonymous =
-    function filterAnonymous(resource){
+  const filterAnonymous = function filterAnonymous(resource, resourcePath){
+    if (resourcePath) {
+      redirectGeneric(anonymousUser,'application.home',resource,resourcePath);
+    } else {
       redirect(anonymousUser, 'application.home', resource);
     };
+  };
 
   return {
     redirect: redirect,

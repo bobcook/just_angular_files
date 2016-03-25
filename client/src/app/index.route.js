@@ -74,7 +74,7 @@ const routerConfig = function (stateHelperProvider,
       },
       onEnter: function (ModalService, $rootScope, $cookies) {
         const visited = !!$cookies.get('betaModal');
-        if ($rootScope.$currentUser && !visited) {
+        if (!visited) {
           $cookies.put('betaModal', true);
           ModalService.showModal({
             templateUrl: 'app/components/beta-modal/beta-modal.html',
@@ -478,8 +478,13 @@ const routerConfig = function (stateHelperProvider,
     const redirectUrl = $match.link || '/';
     dsoAuth.login(redirectUrl);
   });
-  $urlRouterProvider.when('/begin-assessment', function ($assessmentsAuth) {
-    $assessmentsAuth.authenticate();
+  $urlRouterProvider.when('/begin-assessment', function (assessmentLinkManager,
+                                    restrictedRedirectService,
+                                    $rootScope,
+                                    $loadCurrentUser) {
+    $loadCurrentUser($rootScope.$currentUser);
+    restrictedRedirectService.filterAnonymous('assessments', '/assessments');
+    assessmentLinkManager.redirectToAssessment();
   });
   $urlRouterProvider.otherwise('/');
 };

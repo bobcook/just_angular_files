@@ -11,10 +11,7 @@ const AsssessmentController = function ($stateParams,
                                         restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.filterUnpaidUsers(
-    'assessment',
-    $state.href('application.assessments')
-  );
+  restrictedRedirectService.filterAnonymous('assessment');
 
   const userAssessmentId = $stateParams.id;
   let assessmentRedirect;
