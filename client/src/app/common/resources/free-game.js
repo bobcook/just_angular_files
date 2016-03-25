@@ -26,6 +26,16 @@ const FreeGame = function (API_URL, railsResourceFactory) {
     },
   });
 
+  Object.defineProperty(FreeGame.prototype, 'externalUrl', {
+    get: function () {
+      if (this.gameProvider === 'HN') {
+        return this.callToActionUrl;
+      } else {
+        return `/game-play/${this.slug}`;
+      }
+    },
+  })
+
   return FreeGame;
 };
 
