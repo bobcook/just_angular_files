@@ -1,9 +1,6 @@
 const LogoutController = function ($auth, $log, $state, $cookies) {
   'ngInject';
 
-  // Remove beta modal cookies on logout so modal pops up when user logs in.
-  $cookies.remove('betaModal');
-
   // Remove promoCode cookie so user isn't treated as beta user or employee
   // user when logged out or if they log in as different user.
   $cookies.remove('promoCode')

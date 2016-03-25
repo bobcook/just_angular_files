@@ -4,14 +4,26 @@ const AssessmentButtonController = function ($featureDetection,
                                              UserAssessmentGroup,
                                              $assessmentsAuth,
                                              dsoAuth,
+                                             $state,
                                              assessmentLinkManager) {
   'ngInject';
 
+  const getRedirectPath = (ctaState) => {
+    if (ctaState === assessmentStates.states.completed) {
+      return $state.href('application.user.assessments.overall');
+    } else {
+      return '/begin-assessment';
+    }
+  };
+
+  const assignSubscribeUrl = () => {
+    const redirectPath = getRedirectPath(this.ctaState);
+    this.subscribeUrl = dsoAuth.dsoSubscribeAuth(redirectPath);
+  };
+
   this.assessmentStates = assessmentStates.states;
-  this.subscribeUrl = dsoAuth.dsoSubscribeAuth('/begin-assessment');
   this.registerUrl = dsoAuth.dsoRegisterAuth('/begin-assessment');
   this.hasFlash = $featureDetection.hasFlash();
-  this.buttonState;
   assessmentLinkManager.getAssessmentLink().then((result) => {
     this.assessmentLink = result;
   });
@@ -19,9 +31,11 @@ const AssessmentButtonController = function ($featureDetection,
   if (this.hasFlash) {
     AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
       this.ctaState = assessmentStates.getState(lastGroup);
+      assignSubscribeUrl();
     }, (err) => {
       if (err.status === 401) {
         this.ctaState = this.assessmentStates.anonymous;
+        assignSubscribeUrl();
       }
     });
   }

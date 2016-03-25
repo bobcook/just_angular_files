@@ -1,9 +1,9 @@
 <!-- For paid users -->
 <section permission only="'paid'">
   <a class="btn green-btn wide-btn" href="#" ng-click="vm.assessmentLink()">
-    <p ng-show="vm.ctaState === vm.assessmentStates.notStarted">Begin Assessment</p>
-    <p ng-show="vm.ctaState === vm.assessmentStates.started">Continue Assessment</p>
-    <p ng-show="vm.ctaState === vm.assessmentStates.completed">Retake Assessment</p>
+    <p ng-if="vm.ctaState === vm.assessmentStates.notStarted">Begin Assessment</p>
+    <p ng-if="vm.ctaState === vm.assessmentStates.started">Continue Assessment</p>
+    <p ng-if="vm.ctaState === vm.assessmentStates.completed">Retake Assessment</p>
   </a>
 </section>
 <!-- For paid users -->
@@ -12,18 +12,18 @@
 <section permission only="'unpaid'">
   <div>
     <a class="btn green-btn wide-btn" ng-href="{{vm.subscribeUrl}}">
-      <p ng-show="vm.ctaState === vm.assessmentStates.notStarted">Join and Take Assessment</p>
-      <p ng-show="vm.ctaState === vm.assessmentStates.started">Join and Complete Assessment</p>
-      <p ng-show="vm.ctaState === vm.assessmentStates.completed">Join now and get your results</p>
-      <p ng-show="vm.ctaState === vm.assessmentStates.anonymous">Join and Take Assessment</p>
+      <span ng-if="vm.ctaState === vm.assessmentStates.notStarted">Join and Take Assessment</span>
+      <span ng-if="vm.ctaState === vm.assessmentStates.started">Join and Complete Assessment</span>
+      <span ng-if="vm.ctaState === vm.assessmentStates.completed">Join now and get your results</span>
+      <span ng-if="vm.ctaState === vm.assessmentStates.anonymous">Join and Take Assessment</span>
     </a>
   </div>
   <div class="cta-note">
     <a ng-click="vm.assessmentLink()" href="#">
-      <p ng-show="vm.ctaState === vm.assessmentStates.notStarted">or, you can start now and join later to see your results</p>
-      <p ng-show="vm.ctaState === vm.assessmentStates.started">or, you can complete your assessment now and join later to see your results</p>
-      <p ng-show="vm.ctaState === vm.assessmentStates.completed">or, you can retake now and join later to see your new results</p>
-      <p ng-show="vm.ctaState === vm.assessmentStates.anonymous">or, create a free account to take the assessment now and join later to see your results</p>
+      <p ng-if="vm.ctaState === vm.assessmentStates.notStarted">or, you can start now and join later to see your results</p>
+      <p ng-if="vm.ctaState === vm.assessmentStates.started">or, you can complete your assessment now and join later to see your results</p>
+      <p ng-if="vm.ctaState === vm.assessmentStates.completed">or, you can retake now and join later to see your new results</p>
+      <p ng-if="vm.ctaState === vm.assessmentStates.anonymous">or, create a free account to take the assessment now and join later to see your results</p>
     </a>
   </div>
 </section>
