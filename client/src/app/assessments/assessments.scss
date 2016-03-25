@@ -838,6 +838,10 @@
 
     .bar-graph {
       min-height: 256px;
+
+      .highcharts-container {
+        float: left;
+      }
     }
 
     h3 {
