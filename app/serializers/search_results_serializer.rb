@@ -1,7 +1,9 @@
 class SearchResultsSerializer < ActiveModel::Serializer
+  include PathUtils
+
   delegate :card_image, :description, :id, to: :common
   attributes :id, :title, :card_image, :card_title, :description, :content_type,
-             :effort, :slug
+             :effort, :slug, :path_pillar, :path_year
 
   has_many :pillars
 

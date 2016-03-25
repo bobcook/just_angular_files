@@ -1,6 +1,7 @@
 const Article = function (API_URL,
                           railsResourceFactory,
-                          railsSerializer) {
+                          railsSerializer,
+                          resourceUrlFormatter) {
   'ngInject';
 
   const Article = railsResourceFactory({
@@ -25,10 +26,10 @@ const Article = function (API_URL,
   // Computed properties
   Object.defineProperty(Article.prototype, 'uiSref', {
     get: function () {
-      const query =
-        `{id: '${this.slug}', ` +
-        `pillar: '${this.pathPillar}', year: '${this.pathYear}'}`;
-      return `application.article(${query})`;
+      return resourceUrlFormatter.format('article',
+                                         this.slug,
+                                         this.pathPillar,
+                                         this.pathYear);
     },
   });
 

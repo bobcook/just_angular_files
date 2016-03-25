@@ -1,6 +1,7 @@
 const UserActivity = function (API_URL,
                                railsResourceFactory,
-                               railsSerializer) {
+                               railsSerializer,
+                               resourceUrlFormatter) {
   'ngInject';
 
   // TODO: what's api/v1/me/user_activities for???
@@ -34,7 +35,10 @@ const UserActivity = function (API_URL,
 
   Object.defineProperty(UserActivity.prototype, 'uiSref', {
     get: function () {
-      return `application.activity({ id: '${this.slug}' })`;
+      return resourceUrlFormatter.format('activity',
+                                         this.slug,
+                                         this.pathPillar,
+                                         this.pathYear);
     },
   });
 

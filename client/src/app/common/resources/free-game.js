@@ -1,4 +1,6 @@
-const FreeGame = function (API_URL, railsResourceFactory) {
+const FreeGame = function (API_URL,
+                           railsResourceFactory,
+                           resourceUrlFormatter) {
   'ngInject';
 
   const gamesUrl = `${API_URL}/api/v1/free_games`;
@@ -19,10 +21,10 @@ const FreeGame = function (API_URL, railsResourceFactory) {
   // Computed properties
   Object.defineProperty(FreeGame.prototype, 'uiSref', {
     get: function () {
-      const query =
-        `{id: '${this.slug}', ` +
-        `pillar: '${this.pathPillar}', year: '${this.pathYear}'}`;
-      return `application.game(${query})`;
+      return resourceUrlFormatter.format('game',
+                                         this.slug,
+                                         this.pathPillar,
+                                         this.pathYear);
     },
   });
 

@@ -1,6 +1,7 @@
 const UserGame = function (API_URL,
                            railsResourceFactory,
-                           railsSerializer) {
+                           railsSerializer,
+                           resourceUrlFormatter) {
   'ngInject';
 
   const userGameUrl = `${API_URL}/api/v1/me/games`;
@@ -36,7 +37,10 @@ const UserGame = function (API_URL,
 
   Object.defineProperty(UserGame.prototype, 'uiSref', {
     get: function () {
-      return `application.user.game({ id: '${this.slug}' })`;
+      return resourceUrlFormatter.format('game',
+                                         this.slug,
+                                         this.pathPillar,
+                                         this.pathYear);
     },
   });
 

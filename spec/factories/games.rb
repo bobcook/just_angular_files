@@ -7,6 +7,9 @@ FactoryGirl.define do
     last_modified { Time.current }
     published_at { Time.current }
     sequence(:title) { |n| "Game #{n}" }
+    cms_url 'http://www.aarp.org/content/specialized-membership/' \
+            'staying-sharp/en/art/connect/16/gratitude-peace-of-mind/' \
+            '_jcr_content.ss.json'
     sequence(:payload) do |n|
       {
         title: "Game #{n}",

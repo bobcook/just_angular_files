@@ -13,7 +13,8 @@ const Search = function (API_URL, railsResourceFactory, railsSerializer) {
         const setUiSref = function (obj) {
           const content = obj.contentType.toLowerCase();
           obj.uiSref =
-            `application.${content}({ id: '${obj.slug}' })`;
+            `application.${content}({ id: '${obj.slug}', ` +
+            `pillar: '${obj.pathPillar}', year: '${obj.pathYear}' })`;
         };
 
         results.items.forEach(setUiSref);

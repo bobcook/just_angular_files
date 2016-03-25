@@ -103,6 +103,7 @@ import restrictedRedirectModalService from
   './common/services/restricted-redirect-modal-service.js';
 import restrictedRedirectService from
   './common/services/restricted-redirect-service.js';
+import resourceUrlFormatter from './common/services/resource-url-formatter.js';
 
 // directives
 import activityTracker from './components/activity-tracker/activity-tracker.js';
@@ -361,6 +362,7 @@ app
   .factory('userPolicies', userPolicies)
   .factory('restrictedRedirectModalService', restrictedRedirectModalService)
   .factory('restrictedRedirectService', restrictedRedirectService)
+  .factory('resourceUrlFormatter', resourceUrlFormatter)
   .provider('modalStateHelper', modalStateHelper)
 
   // directives

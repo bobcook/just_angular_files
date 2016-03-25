@@ -8,6 +8,9 @@ FactoryGirl.define do
     published_at { Time.current }
     type { "#{Article.article_types.sample}_article".camelize }
     sequence(:title) { |n| "Article #{n}" }
+    cms_url 'http://www.aarp.org/content/specialized-membership/' \
+            'staying-sharp/en/art/connect/16/gratitude-peace-of-mind/' \
+            '_jcr_content.ss.json'
     sequence(:payload) do |n|
       {
         mastheadTitle: '4 Steps to Reduce Age-Related Anxiety',

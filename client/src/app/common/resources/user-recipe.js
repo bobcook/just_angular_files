@@ -1,6 +1,7 @@
 const UserRecipe = function (API_URL,
                              railsResourceFactory,
-                             railsSerializer) {
+                             railsSerializer,
+                             resourceUrlFormatter) {
   'ngInject';
 
   const userRecipeUrl = `${API_URL}/api/v1/me/recipes`;
@@ -36,7 +37,10 @@ const UserRecipe = function (API_URL,
 
   Object.defineProperty(UserRecipe.prototype, 'uiSref', {
     get: function () {
-      return `application.user.recipe({ id: '${this.slug}' })`;
+      return resourceUrlFormatter.format('recipe',
+                                         this.slug,
+                                         this.pathPillar,
+                                         this.pathYear);
     },
   });
 
