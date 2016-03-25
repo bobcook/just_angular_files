@@ -8,7 +8,7 @@ const UserAssessmentController = function ($assessmentsAuth,
                                            assessmentLinkManager) {
   'ngInject';
 
-  restrictedRedirectService.filterAnonymous();
+  restrictedRedirectService.filterAnonymous('me');
 
   const isRegisteredUser = function () {
     return $rootScope.$currentUser &&

@@ -5,11 +5,15 @@ const UserGameController = function (Game,
                                      $stateParams) {
   'ngInject';
 
-  restrictedRedirectService.filterUnpaidUsers('me');
+  restrictedRedirectService.filterAnonymous('me');
 
   // get one game
   UserGame.get($stateParams.id).then((game) => {
     this.game = game.data;
+
+    if (game.gameType === 'Paid') {
+      restrictedRedirectService.filterUnpaidUsers('me');
+    }
   });
 
   // pass values to directive
