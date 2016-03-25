@@ -21,7 +21,7 @@ const CurrentUser = function (API_URL, railsResourceFactory, $auth, $cookies) {
   };
 
   const isPaid = function () {
-    return this.memebershipStatus === 'paid';
+    return this.membershipStatus === 'paid';
   };
 
   CurrentUser.include({
