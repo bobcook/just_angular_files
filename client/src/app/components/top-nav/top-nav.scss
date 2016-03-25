@@ -19,8 +19,14 @@
     margin: 9px 0 8px;
     cursor: pointer;
     float: left;
-    width: 161px;
+    width: 172px;
     height: 42px;
+    padding-left: 15px;
+
+    @media screen and (min-width: 768px) {
+      width: 161px;
+      padding-left: 0;
+    }
   }
 }
 
@@ -59,9 +65,12 @@
 
   .icon-search-container {
     display: block;
-    border-left: 1px solid $grey-light;
     height: 42px;
     padding: 8px 20px;
+
+    @media screen and (min-width: 768px) {
+      border-left: 1px solid $grey-light;
+    }
   }
 
   .icon-search {
