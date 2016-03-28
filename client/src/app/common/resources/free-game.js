@@ -34,7 +34,7 @@ const FreeGame = function (API_URL, railsResourceFactory) {
         return `/game-play/${this.slug}`;
       }
     },
-  })
+  });
 
   return FreeGame;
 };

@@ -3,7 +3,7 @@ const LogoutController = function ($auth, $log, $state, $cookies) {
 
   // Remove promoCode cookie so user isn't treated as beta user or employee
   // user when logged out or if they log in as different user.
-  $cookies.remove('promoCode')
+  $cookies.remove('promoCode');
 
   $auth.destroySession().then(function () {
     window.location.href =
