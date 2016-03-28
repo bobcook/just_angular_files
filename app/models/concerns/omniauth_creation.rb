@@ -10,15 +10,20 @@ module OmniauthCreation
         end
 
       # In either case, update the given credentials
-      found_user.tap do |user|
-        user.update_attributes(
-          auth_token: auth.credentials.token,
-          membership_status: auth.info.membership_status
-        )
-      end
+      update_user_info(found_user, auth)
     end
 
     private
+
+    def update_user_info(found_user, auth)
+      found_user.tap do |user|
+        user.update_attributes(
+          auth_token: auth.credentials.token,
+          membership_status: auth.info.membership_status,
+          membership_product: auth.info.membership_product
+        )
+      end
+    end
 
     def attrs_from_auth(auth)
       {

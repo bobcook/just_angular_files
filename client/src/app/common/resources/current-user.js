@@ -13,11 +13,11 @@ const CurrentUser = function (API_URL, railsResourceFactory, $auth, $cookies) {
   });
 
   const isBetaUser = function () {
-    return $cookies.get('promoCode') === 'SS-BETA';
+    return this.membershipProduct === 'beta';
   };
 
   const isEmployeeUser = function () {
-    return $cookies.get('promoCode') === 'SS-EMPLOYEE';
+    return this.membershipProduct === 'employee';
   };
 
   const isPaid = function () {

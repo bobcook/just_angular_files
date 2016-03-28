@@ -21,7 +21,8 @@ module OmniAuth
           first_name: user_info[:firstName],
           last_name: user_info[:lastName],
           email: user_info[:email],
-          membership_status: user_info[:membership_status]
+          membership_status: user_info[:membership_status],
+          membership_product: user_info[:membership_product]
         }
       end
 
@@ -51,7 +52,8 @@ module OmniAuth
 
         @user_info = user_response.body[:user].try do |user_info|
           user_info.merge(
-            membership_status: membership_status(membership_response)
+            membership_status: membership_status(membership_response),
+            membership_product: membership_product(membership_response)
           )
         end
 
@@ -66,6 +68,10 @@ module OmniAuth
 
       def membership_status(response)
         Apis::DSO::MembershipStatusParser.parse(response)
+      end
+
+      def membership_product(response)
+        Apis::DSO::MembershipProductParser.parse(response)
       end
 
       def promo_code_for_url

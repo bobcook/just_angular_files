@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309150147) do
+ActiveRecord::Schema.define(version: 20160328213222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -288,6 +288,7 @@ ActiveRecord::Schema.define(version: 20160309150147) do
     t.datetime "updated_at",                        null: false
     t.string   "external_id"
     t.integer  "membership_status_cd"
+    t.string   "membership_product"
   end
 
   add_foreign_key "activity_reminder_settings", "user_activities"
