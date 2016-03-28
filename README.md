@@ -21,7 +21,7 @@ $ brew install elasticsearch
 
 ```bash
 $ bundle exec sidekiq -q default -q mailers
-$ bin/rake content_feeds:import
+$ bin/rake latest_content:import
 ```
 
 ### If you already have CMS content, but need to add the content to elasticsearch.
