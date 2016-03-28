@@ -16,6 +16,8 @@ const DsoGenericMocalController = function ($state,
 
   $scope.close = close;
 
+  $scope.login = dsoAuth.login
+
   $scope.registerUrl = dsoAuth.dsoRegisterAuth(resourcePath);
   $scope.subscribeUrl = dsoAuth.dsoSubscribeAuth(resourcePath);
 
