@@ -12,7 +12,7 @@ const OverallResultsController = function (Activity,
                                            restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.filterUnpaidUsers('activities', $location.path());
+  restrictedRedirectService.filterAnonymous('me');
 
   const queries = AssessmentResultQueries;
 
