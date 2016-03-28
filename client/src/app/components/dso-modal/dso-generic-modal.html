@@ -31,13 +31,13 @@
           <!-- Register -->
           <div ng-if="forRegister()">
             <a href="{{registerUrl}}" class="btn">Create a free Account</a>
-            <small>Already have an account? <a href="#" ng-click="login(redirectPath)">Login</a> now.</small>
+            <small>Already have an account? Click <a href="#" ng-click="login(redirectPath)">here</a> to log in</small>
           </div>
 
           <!-- Subscribe -->
           <div ng-if="!forRegister()">
             <a href="{{subscribeUrl}}" class="btn">Get Started</a>
-            <small>Already have an account? <a href="#" ng-click="login(redirectPath)">Login</a> now.</small>
+            <small>Already have an account? Click <a href="#" ng-click="login(redirectPath)">here</a> to log in</small>
           </div>
         </div>
 
