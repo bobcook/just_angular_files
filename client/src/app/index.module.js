@@ -174,8 +174,6 @@ import AssessmentButtonController from
   './assessments/assessment-button/assessment-button.controller.js';
 import AssessmentCompletionController from
   './assessments/assessment-completion.controller.js';
-import BetaModalController from
-  './components/beta-modal/beta-modal.controller.js';
 import CardController from './components/card/card.controller.js';
 import CardActivityTrackerController from
   './components/card-activity-tracker/card-activity-tracker.controller.js';
@@ -422,7 +420,6 @@ app
   .controller('AssessmentsCallbackController', AssessmentsCallbackController)
   .controller('AssessmentButtonController', AssessmentButtonController)
   .controller('AssessmentCompletionController', AssessmentCompletionController)
-  .controller('BetaModalController', BetaModalController)
   .controller('CardController', CardController)
   .controller('CardActivityTrackerController', CardActivityTrackerController)
   .controller('CardsController', CardsController)

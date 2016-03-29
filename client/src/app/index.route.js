@@ -72,16 +72,6 @@ const routerConfig = function (stateHelperProvider,
         },
         redirectIfNeeded: redirectIfNeeded,
       },
-      onEnter: function (ModalService, $rootScope, $cookies) {
-        const visited = !!$cookies.get('betaModal');
-        if (!visited) {
-          $cookies.put('betaModal', true);
-          ModalService.showModal({
-            templateUrl: 'app/components/beta-modal/beta-modal.html',
-            controller: 'BetaModalController',
-          });
-        }
-      },
       children: [
         {
           // TODO: Delete this route after redirects propegate
