@@ -276,7 +276,7 @@ const routerConfig = function (stateHelperProvider,
         },
         {
           name: 'home',
-          url: '/?restrictedRedirect&genericRedirect',
+          url: '/?restrictedRedirect&resourcePath&genericRedirect',
           templateUrl: 'app/home/home.html',
           controller: 'HomeController',
           controllerAs: 'vm',
@@ -483,7 +483,9 @@ const routerConfig = function (stateHelperProvider,
                                     $rootScope,
                                     $loadCurrentUser) {
     $loadCurrentUser($rootScope.$currentUser);
-    restrictedRedirectService.filterAnonymous('assessments', '/assessments');
+    restrictedRedirectService.filterAnonymous('assessments',
+                                              '/assessments',
+                                              true);
     assessmentLinkManager.redirectToAssessment();
   });
   $urlRouterProvider.otherwise('/');

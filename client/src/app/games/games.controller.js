@@ -5,7 +5,7 @@ const GamesController = function (Game,
   'ngInject';
 
   const guard = () => $stateParams.restrictedRedirect !== 'true';
-  dsoModalService.showSubscribeModal('games', guard);
+  dsoModalService.showSubscribeModal('games', '/games', guard);
 
   // pass values to directive
   this.isUserNamespace = false;

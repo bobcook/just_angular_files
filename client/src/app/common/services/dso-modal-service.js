@@ -20,8 +20,8 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
   };
 
   const showSubscribeModal = function (resource,
-                                       guard = () => false,
-                                       redirectPath = $location.path()) {
+                                       redirectPath = $location.path(),
+                                       guard = () => false) {
     if (guard()) { return; }
 
     ModalService.showModal({

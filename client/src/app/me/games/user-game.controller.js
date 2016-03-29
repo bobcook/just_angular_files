@@ -12,7 +12,7 @@ const UserGameController = function (Game,
     this.game = game.data;
 
     if (game.gameType === 'Paid') {
-      restrictedRedirectService.filterUnpaidUsers('me');
+      restrictedRedirectService.filterUnpaidUsers('me', '/me/working-on');
     }
   });
 

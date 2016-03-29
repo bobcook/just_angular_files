@@ -5,42 +5,39 @@ const restrictedRedirectService = function ($state, $rootScope, $location) {
 
   const anonymousUser = () => !$rootScope.$currentUser;
 
-  const redirect = function redirect(clause, redirectPath, resource) {
-    if (clause()) {
-      $state.go(redirectPath, { restrictedRedirect: resource });
-    }
-  };
-
-  const redirectGeneric = function redirect(clause,
-                                            redirectPath,
-                                            resource,
-                                            resourcePath) {
+  const redirect = function redirect(clause,
+                                     redirectPath,
+                                     resource,
+                                     resourcePath,
+                                     generic) {
     if (clause()) {
       $state.go(
         redirectPath,
         {
           restrictedRedirect: resource,
-          genericRedirect: resourcePath,
+          resourcePath: resourcePath,
+          genericRedirect: generic,
         }
       );
     }
   };
 
-  const filterUnpaidUsers = function filterUnpaidUsers(resource, resourcePath){
-    if (resourcePath) {
-      redirectGeneric(unpaidUser, 'application.home', resource, resourcePath);
-    } else {
-      redirect(unpaidUser, 'application.home', resource);
-    }
+  const filterUnpaidUsers = function filterUnpaidUsers(resource,
+                                                       resourcePath,
+                                                       generic = null){
+    redirect(unpaidUser, 'application.home', resource, resourcePath, generic);
   };
 
-  const filterAnonymous = function filterAnonymous(resource, resourcePath){
-    if (resourcePath) {
-      redirectGeneric(anonymousUser,'application.home',resource,resourcePath);
-    } else {
-      redirect(anonymousUser, 'application.home', resource);
+  const filterAnonymous =
+    function filterAnonymous(resource,
+                             resourcePath = $location.path(),
+                             generic = null){
+      redirect(anonymousUser,
+               'application.home',
+               resource,
+               resourcePath,
+               generic);
     };
-  };
 
   return {
     redirect: redirect,

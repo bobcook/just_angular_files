@@ -6,7 +6,7 @@ const RecipesController = function (Recipe,
                                     restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.filterUnpaidUsers('recipes');
+  restrictedRedirectService.filterUnpaidUsers('recipes', '/recipes');
 
   this.selectedPillar = null; // Will be overwritten by pillar filters
   this.resource = Recipe;

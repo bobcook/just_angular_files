@@ -3,7 +3,7 @@ const ActivitiesController = function (Activity,
                                        restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.filterUnpaidUsers('activities');
+  restrictedRedirectService.filterUnpaidUsers('activities', '/activities');
 
   this.selectedPillar = null; // Will be overwritten by pillar filters
   this.resource = Activity;

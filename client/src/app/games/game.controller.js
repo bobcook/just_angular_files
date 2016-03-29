@@ -14,7 +14,9 @@ const GameController = function (Game,
     this.game = response.data;
 
     if (isPaidGame(this.game)) {
-      restrictedRedirectService.filterUnpaidUsers('games', $location.path());
+      restrictedRedirectService.filterUnpaidUsers('games',
+                                                  $location.path(),
+                                                  true);
     };
   });
 
