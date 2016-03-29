@@ -24,10 +24,15 @@ const CurrentUser = function (API_URL, railsResourceFactory, $auth, $cookies) {
     return this.membershipStatus === 'paid';
   };
 
+  const isRegistered = function () {
+    return this.membershipStatus === 'prospect';
+  };
+
   CurrentUser.include({
     isBetaUser: isBetaUser,
     isEmployeeUser: isEmployeeUser,
     isPaid: isPaid,
+    isRegistered: isRegistered,
   });
 
   return CurrentUser;
