@@ -33,6 +33,12 @@ const runBlock = function ($log,
     const referrer = fromState.name ?
       `${$location.protocol()}://${$location.host()}/#${fromState.url}` : '';
 
+    // JSON Object that Adobe DTM consumes
+    $window.dtmDataLayer = {
+      channel: 'staying sharp',
+      page: $location.path(),
+    };
+
     if (window.location.hostname !== 'localhost') {
 
       // begin of Segment.io analytics
