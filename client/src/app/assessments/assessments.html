@@ -33,7 +33,6 @@
 
 <div class="cp-additional-content assessment-steps grey-background">
   <section class="slim">
-    <h3>The assessment {{vm}}</h3>
     <a href="#" ng-click="vm.openRequiredTechnologyModal()">See required technology</a>
     <p class="width-98">
       Over about 20-30 minutes, you will answer questions and perform tasks
@@ -141,9 +140,6 @@
           <div class="row breakdown">
             <div class="img-block">
               <img src="app/assets/images/results-preview-breakdown.jpg" alt="">
-              <p class="foot-note">
-                example of test result <span class="triangle"></span>
-              </p>
             </div>
             <header>
               <div class="step">
@@ -175,8 +171,12 @@
           </div>
         </div>
       </div>
-      <div class="cta-block">
-        <ss-assessment-button></ss-assessment-button>
+      <div class="cp-centered-leadin">
+        <div class="assessment-button-block">
+          <div class="container">
+            <ss-assessment-button></ss-assessment-button>
+          </div>
+        </div>
       </div>
     </article>
   </section>
