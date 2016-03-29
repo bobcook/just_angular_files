@@ -4,7 +4,8 @@ const runBlock = function ($log,
                            userPolicies,
                            $location,
                            $cookies,
-                           $state) {
+                           $state,
+                           dtmAnalyticsFormatter) {
   'ngInject';
 
   userPolicies.definePermissions();
@@ -33,11 +34,7 @@ const runBlock = function ($log,
     const referrer = fromState.name ?
       `${$location.protocol()}://${$location.host()}/#${fromState.url}` : '';
 
-    // JSON Object that Adobe DTM consumes
-    $window.dtmDataLayer = {
-      channel: 'staying sharp',
-      page: $location.path(),
-    };
+    $window.dtmDataLayer = dtmAnalyticsFormatter.getDataLayer();
 
     if (window.location.hostname !== 'localhost') {
 
@@ -51,10 +48,6 @@ const runBlock = function ($log,
 
       s.t({ pageName: path });
       // end of Segment.io analytics
-
-      // begin of Adobe DTM analytics
-      _satellite.track(url);
-      // end of Adobe DTM analytics
     }
   });
 

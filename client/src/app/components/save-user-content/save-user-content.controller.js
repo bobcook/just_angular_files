@@ -26,6 +26,15 @@ const SaveUserContentController = function ($state,
   this.item = this.item || null; // Via ss-item
   this.savedItem = this.savedItem || null; // Via ss-saved-item
 
+  // Css selector for Adobe DTM
+  this.dtmSelector = function () {
+    if (this.isSaved) {
+      return `analytics-unsave-${resourceName}`;
+    } else {
+      return `analytics-save-${resourceName}`;
+    }
+  };
+
   if (this.isUserNamespace) {
     this.isSaved = true;
   } else {

@@ -1,7 +1,7 @@
 <button
   ng-click="vm.saveOrDelete()"
   ng-class="{ tracked: vm.isSaved }"
-  class="btn tracking-btn">
+  class="btn tracking-btn {{vm.dtmSelector()}}">
 
   <span ng-hide="vm.isSaved">{{vm.displayContent['unsaved']}}</span>
   <span ng-show="vm.isSaved">{{vm.displayContent['saved']}}</span>

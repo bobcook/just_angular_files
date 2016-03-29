@@ -1,4 +1,7 @@
-const ReviewsController = function ($stateParams, $rootScope, dsoModalService) {
+const ReviewsController = function ($stateParams,
+                                    $rootScope,
+                                    dsoModalService,
+                                    $scope) {
   'ngInject';
 
   const contentName = this.resource.contentName.toLowerCase();
@@ -9,6 +12,12 @@ const ReviewsController = function ($stateParams, $rootScope, dsoModalService) {
   .query({}, { [ `${contentName}Id` ]: $stateParams.id })
   .then((data) => {
     reviews = data;
+  });
+
+  // Css selector for Adobe DTM
+  $scope.$watch(() => this.recommend, () => {
+    const selector = this.recommend ? 'like' : 'dislike';
+    this.dtmSelector = `analytics-rate-${selector}-${contentName}`;
   });
 
   // review the resource

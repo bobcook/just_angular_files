@@ -5,7 +5,8 @@
         <h3>Track When You Did This</h3>
         <p>{{ vm.todayDate | date:"MMMM dd" }}</p>
         <button ng-class="{ tracked: vm.todayPeriod.isTracked }"
-                ng-click="vm.editPeriod(vm.todayPeriod)">
+                ng-click="vm.editPeriod(vm.todayPeriod)"
+                class="analytics-track-activity">
           <span ng-if="!vm.todayPeriod.isTracked">Track Today</span>
           <span ng-if="vm.todayPeriod.isTracked" class="icon-check"></span>
         </button>

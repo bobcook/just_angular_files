@@ -27,7 +27,10 @@ const HomeController = function (AssessmentStatus,
     return lastGroupState === assessmentStates.states.completed;
   };
 
-  this.subscribeUrl = dsoAuth.dsoSubscribeAuth($state.href('application.user.assessments.overall'))
+  this.subscribeUrl =
+    dsoAuth.dsoSubscribeAuth(
+      $state.href('application.user.assessments.overall')
+    );
 
   AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
     assignBannerValues(assessmentStates.getState(lastGroup));
