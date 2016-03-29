@@ -4,6 +4,7 @@ const UserAssessmentController = function ($assessmentsAuth,
                                            assessmentStates,
                                            $q,
                                            $rootScope,
+                                           $state,
                                            dsoAuth,
                                            assessmentLinkManager) {
   'ngInject';
@@ -18,7 +19,8 @@ const UserAssessmentController = function ($assessmentsAuth,
   this.showAssessmentBanner = false;
   this.showAssessmentResults = false;
   this.showSystemMessaging = false;
-  this.subscribeUrl = dsoAuth.dsoSubscribeAuth();
+  this.subscribeUrl =
+    dsoAuth.dsoSubscribeAuth($state.href('application.assessments'));
   this.states = assessmentStates.states;
   this.assessmentState;
   this.authForAssessments = $assessmentsAuth.authenticate;
