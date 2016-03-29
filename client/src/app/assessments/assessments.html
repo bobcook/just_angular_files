@@ -33,10 +33,8 @@
 
 <div class="cp-additional-content assessment-steps grey-background">
   <section class="slim">
-    <h3>The assessment</h3>
-    <a href="#requiredTechnology"
-       data-toggle="modal"
-       data-target="#requiredTechnology">See required technology</a>
+    <h3>The assessment {{vm}}</h3>
+    <a href="#" ng-click="vm.openRequiredTechnologyModal()">See required technology</a>
     <p class="width-98">
       Over about 20-30 minutes, you will answer questions and perform tasks
       developed by scientists that will help you understand how your brain
@@ -87,8 +85,7 @@
   </section>
 </div>
 
-<!-- TODO: Replace this with actual banner Show More section -->
-<!-- <div class="cp-content-drawer blue-drawer">
+<div class="cp-content-drawer blue-drawer">
   <section class="slim">
     <a class="toggle-content-link"
        ng-click="vm.isContentDrawerOpen = !vm.isContentDrawerOpen">
@@ -123,7 +120,7 @@
                 <h5>Lifestyle<br>Score</h5>
               </div>
               <div class="note">
-                <h6>Explanation or callout of this section</h6>
+                <h6>The Lifestyle Assessment identifies activities that research shows may be helping or hurting your brain health.</h6>
               </div>
             </header>
           </div>
@@ -134,9 +131,7 @@
             <header>
               <div class="note">
                 <h6>
-                  <span class="h5 color-charcoal">Brain Health Score</span><br>
-                  is a combination of the lifestyle questionare, the
-                  neuroperformance test and algorithms (copy needed)
+                  The Brain Health Score is a single score that <br>combines your lifestyle Assessment and your Neuroperformance Test.
                 </h6>
               </div>
             </header>
@@ -156,7 +151,7 @@
                 <h5>Neuroperformance<br>Score</h5>
               </div>
               <div class="note">
-                <h6>Explanation or callout of this section</h6>
+                <h6>The Neuroperformance Test objectively measures six key indicators of your cognitive performance compared to others your same age.</h6>
               </div>
             </header>
           </div>
@@ -170,10 +165,10 @@
               </div>
               <div class="note">
                 <h6>
-                  Nunc at velit auctor, euismod ex eget, gravida lectus.
-                  Vestibulum finibus justo a ipsum egestas, interdum faucibus
-                  orci fringilla. Lorem ipsum dolor sit amet, consectetur
-                  adipiscing elit.
+                  Your Neuroperformance Test results will be processed by the world’s largest scientifically validated brain database.
+                  Your individual scores will be compared to thousands of matched peers.
+                  Your results will quantify how well your brain is currently performing compared to others your same age.
+                  Additionally, we’ll search through hundreds of research articles and activities and create personalized recommendations to help you improve and maintain your brain health.
                 </h6>
               </div>
             </header>
@@ -185,4 +180,4 @@
       </div>
     </article>
   </section>
-</div> -->
+</div>

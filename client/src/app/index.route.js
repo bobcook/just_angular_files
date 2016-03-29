@@ -196,6 +196,14 @@ const routerConfig = function (stateHelperProvider,
           controller: 'AssessmentsController',
           controllerAs: 'vm',
           templateUrl: 'app/assessments/assessments.html',
+          children: [
+            modalStateHelperProvider({
+              name: 'required-technology',
+              templateUrl: 'app/assessments/required-technology.html',
+              controller: 'RequiredTechnologyController',
+              controllerAs: 'vm',
+            }),
+          ],
         },
         {
           name: 'assessment-results',

@@ -227,6 +227,8 @@ import RestrictedRedirectContoller from
 import RetakeAssessmentModalController from
   './assessments/retake-assessment-modal.controller.js';
 import ReviewsController from './components/reviews/reviews.controller.js';
+import RequiredTechnologyController from
+  './assessments/required-technology.controller.js';
 import SaveUserContentController from
   './components/save-user-content/save-user-content.controller.js';
 import SearchResultsController from
@@ -459,6 +461,7 @@ app
   .controller('RetakeAssessmentModalController',
      RetakeAssessmentModalController)
   .controller('ReviewsController', ReviewsController)
+  .controller('RequiredTechnologyController', RequiredTechnologyController)
   .controller('SaveUserContentController', SaveUserContentController)
   .controller('SearchResultsController', SearchResultsController)
   .controller('SocialLinksController', SocialLinksController)
