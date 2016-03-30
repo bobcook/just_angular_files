@@ -2,7 +2,9 @@ const GamePlayController = function (Game,
                                      $stateParams,
                                      $featureDetection,
                                      $rootScope,
-                                     previousState) {
+                                     $location,
+                                     previousState,
+                                     restrictedRedirectService) {
   'ngInject';
 
   this.hasFlash = $featureDetection.hasFlash();
@@ -10,6 +12,11 @@ const GamePlayController = function (Game,
 
   Game.get($stateParams.id).then((response) => {
     this.game = response.data;
+    if (this.game.gameType === 'Paid') {
+      restrictedRedirectService.filterUnpaidUsers('games',
+                                                  $location.path(),
+                                                  true);
+    }
   });
 
   // NOTE: previousUrl can be '/games', '/me/games', '/games/:id',
