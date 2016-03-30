@@ -4,8 +4,6 @@ const StaticController = function ($location,
                                    dsoAuth) {
   'ngInject';
 
-  console.log('anchors test >>', $location.path(), $location.hash());
-
   $anchorScroll.yOffset = 80;
 
   this.subscribeUrl = dsoAuth.dsoSubscribeAuth($state.href('application.home'));
