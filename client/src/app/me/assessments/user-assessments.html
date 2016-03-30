@@ -15,7 +15,7 @@
     <p translate>info.assessments_system_message.not_started.body_text</p>
     <a class="btn" ng-href="{{vm.subscribeUrl}}" translate>info.assessments_system_message.not_started.button_text</a>
     <div>
-      <small>You can also choose to <a ng-click="vm.assessmentLink()" href="#">start the assessment now</a> and subscribe later to get your results.</small>
+      <small>You can also choose to <a ui-sref="application.assessments" href="#">start the assessment now</a> and subscribe later to get your results.</small>
     </div>
   </div>
   <div ng-if="vm.assessmentState === vm.states.started">
@@ -23,13 +23,13 @@
     <p translate>info.assessments_system_message.started.body_text</p>
     <a class="btn" ng-href="{{vm.subscribeUrl}}" translate>info.assessments_system_message.started.button_text</a>
     <div>
-      <small>You can also choose to <a ng-click="vm.assessmentLink()" href="#">complete the assessment now</a> and subscribe later to get your results.</small>
+      <small>You can also choose to <a ui-sref="application.assessments" href="#">complete the assessment now</a> and subscribe later to get your results.</small>
     </div>
   </div>
   <div ng-if="vm.assessmentState === vm.states.completed">
     <h3 translate>info.assessments_system_message.completed.headline</h3>
     <p translate>info.assessments_system_message.completed.body_text </p>
-    <a class="btn" ng-href="{{vm.subscribeUrl}}" translate>info.assessments_system_message.completed.button_text</a>
+    <a class="btn" ng-href="{{vm.completedSubscribeUrl}}" translate>info.assessments_system_message.completed.button_text</a>
   </div>
 </ss-info-box>
 
