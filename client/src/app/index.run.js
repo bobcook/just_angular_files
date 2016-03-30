@@ -5,7 +5,7 @@ const runBlock = function ($log,
                            $location,
                            $cookies,
                            $state,
-                           dtmAnalyticsFormatter) {
+                           dtmAnalyticsService) {
   'ngInject';
 
   userPolicies.definePermissions();
@@ -34,7 +34,8 @@ const runBlock = function ($log,
     const referrer = fromState.name ?
       `${$location.protocol()}://${$location.host()}/#${fromState.url}` : '';
 
-    $window.dtmDataLayer = dtmAnalyticsFormatter.getDataLayer();
+    $window.dtmDataLayer = dtmAnalyticsService.getDataLayer();
+    dtmAnalyticsService.fireDTMDataLayerLoadedEvent();
 
     if (window.location.hostname !== 'localhost') {
 

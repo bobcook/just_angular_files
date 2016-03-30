@@ -173,8 +173,7 @@
     analytics.load(window.__env.GoogleAnalytics);
     }}();
     </script>
-
     <!-- AARP Omniture Analytics -->
-    <script type="text/javascript">_satellite.pageBottom();</script>
+    <script type="text/javascript">window.addEventListener('ssLoaded', function() {  _satellite.pageBottom(); }); </script>
   </body>
 </html>

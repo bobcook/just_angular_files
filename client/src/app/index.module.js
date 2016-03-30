@@ -91,8 +91,8 @@ import assessmentStates from
 import authInterceptor from './common/services/auth-interceptor.js';
 import dependentMemoize from './common/services/dependent-memoize.js';
 import dsoAuth from './common/services/dso-auth.js';
-import dtmAnalyticsFormatter from
-  './common/services/dtm-analytics-formatter.js';
+import dtmAnalyticsService from
+  './common/services/dtm-analytics-service.js';
 import FutureBrainStats from './components/charts/future-brain-stats.js';
 import httpsInterceptor from './common/services/https-interceptor.js';
 import MBSAssessmentList from './assessments/mbs-assessment-list.js';
@@ -356,7 +356,7 @@ app
   .factory('assessmentStates', assessmentStates)
   .factory('dsoAuth', dsoAuth)
   .factory('dependentMemoize', dependentMemoize)
-  .factory('dtmAnalyticsFormatter', dtmAnalyticsFormatter)
+  .factory('dtmAnalyticsService', dtmAnalyticsService)
   .factory('FutureBrainStats', FutureBrainStats)
   .factory('httpsInterceptor', httpsInterceptor)
   .factory('MBSAssessmentList', MBSAssessmentList)
@@ -477,3 +477,7 @@ app
   .controller('UserGamesController', UserGamesController)
   .controller('UserRecipeController', UserRecipeController)
   .controller('UserRecipesController', UserRecipesController);
+
+// Fire event to call _satellite.pageBottom() after app is done loading
+const appLoadedEvent = new Event('ssLoaded');
+window.dispatchEvent(appLoadedEvent);

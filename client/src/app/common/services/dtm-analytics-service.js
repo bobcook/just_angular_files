@@ -1,5 +1,11 @@
-const dtmAnalyticsFormatter = function ($location, $rootScope) {
+const dtmAnalyticsService = function ($location, $rootScope, $window) {
   'ngInject';
+
+  const fireDTMDataLayerLoadedEvent = function () {
+    const event =
+      new CustomEvent('ssDTMDataLayerLoaded', { detail: getDataLayer() });
+    $window.dispatchEvent(event);
+  };
 
   const getDataLayer = function () {
     return {
@@ -37,7 +43,8 @@ const dtmAnalyticsFormatter = function ($location, $rootScope) {
 
   return {
     getDataLayer: getDataLayer,
+    fireDTMDataLayerLoadedEvent: fireDTMDataLayerLoadedEvent,
   };
 };
 
-export default dtmAnalyticsFormatter;
+export default dtmAnalyticsService;
