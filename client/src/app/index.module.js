@@ -147,6 +147,7 @@ import saveUserContent from
   './components/save-user-content/save-user-content.js';
 import sideNav from './components/side-nav/side-nav.js';
 import socialLinks from './components/social-links/social-links.js';
+import systemMessage from './components/system-message/system-message.js';
 import topNav from './components/top-nav/top-nav.js';
 import userDashboardCard from
   './components/user-dashboard-cards/user-dashboard-card.js';
@@ -236,6 +237,8 @@ import SearchResultsController from
 import SocialLinksController from
   './components/social-links/social-links.controller.js';
 import StaticController from './static/static.controller.js';
+import SystemMessageController from
+  './components/system-message/system-message.controller.js';
 import TopNavController from './components/top-nav/top-nav.controller.js';
 import UserDashboardCardController from
   './components/user-dashboard-cards/user-dashboard-card.controller.js';
@@ -400,6 +403,7 @@ app
   .directive('ssSaveUserContent', saveUserContent)
   .directive('ssSocialLinks', socialLinks)
   .directive('ssSideNav', sideNav)
+  .directive('ssSystemMessage', systemMessage)
   .directive('ssTopNav', topNav)
   .directive('ssUserDashboardCard', userDashboardCard)
   .directive('ssUserDashboardCards', userDashboardCards)
@@ -466,6 +470,7 @@ app
   .controller('SearchResultsController', SearchResultsController)
   .controller('SocialLinksController', SocialLinksController)
   .controller('StaticController', StaticController)
+  .controller('SystemMessageController', SystemMessageController)
   .controller('TopNavController', TopNavController)
   .controller('UserDashboardCardController', UserDashboardCardController)
   .controller('UserDashboardCardsController', UserDashboardCardsController)

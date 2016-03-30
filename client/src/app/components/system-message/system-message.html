@@ -1,0 +1,19 @@
+<div ng-if="$root.$currentUser.isRegistered()">
+  <ss-info-box ng-if="vm.showAssessmentStartBanner">
+    <h3 translate>info.better_brain_starts_here</h3>
+    <p translate>info.take_the_assessment</p>
+    <button type="button" ui-sref="application.assessments">Start Now</button>
+  </ss-info-box>
+
+  <ss-info-box ng-if="vm.showAssessmentFinishBanner">
+    <h3 translate>info.better_brain_starts_here</h3>
+    <p translate>info.finish_the_assessment</p>
+    <button type="button" ui-sref="application.assessments">Finish Assessment</button>
+  </ss-info-box>
+
+  <ss-info-box ng-if="vm.showAssessmentSubscribeBanner">
+    <h3 translate>info.get_your_brain_health_score</h3>
+    <p translate>info.assessment_subscribe_to_see_results</p>
+    <button type="button" href="{{vm.subscribeUrl}}">Get My Brain Health Score</button>
+  </ss-info-box>
+</div>
