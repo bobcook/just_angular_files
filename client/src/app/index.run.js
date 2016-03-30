@@ -24,6 +24,8 @@ const runBlock = function ($log,
     // scroll to top of page
     $window.scrollTo(0, 0);
 
+    console.log('Run block anchor test >>', $location.path(), $location.hash());
+
     // begin of analytics
     const path = $location.path();
     const url = $location.url();
