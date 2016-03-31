@@ -1,10 +1,10 @@
-<div ng-if="$root.$currentUser.isRegistered()">
-  <ss-info-box ng-if="vm.showAssessmentStartBanner">
-    <h3 translate>info.better_brain_starts_here</h3>
-    <p translate>info.take_the_assessment</p>
-    <a class="btn" ui-sref="application.assessments">Start Now</a>
-  </ss-info-box>
+<ss-info-box ng-if="vm.showAssessmentStartBanner">
+  <h3 translate>info.better_brain_starts_here</h3>
+  <p translate>info.take_the_assessment</p>
+  <a class="btn" ui-sref="application.assessments">Start Now</a>
+</ss-info-box>
 
+<div ng-if="$root.$currentUser.isRegistered()">
   <ss-info-box ng-if="vm.showAssessmentFinishBanner">
     <h3 translate>info.better_brain_starts_here</h3>
     <p translate>info.finish_the_assessment</p>

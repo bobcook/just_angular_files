@@ -1,11 +1,12 @@
 const SystemMessageController = function ($state,
+                                          $rootScope,
                                           dsoAuth,
                                           AssessmentStatus,
                                           assessmentStates) {
   'ngInject';
 
   const assignBannerValues = (lastGroupState) => {
-    this.showAssessmentStartBanner = isNotStarted(lastGroupState);
+    this.showAssessmentStartBanner = !$rootScope.$currentUser || isNotStarted(lastGroupState);
     this.showAssessmentFinishBanner = isStarted(lastGroupState);
     this.showAssessmentSubscribeBanner = isCompleted(lastGroupState);
   };
