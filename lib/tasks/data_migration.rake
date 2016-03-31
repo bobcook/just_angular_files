@@ -1,5 +1,13 @@
 # TODO: remove this code after migrating
 namespace :data_migration do
+  desc 'Destroy user last_names and emails'
+  task delete_old_user_data: :environment do
+    User.find_each do |user|
+      puts "deleting last_name and email for user: #{user.id}"
+      user.update(last_name: nil, email: nil)
+    end
+  end
+
   desc 'Merge the two assessments into one'
   task delete_old_assessments: :environment do
     q1 = Assessment.find_by(name: 'Questionnaire 1')
