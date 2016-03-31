@@ -9,10 +9,8 @@ describe OmniauthCreation do
     def make_auth(info_attrs = {}, credential_attrs = {})
       default_info_attrs = {
         uid: 'email@example.com',
-        email: 'email@example.com',
         external_id: '016c4e57b117462a992de1f53de8c09e',
-        first_name: 'FIRST',
-        last_name: 'LAST'
+        first_name: 'FIRST'
       }
       default_credential_attrs = {
         token: '123456'
@@ -43,9 +41,7 @@ describe OmniauthCreation do
         subject = test_class
         auth = make_auth
         expected_attrs = {
-          email: auth.info.email,
-          first_name: auth.info.first_name,
-          last_name: auth.info.last_name
+          first_name: auth.info.first_name
         }
         attr_keys = expected_attrs.keys
 

@@ -19,8 +19,6 @@ module OmniAuth
         {
           external_id: user_info[:idpId],
           first_name: user_info[:firstName],
-          last_name: user_info[:lastName],
-          email: user_info[:email],
           membership_status: user_info[:membership_status],
           membership_product: user_info[:membership_product]
         }
@@ -61,10 +59,6 @@ module OmniAuth
       end
 
       private
-
-      def email(response)
-        Apis::DSO::EmailParser.parse(response)
-      end
 
       def membership_status(response)
         Apis::DSO::MembershipStatusParser.parse(response)

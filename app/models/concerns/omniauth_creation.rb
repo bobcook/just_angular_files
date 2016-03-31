@@ -28,10 +28,8 @@ module OmniauthCreation
     def attrs_from_auth(auth)
       {
         external_id: auth.info.external_id,
-        email: auth.info.email,
         password: Devise.friendly_token[0, 20],
-        first_name: auth.info.first_name,
-        last_name: auth.info.last_name
+        first_name: auth.info.first_name
       }
     end
   end
