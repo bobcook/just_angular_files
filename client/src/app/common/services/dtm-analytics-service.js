@@ -1,10 +1,18 @@
-const dtmAnalyticsService = function ($location, $rootScope, $window) {
+const dtmAnalyticsService = function ($location,
+                                      $rootScope,
+                                      $window) {
   'ngInject';
 
   const fireDTMDataLayerLoadedEvent = function () {
-    const event =
-      new CustomEvent('ssDTMDataLayerLoaded', { detail: getDataLayer() });
-    $window.dispatchEvent(event);
+    if (isIE()) {
+      const event = document.createEvent('CustomEvent');
+      event.initCustomEvent('ssDTMDataLayerLoaded', true, true, getDataLayer());
+      $window.dispatchEvent(event);
+    } else {
+      const event =
+        new CustomEvent('ssDTMDataLayerLoaded', { detail: getDataLayer() });
+      $window.dispatchEvent(event);
+    }
   };
 
   const getDataLayer = function () {
@@ -38,6 +46,14 @@ const dtmAnalyticsService = function ($location, $rootScope, $window) {
       return sectionMap[section] || section;
     } else {
       return 'Home';
+    }
+  };
+
+  const isIE = function () {
+    if ($window.navigator.userAgent.indexOf('MSIE ') > 0) {
+      return true;
+    } else {
+      return false;
     }
   };
 

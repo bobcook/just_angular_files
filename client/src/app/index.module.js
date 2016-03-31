@@ -482,7 +482,3 @@ app
   .controller('UserGamesController', UserGamesController)
   .controller('UserRecipeController', UserRecipeController)
   .controller('UserRecipesController', UserRecipesController);
-
-// Fire event to call _satellite.pageBottom() after app is done loading
-const appLoadedEvent = new Event('ssLoaded');
-window.dispatchEvent(appLoadedEvent);
