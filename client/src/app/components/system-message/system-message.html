@@ -17,3 +17,11 @@
     <a class="btn" href="{{vm.subscribeUrl}}">Get My Brain Health Score</a>
   </ss-info-box>
 </div>
+
+<div ng-if="$root.$currentUser.isPaid()">
+  <ss-info-box ng-if="vm.showAssessmentSubscribeBanner">
+    <h3 translate>info.explore_your_personalized_recommendations</h3>
+    <p translate>info.check_the_activities</p>
+    <a class="btn" ui-sref="application.user.assessments.overall">Assessment Results and Recommendations</a>
+  </ss-info-box>
+</div>
