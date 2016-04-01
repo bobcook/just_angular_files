@@ -8,11 +8,15 @@ const StaticController = function ($location,
 
   this.subscribeUrl = dsoAuth.dsoSubscribeAuth($state.href('application.home'));
 
+  this.whatIsSubscribeUrl = dsoAuth.dsoSubscribeAuth(
+    $state.href('application.home'),
+    'SSS-JOINSS-LP-WHATIS'
+  );
+
   this.scrollTo = function (id) {
     $location.hash(id);
     $anchorScroll();
   };
-
 };
 
 export default StaticController;

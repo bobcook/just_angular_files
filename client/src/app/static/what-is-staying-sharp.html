@@ -14,6 +14,9 @@
         improving it. It’s packed with information, activities and tools backed by the <a href="https://stayingsharp.zendesk.com/hc/en-us/sections/203753827-The-Global-Council-on-Brain-Health-GCBH-">Global Council on Brain Health</a> and designed to be both fun and effective.
       </p>
     </div>
+    <div ng-if="!$root.$currentUser.isPaid()" class="cta-block">
+      <a class="btn green-btn wide-btn" href="{{vm.whatIsSubscribeUrl}}">Get Sharp</a>
+    </div>
   </section>
 </div>
 
