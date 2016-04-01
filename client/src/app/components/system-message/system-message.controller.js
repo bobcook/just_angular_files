@@ -6,7 +6,8 @@ const SystemMessageController = function ($state,
   'ngInject';
 
   const assignBannerValues = (lastGroupState) => {
-    this.showAssessmentStartBanner = !$rootScope.$currentUser || isNotStarted(lastGroupState);
+    this.showAssessmentStartBanner = !$rootScope.$currentUser ||
+                                     isNotStarted(lastGroupState);
     this.showAssessmentFinishBanner = isStarted(lastGroupState);
     this.showAssessmentSubscribeBanner = isCompleted(lastGroupState);
   };
@@ -30,6 +31,10 @@ const SystemMessageController = function ($state,
 
   AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
     assignBannerValues(assessmentStates.getState(lastGroup));
+  }, (err) => {
+    if (err.status && err.status === 401) {
+      assignBannerValues(assessmentStates.getState());
+    }
   });
 };
 

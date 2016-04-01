@@ -25,12 +25,6 @@ const AssessmentStatus = function ($assessmentsAuth,
       if (!_.isEmpty(groups)) {
         return groups[0];
       };
-    }, (err) => {
-      //consider anonymous user
-      if (err.status && err.status === 401) {
-        return null;
-      }
-      return err;
     });
   };
 
