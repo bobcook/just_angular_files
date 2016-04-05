@@ -11,7 +11,7 @@
     <a class="btn" ui-sref="application.assessments">Finish Assessment</a>
   </ss-info-box>
 
-  <ss-info-box ng-if="vm.showAssessmentSubscribeBanner">
+  <ss-info-box ng-if="vm.showAssessmentCompletedBanner">
     <h3 translate>info.get_your_brain_health_score</h3>
     <p translate>info.assessment_subscribe_to_see_results</p>
     <a class="btn" href="{{vm.subscribeUrl}}">Get My Brain Health Score</a>
@@ -19,7 +19,7 @@
 </div>
 
 <div ng-if="$root.$currentUser.isPaid()">
-  <ss-info-box ng-if="vm.showAssessmentSubscribeBanner">
+  <ss-info-box ng-if="vm.showAssessmentCompletedBanner">
     <h3 translate>info.explore_your_personalized_recommendations</h3>
     <p translate>info.check_the_activities</p>
     <a class="btn" ui-sref="application.user.assessments.overall">Assessment Results and Recommendations</a>

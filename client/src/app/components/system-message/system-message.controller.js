@@ -9,7 +9,7 @@ const SystemMessageController = function ($state,
     this.showAssessmentStartBanner = !$rootScope.$currentUser ||
                                      isNotStarted(lastGroupState);
     this.showAssessmentFinishBanner = isStarted(lastGroupState);
-    this.showAssessmentSubscribeBanner = isCompleted(lastGroupState);
+    this.showAssessmentCompletedBanner = isCompleted(lastGroupState);
   };
 
   const isNotStarted = function (lastGroupState) {
