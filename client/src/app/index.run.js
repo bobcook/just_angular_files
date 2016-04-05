@@ -35,7 +35,7 @@ const runBlock = function ($log,
       `${$location.protocol()}://${$location.host()}/#${fromState.url}` : '';
 
     $window.dtmDataLayer = dtmAnalyticsService.getDataLayer();
-    dtmAnalyticsService.fireDTMDataLayerLoadedEvent();
+    _satellite.track('ss_virtual_page');
 
     if (window.location.hostname !== 'localhost') {
 
@@ -46,8 +46,6 @@ const runBlock = function ($log,
         search: querystring,
         url: $location.absUrl(),
       });
-
-      s.t({ pageName: path });
       // end of Segment.io analytics
     }
   });

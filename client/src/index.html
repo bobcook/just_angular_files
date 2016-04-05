@@ -127,11 +127,6 @@
         };
       }(window));
     </script>
-    <script>
-      var link = document.createElement('script');
-      link.src = window.__env.AdobeDTM;
-      document.head.appendChild(link);
-    </script>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -140,6 +135,9 @@
     <!-- run `gulp inject` to automatically populate bower styles dependencies -->
     <!-- endbower -->
     <!-- endbuild -->
+
+    <!-- inject:dtm -->
+    <!-- endinject -->
 
     <!-- build:css({.tmp/serve,src}) styles/app.css -->
     <!-- inject:css -->
