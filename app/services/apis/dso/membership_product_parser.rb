@@ -34,12 +34,7 @@ module Apis
       end
 
       def raw_product
-        @raw_product ||= Hashie::Mash
-                         .new(response.body)
-                         .getSpecializedMembershipStatus
-                         .specializedMembershipStatusList
-                         .specializedMembershipStatus
-                         .membershipProduct
+        @raw_product ||= DSO.fetch_response_value(:membershipProduct, response)
       end
 
       class UnknownProduct < RuntimeError

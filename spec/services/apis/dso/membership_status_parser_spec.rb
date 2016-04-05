@@ -9,26 +9,56 @@ module Apis
         end
 
         context 'given parseable response' do
-          def make_response(status_str, status = 200)
-            Apis::Response.new(
-              status: status,
+          context 'given one membershipType' do
+            def make_response(status_str, status = 200)
+              Apis::Response.new(
+                status: status,
+                body: {
+                  getSpecializedMembershipStatus: {
+                    specializedMembershipStatusList: {
+                      specializedMembershipStatus: {
+                        membershipStatus: status_str
+                      }
+                    }
+                  }
+                }
+              )
+            end
+
+            it 'is the correct type when given "PROSPECT"' do
+              response = make_response('PROSPECT')
+              result = make_subject(response)
+
+              expect(result.to_sym).to eq(:prospect)
+            end
+          end
+
+          context 'given multiple membershipTypes' do
+            response = Apis::Response.new(
+              status: 200,
               body: {
                 getSpecializedMembershipStatus: {
                   specializedMembershipStatusList: {
-                    specializedMembershipStatus: {
-                      membershipStatus: status_str
-                    }
+                    specializedMembershipStatus: [
+                      {
+                        membershipType: 'StayingSharp',
+                        membershipStatus: 'PROSPECT'
+                      },
+                      {
+                        membershipType: 'Not StayingSharp',
+                        membershipStatus: 'not StayingSharp product'
+                      }
+                    ]
                   }
                 }
               }
             )
-          end
 
-          it 'is the correct type when given "PROSPECT"' do
-            response = make_response('PROSPECT')
-            result = make_subject(response)
+            it 'is the correct type when given "PROSPECT"' do
+              result = make_subject(response)
 
-            expect(result.to_sym).to eq(:prospect)
+              expect(result.to_sym).to eq(:prospect)
+            end
           end
         end
 

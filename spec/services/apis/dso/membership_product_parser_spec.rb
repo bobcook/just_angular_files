@@ -4,38 +4,66 @@ module Apis
   module DSO
     describe MembershipProductParser do
       context 'given a parseable response' do
-        it 'gives correct type when given employee' do
-          response = Apis::Response.new(
-            status: 200,
-            body: {
-              getSpecializedMembershipStatus: {
-                specializedMembershipStatusList: {
-                  specializedMembershipStatus: {
-                    membershipProduct: 'Specialized Membership - $0 Employee'
+        context 'given one membership type' do
+          it 'gives correct type when given employee' do
+            response = Apis::Response.new(
+              status: 200,
+              body: {
+                getSpecializedMembershipStatus: {
+                  specializedMembershipStatusList: {
+                    specializedMembershipStatus: {
+                      membershipProduct: 'Specialized Membership - $0 Employee'
+                    }
                   }
                 }
               }
-            }
-          )
+            )
 
-          expect(MembershipProductParser.parse(response)).to eq('employee')
+            expect(MembershipProductParser.parse(response)).to eq('employee')
+          end
+
+          it 'gives correct type when given beta' do
+            response = Apis::Response.new(
+              status: 200,
+              body: {
+                getSpecializedMembershipStatus: {
+                  specializedMembershipStatusList: {
+                    specializedMembershipStatus: {
+                      membershipProduct: 'Specialized Membership - $0 BETA'
+                    }
+                  }
+                }
+              }
+            )
+
+            expect(MembershipProductParser.parse(response)).to eq('beta')
+          end
         end
 
-        it 'gives correct type when given beta' do
+        context 'given multiple membership types' do
           response = Apis::Response.new(
             status: 200,
             body: {
               getSpecializedMembershipStatus: {
                 specializedMembershipStatusList: {
-                  specializedMembershipStatus: {
-                    membershipProduct: 'Specialized Membership - $0 BETA'
-                  }
+                  specializedMembershipStatus: [
+                    {
+                      membershipType: 'StayingSharp',
+                      membershipProduct: 'Specialized Membership - $0 BETA'
+                    },
+                    {
+                      membershipType: 'Not StayingSharp',
+                      membershipProduct: 'not StayingSharp product'
+                    }
+                  ]
                 }
               }
             }
           )
 
-          expect(MembershipProductParser.parse(response)).to eq('beta')
+          it 'gives correct type' do
+            expect(MembershipProductParser.parse(response)).to eq('beta')
+          end
         end
       end
 

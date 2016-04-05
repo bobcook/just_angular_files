@@ -24,12 +24,7 @@ module Apis
       private
 
       def raw_status
-        @raw_status ||=
-          response.body.with_indifferent_access
-          .fetch(:getSpecializedMembershipStatus, {})
-          .fetch(:specializedMembershipStatusList, {})
-          .fetch(:specializedMembershipStatus, {})
-          .fetch(:membershipStatus, nil)
+        @raw_status ||= DSO.fetch_response_value(:membershipStatus, response)
       end
 
       class UnknownStatus < RuntimeError
