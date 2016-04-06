@@ -22,7 +22,7 @@ const dtmAnalyticsService = function ($location,
       page: $location.path(),
       section: section(),
       user: user(),
-      modalView: isModalView()
+      modalView: isModalView(),
     };
   };
 
