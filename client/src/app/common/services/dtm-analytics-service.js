@@ -1,4 +1,5 @@
 const dtmAnalyticsService = function ($location,
+                                      $state,
                                       $rootScope,
                                       $window) {
   'ngInject';
@@ -21,7 +22,16 @@ const dtmAnalyticsService = function ($location,
       page: $location.path(),
       section: section(),
       user: user(),
+      modalView: isModalView()
     };
+  };
+
+  const isModalView = function () {
+    if ($state.current.onEnter) {
+      return $state.current.onEnter.indexOf('ModalService') > 0;
+    } else {
+      return false;
+    }
   };
 
   const user = function () {
