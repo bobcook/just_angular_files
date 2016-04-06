@@ -450,6 +450,13 @@ const routerConfig = function (stateHelperProvider,
             },
           ],
         },
+        {
+          name: 'sitemap',
+          url: '/sitemap',
+          templateUrl: 'app/sitemap/sitemap.html',
+          controller: 'SitemapController',
+          controllerAs: 'vm',
+        },
       ],
     })
     .state({

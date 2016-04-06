@@ -8,6 +8,7 @@ import runBlock from './index.run';
 import capitalize from './common/filters/capitalize.js';
 import downcase from './common/filters/downcase.js';
 import hyphenate from './common/filters/hyphenate.js';
+import startcase from './common/filters/startcase.js';
 import upcase from './common/filters/upcase.js';
 
 // resources
@@ -234,6 +235,8 @@ import SaveUserContentController from
   './components/save-user-content/save-user-content.controller.js';
 import SearchResultsController from
   './search/search-results.controller.js';
+import SitemapController from
+    './sitemap/sitemap.controller.js';
 import SocialLinksController from
   './components/social-links/social-links.controller.js';
 import StaticController from './static/static.controller.js';
@@ -289,6 +292,7 @@ app
   .filter('downcase', downcase)
   .filter('hyphenate', hyphenate)
   .filter('upcase', upcase)
+  .filter('startcase', startcase)
 
   // resources
   .factory('Activity', Activity)
@@ -468,6 +472,7 @@ app
   .controller('RequiredTechnologyController', RequiredTechnologyController)
   .controller('SaveUserContentController', SaveUserContentController)
   .controller('SearchResultsController', SearchResultsController)
+  .controller('SitemapController', SitemapController)
   .controller('SocialLinksController', SocialLinksController)
   .controller('StaticController', StaticController)
   .controller('SystemMessageController', SystemMessageController)
