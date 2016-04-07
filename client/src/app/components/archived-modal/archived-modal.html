@@ -1,0 +1,21 @@
+<ss-modal>
+  <div class="header">
+    <button class="close" aria-label="Close" ng-click="vm.closeModal()">
+      <span aria-hidden="true">×</span>
+    </button>
+    <div class="header-content">
+      <h2>Archive Activity</h2>
+    </div>
+  </div>
+  <div class="body">
+    This activity will be archived and will no longer be saved to your My Activities dashboard.
+    The Activity Archive stores all activities you’ve worked on, plus your tracked progress. You can even continue tracking your progress on this Activity from the Archive.
+    Rate this Activity and let other members know what you thought!
+  </div>
+  <div class="footer">
+    <ss-reviews
+      ss-review-resource="vm.reviewResource"
+      ss-resource="vm.resource">
+    </ss-reviews>
+  </div>
+</ss-modal>

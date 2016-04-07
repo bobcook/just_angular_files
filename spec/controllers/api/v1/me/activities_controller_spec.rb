@@ -50,4 +50,25 @@ describe Api::V1::Me::ActivitiesController do
       end
     end
   end
+
+  describe '#update' do
+    let!(:activity) { create(:activity) }
+    let!(:user_activity) do
+      create(:user_activity, user: user, activity: activity)
+    end
+    let(:params) do
+      {
+        activity: {
+          archived: true
+        },
+        id: activity.id
+      }
+    end
+
+    it 'updates the archived value' do
+      put :update, params
+
+      expect(user_activity.reload.archived).to eq(true)
+    end
+  end
 end

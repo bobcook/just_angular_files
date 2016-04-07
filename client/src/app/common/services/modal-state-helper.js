@@ -25,7 +25,13 @@ const modalStateHelper = function () {
           },
         });
       },
-      onExit: () => closeModal(),
+      onExit: ($state, $timeout) => {
+        'ngInject';
+        if (options.onExit) {
+          options.onExit($state, $timeout);
+        }
+        closeModal();
+      },
     });
   };
 

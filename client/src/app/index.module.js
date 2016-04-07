@@ -156,6 +156,10 @@ import userDashboardCards from
   './components/user-dashboard-cards/user-dashboard-cards.js';
 
 // controllers
+import ActivityArchiveModalController from
+  './components/archived-modal/activity-archive-modal.controller.js';
+import ActivityArchiveSuccessModalController from
+  './components/archived-modal/activity-archive-success-modal.controller.js';
 import ActivityController from './activities/activity.controller.js';
 import ActivityModalController from './activities/activity-modal.controller.js';
 import ActivitiesController from './activities/activities.controller.js';
@@ -249,6 +253,7 @@ import UserDashboardCardsController from
   './components/user-dashboard-cards/user-dashboard-cards.controller.js';
 import UserDashboardController from
   './me/working-on/user-dashboard.controller.js';
+import UserArchiveController from './me/archive/user-archive.controller.js';
 import UserArticleController from './me/articles/user-article.controller.js';
 import UserArticlesController from './me/articles/user-articles.controller.js';
 import UserAssessmentsController from
@@ -413,6 +418,9 @@ app
   .directive('ssUserDashboardCards', userDashboardCards)
 
   // controllers
+  .controller('ActivityArchiveModalController', ActivityArchiveModalController)
+  .controller('ActivityArchiveSuccessModalController',
+    ActivityArchiveSuccessModalController)
   .controller('ActivityController', ActivityController)
   .controller('ActivityModalController', ActivityModalController)
   .controller('ActivitiesController', ActivitiesController)
@@ -480,6 +488,7 @@ app
   .controller('UserDashboardCardController', UserDashboardCardController)
   .controller('UserDashboardCardsController', UserDashboardCardsController)
   .controller('UserDashboardController', UserDashboardController)
+  .controller('UserArchiveController', UserArchiveController)
   .controller('UserArticleController', UserArticleController)
   .controller('UserArticlesController', UserArticlesController)
   .controller('UserAssessmentsController', UserAssessmentsController)

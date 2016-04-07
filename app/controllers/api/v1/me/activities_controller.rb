@@ -7,6 +7,11 @@ module Api
 
         MAX_ACTIVITIES_COUNT = 6 # TODO: move elsewhere
 
+        def update
+          instance.update(archived: archived)
+          render json: instance, serializer: serializer, status: :ok
+        end
+
         def create
           if user_at_max_activities?
             head :no_content
@@ -20,6 +25,10 @@ module Api
         end
 
         private
+
+        def archived
+          params[:activity][:archived]
+        end
 
         def user_at_max_activities?
           current_user.activities.count == MAX_ACTIVITIES_COUNT

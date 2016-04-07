@@ -4,7 +4,7 @@
       <ul>
         <li>
           <a ui-sref="application.user.working-on"
-             ng-class="{active : activeTab == 'activities'}"
+             ng-class="{active : activeTab === 'activities'}"
              title="My Activities">
             <span class="icon-activities-stats"></span>
             <span class="hidden-xs hidden-sm">My Activities</span>
@@ -12,7 +12,7 @@
           </li>
         <li>
           <a ui-sref="application.user.recipes"
-             ng-class="{active : activeTab == 'recipes'}"
+             ng-class="{active : activeTab === 'recipes'}"
              title="My Recipes">
            <span class="icon-saved-recipes"></span>
            <span class="hidden-xs hidden-sm">My Recipes</span>
@@ -20,7 +20,7 @@
         </li>
         <li>
           <a ui-sref="application.user.articles"
-             ng-class="{active : activeTab == 'articles'}"
+             ng-class="{active : activeTab === 'articles'}"
              title="My Articles">
             <span class="icon-saved-articles"></span>
             <span class="hidden-xs hidden-sm">My Articles</span>
@@ -28,7 +28,7 @@
           </li>
         <li>
           <a ui-sref="application.user.assessments.overall"
-             ng-class="{active : activeTab == 'assessments'}"
+             ng-class="{active : activeTab === 'assessments'}"
              title="My Assessment Results">
             <span class="icon-assessment-results"></span>
             <span class="hidden-xs hidden-sm">My Assessment Results</span>
@@ -36,11 +36,19 @@
           </li>
         <li>
           <a ui-sref="application.user.games"
-             ng-class="{active : activeTab == 'games'}"
+             ng-class="{active : activeTab === 'games'}"
              title="My Games">
             <span class="icon-games"></span>
             <span class="hidden-xs hidden-sm">My Games</span>
             </a>
+        </li>
+        <li>
+          <a ui-sref="application.user.archive"
+             ng-class="{active : activeTab ==='archive'}"
+             title="Archive">
+             <span class="icon-delete"></span>
+             <span class="hidden-xs hidden-sm">Archive</span>
+             </a>
         </li>
       </ul>
     </div>

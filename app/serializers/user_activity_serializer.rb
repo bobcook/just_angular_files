@@ -6,6 +6,7 @@ class UserActivitySerializer < ActiveModel::Serializer
   def activity
     activity_json = ActivitySerializer.new(object.activity, root: false).as_json
     activity_json[:user_activity_periods] = activity_periods
+    activity_json[:archived] = object.archived
     activity_json
   end
 

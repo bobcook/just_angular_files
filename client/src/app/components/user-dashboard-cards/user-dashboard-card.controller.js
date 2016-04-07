@@ -1,4 +1,5 @@
 const UserDashboardCardController = function ($filter,
+                                              $state,
                                               UserActivity) {
   'ngInject';
 
@@ -25,6 +26,12 @@ const UserDashboardCardController = function ($filter,
   const weekText = function (card) {
     const numWeeks = numWeeksSinceStart(card.userActivityPeriods);
     return `Week ${numWeeks}`;
+  };
+
+  this.archiveActivity = () => {
+    this.card.archive();
+    _.remove(this.items, this.card);
+    $state.go('.activity-archived', { id: this.card.slug });
   };
 
   this.resource = UserActivity;

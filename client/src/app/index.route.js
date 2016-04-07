@@ -439,6 +439,13 @@ const routerConfig = function (stateHelperProvider,
               ],
             },
             {
+              name: 'archive',
+              url: '/archive',
+              templateUrl: 'app/me/archive/archive.html',
+              controller: 'UserArchiveController',
+              controllerAs: 'vm',
+            },
+            {
               name: 'working-on',
               url: '/working-on',
               templateUrl: 'app/me/working-on/user-dashboard.html',
@@ -446,6 +453,31 @@ const routerConfig = function (stateHelperProvider,
               controllerAs: 'vm',
               children: [
                 pillarFilterModal(),
+                modalStateHelperProvider({
+                  name: 'activity-archived',
+                  url: '/activity-archived/:id',
+                  templateUrl:
+                    'app/components/archived-modal/archived-modal.html',
+                  controller: 'ActivityArchiveModalController',
+                  controllerAs: 'vm',
+                  onExit: ($state, $timeout) => {
+                    const archiveSuccessPath =
+                      'application.user.working-on.activity-archive-success';
+                    // See https://github.com/angular-ui/ui-router/issues/326
+                    // for why we need a timeout
+                    $timeout(function () {
+                      $state.go(archiveSuccessPath);
+                    }, 10);
+                  },
+                }),
+                modalStateHelperProvider({
+                  name: 'activity-archive-success',
+                  url: '/activity-archive-success',
+                  templateUrl:
+                    'app/components/archived-modal/archive-success.html',
+                  controller: 'ActivityArchiveSuccessModalController',
+                  controllerAs: 'vm',
+                }),
               ],
             },
           ],

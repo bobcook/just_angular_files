@@ -16,16 +16,33 @@ const UserActivity = function (API_URL,
     }),
   });
 
+  const getAll = () => {
+    return UserActivity.query().then((res) => {
+      const data = res.data && res.data.activities;
+      const rawActivities = data ? _.pluck(data, 'activity') : [];
+      return _.map(rawActivities, (activityData) => {
+        return new UserActivity(activityData);
+      });
+    });
+  };
+
   // "Class-level" properties
   UserActivity.extend({
     contentName: 'Activity',
     pluralContentName: 'Activities',
+    archived: (activities) => _.filter(activities, (a) => a.archived),
+    unarchived: (activities) => _.filter(activities, (a) => !a.archived),
+    getAll: getAll,
   });
 
   // "Instance-level" properties
   UserActivity.include({
     contentName: 'Activity',
     pluralContentName: 'Activities',
+    archive: function () {
+      this.archived = true;
+      this.update();
+    },
   });
 
   // Computed properties
