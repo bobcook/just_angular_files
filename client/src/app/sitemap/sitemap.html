@@ -10,9 +10,9 @@
   <section class="container">
     <header>
       <ul>
-        <li ng-repeat="url in vm.urls">
-          <a href="{{url}}">
-            {{url | startcase}}
+        <li ng-repeat="urlData in vm.urls">
+          <a href="{{urlData.url}}">
+            {{urlData.title}}
           </a>
         </li>
       </ul>

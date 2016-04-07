@@ -1,13 +1,42 @@
 const SitemapController = function ($state) {
   'ngInject';
 
-  const stopwords = ['restrictedRedirect',
-                     'iframe',
+  const stopwords = ['iframe',
                      'search-results',
                      'beta',
                      'failure',
                      'sitemap',
-                     ':'];
+                     'assessment-completion',
+                     'assessment-results',
+                     '^/assessments/overall',
+                     'neuroperformance',
+                     'games\\?restrictedRedirect',
+                     'recipes\\?restrictedRedirect',
+                     '^/\\?restrictedRedirect',
+                     '^/working-on',
+                     ':'].map(expression => new RegExp(expression));
+
+  const externalUrls = [
+    {
+      url: 'https://stayingsharp.zendesk.com/hc/en-us',
+      title: 'FAQ',
+    },
+  ];
+
+  const titleReplacements = [
+    {
+      from: 'Me Assessments Overall',
+      to: 'My Assessment Results',
+    },
+    {
+      from: 'Me Working On',
+      to: 'My activities',
+    },
+    {
+      from: 'Me',
+      to: 'My',
+    },
+  ];
 
   const addRoute = (routePrefix, route, routesList) => {
     //Avoid service routes
@@ -37,8 +66,8 @@ const SitemapController = function ($state) {
 
   const urlIsInGroup = (url, group) => {
     let isIncluded = false;
-    _.forEach(group, (word) => {
-      isIncluded = url.indexOf(word) > -1;
+    _.forEach(group, (wordExpression) => {
+      isIncluded = wordExpression.test(url);
       return !isIncluded;
     });
     return isIncluded;
@@ -55,7 +84,18 @@ const SitemapController = function ($state) {
     return urlsList;
   };
 
-  this.urls = filterUrls(fetchUrls($state.get(), '')).sort();
+  const buildTitle = (url) => {
+    const title = _.startCase(url.split('?')[0]);
+    const titleReplacementsReducer =
+      (title, replacement) => title.replace(replacement.from, replacement.to);
+    return titleReplacements.reduce(titleReplacementsReducer, title);
+  };
+
+  const urls = filterUrls(fetchUrls($state.get(), ''))
+    .map(url => ({ url: url , title: buildTitle(url) }))
+    .concat(externalUrls);
+
+  this.urls = _.sortBy(urls, urlData => urlData.title);
 };
 
 export default SitemapController;
