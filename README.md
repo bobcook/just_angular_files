@@ -125,6 +125,11 @@ its own with `$ rubocop`.
 
 
 ## Deployment Procedure
+
+For current physical architecture as of 4/11/16, see
+`/doc/stayingsharp_physical_architecture.png`
+
+
 ### Frontend Deployment Configuration
 
 To deploy to AWS S3 + Cloudfront, you'll need to configure aws client:
