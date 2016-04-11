@@ -6,7 +6,6 @@ module Apis
       attr_reader :http
 
       def initialize(http: faraday)
-        # @http = options[:http] || faraday
         @http = http
       end
 

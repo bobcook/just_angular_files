@@ -155,6 +155,7 @@ import userDashboardCard from
   './components/user-dashboard-cards/user-dashboard-card.js';
 import userDashboardCards from
   './components/user-dashboard-cards/user-dashboard-cards.js';
+import videoIframe from './articles/video-iframe/video-iframe.js';
 
 // controllers
 import ActivityArchiveModalController from
@@ -265,6 +266,8 @@ import UserRecipeController from './me/recipes/user-recipe.controller.js';
 import UserRecipesController from './me/recipes/user-recipes.controller.js';
 import PillarScoresController from
   './components/pillar-scores/pillar-scores.controller.js';
+import VideoIframeController from
+  './articles/video-iframe/video-iframe.controller.js';
 
 const app = angular.module('aarp-staying-sharp', [
   'angularModalService',
@@ -418,6 +421,7 @@ app
   .directive('ssTopNav', topNav)
   .directive('ssUserDashboardCard', userDashboardCard)
   .directive('ssUserDashboardCards', userDashboardCards)
+  .directive('ssVideoIframe', videoIframe)
 
   // controllers
   .controller('ActivityArchiveModalController', ActivityArchiveModalController)
@@ -498,4 +502,5 @@ app
   .controller('UserGameController', UserGameController)
   .controller('UserGamesController', UserGamesController)
   .controller('UserRecipeController', UserRecipeController)
-  .controller('UserRecipesController', UserRecipesController);
+  .controller('UserRecipesController', UserRecipesController)
+  .controller('VideoIframeController', VideoIframeController);

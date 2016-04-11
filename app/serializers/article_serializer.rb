@@ -11,7 +11,7 @@ class ArticleSerializer < ActiveModel::Serializer
              :mast_head_title, :recommend_percentage, :section1_body,
              :section2_body, :slug, :source_materials_citation,
              :content_source_branding_image, :path_pillar, :path_year,
-             :last_modified
+             :last_modified, :video_id
 
   has_many :pillars
 
@@ -35,6 +35,10 @@ class ArticleSerializer < ActiveModel::Serializer
 
   def card_title
     object.title # TODO: they should introduce a cardTitle
+  end
+
+  def video_id
+    object.payload['videoID'] if object.video?
   end
 
   private
