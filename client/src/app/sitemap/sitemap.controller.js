@@ -9,6 +9,7 @@ const SitemapController = function ($state) {
                      'assessment-completion',
                      'assessment-results',
                      '^/assessments/overall',
+                     '^/overall',
                      'neuroperformance',
                      'games\\?restrictedRedirect',
                      'recipes\\?restrictedRedirect',
@@ -30,7 +31,7 @@ const SitemapController = function ($state) {
     },
     {
       from: 'Me Working On',
-      to: 'My activities',
+      to: 'My Activities',
     },
     {
       from: 'Me',
