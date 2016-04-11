@@ -64,7 +64,7 @@
                   </div>
                 </div>
               </div>
-              <button type="submit">
+              <button type="submit" ng-class="{ 'ss-dtm-finish-assessment': vm.isLastPillar(), 'ss-dtm-continue-assessment': !vm.isLastPillar() }">
                 <span ng-if="vm.isLastPillar()">Get Your Results</span>
                 <span ng-if="!vm.isLastPillar()">Continue</span>
               </button>

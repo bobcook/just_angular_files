@@ -19,7 +19,7 @@ const dtmAnalyticsService = function ($location,
   const getDataLayer = function () {
     return {
       channel: 'staying sharp',
-      page: $location.path(),
+      page: pagePath(),
       section: section(),
       user: user(),
       modalView: isModalView(),
@@ -32,6 +32,17 @@ const dtmAnalyticsService = function ($location,
     } else {
       return false;
     }
+  };
+
+  const pagePath = () => {
+    let path = $location.path().replace('.html', '');
+    path = path === '/' ? '/home' : path;
+    return isModalView() ? `${path}/${modalName()}` : path
+  };
+
+  const modalName = function () {
+    const urlArray = $state.current.templateUrl.split('/');
+    return urlArray[urlArray.length - 1].replace('.html', '')
   };
 
   const user = function () {
