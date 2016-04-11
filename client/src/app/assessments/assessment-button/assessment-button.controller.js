@@ -18,7 +18,8 @@ const AssessmentButtonController = function ($featureDetection,
 
   const assignSubscribeUrl = () => {
     const redirectPath = getRedirectPath(this.ctaState);
-    this.subscribeUrl = dsoAuth.dsoSubscribeAuth(redirectPath);
+    this.subscribeUrl = dsoAuth.dsoSubscribeAuth(redirectPath,
+                                                 'SSS-JOINSS-LP-ASSESS');
   };
 
   this.assessmentStates = assessmentStates.states;

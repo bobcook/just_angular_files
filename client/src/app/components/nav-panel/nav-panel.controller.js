@@ -10,7 +10,7 @@ const NavPanelController = function ($rootScope,
 
   this.subscribeGuard = function () { return false; };
 
-  this.subscribeUrl = dsoAuth.dsoSubscribeAuth();
+  this.subscribeUrl = dsoAuth.dsoSubscribeAuth(null, 'SSS-JOINSS-NAV');
 
   this.currentRoute = 'root';
   this.accountUrl = window.__env.accountUrl;

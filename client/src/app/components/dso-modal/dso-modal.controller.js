@@ -4,6 +4,7 @@ const DsoModalController = function ($scope,
                                      resource,
                                      authFunction,
                                      redirectPath,
+                                     intcmp,
                                      close) {
   'ngInject';
 
@@ -13,6 +14,7 @@ const DsoModalController = function ($scope,
   $scope.buttonText = `subscribe_modal.${resource}.button_text`;
   $scope.bodyText = `subscribe_modal.${resource}.body_text`;
   $scope.authFunction = authFunction;
+  $scope.intcmp = intcmp;
   $scope.redirectPath = redirectPath;
   $scope.resource = resource;
 };

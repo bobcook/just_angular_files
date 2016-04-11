@@ -26,14 +26,16 @@ const dsoAuth = function ($location,
     `/register/index?promo=${promo}&referrer=${ssologinPath}`;
   };
 
-  const dsoSubscribeAuth = function (redirectPath = $location.path(), intcmp) {
+  const dsoSubscribeAuth = function (redirectPath = $location.path(),
+                                     intcmp = null) {
+    intcmp = intcmp ? `intcmp=${intcmp}&` : intcmp;
     const ssologinPath = buildSSOLoginPath(redirectPath);
     const campaignURL = $cookies.get('campaignURL') || '';
     return `${dsoSubscribe.domain}/smembership/` +
     `subscription?promo=${dsoSubscribe.promo}&` +
     `campaignURL=${campaignURL}&` +
-    `ref=${ssologinPath}&` +
-    `intcmp=${intcmp}`;
+    `${intcmp}` +
+    `ref=${ssologinPath}`;
   };
 
   const buildSSOLoginPath = function (redirectPath) {

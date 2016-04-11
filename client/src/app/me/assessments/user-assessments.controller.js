@@ -18,10 +18,11 @@ const UserAssessmentController = function ($assessmentsAuth,
   this.showAssessmentBanner = false;
   this.showAssessmentResults = false;
   this.showSystemMessaging = false;
+  const intcmp = 'SSS-JOINSS-CARD-MYSSASSESS';
   this.subscribeUrl =
-    dsoAuth.dsoSubscribeAuth($state.href('application.assessments'));
+    dsoAuth.dsoSubscribeAuth($state.href('application.assessments'), intcmp);
   this.completedSubscribeUrl = dsoAuth.dsoSubscribeAuth(
-      $state.href('application.user.assessments.overall')
+      $state.href('application.user.assessments.overall'), intcmp
     );
   this.states = assessmentStates.states;
   this.assessmentState;

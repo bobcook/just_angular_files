@@ -47,7 +47,7 @@
             <a ui-sref="application.activities" ng-click="vm.close()" permission only="'paid'">
               <span class="icon icon-activities-stats"></span>Activities
             </a>
-            <a ng-click="vm.showSubscribeModal('activities', '/activities', vm.subscribeGuard)" permission only="'unpaid'">
+            <a ng-click="vm.showSubscribeModal('activities', '/activities', vm.subscribeGuard, 'SSS-JOINSS-POP-ACT')" permission only="'unpaid'">
               <span class="icon icon-activities-stats"></span>Activities
             </a>
           </li>
@@ -58,7 +58,7 @@
             <a ui-sref="application.recipes" ng-click="vm.close()" permission only="'paid'">
               <span class="icon icon-saved-recipes"></span>Recipes
             </a>
-            <a ng-click="vm.showSubscribeModal('recipes', '/recipes', vm.subscribeGuard)" permission only="'unpaid'">
+            <a ng-click="vm.showSubscribeModal('recipes', '/recipes', vm.subscribeGuard, 'SSS-JOINSS-POP-REC')" permission only="'unpaid'">
               <span class="icon icon-saved-recipes"></span>Recipes
             </a>
           </li>
@@ -69,7 +69,7 @@
       </li>
       <li class="primary-level">
         <a ui-sref="application.user.working-on" ng-if="$root.$currentUser" ng-click="vm.close()">My Staying Sharp</a>
-        <a ng-if="!$root.$currentUser" ng-click="vm.showSubscribeModal('me', '/me/working-on')">My Staying Sharp</a>
+        <a ng-if="!$root.$currentUser" ng-click="vm.showSubscribeModal('me', '/me/working-on', vm.subscribeGuard, 'SSS-JOINSS-POP-MYSS')">My Staying Sharp</a>
       </li>
       <li class="primary-level">
         <a ui-sref="application.assessments" ng-click="vm.close()">

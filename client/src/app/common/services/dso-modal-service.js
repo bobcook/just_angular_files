@@ -21,7 +21,8 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
 
   const showSubscribeModal = function (resource,
                                        redirectPath = $location.path(),
-                                       guard = () => false) {
+                                       guard = () => false,
+                                       intcmp = null) {
     if (guard()) { return; }
 
     ModalService.showModal({
@@ -31,6 +32,7 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
         resource: resource,
         authFunction: subscribe,
         redirectPath: redirectPath,
+        intcmp: intcmp,
       },
     });
 
@@ -54,8 +56,8 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
 
   const clearPath = () => $location.search('restrictedRedirect', null);
 
-  const subscribe = function (redirectPath = $location.path()) {
-    $window.location.href = dsoAuth.dsoSubscribeAuth(redirectPath);
+  const subscribe = function (redirectPath = $location.path(), intcmp = null) {
+    $window.location.href = dsoAuth.dsoSubscribeAuth(redirectPath, intcmp);
   };
 
   const register = function (redirectPath = $location.path()) {

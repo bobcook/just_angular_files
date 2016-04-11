@@ -8,6 +8,7 @@ const TopNavController = function (ApiRoutes,
   'ngInject';
 
   this.login = dsoAuth.login;
+  const intcmp = 'SSS-JOINSS-HEAD';
 
   this.isGamePlayView = $rootScope.isGamePlayView;
   this.gamePlayFalse = function () {
@@ -15,13 +16,13 @@ const TopNavController = function (ApiRoutes,
   };
 
   $scope.$on('$stateChangeSuccess', () => {
-    this.subscribeUrl = dsoAuth.dsoSubscribeAuth();
+    this.subscribeUrl = dsoAuth.dsoSubscribeAuth(null, intcmp);
   });
 
   this.searchCategories = ['All content'];
   this.isMenuOpen = false;
   this.isSearchOpen = false;
-  this.subscribeUrl = dsoAuth.dsoSubscribeAuth();
+  this.subscribeUrl = dsoAuth.dsoSubscribeAuth(null, intcmp);
 
   this.submitSearch = function () {
     this.isSearchOpen = false;

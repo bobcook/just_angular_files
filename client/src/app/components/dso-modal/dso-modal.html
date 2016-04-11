@@ -10,7 +10,7 @@
         <p translate>{{bodyText}}</p>
       </div>
       <div class="footer">
-        <button ng-click="authFunction(redirectPath)" class="btn btn-primary" translate>{{buttonText}}</button>
+        <button ng-click="authFunction(redirectPath, intcmp)" class="btn btn-primary" translate>{{buttonText}}</button>
         <span ng-if="!$root.$currentUser" ng-switch="resource">
           <small ng-switch-when="me">Not ready to join? <a ng-href="{{registerUrl}}">Create a free account</a> or <a href="#" ng-click="login()">login now</a></small>
           <small ng-switch-when="recipes">Already have an account? Click <a href="#" ng-click="login('/recipes')">here</a> to log in</small>
