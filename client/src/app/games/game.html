@@ -1,5 +1,6 @@
 <div class="cp-games-details">
   <section class="container">
+    <a ng-if="!isPaidGame()" ui-sref=".game-share" class="share-button game-top">Share <span class="icon-share"></span></a>
     <article>
       <h5>Games</h5>
       <h2>{{vm.game.title}}</h2>
@@ -29,6 +30,12 @@
         ss-plural-resource-name="vm.pluralResourceName">
       </ss-save-user-content>
     </footer>
+  </section>
+</div>
+
+<div ng-if="!isPaidGame()" class="cp-content-group share">
+  <section class="container">
+    <a ui-sref=".game-share" class="share-button">Share <span class="icon-share"></span></a>
   </section>
 </div>
 

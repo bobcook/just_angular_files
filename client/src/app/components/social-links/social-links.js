@@ -8,7 +8,7 @@ const socialLinks = function () {
     scope: {
       title: '=ssTitle',
       pageURL: '=ssPageUrl',
-      resourceType: '@?ssResourceType',
+      resourceName: '=ssResourceName',
     },
   };
 };
