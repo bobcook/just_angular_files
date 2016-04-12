@@ -3,7 +3,7 @@ const SocialLinksController = function ($filter) {
 
   this.title = this.title || ''; // via-ss-title
   this.pageURL = this.pageURL || ''; // via ss-page-url
-  this.resourceType = this.resourceType || ''; // via ss-resource-type
+  this.resourceName = this.resourceName || ''; // via ss-resource-type
 
   this.iconClassFor = function (provider) {
     return providers[provider].iconClass;
