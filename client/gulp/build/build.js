@@ -4,6 +4,8 @@ import conf from '../conf';
 
 import $ from '../plugins';
 
+const gutil = require('gulp-util');
+
 gulp.task('partials', function () {
   return gulp.src([
     path.join(conf.paths.src, '/app/**/*.html'),
@@ -72,6 +74,14 @@ gulp.task('fonts', function () {
     .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')));
 });
 
+gulp.task('server', function () {
+  return gulp.src([
+    path.join(conf.paths.src, '/server.js'),
+    path.join(conf.paths.src, '/package.json')
+  ])
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
+});
+
 gulp.task('other', function () {
   return gulp.src([
     path.join(conf.paths.src, '/**/*'),
@@ -90,10 +100,11 @@ gulp.task('other:watch', ['other'], function () {
 });
 
 gulp.task('clean', function (done) {
+  gutil.log('deleting dist and tmp files...');
   $.del([
     path.join(conf.paths.dist, '/'),
     path.join(conf.paths.tmp, '/'),
   ], { force: true }, done);
 });
 
-gulp.task('build', ['html', 'fonts', 'other']);
+gulp.task('build', ['html', 'fonts', 'server', 'other']);

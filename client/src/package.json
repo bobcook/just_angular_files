@@ -1,0 +1,15 @@
+{
+  "name": "staying-sharp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "~4.13.4",
+    "morgan": "~1.7.0",
+    "body-parser": "~1.15.0",
+    "prerender-node": "~2.2.1",
+    "lodash": "~4.11.1"
+  }
+}

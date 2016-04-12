@@ -1,6 +1,7 @@
 <!doctype html>
 <html ng-app="aarp-staying-sharp" lang="en" ng-strict-di>
   <head>
+    <meta name="fragment" content="!">
     <meta charset="utf-8">
     <base href="/">
     <title>AARP Staying Sharp</title>
@@ -85,7 +86,9 @@
         };
 
         var envs = {
+          'localhost:8080': 'local',
           'localhost:9000': 'local',
+
 
           'test-mystayingsharp.org': 'devS3',
           'stayingsharp.test-aarp.org': 'devS3',
@@ -97,6 +100,11 @@
           'aarp-ss-stg.firebaseapp.com': 'staging',
           'aarp-ss-prod.firebaseapp.com': 'production',
           'aarp-staying-sharp.firebaseapp.com': 'production',
+
+          'staying-sharp-dev.pbesxj7t3n.us-west-2.elasticbeanstalk.com': 'dev',
+          'staying-sharp-test-dev.us-west-2.elasticbeanstalk.com': 'staging',
+          'staying-sharp-staging.pbesxj7t3n.us-west-2.elasticbeanstalk.com': 'staging',
+          'staying-sharp-prod.pbesxj7t3n.us-west-2.elasticbeanstalk.com': 'production',
 
           'mystayingsharp.org': 'production',
           'stayingsharp.aarp.org': 'production',

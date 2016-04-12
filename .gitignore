@@ -44,3 +44,14 @@ zeus.json
 /client/gulp.png
 /client/aws.json
 /client/.awspublish*
+/client/node_modules
+/client/.elasticbeanstalk
+
+# Elastic Beanstalk Files
+/client/.elasticbeanstalk/*
+/client/!.elasticbeanstalk/*.cfg.yml
+/client/!.elasticbeanstalk/*.global.yml
+/client/awseb-dev-config.js
+/client/awseb-staging-config.js
+/client/awseb-production-config.js
+/client/src/node_modules
