@@ -1,5 +1,6 @@
 'use strict';
 
+const minimist = require('minimist');
 const fs = require('fs');
 
 const BuildUtils = function () {
@@ -20,9 +21,19 @@ const BuildUtils = function () {
     };
   };
 
+  const getEnvName = function () {
+    const knownOptions = {
+      string: 'env',
+      default: { env: 'staging' }
+    };
+    const options = minimist(process.argv.slice(2), knownOptions);
+    return fetch(options, 'env');
+  };
+
   return {
     fetch: fetch,
     fileExists: fileExists,
+    getEnvName: getEnvName,
   };
 };
 

@@ -20,15 +20,6 @@ const env = utils.fileExists(dotEnvPath)
             ? require('dotenv').config({ path: dotEnvPath })
             : process.env;
 
-const getEnvName = function () {
-  const knownOptions = {
-    string: 'env',
-    default: { env: 'staging' }
-  };
-  const options = minimist(process.argv.slice(2), knownOptions);
-  return utils.fetch(options, 'env');
-};
-
 const getAwsConf = function (filePath, envName) {
   gutil.log('Reading aws.json');
   try {
@@ -41,7 +32,7 @@ const getAwsConf = function (filePath, envName) {
 };
 
 gulp.task('deploy', ['build'], function() {
-  const envName = getEnvName();
+  const envName = utils.getEnvName();
   const awsConf = getAwsConf('aws.json', envName);
   const publisher = awspublish.create(awsConf);
   const headers = {

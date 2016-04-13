@@ -5,7 +5,9 @@ import conf from '../conf';
 import _ from 'lodash';
 import $ from '../plugins';
 
+const utils = require('./build-utils.js');
 const wiredep = require('wiredep').stream;
+const gutil = require('gulp-util');
 
 gulp.task('inject', ['scripts', 'partials', 'styles'], function () {
   const injectStyles = gulp.src([
@@ -38,10 +40,11 @@ gulp.task('inject', ['scripts', 'partials', 'styles'], function () {
   const adobeUrlBase = 'https://assets.adobedtm.com/2755d5b313381183ec8ddef72' +
     'ce582193e25b5a4/satelliteLib-805aa8204ac81b4deda113894acff79bf57258a9';
 
-  let adobeTag = `<script src="${adobeUrlBase}.js"></script>`
-  if (conf.isDevelopment) {
-    adobeTag = `<script src="${adobeUrlBase}-staging.js"></script>`
-  }
+  const adobeTag = (utils.getEnvName() === 'production')
+    ? `<script src="${adobeUrlBase}.js"></script>`
+    : `<script src="${adobeUrlBase}-staging.js"></script>`
+
+  gutil.log(`Injecting DTM for ${utils.getEnvName()} environment`);
 
   const dtmInjectOptions = {
     starttag: '<!-- inject:dtm -->',
