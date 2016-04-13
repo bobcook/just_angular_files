@@ -7,7 +7,7 @@ const GameModalController = function (Game,
   Game.get($stateParams.id).then((response) => {
     this.resource = response.data;
     this.resourceTitle = this.resource.title;
-    this.resourceURL = $location.absUrl();
+    this.resourceURL = this.resource.$url();
   });
 
   this.closeModal = $currentModal.close;

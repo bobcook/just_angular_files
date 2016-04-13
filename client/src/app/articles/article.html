@@ -2,7 +2,6 @@
   ng-style="{'background-image':'url(' + vm.article.mastHeadImage + ')'}"
   class="cp-lead-in-detail">
   <section class="container">
-    <a ui-sref=".article-share" class="share-button">Share <span class="icon-share"></span></a>
     <div class="info-block">
       <header>
         <h5>Article</h5>
@@ -78,12 +77,6 @@
       </ss-save-user-content>
       <button ng-click="vm.openRegisterModal('articles')" ng-if="!$root.$currentUser">Save</button>
     </footer>
-  </section>
-</div>
-
-<div class="cp-content-group share">
-  <section class="container">
-    <a ui-sref=".article-share" class="share-button">Share <span class="icon-share"></span></a>
   </section>
 </div>
 

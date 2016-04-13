@@ -3,13 +3,6 @@
   padding-bottom: 10px;
   background: $white;
 
-  &.share {
-    > .container {
-      background: $white;
-      padding: 0;
-    }
-  }
-
   .container {
     max-width: 960px;
     background: $bg-color;
@@ -229,12 +222,5 @@
   p {
     margin-top: 10px;
     font-size: 14px;
-  }
-}
-
-.share-button {
-  display: block;
-  &.game-top {
-    padding-bottom: 20px;
   }
 }

@@ -7,7 +7,6 @@ const ActivityModalController = function (Activity,
   Activity.get($stateParams.id).then((response) => {
     this.resource = response.data;
     this.resourceTitle = this.resource.title;
-    this.resourceURL = $location.absUrl();
     this.durationText = this.resource.effortText;
   });
 
