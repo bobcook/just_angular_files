@@ -37,9 +37,11 @@ gulp.task('inject', ['scripts', 'partials', 'styles'], function () {
 
   const adobeUrlBase = 'https://assets.adobedtm.com/2755d5b313381183ec8ddef72' +
     'ce582193e25b5a4/satelliteLib-805aa8204ac81b4deda113894acff79bf57258a9';
-  const adobeTag = conf.isDevelopment
-                  ? `<script src="${adobeUrlBase}-staging.js"></script>`
-                  : `<script src="${adobeUrlBase}.js"></script>`;
+
+  let adobeTag = `<script src="${adobeUrlBase}.js"></script>`
+  if (conf.isDevelopment) {
+    adobeTag = `<script src="${adobeUrlBase}-staging.js"></script>`
+  }
 
   const dtmInjectOptions = {
     starttag: '<!-- inject:dtm -->',

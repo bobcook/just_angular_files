@@ -37,12 +37,12 @@ const dtmAnalyticsService = function ($location,
   const pagePath = () => {
     let path = $location.path().replace('.html', '');
     path = path === '/' ? '/home' : path;
-    return isModalView() ? `${path}/${modalName()}` : path
+    return isModalView() ? `${path}/${modalName()}` : path;
   };
 
   const modalName = function () {
     const urlArray = $state.current.templateUrl.split('/');
-    return urlArray[urlArray.length - 1].replace('.html', '')
+    return urlArray[urlArray.length - 1].replace('.html', '');
   };
 
   const user = function () {
