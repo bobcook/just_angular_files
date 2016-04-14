@@ -50,7 +50,8 @@
   <section class="container">
     <article>
       <div class="detail-text" ng-bind-html="vm.article.section1Body" ></div>
-      <img class="detail-image" ng-src="{{vm.article.mastHeadImage}}" alt="">
+      <img ng-if="vm.article.bodyImage" class="detail-image" ng-src="{{vm.article.bodyImage}}" alt="">
+      <div ng-if="vm.article.bodyImage && vm.article.section2Body" ng-bind-html="vm.article.section2Body" ></div>
       <hr>
       <div ng-if="vm.article.sourceMaterialsCitation">
         <div class="detail-source" ng-bind-html="vm.article.sourceMaterialsCitation"></div>
