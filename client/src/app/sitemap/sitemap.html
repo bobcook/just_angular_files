@@ -5,14 +5,13 @@
         lead-title="Site Map">
 </ss-lead-in>
 
-
 <div class="cp-additional-content">
   <section class="container">
     <header>
       <ul>
-        <li ng-repeat="urlData in vm.urls">
-          <a href="{{urlData.url}}">
-            {{urlData.title}}
+        <li ng-repeat="sitemapUrl in vm.sitemapUrls">
+          <a href="{{sitemapUrl.url}}">
+            {{sitemapUrl.displayName}}
           </a>
         </li>
       </ul>

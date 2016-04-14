@@ -38,6 +38,7 @@ import RecommendedContent from './common/resources/recommended-content.js';
 import RelatedContent from './common/resources/related-content.js';
 import RelatedContentGames from './common/resources/related-content-games.js';
 import Search from './common/resources/search.js';
+import SitemapUrl from './common/resources/sitemap-url.js';
 import UserActivity from './common/resources/user-activity.js';
 import UserActivityPeriod from './common/resources/user-activity-period.js';
 import UserArticle from './common/resources/user-article.js';
@@ -107,7 +108,6 @@ import restrictedRedirectModalService from
 import restrictedRedirectService from
   './common/services/restricted-redirect-service.js';
 import resourceUrlFormatter from './common/services/resource-url-formatter.js';
-import sitemapUrls from './common/services/sitemap-urls.js';
 
 // directives
 import activityTracker from './components/activity-tracker/activity-tracker.js';
@@ -324,6 +324,7 @@ app
   .factory('RelatedContent', RelatedContent)
   .factory('RelatedContentGames', RelatedContentGames)
   .factory('Search', Search)
+  .factory('SitemapUrl', SitemapUrl)
   .factory('UserActivity', UserActivity)
   .factory('UserActivityPeriod', UserActivityPeriod)
   .factory('UserArticle', UserArticle)
@@ -379,7 +380,6 @@ app
   .factory('restrictedRedirectModalService', restrictedRedirectModalService)
   .factory('restrictedRedirectService', restrictedRedirectService)
   .factory('resourceUrlFormatter', resourceUrlFormatter)
-  .factory('sitemapUrls', sitemapUrls)
   .provider('modalStateHelper', modalStateHelper)
 
   // directives
