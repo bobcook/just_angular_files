@@ -107,6 +107,7 @@ import restrictedRedirectModalService from
 import restrictedRedirectService from
   './common/services/restricted-redirect-service.js';
 import resourceUrlFormatter from './common/services/resource-url-formatter.js';
+import sitemapUrls from './common/services/sitemap-urls.js';
 
 // directives
 import activityTracker from './components/activity-tracker/activity-tracker.js';
@@ -378,6 +379,7 @@ app
   .factory('restrictedRedirectModalService', restrictedRedirectModalService)
   .factory('restrictedRedirectService', restrictedRedirectService)
   .factory('resourceUrlFormatter', resourceUrlFormatter)
+  .factory('sitemapUrls', sitemapUrls)
   .provider('modalStateHelper', modalStateHelper)
 
   // directives
