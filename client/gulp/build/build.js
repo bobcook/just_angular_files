@@ -82,6 +82,12 @@ gulp.task('server', function () {
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
 });
 
+gulp.task('lib', function () {
+  return gulp.src([
+    path.join(conf.paths.src, '/lib/**/*.js')
+  ]).pipe(gulp.dest(path.join(conf.paths.dist, '/lib/')));
+})
+
 gulp.task('other', function () {
   return gulp.src([
     path.join(conf.paths.src, '/**/*'),
@@ -107,4 +113,4 @@ gulp.task('clean', function (done) {
   ], { force: true }, done);
 });
 
-gulp.task('build', ['html', 'fonts', 'server', 'other']);
+gulp.task('build', ['html', 'fonts', 'server', 'lib', 'other']);

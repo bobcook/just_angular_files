@@ -20,7 +20,7 @@ const SitemapController = function ($state, SitemapUrl) {
   ];
 
   const createSitemapUrls = (states) => {
-    return _.map(whiteListStates, (params) => {
+    return _.map(states, (params) => {
       const [state, display = null, url = null] = params;
       return new SitemapUrl(state, display, url);
     });

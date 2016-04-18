@@ -547,6 +547,13 @@ const routerConfig = function (stateHelperProvider,
       name: 'logout',
       url: '/logout',
       controller: 'LogoutController',
+    })
+    .state({
+      name: 'sitemap-data',
+      url: '/sitemap-data',
+      templateUrl: 'app/sitemap/sitemap-data.html',
+      controller: 'SitemapDataController',
+      controllerAs: 'vm',
     });
 
   $urlRouterProvider.when('/ssologin?link', function ($match,

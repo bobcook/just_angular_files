@@ -18,7 +18,7 @@
     "chalk": "~1.1.1",
     "concat-stream": "~1.5.0",
     "del": "~2.2.0",
-    "dotenv": "~2.0.0",
+    "dotenv": "https://registry.npmjs.org/dotenv/-/dotenv-2.0.0.tgz",
     "eslint": "^1.5.1",
     "eslint-loader": "^1.0.0",
     "express": "~4.13.4",
@@ -81,8 +81,11 @@
     "webpack-stream": "^2.1.1",
     "wiredep": "~2.2.2",
     "wrench": "~1.5.8",
-    "gulp-zip": "^3.2.0",
-    "node-aws-beanstalk": "^3.4.3"
+    "node-aws-beanstalk": "^3.4.3",
+    "casperjs": "~1.1.0",
+    "cheerio": "~0.20.0",
+    "phantom": "~2.0.10",
+    "sitemap": "~1.6.0"
   },
   "engines": {
     "node": "~0.12.7"

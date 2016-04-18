@@ -10,7 +10,8 @@ class ArticleSerializer < ActiveModel::Serializer
              :description, :duration, :effort, :mast_head_image,
              :mast_head_title, :recommend_percentage, :section1_body,
              :section2_body, :slug, :source_materials_citation,
-             :content_source_branding_image, :path_pillar, :path_year
+             :content_source_branding_image, :path_pillar, :path_year,
+             :last_modified
 
   has_many :pillars
 

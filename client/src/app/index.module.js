@@ -240,8 +240,8 @@ import SaveUserContentController from
   './components/save-user-content/save-user-content.controller.js';
 import SearchResultsController from
   './search/search-results.controller.js';
-import SitemapController from
-    './sitemap/sitemap.controller.js';
+import SitemapController from './sitemap/sitemap.controller.js';
+import SitemapDataController from './sitemap/sitemap-data.controller.js';
 import SocialLinksController from
   './components/social-links/social-links.controller.js';
 import StaticController from './static/static.controller.js';
@@ -483,6 +483,7 @@ app
   .controller('SaveUserContentController', SaveUserContentController)
   .controller('SearchResultsController', SearchResultsController)
   .controller('SitemapController', SitemapController)
+  .controller('SitemapDataController', SitemapDataController)
   .controller('SocialLinksController', SocialLinksController)
   .controller('StaticController', StaticController)
   .controller('SystemMessageController', SystemMessageController)
