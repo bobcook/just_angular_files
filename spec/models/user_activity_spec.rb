@@ -33,7 +33,8 @@ describe UserActivity do
       day_created = today_in_utc - 15.days
       beginning_of_creation_week = day_created.at_beginning_of_week + 1.day
 
-      expected_num_days = (today_in_utc - beginning_of_creation_week).to_i + 2
+      expected_num_days =
+          (today_in_utc.at_end_of_week - beginning_of_creation_week).to_i + 2
       user_activity = make_user_activity(day_created)
 
       expect(user_activity.stubbed_activity_periods.length)
@@ -52,7 +53,8 @@ describe UserActivity do
 
       stubbed_periods = user_activity.stubbed_activity_periods
       non_persisted_periods = stubbed_periods.reject(&:persisted?)
-      expected_num_days = (today_in_utc - beginning_of_creation_week).to_i + 1
+      expected_num_days =
+          (today_in_utc.at_end_of_week - beginning_of_creation_week).to_i + 1
 
       expect(non_persisted_periods.length).to eq expected_num_days
     end

@@ -34,7 +34,7 @@ class UserActivity < ActiveRecord::Base
     # Send 1 extra day to account for user tz offset; client should choose
     # whether or not to use the extra day
     start_date = utc_date(create_time).at_beginning_of_week + 1 # Start Monday
-    end_date = utc_date(current_time + 1.day)
+    end_date = utc_date(current_time).at_end_of_week + 1
     (start_date..end_date)
   end
 

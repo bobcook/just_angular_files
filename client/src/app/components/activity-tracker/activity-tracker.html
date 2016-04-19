@@ -32,12 +32,16 @@
       <ss-activity-tracker-binary
         ng-switch-when="binary"
         periods="vm.currentWeek"
+        current-week-number="vm.currentWeekNumber"
+        is-future-period="vm.isFuturePeriod($period)"
         on-period-clicked="vm.editPeriod($period)">
       </ss-activity-tracker-binary>
       <ss-activity-tracker-quantity
         ng-switch-default
         periods="vm.currentWeek"
+        current-week-number="vm.currentWeekNumber"
         type="vm.activity.activityTracker.type"
+        is-future-period="vm.isFuturePeriod($period)"
         on-period-clicked="vm.editPeriod($period)">
       </ss-activity-tracker-quantity>
     </div>
