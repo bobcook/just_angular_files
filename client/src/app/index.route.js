@@ -363,6 +363,9 @@ const routerConfig = function (stateHelperProvider,
           templateUrl: 'app/search/search-results.html',
           controller: 'SearchResultsController',
           controllerAs: 'vm',
+          children: [
+            pillarFilterModal(),
+          ],
         },
         {
           name: 'ssmember',
