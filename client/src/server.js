@@ -14,7 +14,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(require('prerender-node')
   .set('prerenderToken', process.env.PRERENDER_TOKEN));
 
-const assets = ['styles', 'scripts', 'app']
+const assets = ['styles', 'scripts', 'app', 'robots.txt']
 
 app.get('*', function (req, res) {
   const base = _.compact(req.url.split('/'))[0];
