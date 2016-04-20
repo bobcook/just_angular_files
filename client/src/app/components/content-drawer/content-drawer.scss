@@ -17,7 +17,6 @@
 
     .content-drawer-inner {
       background: $white;
-      transform: translateY(-100%);
       box-shadow: 0 4px 2px -2px $grey-medium;
     }
 
@@ -30,7 +29,6 @@
   &.visible {
     .content-drawer-inner {
       opacity: 1;
-      transform: translateY(0);
       transition: all 250ms ease-in-out;
     }
 
