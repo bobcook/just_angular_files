@@ -3,7 +3,8 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
 
   const showRegisterModal = function (resource,
                                       guard = () => false,
-                                      redirectPath = $location.path()) {
+                                      redirectPath = $location.path(),
+                                      intcmp = null) {
     if (guard()) { return; }
 
     ModalService.showModal({
@@ -13,6 +14,7 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
         resource: resource,
         authFunction: register,
         redirectPath: redirectPath,
+        intcmp: intcmp,
       },
     });
 
@@ -41,7 +43,8 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
 
   const showGenericPaywallModal = function (resource,
                                             resourcePath,
-                                            guard = () => false) {
+                                            guard = () => false,
+                                            intcmp = null) {
     if (guard()) { return; }
 
     ModalService.showModal({
@@ -50,6 +53,7 @@ const dsoModalService = function ($window, ModalService, dsoAuth, $location) {
       inputs: {
         resource: resource,
         resourcePath: resourcePath,
+        intcmp: intcmp,
       },
     });
   };
