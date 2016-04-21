@@ -12,7 +12,11 @@
     "lodash": "~4.11.1",
     "morgan": "~1.7.0",
     "prerender-node": "~2.2.1",
-    "s3": "~4.4.0"
+    "s3": "~4.4.0",
+    "dotenv": "~2.0.0",
+    "sitemap": "~1.6.0",
+    "cheerio": "~0.20.0",
+    "phantom": "~2.0.10"
   },
   "engines": {
     "node": "~4.4.3"
