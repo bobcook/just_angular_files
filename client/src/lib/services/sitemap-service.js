@@ -34,8 +34,7 @@ const calculatePriority = function (url) {
 };
 
 const sitemapDataRoute = function (request) {
-  const protocol = request.secure ? 'https' : 'http';
-  return `${protocol}://${request.headers.host}/sitemap-data`;
+  return `https://${request.headers.host}/sitemap-data`;
 };
 
 
