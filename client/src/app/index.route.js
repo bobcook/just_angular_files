@@ -298,7 +298,8 @@ const routerConfig = function (stateHelperProvider,
         },
         {
           name: 'home',
-          url: '/?restrictedRedirect&resourcePath&genericRedirect',
+          url: '/?restrictedRedirect&resourcePath&genericRedirect' +
+               '&campaignURL&intcmp',
           templateUrl: 'app/home/home.html',
           controller: 'HomeController',
           controllerAs: 'vm',
@@ -545,6 +546,15 @@ const routerConfig = function (stateHelperProvider,
       templateUrl: 'app/game-iframe/game-iframe-content.html',
       controller: 'GameIframeContentController',
       controllerAs: 'vm',
+    })
+    .state({
+      name: 'welcome',
+      url: '/welcome',
+      redirectTo: 'application.home',
+      params: {
+        campaignURL: 'WLCKIT',
+        intcmp: 'WLC-MEM-SSS-ACQ-BRN-LAUNCH-MEMBR-050116-VNTY',
+      },
     })
     .state({
       name: 'logout',
