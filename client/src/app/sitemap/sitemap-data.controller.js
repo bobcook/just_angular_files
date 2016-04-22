@@ -8,20 +8,12 @@ const SitemapDataController = function ($state,
 
   const whileListStates = [
     ['home'],
-    ['activities'],
     ['articles'],
     ['assessments', 'Take the Assessment'],
     ['static.privacy-policy'],
     ['static.terms-of-service'],
     ['static.what-is-staying-sharp'],
-    ['user.articles', 'My Articles'],
-    ['user.assessments.overall', 'My Assessment Results'],
-    ['user.games', 'My Games'],
-    ['user.recipes', 'My Recipes'],
-    ['user.archive', 'My Archive'],
-    ['user.working-on', 'My activities'],
     ['games'],
-    ['recipes'],
   ];
 
   const getStaticUrls = (states) => {
@@ -55,7 +47,7 @@ const SitemapDataController = function ($state,
   };
 
   const getUrl = _.partialRight(_.get, 'url');
-  
+
   $q.all([
     $promise.of(_.map(getStaticUrls(whileListStates, getUrl))),
     getContentUrls(Article),
