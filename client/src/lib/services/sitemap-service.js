@@ -19,7 +19,7 @@ const sitemapData = function (urlObj) {
   return {
     url: url,
     priority: priority,
-    changefreq: 'monthly',
+    changefreq: 'weekly',
     lastmod: date,
     lastmodrealtime: true
   };
@@ -50,7 +50,7 @@ const s3Client = function () {
   return s3.createClient({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    region: 'us-west-2',
+    region: process.env.AWS_S3_LOCATION,
   });
 };
 
