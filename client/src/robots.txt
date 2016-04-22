@@ -2,4 +2,4 @@
 #
 # Disallow all robots during BETA
 User-agent: *
-Disallow /
+Disallow: /
