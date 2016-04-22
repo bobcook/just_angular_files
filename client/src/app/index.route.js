@@ -569,11 +569,12 @@ const routerConfig = function (stateHelperProvider,
                                     restrictedRedirectService,
                                     $rootScope,
                                     $loadCurrentUser) {
-    $loadCurrentUser($rootScope.$currentUser);
-    restrictedRedirectService.filterAnonymous('assessments',
-                                              '/assessments',
-                                              true);
-    assessmentLinkManager.redirectToAssessment();
+    $loadCurrentUser($rootScope.$currentUser).then(() => {
+      restrictedRedirectService.filterAnonymous('assessments',
+                                                '/assessments',
+                                                true);
+      assessmentLinkManager.redirectToAssessment();
+    });
   });
   $urlRouterProvider.otherwise('/');
 };
