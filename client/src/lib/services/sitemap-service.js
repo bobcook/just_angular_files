@@ -95,7 +95,7 @@ const upload = function (sitemap) {
 module.exports = {
   createSitemap: function (request, dataSource) {
     const data = dataSource || scrapePage;
-    return dataSource(request).then(function (urlsJson) {
+    return data(request).then(function (urlsJson) {
       return generateSitemap(urlsJson, request.headers.host);
     });
   },
