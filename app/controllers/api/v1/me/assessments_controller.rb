@@ -8,9 +8,6 @@ module Api
 
         def update
           user_asessment.update(completed: assessment_params[:completed])
-          if engagement_email.update_assessment_status?
-            engagement_email.send_later
-          end
           render json: user_asessment, status: :ok
         end
 
