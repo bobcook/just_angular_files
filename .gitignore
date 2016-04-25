@@ -46,6 +46,7 @@ zeus.json
 /client/.awspublish*
 /client/node_modules
 /client/.elasticbeanstalk
+/client/npm-debug.log
 
 # Elastic Beanstalk Files
 /client/.elasticbeanstalk/*

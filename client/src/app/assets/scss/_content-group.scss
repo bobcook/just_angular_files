@@ -174,7 +174,7 @@
     > .container {
       padding-right: 10px;
       padding-left: 10px;
-      
+
       @media screen and (min-width: 768px) {
         padding-right: 15px;
         padding-left: 15px;
@@ -229,12 +229,5 @@
   p {
     margin-top: 10px;
     font-size: 14px;
-  }
-}
-
-.share-button {
-  display: block;
-  &.game-top {
-    padding-bottom: 20px;
   }
 }

@@ -28,6 +28,9 @@ const SocialLinksController = function ($filter) {
     email: {
       iconClass: 'icon-email',
     },
+    pinterest: {
+      iconClass: 'icon-pinterest',
+    },
   };
 };
 

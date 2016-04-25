@@ -51,9 +51,9 @@ const SitemapDataController = function ($state,
   $q.all([
     $promise.of(_.map(getStaticUrls(whileListStates, getUrl))),
     getContentUrls(Article),
-    getContentUrls(FreeGame)
+    getContentUrls(FreeGame),
   ]).then((results) => {
-    this.urls = _.flatten(results)
+    this.urls = _.flatten(results);
   });
 };
 
