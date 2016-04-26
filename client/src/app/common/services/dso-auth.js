@@ -27,12 +27,15 @@ const dsoAuth = function ($location,
   };
 
   const dsoSubscribeAuth = function (redirectPath = $location.path(),
-                                     intcmp = null) {
+                                     intcmp = null,
+                                     campaignURL = null,
+                                     promo = null) {
     intcmp = intcmp ? `intcmp=${intcmp}&` : intcmp;
+    promo = promo || dsoSubscribe.promo;
+    campaignURL = campaignURL || ($cookies.get('campaignURL') || '');
     const ssologinPath = buildSSOLoginPath(redirectPath);
-    const campaignURL = $cookies.get('campaignURL') || '';
     return `${dsoSubscribe.domain}/smembership/` +
-    `subscription?promo=${dsoSubscribe.promo}&` +
+    `subscription?promo=${promo}&` +
     `campaignURL=${campaignURL}&` +
     `${intcmp}` +
     `ref=${ssologinPath}`;

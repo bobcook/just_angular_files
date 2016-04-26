@@ -23,5 +23,11 @@ module Apis
         .fetch(:specializedMembershipStatusList, {})
         .fetch(:specializedMembershipStatus, {})
     end
+
+    class BadDSOResponse < RuntimeError
+      def message
+        'Malformed response from DSO'
+      end
+    end
   end
 end

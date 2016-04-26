@@ -4,43 +4,28 @@ module Apis
   module DSO
     describe MembershipProductParser do
       context 'given a parseable response' do
-        context 'given one membership type' do
-          it 'gives correct type when given employee' do
-            response = Apis::Response.new(
-              status: 200,
-              body: {
-                getSpecializedMembershipStatus: {
-                  specializedMembershipStatusList: {
-                    specializedMembershipStatus: {
-                      membershipProduct: 'Specialized Membership - $0 Employee'
-                    }
+        it 'returns membership product' do
+          membership_product = 'Staying Sharp - $5.99/Month'
+          response = Apis::Response.new(
+            status: 200,
+            body: {
+              getSpecializedMembershipStatus: {
+                specializedMembershipStatusList: {
+                  specializedMembershipStatus: {
+                    membershipProduct: membership_product
                   }
                 }
               }
-            )
+            }
+          )
 
-            expect(MembershipProductParser.parse(response)).to eq('employee')
-          end
-
-          it 'gives correct type when given beta' do
-            response = Apis::Response.new(
-              status: 200,
-              body: {
-                getSpecializedMembershipStatus: {
-                  specializedMembershipStatusList: {
-                    specializedMembershipStatus: {
-                      membershipProduct: 'Specialized Membership - $0 BETA'
-                    }
-                  }
-                }
-              }
-            )
-
-            expect(MembershipProductParser.parse(response)).to eq('beta')
-          end
+          expect(MembershipProductParser.parse(response)).to eq(
+            membership_product
+          )
         end
 
         context 'given multiple membership types' do
+          membership_product = 'Specialized Membership - $0 BETA'
           response = Apis::Response.new(
             status: 200,
             body: {
@@ -49,7 +34,7 @@ module Apis
                   specializedMembershipStatus: [
                     {
                       membershipType: 'StayingSharp',
-                      membershipProduct: 'Specialized Membership - $0 BETA'
+                      membershipProduct: membership_product
                     },
                     {
                       membershipType: 'Not StayingSharp',
@@ -62,7 +47,9 @@ module Apis
           )
 
           it 'gives correct type' do
-            expect(MembershipProductParser.parse(response)).to eq('beta')
+            expect(MembershipProductParser.parse(response)).to eq(
+              membership_product
+            )
           end
         end
       end
@@ -70,9 +57,9 @@ module Apis
       context 'given a non-200 response' do
         let(:response) { Apis::Response.new(status: 401, body: {}) }
 
-        it 'gives an UnknownProduct' do
+        it 'gives an error' do
           expect { MembershipProductParser.parse(response) }
-            .to raise_error(MembershipProductParser::UnknownProduct)
+            .to raise_error(DSO::BadDSOResponse)
         end
       end
     end
