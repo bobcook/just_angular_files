@@ -299,7 +299,7 @@ const routerConfig = function (stateHelperProvider,
         {
           name: 'home',
           url: '/?restrictedRedirect&resourcePath&genericRedirect' +
-               '&campaignURL&intcmp',
+               '&campaignURL&cmp',
           templateUrl: 'app/home/home.html',
           controller: 'HomeController',
           controllerAs: 'vm',
@@ -553,7 +553,7 @@ const routerConfig = function (stateHelperProvider,
       redirectTo: 'application.home',
       params: {
         campaignURL: 'WLCKIT',
-        intcmp: 'WLC-MEM-SSS-ACQ-BRN-LAUNCH-MEMBR-050116-VNTY',
+        cmp: 'WLC-MEM-SSS-ACQ-BRN-LAUNCH-MEMBR-050116-VNTY',
       },
     })
     .state({
