@@ -52,7 +52,7 @@
     <article>
       <div class="detail-text" ng-bind-html="vm.article.section1Body" ></div>
       <ss-video-iframe ng-if="vm.article.videoId" ss-video-id="vm.article.videoId"></ss-video-iframe>
-      <img ng-if="vm.article.bodyImage" class="detail-image" ng-src="{{vm.article.bodyImage}}" alt="">
+      <img ng-if="vm.article.bodyImage" class="detail-image" ng-src="{{vm.getBodyImage()}}" alt="{{vm.getBodyImageDescription()}}">
       <div ng-if="vm.article.bodyImage && vm.article.section2Body" ng-bind-html="vm.article.section2Body" ></div>
       <hr>
       <div ng-if="vm.article.sourceMaterialsCitation">
