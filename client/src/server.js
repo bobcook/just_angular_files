@@ -27,6 +27,10 @@ app.get('/sitemap.xml', function (req, res) {
   res.redirect(process.env.SITEMAP_S3_LOCATION);
 });
 
+app.get(/google.*html$/, function (req, res) {
+  res.sendFile(__dirname + req.url);
+});
+
 app.post('/generate-xml-sitemap', function (req, res) {
   SitemapService.createSitemap(req).then(function (sitemap) {
     SitemapService.upload(sitemap.toString());
