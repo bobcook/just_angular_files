@@ -9,6 +9,7 @@ const path = require('path');
 const _ = require('lodash');
 const fs = require('fs');
 const SitemapService = require('./lib/services/sitemap-service')
+const redirectsJson = require('./redirects.json');
 
 const app = express();
 app.use(morgan('dev'));
@@ -35,6 +36,11 @@ app.post('/generate-xml-sitemap', function (req, res) {
 });
 
 app.get('*', function (req, res) {
+  const redirectUrl = redirectsJson[req.url];
+  if (redirectUrl) {
+    res.redirect(302, redirectUrl);
+  }
+
   const base = _.compact(req.url.split('/'))[0];
   if (_.includes(assets, base)) {
     res.sendFile(__dirname + req.url);
