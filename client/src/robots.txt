@@ -2,5 +2,4 @@
 #
 # Disallow all robots during BETA
 User-agent: *
-Disallow /
-Allow /art/discover/16/adult-adhd-distract.html
+Disallow: /

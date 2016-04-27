@@ -107,4 +107,13 @@ gulp.task('clean', function (done) {
   ], { force: true }, done);
 });
 
-gulp.task('build', ['html', 'fonts', 'server', 'other']);
+gulp.task(
+  'build',
+  [
+    'html',
+    'fonts',
+    'server',
+    'redirects:import',
+    'other'
+  ]
+);
