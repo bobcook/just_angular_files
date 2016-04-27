@@ -6,6 +6,7 @@ const path = require('path');
 const _ = require('lodash');
 const fs = require('fs');
 const redirectsJson = require('./redirects.json');
+const url = require('url');
 
 const app = express();
 app.use(morgan('dev'));
@@ -19,9 +20,10 @@ app.use(require('prerender-node')
 const assets = ['styles', 'scripts', 'app', 'robots.txt']
 
 app.get('*', function (req, res) {
-  const redirectUrl = redirectsJson[req.url];
+  const redirectUrl = redirectsJson[url.parse(req.url).pathname];
   if (redirectUrl) {
     res.redirect(302, redirectUrl);
+    return;
   }
 
   const base = _.compact(req.url.split('/'))[0];
