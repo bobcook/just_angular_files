@@ -128,5 +128,13 @@ gulp.task('clean', function (done) {
 
 gulp.task(
   'build',
-  ['html', 'fonts', 'server', 'lib', 'verificationFile', 'other']
+  [
+    'html',
+    'fonts',
+    'server',
+    'lib',
+    'redirects:import',
+    'verificationFile',
+    'other'
+  ]
 );

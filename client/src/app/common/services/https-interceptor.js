@@ -3,15 +3,15 @@ const httpsInterceptor = function ($window, $location) {
 
   return {
     request: function (config) {
-      const isLocal = function () {
-        return _.startsWith($window.location.host, 'localhost');
-      };
-
       const isHttps = function () {
         return $window.location.protocol === 'https:';
       };
 
-      if (!isHttps() && !isLocal()) {
+      const isProd = function () {
+        return $window.__env.envName === 'production';
+      };
+
+      if (isProd() && !isHttps()) {
         $window.location.href = $location.absUrl().replace('http', 'https');
       }
 
