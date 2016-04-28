@@ -133,8 +133,8 @@ gulp.task(
     'fonts',
     'server',
     'lib',
-    'verificationFile',
     'redirects:import',
+    'verificationFile',
     'other'
   ]
 );
