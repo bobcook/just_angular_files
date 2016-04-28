@@ -19,10 +19,16 @@ app.use(require('prerender-node')
 
 const assets = ['styles', 'scripts', 'app', 'robots.txt']
 
+const getRedirectPath = (urlObject) => {
+  return redirectsJson[urlObject.pathname];
+};
+
 app.get('*', function (req, res) {
-  const redirectUrl = redirectsJson[url.parse(req.url).pathname];
-  if (redirectUrl) {
-    res.redirect(302, redirectUrl);
+  const parsed = url.parse(req.url);
+  const redirectPath = getRedirectPath(parsed);
+  if (redirectPath) {
+    parsed.pathname = redirectPath;
+    res.redirect(302, url.format(parsed));
     return;
   }
 
