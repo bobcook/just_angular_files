@@ -30,7 +30,8 @@ class ArticleSerializer < ActiveModel::Serializer
   end
 
   def effort
-    object.payload['effort/readTime']
+    return object.payload['effort/readTime'] if object.basic?
+    "Run Time: #{object.payload['effort/runTime']} min." if object.video?
   end
 
   def card_title
