@@ -41,9 +41,11 @@ app.post('/generate-xml-sitemap', function (req, res) {
 });
 
 app.get('*', function (req, res) {
-  const redirectUrl = redirectsJson[url.parse(req.url).pathname];
-  if (redirectUrl) {
-    res.redirect(302, redirectUrl);
+  const parsed = url.parse(req.url);
+  const redirectPath = getRedirectPath(parsed);
+  if (redirectPath) {
+    parsed.pathname = redirectPath;
+    res.redirect(301, url.format(parsed));
     return;
   }
 
