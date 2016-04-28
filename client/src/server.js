@@ -28,7 +28,7 @@ app.get('*', function (req, res) {
   const redirectPath = getRedirectPath(parsed);
   if (redirectPath) {
     parsed.pathname = redirectPath;
-    res.redirect(302, url.format(parsed));
+    res.redirect(301, url.format(parsed));
     return;
   }
 
