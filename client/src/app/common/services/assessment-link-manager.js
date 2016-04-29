@@ -50,7 +50,7 @@ const assessmentLinkManager = function (AssessmentStatus,
 
   const redirectToAssessment = function () {
     if (!$featureDetection.hasFlash()) {
-      return $state.go('application.assessments.required-technology');
+      return $state.go('application.assessments');
     }
     AssessmentStatus.lastUserAssessmentGroup().then(function (group) {
       const notStarted =

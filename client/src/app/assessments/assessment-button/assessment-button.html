@@ -1,30 +1,29 @@
 <!-- For paid users -->
 <section permission only="'paid'">
-  <a class="btn green-btn wide-btn" href="#" ng-click="vm.assessmentLink()">
-    <p ng-if="vm.ctaState === vm.assessmentStates.notStarted">Begin Assessment</p>
-    <p ng-if="vm.ctaState === vm.assessmentStates.started">Continue Assessment</p>
-    <p ng-if="vm.ctaState === vm.assessmentStates.completed">Retake Assessment</p>
-  </a>
+  <div ng-if="vm.ctaState !== null">
+    <a class="btn green-btn wide-btn" href="#" ng-if="vm.hasFlash" ng-click="vm.assessmentLink()" translate>{{vm.paidCTAText()}}</a>
+    <a class="btn green-btn wide-btn" href="#" ng-if="!vm.hasFlash" ng-click="vm.openRequiredTechnologyModal()" translate>{{vm.paidCTAText()}}</a>
+  </div>
 </section>
 <!-- For paid users -->
 
 <!-- For registered and anonymous users -->
 <section permission only="'unpaid'">
-  <div>
-    <a class="btn green-btn wide-btn" ng-href="{{vm.subscribeUrl}}">
-      <span ng-if="vm.ctaState === vm.assessmentStates.notStarted">Join and Take Assessment</span>
-      <span ng-if="vm.ctaState === vm.assessmentStates.started">Join and Complete Assessment</span>
-      <span ng-if="vm.ctaState === vm.assessmentStates.completed">Join now and get your results</span>
-      <span ng-if="vm.ctaState === vm.assessmentStates.anonymous">Join and Take Assessment</span>
-    </a>
-  </div>
-  <div class="cta-note">
-    <a ng-click="vm.assessmentLink()" href="#">
-      <p ng-if="vm.ctaState === vm.assessmentStates.notStarted">or, you can start now and join later to see your results</p>
-      <p ng-if="vm.ctaState === vm.assessmentStates.started">or, you can complete your assessment now and join later to see your results</p>
-      <p ng-if="vm.ctaState === vm.assessmentStates.completed">or, you can retake now and join later to see your new results</p>
-      <p ng-if="vm.ctaState === vm.assessmentStates.anonymous">or, create a free account to take the assessment now and join later to see your results</p>
-    </a>
+  <div ng-if="vm.ctaState !== null">
+    <div>
+      <a class="btn green-btn wide-btn" ng-href="{{vm.subscribeUrl}}" translate>{{vm.unpaidCTAText().main}}</a>
+    </div>
+
+    <!-- For registered users -->
+    <div ng-if="$root.$currentUser" class="cta-note">
+      <a ng-if="vm.hasFlash" ng-click="vm.assessmentLink()" href="#" translate>{{vm.unpaidCTAText().sub}}</a>
+      <a ng-if="!vm.hasFlash" ng-click="vm.openRequiredTechnologyModal()" href="#" translate>{{vm.unpaidCTAText().sub}}</a>
+    </div>
+
+    <!-- For anonymous users -->
+    <div ng-if="vm.ctaState === vm.assessmentStates.anonymous" class="cta-note">
+      <a ng-click="vm.assessmentLink()" href="#">or, create a free account to take the assessment now and join later to see your results</a>
+    </div>
   </div>
 </section>
 <!-- For registered and anonymous users -->
