@@ -11,7 +11,8 @@ class ArticleSerializer < ActiveModel::Serializer
              :mast_head_title, :recommend_percentage, :section1_body,
              :section2_body, :slug, :source_materials_citation,
              :content_source_branding_image, :path_pillar, :path_year,
-             :last_modified, :video_id
+             :last_modified, :video_id, :keywords, :seo_title, :seo_description,
+             :canonical_url, :robots
 
   has_many :pillars
 
@@ -36,6 +37,26 @@ class ArticleSerializer < ActiveModel::Serializer
 
   def card_title
     object.title # TODO: they should introduce a cardTitle
+  end
+
+  def canonical_url
+    object.payload['canonicalUrl']
+  end
+
+  def keywords
+    object.payload['keywords']
+  end
+
+  def robots
+    object.payload['robots']
+  end
+
+  def seo_title
+    object.payload['seoTitle']
+  end
+
+  def seo_description
+    object.payload['seoDescription']
   end
 
   def video_id

@@ -151,6 +151,7 @@ import sideNav from './components/side-nav/side-nav.js';
 import socialLinks from './components/social-links/social-links.js';
 import systemMessage from './components/system-message/system-message.js';
 import topNav from './components/top-nav/top-nav.js';
+import updateMeta from './components/update-meta/update-meta.js';
 import userDashboardCard from
   './components/user-dashboard-cards/user-dashboard-card.js';
 import userDashboardCards from
@@ -286,6 +287,7 @@ const app = angular.module('aarp-staying-sharp', [
   'ngComboDatePicker',
   'angularUtils.directives.dirPagination',
   'infinite-scroll',
+  'updateMeta',
 ]);
 
 angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 500);
@@ -422,6 +424,7 @@ app
   .directive('ssSideNav', sideNav)
   .directive('ssSystemMessage', systemMessage)
   .directive('ssTopNav', topNav)
+  .directive('ssUpdateMeta', updateMeta)
   .directive('ssUserDashboardCard', userDashboardCard)
   .directive('ssUserDashboardCards', userDashboardCards)
   .directive('ssVideoIframe', videoIframe)

@@ -6,7 +6,8 @@ class GameSerializer < ActiveModel::Serializer
   attributes :id, :title, :call_to_action_url, :card_image, :card_title,
              :description, :game_type, :recommend_percentage, :slug,
              :game_provider, :content_source_branding, :path_pillar, :path_year,
-             :last_modified
+             :last_modified, :keywords, :seo_title, :seo_description,
+             :canonical_url, :robots
 
   has_many :pillars
 
@@ -28,6 +29,26 @@ class GameSerializer < ActiveModel::Serializer
 
   def content_source_branding
     object.payload['contentSourceBranding']
+  end
+
+  def canonical_url
+    object.payload['canonicalUrl']
+  end
+
+  def keywords
+    object.payload['keywords']
+  end
+
+  def robots
+    object.payload['robots']
+  end
+
+  def seo_title
+    object.payload['seoTitle']
+  end
+
+  def seo_description
+    object.payload['seoDescription']
   end
 
   private

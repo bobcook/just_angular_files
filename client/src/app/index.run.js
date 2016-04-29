@@ -34,6 +34,13 @@ const runBlock = function ($log,
     // scroll to top of page
     $window.scrollTo(0, 0);
 
+    //reset metadata on state change
+    $window.document.title = '';
+    $('meta[name="description"]').attr('content', '');
+    $('meta[name="keywords"]').attr('content', '');
+    $('meta[name="robots"]').attr('content', '');
+    $('link[rel="canonical"]').attr('href', '');
+
     // begin of analytics
     const path = $location.path();
     const url = $location.url();
