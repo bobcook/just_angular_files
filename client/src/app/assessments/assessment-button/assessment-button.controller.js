@@ -69,11 +69,15 @@ const AssessmentButtonController = function ($featureDetection,
   };
 
   this.paidCTAText = () => {
-    return ctaTextMap[this.ctaState].paid.main;
+    if (ctaTextMap[this.ctaState]) {
+      return ctaTextMap[this.ctaState].paid.main;
+    }
   };
 
   this.unpaidCTAText = () => {
-    return ctaTextMap[this.ctaState].unpaid;
+    if (ctaTextMap[this.ctaState]) {
+      return ctaTextMap[this.ctaState].unpaid;
+    }
   };
 
   AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
