@@ -285,7 +285,10 @@ const app = angular.module('aarp-staying-sharp', [
   '720kb.socialshare',
   'ngComboDatePicker',
   'angularUtils.directives.dirPagination',
+  'infinite-scroll',
 ]);
+
+angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 500);
 
 addConstants(app);
 

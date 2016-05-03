@@ -44,13 +44,8 @@
   </div>
 </div>
 
-<div class="info-box">
-  <div class="container">
-    <button
-      class="btn"
-      ng-show="vm.displayShowMore && !vm.completed"
-      ng-click="vm.showMore()">
-      Load more
-    </button>
-  </div>
+<div
+  infinite-scroll="vm.showMore()"
+  infinite-scroll-immediate-check="false"
+  infinite-scroll-disabled="vm.busyLoading">
 </div>

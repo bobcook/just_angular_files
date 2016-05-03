@@ -7,17 +7,22 @@ const ExploreContentController = function ($pagination, $scope) {
   this.items = [];
   this.displayShowMore = true;
   this.completed = false;
+  this.busyLoading = false;
 
   let paginator;
 
   this.showMore = () => {
-    showMore(paginator.page + 1);
+    if (this.displayShowMore && !this.completed) {
+      this.busyLoading = true;
+      showMore(paginator.page + 1);
+    }
   };
 
   const showMore = (page) => {
     paginator.showMore(page).then((items) => {
       this.items = items;
       this.completed = paginator.completed;
+      this.busyLoading = false;
     });
   };
 
