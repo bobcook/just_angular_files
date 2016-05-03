@@ -1,0 +1,31 @@
+.square-advertisement {
+  padding: 15px;
+  margin-top: 80px;
+
+
+  .square-advertisement-container {
+    width: 300px;
+    height: 250px;
+    .note {
+      color: $grey-medium;
+      font-size: 12px;
+      float: right;
+      line-height: 30px;
+    }
+
+    .inner-content {
+      height: 250px;
+      width: 300px;
+      border-bottom: 1px solid $grey-border;
+    }
+  }
+}
+
+.hide-for-lg {
+  @media screen and (max-width: 767px) {
+  }
+
+  @media screen and (min-width: 767px) {
+    display: none;
+  }
+}

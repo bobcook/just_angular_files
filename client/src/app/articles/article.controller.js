@@ -3,6 +3,7 @@ const ArticleController = function (Article,
                                     CMS_BASE_URL,
                                     UserArticle,
                                     dsoModalService,
+                                    $rootScope,
                                     $stateParams) {
   'ngInject';
 
@@ -32,6 +33,9 @@ const ArticleController = function (Article,
   this.getBodyImageDescription = () => getBodyImageData(1);
 
   this.openRegisterModal = dsoModalService.showRegisterModal;
+
+  this.showAd =
+    !$rootScope.$currentUser || $rootScope.$currentUser.isRegistered();
 
   // pass values to directive
   this.isContentDrawerOpen = false;

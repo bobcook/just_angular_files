@@ -133,6 +133,7 @@ import exploreContent from './components/explore-content/explore-content.js';
 import gameIframe from './games/game-iframe.js';
 import infoBox from './components/info-box/info-box.js';
 import leadIn from './components/lead-in/lead-in.js';
+import mastHeadAd from './components/ads/mast-head-ad/mast-head-ad.js';
 import modal from './components/modal/modal.js';
 import myFutureBrainChart from './components/charts/my-future-brain.chart.js';
 import navPanel from './components/nav-panel/nav-panel.js';
@@ -149,6 +150,7 @@ import saveUserContent from
   './components/save-user-content/save-user-content.js';
 import sideNav from './components/side-nav/side-nav.js';
 import socialLinks from './components/social-links/social-links.js';
+import squareAd from './components/ads/square-ad/square-ad.js';
 import systemMessage from './components/system-message/system-message.js';
 import topNav from './components/top-nav/top-nav.js';
 import updateMeta from './components/update-meta/update-meta.js';
@@ -211,6 +213,8 @@ import GamesController from './games/games.controller.js';
 import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
 import LogoutController from './logout/logout.controller.js';
+import MastHeadAdController from
+  './components/ads/mast-head-ad/mast-head-ad.controller.js';
 import MyFutureBrainController from
   './components/charts/my-future-brain.controller.js';
 import NavPanelController from './components/nav-panel/nav-panel.controller.js';
@@ -290,6 +294,7 @@ const app = angular.module('aarp-staying-sharp', [
   'angularUtils.directives.dirPagination',
   'infinite-scroll',
   'updateMeta',
+  'sticky',
 ]);
 
 angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 500);
@@ -409,6 +414,7 @@ app
   .directive('ssGameIframe', gameIframe)
   .directive('ssInfoBox', infoBox)
   .directive('ssLeadIn', leadIn)
+  .directive('ssMastHeadAd', mastHeadAd)
   .directive('ssModal', modal)
   .directive('ssMyFutureBrainChart', myFutureBrainChart)
   .directive('ssNavTabs', navTabs)
@@ -424,6 +430,7 @@ app
   .directive('ssSaveUserContent', saveUserContent)
   .directive('ssSocialLinks', socialLinks)
   .directive('ssSideNav', sideNav)
+  .directive('ssSquareAd', squareAd)
   .directive('ssSystemMessage', systemMessage)
   .directive('ssTopNav', topNav)
   .directive('ssUpdateMeta', updateMeta)
@@ -474,6 +481,7 @@ app
   .controller('HomeController', HomeController)
   .controller('LoginSuccessController', LoginSuccessController)
   .controller('LogoutController', LogoutController)
+  .controller('MastHeadAdController', MastHeadAdController)
   .controller('MyFutureBrainController', MyFutureBrainController)
   .controller('NavPanelController', NavPanelController)
   .controller('NeuroPerformanceController', NeuroPerformanceController)

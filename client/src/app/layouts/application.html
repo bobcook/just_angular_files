@@ -1,3 +1,4 @@
+<ss-mast-head-ad ng-if="!$root.$currentUser || $root.$currentUser.isRegistered()"></ss-mast-head-ad>
 <ss-top-nav></ss-top-nav>
 <div ui-view></div>
 <div ng-include="'app/components/footer/footer.html'" class="global-footer"></div>

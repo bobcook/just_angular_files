@@ -1,6 +1,5 @@
-<section class="global-header" ng-class="{'logged-in':$root.$currentUser.isLoggedIn}">
+<section class="global-header {{vm.useAd()}}" ng-class="{'logged-in':$root.$currentUser.isLoggedIn, 'no-ad':$root.$currentUser.isPaid}">
   <nav class="container">
-
     <a ui-sref="application.home"
        class="logo"
        ng-click="vm.gamePlayFalse()"

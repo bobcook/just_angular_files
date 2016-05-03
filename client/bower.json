@@ -27,7 +27,8 @@
     "angular-permission": "~2.0.9",
     "airbrake-js-client": "~0.5.8",
     "ngInfiniteScroll": "^1.2.2",
-    "angular-update-meta": "https://github.com/khisakuni/angular-update-meta.git#69aa5559f0"
+    "angular-update-meta": "https://github.com/khisakuni/angular-update-meta.git#69aa5559f0",
+    "ngSticky": "git@github.com:khisakuni/ngSticky.git#feature/specify-parent-container"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0"

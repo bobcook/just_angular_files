@@ -166,7 +166,7 @@
     <!-- endinject -->
     <!-- endbuild -->
   </head>
-  <body ng-cloak>
+  <body ng-cloak ng-class="{'ads-padding': !$root.$currentUser || $root.$currentUser.isRegistered(), 'standard-padding':$root.$currentUser.isPaid()}">
     <div ui-view></div>
 
     <!-- build:js(src) scripts/vendor.js -->

@@ -6,69 +6,107 @@
   ss-canonical-url="{{vm.article.canonicalUrl}}">
 </ss-update-meta>
 
-<div
-  ng-style="{'background-image':'url(' + vm.article.mastHeadImage + ')'}"
-  class="cp-lead-in-detail">
-  <section class="container">
-    <div class="info-block">
-      <header>
-        <h5>Article</h5>
-      </header>
-      <article>
-        <h2 class="ellipsis">
-          <a href="#link-to-card-content">{{vm.article.mastHeadTitle}}</a>
-        </h2>
-      </article>
-      <div class="pillars">
-        <div ss-pillars-display="vm.article.pillars"></div>
+<div id="article-container" ng-class="{'non-paid-user':!$root.$currentUser.isPaid()}">
+  <div class="cp-lead-in-detail" ng-class="{'article': vm.showAd }">
+    <div ng-class="{'bg-image-paid':$root.$currentUser.isPaid(), 'bg-image-standard':!$root.$currentUser || $root.$currentUser.isRegistered()}"
+         ng-style="{'background-image':'url(' + vm.article.mastHeadImage + ')'}">
+    </div>
+    <section>
+      <div class="container side-bar">
+        <section>
+          <div class="article-info-block info-block">
+            <header>
+              <h5>Article</h5>
+            </header>
+            <article>
+              <h2 class="ellipsis">
+                <a href="#link-to-card-content">{{vm.article.mastHeadTitle}}</a>
+              </h2>
+            </article>
+            <div class="pillars">
+              <div ss-pillars-display="vm.article.pillars"></div>
+            </div>
+          </div>
+          <footer ng-if="!vm.showAd">
+            <div class="effort">
+              <span>{{vm.article.effort}}</span>
+            </div>
+            <div class="action-items">
+              <ss-save-user-content
+                ng-if="$root.$currentUser && vm.article"
+                ss-display-type="button"
+                ss-is-user-namespace="vm.isUserNamespace"
+                ss-item="vm.article"
+                ss-resource="vm.userResource"
+                ss-plural-resource-name="vm.pluralResourceName">
+              </ss-save-user-content>
+              <button ng-click="vm.openRegisterModal('articles')" ng-if="!$root.$currentUser">Save</button>
+              <a ui-sref=".article-share" class="share">Share <span class="icon-share"></span></a>
+            </div>
+          </footer>
+        </section>
+        <aside ng-if="vm.showAd">
+          <div class="sticky-side-bar" sticky offset="170" confine="true" parent-selector="#article-container">
+            <footer>
+              <div class="article-action-items">
+                <div class="article-item">
+                  <ss-save-user-content
+                    ng-if="$root.$currentUser && vm.article"
+                    ss-display-type="button"
+                    ss-is-user-namespace="vm.isUserNamespace"
+                    ss-item="vm.article"
+                    ss-resource="vm.userResource"
+                    ss-plural-resource-name="vm.pluralResourceName">
+                  </ss-save-user-content>
+                  <button ng-click="vm.openRegisterModal('articles')" ng-if="!$root.$currentUser">Save</button>
+                </div>
+                <div class="article-item-border">
+                  <a ui-sref=".article-share" class="article-share">Share <span class="icon-share"></span></a>
+                </div>
+              </div>
+            </footer>
+            <div class="ads sidebar">
+              <span class="note">Advertisement</span>
+            </div>
+          </div>
+        </aside>
       </div>
-    </div>
-    <footer>
-      <div class="effort"><span>{{vm.article.effort}}</span></div>
-      <div class="action-items">
-        <ss-save-user-content
-          ng-if="$root.$currentUser && vm.article"
-          ss-display-type="button"
-          ss-is-user-namespace="vm.isUserNamespace"
-          ss-item="vm.article"
-          ss-resource="vm.userResource"
-          ss-plural-resource-name="vm.pluralResourceName">
-        </ss-save-user-content>
-        <button ng-click="vm.openRegisterModal('articles')" ng-if="!$root.$currentUser">Save</button>
-        <a ui-sref=".article-share" class="share">Share <span class="icon-share"></span></a>
+    </section>
+  </div>
+
+  <div class="cp-article-partner">
+    <section class="container side-bar" ng-show="vm.article.contentSourceBrandingImage">
+      <div class="left">
+        <!-- TODO: Text for article partner -->
+        <p>An Article from our partner:</p>
       </div>
-    </footer>
-  </section>
-</div>
-
-<div class="cp-article-partner">
-  <section class="container" ng-show="vm.article.contentSourceBrandingImage">
-    <div class="left">
-      <!-- TODO: Text for article partner -->
-      <p>An Article from our partner:</p>
-    </div>
-    <div class="right">
-      <!-- TODO: Image/logo for article partner -->
-      <img ng-src="{{vm.article.contentSourceBrandingImage}}" alt="">
-    </div>
-    <hr>
-  </section>
-</div>
-
-<div class="cp-content-detail">
-  <section class="container">
-    <article>
-      <div class="detail-text" ng-bind-html="vm.article.section1Body" ></div>
-      <ss-video-iframe ng-if="vm.article.videoId" ss-video-id="vm.article.videoId"></ss-video-iframe>
-      <img ng-if="vm.article.bodyImage" class="detail-image" ng-src="{{vm.getBodyImage()}}" alt="{{vm.getBodyImageDescription()}}">
-      <div ng-if="vm.article.bodyImage && vm.article.section2Body" ng-bind-html="vm.article.section2Body" ></div>
+      <div class="right">
+        <!-- TODO: Image/logo for article partner -->
+        <img ng-src="{{vm.article.contentSourceBrandingImage}}" alt="">
+      </div>
       <hr>
-      <div ng-if="vm.article.sourceMaterialsCitation">
-        <div class="detail-source" ng-bind-html="vm.article.sourceMaterialsCitation"></div>
-        <hr>
-      </div>
-    </article>
-  </section>
+    </section>
+  </div>
+
+  <ss-square-ad ng-if="!$root.$currentUser.isPaid()" class="hide-for-lg"></ss-square-ad>
+
+  <div class="cp-content-detail" ng-class="{'article': vm.showAd}" >
+    <div class="container side-bar">
+      <section>
+        <article>
+          <div class="detail-text" ng-bind-html="vm.article.section1Body"></div>
+          <ss-video-iframe ng-if="vm.article.videoId" ss-video-id="vm.article.videoId"></ss-video-iframe>
+          <img ng-if="vm.article.bodyImage" class="detail-image" ng-src="{{vm.getBodyImage()}}" alt="{{vm.getBodyImageDescription()}}">
+          <div ng-if="vm.article.bodyImage && vm.article.section2Body" ng-bind-html="vm.article.section2Body"></div>
+          <hr>
+          <div ng-if="vm.article.sourceMaterialsCitation">
+            <div class="detail-source" ng-bind-html="vm.article.sourceMaterialsCitation"></div>
+            <hr>
+          </div>
+        </article>
+      </section>
+    </div>
+  </div>
 </div>
 
 <div class="cp-content-group article">
@@ -92,13 +130,28 @@
   </section>
 </div>
 
-<ss-reviews
-  ss-review-resource="vm.reviewResource"
-  ss-resource='vm.resource'>
+<ss-reviews ss-review-resource="vm.reviewResource" ss-resource='vm.resource'>
   <p>Did you find this article useful?</p>
 </ss-reviews>
 
-<ss-related-content
-  ss-resource="vm.article"
-  ss-resource-name="Article">
+<ss-related-content ss-resource="vm.article" ss-resource-name="Article">
 </ss-related-content>
+
+<footer ng-if="!$root.$currentUser.isPaid()" class="mobile-fixed-footer">
+  <div class="article-action-items">
+    <div class="article-item left">
+      <ss-save-user-content
+        ng-if="$root.$currentUser && vm.article"
+        ss-display-type="button"
+        ss-is-user-namespace="vm.isUserNamespace"
+        ss-item="vm.article"
+        ss-resource="vm.userResource"
+        ss-plural-resource-name="vm.pluralResourceName">
+      </ss-save-user-content>
+      <button ng-click="vm.openRegisterModal('articles')" ng-if="!$root.$currentUser">Save</button>
+    </div>
+    <div class="article-item right">
+      <a ui-sref=".article-share" class="article-share">Share <span class="icon-share"></span></a>
+    </div>
+  </div>
+</footer>

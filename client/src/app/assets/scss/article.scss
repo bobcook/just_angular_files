@@ -1,0 +1,174 @@
+#article-container {
+  &.non-paid-user {
+    @media screen and (max-width: 767px) {
+      padding-top: 100px;
+    }
+
+    @media screen and (min-width: 767px) {
+      padding-top: 125px;
+    }
+  }
+}
+
+.mobile-fixed-footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  background: $white;
+  z-index: 5;
+  padding: 5px 15px 5px 15px;
+  border: 1px solid $grey-border;
+
+  @media screen and (min-width: 991px) {
+    display: none;
+  }
+
+  .article-action-items {
+    margin-left: 36.85%;
+    .left {
+      float: left;
+    }
+
+    .right {
+      margin-left: 100px;
+      padding-top: 8px;
+
+      .icon-share {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.bg-image-standard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 170px;
+  z-index: -1;
+
+  @media screen and (min-width: 767px) {
+    height: 297px;
+  }
+
+  @media screen and (max-width: 767px) {
+    height: 113px;
+    margin-top: 350px;
+  }
+}
+
+.bg-image-paid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+  margin-top: 60px;
+
+  @media screen and (min-width: 767px) {
+    height: 297px;
+  }
+
+  @media screen and (max-width: 767px) {
+    height: 113px;
+  }
+}
+
+.article {
+  margin-bottom: -115px;
+  padding-top: 108px;
+  padding-bottom: 59px;
+
+  &.cp-content-detail {
+    padding-top: 75px;
+  }
+
+  .container {
+    max-width: 940px;
+    padding-left: 0;
+    padding-right: 0;
+
+    .side-bar {
+      padding-top: 205px;
+      position: relative;
+    }
+
+    section {
+      width: 620px;
+      float: left;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    aside {
+      width: 320px;
+      padding-left: 20px;
+      position: relative;
+      float: left;
+
+      footer {
+        padding: 15px 0px 0px 0px;
+        border: 1px solid $grey-border;
+      }
+
+      .ads {
+        top: 150px;
+        max-width: 300px;
+        width: 100%;
+        border-top: 1px solid $grey-border;
+        border-bottom: 1px solid $grey-border;
+        height: 250px;
+        position: absolute;
+
+        .note {
+          color: $grey-medium;
+          font-size: 12px;
+          float: right;
+          line-height: 30px;
+        }
+      }
+
+      .sticky-side-bar {
+        max-width: 300px;
+        text-align: left;
+
+        @media screen and (max-width: 991px) {
+          display: none;
+        }
+
+        .article-action-items {
+          width: 100%;
+
+          .article-item {
+            width: 100%;
+            padding: 0px 15px 15px 15px;
+          }
+
+          .article-item-border {
+            border-top: 1px solid $grey-border;
+            padding: 0px 15px 0px 15px;
+          }
+
+          .article-share {
+            line-height: 1.42857;
+            padding: 8px 0;
+            vertical-align: top;
+            display: inline-block;
+            margin-left: 0px;
+          }
+        }
+      }
+    }
+  }
+}

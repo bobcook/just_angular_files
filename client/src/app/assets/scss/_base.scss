@@ -10,11 +10,24 @@ html {
 
 body {
   font-family: "Open Sans", sans-serif;
-  padding: 60px 0 0 0;
   font-size: 16px;
   line-height: 1.428571429;
   color: $text-color;
-  background-color: $bg-color;
+  background-color: $white;
+}
+
+.ads-padding {
+  @media screen and (min-width: 767px) {
+    padding: 170px 0 0 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 350px 0 0 0;
+  }
+}
+
+.standard-padding {
+  padding: 60px 0 0 0;
 }
 
 a {

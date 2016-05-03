@@ -1,0 +1,33 @@
+.mast-head-ad-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  .mast-head-ad {
+    margin-left: auto;
+    margin-right: auto;
+
+    @media screen and (min-width: 767px) {
+      width: 728px;
+    }
+
+    @media screen and (max-width: 767px) {
+      width: 300px;
+    }
+
+    .note {
+      text-align: right;
+    }
+
+    .ad-contents {
+      border: 1px solid $grey-border;
+      @media screen and (min-width: 767px) {
+        height: 90px;
+      }
+
+      @media screen and (max-width: 767px) {
+        height: 250px;
+      }
+    }
+  }
+}
