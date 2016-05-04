@@ -23,6 +23,10 @@ app.use(require('prerender-node')
 
 const assets = ['styles', 'scripts', 'app', 'robots.txt'];
 
+app.get(/.json$/, function (req, res) {
+  res.sendFile(__dirname + req.url);
+});
+
 app.get('/sitemap.xml', function (req, res) {
   res.redirect(process.env.SITEMAP_S3_LOCATION);
 });
