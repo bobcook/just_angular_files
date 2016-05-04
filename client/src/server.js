@@ -44,10 +44,6 @@ const getRedirectPath = (urlObject) => {
   return redirectsJson[urlObject.pathname];
 };
 
-const getRedirectPath = (urlObject) => {
-  return redirectsJson[urlObject.pathname];
-};
-
 app.get('*', function (req, res) {
   const parsed = url.parse(req.url);
   const redirectPath = getRedirectPath(parsed);
