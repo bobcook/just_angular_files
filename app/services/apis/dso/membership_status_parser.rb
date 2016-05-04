@@ -10,7 +10,7 @@ module Apis
       end
 
       def initialize(response)
-        fail(UnknownStatus, '') unless response.ok?
+        fail(DSO::BadDSOResponse) unless response.ok?
 
         @response = response
       end

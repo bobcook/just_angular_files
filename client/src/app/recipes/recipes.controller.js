@@ -8,7 +8,6 @@ const RecipesController = function (Recipe,
 
   restrictedRedirectService.filterUnpaidUsers('recipes', '/recipes');
 
-  this.selectedPillar = null; // Will be overwritten by pillar filters
   this.resource = Recipe;
 
 };

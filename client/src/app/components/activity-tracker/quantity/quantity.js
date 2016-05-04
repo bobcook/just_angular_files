@@ -7,7 +7,9 @@ const activityTrackerQuantity = function () {
     bindToController: true,
     scope: {
       periodClicked: '&onPeriodClicked',
+      isFuturePeriod: '&isFuturePeriod',
       periods: '=',
+      currentWeekNumber: '=',
       type: '=',
     },
   };

@@ -20,6 +20,7 @@
         var envVars = {
           local: {
             'API_URL': 'http://localhost:3000',
+            'CMS_BASE_URL': 'http://www.aarp.org',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'AdobeDTM' : AdobeDTMLink + '-staging.js',
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
@@ -29,10 +30,11 @@
             'dsoSubscribePromo': 'SM-SS',
             'dsoSubscribeCallbackUrl': 'https://stayingsharp.aarp.org',
             'dsoSubscribeDomain': 'https://appsec-s.aarp.org',
-            'dsoRegisterDomain': 'https://login-s.aarp.org',
+            'dsoRegisterDomain': 'https://login-pi.aarp.org',
           },
           dev: {
             'API_URL': 'https://aarp-staying-sharp-dev.herokuapp.com',
+            'CMS_BASE_URL': 'https://secure.aarp.org',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'AdobeDTM' : AdobeDTMLink + '-staging.js',
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
@@ -42,11 +44,12 @@
             'dsoSubscribePromo': 'SM-SS',
             'dsoSubscribeCallbackUrl': 'https://stayingsharp.aarp.org',
             'dsoSubscribeDomain': 'https://appsec-s.aarp.org',
-            'dsoRegisterDomain': 'https://login-s.aarp.org',
+            'dsoRegisterDomain': 'https://login-pi.aarp.org',
           },
           // TODO: remove once everything migrated to s3
           devS3: {
             'API_URL': 'https://aarp-staying-sharp-dev-s3.herokuapp.com',
+            'CMS_BASE_URL': 'https://secure.aarp.org',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
             'billingUrl': 'https://appsec-s.aarp.org/smembership/update',
@@ -55,10 +58,11 @@
             'dsoSubscribePromo': 'SM-SS',
             'dsoSubscribeCallbackUrl': 'https://stayingsharp.aarp.org',
             'dsoSubscribeDomain': 'https://appsec-s.aarp.org',
-            'dsoRegisterDomain': 'https://login-s.aarp.org',
+            'dsoRegisterDomain': 'https://login-pi.aarp.org',
           },
           staging: {
             'API_URL': 'https://aarp-staying-sharp-stg.herokuapp.com',
+            'CMS_BASE_URL': 'https://secure.aarp.org',
             'GoogleAnalytics' : 'BANMEuYzYejPAv3gmCXC4URIosMOoxOL',
             'AdobeDTM' : AdobeDTMLink + '-staging.js',
             'accountUrl': 'https://secure-s.aarp.org/applications/account/myAccount.action',
@@ -68,10 +72,11 @@
             'dsoSubscribePromo': 'SM-SS',
             'dsoSubscribeCallbackUrl': 'https://stayingsharp.aarp.org',
             'dsoSubscribeDomain': 'https://appsec-s.aarp.org',
-            'dsoRegisterDomain': 'https://login-s.aarp.org',
+            'dsoRegisterDomain': 'https://login-pi.aarp.org',
           },
           production: {
             'API_URL': 'https://aarp-staying-sharp-prod.herokuapp.com',
+            'CMS_BASE_URL': 'https://secure.aarp.org',
             'GoogleAnalytics' : 'IPHoz63oJsFGXbNMCSjmsa0MxYx4XlkQ',
             'AdobeDTM' : AdobeDTMLink + '.js',
             'accountUrl': 'https://secure.aarp.org/applications/account/myAccount.action',
@@ -89,7 +94,6 @@
           'localhost:8080': 'local',
           'localhost:9000': 'local',
 
-
           'test-mystayingsharp.org': 'devS3',
           'stayingsharp.test-aarp.org': 'devS3',
           'd23ujsciwwquf3.cloudfront.net': 'staging',
@@ -106,6 +110,9 @@
           'staying-sharp-staging.pbesxj7t3n.us-west-2.elasticbeanstalk.com': 'staging',
           'staying-sharp-production.pbesxj7t3n.us-west-2.elasticbeanstalk.com': 'production',
 
+          'stayingsharp-s.aarp.org': 'staging',
+          'stayingsharp-d.aarp.org': 'dev',
+
           'mystayingsharp.org': 'production',
           'stayingsharp.aarp.org': 'production',
         };
@@ -114,6 +121,7 @@
         var currentEnv = envs[currentEnvUrl.host];
         window.__env = {};
         window.__env.API_URL = envVars[currentEnv].API_URL;
+        window.__env.CMS_BASE_URL = envVars[currentEnv].CMS_BASE_URL;
         window.__env.GoogleAnalytics = envVars[currentEnv].GoogleAnalytics;
         window.__env.AdobeDTM = envVars[currentEnv].AdobeDTM;
         window.__env.accountUrl = envVars[currentEnv].accountUrl;

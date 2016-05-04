@@ -38,7 +38,8 @@ const UserAssessmentController = function ($assessmentsAuth,
     this.showAssessmentBanner = _.isEmpty(lastUserAssessment);
     this.showFinishAssessmentBanner =
       !_.isUndefined(lastUserAssessment) &&
-      !lastUserAssessment.completed;
+      !lastUserAssessment.completed &&
+      !hasCompleted;
 
     this.showAssessmentResults = hasCompleted;
     this.showSystemMessaging = isRegisteredUser();

@@ -19,7 +19,7 @@ module ImportContent
     private
 
     def activity_tracker_cms
-      json_payload[:content][0][:description].strip
+      json_payload[:content][0][:trackerType][0].strip
     end
 
     def activity_tracker_id

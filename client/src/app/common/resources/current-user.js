@@ -13,11 +13,11 @@ const CurrentUser = function (API_URL, railsResourceFactory, $auth, $cookies) {
   });
 
   const isBetaUser = function () {
-    return this.membershipProduct === 'beta';
+    return /beta/i.test(this.membershipProduct);
   };
 
   const isEmployeeUser = function () {
-    return this.membershipProduct === 'employee';
+    return /employee/i.test(this.membershipProduct);
   };
 
   const isPaid = function () {
@@ -28,11 +28,19 @@ const CurrentUser = function (API_URL, railsResourceFactory, $auth, $cookies) {
     return this.membershipStatus === 'prospect';
   };
 
+  const daysToExpire = function () {
+    const oneDay = 1000 * 60 * 60 * 24;
+    const exp = new Date(this.membershipExpiration);
+    const today = new Date(_.now());
+    return Math.floor((exp.getTime() - today.getTime()) / oneDay);
+  };
+
   CurrentUser.include({
     isBetaUser: isBetaUser,
     isEmployeeUser: isEmployeeUser,
     isPaid: isPaid,
     isRegistered: isRegistered,
+    daysToExpire: daysToExpire,
   });
 
   return CurrentUser;

@@ -1,27 +1,45 @@
-<ss-info-box ng-if="vm.showAssessmentStartBanner">
-  <h3 translate>info.better_brain_starts_here</h3>
-  <p translate>info.take_the_assessment</p>
-  <a class="btn" ui-sref="application.assessments">Start Now</a>
-</ss-info-box>
+<div ng-if="vm.showSystemMessage">
+  <div ng-if="vm.isAnonymous()">
+    <ss-info-box>
+      <h3 translate>info.system_message.better_brain_starts_here</h3>
+      <p translate>info.system_message.take_the_assessment</p>
+      <a class="btn" ui-sref="application.assessments">Start Now</a>
+    </ss-info-box>
+  </div>
 
-<div ng-if="$root.$currentUser.isRegistered()">
-  <ss-info-box ng-if="vm.showAssessmentFinishBanner">
-    <h3 translate>info.better_brain_starts_here</h3>
-    <p translate>info.finish_the_assessment</p>
-    <a class="btn" ui-sref="application.assessments">Finish Assessment</a>
-  </ss-info-box>
+  <div ng-if="$root.$currentUser.isRegistered()">
+    <ss-info-box ng-if="vm.isNotStarted()">
+      <h3 translate>info.system_message.better_brain_starts_here</h3>
+      <p translate>info.system_message.take_the_assessment</p>
+      <a class="btn" ui-sref="application.assessments">Start Now</a>
+    </ss-info-box>
+    <ss-info-box ng-if="vm.isStarted()">
+      <h3 translate>info.system_message.better_brain_starts_here</h3>
+      <p translate>info.system_message.finish_the_assessment</p>
+      <a class="btn" ui-sref="application.assessments">Finish Assessment</a>
+    </ss-info-box>
+    <ss-info-box ng-if="vm.isCompleted()">
+      <h3 translate>info.system_message.get_your_brain_health_score</h3>
+      <p translate>info.system_message.assessment_subscribe_to_see_results</p>
+      <a class="btn" href="{{vm.subscribeUrl}}">Get My Brain Health Score</a>
+    </ss-info-box>
+  </div>
 
-  <ss-info-box ng-if="vm.showAssessmentCompletedBanner">
-    <h3 translate>info.get_your_brain_health_score</h3>
-    <p translate>info.assessment_subscribe_to_see_results</p>
-    <a class="btn" href="{{vm.subscribeUrl}}">Get My Brain Health Score</a>
-  </ss-info-box>
-</div>
-
-<div ng-if="$root.$currentUser.isPaid()">
-  <ss-info-box ng-if="vm.showAssessmentCompletedBanner">
-    <h3 translate>info.explore_your_personalized_recommendations</h3>
-    <p translate>info.check_the_activities</p>
-    <a class="btn" ui-sref="application.user.assessments.overall">Assessment Results and Recommendations</a>
-  </ss-info-box>
+  <div ng-if="$root.$currentUser.isPaid()">
+    <ss-info-box ng-if="vm.isNotStarted() && !vm.isExpiring()">
+      <h3 translate>info.system_message.better_brain_starts_here</h3>
+      <p translate>info.system_message.take_the_assessment</p>
+      <a class="btn" ui-sref="application.assessments">Start Now</a>
+    </ss-info-box>
+    <ss-info-box ng-if="vm.isCompleted() && !vm.isExpiring()">
+      <h3 translate>info.system_message.explore_your_personalized_recommendations</h3>
+      <p translate>info.system_message.check_the_activities</p>
+      <a class="btn" ui-sref="application.user.assessments.overall">Assessment Results and Recommendations</a>
+    </ss-info-box>
+    <ss-info-box ng-if="vm.isExpiring()">
+      <p>We hope you're enjoying all the benefits of Staying Sharp! Your premium membership expires in {{$root.$currentUser.daysToExpire()}} days. Subscribe today to continue on your personal brain health journey.</p>
+      <p translate>info.system_message.nearing_expiration</p>
+      <a class="btn" href="{{vm.reSubscribeUrl}}">Continue Staying Sharp</a>
+    </ss-info-box>
+  </div>
 </div>

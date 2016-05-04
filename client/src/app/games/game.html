@@ -28,9 +28,11 @@
         ss-resource="vm.userResource"
         ss-plural-resource-name="vm.pluralResourceName">
       </ss-save-user-content>
+      <a ng-if="!vm.isPaid" ui-sref=".game-share" class="share">Share <span class="icon-share"></span></a>
     </footer>
   </section>
 </div>
+
 
 <div class="cp-source-citation">
   <section class="container" data-ng-bind-html="vm.game.contentSourceBranding">

@@ -10,7 +10,8 @@ class ArticleSerializer < ActiveModel::Serializer
              :description, :duration, :effort, :mast_head_image,
              :mast_head_title, :recommend_percentage, :section1_body,
              :section2_body, :slug, :source_materials_citation,
-             :content_source_branding_image, :path_pillar, :path_year
+             :content_source_branding_image, :path_pillar, :path_year,
+             :last_modified, :video_id
 
   has_many :pillars
 
@@ -29,11 +30,16 @@ class ArticleSerializer < ActiveModel::Serializer
   end
 
   def effort
-    object.payload['effort/readTime']
+    return object.payload['effort/readTime'] if object.basic?
+    "Run Time: #{object.payload['effort/runTime']} min." if object.video?
   end
 
   def card_title
     object.title # TODO: they should introduce a cardTitle
+  end
+
+  def video_id
+    object.payload['videoID'] if object.video?
   end
 
   private

@@ -66,13 +66,6 @@ en:
     did_you_know: "Did you know that trying new, holistic, brain health is part of maintaining a healthy brain? With My Staying Sharp, discover brain healthy activities, challenges, recipes, and articles that help you take control of your brain health – for today, and all of your tomorrows."
     every_recipe_in_staying_sharp: "Every recipe in Staying Sharp incorporates foods know to enchance brain health. Eating a brain healthy diet is as simple as finding, saving and making Staying Sharp recipes."
     hundreds_of_activities: "Hundreds of activities, all based on the latest scientific understanding of how to maintain a healthy brain. Save activities that interest you and track them on your My Staying Sharp page. For holistic brain health, do activities across the 5 areas of brain health"
-    better_brain_starts_here: "Better Brain Health Starts Here"
-    get_your_brain_health_score: "Get Your Brain Health Score"
-    assessment_subscribe_to_see_results: "See your assessment report and start your personalized Staying Sharp experience by joining today."
-    explore_your_personalized_recommendations: "Explore your Personalized Recommendations"
-    check_the_activities: "You've completed the Brain Health Assessment and you're ready to start trying all the fun, simple activities chosen to address your individual brain health needs. Check them out at the end of your assessment report and start building a stronger brain today."
-    take_the_assessment: "You're about to see amazing results. Take the Brain Health Assessment, developed by scientists, and receive personalized recommendations for a brain-smart lifestyle."
-    finish_the_assessment: "You can do this! Finish your Brain Health Assessment to see your brain health score and begin receiving personalized recommendations for improving your brain health today. We've even saved your place for you."
     staying_sharp_activities: "Staying Sharp Activities"
     staying_sharp_articles: "Staying Sharp Articles"
     staying_sharp_recipes: "Staying Sharp Recipes"
@@ -97,6 +90,15 @@ en:
         headline: "It's time to see your Brain Health Score"
         body_text: "You did the work, now see the results. Join now to get your brain health score and review a detailed results report."
         button_text: "Join and get my score"
+    system_message:
+      better_brain_starts_here: "Better Brain Health Starts Here"
+      take_the_assessment: "You're about to see amazing results. Take the Brain Health Assessment, developed by scientists, and receive personalized recommendations for a brain-smart lifestyle."
+      finish_the_assessment: "You can do this! Finish your Brain Health Assessment to see your brain health score and begin receiving personalized recommendations for improving your brain health today. We've even saved your place for you."
+      assessment_subscribe_to_see_results: "See your assessment report and start your personalized Staying Sharp experience by joining today."
+      explore_your_personalized_recommendations: "Explore your Personalized Recommendations"
+      check_the_activities: "You've completed the Brain Health Assessment and you're ready to start trying all the fun, simple activities chosen to address your individual brain health needs. Check them out at the end of your assessment report and start building a stronger brain today."
+      nearing_expiration: "By subscribing you will continue to enjoy access to the Brain Health Assessment, scores and report, your personalized activity recommendations, premium games, and delicious brain-boosting recipes."
+      get_your_brain_health_score: "Get Your Brain Health Score"
 
   explanation:
     activities: "Hundreds of activities, all based on the latest scientific understanding of how to maintain a healthy brain. Save activities that interest you and track them on your My Staying Sharp page. For holistic brain health, do activities across the 5 areas of brain health."
@@ -121,3 +123,21 @@ en:
     review:
       body_text: "The Staying Sharp community wants to hear what you think! Create a free account to recommend and save articles and games."
       button_text: "Create a Free Account"
+
+  assessments_cta:
+    paid:
+      main:
+        not_started: "Begin Assessment"
+        started: "Continue Assessment"
+        completed: "Retake Assessment"
+    registered:
+      main:
+        not_started: "Join and Take Assessment"
+        started: "Join and Complete Assessment"
+        completed: "Join now and get your results"
+      sub:
+        not_started: "or, you can start now and join later to see your results"
+        started: "or, you can complete your assessment now and join later to see your results"
+        completed: "or, you can retake now and join later to see your new results"
+    anonymous:
+      main: "Join and Take Assessment"

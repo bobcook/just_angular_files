@@ -26,6 +26,7 @@ class ImportContentItemJob < ActiveJob::Base
     when 'activity' then ImportContent::ProcessActivityJson
     when 'game' then ImportContent::ProcessGameJson
     when 'recipe' then ImportContent::ProcessRecipeJson
+    when 'video' then ImportContent::ProcessArticleJson
     end
   end
 
@@ -35,6 +36,7 @@ class ImportContentItemJob < ActiveJob::Base
     when 'activity' then Activity
     when 'game' then Game
     when 'recipe' then Recipe
+    when 'video' then Article
     end
   end
 
@@ -43,10 +45,9 @@ class ImportContentItemJob < ActiveJob::Base
   end
 
   def article_type(json_payload)
-    # TODO: when api adds other article types, delete this conditional and
-    #  use a case statement to select article type
-    if json_payload[:content][0][:type] == 'article'
-      BasicArticle
+    case content_type(json_payload)
+    when 'article' then BasicArticle
+    when 'video' then VideoArticle
     end
   end
 end

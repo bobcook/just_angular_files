@@ -2,6 +2,7 @@ const assessmentLinkManager = function (AssessmentStatus,
                                         $assessmentsAuth,
                                         $state,
                                         $window,
+                                        $featureDetection,
                                         dsoAuth,
                                         UserAssessmentGroup,
                                         restrictedRedirectService,
@@ -48,6 +49,9 @@ const assessmentLinkManager = function (AssessmentStatus,
   };
 
   const redirectToAssessment = function () {
+    if (!$featureDetection.hasFlash()) {
+      return $state.go('application.assessments');
+    }
     AssessmentStatus.lastUserAssessmentGroup().then(function (group) {
       const notStarted =
         assessmentStates.getState(group) === assessmentStates.states.notStarted;

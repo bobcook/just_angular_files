@@ -60,7 +60,18 @@ const ActivityTrackerController = function (ActivityPeriodActions,
   this.chartType =
     this.activity.activityTracker.type === 'binary' ? 'binary' : 'bar-chart';
 
+  this.isFuturePeriod = function (period) {
+    return period.date.isAfter(this.todayPeriod.date);
+  };
+
+  this.getCurrentWeekNumber = function () {
+    return _.indexOf(this.periodsByWeek, this.currentWeek) + 1;
+  };
+
   this.editPeriod = function (period) {
+    if (this.isFuturePeriod(period)) {
+      return false;
+    }
     const trackerType = this.activity.activityTracker.type;
     return ActivityPeriodActions.edit(trackerType, period);
   };
@@ -68,10 +79,12 @@ const ActivityTrackerController = function (ActivityPeriodActions,
   // can't use dependentMemoize here because this.currentWeek isn't read-only
   $scope.$watch(() => this.activity, () => {
     this.currentWeek = _.last(this.periodsByWeek);
+    this.currentWeekNumber = this.getCurrentWeekNumber();
   });
 
   this.selectWeek = (week) => {
     this.currentWeek = week;
+    this.currentWeekNumber = this.getCurrentWeekNumber();
   };
 
   this.todayDate = new Date();

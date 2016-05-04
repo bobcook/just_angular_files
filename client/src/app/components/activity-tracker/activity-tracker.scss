@@ -183,6 +183,12 @@
     padding: 0;
   }
 
+  .disabled {
+    .icon-plus {
+      color: $grey-light;
+    }
+  }
+
   .icon-check {
     display: block;
     color: white;
@@ -270,6 +276,9 @@
       border: 2px solid $blue;
       color: $blue;
       background: none;
+      &.disabled {
+        border: 2px solid $grey-light;
+      }
     }
 
     .indicator .icon-check {

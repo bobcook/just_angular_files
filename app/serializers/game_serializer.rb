@@ -5,7 +5,8 @@ class GameSerializer < ActiveModel::Serializer
 
   attributes :id, :title, :call_to_action_url, :card_image, :card_title,
              :description, :game_type, :recommend_percentage, :slug,
-             :game_provider, :content_source_branding, :path_pillar, :path_year
+             :game_provider, :content_source_branding, :path_pillar, :path_year,
+             :last_modified
 
   has_many :pillars
 

@@ -12,8 +12,8 @@ const GameController = function (Game,
   const id = $stateParams.id.replace('.html', '');
   Game.get(id).then((response) => {
     this.game = response.data;
-
-    if (isPaidGame(this.game)) {
+    this.isPaid = isPaidGame(this.game);
+    if (this.isPaid) {
       restrictedRedirectService.filterUnpaidUsers('games',
                                                   $location.path(),
                                                   true);

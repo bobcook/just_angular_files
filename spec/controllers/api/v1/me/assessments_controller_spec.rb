@@ -29,32 +29,9 @@ describe Api::V1::Me::AssessmentsController do
     end
 
     it 'updates the user assessment' do
-      allow_any_instance_of(EngagementEmails).to receive(:send_later)
       patch :update, params
 
       expect(user_assessment.reload.completed).to eq(true)
-    end
-
-    context 'if update_assessment_status? is true' do
-      it 'sends an engagment email' do
-        email = double
-        allow(EngagementEmails).to receive(:new).and_return(email)
-        allow(email).to receive(:update_assessment_status?).and_return(true)
-
-        expect(email).to receive(:send_later)
-        patch :update, params
-      end
-    end
-
-    context 'if update_assessment_status? is false' do
-      it 'does not send engagement email' do
-        email = double
-        allow(EngagementEmails).to receive(:new).and_return(email)
-        allow(email).to receive(:update_assessment_status?).and_return(false)
-
-        expect(email).not_to receive(:send_later)
-        patch :update, params
-      end
     end
   end
 end

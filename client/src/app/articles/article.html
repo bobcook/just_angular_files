@@ -27,6 +27,7 @@
           ss-plural-resource-name="vm.pluralResourceName">
         </ss-save-user-content>
         <button ng-click="vm.openRegisterModal('articles')" ng-if="!$root.$currentUser">Save</button>
+        <a ui-sref=".article-share" class="share">Share <span class="icon-share"></span></a>
       </div>
     </footer>
   </section>
@@ -50,7 +51,8 @@
   <section class="container">
     <article>
       <div class="detail-text" ng-bind-html="vm.article.section1Body" ></div>
-      <img ng-if="vm.article.bodyImage" class="detail-image" ng-src="{{vm.article.bodyImage}}" alt="">
+      <ss-video-iframe ng-if="vm.article.videoId" ss-video-id="vm.article.videoId"></ss-video-iframe>
+      <img ng-if="vm.article.bodyImage" class="detail-image" ng-src="{{vm.getBodyImage()}}" alt="{{vm.getBodyImageDescription()}}">
       <div ng-if="vm.article.bodyImage && vm.article.section2Body" ng-bind-html="vm.article.section2Body" ></div>
       <hr>
       <div ng-if="vm.article.sourceMaterialsCitation">
@@ -77,6 +79,7 @@
         ss-plural-resource-name="vm.pluralResourceName">
       </ss-save-user-content>
       <button ng-click="vm.openRegisterModal('articles')" ng-if="!$root.$currentUser">Save</button>
+      <a ui-sref=".article-share" class="share">Share <span class="icon-share"></span></a>
     </footer>
   </section>
 </div>

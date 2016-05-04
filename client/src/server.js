@@ -1,3 +1,6 @@
+'use strict'
+
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -5,6 +8,7 @@ const port = process.env.PORT || 8080;
 const path = require('path');
 const _ = require('lodash');
 const fs = require('fs');
+const SitemapService = require('./lib/services/sitemap-service')
 const redirectsJson = require('./redirects.json');
 const url = require('url');
 
@@ -17,7 +21,28 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(require('prerender-node')
   .set('prerenderToken', process.env.PRERENDER_TOKEN));
 
-const assets = ['styles', 'scripts', 'app', 'robots.txt']
+const assets = ['styles', 'scripts', 'app', 'robots.txt'];
+
+app.get('/sitemap.xml', function (req, res) {
+  res.redirect(process.env.SITEMAP_S3_LOCATION);
+});
+
+app.get(/google.*html$/, function (req, res) {
+  res.sendFile(__dirname + req.url);
+});
+
+app.post('/generate-xml-sitemap', function (req, res) {
+  SitemapService.createSitemap(req).then(function (sitemap) {
+    SitemapService.upload(sitemap.toString());
+    res.header('Content-Type', 'application/xml');
+    res.status(200);
+    res.send(sitemap.toString());
+  })
+});
+
+const getRedirectPath = (urlObject) => {
+  return redirectsJson[urlObject.pathname];
+};
 
 const getRedirectPath = (urlObject) => {
   return redirectsJson[urlObject.pathname];

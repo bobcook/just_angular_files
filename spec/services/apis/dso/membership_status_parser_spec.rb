@@ -82,7 +82,7 @@ module Apis
             response = make_response
 
             expect { make_subject(response) }
-              .to raise_error(MembershipStatusParser::UnknownStatus)
+              .to raise_error(DSO::BadDSOResponse)
           end
         end
 
@@ -102,7 +102,7 @@ module Apis
             )
           end
 
-          it 'gives an UnknownStatus' do
+          it 'gives an error' do
             response = make_response('FOOBAR')
 
             expect { make_subject(response) }

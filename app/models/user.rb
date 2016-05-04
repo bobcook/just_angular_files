@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
   end
 
   def complete_level_one
-    user_assessments.any?(&:completed?)
+    user_assessment_groups.any?
   end
 
   def not_over_max_activities

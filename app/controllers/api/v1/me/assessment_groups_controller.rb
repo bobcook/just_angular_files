@@ -5,6 +5,9 @@ module Api
         def create
           last_group = create_user_assessment_group
           create_user_assessments(last_group)
+          if engagement_email.update_assessment_status?
+            engagement_email.send_later
+          end
           head :created
         end
 
@@ -48,6 +51,10 @@ module Api
               order: assessment.order
             )
           end
+        end
+
+        def engagement_email
+          EngagementEmails.new(current_user)
         end
       end
     end

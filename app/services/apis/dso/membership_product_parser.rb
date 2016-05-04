@@ -8,41 +8,13 @@ module Apis
       end
 
       def initialize(response)
-        fail UnknownProduct unless response.ok?
+        fail DSO::BadDSOResponse unless response.ok?
 
         @response = response
       end
 
       def product
-        return 'employee' if employee_product?
-        'beta' if beta_product?
-      end
-
-      private
-
-      def employee_product?
-        match_product(/employee/i)
-      end
-
-      def beta_product?
-        match_product(/beta/i)
-      end
-
-      def match_product(regexp)
-        return false if raw_product.nil?
-        raw_product.match(regexp).present?
-      end
-
-      def raw_product
-        @raw_product ||= DSO.fetch_response_value(:membershipProduct, response)
-      end
-
-      class UnknownProduct < RuntimeError
-        attr_reader :status_str
-
-        def message
-          "Unknown membership prodcut `#{status_str}`"
-        end
+        @product ||= DSO.fetch_response_value(:membershipProduct, response)
       end
     end
   end

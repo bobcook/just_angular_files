@@ -24,7 +24,7 @@ const BuildUtils = function () {
   const getEnvName = function () {
     const knownOptions = {
       string: 'env',
-      default: { env: 'staging' }
+      default: { env: 'dev' }
     };
     const options = minimist(process.argv.slice(2), knownOptions);
     return fetch(options, 'env');

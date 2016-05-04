@@ -5,6 +5,7 @@ import conf from '../conf';
 import $ from '../plugins';
 
 const gutil = require('gulp-util');
+const utils = require('./build-utils.js');
 
 gulp.task('partials', function () {
   return gulp.src([
@@ -82,6 +83,12 @@ gulp.task('server', function () {
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
 });
 
+gulp.task('lib', function () {
+  return gulp.src([
+    path.join(conf.paths.src, '/lib/**/*.js')
+  ]).pipe(gulp.dest(path.join(conf.paths.dist, '/lib/')));
+})
+
 gulp.task('other', function () {
   return gulp.src([
     path.join(conf.paths.src, '/**/*'),
@@ -99,6 +106,18 @@ gulp.task('other:watch', ['other'], function () {
   ], ['other']);
 });
 
+gulp.task('verificationFile', function () {
+  const verificationFiles = {
+    dev: '/client/verification-files/googlebebc04c0a7a96d72.html',
+  };
+
+  const filePath = verificationFiles[utils.getEnvName()];
+  if (!filePath) { return; }
+  return gulp.src(
+    path.join(conf.paths.root, filePath)
+  ).pipe(gulp.dest(path.join(conf.paths.dist, '/')));
+});
+
 gulp.task('clean', function (done) {
   gutil.log('deleting dist and tmp files...');
   $.del([
@@ -113,7 +132,9 @@ gulp.task(
     'html',
     'fonts',
     'server',
+    'lib',
     'redirects:import',
+    'verificationFile',
     'other'
   ]
 );

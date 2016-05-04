@@ -46,6 +46,7 @@ zeus.json
 /client/.awspublish*
 /client/node_modules
 /client/.elasticbeanstalk
+/client/npm-debug.log
 
 # Elastic Beanstalk Files
 /client/.elasticbeanstalk/*
@@ -55,3 +56,5 @@ zeus.json
 /client/awseb-staging-config.js
 /client/awseb-production-config.js
 /client/src/node_modules
+
+/client/src/.env

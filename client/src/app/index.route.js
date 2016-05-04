@@ -140,6 +140,12 @@ const routerConfig = function (stateHelperProvider,
               controller: 'ArticleModalController',
               controllerAs: 'vm',
             }),
+            modalStateHelperProvider({
+              name: 'article-share',
+              templateUrl: 'app/components/share-modal/share-modal.html',
+              controller: 'ArticleModalController',
+              controllerAs: 'vm',
+            }),
           ],
         },
         {
@@ -152,6 +158,12 @@ const routerConfig = function (stateHelperProvider,
             modalStateHelperProvider({
               name: 'article-saved',
               templateUrl: 'app/components/saved-modal/saved-modal.html',
+              controller: 'ArticleModalController',
+              controllerAs: 'vm',
+            }),
+            modalStateHelperProvider({
+              name: 'article-share',
+              templateUrl: 'app/components/share-modal/share-modal.html',
               controller: 'ArticleModalController',
               controllerAs: 'vm',
             }),
@@ -237,6 +249,12 @@ const routerConfig = function (stateHelperProvider,
               controller: 'GameModalController',
               controllerAs: 'vm',
             }),
+            modalStateHelperProvider({
+              name: 'game-share',
+              templateUrl: 'app/components/share-modal/share-modal.html',
+              controller: 'GameModalController',
+              controllerAs: 'vm',
+            }),
           ],
         },
         {
@@ -249,6 +267,12 @@ const routerConfig = function (stateHelperProvider,
             modalStateHelperProvider({
               name: 'game-saved',
               templateUrl: 'app/components/saved-modal/saved-modal.html',
+              controller: 'GameModalController',
+              controllerAs: 'vm',
+            }),
+            modalStateHelperProvider({
+              name: 'game-share',
+              templateUrl: 'app/components/share-modal/share-modal.html',
               controller: 'GameModalController',
               controllerAs: 'vm',
             }),
@@ -274,7 +298,8 @@ const routerConfig = function (stateHelperProvider,
         },
         {
           name: 'home',
-          url: '/?restrictedRedirect&resourcePath&genericRedirect',
+          url: '/?restrictedRedirect&resourcePath&genericRedirect' +
+               '&campaignURL&cmp',
           templateUrl: 'app/home/home.html',
           controller: 'HomeController',
           controllerAs: 'vm',
@@ -339,6 +364,9 @@ const routerConfig = function (stateHelperProvider,
           templateUrl: 'app/search/search-results.html',
           controller: 'SearchResultsController',
           controllerAs: 'vm',
+          children: [
+            pillarFilterModal(),
+          ],
         },
         {
           name: 'ssmember',
@@ -385,6 +413,14 @@ const routerConfig = function (stateHelperProvider,
               templateUrl: 'app/articles/article.html',
               controller: 'UserArticleController',
               controllerAs: 'vm',
+              children: [
+                modalStateHelperProvider({
+                  name: 'article-share',
+                  templateUrl: 'app/components/share-modal/share-modal.html',
+                  controller: 'ArticleModalController',
+                  controllerAs: 'vm',
+                }),
+              ],
             },
             {
               name: 'articles',
@@ -410,6 +446,14 @@ const routerConfig = function (stateHelperProvider,
               templateUrl: 'app/games/game.html',
               controller: 'UserGameController',
               controllerAs: 'vm',
+              children: [
+                modalStateHelperProvider({
+                  name: 'game-share',
+                  templateUrl: 'app/components/share-modal/share-modal.html',
+                  controller: 'GameModalController',
+                  controllerAs: 'vm',
+                }),
+              ],
             },
             {
               name: 'games',
@@ -504,9 +548,25 @@ const routerConfig = function (stateHelperProvider,
       controllerAs: 'vm',
     })
     .state({
+      name: 'welcome',
+      url: '/welcome',
+      redirectTo: 'application.home',
+      params: {
+        campaignURL: 'WLCKIT',
+        cmp: 'WLC-MEM-SSS-ACQ-BRN-LAUNCH-MEMBR-050116-VNTY',
+      },
+    })
+    .state({
       name: 'logout',
       url: '/logout',
       controller: 'LogoutController',
+    })
+    .state({
+      name: 'sitemap-data',
+      url: '/sitemap-data',
+      templateUrl: 'app/sitemap/sitemap-data.html',
+      controller: 'SitemapDataController',
+      controllerAs: 'vm',
     });
 
   $urlRouterProvider.when('/ssologin?link', function ($match,
@@ -519,11 +579,12 @@ const routerConfig = function (stateHelperProvider,
                                     restrictedRedirectService,
                                     $rootScope,
                                     $loadCurrentUser) {
-    $loadCurrentUser($rootScope.$currentUser);
-    restrictedRedirectService.filterAnonymous('assessments',
-                                              '/assessments',
-                                              true);
-    assessmentLinkManager.redirectToAssessment();
+    $loadCurrentUser($rootScope.$currentUser).then(() => {
+      restrictedRedirectService.filterAnonymous('assessments',
+                                                '/assessments',
+                                                true);
+      assessmentLinkManager.redirectToAssessment();
+    });
   });
   $urlRouterProvider.otherwise('/');
 };

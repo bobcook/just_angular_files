@@ -67,7 +67,9 @@
         </span>
       </div>
     </form>
+    <button type="button" class="search-bar-close icon-close" ng-click="vm.isSearchOpen=!vm.isSearchOpen"></button>
   </section>
+  <div class="search-body-overlay" ng-click="vm.isSearchOpen=!vm.isSearchOpen"></div>
 </div>
 
 <ss-side-nav is-open="vm.isMenuOpen">

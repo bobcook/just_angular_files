@@ -16,6 +16,16 @@ const runBlock = function ($log,
     $cookies.put('campaignURL', campaignURL, options);
   }
 
+  //Support for redirectTo in route configuration
+  $rootScope.$on('$stateChangeStart', function (event,
+                                                toState,
+                                                toParams) {
+    if (toState.redirectTo) {
+      event.preventDefault();
+      $state.go(toState.redirectTo, toParams, { location: 'replace' });
+    }
+  });
+
   $rootScope.$on('$stateChangeSuccess', function (event,
                                                   toState,
                                                   toParams,

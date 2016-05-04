@@ -3,7 +3,7 @@
     <div class="tracker">
       <ul>
         <li ng-repeat="period in vm.periods" ng-class="{ tracked: period.isTracked }">
-          <div class="indicator"
+          <div class="indicator" ng-class="{ disabled: vm.isFuturePeriod({ $period: period }) }"
                ng-click="vm.periodClicked({ $period: period })">
             <span ng-if="period.isTracked" class="icon-check"></span>
             <span ng-if="!period.isTracked" class="icon-plus"></span>
@@ -14,7 +14,7 @@
     </div>
     <figcaption>
       <p>
-        <span class="week">Week 1</span>
+        <span class="week">Week {{vm.currentWeekNumber}}</span>
       </p>
     </figcaption>
   </div>

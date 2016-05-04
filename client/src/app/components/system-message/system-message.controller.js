@@ -5,23 +5,38 @@ const SystemMessageController = function ($state,
                                           assessmentStates) {
   'ngInject';
 
-  const assignBannerValues = (lastGroupState) => {
-    this.showAssessmentStartBanner = !$rootScope.$currentUser ||
-                                     isNotStarted(lastGroupState);
-    this.showAssessmentFinishBanner = isStarted(lastGroupState);
-    this.showAssessmentCompletedBanner = isCompleted(lastGroupState);
+  const EXPIRATION_THRESHOLD = 21;
+
+  this.isAnonymous = function () {
+    return !$rootScope.$currentUser;
   };
 
-  const isNotStarted = function (lastGroupState) {
-    return lastGroupState === assessmentStates.states.notStarted;
+  this.isNotStarted = function () {
+    return this.assessmentState === assessmentStates.states.notStarted;
   };
 
-  const isStarted = function (lastGroupState) {
-    return lastGroupState === assessmentStates.states.started;
+  this.isStarted = function () {
+    return this.assessmentState === assessmentStates.states.started;
   };
 
-  const isCompleted = function (lastGroupState) {
-    return lastGroupState === assessmentStates.states.completed;
+  this.isCompleted = function () {
+    return this.assessmentState === assessmentStates.states.completed;
+  };
+
+  this.isExpiring = function () {
+    return isExpiringSoon() && isExpiringProduct();
+  };
+
+  const isExpiringSoon = function () {
+    return $rootScope.$currentUser.daysToExpire() <= EXPIRATION_THRESHOLD;
+  };
+
+  const isExpiringProduct = function () {
+    const expiringProducts = [
+      'Specialized Membership - $0 BETA',
+    ];
+    return expiringProducts
+      .indexOf($rootScope.$currentUser.membershipProduct) > -1;
   };
 
   this.subscribeUrl =
@@ -29,11 +44,24 @@ const SystemMessageController = function ($state,
       $state.href('application.user.assessments.overall')
     );
 
+  this.reSubscribeUrl =
+    dsoAuth.dsoSubscribeAuth(
+      $state.href('application.home'),
+      'SSS-JOINSS-HEAD',
+      'RENEW1',
+      'SS-BETA'
+    );
+
+  this.showSystemMessage = () => {
+    return !_.isUndefined(this.assessmentState) &&
+      !_.isNull(this.assessmentState);
+  };
+
   AssessmentStatus.lastUserAssessmentGroup().then((lastGroup) => {
-    assignBannerValues(assessmentStates.getState(lastGroup));
+    this.assessmentState = assessmentStates.getState(lastGroup);
   }, (err) => {
     if (err.status && err.status === 401) {
-      assignBannerValues(assessmentStates.getState());
+      this.assessmentState = assessmentStates.getState();
     }
   });
 };
