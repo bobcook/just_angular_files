@@ -29,10 +29,9 @@ const CurrentUser = function (API_URL, railsResourceFactory, $auth, $cookies) {
   };
 
   const daysToExpire = function () {
-    const oneDay = 1000 * 60 * 60 * 24;
-    const exp = new Date(this.membershipExpiration);
-    const today = new Date(_.now());
-    return Math.floor((exp.getTime() - today.getTime()) / oneDay);
+    const today = moment().utc().startOf('day');
+    const exp = moment(this.membershipExpiration).utc();
+    return exp.diff(today, 'days');
   };
 
   CurrentUser.include({
