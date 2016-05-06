@@ -20,7 +20,6 @@
        dir-paginate="result in vm.results | itemsPerPage: vm.perPage"
        total-items="vm.totalCount"
        current-page="vm.currentPage">
-
     <div class="info-block">
       <header>
         <div class="card-detail-img" style="background-image: url('{{result.cardImage}}'); background-repeat: no-repeat; background-position: top center;"></div>
@@ -28,7 +27,7 @@
         <h4><a ui-sref="{{result.uiSref}}"> {{result.cardTitle}}</a></h4>
       </header>
       <article class="description">
-        <p>{{result.description}}</p>
+        <p>{{result.contentType==="Activity" ? result.seoDescription : result.description}}</p>
         <div class="micro">
           <span>{{result.effort}}</span>
         </div>

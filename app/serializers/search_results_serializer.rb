@@ -3,7 +3,7 @@ class SearchResultsSerializer < ActiveModel::Serializer
 
   delegate :card_image, :description, :id, to: :common
   attributes :id, :title, :card_image, :card_title, :description, :content_type,
-             :effort, :slug, :path_pillar, :path_year
+             :effort, :slug, :path_pillar, :path_year, :seo_description
 
   has_many :pillars
 
@@ -30,6 +30,10 @@ class SearchResultsSerializer < ActiveModel::Serializer
     when 'Activity'
       common.effort
     end
+  end
+
+  def seo_description
+    object.payload['seoDescription']
   end
 
   private
