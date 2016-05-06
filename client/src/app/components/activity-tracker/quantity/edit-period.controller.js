@@ -8,6 +8,11 @@ const ActivityTrackerQuantityEditPeriodController = function ($scope,
   this.period = period;
   this.type = type.split('_')[1];
 
+  if (this.type) {
+    this.trackerCopy = this.type === 'minutes' ? 'Duration' :
+      this.type.charAt(0).toUpperCase() + this.type.slice(1);
+  }
+
   if (type === 'scale') {
     this.maxValue = 5;
   }
