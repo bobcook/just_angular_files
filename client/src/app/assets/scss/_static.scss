@@ -1,3 +1,47 @@
+.notfound-lead-in {
+  background: $green404;
+
+  .container {
+    height: 120px;
+
+    h2 {
+      color: $white;
+      font-size: 20px;
+    }
+  }
+}
+
+.notfound-content {
+  text-align: center;
+  background: $white;
+  position: relative;
+  height: 500px;
+
+  .container {
+    padding-top: 30px;
+    height: 500px;
+    top: -60px;
+    background: $white;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
+    p {
+      color: $resolution-blue;;
+      font-size:48px;
+      line-height: 90px;
+      font-weight:300;
+    }
+
+    a {
+      padding-top: 20px;
+      color: $green;
+      font-size: 16px;
+    }
+  }
+}
+
 .jumbo {
   font-size: 32px;
   line-height: 34px;

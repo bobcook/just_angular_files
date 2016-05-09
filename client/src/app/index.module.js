@@ -77,6 +77,7 @@ import $pillarFiltering from './common/services/pillar-filtering.js';
 import $postHref from './common/services/post-href.js';
 import $presenterUtils from './common/services/presenter-utils.js';
 import $promise from './common/services/promise.js';
+import $redirectContent from './common/services/redirect-content.js';
 import $url from './common/services/url.js';
 import $vanityUrlCheck from './common/services/vanity-url-check.js';
 import $windowResize from './common/services/window-resize.js';
@@ -296,7 +297,6 @@ const app = angular.module('aarp-staying-sharp', [
   'updateMeta',
   'sticky',
 ]);
-
 angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 500);
 
 addConstants(app);
@@ -374,6 +374,7 @@ app
   .factory('$url', $url)
   .factory('$presenterUtils', $presenterUtils)
   .factory('$vanityUrlCheck', $vanityUrlCheck)
+  .factory('$redirectContent', $redirectContent)
   .factory('$windowResize', $windowResize)
   .factory('authInterceptor', authInterceptor)
   .factory('ActivityPeriodActions', ActivityPeriodActions)

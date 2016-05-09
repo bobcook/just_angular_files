@@ -4,7 +4,8 @@ const ActivityController = function (Activity,
                                      UserActivity,
                                      $stateParams,
                                      $location,
-                                     restrictedRedirectService) {
+                                     restrictedRedirectService,
+                                     $redirectContent) {
   'ngInject';
 
   restrictedRedirectService.filterUnpaidUsers('activities',
@@ -13,6 +14,7 @@ const ActivityController = function (Activity,
 
   const id = $stateParams.id.replace('.html', '');
   Activity.get(id).then((activity) => {
+    $redirectContent.redirectCheck(activity);
     this.activity = activity.data;
     ActivityPagePresenter.forController(this, this.activity);
   });

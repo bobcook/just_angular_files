@@ -400,6 +400,11 @@ const routerConfig = function (stateHelperProvider,
               url: '/what-is-staying-sharp',
               templateUrl: 'app/static/what-is-staying-sharp.html',
             },
+            {
+              name: 'not-found',
+              url: '/not-found',
+              templateUrl: 'app/static/not-found.html',
+            },
           ],
         },
         {
@@ -586,7 +591,7 @@ const routerConfig = function (stateHelperProvider,
       assessmentLinkManager.redirectToAssessment();
     });
   });
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/not-found');
 };
 
 export default routerConfig;

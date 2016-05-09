@@ -4,12 +4,14 @@ const ArticleController = function (Article,
                                     UserArticle,
                                     dsoModalService,
                                     $rootScope,
-                                    $stateParams) {
+                                    $stateParams,
+                                    $redirectContent) {
   'ngInject';
 
   const id = $stateParams.id.replace('.html', '');
   // get one article
   Article.get(id).then((article) => {
+    $redirectContent.redirectCheck(article);
     this.article = article.data;
   });
 
