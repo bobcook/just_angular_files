@@ -12,8 +12,6 @@ Rails.application.routes.draw do
            as: :destroy_user_session
   end
 
-  root to: 'home#show'
-  resource :home, controller: 'home', only: :show
   resources :activities, only: [:index, :show]
 
   resource :assessment, controller: 'assessment', only: [:show] do
