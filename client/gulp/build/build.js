@@ -1,6 +1,7 @@
 import path from 'path';
 import gulp from 'gulp';
 import conf from '../conf';
+import rename from 'gulp-rename';
 
 import $ from '../plugins';
 
@@ -89,9 +90,25 @@ gulp.task('lib', function () {
   ]).pipe(gulp.dest(path.join(conf.paths.dist, '/lib/')));
 })
 
+gulp.task('robots', function () {
+  const robotsFiles = {
+    dev: 'robots.disallow.txt',
+    staging: 'robots.disallow.txt',
+    production: 'robots.production.txt',
+  };
+  const robotsForEnv = robotsFiles[utils.getEnvName()];
+  return gulp.src([
+    path.join(conf.paths.src, robotsForEnv)
+  ])
+    .pipe(rename('robots.txt'))
+    .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')))
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
+});
+
 gulp.task('other', function () {
   return gulp.src([
     path.join(conf.paths.src, '/**/*'),
+    path.join('!' + conf.paths.src, '/robots.*'),
     path.join('!' + conf.paths.src, '/**/*.{html,css,js,scss}'),
   ])
     .pipe($.filter((file) => file.stat.isFile()))
@@ -135,6 +152,7 @@ gulp.task(
     'lib',
     'redirects:import',
     'verificationFile',
+    'robots',
     'other'
   ]
 );
