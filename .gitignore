@@ -34,7 +34,6 @@ zeus.json
 
 # gulp angular
 /node_modules
-/public
 /client/bower_components
 /client/.tmp
 /client/.divshot-cache

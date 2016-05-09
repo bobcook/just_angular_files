@@ -54,12 +54,28 @@ gulp.task('inject', ['scripts', 'partials', 'styles'], function () {
     empty: true
   };
 
-  const dtm = gulp.src(
+  const headTags = function (envName) {
+    return envName === 'production'
+      ? ''
+      : `<meta name="robots" content="noindex, nofollow">`;
+  };
+
+  const headInjectOptions = {
+    starttag: '<!-- inject:head -->',
+    transform: function() {
+      return headTags(utils.getEnvName());
+    },
+    empty: true
+  };
+
+  const fixedContent = gulp.src(
     '',
     { read: false }
   );
+
   return gulp.src(path.join(conf.paths.src, '/*.html'))
-    .pipe($.inject(dtm, dtmInjectOptions))
+    .pipe($.inject(fixedContent, dtmInjectOptions))
+    .pipe($.inject(fixedContent, headInjectOptions))
     .pipe($.inject(injectStyles, injectOptions))
     .pipe($.inject(injectScripts, injectOptions))
     .pipe($.inject(partialsInjectFile, partialsInjectOptions))
