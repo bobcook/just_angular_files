@@ -52,11 +52,13 @@ const CardsController = function ($pagination, $scope) {
     return this.items.length - 1 === index;
   };
 
-  const showMore = (page) => {
+  const showMore = (page, initialCheck = false) => {
     paginator.showMore(page).then((items) => {
       this.items = items;
       this.completed = paginator.completed;
       this.busyLoading = false;
+
+      if (initialCheck) $scope.$emit('manualCheckLoadMore');
     });
   };
 
@@ -72,7 +74,7 @@ const CardsController = function ($pagination, $scope) {
       params: { pillar },
     });
 
-    showMore(paginator.page);
+    showMore(paginator.page, true);
   };
 
   $scope.$watch(() => this.selectedPillar, refreshItems);
