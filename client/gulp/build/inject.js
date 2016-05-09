@@ -56,7 +56,7 @@ gulp.task('inject', ['scripts', 'partials', 'styles'], function () {
 
   const headTags = function (envName) {
     return envName === 'production'
-      ? ''
+      ? `<meta name="robots" content="">`
       : `<meta name="robots" content="noindex, nofollow">`;
   };
 

@@ -256,6 +256,8 @@ import UserDashboardCardsController from
   './components/user-dashboard-cards/user-dashboard-cards.controller.js';
 import UserDashboardController from
   './me/working-on/user-dashboard.controller.js';
+import UpdateMetaController from
+  './components/update-meta/update-meta.controller.js';
 import UserArchiveController from './me/archive/user-archive.controller.js';
 import UserArticleController from './me/articles/user-article.controller.js';
 import UserArticlesController from './me/articles/user-articles.controller.js';
@@ -498,6 +500,7 @@ app
   .controller('StaticController', StaticController)
   .controller('SystemMessageController', SystemMessageController)
   .controller('TopNavController', TopNavController)
+  .controller('UpdateMetaController', UpdateMetaController)
   .controller('UserDashboardCardController', UserDashboardCardController)
   .controller('UserDashboardCardsController', UserDashboardCardsController)
   .controller('UserDashboardController', UserDashboardController)
