@@ -875,3 +875,47 @@
     cursor: pointer;
   }
 }
+
+.benefits-table {
+  width: 80%;
+  margin: auto;
+
+  tr {
+    height: 50px;
+  }
+  th {
+    font-weight: 600;
+  }
+  .check-circle {
+    .icon-check {
+      position: relative;
+      top: 10px;
+    }
+    background-color: $button-green;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+    width: 40px;
+    height:40px;
+    position: relative;
+    left: 33%;
+  }
+  td {
+    padding: 10px;
+    border-top: 1px black;
+  }
+  .bottomborder {
+    border-bottom: 1px solid #ddd;
+  }
+  .leftborder {
+    border-left: 1px solid #ddd;
+  }
+  .wide {
+    width: 60%;
+    padding: 0px 0px 10px 0px;
+  }
+  .slim {
+    width: 20%;
+    padding: 0px 0px 20px 0px;
+  }
+}
