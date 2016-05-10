@@ -48,7 +48,7 @@
   </section>
 </div>
 
-<div class="cp-additional-content grey-background">
+<div ng-if="!$root.$currentUser.isPaid()" class="cp-additional-content grey-background">
   <section class="slim">
     <article class="copy-w-aside ">
       <table class="benefits-table">
@@ -112,7 +112,7 @@
   </section>
 </div>
 
-<div class="cp-additional-content with-figure">
+<div class="cp-additional-content with-figure" ng-class="{'border-top': $root.$currentUser.isPaid()}">
   <section class="slim">
     <article>
       <figure>
