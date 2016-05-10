@@ -18,6 +18,10 @@
        ss-card-for="card">
       </ss-card>
   </div>
+  <div ng-if="$index == 0" permission only="'unpaid'">
+    <ss-onetime-ad class="hide-for-small"></ss-onetime-ad>
+    <ss-square-ad class="hide-for-lg"></ss-square-ad>
+  </div>
   <div class="card-holder" permission only="'paid'">
     <ss-card
       ng-repeat="card in page.games"

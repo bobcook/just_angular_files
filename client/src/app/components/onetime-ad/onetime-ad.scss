@@ -1,0 +1,29 @@
+.onetime-ad {
+  display: inline-block;
+  width: 100%;
+  border-top: 1px solid $grey-border;
+  border-bottom: 1px solid $grey-border;
+  padding: 20px;
+  margin-top: 20px;
+
+  .onetime-container {
+    width: 728px;
+    margin: auto;
+  }
+
+  .ad-contents {
+    border: 1px solid $grey-border;
+    width: 100%;
+    height: 90px;
+  }
+
+  .note {
+    text-align: right;
+  }
+}
+
+.hide-for-small {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}

@@ -139,6 +139,7 @@ import modal from './components/modal/modal.js';
 import myFutureBrainChart from './components/charts/my-future-brain.chart.js';
 import navPanel from './components/nav-panel/nav-panel.js';
 import navTabs from './components/nav-tabs/nav-tabs.js';
+import onetimeAd from './components/onetime-ad/onetime-ad.js';
 import pillarsDisplay from './components/pillars-display/pillars.js';
 import pillarFilters from './components/pillar-filters/pillar-filters.js';
 import pillarScores from './components/pillar-scores/pillar-scores.js';
@@ -420,6 +421,7 @@ app
   .directive('ssMyFutureBrainChart', myFutureBrainChart)
   .directive('ssNavTabs', navTabs)
   .directive('ssNavPanel', navPanel)
+  .directive('ssOnetimeAd', onetimeAd)
   .directive('ssPillarsDisplay', pillarsDisplay)
   .directive('ssPillarFilters', pillarFilters)
   .directive('ssPillarScores', pillarScores)
