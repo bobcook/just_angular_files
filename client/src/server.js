@@ -8,10 +8,10 @@ const port = process.env.PORT || 8080;
 const path = require('path');
 const _ = require('lodash');
 const fs = require('fs');
-const SitemapService = require('./lib/services/sitemap-service')
+const SitemapService = require('./lib/services/sitemap-service');
 const redirectsJson = require('./redirects.json');
 const url = require('url');
-
+const auth = require('./lib/services/basic-auth-service');
 const app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));
@@ -48,21 +48,24 @@ const getRedirectPath = (urlObject) => {
   return redirectsJson[urlObject.pathname];
 };
 
-app.get('*', function (req, res) {
-  const parsed = url.parse(req.url);
-  const redirectPath = getRedirectPath(parsed);
-  if (redirectPath) {
-    parsed.pathname = redirectPath;
-    res.redirect(301, url.format(parsed));
-    return;
-  }
+app.get(
+  '*',
+  auth.basicAuth(process.env.USERNAME, process.env.PASSWORD),
+  function (req, res) {
+    const parsed = url.parse(req.url);
+    const redirectPath = getRedirectPath(parsed);
+    if (redirectPath) {
+      parsed.pathname = redirectPath;
+      res.redirect(301, url.format(parsed));
+      return;
+    }
 
-  const base = _.compact(req.url.split('/'))[0];
-  if (_.includes(assets, base)) {
-    res.sendFile(__dirname + req.url);
-  } else {
-    res.sendFile(__dirname + '/index.html');
-  }
+    const base = _.compact(req.url.split('/'))[0];
+    if (_.includes(assets, base)) {
+      res.sendFile(__dirname + req.url);
+    } else {
+      res.sendFile(__dirname + '/index.html');
+    }
 });
 
 app.listen(port);

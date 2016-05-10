@@ -16,7 +16,8 @@
     "dotenv": "~2.0.0",
     "sitemap": "~1.6.0",
     "cheerio": "~0.20.0",
-    "phantom": "~2.0.10"
+    "phantom": "~2.0.10",
+    "basic-auth": "~1.0.3"
   },
   "engines": {
     "node": "~4.4.3"
