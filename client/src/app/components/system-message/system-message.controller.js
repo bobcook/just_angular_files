@@ -49,7 +49,8 @@ const SystemMessageController = function ($state,
       $state.href('application.home'),
       'SSS-JOINSS-HEAD',
       'RENEW1',
-      'SS-BETA'
+      'SM-SS',
+      'subscriptionCheck.action'
     );
 
   this.showSystemMessage = () => {

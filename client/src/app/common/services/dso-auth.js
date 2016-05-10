@@ -29,22 +29,25 @@ const dsoAuth = function ($location,
   const dsoSubscribeAuth = function (redirectPath = $location.path(),
                                      intcmp = null,
                                      campaignURL = null,
-                                     promo = null) {
+                                     promo = null,
+                                     action = null) {
     intcmp = intcmp ? `intcmp=${intcmp}&` : intcmp;
     promo = promo || dsoSubscribe.promo;
     campaignURL = campaignURL || ($cookies.get('campaignURL') || '');
+    action = action || 'subscription';
     const ssologinPath = buildSSOLoginPath(redirectPath);
     return `${dsoSubscribe.domain}/smembership/` +
-    `subscription?promo=${promo}&` +
-    (campaignURL === '' ? '' : `campaignURL=${campaignURL}&`) +
-    `${intcmp}` +
-    `ref=${ssologinPath}`;
+      `${action}?promo=${promo}&` +
+      (campaignURL === '' ? '' : `campaignURL=${campaignURL}&`) +
+      `${intcmp}` +
+      `ref=${ssologinPath}`;
   };
 
   const buildSSOLoginPath = function (redirectPath) {
     const protocol = $location.protocol();
     const host = $location.host();
-    return `${protocol}://${host}/ssologin?link=${redirectPath}`;
+    const redirect = redirectPath || '/';
+    return `${protocol}://${host}/ssologin?link=${redirect}`;
   };
 
   return {
