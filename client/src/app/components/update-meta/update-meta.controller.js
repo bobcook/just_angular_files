@@ -1,7 +1,10 @@
-const UpdateMetaController = function (envName) {
+const UpdateMetaController = function ($scope, envName) {
   'ngInject';
 
-  this.robotsVal = envName === 'production' ? this.robots : 'noindex, nofollow';
+  $scope.$watch('vm.robots', () => {
+    this.robotsVal = envName === 'production'
+      ? this.robots : 'noindex, nofollow';
+  });
 };
 
 export default UpdateMetaController;
