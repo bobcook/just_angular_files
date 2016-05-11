@@ -38,7 +38,7 @@ gulp.task('bumpVersion', function() {
   config.version = versionNums.join('.');
   gutil.log(`bumping version from ${oldVersion} to ${config.version}`);
   fs.writeFile(awsEbConfigFile(), `module.exports=${JSON.stringify(config)}`);
-})
+});
 
 gulp.task('zipDist', ['build', 'bumpVersion'], function() {
   gutil.log('zipping up application...');

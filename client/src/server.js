@@ -53,7 +53,7 @@ app.post('/generate-xml-sitemap', function (req, res) {
     res.header('Content-Type', 'application/xml');
     res.status(200);
     res.send(sitemap.toString());
-  })
+  });
 });
 
 const getRedirectPath = (urlObject) => {

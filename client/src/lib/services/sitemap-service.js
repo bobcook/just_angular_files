@@ -60,6 +60,8 @@ const scrapePage = function (req) {
     return instance.createPage();
   }).then(function(page) {
     sitepage = page;
+    page.setting('userName', process.env.USERNAME);
+    page.setting('password', process.env.PASSWORD);
     return page.open(sitemapDataRoute(req));
   }).then(function(status) {
     return new Promise(function (resolve, reject) {
