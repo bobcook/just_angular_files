@@ -21,7 +21,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 app.use(require('prerender-node')
   .set('prerenderToken', process.env.PRERENDER_TOKEN));
 
-const assets = ['styles', 'scripts', 'app', 'robots.txt'];
+const assets = ['styles', 'scripts', 'app', 'robots.txt', 'favicon.ico'];
 
 app.get(/.json$/, function (req, res) {
   res.sendFile(__dirname + req.url);
