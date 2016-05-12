@@ -19,6 +19,7 @@
       <li class="bullet">•</li>
       <li>
         <a ng-if="$root.$currentUser.isLoggedIn" href="{{vm.accountUrl}}">Account</a>
+        <a ng-if="!$root.$currentUser.isLoggedIn" href="{{vm.subscribeUrl}}">Join Staying Sharp</a>
       </li>
       <li ng-if="vm.isUserWithBilling()" class="bullet">•</li>
       <li ng-if="vm.isUserWithBilling()">
