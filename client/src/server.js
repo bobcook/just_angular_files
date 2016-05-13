@@ -11,7 +11,6 @@ const fs = require('fs');
 const SitemapService = require('./lib/services/sitemap-service')
 const redirectsJson = require('./redirects.json');
 const url = require('url');
-const basicAuth = require('basic-auth');
 const https = require('https');
 const app = express();
 app.use(morgan('dev'));
