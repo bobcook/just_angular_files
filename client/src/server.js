@@ -11,7 +11,7 @@ const fs = require('fs');
 const SitemapService = require('./lib/services/sitemap-service');
 const redirectsJson = require('./redirects.json');
 const url = require('url');
-const auth = require('./lib/services/basic-auth-service');
+const basicAuth = require('basic-auth');
 const app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));
@@ -50,7 +50,6 @@ const getRedirectPath = (urlObject) => {
 
 app.get(
   '*',
-  auth.basicAuth(process.env.USERNAME, process.env.PASSWORD),
   function (req, res) {
     const parsed = url.parse(req.url);
     const redirectPath = getRedirectPath(parsed);
@@ -64,6 +63,17 @@ app.get(
     if (_.includes(assets, base)) {
       res.sendFile(__dirname + req.url);
     } else {
+      //KLUDGE: this basic-auth needs to be here, otherwise logged in users
+      //seem to keep getting asked for credentials
+      if (process.env.ENVIRONMENT !== 'production') {
+        const user = basicAuth(req);
+        if (!user || user.name !== process.env.USERNAME ||
+          user.pass !== process.env.PASSWORD) {
+          res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+          return res.send(401);
+        }
+      }
+
       res.sendFile(__dirname + '/index.html');
     }
 });
