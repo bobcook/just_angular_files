@@ -1,5 +1,19 @@
-# See http://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
-#
-# Disallow all robots during BETA
+# Robots.txt file created by http://www.aarp.org/
+# For sub domain: https://stayingsharp.aarp.org/
+# Updated 05-11-2016 Raymond Deschenes for soft launch
+# All robots will spider the domain
+
 User-agent: *
-Disallow: /
+Disallow: /#!/
+Disallow: /activities
+Disallow: /activities/
+Disallow: /act/
+Disallow: /game-play/
+Disallow: /me
+Disallow: /me/
+Disallow: /recipes
+Disallow: /recipes/
+Disallow: /videos/
+
+
+Sitemap: https://stayingsharp.aarp.org/sitemap.xml
