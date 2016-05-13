@@ -12,6 +12,7 @@ const SitemapService = require('./lib/services/sitemap-service');
 const redirectsJson = require('./redirects.json');
 const url = require('url');
 const basicAuth = require('basic-auth');
+const https = require('https');
 const app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));
@@ -28,7 +29,17 @@ app.get(/.json$/, function (req, res) {
 });
 
 app.get('/sitemap.xml', function (req, res) {
-  res.redirect(process.env.SITEMAP_S3_LOCATION);
+  const file = fs.createWriteStream('sitemap.xml');
+  https.get(process.env.SITEMAP_S3_LOCATION, function (response) {
+    response.pipe(file);
+    file.on('finish', function () {
+      file.close(function () {
+        res.sendFile(`${__dirname}/${file.path}`);
+      });
+    });
+  }).on('error', function(err) {
+    res.status(500).send(err);
+  });
 });
 
 app.get(/google.*html$/, function (req, res) {
