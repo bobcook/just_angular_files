@@ -3,17 +3,21 @@ module Api
     module Me
       class AssessmentsController < Api::V1::Me::BaseController
         def show
-          render json: user_asessment, status: :ok
+          render json: user_assessment, status: :ok
         end
 
         def update
-          user_asessment.update(completed: assessment_params[:completed])
-          render json: user_asessment, status: :ok
+          user_assessment.update(completed: assessment_params[:completed])
+          if user_assessment.user_assessment_group.completed?
+            engagement_email.send_later
+          end
+
+          render json: user_assessment, status: :ok
         end
 
         private
 
-        def user_asessment
+        def user_assessment
           UserAssessment.find(params[:id])
         end
 
