@@ -10,7 +10,8 @@ const topNav = function ($rootScope) {
     controller: 'TopNavController',
     link: function (scope, element, attrs) {
       const nav = element.find('.global-header');
-      if (!$rootScope.$currentUser || $rootScope.$currentUser.isRegistered()) {
+      if (!$rootScope.$currentUser || $rootScope.$currentUser.isRegistered())
+      {
         nav.attr('sticky', '');
       } else {
         nav.removeAttr('sticky');

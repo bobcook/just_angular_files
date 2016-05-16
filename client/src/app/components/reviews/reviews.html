@@ -1,25 +1,35 @@
 <div class="cp-reviews">
-  <div class="container">
-
+  <div>
     <header>
-      <h3>{{ vm.recommendPercentage() }} Liked This</h3>
+      <h4>{{ vm.recommendPercentage() }} Liked This</h4>
+        <a class="toggle-carret" ng-click="vm.toggleReviews()">
+          <span class="icon circle icon-down" ng-class="{'icon-up': vm.showReviews, 'icon-down': !vm.showReviews}">
+          </span>
 
-      <form ng-hide="vm.userHasReviewed()" ng-submit="vm.submitReview()">
+          <span ng-if="!vm.showReviews">Show</span>
+          <span ng-if="vm.showReviews">Hide</span>
+           All Reviews
+        </a>
 
+      <div class="reviews-container" ng-if="vm.showReviews">
         <ng-transclude></ng-transclude>
+        <form ng-hide="vm.userHasReviewed()" ng-submit="vm.submitReview()">
 
-        <span class="form-row">
-          <input type="radio" name="recommend" ng-value="true" id="yes" ng-model="vm.recommend">
-          <label for="yes">Yes, I liked this</label>
-        </span>
+          <span class="form-row">
+            <input type="radio" name="recommend" ng-value="true" id="yes" ng-model="vm.recommend">
+            <label for="yes">Yes, I liked this</label>
+          </span>
 
-        <span class="form-row">
-          <input type="radio" name="recommend" ng-value="false" id="no" ng-model="vm.recommend">
-          <label for="no">No, I didn't like this</label>
-        </span>
-        <button ng-if="$root.$currentUser" class="btn {{vm.dtmSelector}}" type="submit">Submit Review</button>
-        <a ng-if="!$root.$currentUser" class="btn" href="#" ng-click="vm.showRegisterModal('review')">Submit Review</a>
-      </form>
+          <span class="form-row">
+            <input type="radio" name="recommend" ng-value="false" id="no" ng-model="vm.recommend">
+            <label for="no">No, I didn't like this</label>
+          </span>
+          <div>
+            <button ng-if="$root.$currentUser" class="btn {{vm.dtmSelector}}" type="submit">Submit Review</button>
+            <a ng-if="!$root.$currentUser" class="btn" href="#" ng-click="vm.showRegisterModal('review')">Submit Review</a>
+          </div>
+        </form>
+      </div>
     </header>
   </div>
 </div>

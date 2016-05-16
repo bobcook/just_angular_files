@@ -7,6 +7,9 @@ const ReviewsController = function ($stateParams,
   const contentName = this.resource.contentName.toLowerCase();
   let reviews;
 
+  this.showReviews = false;
+  this.toggleReviews = () => { this.showReviews = !this.showReviews; };
+
   // display all reviews
   this.reviewResource
   .query({}, { [ `${contentName}Id` ]: $stateParams.id })
