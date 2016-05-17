@@ -7,5 +7,10 @@ FactoryGirl.define do
     password 'password'
     membership_status :prospect
     last_sign_in_at Time.zone.now
+    trait :with_user_assessment_group do
+      after(:create) do |user|
+        create(:user_assessment_group, user_id: user.id)
+      end
+    end
   end
 end

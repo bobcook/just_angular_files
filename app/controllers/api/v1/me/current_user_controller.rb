@@ -15,10 +15,22 @@ module Api
           end
         end
 
+        def update
+          current_user.update(last_seen_at: last_seen_at)
+          render json: current_user
+        end
+
         # angular-rails-resource does not yet support singular resources
         # this alias can be removed when this functionality is released:
         # https://github.com/FineLinePrototyping/angularjs-rails-resource/tree/bbcfbcc816429bc348b825b526de06da0f0bd447
         alias_method :show, :index
+
+        private
+
+        def last_seen_at
+          @last_seen_at ||=
+            Time.zone.at(params[:user][:last_seen_at].to_i)
+        end
       end
     end
   end

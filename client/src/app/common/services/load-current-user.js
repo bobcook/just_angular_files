@@ -3,6 +3,10 @@ const $loadCurrentUser = function (CurrentUser, $rootScope) {
 
   const setUserOnRootScope = function (user) {
     $rootScope.$currentUser = user;
+    if (user) {
+      $rootScope.$currentUser.updateLastSeenAt();
+    }
+
     return user;
   };
 

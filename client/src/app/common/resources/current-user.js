@@ -34,12 +34,18 @@ const CurrentUser = function (API_URL, railsResourceFactory, $auth, $cookies) {
     return exp.diff(today, 'days');
   };
 
+  const updateLastSeenAt = function () {
+    this.lastSeenAt = _.now() / 1000;
+    this.update();
+  };
+
   CurrentUser.include({
     isBetaUser: isBetaUser,
     isEmployeeUser: isEmployeeUser,
     isPaid: isPaid,
     isRegistered: isRegistered,
     daysToExpire: daysToExpire,
+    updateLastSeenAt: updateLastSeenAt,
   });
 
   return CurrentUser;

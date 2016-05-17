@@ -81,7 +81,7 @@ Rails.application.routes.draw do
 
         resources :current_user,
                   controller: 'current_user',
-                  only: [:index, :show]
+                  only: [:index, :show, :update]
 
         resources :games, only: [:show, :index, :create, :destroy]
         resources :recipes, only: [:index, :show, :create, :destroy]
