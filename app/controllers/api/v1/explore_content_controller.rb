@@ -4,7 +4,7 @@ module Api
       def show
         options = { serializer: ExploreContentSerializer }
         status = { status: :partial_content }
-        options.merge!(status) unless explore_content.all_last_page?
+        options.merge!(status) unless explore_content.no_content_left?
         respond_with explore_content, options
       end
 

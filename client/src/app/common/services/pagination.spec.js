@@ -50,10 +50,10 @@ describe('$pagination', function () {
         const pageNum = 1;
         const subject = makeSubject({ resource });
 
-        expect(subject.page).to.eq(0);
+        expect(subject.page).to.eq(1);
 
         subject.showMore(pageNum).then(function (results) {
-          expect(subject.page).to.eq(1);
+          expect(subject.page).to.eq(2);
           done();
         });
 
@@ -96,10 +96,10 @@ describe('$pagination', function () {
         const pageNum = 1;
         const subject = makeSubject({ resource });
 
-        expect(subject.page).to.eq(0);
+        expect(subject.page).to.eq(1);
 
         subject.showMore(pageNum).then(function (results) {
-          expect(subject.page).to.eq(1);
+          expect(subject.page).to.eq(2);
           done();
         });
 

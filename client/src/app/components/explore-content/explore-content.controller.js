@@ -14,7 +14,7 @@ const ExploreContentController = function ($pagination, $scope) {
   this.showMore = () => {
     if (this.displayShowMore && !this.completed) {
       this.busyLoading = true;
-      showMore(paginator.page + 1);
+      showMore(paginator.page);
     }
   };
 

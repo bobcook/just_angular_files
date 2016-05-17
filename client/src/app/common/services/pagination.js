@@ -12,7 +12,7 @@ const $pagination = function ($q) {
 
     let completed = false;
     let items = [];
-    let page = 0;
+    let page = 1;
 
     const actionFor = function (response) {
       return (response.status === 200) ? NoMorePages : MorePages;
