@@ -7,7 +7,7 @@ const superstatic = require('superstatic').server;
 
 const runServer = function (root) {
   const baseConfig = require('../../divshot.json');
-  const headerConfig = require('../../headers.json');
+  const headerConfig = require('../../src/headers.json');
   const app = superstatic({
     config: _.merge({}, baseConfig, headerConfig, {
       root: root,
