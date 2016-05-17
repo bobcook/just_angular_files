@@ -7,12 +7,13 @@ const superstatic = require('superstatic').server;
 
 const runServer = function (root) {
   const baseConfig = require('../../divshot.json');
+  const headerConfig = require('../../headers.json');
   const app = superstatic({
-    config: _.merge({}, baseConfig, {
+    config: _.merge({}, baseConfig, headerConfig, {
       root: root,
       'cache_control': {
         '**': false,
-      },
+      }
     }),
     port: process.env.STATIC_SERVER_PORT || 9000,
     live: true,

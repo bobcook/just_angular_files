@@ -13,6 +13,7 @@ const redirectsJson = require('./redirects.json');
 const url = require('url');
 const basicAuth = require('basic-auth');
 const https = require('https');
+const headerConfig = require('../headers.json');
 const app = express();
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));
@@ -85,6 +86,9 @@ app.get(
         }
       }
 
+      _.forIn(headerConfig.headers['**'], function(value, key) {
+        res.set(key, value);
+      });
       res.sendFile(__dirname + '/index.html');
     }
 });

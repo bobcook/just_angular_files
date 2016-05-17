@@ -165,6 +165,18 @@
     <!-- css files will be automatically insert here -->
     <!-- endinject -->
     <!-- endbuild -->
+
+    <style>
+      html { display:none; }
+    </style>
+    <script>
+    if (self == top) {
+      document.documentElement.style.display = 'block';
+    } else {
+      top.location = self.location;
+    }
+    </script>
+
   </head>
   <body ng-cloak ng-class="{'ads-padding': !$root.$currentUser || $root.$currentUser.isRegistered(), 'standard-padding':$root.$currentUser.isPaid()}">
     <div ui-view></div>

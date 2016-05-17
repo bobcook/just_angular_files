@@ -1,0 +1,8 @@
+{
+  "headers": {
+    "**": {
+      "X-FRAME-OPTIONS": "DENY",
+      "Content-Security-Policy": "frame-ancestors 'none'"
+    }
+  }
+}
