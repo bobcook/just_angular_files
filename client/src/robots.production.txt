@@ -1,7 +1,6 @@
 # Robots.txt file created by http://www.aarp.org/
 # For sub domain: https://stayingsharp.aarp.org/
-# Updated 05-16-2016 Raymond Deschenes for post soft launch
-# After removed follow process for parameters in Search Console.
+# Updated 05-18-2016 Raymond Deschenes - Final production
 # All robots will spider the domain
 
 User-agent: *
@@ -15,38 +14,5 @@ Disallow: /recipes
 Disallow: /recipes/
 Disallow: /the-9-keys/
 Disallow: /videos/
-Disallow: /?campaignURL=BAN1A
-Disallow: /?intcmp=AE-HEA-EOA-XSS
-Disallow: /?intcmp=AE-HEA-BRHL-IL-XSS
-Disallow: /?cmp=RDRCT-MEM-SSS-15-030716
-Disallow: /?intcmp=AE-HEA-IL-XSS
-Disallow: /?intcmp=AE-HEA-IL-ASMT
-Disallow: /games?intcmp=GLBNAV-SL-GAME-BG
-Disallow: /#!/staying-sharp?format=RSS
-Disallow: /?intcmp=AE-HEA-RELBOX3-ASMT
-Disallow: /?intcmp=null-FLXSLDR-SLIDE2-RL2
-Disallow: /?intcmp=null-FLXSLDR-SLIDE1-RL1
-Disallow: /?intcmp=AE-BL-ENDART1-REL-ASMT
-Disallow: /?cmp=RDRCT-MEM-SSS-5-030716
-Disallow: /?cmp=RDRCT-MEM-SSS-6-030716
-Disallow: /games/?intcmp=GLBNAV-SL-GAME-BG
-Disallow: /?cmp=RDRCT-MEM-SSS-15-030716
-Disallow: /?intcmp=GLBNAV-PL-SS-SS.html
-Disallow: /games?intcmp=AE-HEA-BH-TERTNAV-BG
-Disallow: /?cmp=RDRCT-MEM-SSS-17-041216
-Disallow: /?intcmp=AE-HEA-IL-XSS
-Disallow: /?intcmp=AE-HEA-IL-ASMT
-Disallow: /?intcmp=AE-HEA-RELBOX3-ASMT
-Disallow: /?cmp=RDRCT-MEM-SSS-5-030716
-Disallow: /?cmp=RDRCT-MEM-SSS-6-030716
-Disallow: /games?intcmp=AE-HEA-BH-TERTNAV-BG
-Disallow: /?cmp=RDRCT-MEM-SSS-4-030716
-Disallow: /#!/games/?intcmp=GLBNAV-SL-GAME-BG
-Disallow: /games/discover/15/words-where-are-you.html#!
-Disallow: /&Intcmp=RL2-AE-SSS-ACQ-BRN-LAUNCH-GEN-033116-EXP1A
-Disallow: /&Intcmp=RL1-AE-SSS-ACQ-BRN-LAUNCH-GEN-033116-EXP1A
-Disallow: /?&cmp=PFS-AE-SSS-ACQ-BRN-LAUNCH-GEN-033116-EXP1A
-Disallow: /?campaignURL=BAN1A&cmp=PFS-AE-SSS-ACQ-BRN-LAUNCH-GEN-033116-EXP1A
-Disallow: /?campaignURL=BAN1B&cmp=PFS-AE-SSS-ACQ-BRN-LAUNCH-GEN-033116-EXP1B
 
 Sitemap: https://stayingsharp.aarp.org/sitemap.xml
