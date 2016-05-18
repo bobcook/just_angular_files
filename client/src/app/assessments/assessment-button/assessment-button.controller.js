@@ -69,7 +69,7 @@ const AssessmentButtonController = function ($featureDetection,
   };
 
   this.paidCTAText = () => {
-    if (ctaTextMap[this.ctaState]) {
+    if (ctaTextMap[this.ctaState] && ctaTextMap[this.ctaState].paid) {
       return ctaTextMap[this.ctaState].paid.main;
     }
   };

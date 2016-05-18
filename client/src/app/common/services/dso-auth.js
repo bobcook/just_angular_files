@@ -40,7 +40,7 @@ const dsoAuth = function ($location,
       `${action}?promo=${promo}&` +
       (campaignURL === '' ? '' : `campaignURL=${campaignURL}&`) +
       `${intcmp}` +
-      `ref=${ssologinPath}`;
+      `ref=${encodeURIComponent(ssologinPath)}`;
   };
 
   const buildSSOLoginPath = function (redirectPath) {
