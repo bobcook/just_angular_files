@@ -40,6 +40,7 @@ module OmniAuth
       def request_phase
         referrer = full_host + script_name + callback_path
         response = api.login_from_provider(referrer: referrer)
+        fail InvalidLoginResponse unless valid_response?(response)
         redirect_path =
           response.headers['location'] + "&promo=#{promo_code_for_url}"
         redirect redirect_path
@@ -61,6 +62,10 @@ module OmniAuth
       end
 
       private
+
+      def valid_response?(response)
+        !response.headers['location'].nil?
+      end
 
       def membership_status(response)
         Apis::DSO::MembershipStatusParser.parse(response)
@@ -91,6 +96,8 @@ module OmniAuth
       def user_token
         request.params['ut']
       end
+
+      class InvalidLoginResponse < StandardError; end
     end
   end
 end
