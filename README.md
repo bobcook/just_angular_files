@@ -17,6 +17,11 @@ $ npm install # if encountering errors, try running twice
 $ brew install elasticsearch
 ```
 
+### Install Elastic Beanstalk CLI
+```bash
+$ brew install awsebcli
+```
+
 ### Import AARP CMS content. The content will automatically be added to Elasticsearch.
 
 ```bash
