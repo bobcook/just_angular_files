@@ -10,7 +10,12 @@ const dsoAuth = function ($location,
 
   const login = function (redirectPath = $location.path(), promo = 'SM-SS') {
     $postHref(
-      ApiRoutes.AARP_AUTH, { promo: promo, redirectPath: redirectPath }
+      ApiRoutes.AARP_AUTH, {
+        promo: promo,
+        redirectPath: redirectPath,
+        cmp: $location.search().cmp || '',
+        campaignURL: $location.search().campaignURL || '',
+      }
     );
   };
 

@@ -17,9 +17,7 @@ module Users
     def redirect_path(token_holder)
       Frontend::Paths.lookup(
         :login_success,
-        token_holder.claim_token,
-        login_success_redirect_path,
-        promo_code
+        query_params(token_holder.claim_token)
       )
     end
 
@@ -30,13 +28,26 @@ module Users
     def login_success_redirect_path
       request.env
         .fetch('omniauth.params', {})
-        .fetch('redirectPath', nil)
+        .fetch('redirectPath', '')
     end
 
     def promo_code
       request.env
         .fetch('omniauth.params', {})
         .fetch('promo', nil)
+    end
+
+    def query_params(claim_token)
+      omniauth_params_queries.merge(
+        claim_token: claim_token,
+        'redirectPath' => login_success_redirect_path
+      ).reject { |_k, v| v.empty? }
+    end
+
+    def omniauth_params_queries
+      %w(promo cmp campaignURL).map do |query|
+        [query, request.env.fetch('omniauth.params', {}).fetch(query, '')]
+      end.to_h
     end
 
     def auth_data

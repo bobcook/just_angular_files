@@ -40,9 +40,7 @@ module OmniAuth
       def request_phase
         referrer = full_host + script_name + callback_path
         response = api.login_from_provider(referrer: referrer)
-        redirect_path =
-          response.headers['location'] + "&promo=#{promo_code_for_url}"
-        redirect redirect_path
+        redirect redirect_path(response.headers['location'])
       end
 
       def callback_phase
@@ -74,14 +72,16 @@ module OmniAuth
         Apis::DSO::MembershipExpirationParser.parse(response)
       end
 
-      def promo_code_for_url
-        # TODO: based on vanity URL used, will eventually need to
-        # use different promo codes:
-        #
-        # SM-SS: normal traffic?
-        # SS-EMPLOYEE: employees?
-        # SS-BETA: beta users?
-        request.params['promo']
+      def redirect_path(location)
+        queries = %w(promo cmp campaignURL)
+        "#{location}&#{build_query(queries)}"
+      end
+
+      def build_query(queries)
+        queries.map do |query|
+          param = request.params[query]
+          param.empty? ? '' : "#{query}=#{param}"
+        end.reject(&:empty?).join('&')
       end
 
       def api

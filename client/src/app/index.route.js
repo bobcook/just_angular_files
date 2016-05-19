@@ -537,7 +537,8 @@ const routerConfig = function (stateHelperProvider,
     })
     .state({
       name: 'login-success',
-      url: '/callbacks/login-success/:claimToken?redirectPath&promo',
+      url: '/callbacks/login-success/:claimToken?' +
+        'redirectPath&promo&campaignURL&cmp',
       controller: 'LoginSuccessController',
     })
     .state({
