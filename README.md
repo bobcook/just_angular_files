@@ -148,18 +148,13 @@ Add a config file for each environment that looks like this:
 module.exports = {
   accessKeyId: 'use valid access key id',
   secretAccessKey: 'use valid secret access key',
-  region: 'us-west-2',
-  appName: 'staying-sharp',
-  solutionStack: '64bit Amazon Linux 2016.03 v2.1.0 running Node.js',
   envName: 'staying-sharp-<ENVIRONMENT>',
-  version: '<VERSION>',
-  tier: 'WebServer'
 }
 ```
 
 The naming of the file should follow the convention of `awseb-<ENVIRONMENT>-config.js`, where the `ENVIRONMENT` is either `dev`, `staging`, or `production`.
 
-Make sure to add the correct environment for the `envName` field. Check the AWS dashboard and enter the version number in the `version` field.
+Make sure to add the correct environment for the `envName` field.
 
 ###### Deploying
 
@@ -174,8 +169,6 @@ To build and deploy:
 ```sh
 $  gulp deploy:awseb --env <ENVIRONMENT>
 ```
-
-The patch version number will be automatically incremented with each deploy. If a major or minor version number needs to change, edit the `awseb-<ENVIRONEMENT>-config.js` file manually.
 
 To add a new environment, create a `awseb-<ENVIRONMENT>-config.js` file for the environment and follow the deployment procedure. Do not create a new environment through the AWS dashboard.
 

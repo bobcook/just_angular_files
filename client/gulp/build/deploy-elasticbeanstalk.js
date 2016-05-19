@@ -29,29 +29,26 @@ const awsEbConfigFile = function () {
   return path.join(conf.paths.root, `client/awseb-${getEnvName()}-config.js`);
 };
 
-gulp.task('bumpVersion', function() {
-  const config = awsEbConfig()
-  const oldVersion = config.version;
-  const versionNums = oldVersion.split('.')
-  const patchNum = Number(versionNums[versionNums.length - 1]) + 1;
-  versionNums[versionNums.length - 1] = patchNum;
-  config.version = versionNums.join('.');
-  gutil.log(`bumping version from ${oldVersion} to ${config.version}`);
-  fs.writeFile(awsEbConfigFile(), `module.exports=${JSON.stringify(config)}`);
-});
-
-gulp.task('zipDist', ['build', 'bumpVersion'], function() {
+gulp.task('zipDist', ['build'], function() {
   gutil.log('zipping up application...');
   return gulp.src(path.join(conf.paths.dist, '/**/*'))
     .pipe(zip('dist.zip'))
     .pipe(gulp.dest(conf.paths.dist));
 });
 
-gulp.task('deploy:awseb', ['zipDist'], function (callback) {
+gulp.task('deploy:awseb', function (callback) {
   gutil.log(`preparing upload for ${getEnvName()}...`);
-  awsBeanstalk.deploy(
-    path.join(conf.paths.dist, '/dist.zip'),
-    awsEbConfig(),
-    callback
+  const config = awsEbConfig();
+  const accessKeyId = config.accessKeyId;
+  const secretAccessKey = config.secretAccessKey;
+  const envName = config.envName;
+  const execSync = require('child_process').execSync;
+
+  execSync(
+    `cd ${conf.paths.dist} && AWS_ACCESS_KEY_ID=${accessKeyId} ` +
+    `AWS_SECRET_ACCESS_KEY=${secretAccessKey} ` +
+    `eb deploy ${envName} `,
+    { stdio: [process.stdin, process.stdout, process.stderr] }
   );
+
 });

@@ -110,11 +110,18 @@ gulp.task('other', function () {
     path.join(conf.paths.src, '/**/*'),
     path.join('!' + conf.paths.src, '/robots.*'),
     path.join('!' + conf.paths.src, '/**/*.{html,css,js,scss}'),
+    path.join(conf.paths.src, '/**/*'),
   ])
     .pipe($.filter((file) => file.stat.isFile()))
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/')))
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
 });
+
+gulp.task('elasticBeanstalkConfig', function () {
+  return gulp.src([
+    path.join(conf.paths.src, '/.elasticbeanstalk/**/*')
+  ]).pipe(gulp.dest(path.join(conf.paths.dist, '/.elasticbeanstalk/')));
+})
 
 gulp.task('other:watch', ['other'], function () {
   gulp.watch([
@@ -153,6 +160,7 @@ gulp.task(
     'redirects:import',
     'verificationFile',
     'robots',
-    'other'
+    'other',
+    'elasticBeanstalkConfig'
   ]
 );
