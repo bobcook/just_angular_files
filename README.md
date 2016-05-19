@@ -8,8 +8,8 @@
 ```bash
 $ bundle
 $ bundle exec rake newb
-$ nvm use
-$ npm install
+# make sure your installed node version matches package.json's engines.node
+$ npm install # if encountering errors, try running twice
 ```
 
 ### Install Elasticsearch

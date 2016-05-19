@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  host: localhost
+  port: 5432
+
+development:
+  <<: *default
+  database: staying-sharp_development
+
+test:
+  <<: *default
+  database: staying-sharp_test
