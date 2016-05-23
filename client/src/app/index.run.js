@@ -30,7 +30,12 @@ const runBlock = function ($log,
                                                   toState,
                                                   toParams,
                                                   fromState,
-                                                  fromParams){
+                                                  fromParams) {
+    if (fromState.name === 'login-success') {
+      $location.search('campaignURL', fromParams.campaignURL);
+      $location.search('cmp', fromParams.cmp);
+    }
+
     // scroll to top of page
     $window.scrollTo(0, 0);
 

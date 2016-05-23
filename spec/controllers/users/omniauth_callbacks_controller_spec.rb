@@ -27,9 +27,7 @@ describe Users::OmniauthCallbacksController do
         expected_path =
           Frontend::Paths.lookup(
             :login_success,
-            token_holder.claim_token,
-            nil,
-            nil
+            claim_token: token_holder.claim_token
           )
 
         get :aarp
