@@ -211,6 +211,12 @@ const routerConfig = function (stateHelperProvider,
               controller: 'RequiredTechnologyController',
               controllerAs: 'vm',
             }),
+            modalStateHelperProvider({
+              name: 'retake-assessment',
+              templateUrl: 'app/assessments/retake-assessment-modal.html',
+              controller: 'RetakeAssessmentModalController',
+              controllerAs: 'vm',
+            }),
           ],
         },
         {

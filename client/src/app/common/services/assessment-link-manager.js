@@ -48,6 +48,10 @@ const assessmentLinkManager = function (AssessmentStatus,
     }
   };
 
+  const openRetakeAssessmentModal = () => {
+    return $state.go('application.assessments.retake-assessment');
+  };
+
   const redirectToAssessment = function () {
     if (!$featureDetection.hasFlash()) {
       return $state.go('application.assessments');
@@ -55,8 +59,10 @@ const assessmentLinkManager = function (AssessmentStatus,
     AssessmentStatus.lastUserAssessmentGroup().then(function (group) {
       const notStarted =
         assessmentStates.getState(group) === assessmentStates.states.notStarted;
+      const completed =
+        assessmentStates.getState(group) === assessmentStates.states.completed;
 
-      if (notStarted) {
+      if (notStarted || completed) {
         startAssessment();
       } else {
         continueAssessment(group)();
@@ -72,7 +78,7 @@ const assessmentLinkManager = function (AssessmentStatus,
       case assessmentStates.states.started:
         return continueAssessment(lastGroup);
       case assessmentStates.states.completed:
-        return startAssessment;
+        return openRetakeAssessmentModal;
       default:
         return register;
       }
