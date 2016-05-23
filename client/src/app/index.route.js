@@ -563,6 +563,14 @@ const routerConfig = function (stateHelperProvider,
       },
     })
     .state({
+      name: 'benefits',
+      url: '/benefits',
+      redirectTo: 'application.home',
+      params: {
+        cmp: 'VAN-MEM-SSS-ENG-BRN-MEMBENE-053116-VANITY',
+      },
+    })
+    .state({
       name: 'logout',
       url: '/logout',
       controller: 'LogoutController',
