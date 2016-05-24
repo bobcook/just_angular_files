@@ -60,7 +60,8 @@ env 'ELASTICSEARCH_HOST',
     provide('Elasticsearch Url', default: 'localhost:9200')
 
 env 'DSO_MAIL_API',
-    provide('Engagement Email endpoint (leave blank in dev environment)')
+    provide('Engagement Email endpoint (leave blank in dev environment)',
+            default: '')
 
 env 'DSO_MAIL_DATA_EXTENSION',
     provide('Engagement email data extension',

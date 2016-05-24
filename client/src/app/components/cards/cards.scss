@@ -21,7 +21,6 @@
 
   @media screen and (min-width: 768px) {
     width: 100%;
-    height: 340px;
     background-size: auto 100%;
     margin-top: 20px;
   }
@@ -81,10 +80,6 @@
     padding: 17px 0 10px;
     border-radius: 1px;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
-
-    @media screen and (min-width: 768px) {
-      height: 182px;
-    }
   }
 
   p {
@@ -118,22 +113,12 @@
 
   article {
     @include clearfix;
-
-    @media screen and (min-width: 768px) {
-      height: 91px;
-    }
   }
 
   .effort, .proof {
     font-size: 12px;
     font-weight: 600;
     margin-top: 10px;
-
-    @media screen and (min-width: 768px) {
-      position: absolute;
-      bottom: 2px;
-      margin-top: 0;
-    }
   }
 
   .effort {
@@ -312,7 +297,6 @@
   }
 
   &.featured-card {
-
     @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
       max-width: 350px;
     }
@@ -340,7 +324,6 @@
 
     @media screen and (min-width: 768px) {
       width: 49%;
-      height: 400px;
       margin-left: 2%;
       float: left;
       background-size: auto 100%;
@@ -370,14 +353,19 @@
     }
 
     .info-block {
-      @media screen and (min-width: 768px) {
-        height: 232px;
-      }
     }
 
     article {
-      @media screen and (min-width: 768px) {
-        height: 141px;
+      .article-card-copy {
+        @media screen and (max-width: 991px) and (min-width: 920px) {
+          min-height: 120px;
+        }
+        @media screen and (max-width: 919px) and (min-width: 800px) {
+          min-height: 150px;
+        }
+        @media screen and (max-width: 799px) and (min-width: 768px) {
+          min-height: 160px;
+        }
       }
     }
   }
@@ -490,7 +478,6 @@
   }
 
   &.tracker-card {
-
     @media screen and (min-width: 768px) {
       height: 460px;
       padding-top: 97px;
