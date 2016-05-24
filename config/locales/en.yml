@@ -126,18 +126,11 @@ en:
 
   assessments_cta:
     paid:
-      main:
-        not_started: "Begin Assessment"
-        started: "Continue Assessment"
-        completed: "Retake Assessment"
+      not_started: "Begin Assessment"
+      started: "Continue Assessment"
+      completed: "Retake Assessment"
     registered:
-      main:
-        not_started: "Join and Take Assessment"
-        started: "Join and Complete Assessment"
-        completed: "Join now and get your results"
-      sub:
-        not_started: "or, you can start now and join later to see your results"
-        started: "or, you can complete your assessment now and join later to see your results"
-        completed: "or, you can retake now and join later to see your new results"
-    anonymous:
-      main: "Join and Take Assessment"
+      not_started: "Join and Take Assessment"
+      started: "Join and Complete Assessment"
+      completed: "Join now and get your results"
+    anonymous: "Join and Take Assessment"

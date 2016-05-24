@@ -27,50 +27,36 @@ const AssessmentButtonController = function ($featureDetection,
   this.hasFlash = $featureDetection.hasFlash();
   this.flashEnabled = $featureDetection.hasFlash();
   assessmentLinkManager.getAssessmentLink().then((result) => {
+    if (!this.hasFlash) {
+      this.assessmentLink = function () {
+        $state.go('application.assessments.required-technology');
+      };
+    }
     this.assessmentLink = result;
   });
-  this.openRequiredTechnologyModal = function () {
-    $state.go('application.assessments.required-technology');
-  };
 
-  const states = assessmentStates.states;
+  this.states = assessmentStates.states;
   const ctaTextMap = {};
-  ctaTextMap[states.notStarted] = {
-    paid: {
-      main: 'assessments_cta.paid.main.not_started',
-    },
-    unpaid: {
-      main: 'assessments_cta.registered.main.not_started',
-      sub: 'assessments_cta.registered.sub.started',
-    },
+
+  ctaTextMap[this.states.notStarted] = {
+    paid: 'assessments_cta.paid.not_started',
+    unpaid: 'assessments_cta.registered.not_started',
   };
-  ctaTextMap[states.started] = {
-    paid: {
-      main: 'assessments_cta.paid.main.started',
-    },
-    unpaid: {
-      main: 'assessments_cta.registered.main.started',
-      sub: 'assessments_cta.registered.sub.started',
-    },
+  ctaTextMap[this.states.started] = {
+    paid: 'assessments_cta.paid.started',
+    unpaid: 'assessments_cta.registered.started',
   };
-  ctaTextMap[states.completed] = {
-    paid: {
-      main: 'assessments_cta.paid.main.completed',
-    },
-    unpaid: {
-      main: 'assessments_cta.registered.main.completed',
-      sub: 'assessments_cta.registered.sub.completed',
-    },
+  ctaTextMap[this.states.completed] = {
+    paid: 'assessments_cta.paid.completed',
+    unpaid: 'assessments_cta.registered.completed',
   };
-  ctaTextMap[states.anonymous] = {
-    unpaid: {
-      main: 'assessments_cta.anonymous.main',
-    },
+  ctaTextMap[this.states.anonymous] = {
+    unpaid: 'assessments_cta.anonymous',
   };
 
   this.paidCTAText = () => {
     if (ctaTextMap[this.ctaState] && ctaTextMap[this.ctaState].paid) {
-      return ctaTextMap[this.ctaState].paid.main;
+      return ctaTextMap[this.ctaState].paid;
     }
   };
 

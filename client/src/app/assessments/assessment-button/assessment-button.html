@@ -2,7 +2,6 @@
 <section permission only="'paid'">
   <div ng-if="vm.ctaState !== null">
     <a class="btn green-btn wide-btn" href="#" ng-if="vm.hasFlash" ng-click="vm.assessmentLink()" translate>{{vm.paidCTAText()}}</a>
-    <a class="btn green-btn wide-btn" href="#" ng-if="!vm.hasFlash" ng-click="vm.openRequiredTechnologyModal()" translate>{{vm.paidCTAText()}}</a>
   </div>
 </section>
 <!-- For paid users -->
@@ -11,18 +10,25 @@
 <section permission only="'unpaid'">
   <div ng-if="vm.ctaState !== null">
     <div>
-      <a class="btn green-btn wide-btn" ng-href="{{vm.subscribeUrl}}" translate>{{vm.unpaidCTAText().main}}</a>
+      <a class="btn green-btn wide-btn" ng-href="{{vm.subscribeUrl}}" translate>{{vm.unpaidCTAText()}}</a>
     </div>
 
     <!-- For registered users -->
     <div ng-if="$root.$currentUser" class="cta-note">
-      <a ng-if="vm.hasFlash" ng-click="vm.assessmentLink()" href="#" translate>{{vm.unpaidCTAText().sub}}</a>
-      <a ng-if="!vm.hasFlash" ng-click="vm.openRequiredTechnologyModal()" href="#" translate>{{vm.unpaidCTAText().sub}}</a>
+      <span ng-if="vm.ctaState == vm.states.notStarted">
+        or, you can <a ng-click="vm.assessmentLink()" href="#">start now</a> and join later to see your results
+      </span>
+      <span ng-if="vm.ctaState == vm.states.started">
+        or, you can <a ng-click="vm.assessmentLink()" href="#">complete your assessment</a> now and join later to see your results
+      </span>
+      <span ng-if="vm.ctaState == vm.states.completed">
+        or, you can <a ng-click="vm.assessmentLink()" href="#">retake now</a> and join later to see your new results
+      </span>
     </div>
 
     <!-- For anonymous users -->
     <div ng-if="vm.ctaState === vm.assessmentStates.anonymous" class="cta-note">
-      <a ng-click="vm.assessmentLink()" href="#">or, create a free account to take the assessment now and join later to see your results</a>
+      <a ng-click="vm.assessmentLink()" href="#">Create a free account</a> to take the assessment now and join later to see your results
     </div>
   </div>
 </section>
