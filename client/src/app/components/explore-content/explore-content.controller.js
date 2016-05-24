@@ -1,4 +1,13 @@
-const ExploreContentController = function ($pagination, $scope) {
+import infiniteScrollHelpers from
+  '../../common/services/infinite-scroll-helpers';
+
+const ExploreContentController = function ($pagination,
+                                           $scope,
+                                           $window,
+                                           $location,
+                                           $timeout,
+                                           $state,
+                                           CacheFactory) {
   'ngInject';
 
   this.selectedPillar = this.selectedPillar || null; // Via ss-selected-pillar
@@ -8,24 +17,40 @@ const ExploreContentController = function ($pagination, $scope) {
   this.displayShowMore = true;
   this.completed = false;
   this.busyLoading = false;
-
+  const paginatedItemSelector = '.infinite-scroll-item';
+  const initialPageNum = parseInt($location.hash());
+  const infiniteScroll =
+    infiniteScrollHelpers($state.current.name, CacheFactory);
   let paginator;
+
+  infiniteScroll.trackPageNumber(
+    paginatedItemSelector
+  );
 
   this.showMore = () => {
     if (this.displayShowMore && !this.completed) {
       this.busyLoading = true;
-      showMore(paginator.page);
+      showMore();
     }
   };
 
-  const showMore = (page, initialCheck = false) => {
-    paginator.showMore(page).then((items) => {
+  const showMore = () => {
+    return paginator.showMore().then((items) => {
       this.items = items;
       this.completed = paginator.completed;
       this.busyLoading = false;
-
-      if (initialCheck) $scope.$emit('manualCheckLoadMore');
     });
+  };
+
+  const paginatorOptions = (pillar) => {
+    return {
+      displayShowMore: this.displayShowMore,
+      perPage: this.perPage,
+      resource: this.resource,
+      params: {
+        pillar: pillar,
+      },
+    };
   };
 
   const refreshItems = () => {
@@ -35,16 +60,21 @@ const ExploreContentController = function ($pagination, $scope) {
                  ? this.selectedPillar.slug
                  : null;
 
-    paginator = $pagination.create({
-      displayShowMore: this.displayShowMore,
-      perPage: this.perPage,
-      resource: this.resource,
-      params: {
-        pillar: pillar,
-      },
+    paginator = $pagination.create(paginatorOptions(pillar));
+    paginator.catchUp(initialPageNum, 1).then((items) => {
+      if (items) {
+        this.items = items;
+        this.busyLoading = false;
+        if (initialPageNum) {
+          infiniteScroll.scrollToPage(
+            paginatedItemSelector,
+            initialPageNum,
+            $timeout
+          );
+        }
+        $scope.$emit('manualCheckLoadMore');
+      }
     });
-
-    showMore(paginator.page, true);
   };
 
   $scope.$watch(() => this.selectedPillar, refreshItems);

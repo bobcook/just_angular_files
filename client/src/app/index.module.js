@@ -297,6 +297,7 @@ const app = angular.module('aarp-staying-sharp', [
   'infinite-scroll',
   'updateMeta',
   'ngDfp',
+  'angular-cache',
 ]);
 angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 500);
 

@@ -1,4 +1,13 @@
-const CardsController = function ($pagination, $scope) {
+import infiniteScrollHelpers from
+  '../../common/services/infinite-scroll-helpers';
+
+const CardsController = function ($pagination,
+                                  $scope,
+                                  $timeout,
+                                  $location,
+                                  $state,
+                                  $window,
+                                  CacheFactory) {
   'ngInject';
 
   this.selectedPillar = this.selectedPillar || null; // Via ss-selected-pillar
@@ -13,13 +22,20 @@ const CardsController = function ($pagination, $scope) {
 
   this.completed = false;
   this.busyLoading = false;
-
+  const paginatedItemSelector = '.infinite-scroll-item';
+  const initialPageNum = parseInt($location.hash());
+  const infiniteScroll =
+    infiniteScrollHelpers($state.current.name, CacheFactory);
   let paginator;
+
+  infiniteScroll.trackPageNumber(
+    paginatedItemSelector
+  );
 
   this.showMore = () => {
     if (this.displayShowMore && !this.completed) {
       this.busyLoading = true;
-      showMore(paginator.page + 1);
+      showMore();
     }
   };
 
@@ -44,6 +60,10 @@ const CardsController = function ($pagination, $scope) {
       noRemainder();
   };
 
+  this.dataPageNum = (index) => {
+    return Math.floor(index / this.perPage) + 1;
+  };
+
   const noRemainder = () => {
     return this.items.length % this.perRow === 0;
   };
@@ -52,14 +72,23 @@ const CardsController = function ($pagination, $scope) {
     return this.items.length - 1 === index;
   };
 
-  const showMore = (page, initialCheck = false) => {
-    paginator.showMore(page).then((items) => {
+  const showMore = (options = {}) => {
+    return paginator.showMore().then((items) => {
       this.items = items;
       this.completed = paginator.completed;
       this.busyLoading = false;
-
-      if (initialCheck) $scope.$emit('manualCheckLoadMore');
     });
+  };
+
+  const paginatorOptions = (pillar) => {
+    return {
+      displayShowMore: this.displayShowMore,
+      perPage: this.perPage,
+      resource: this.resource,
+      params: {
+        pillar: pillar,
+      },
+    };
   };
 
   const refreshItems = () => {
@@ -69,14 +98,21 @@ const CardsController = function ($pagination, $scope) {
                  ? this.selectedPillar.slug
                  : null;
 
-    paginator = $pagination.create({
-      displayShowMore: this.displayShowMore,
-      perPage: this.perPage,
-      resource: this.resource,
-      params: { pillar },
+    paginator = $pagination.create(paginatorOptions(pillar));
+    paginator.catchUp(initialPageNum, this.perPage).then((items) => {
+      if (items) {
+        this.items = items;
+        this.busyLoading = false;
+        if (initialPageNum) {
+          infiniteScroll.scrollToPage(
+            paginatedItemSelector,
+            initialPageNum,
+            $timeout
+          );
+        }
+        $scope.$emit('manualCheckLoadMore');
+      }
     });
-
-    showMore(paginator.page, true);
   };
 
   $scope.$watch(() => this.selectedPillar, refreshItems);

@@ -1,5 +1,6 @@
 import advertising from './common/services/advertising';
 import { getScreenType } from './common/services/screen-types';
+import infiniteScrollHelpers from './common/services/infinite-scroll-helpers';
 
 const runBlock = function ($log,
                            $window,
@@ -9,7 +10,8 @@ const runBlock = function ($log,
                            $cookies,
                            $state,
                            dtmAnalyticsService,
-                           DoubleClick) {
+                           DoubleClick,
+                           CacheFactory) {
   'ngInject';
 
   userPolicies.definePermissions();
@@ -50,9 +52,21 @@ const runBlock = function ($log,
                                                   toParams,
                                                   fromState,
                                                   fromParams) {
+    const infiniteScroll = infiniteScrollHelpers(fromState.name, CacheFactory);
+
     if (fromState.name === 'login-success') {
       $location.search('campaignURL', fromParams.campaignURL);
       $location.search('cmp', fromParams.cmp);
+    }
+
+    if (infiniteScroll.stateHasCache()) {
+      const pageNumber =
+        infiniteScroll.getLastSeenPageNumber();
+
+      if (pageNumber) {
+        const url = `${$state.href(fromState)}#${pageNumber}`;
+        window.history.replaceState({}, '', url);
+      }
     }
 
     // scroll to top of page

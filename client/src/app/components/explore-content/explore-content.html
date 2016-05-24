@@ -11,7 +11,8 @@
 
 <div
   ng-repeat="page in vm.items"
-  class="card-holder container article-holder">
+  class="card-holder container article-holder infinite-scroll-item"
+  data-pagenum="{{$index + 1}}">
   <div class="card-holder">
      <ss-card
        ng-repeat="card in page.articles"

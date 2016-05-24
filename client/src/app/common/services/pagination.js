@@ -1,4 +1,6 @@
-const $pagination = function ($q) {
+import cacheHelpers from './cache-helpers';
+
+const $pagination = function ($q, CacheFactory) {
   'ngInject';
 
   const MorePages = {};
@@ -9,10 +11,10 @@ const $pagination = function ($q) {
     const perPage = options.perPage;
     const resource = options.resource;
     const params = options.params || {};
+    let page = 1;
 
     let completed = false;
     let items = [];
-    let page = 1;
 
     const actionFor = function (response) {
       return (response.status === 200) ? NoMorePages : MorePages;
@@ -30,10 +32,11 @@ const $pagination = function ($q) {
     const concatNextPage = (newItems) => {
       page += 1;
       items = items.concat(newItems);
+      getCache().put('items', items);
       return items;
     };
 
-    const showMore = (page) => {
+    const showMore = () => {
       if (!displayShowMore) { return $q.resolve(null); }
       const options = _.merge({}, params, {
         page: page,
@@ -42,7 +45,27 @@ const $pagination = function ($q) {
       return resource.query(options).then(interpretResponse);
     };
 
-    const paginator = { showMore };
+    // TODO: resolve elemsPerPage by consolidating explore-content and cards
+    const catchUp = (targetPage, elemsPerPage) => {
+      targetPage = targetPage || 1;
+      const cacheItems = getCache().get('items');
+      if (cacheItems && cacheItems.length > targetPage) {
+        items = cacheItems;
+        page = Math.ceil((items.length + 1) / elemsPerPage);
+        return $q.resolve(cacheItems);
+      } else {
+        return showMore().then(function () {
+          return catchUp(targetPage, elemsPerPage);
+        });
+      }
+    };
+
+    const getCache = () => {
+      const contentName = resource.contentName || 'ExploreAll';
+      return cacheHelpers.getOrCreateCache(CacheFactory, contentName);
+    };
+
+    const paginator = { showMore: showMore, catchUp: catchUp };
 
     Object.defineProperties(paginator, {
       completed: { get: () => completed },

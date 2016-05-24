@@ -12,7 +12,8 @@
 <div
   ng-repeat="item in vm.items"
   ng-if="$index % vm.perRow == 0"
-  class="card-holder container article-holder">
+  class="card-holder container article-holder infinite-scroll-item"
+  data-pagenum="{{ vm.dataPageNum($index) }}">
   <ss-card
     ng-repeat="card in vm.itemsInRow($parent.$index, vm.items)"
     ss-card-for="card"

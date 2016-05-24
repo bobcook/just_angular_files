@@ -28,7 +28,9 @@
     "airbrake-js-client": "~0.5.8",
     "ngInfiniteScroll": "^1.2.2",
     "angular-update-meta": "https://github.com/khisakuni/angular-update-meta.git#69aa5559f0",
-    "ngDfp": "git@github.com:cltatman/ngDfp.git#master"
+    "ngDfp": "git@github.com:cltatman/ngDfp.git#master",
+    "angular-cache": "4.6.0",
+    "angular-scroll": "1.0.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0"
