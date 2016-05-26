@@ -53,6 +53,9 @@ module Api
                 'payload.seoDescription',
                 'payload.seoTitle',
                 'payload.sourceMaterialsCitation',
+                'payload.section1Body',
+                'payload.section2Body',
+                'payload.contentSourceBrandingImageDescription',
                 'title^2'
               ],
               'operator': 'and'

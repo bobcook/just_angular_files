@@ -14,6 +14,14 @@ module Api
         create(:activity, title: 'Sleep Activity')
       end
 
+      def create_with_payload(payload: {}, type: :article, num: 1)
+        create_list(type, num, payload: payload)
+      end
+
+      def item_ids(response)
+        JSON.parse(response.body)['items'].map { |i| i['id'] }
+      end
+
       def index_content
         INDEXED_RESOURCES.each do |model|
           model.__elasticsearch__.create_index!(force: true)
@@ -39,6 +47,7 @@ module Api
         context 'for paid user' do
           let(:user) { create(:user, membership_status: :paid) }
           before { login_user(user) }
+
           it 'returns matched records for all content types' do
             create_content
             index_content
@@ -65,6 +74,81 @@ module Api
             obj = JSON.parse(response.body)
 
             expect(obj['items'].length).to be(2)
+          end
+
+          it 'gets records with keywords in the section1Body field' do
+            keyword = 'Howdy'
+            with_payload = create_with_payload(
+              num: 2,
+              payload: { section1Body: "#{keyword} there" }
+            )
+
+            create_with_payload(num: 2, payload: {})
+            index_content
+
+            params = {
+              keywords: keyword
+            }
+            get(:index, params)
+
+            expect(item_ids(response)).to match_array(with_payload.map(&:id))
+          end
+
+          it 'gets records with keywords in the section2Body field' do
+            keyword = 'Howdy'
+            with_payload = create_with_payload(
+              num: 2,
+              payload: { section2Body: "#{keyword} there" }
+            )
+
+            create_with_payload(num: 2, payload: {})
+            index_content
+
+            params = {
+              keywords: keyword
+            }
+            get(:index, params)
+
+            expect(item_ids(response)).to match_array(with_payload.map(&:id))
+          end
+
+          it 'gets records with keywords in the section2Body field' do
+            keyword = 'Howdy'
+            with_payload = create_with_payload(
+              num: 2,
+              payload: { section2Body: "#{keyword} there" }
+            )
+
+            create_with_payload(num: 2, payload: {})
+            index_content
+
+            params = {
+              keywords: keyword
+            }
+            get(:index, params)
+
+            expect(item_ids(response)).to match_array(with_payload.map(&:id))
+          end
+
+          it 'gets records with keywords in the ' \
+             'contentSourceBrandingImageDescription field' do
+            keyword = 'Johns Hopkins'
+            with_payload = create_with_payload(
+              num: 2,
+              payload: {
+                contentSourceBrandingImageDescription: "#{keyword} logo"
+              }
+            )
+
+            create_with_payload(num: 2, payload: {})
+            index_content
+
+            params = {
+              keywords: keyword
+            }
+            get(:index, params)
+
+            expect(item_ids(response)).to match_array(with_payload.map(&:id))
           end
         end
 
