@@ -1,28 +1,20 @@
 .square-advertisement {
-  padding: 15px;
-  margin-top: 80px;
-
-
   .square-advertisement-container {
     width: 300px;
-    height: 250px;
+    height: 280px;
+    border-top: 1px solid $grey-border;
+    border-bottom: 1px solid $grey-border;
+    margin: auto;
     .note {
       color: $grey-medium;
       font-size: 12px;
-      float: right;
+      text-align: right;
       line-height: 30px;
     }
 
     .inner-content {
-      height: 250px;
       width: 300px;
-      border-bottom: 1px solid $grey-border;
+      height: 280px;
     }
-  }
-}
-
-.hide-for-lg {
-  @media screen and (min-width: 767px) {
-    display: none;
   }
 }

@@ -296,7 +296,7 @@ const app = angular.module('aarp-staying-sharp', [
   'angularUtils.directives.dirPagination',
   'infinite-scroll',
   'updateMeta',
-  'sticky',
+  'ngDfp',
 ]);
 angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 500);
 

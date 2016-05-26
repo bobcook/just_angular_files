@@ -1,20 +1,6 @@
 .global-header {
-  &.with-ad {
-    position: absolute;
-
-    @media screen and (min-width: 767px) {
-      top: 111px;
-    }
-
-    @media screen and (max-width: 767px) {
-      top: 290px;
-    }
-  }
-
-  &.no-ad {
-    position: fixed;
-    top: 0;
-  }
+  position: fixed;
+  top: 0;
 
   background: $white;
   top: 0;
@@ -26,6 +12,10 @@
     @media (max-width: 767px) {
       padding: 0;
     }
+  }
+
+  .mast-head-ad-container {
+    position: relative;
   }
 
   .logo {

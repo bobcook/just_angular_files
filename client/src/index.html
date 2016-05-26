@@ -11,6 +11,46 @@
     <meta name="s6" id="metaS6" content="sharecare">
     <meta name="google-site-verification" content="9f7pYnsKHTfuNhuU9XlhqKpgEoSZMemH2ZJU8wMoWac" />
     <link rel="canonical" href="" />
+
+    <!-- Place this code into the HEAD element of the web page -->
+
+    <!-- BEGIN Krux Control Tag for "AARP" -->
+    <!-- Source: /snippet/controltag?confid=IiG9G1mS&site=AARP&edit=1 -->
+    <script class="kxct" data-id="IiG9G1mS" data-timing="async" data-version="1.9" type="text/javascript">
+      window.Krux||((Krux=function(){Krux.q.push(arguments)}).q=[]);
+      (function(){
+        var k=document.createElement('script');k.type='text/javascript';k.async=true;
+        var m,src=(m=location.href.match(/\bkxsrc=([^&]+)/))&&decodeURIComponent(m[1]);
+        k.src = /^https?:\/\/([a-z0-9_\-\.]+\.)?krxd\.net(:\d{1,5})?\//i.test(src) ? src : src === "disable" ? "" :
+          (location.protocol==="https:"?"https:":"http:")+"//cdn.krxd.net/controltag?confid=IiG9G1mS"
+      ;
+        var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(k,s);
+      }());
+
+    </script>
+    <!-- END Krux Control Tag -->
+
+    <!-- BEGIN Krux Interchange Tag -->
+    <script>
+        window.Krux || ((Krux = function() {Krux.q.push(arguments);}).q = []);
+        (function() {
+           function retrieve(n) {
+                var m, k = 'kx' + n;
+                if (window.localStorage) {
+                    return window.localStorage[k] || "";
+                } else if (navigator.cookieEnabled) {
+                    m = document.cookie.match(k + '=([^;]*)');
+                    return (m && unescape(m[1])) || "";
+                } else {
+                    return '';
+                }
+            }
+            Krux.user = retrieve('user');
+            Krux.segments = retrieve('segs') && retrieve('segs').split(',') || [];
+        })();
+    </script>
+    <!-- END Krux Interchange Tag -->
+
     <script>
       (function (window) {
         'use strict';
@@ -178,7 +218,7 @@
     </script>
 
   </head>
-  <body ng-cloak ng-class="{'ads-padding': !$root.$currentUser || $root.$currentUser.isRegistered(), 'standard-padding':$root.$currentUser.isPaid()}">
+  <body ng-cloak>
     <div ui-view></div>
 
     <!-- build:js(src) scripts/vendor.js -->

@@ -3,6 +3,8 @@ window.__env = {
   API_URL: 'example.com',
 };
 
+window.Krux = { user: '', segments: [] };
+
 // Custom test hook for loading the app.
 // We need to inject a custom translation loader to avoid angular-translate
 // making an HTTP request in our unit tests. Performing this mocking is the

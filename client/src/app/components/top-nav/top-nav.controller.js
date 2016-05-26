@@ -1,3 +1,5 @@
+import screenTypes from '../../common/services/screen-types';
+
 const TopNavController = function (ApiRoutes,
                                    $scope,
                                    $state,
@@ -41,50 +43,44 @@ const TopNavController = function (ApiRoutes,
 
   this.selectedSearchCategory = 'All content';
 
-  this.useAd = () => {
-    if (!$rootScope.$currentUser || $rootScope.$currentUser.isRegistered()) {
-      return 'with-ad';
-    } else {
-      return 'no-ad';
-    }
-  };
-
-  const isPaidUser = () => {
-    return $rootScope.$currentUser && $rootScope.$currentUser.isPaid();
-  };
-
-  const getHeader = () => {
-    return $element.find('.global-header');
-  };
-
-  const distanceFromTop = (el) => {
-    const scrollTop = $(window).scrollTop();
-    const elementOffset = el.offset().top;
-    return elementOffset - scrollTop;
-  };
-
   angular.element($window).on('scroll', () => {
-    if (isPaidUser()) { return; }
-    const section = getHeader();
-    if (distanceFromTop(section) > 0) {
-      section.css('position', 'absolute');
-      section.css('width', '100%');
+    const $adContainer = $('.mast-head-ad-container');
+    const $globalHeader = $adContainer.parent().parent();
+
+    const screenType = screenTypes.getScreenType($window);
+    const hideAtHeight = screenType === 'mobile' ? 0 : 1000;
+    if ($window.scrollY < hideAtHeight) {
+      $globalHeader.css('top', 0);
+    } else {
+      $globalHeader.css('top',
+        -Math.min($adContainer.height(), $window.scrollY-hideAtHeight));
     }
+
+    const $sidebar = $('.sticky-side-bar');
+    const $article = $('.article-info-block');
+    if ($article.length === 0) {
+      return;
+    }
+    const articleTop = $article.offset().top - $window.scrollY;
+    const $articleContent = $('.cp-content-detail');
+    const articleBottom = $articleContent.offset().top +
+      $articleContent.height() - $window.scrollY;
+    const sidebarFixedTop = $globalHeader.offset().top -
+      $window.scrollY + $globalHeader.height() + 20;
+    //NOTE: we should not need to subtract 250 here but we could not
+    // get the correct sidebar height programmatically for now
+    const sidebarFixedBottom = articleBottom - ($sidebar.height() + 200);
+    $sidebar
+      .css('top', Math.max(articleTop,
+            Math.min(sidebarFixedTop, sidebarFixedBottom)))
+      .css('margin-top','-'+$article.css('margin-top'));
   });
 
-  angular.element($window).on('resize', () => {
-    if (isPaidUser()) { return; }
-    const section = getHeader();
-    section.css('position', 'absolute');
-    section.width(angular.element($window).width());
-
-    if (section.width() < 767) {
-      section.css('top', '290px');
-      section.css('position', absolute);
-    } else {
-      section.css('top', '111px');
-      section.css('position', absolute);
-    }
+  $scope.$watch(function () {
+    return $('.mast-head-ad-container').parent().height();
+  }, () => {
+    const $placeHolder = $('.top-nav-placeholder');
+    $placeHolder.height($('.mast-head-ad-container').parent().height());
   });
 };
 

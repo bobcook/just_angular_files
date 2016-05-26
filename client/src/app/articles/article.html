@@ -39,7 +39,9 @@
             <hr>
           </div>
           <div class="cp-content-detail">
-            <ss-square-ad ng-if="!$root.$currentUser.isPaid()" class="hide-for-lg"></ss-square-ad>
+            <div style='width: 100%;'>
+                <ss-square-ad ad-slot="aarp-ad-300x250" ng-if="$root.showMobileAd()"></ss-square-ad>
+            </div>
             <article>
               <div class="detail-text" ng-bind-html="vm.article.section1Body"></div>
               <ss-video-iframe ng-if="vm.article.videoId" ss-video-id="vm.article.videoId"></ss-video-iframe>
@@ -54,7 +56,7 @@
           </div>
         </section>
         <aside>
-          <div class="sticky-side-bar" sticky offset="170" confine="true" parent-selector="#sticky-container">
+          <div class="sticky-side-bar">
             <footer>
               <div class="article-action-items">
                 <div class="article-item">
@@ -71,11 +73,9 @@
                 <div class="article-item-border">
                   <a ui-sref=".article-share" class="article-share">Share <span class="icon-share"></span></a>
                 </div>
-                <div class="ads sidebar" ng-if="!$root.$currentUser.isPaid()">
-                  <span class="note">Advertisement</span>
-                </div>
               </div>
             </footer>
+            <ss-square-ad ad-slot="aarp-ad-300x250" ng-if="$root.showLargeScreenAd()"></ss-square-ad>
           </div>
         </aside>
       </div>

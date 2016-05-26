@@ -1,5 +1,9 @@
-<section class="global-header {{vm.useAd()}}" ng-class="{'logged-in':$root.$currentUser.isLoggedIn, 'no-ad':$root.$currentUser.isPaid}">
+<div class="top-nav-placeholder"></div>
+
+<section class="global-header" ng-class="{'logged-in':$root.$currentUser.isLoggedIn}">
   <nav class="container">
+    <ss-mast-head-ad></ss-mast-head-ad>
+
     <a ui-sref="application.home"
        class="logo"
        ng-click="vm.gamePlayFalse()"

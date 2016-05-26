@@ -1,3 +1,6 @@
+import advertising from './common/services/advertising';
+import { getScreenType } from './common/services/screen-types';
+
 const runBlock = function ($log,
                            $window,
                            $rootScope,
@@ -5,7 +8,8 @@ const runBlock = function ($log,
                            $location,
                            $cookies,
                            $state,
-                           dtmAnalyticsService) {
+                           dtmAnalyticsService,
+                           DoubleClick) {
   'ngInject';
 
   userPolicies.definePermissions();
@@ -16,10 +20,25 @@ const runBlock = function ($log,
     $cookies.put('campaignURL', campaignURL, options);
   }
 
-  //Support for redirectTo in route configuration
+  const userSeesAds = function () {
+    return !$rootScope.$currentUser || $rootScope.$currentUser.isRegistered();
+  };
+  $rootScope.userSeesAds = userSeesAds;
+  $rootScope.showMobileAd = function () {
+    return getScreenType($window) === 'mobile' && userSeesAds();
+  };
+  $rootScope.showLargeScreenAd = function () {
+    return getScreenType($window) !== 'mobile' && userSeesAds();
+  };
+
   $rootScope.$on('$stateChangeStart', function (event,
                                                 toState,
                                                 toParams) {
+    const params = $location.search();
+
+    advertising.stateSetUp(DoubleClick, params, toState);
+
+    //Support for redirectTo in route configuration
     if (toState.redirectTo) {
       event.preventDefault();
       $state.go(toState.redirectTo, toParams, { location: 'replace' });

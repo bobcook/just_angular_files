@@ -9,7 +9,7 @@ const ArticleController = function (Article,
   'ngInject';
 
   const id = $stateParams.id.replace('.html', '');
-  // get one article
+  // get an article
   Article.get(id).then((article) => {
     $redirectContent.redirectCheck(article);
     this.article = article.data;

@@ -88,7 +88,7 @@ gulp.task('lib', function () {
   return gulp.src([
     path.join(conf.paths.src, '/lib/**/*.js')
   ]).pipe(gulp.dest(path.join(conf.paths.dist, '/lib/')));
-})
+});
 
 gulp.task('robots', function () {
   const robotsFiles = {
@@ -121,7 +121,7 @@ gulp.task('elasticBeanstalkConfig', function () {
   return gulp.src([
     path.join(conf.paths.src, '/.elasticbeanstalk/**/*')
   ]).pipe(gulp.dest(path.join(conf.paths.dist, '/.elasticbeanstalk/')));
-})
+});
 
 gulp.task('other:watch', ['other'], function () {
   gulp.watch([

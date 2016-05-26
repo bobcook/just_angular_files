@@ -1,9 +1,13 @@
+import advertising from './common/services/advertising';
+
 const config = function ($httpProvider,
                          $locationProvider,
                          $logProvider,
                          $moment,
                          $translateProvider,
-                         ApiRoutes) {
+                         ApiRoutes,
+                         DoubleClickProvider,
+                         $windowProvider) {
   'ngInject';
 
   $httpProvider.interceptors.push('httpsInterceptor');
@@ -24,6 +28,9 @@ const config = function ($httpProvider,
       dow : 1, // Set Monday as first day of week
     },
   });
+
+  const $window = $windowProvider.$get();
+  advertising.defineAdSlots(DoubleClickProvider, $window);
 };
 
 export default config;

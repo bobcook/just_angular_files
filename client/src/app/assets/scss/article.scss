@@ -113,28 +113,18 @@
       footer {
         padding: 15px 0px 0px 0px;
         border: 1px solid $grey-border;
+        margin-bottom: 20px;
       }
 
-      .ads {
-        top: 150px;
-        max-width: 300px;
+      .ads.sidebar {
         width: 100%;
         border-top: 1px solid $grey-border;
         border-bottom: 1px solid $grey-border;
         height: 250px;
-        position: absolute;
 
         .note {
-          color: $grey-medium;
-          font-size: 12px;
           float: right;
-          line-height: 30px;
         }
-      }
-
-      .sticky-test-class {
-        transition: top 200ms ease 0s;
-        transition: background-color 200ms ease 0s;
       }
 
       .sticky-side-bar {
@@ -142,7 +132,7 @@
         max-width: 300px;
         text-align: left;
         height: 210px;
-        transition: top 200ms ease 0s;
+        position: fixed;
 
         @media screen and (max-width: 991px) {
           display: none;

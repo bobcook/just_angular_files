@@ -1,8 +1,8 @@
-<div>
+<div ng-if="!$root.$currentUser.isPaid()">
   <div class="square-advertisement">
     <div class="square-advertisement-container">
       <div class="note">Advertisement</div>
-      <div class="inner-content"></div>
+      <div class="inner-content" data-ng-dfp-ad="{{adSlot}}"></div>
     </div>
   </div>
 </div>

@@ -25,9 +25,8 @@
     ng-if="vm.showInlineEncouragementMessage($index)"
     ss-resource="vm.resource">
   </ss-encouragement-message>
-  <div ng-if="$index == 0" permission only="'unpaid'">
-    <ss-onetime-ad class="hide-for-small"></ss-onetime-ad>
-    <ss-square-ad class="hide-for-lg"></ss-square-ad>
+  <div ng-if="$index == 0 && $root.userSeesAds()">
+    <ss-onetime-ad></ss-onetime-ad>
   </div>
 </div>
 <div class="card-holder container article-holder"
