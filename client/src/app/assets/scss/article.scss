@@ -55,7 +55,6 @@
 
   @media screen and (max-width: 767px) {
     height: 113px;
-    margin-top: 350px;
   }
 }
 
@@ -87,18 +86,27 @@
     padding-top: 75px;
   }
 
+  &.cp-lead-in-detail {
+    @media screen and (max-width: 767px) {
+      padding-top: 10px;
+    }
+  }
+
   .container {
     max-width: 940px;
-    padding-left: 0;
-    padding-right: 0;
-
-    .side-bar {
-      padding-top: 205px;
-      position: relative;
+    @media screen and (min-width: 767px) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    @media screen and (max-width: 767px) {
+      padding-left: 15px;
+      padding-right: 15px;
     }
 
     section {
-      width: 620px;
+      @media screen and (min-width: 767px) {
+        width: 620px;
+      }
       float: left;
       margin-right: auto;
       margin-left: auto;
