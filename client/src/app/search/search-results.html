@@ -22,7 +22,9 @@
        current-page="vm.currentPage">
     <div class="info-block">
       <header>
-        <div class="card-detail-img" style="background-image: url('{{result.cardImage}}'); background-repeat: no-repeat; background-position: top center;"></div>
+        <a ui-sref="{{result.uiSref}}"> 
+          <div class="card-detail-img" style="background-image: url('{{result.cardImage}}'); background-repeat: no-repeat; background-position: top center;"></div>
+        </a>
         <h5>{{result.contentType}}</h5>
         <h4><a ui-sref="{{result.uiSref}}"> {{result.cardTitle}}</a></h4>
       </header>
