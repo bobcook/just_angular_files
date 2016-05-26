@@ -56,6 +56,9 @@ const TopNavController = function (ApiRoutes,
         -Math.min($adContainer.height(), $window.scrollY-hideAtHeight));
     }
 
+    $('.content-drawer-wrapper').css('top', $globalHeader.offset().top +
+      $globalHeader.height() - $window.scrollY);
+
     const $sidebar = $('.sticky-side-bar');
     const $article = $('.article-info-block');
     if ($article.length === 0) {

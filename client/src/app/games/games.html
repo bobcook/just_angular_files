@@ -20,7 +20,7 @@
 
 <ss-system-message></ss-system-message>
 
-<div permission only="'paid'">
+<div ng-if="$root.$currentUser.isPaid()">
   <ss-cards
     ss-card-classes="game-card"
     ss-is-user-namespace="vm.isUserNamespace"
@@ -31,7 +31,7 @@
   </ss-cards>
 </div>
 
-<div permission only="'unpaid'">
+<div ng-if="!$root.$currentUser.isPaid()">
   <ss-cards
     ss-card-classes="game-card"
     ss-is-user-namespace="vm.isUserNamespace"
