@@ -16,6 +16,8 @@ class SearchResultsSerializer < ActiveModel::Serializer
     case object.class.name
     when 'BasicArticle'
       'Article'
+    when 'VideoArticle'
+      'Article'
     else
       object.class.name
     end
