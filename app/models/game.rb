@@ -5,6 +5,8 @@ class Game < ActiveRecord::Base
   include WithElasticsearch
   include WithReviews
 
+  include SearchResultsMetadata
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 

@@ -1,3 +1,5 @@
+import resourceUrlFormatter from '../services/resource-url-formatter';
+
 const Search = function (API_URL, railsResourceFactory, railsSerializer) {
   'ngInject';
 
@@ -11,10 +13,10 @@ const Search = function (API_URL, railsResourceFactory, railsSerializer) {
     interceptors: [{
       afterResponse: function (results) {
         const setUiSref = function (obj) {
-          const content = obj.contentType.toLowerCase();
-          obj.uiSref =
-            `application.${content}({ id: '${obj.slug}', ` +
-            `pillar: '${obj.pathPillar}', year: '${obj.pathYear}' })`;
+          obj.uiSref = resourceUrlFormatter().format(obj.resourceType,
+                                                     obj.slug,
+                                                     obj.pathPillar,
+                                                     obj.pathYear);
         };
 
         results.items.forEach(setUiSref);

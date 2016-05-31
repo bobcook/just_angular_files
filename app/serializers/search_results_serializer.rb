@@ -2,25 +2,23 @@ class SearchResultsSerializer < ActiveModel::Serializer
   include PathUtils
 
   delegate :card_image, :description, :id, to: :common
-  attributes :id, :title, :card_image, :card_title, :description, :content_type,
-             :effort, :slug, :path_pillar, :path_year, :seo_description
+  attributes :id, :title, :card_image, :card_title, :description, :type_label,
+             :resource_type, :effort, :slug, :path_pillar, :path_year,
+             :seo_description
 
   has_many :pillars
+
+  def type_label
+    object.search_result_type_label
+  end
+
+  def resource_type
+    object.search_result_resource_type
+  end
 
   def card_title
     title = object.payload['cardTitle']
     title.present? ? title : object.title
-  end
-
-  def content_type
-    case object.class.name
-    when 'BasicArticle'
-      'Article'
-    when 'VideoArticle'
-      'Article'
-    else
-      object.class.name
-    end
   end
 
   def effort
@@ -30,7 +28,7 @@ class SearchResultsSerializer < ActiveModel::Serializer
     when 'Recipe'
       object.payload['prepTime']
     when 'Activity'
-      common.effort
+      object.payload['effort']
     end
   end
 

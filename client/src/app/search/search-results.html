@@ -22,14 +22,14 @@
        current-page="vm.currentPage">
     <div class="info-block">
       <header>
-        <a ui-sref="{{result.uiSref}}"> 
+        <a ui-sref="{{result.uiSref}}">
           <div class="card-detail-img" style="background-image: url('{{result.cardImage}}'); background-repeat: no-repeat; background-position: top center;"></div>
         </a>
-        <h5>{{result.contentType}}</h5>
+        <h5>{{result.typeLabel}}</h5>
         <h4><a ui-sref="{{result.uiSref}}"> {{result.cardTitle}}</a></h4>
       </header>
       <article class="description">
-        <p>{{result.contentType==="Activity" ? result.seoDescription : result.description}}</p>
+        <p>{{result.typeLabel === "Activity" ? result.seoDescription : result.description}}</p>
         <div class="micro">
           <span>{{result.effort}}</span>
         </div>
