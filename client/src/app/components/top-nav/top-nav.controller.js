@@ -46,30 +46,31 @@ const TopNavController = function (ApiRoutes,
   angular.element($window).on('scroll', () => {
     const $adContainer = $('.mast-head-ad-container');
     const $globalHeader = $adContainer.parent().parent();
+    const scrollY = $window.pageYOffset;
 
     const screenType = screenTypes.getScreenType($window);
     const hideAtHeight = screenType === 'mobile' ? 0 : 1000;
-    if ($window.scrollY < hideAtHeight) {
+    if (scrollY < hideAtHeight) {
       $globalHeader.css('top', 0);
     } else {
       $globalHeader.css('top',
-        -Math.min($adContainer.height(), $window.scrollY-hideAtHeight));
+        -Math.min($adContainer.height(), scrollY - hideAtHeight));
     }
 
     $('.content-drawer-wrapper').css('top', $globalHeader.offset().top +
-      $globalHeader.height() - $window.scrollY);
+      $globalHeader.height() - scrollY);
 
     const $sidebar = $('.sticky-side-bar');
     const $article = $('.article-info-block');
     if ($article.length === 0) {
       return;
     }
-    const articleTop = $article.offset().top - $window.scrollY;
+    const articleTop = $article.offset().top - scrollY;
     const $articleContent = $('.cp-content-detail');
     const articleBottom = $articleContent.offset().top +
-      $articleContent.height() - $window.scrollY;
+      $articleContent.height() - scrollY;
     const sidebarFixedTop = $globalHeader.offset().top -
-      $window.scrollY + $globalHeader.height() + 20;
+      scrollY + $globalHeader.height() + 20;
     //NOTE: we should not need to subtract 250 here but we could not
     // get the correct sidebar height programmatically for now
     const sidebarFixedBottom = articleBottom - ($sidebar.height() + 200);
