@@ -1,6 +1,7 @@
-import advertising from './common/services/advertising';
-import { getScreenType } from './common/services/screen-types';
+import { getScreenType, getScreenTypeMinSize, } from
+  './common/services/screen-types';
 import infiniteScrollHelpers from './common/services/infinite-scroll-helpers';
+import advertising from './common/services/advertising';
 
 const runBlock = function ($log,
                            $window,
@@ -10,7 +11,6 @@ const runBlock = function ($log,
                            $cookies,
                            $state,
                            dtmAnalyticsService,
-                           DoubleClick,
                            CacheFactory) {
   'ngInject';
 
@@ -22,23 +22,26 @@ const runBlock = function ($log,
     $cookies.put('campaignURL', campaignURL, options);
   }
 
+  const screenType = getScreenType($window);
+
   const userSeesAds = function () {
     return !$rootScope.$currentUser || $rootScope.$currentUser.isRegistered();
   };
+
   $rootScope.userSeesAds = userSeesAds;
+
   $rootScope.showMobileAd = function () {
-    return getScreenType($window) === 'mobile' && userSeesAds();
+    return screenType === 'mobile' && userSeesAds();
   };
   $rootScope.showLargeScreenAd = function () {
-    return getScreenType($window) !== 'mobile' && userSeesAds();
+    return screenType !== 'mobile' && userSeesAds();
   };
+
+  advertising.defineAdSlots($window);
 
   $rootScope.$on('$stateChangeStart', function (event,
                                                 toState,
                                                 toParams) {
-    const params = $location.search();
-
-    advertising.stateSetUp(DoubleClick, params, toState);
 
     //Support for redirectTo in route configuration
     if (toState.redirectTo) {
@@ -54,6 +57,10 @@ const runBlock = function ($log,
                                                   fromParams) {
     const infiniteScroll = infiniteScrollHelpers(fromState.name, CacheFactory);
 
+    advertising.stateSetUp(toParams, toState);
+
+    //NOTE: this can be removed once global params are handled correcty
+    // in index.route.js
     if (fromState.name === 'login-success') {
       $location.search('campaignURL', fromParams.campaignURL);
       $location.search('cmp', fromParams.cmp);

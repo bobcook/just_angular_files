@@ -5,6 +5,30 @@ window.__env = {
 
 window.Krux = { user: '', segments: [] };
 
+window.googletag = {
+  defineSlot: function() {
+    return window.googletag;
+  },
+  addService: function() {
+    return window.googletag;
+  },
+  setTargeting: function() {
+    return window.googletag;
+  },
+  defineSizeMapping: function() {
+    return window.googletag;
+  },
+  pubAds: function() {
+    return window.googletag;
+  },
+  refresh: function() {
+    return window.googletag;
+  },
+  cmd: {
+    push: function() {},
+  },
+};
+
 // Custom test hook for loading the app.
 // We need to inject a custom translation loader to avoid angular-translate
 // making an HTTP request in our unit tests. Performing this mocking is the

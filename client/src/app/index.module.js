@@ -215,8 +215,6 @@ import GamesController from './games/games.controller.js';
 import HomeController from './home/home.controller.js';
 import LoginSuccessController from './callbacks/login-success.controller.js';
 import LogoutController from './logout/logout.controller.js';
-import MastHeadAdController from
-  './components/ads/mast-head-ad/mast-head-ad.controller.js';
 import MyFutureBrainController from
   './components/charts/my-future-brain.controller.js';
 import NavPanelController from './components/nav-panel/nav-panel.controller.js';
@@ -296,7 +294,6 @@ const app = angular.module('aarp-staying-sharp', [
   'angularUtils.directives.dirPagination',
   'infinite-scroll',
   'updateMeta',
-  'ngDfp',
   'angular-cache',
 ]);
 angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 500);
@@ -485,7 +482,6 @@ app
   .controller('HomeController', HomeController)
   .controller('LoginSuccessController', LoginSuccessController)
   .controller('LogoutController', LogoutController)
-  .controller('MastHeadAdController', MastHeadAdController)
   .controller('MyFutureBrainController', MyFutureBrainController)
   .controller('NavPanelController', NavPanelController)
   .controller('NeuroPerformanceController', NeuroPerformanceController)

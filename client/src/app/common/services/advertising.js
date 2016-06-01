@@ -6,78 +6,90 @@ const screenTypeTargetingKeys = {
   desktop: 'dsktp',
 };
 
+const adSlotsByID = {};
+
+const gptAccount = '/1175/aarpe-eng/health/brain-health';
+
+const configAdSlot = function (id, config) {
+  adSlotsByID[id] = googletag.defineSlot(gptAccount, config.sizes, id)
+    .addService(googletag.pubads())
+    .setTargeting('pos', config.pos)
+    .setTargeting('sz', config.sz);
+  if (config.sizeMapping) {
+    adSlotsByID[id].defineSizeMapping(config.sizeMapping);
+  }
+};
+
 export default {
-  stateSetUp: function (doubleClick, params, state) {
-    doubleClick.setPageTargeting('ointcmp', params.intcmp || 'null');
-    doubleClick.setPageTargeting('pgtype', state.pageType || 'null');
-    doubleClick.refreshTargeting();
+  adSlotsByID: adSlotsByID,
+
+  linkDirective: function (scope, element, $timeout) {
+    if (scope.$root.userSeesAds()) {
+      $timeout(function () {
+        $(element).find('.js-ad-container').attr('id', scope.adslot);
+        googletag.cmd.push(function () {
+          googletag.pubads().refresh([adSlotsByID[scope.adslot]]);
+        });
+      });
+    }
   },
 
-  defineAdSlots: function (doubleClickProvider, $window) {
-    const screenType = screenTypes.getScreenType($window);
+  stateSetUp: function (params, state) {
+    googletag.cmd.push(function () {
+      googletag.pubads().setTargeting('ointcmp', params.intcmp || 'null');
+      googletag.pubads().setTargeting('pgtype', state.pageType || 'null');
+    });
+  },
 
+  defineAdSlots: function ($window) {
+    const largeBannerSize = screenTypes.getScreenTypeMinSize('tablet');
+    const screenType = screenTypes.getScreenType($window);
     const bannerAdDynamicSize = screenType === 'mobile' ? '320x50' : '728x90';
 
-    doubleClickProvider.defineSlot(
-      '/1175/aarpe-eng/health/brain-health',
-      [[728, 90], [320, 50]],
-      'aarp-ad-leaderbd', [
-        { id: 'sz', value: bannerAdDynamicSize },
-        { id: 'pos', value: 'leader1' },
-      ]
-    ).defineSlot(
-      '/1175/aarpe-eng/health/brain-health',
-      [[728, 90], [320, 50]],
-      'aarp-ad-onetime', [
-        { id: 'sz', value: bannerAdDynamicSize },
-        { id: 'pos', value: 'onetime' },
-      ]
-    ).defineSlot(
-      '/1175/aarpe-eng/health/brain-health',
-      [300, 250],
-      'aarp-ad-300x250', [
-        { id: 'sz', value: '300x250' },
-        { id: 'pos', value: 'rightrail1' },
-      ]
-    ).defineSlot(
-      '/1175/aarpe-eng/health/brain-health',
-      [300, 250],
-      'aarp-ad2-300x250', [
-        { id: 'sz', value: '300x250' },
-        { id: 'pos', value: 'rightrail1' },
-      ]
-    ).defineSlot(
-      '/1175/aarpe-eng/health/brain-health',
-      [300, 600],
-      'aarp-ad-300x600', [
-        { id: 'sz', value: '300x600' },
-        { id: 'pos', value: 'rightrail2' },
-      ]
-    );
+    googletag.cmd.push(function () {
+      const wideBannerMapping = googletag.sizeMapping()
+        .addSize([largeBannerSize, 0], [728, 90])
+        .addSize([0, 0], [320, 50])
+        .build();
 
-    const largeBannerSize = screenTypes.getScreenTypeMinSize('tablet');
+      configAdSlot('aarp-ad-leaderbd', {
+        sizes: [[728, 90], [320, 50]],
+        sizeMapping: wideBannerMapping,
+        pos: 'leader1',
+        sz: bannerAdDynamicSize,
+      });
 
-    doubleClickProvider.defineSizeMapping('aarp-ad-leaderbd')
-      .addSize([largeBannerSize, 0], [728, 90])
-      .addSize([0, 0], [320, 50]);
+      configAdSlot('aarp-ad-onetime', {
+        sizes: [[728, 90], [320, 50]],
+        sizeMapping: wideBannerMapping,
+        pos: 'onetime',
+        sz: bannerAdDynamicSize,
+      });
 
-    doubleClickProvider.defineSizeMapping('aarp-ad-onetime')
-      .addSize([largeBannerSize, 0], [728, 90])
-      .addSize([0, 0], [320, 50]);
+      configAdSlot('aarp-ad-300x250', {
+        sizes: [300, 250],
+        pos: 'rightrail1',
+        sz: '300x250',
+      });
 
-    doubleClickProvider.setPageTargeting('taxo', 'brain_health');
-    doubleClickProvider.setPageTargeting('cmt', 'false');
-    doubleClickProvider.setPageTargeting('source', 'philosophie');
-    doubleClickProvider.setPageTargeting('grab', 'all');
-    doubleClickProvider.setPageTargeting('adv_accept', 'commercial');
-    doubleClickProvider.setPageTargeting('metakw', 'staying sharp');
-    doubleClickProvider.setPageTargeting('kuid', Krux.user);
-    doubleClickProvider.setPageTargeting('ksg', Krux.segments);
-    doubleClickProvider.setPageTargeting('dem1', '[dynamic]');
-    doubleClickProvider.setPageTargeting('dem2', '[dynamic]');
-    doubleClickProvider.setPageTargeting('dem3', '[dynamic]');
-    doubleClickProvider.setPageTargeting('dem4', '[dynamic]');
-    doubleClickProvider.setPageTargeting('scrn',
-      screenTypeTargetingKeys[screenType]);
+      googletag.pubads().setTargeting('taxo','brain_health');
+      googletag.pubads().setTargeting('cmt','false');
+      googletag.pubads().setTargeting('source','philosophie');
+      googletag.pubads().setTargeting('grab','all');
+      googletag.pubads().setTargeting('adv_accept','commercial');
+      googletag.pubads().setTargeting('metakw','staying sharp');
+      googletag.pubads().setTargeting('kuid', Krux.user);
+      googletag.pubads().setTargeting('ksg', Krux.segments);
+      googletag.pubads().setTargeting('dem1','null');
+      googletag.pubads().setTargeting('dem2','null');
+      googletag.pubads().setTargeting('dem3','null');
+      googletag.pubads().setTargeting('dem4','null');
+      googletag.pubads().setTargeting('scrn',
+        screenTypeTargetingKeys[screenType]);
+
+      googletag.pubads().enableSingleRequest();
+      googletag.pubads().disableInitialLoad();
+      googletag.enableServices();
+    });
   },
 };

@@ -64,6 +64,8 @@ const routerConfig = function (stateHelperProvider,
     .state({
       name: 'application',
       templateUrl: 'app/layouts/application.html',
+      url: '?intcmp',
+      abstract: true,
       // NOTE: can access current user in the controller using currentUser
       // or $rootScope.$currentUser
       resolve: {
