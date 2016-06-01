@@ -57,6 +57,7 @@ const runBlock = function ($log,
     if (fromState.name === 'login-success') {
       $location.search('campaignURL', fromParams.campaignURL);
       $location.search('cmp', fromParams.cmp);
+      $location.search('promo', fromParams.promo);
     }
 
     if (infiniteScroll.stateHasCache()) {
