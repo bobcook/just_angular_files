@@ -1,7 +1,7 @@
 const SearchResultsController = function ($scope, PerformSearch) {
   'ngInject';
 
-  this.perPage = 4;
+  this.perPage = 5;
   this.currentPage = 1;
 
   const search = () => {

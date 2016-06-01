@@ -20,7 +20,7 @@ en:
   config:
     pagination:
       per_page: 6
-      search_per_page: 4
+      search_per_page: 5
 
   assessment_result_categories:
     lifestyle:

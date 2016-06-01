@@ -6,7 +6,7 @@ module Api
           items: ActiveModel::ArraySerializer.new(
             search_results, each_serializer: SearchResultsSerializer),
           # return total_count for frontend pagination
-          total_count: search_results.total_count
+          total_count: search_query.count
         }
       end
 
