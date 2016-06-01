@@ -79,7 +79,7 @@ module OmniAuth
 
       def build_query(queries)
         queries.map do |query|
-          param = request.params[query]
+          param = request.params.fetch(query, '')
           param.empty? ? '' : "#{query}=#{param}"
         end.reject(&:empty?).join('&')
       end

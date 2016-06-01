@@ -31,12 +31,6 @@ module Users
         .fetch('redirectPath', '')
     end
 
-    def promo_code
-      request.env
-        .fetch('omniauth.params', {})
-        .fetch('promo', nil)
-    end
-
     def query_params(claim_token)
       omniauth_params_queries.merge(
         claim_token: claim_token,
