@@ -43,7 +43,7 @@ env 'CMS_CONTENT_FEED_ENDPOINT',
 
 env 'CMS_IMAGES_BASE_URL',
     provide('AARP images CMS base URL',
-            default: '//aarp.org')
+            default: '//www.aarp.org')
 
 env 'MBS_API',
     provide('Brain Solutions API base URL',
