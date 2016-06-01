@@ -10,6 +10,10 @@ const FreeGame = function (API_URL,
     fullResponse: true,
   });
 
+  FreeGame.extend({
+    contentName: 'Game',
+  });
+
   // "Instance-level" properties
   FreeGame.include({
     contentName: 'FreeGame',

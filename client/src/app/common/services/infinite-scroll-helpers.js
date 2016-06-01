@@ -28,8 +28,11 @@ const currentPageNumber = (selector) => {
 };
 
 export default (function (stateName, CacheFactory) {
-  const trackPageNumber = function (selector) {
-    $(window).bind('scroll', function () {
+  const trackPageNumber = function (selector, $rootScope) {
+    $(window).on('scroll', function bindToScroll() {
+      $rootScope.$on('$stateChangeStart', function () {
+        $(window).off('scroll', bindToScroll);
+      });
       const pageNumber = currentPageNumber(selector);
       if (pageNumber) {
         cachePageNumber(pageNumber);

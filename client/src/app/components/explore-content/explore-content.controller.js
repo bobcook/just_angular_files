@@ -7,6 +7,7 @@ const ExploreContentController = function ($pagination,
                                            $location,
                                            $timeout,
                                            $state,
+                                           $rootScope,
                                            CacheFactory) {
   'ngInject';
 
@@ -24,23 +25,25 @@ const ExploreContentController = function ($pagination,
   let paginator;
 
   infiniteScroll.trackPageNumber(
-    paginatedItemSelector
+    paginatedItemSelector,
+    $rootScope
   );
 
   this.showMore = () => {
-    if (this.displayShowMore && !this.completed) {
-      this.busyLoading = true;
-      showMore();
+    if (!(this.displayShowMore && !this.completed && !this.busyLoading)) {
+      return;
     }
-  };
-
-  const showMore = () => {
+    this.busyLoading = true;
     return paginator.showMore().then((items) => {
       this.items = items;
       this.completed = paginator.completed;
       this.busyLoading = false;
     });
   };
+
+  $rootScope.$on('$stateChangeStart', () => {
+    this.busyLoading = true;
+  });
 
   const paginatorOptions = (pillar) => {
     return {

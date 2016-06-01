@@ -7,6 +7,7 @@ const CardsController = function ($pagination,
                                   $location,
                                   $state,
                                   $window,
+                                  $rootScope,
                                   CacheFactory) {
   'ngInject';
 
@@ -29,14 +30,24 @@ const CardsController = function ($pagination,
   let paginator;
 
   infiniteScroll.trackPageNumber(
-    paginatedItemSelector
+    paginatedItemSelector,
+    $rootScope
   );
 
+  $rootScope.$on('$stateChangeStart', () => {
+    this.busyLoading = true;
+  });
+
   this.showMore = () => {
-    if (this.displayShowMore && !this.completed) {
-      this.busyLoading = true;
-      showMore();
+    if (!(this.displayShowMore && !this.completed && !this.busyLoading)) {
+      return;
     }
+    this.busyLoading = true;
+    return paginator.showMore().then((items) => {
+      this.items = items;
+      this.completed = paginator.completed;
+      this.busyLoading = false;
+    });
   };
 
   // TODO: extract out duplication here, in explore page, and dashboard
@@ -70,14 +81,6 @@ const CardsController = function ($pagination,
 
   const lastItem = (index) => {
     return this.items.length - 1 === index;
-  };
-
-  const showMore = (options = {}) => {
-    return paginator.showMore().then((items) => {
-      this.items = items;
-      this.completed = paginator.completed;
-      this.busyLoading = false;
-    });
   };
 
   const paginatorOptions = (pillar) => {
