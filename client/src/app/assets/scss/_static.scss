@@ -112,6 +112,14 @@
       margin-top: 0;
       margin-bottom: 0;
     }
+
+    .cta-note a {
+      text-decoration: underline;
+
+      &:hover {
+        color: $button-green
+      }
+    }
   }
 
   p {
