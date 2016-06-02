@@ -9,7 +9,7 @@ describe ExploreContent do
     )
   end
 
-  ExploreContent::RESOURCE_NAMES.each do |resource_name|
+  ExploreContent::PILLAR_FILTERABLE_RESOURCE_NAMES.each do |resource_name|
     plural_name = resource_name.to_s.pluralize.to_sym
 
     describe "\##{plural_name}" do

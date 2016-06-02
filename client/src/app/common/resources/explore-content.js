@@ -5,7 +5,7 @@ const ExploreContent = function (API_URL,
 
   const exploreContentURL = `${API_URL}/api/v1/explore_content`;
 
-  const defaults = {
+  const defaultResourcesPerPage = {
     articles: 2,
     games: 2,
     activities: 3,
@@ -16,7 +16,7 @@ const ExploreContent = function (API_URL,
   const ExploreContent = railsResourceFactory({
     name: 'exploreContent',
     url: exploreContentURL,
-    defaultParams: defaults,
+    defaultParams: defaultResourcesPerPage,
     fullResponse: true,
     serializer: railsSerializer(function () {
       this.resource('activities', 'Activity');
@@ -25,6 +25,11 @@ const ExploreContent = function (API_URL,
       this.resource('games', 'Game');
       this.resource('freeGames', 'FreeGame');
     }),
+  });
+
+  // "Class-level" properties
+  ExploreContent.extend({
+    contentName: 'ExploreContent',
   });
 
   return ExploreContent;

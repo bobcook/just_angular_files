@@ -20,4 +20,8 @@ class Game < ActiveRecord::Base
   def outdated?(date)
     last_modified < date
   end
+
+  def self.maybe_for_pillar(_)
+    all
+  end
 end

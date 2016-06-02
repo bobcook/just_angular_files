@@ -1,5 +1,6 @@
 class ExploreContent
   RESOURCE_NAMES = %i(game article recipe activity)
+  PILLAR_FILTERABLE_RESOURCE_NAMES = RESOURCE_NAMES - [:game]
 
   def initialize(params)
     @game_count = params[:games].to_i

@@ -49,7 +49,7 @@ const $pagination = function ($q, CacheFactory) {
     const catchUp = (targetPage, elemsPerPage) => {
       targetPage = targetPage || 1;
       const cacheItems = getCache().get('items');
-      if (cacheItems && cacheItems.length > targetPage) {
+      if (cacheItems && cacheItems.length > targetPage * elemsPerPage) {
         items = cacheItems;
         page = Math.ceil((items.length + 1) / elemsPerPage);
         return $q.resolve(cacheItems);
@@ -61,7 +61,7 @@ const $pagination = function ($q, CacheFactory) {
     };
 
     const getCache = () => {
-      const contentName = resource.contentName || 'ExploreAll';
+      const contentName = resource.contentName;
       return cacheHelpers.getOrCreateCache(CacheFactory, contentName);
     };
 

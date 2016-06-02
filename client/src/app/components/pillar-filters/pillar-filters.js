@@ -6,6 +6,7 @@ const pillarFilters = function () {
     controllerAs: 'vm',
     bindToController: true,
     scope: {
+      resourceContentName: '=ssResourceContentName',
       selectedPillar: '=ssSelectedPillar',
     },
   };

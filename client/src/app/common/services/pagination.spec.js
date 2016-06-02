@@ -28,6 +28,7 @@ describe('$pagination', function () {
     it('queries the given resource', function () {
       const resource = {
         query: sinon.stub().returns($promise.of({})),
+        contentName: 'Article',
       };
       const pageNum = 42;
       const subject = makeSubject({ resource });
@@ -46,6 +47,7 @@ describe('$pagination', function () {
         };
         const resource = {
           query: sinon.stub().returns($promise.of(response)),
+          contentName: 'Article',
         };
         const pageNum = 1;
         const subject = makeSubject({ resource });
@@ -68,6 +70,7 @@ describe('$pagination', function () {
         };
         const resource = {
           query: sinon.stub().returns($promise.of(response)),
+          contentName: 'Article',
         };
         const pageNum = 42;
         const subject = makeSubject({ resource });
@@ -92,6 +95,7 @@ describe('$pagination', function () {
         };
         const resource = {
           query: sinon.stub().returns($promise.of(response)),
+          contentName: 'Article',
         };
         const pageNum = 1;
         const subject = makeSubject({ resource });
@@ -114,6 +118,7 @@ describe('$pagination', function () {
         };
         const resource = {
           query: sinon.stub().returns($promise.of(response)),
+          contentName: 'Article',
         };
         const pageNum = 42;
         const subject = makeSubject({ resource });
@@ -136,6 +141,7 @@ describe('$pagination', function () {
         };
         const resource = {
           query: sinon.stub().returns($promise.of(response)),
+          contentName: 'Article',
         };
         const pageNum = 42;
         const subject = makeSubject({ resource });

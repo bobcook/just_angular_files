@@ -1,3 +1,4 @@
+import cacheHelpers from '../../common/services/cache-helpers';
 import infiniteScrollHelpers from
   '../../common/services/infinite-scroll-helpers';
 
@@ -24,7 +25,9 @@ const CardsController = function ($pagination,
   this.completed = false;
   this.busyLoading = false;
   const paginatedItemSelector = '.infinite-scroll-item';
-  const initialPageNum = parseInt($location.hash());
+  const initialPageNum = () => {
+    return parseInt($location.hash());
+  };
   const infiniteScroll =
     infiniteScrollHelpers($state.current.name, CacheFactory);
   let paginator;
@@ -102,14 +105,14 @@ const CardsController = function ($pagination,
                  : null;
 
     paginator = $pagination.create(paginatorOptions(pillar));
-    paginator.catchUp(initialPageNum, this.perPage).then((items) => {
+    paginator.catchUp(initialPageNum(), this.perPage).then((items) => {
       if (items) {
         this.items = items;
         this.busyLoading = false;
-        if (initialPageNum) {
+        if (initialPageNum()) {
           infiniteScroll.scrollToPage(
             paginatedItemSelector,
-            initialPageNum,
+            initialPageNum(),
             $timeout
           );
         }
@@ -118,7 +121,9 @@ const CardsController = function ($pagination,
     });
   };
 
-  $scope.$watch(() => this.selectedPillar, refreshItems);
+  $scope.$watch(() => this.selectedPillar, () => {
+    refreshItems();
+  });
 };
 
 export default CardsController;

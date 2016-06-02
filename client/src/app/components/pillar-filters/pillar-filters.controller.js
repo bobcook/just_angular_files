@@ -1,8 +1,18 @@
+import cacheHelpers from '../../common/services/cache-helpers';
+
 const PillarFiltersController = function (Pillar,
-                                          $pillarFiltering) {
+                                          $pillarFiltering,
+                                          $location,
+                                          CacheFactory) {
   'ngInject';
 
   this.setSelectedPillar = (pillarSlug) => {
+    $location.hash('');
+
+    if (this.resourceContentName) {
+      cacheHelpers.bustCache(CacheFactory, this.resourceContentName);
+    }
+
     $pillarFiltering.pillarBySlug(pillarSlug).then((pillar) => {
       this.selectedPillar = pillar || this.selectAll;
     });

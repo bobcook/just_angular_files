@@ -19,7 +19,9 @@ const ExploreContentController = function ($pagination,
   this.completed = false;
   this.busyLoading = false;
   const paginatedItemSelector = '.infinite-scroll-item';
-  const initialPageNum = parseInt($location.hash());
+  const initialPageNum = () => {
+    return parseInt($location.hash());
+  };
   const infiniteScroll =
     infiniteScrollHelpers($state.current.name, CacheFactory);
   let paginator;
@@ -64,14 +66,14 @@ const ExploreContentController = function ($pagination,
                  : null;
 
     paginator = $pagination.create(paginatorOptions(pillar));
-    paginator.catchUp(initialPageNum, 1).then((items) => {
+    paginator.catchUp(initialPageNum(), 1).then((items) => {
       if (items) {
         this.items = items;
         this.busyLoading = false;
-        if (initialPageNum) {
+        if (initialPageNum()) {
           infiniteScroll.scrollToPage(
             paginatedItemSelector,
-            initialPageNum,
+            initialPageNum(),
             $timeout
           );
         }
