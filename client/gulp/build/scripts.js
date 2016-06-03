@@ -50,6 +50,7 @@ const webpack = function (watch, callback) {
 
   return gulp.src(path.join(conf.paths.src, '/app/index.module.js'))
     .pipe($.webpack(webpackOptions, null, webpackChangeHandler))
+    .on('error', function () { /* Catch error here to not crash on watch */ })
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app')));
 };
 
