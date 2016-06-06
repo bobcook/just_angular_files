@@ -32,6 +32,11 @@ const ExploreContent = function (API_URL,
     contentName: 'ExploreContent',
   });
 
+  // "Instance-level" properties
+  ExploreContent.include({
+    contentName: 'ExploreContent',
+  });
+
   return ExploreContent;
 };
 

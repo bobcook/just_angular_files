@@ -15,6 +15,7 @@
   class="card-holder container article-holder infinite-scroll-item"
   data-pagenum="{{ vm.dataPageNum($index) }}">
   <ss-card
+    ng-if="!vm.useCollectionCard"
     ng-repeat="card in vm.itemsInRow($parent.$index, vm.items)"
     ss-card-for="card"
     ss-card-classes="vm.cardClasses"
@@ -22,6 +23,11 @@
     ss-items="vm.items"
     ss-resource="vm.resource">
   </ss-card>
+  <ss-collection-card
+    ng-if="vm.useCollectionCard"
+    ss-collection="item"
+    ss-resource="vm.resource">
+  </ss-collection-card>
   <ss-encouragement-message
     ng-if="vm.showInlineEncouragementMessage($index)"
     ss-resource="vm.resource">

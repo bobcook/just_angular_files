@@ -123,6 +123,7 @@ import card from './components/card/card.js';
 import cards from './components/cards/cards.js';
 import cardActivityTracker from
   './components/card-activity-tracker/card-activity-tracker.js';
+import collectionCard from './components/collection-card/collection-card.js';
 import contentDrawer from './components/content-drawer/content-drawer.js';
 import currentLifestyleResultsChart from
   './components/charts/current-lifestyle-results.chart.js';
@@ -130,7 +131,6 @@ import currentNeuroResultsChart from
   './components/charts/current-neuro-results.chart.js';
 import encouragementMessage from
   './components/encouragement-message/encouragement-message.js';
-import exploreContent from './components/explore-content/explore-content.js';
 import gameIframe from './games/game-iframe.js';
 import infoBox from './components/info-box/info-box.js';
 import leadIn from './components/lead-in/lead-in.js';
@@ -193,6 +193,8 @@ import CardController from './components/card/card.controller.js';
 import CardActivityTrackerController from
   './components/card-activity-tracker/card-activity-tracker.controller.js';
 import CardsController from './components/cards/cards.controller.js';
+import CollectionCardController from
+  './components/collection-card/collection-card.controller.js';
 import CurrentLifestyleResultsController from
   './components/charts/current-lifestyle-results.controller.js';
 import CurrentNeuroResultsController from
@@ -203,8 +205,6 @@ import DsoGenericMocalController from
 './components/dso-modal/dso-generic-modal.controller.js';
 import EncouragementMessageController from
   './components/encouragement-message/encouragement-message.controller.js';
-import ExploreContentController from
-  './components/explore-content/explore-content.controller.js';
 import GameController from './games/game.controller.js';
 import GameIframeController from './games/game-iframe.controller.js';
 import GameIframeContentController
@@ -406,11 +406,11 @@ app
   .directive('ssCard', card)
   .directive('ssCardActivityTracker', cardActivityTracker)
   .directive('ssCards', cards)
+  .directive('ssCollectionCard', collectionCard)
   .directive('ssContentDrawer', contentDrawer)
   .directive('ssCurrentLifestyleResultsChart', currentLifestyleResultsChart)
   .directive('ssCurrentNeuroResultsChart', currentNeuroResultsChart)
   .directive('ssEncouragementMessage', encouragementMessage)
-  .directive('ssExploreContent', exploreContent)
   .directive('ssGameIframe', gameIframe)
   .directive('ssInfoBox', infoBox)
   .directive('ssLeadIn', leadIn)
@@ -468,11 +468,11 @@ app
     'CurrentLifestyleResultsController',
     CurrentLifestyleResultsController
   )
+  .controller('CollectionCardController', CollectionCardController)
   .controller('CurrentNeuroResultsController', CurrentNeuroResultsController)
   .controller('DsoModalController', DsoModalController)
   .controller('DsoGenericMocalController', DsoGenericMocalController)
   .controller('EncouragementMessageController', EncouragementMessageController)
-  .controller('ExploreContentController', ExploreContentController)
   .controller('GameController', GameController)
   .controller('GameIframeController', GameIframeController)
   .controller('GameIframeContentController', GameIframeContentController)

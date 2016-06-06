@@ -1,0 +1,33 @@
+<div class="card-holder">
+   <ss-card
+     ng-repeat="card in vm.collection.articles"
+     ss-card-for="card">
+    </ss-card>
+</div>
+<div ng-if="$index == 0" permission only="'unpaid'">
+  <ss-onetime-ad adslot="aarp-ad-onetime"></ss-onetime-ad>
+</div>
+<div class="card-holder" permission only="'paid'">
+  <ss-card
+    ng-repeat="card in vm.collection.games"
+    ss-card-for="card">
+  </ss-card>
+</div>
+<div class="card-holder" permission only="'unpaid'">
+  <ss-card
+    ng-repeat="card in vm.collection.freeGames"
+    ss-card-for="card">
+  </ss-card>
+</div>
+<div class="card-holder" permission only="'paid'">
+  <ss-card
+    ng-repeat="card in vm.collection.activities"
+    ss-card-for="card">
+   </ss-card>
+</div>
+<div class="card-holder" permission only="'paid'">
+  <ss-card
+    ng-repeat="card in vm.collection.recipes"
+    ss-card-for="card">
+   </ss-card>
+</div>

@@ -16,6 +16,7 @@ const cards = function ($pillarFiltering) {
       selectedPillar: '=ssSelectedPillar',
       displayShowMore: '=?ssShowMore',
       items: '=?ssItems',
+      useCollectionCard: '=?ssUseCollectionCard',
     },
   };
 };
