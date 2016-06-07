@@ -64,6 +64,8 @@ import GameCardPresenter from
   './common/presenters/game-card.presenter.js';
 import RecipeCardPresenter from './common/presenters/recipe-card.presenter.js';
 import RecipePagePresenter from './common/presenters/recipe-page.presenter.js';
+import UserActivityCardPresenter from
+  './common/presenters/user-activity-card.presenter.js';
 
 // services
 import $auth from './common/services/auth.js';
@@ -102,6 +104,7 @@ import httpsInterceptor from './common/services/https-interceptor.js';
 import MBSAssessmentList from './assessments/mbs-assessment-list.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
 import PerformSearch from './search/perform-search.js';
+import presenterDispatch from './common/services/presenter-dispatch.js';
 import dsoModalService from
   './common/services/dso-modal-service.js';
 import userPolicies from './common/services/user-policies.js';
@@ -359,6 +362,7 @@ app
   .factory('GameCardPresenter', GameCardPresenter)
   .factory('RecipeCardPresenter', RecipeCardPresenter)
   .factory('RecipePagePresenter', RecipePagePresenter)
+  .factory('UserActivityCardPresenter', UserActivityCardPresenter)
 
   // services
   .factory('$assessmentsAuth', $assessmentsAuth)
@@ -374,6 +378,7 @@ app
   .factory('$promise', $promise)
   .factory('$url', $url)
   .factory('$presenterUtils', $presenterUtils)
+  .factory('presenterDispatch', presenterDispatch)
   .factory('$vanityUrlCheck', $vanityUrlCheck)
   .factory('$redirectContent', $redirectContent)
   .factory('$windowResize', $windowResize)

@@ -6,6 +6,10 @@ const UserArticlesController = function (UserArticle,
   // pass values to directive
   this.isUserNamespace = true;
   this.resource = UserArticle;
+  this.items = null;
+  UserArticle.query().then((res) => {
+    this.items = res.data;
+  });
 };
 
 export default UserArticlesController;

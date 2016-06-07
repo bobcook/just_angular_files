@@ -28,7 +28,7 @@ const UserActivity = function (API_URL,
 
   // "Class-level" properties
   UserActivity.extend({
-    contentName: 'Activity',
+    contentName: 'UserActivity',
     pluralContentName: 'Activities',
     archived: (activities) => _.filter(activities, (a) => a.archived),
     unarchived: (activities) => _.filter(activities, (a) => !a.archived),
@@ -37,7 +37,7 @@ const UserActivity = function (API_URL,
 
   // "Instance-level" properties
   UserActivity.include({
-    contentName: 'Activity',
+    contentName: 'UserActivity',
     pluralContentName: 'Activities',
     archive: function () {
       this.archived = true;

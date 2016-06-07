@@ -11,7 +11,7 @@ const EncouragementMessageController = function () {
     this.message =
       'See what the science says. Explore hundreds of brain health articles.';
     break;
-  case 'Activity':
+  case 'UserActivity':
     this.message =
       'You\'re getting sharper. Find more brain-health Activities.';
     break;

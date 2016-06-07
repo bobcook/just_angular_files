@@ -6,7 +6,6 @@ const UserDashboardCardsController = function () {
   this.perPage = this.perPage || 6; // via ss-per-page
   this.perRow = this.perRow || 3; // via ss-per-row
   this.items = this.items || []; // via ss-items
-  const MAX_USER_ACTIVITIES = 6;
 
   this.shownItems = this.items;
 
@@ -18,14 +17,11 @@ const UserDashboardCardsController = function () {
   };
 
   this.showInlineEncouragementMessage = (offset) => {
-    return !noRemainder() &&
-      this.shownItems.length < MAX_USER_ACTIVITIES &&
-      lastItem(offset);
+    return !noRemainder() && lastItem(offset);
   };
 
   this.showStandAloneEncouragementMessage = () => {
-    return noRemainder() &&
-    this.shownItems.length < MAX_USER_ACTIVITIES;
+    return noRemainder();
   };
 
   const noRemainder = () => {

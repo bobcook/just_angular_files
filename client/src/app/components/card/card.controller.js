@@ -1,23 +1,12 @@
 const CardController = function ($filter,
-                                 ActivityCardPresenter,
-                                 ArticleCardPresenter,
-                                 DefaultCardPresenter,
-                                 GameCardPresenter,
-                                 RecipeCardPresenter) {
+                                 presenterDispatch) {
   'ngInject';
 
   const getPresenter = () => {
     const contentName = this.card.recommendableType ?
       this.card.recommendableType : this.card.contentName;
 
-    switch (contentName) {
-    case 'Activity': return ActivityCardPresenter;
-    case 'Article': return ArticleCardPresenter;
-    case 'Game': return GameCardPresenter;
-    case 'FreeGame': return GameCardPresenter;
-    case 'Recipe': return RecipeCardPresenter;
-    default: return DefaultCardPresenter;
-    };
+    return presenterDispatch.getPresenter(contentName);
   };
 
   const content = this.card.recommendable ? this.card.recommendable : this.card;
