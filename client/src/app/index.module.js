@@ -40,6 +40,7 @@ import RelatedContentGames from './common/resources/related-content-games.js';
 import Search from './common/resources/search.js';
 import SitemapUrl from './common/resources/sitemap-url.js';
 import UserActivity from './common/resources/user-activity.js';
+import UserArchivedActivity from './common/resources/user-archived-activity.js';
 import UserActivityPeriod from './common/resources/user-activity-period.js';
 import UserArticle from './common/resources/user-article.js';
 import UserAssessmentGroup from './common/resources/user-assessment-group.js';
@@ -340,6 +341,7 @@ app
   .factory('Search', Search)
   .factory('SitemapUrl', SitemapUrl)
   .factory('UserActivity', UserActivity)
+  .factory('UserArchivedActivity', UserArchivedActivity)
   .factory('UserActivityPeriod', UserActivityPeriod)
   .factory('UserArticle', UserArticle)
   .factory('UserAssessmentGroup', UserAssessmentGroup)

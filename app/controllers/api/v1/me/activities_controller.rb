@@ -2,10 +2,14 @@ module Api
   module V1
     module Me
       class ActivitiesController < Api::V1::Me::BaseController
-        include PaginatedResource
         include SaveableResource
 
         MAX_ACTIVITIES_COUNT = 6 # TODO: move elsewhere
+
+        def index
+          records = current_user.user_activities.where(archived: false)
+          render json: records, status: :ok
+        end
 
         def update
           instance.update(archived: archived)
@@ -31,7 +35,8 @@ module Api
         end
 
         def user_at_max_activities?
-          current_user.activities.count == MAX_ACTIVITIES_COUNT
+          current_user.user_activities.where(archived: false).count >=
+            MAX_ACTIVITIES_COUNT
         end
 
         def instance

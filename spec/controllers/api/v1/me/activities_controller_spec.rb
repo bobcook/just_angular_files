@@ -5,6 +5,18 @@ describe Api::V1::Me::ActivitiesController do
 
   before { sign_in user }
 
+  describe '#index' do
+    it 'should only return unarchived activities' do
+      unarchived_activities = create_list(:user_activity, 4, user: user)
+      create_list(:user_activity, 3, user: user, archived: true)
+      get :index, format: :json
+      results = JSON.parse(response.body)['activities']
+      result_ids = results.map { |r| r['activity']['id'] }
+      nonarchived_ids = unarchived_activities.map(&:activity_id)
+      result_ids.map { |id| expect(nonarchived_ids).to include(id) }
+    end
+  end
+
   describe '#create' do
     context 'under max number of activities' do
       it 'should return created' do

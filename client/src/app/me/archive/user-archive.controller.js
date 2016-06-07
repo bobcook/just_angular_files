@@ -1,13 +1,13 @@
-const UserArchiveController = function (UserActivity,
+const UserArchiveController = function (UserArchivedActivity,
                                         restrictedRedirectService) {
   'ngInject';
 
   restrictedRedirectService.filterAnonymous('me');
 
   this.items = null;
-  this.resource = UserActivity;
-  UserActivity.getAll().then((userActivities) => {
-    this.items = UserActivity.archived(userActivities);
+  this.resource = UserArchivedActivity;
+  UserArchivedActivity.getAll().then((userArchivedActivities) => {
+    this.items = userArchivedActivities;
   });
 };
 
