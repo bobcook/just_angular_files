@@ -9,6 +9,7 @@ const CardsController = function ($pagination,
                                   $state,
                                   $window,
                                   $rootScope,
+                                  $pillarFiltering,
                                   CacheFactory) {
   'ngInject';
 
@@ -121,9 +122,7 @@ const CardsController = function ($pagination,
     });
   };
 
-  $scope.$watch(() => this.selectedPillar, () => {
-    refreshItems();
-  });
+  $scope.$watch(() => this.selectedPillar, () => { refreshItems(); });
 };
 
 export default CardsController;

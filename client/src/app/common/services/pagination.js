@@ -60,7 +60,7 @@ const $pagination = function ($q, CacheFactory) {
     };
 
     const getCache = () => {
-      const contentName = resource.contentName;
+      const contentName = resource.contentName + options.params.pillar;
       return cacheHelpers.getOrCreateCache(CacheFactory, contentName);
     };
 

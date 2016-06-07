@@ -42,7 +42,6 @@ const runBlock = function ($log,
   $rootScope.$on('$stateChangeStart', function (event,
                                                 toState,
                                                 toParams) {
-
     //Support for redirectTo in route configuration
     if (toState.redirectTo) {
       event.preventDefault();
@@ -86,7 +85,7 @@ const runBlock = function ($log,
       // NOTE: we have to handle games differently, probably because of how
       // we get the game from MBS.
       if (pageNumber && toState.name !== 'application.game-play') {
-        const url = `${$state.href(fromState)}#${pageNumber}`;
+        const url = `${$state.href(fromState, fromParams)}#${pageNumber}`;
         window.history.replaceState({}, '', url);
       }
     }

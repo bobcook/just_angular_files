@@ -18,6 +18,9 @@ describe('$pagination', function () {
       {
         perPage: 6,
         displayShowMore: true,
+        params: {
+          pillar: 'all',
+        },
       }
     );
 

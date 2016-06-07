@@ -7,8 +7,6 @@ const PillarFiltersController = function (Pillar,
   'ngInject';
 
   this.setSelectedPillar = (pillarSlug) => {
-    $location.hash('');
-
     if (this.resourceContentName) {
       cacheHelpers.bustCache(CacheFactory, this.resourceContentName);
     }
@@ -17,6 +15,9 @@ const PillarFiltersController = function (Pillar,
       this.selectedPillar = pillar || this.selectAll;
     });
   };
+
+  const initialPillar = $location.search().pillar;
+  this.setSelectedPillar(initialPillar);
 
   this.loadPillars = () => {
     return $pillarFiltering.getPillarData().then((pillarData) => {
