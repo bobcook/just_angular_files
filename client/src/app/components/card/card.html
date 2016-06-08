@@ -1,16 +1,18 @@
-<div
-  class="cp-card {{vm.cardClasses}}"
-  ng-style="{'background-image':'url({{vm.cardImage}})'}">
-
+<div class="cp-card {{vm.cardClasses}}"
+     ng-style="{'background-image':'url({{vm.cardImage}})'}">
   <a class="card-link" ui-sref="{{vm.resourcePath}}"></a>
   <div class="color-fill"></div>
+
   <section>
     <div class="info-block">
       <header>
         <h5>{{vm.upperLeft}}</h5>
+        <div class="effort"><span>{{vm.lowerLeft}}</span></div>
+
         <span ng-if="vm.upperRight">{{vm.upperRight}}</span>
         <img ng-if="vm.isGame" ng-src="{{vm.cardImage}}" alt="">
       </header>
+
       <article>
         <div class="article-card-copy">
           <h4><a ui-sref="{{vm.resourcePath}}">{{vm.cardTitle}}</a></h4>
@@ -27,9 +29,6 @@
           <div>{{vm.cardContent}}</div>
         </div>
 
-        <div class="effort">
-          <span>{{vm.lowerLeft}}</span>
-        </div>
         <div class="proof" ng-show="vm.lowerRight">
           <span class="icon-recommend"></span>
           <span>{{vm.lowerRight}}</span>
@@ -46,6 +45,7 @@
           </a>
         </div>
       </footer>
+
       <footer
         ng-if="!vm.isGame"
         ss-pillars-display="vm.pillars"
