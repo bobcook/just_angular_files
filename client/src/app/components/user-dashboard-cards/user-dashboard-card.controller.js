@@ -18,7 +18,7 @@ const UserDashboardCardController = function ($filter,
   this.card = this.card || null; // via ss-card-for
 
   this.useActivityTracker = () => {
-    return this.resource.contentName === UserActivity.contentName;
+    return this.resource.contentName.toLowerCase().includes('activity');
   };
 
   this.resourceIsGame = () => {

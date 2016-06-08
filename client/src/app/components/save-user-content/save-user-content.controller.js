@@ -16,7 +16,9 @@ const SaveUserContentController = function ($state,
   };
 
   const resourceName =
-    $filter('downcase')(this.resource.contentName);
+    $filter('downcase')(this.resource.contentName) === 'useractivity' ?
+      'activity' :
+      $filter('downcase')(this.resource.contentName);
 
   // via ss-plural-resource-name
   this.pluralResourceName = this.pluralResourceName || 'OVERRIDE';
@@ -40,8 +42,9 @@ const SaveUserContentController = function ($state,
   } else {
     // Activity actually uses UserActivity as the resource. Therefore we have to
     //  get by "this.item.id" instead of "this.item.slug"
-    const id =
-      this.resource.contentName === 'Activity' ? this.item.id : this.item.slug;
+    const id = this.resource.contentName === 'UserActivity' ?
+                this.item.id :
+                this.item.slug;
     this.resource.get(id).then((response) => {
       this.savedItem = response.data;
       this.isSaved = response.status === 200;

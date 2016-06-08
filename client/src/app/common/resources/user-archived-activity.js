@@ -1,6 +1,7 @@
 const UserArchivedActivity = function (API_URL,
                                railsResourceFactory,
-                               railsSerializer) {
+                               railsSerializer,
+                               resourceUrlFormatter) {
   'ngInject';
 
   const userArchivedActivityUrl = `${API_URL}/api/v1/me/archived_activities`;
@@ -24,9 +25,25 @@ const UserArchivedActivity = function (API_URL,
     });
   };
 
+  // Computed properties
+  Object.defineProperty(UserArchivedActivity.prototype, 'uiSref', {
+    get: function () {
+      return resourceUrlFormatter.format('activity',
+                                         this.slug,
+                                         this.pathPillar,
+                                         this.pathYear);
+    },
+  });
+
+  // "Instance-level" properties
+  UserArchivedActivity.include({
+    contentName: 'Activity',
+  });
+
   // "Class-level" properties
   UserArchivedActivity.extend({
     getAll: getAll,
+    contentName: 'Activity',
   });
 
   return UserArchivedActivity;

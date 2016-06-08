@@ -3,6 +3,7 @@ module Api
     module Me
       class ActivitiesController < Api::V1::Me::BaseController
         include SaveableResource
+        include PaginatedResource
 
         MAX_ACTIVITIES_COUNT = 6 # TODO: move elsewhere
 
