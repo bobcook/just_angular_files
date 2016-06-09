@@ -64,6 +64,10 @@ const runBlock = function ($log,
       $location.hash(toStateScrollHelper.getLastSeenPageNumber());
     }
 
+    if (toState.name !== 'application.game-play') {
+      $rootScope.isGamePlayView = false;
+    }
+
     advertising.stateSetUp(toParams, toState);
 
     //NOTE: this can be removed once global params are handled correcty
@@ -122,8 +126,6 @@ const runBlock = function ($log,
       // end of Segment.io analytics
     }
   });
-
-  $log.debug('runBlock end');
 };
 
 export default runBlock;
