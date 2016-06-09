@@ -230,7 +230,7 @@
     <script>
     if (self == top) {
       document.documentElement.style.display = 'block';
-    } else {
+    } else if (!self.frameElement) {
       top.location = self.location;
     }
     </script>

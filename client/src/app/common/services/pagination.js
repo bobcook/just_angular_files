@@ -45,11 +45,10 @@ const $pagination = function ($q, CacheFactory) {
       return resource.query(options).then(interpretResponse);
     };
 
-    // TODO: resolve elemsPerPage by consolidating explore-content and cards
     const catchUp = (targetPage, elemsPerPage) => {
       targetPage = targetPage || 1;
       const cacheItems = getCache().get('items');
-      if (cacheItems && cacheItems.length > targetPage * elemsPerPage) {
+      if (cacheItems && cacheItems.length >= targetPage * elemsPerPage) {
         items = cacheItems;
         page = Math.ceil((items.length + 1) / elemsPerPage);
         return $q.resolve(cacheItems);

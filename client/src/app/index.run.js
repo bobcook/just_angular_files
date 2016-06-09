@@ -55,7 +55,14 @@ const runBlock = function ($log,
                                                   toParams,
                                                   fromState,
                                                   fromParams) {
-    const infiniteScroll = infiniteScrollHelpers(fromState.name, CacheFactory);
+
+    const toGames = toState.name === 'application.games';
+    const fromGamePlay = fromState.name === 'application.game-play';
+    if (toGames && fromGamePlay) {
+      const toStateScrollHelper =
+        infiniteScrollHelpers(toState.name, CacheFactory);
+      $location.hash(toStateScrollHelper.getLastSeenPageNumber());
+    }
 
     advertising.stateSetUp(toParams, toState);
 
@@ -66,12 +73,15 @@ const runBlock = function ($log,
       $location.search('cmp', fromParams.cmp);
       $location.search('promo', fromParams.promo);
     }
-
-    if (infiniteScroll.stateHasCache()) {
+    const fromStateScrollHelper =
+      infiniteScrollHelpers(fromState.name, CacheFactory);
+    if (fromStateScrollHelper.stateWillBeCached()) {
       const pageNumber =
-        infiniteScroll.getLastSeenPageNumber();
+        fromStateScrollHelper.getLastSeenPageNumber();
 
-      if (pageNumber) {
+      // NOTE: we have to handle games differently, probably because of how
+      // we get the game from MBS.
+      if (pageNumber && toState.name !== 'application.game-play') {
         const url = `${$state.href(fromState)}#${pageNumber}`;
         window.history.replaceState({}, '', url);
       }
