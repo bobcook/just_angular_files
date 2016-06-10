@@ -8,7 +8,7 @@
         <div class="bar-end low">
           <span class="icon-next"></span>
         </div>
-        <div ng-class="{bar: true, perfect: vm.isPerfectScore}" id="result-index-{{vm.index}}" style="width: {{vm.scorePercent}}%;">
+        <div ng-class="{bar: true, perfect: vm.isPerfectScore}" id="result-index-{{vm.index}}" ng-style="{width: vm.scorePercent + '%'}">
           <div class="slider-progress"></div>
           <div class="left-half-circle mask">
             <span class="indicie-score">{{vm.score}}</span>
