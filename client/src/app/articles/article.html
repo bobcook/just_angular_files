@@ -6,6 +6,8 @@
   ss-canonical-url="{{vm.article.canonicalUrl}}">
 </ss-update-meta>
 
+<update-meta property="og:image" content="https:{{vm.article.mastHeadImage}}"></update-meta>
+
 <div id="article-container">
   <div class="cp-lead-in-detail article">
     <div ng-class="{'non-paid-bg-image': !$root.$currentUser.isPaid(), 'paid-bg-image': $root.$currentUser.isPaid()}"

@@ -47,6 +47,42 @@ you will need all these processes running for local development:
 Do not set the `DSO_MAIL_API` to the actual endpoint in development to prevent
 sending emails.
 
+### Ngrok environment settings
+When running the local server through ngrok, remember to temporarily add an entry
+into the `envs` JS hash in `index.html` - this should associate the ngrok host
+name with the correct environment settings.
+
+Update the value in `index.html`
+```
+var envs = {
+  '<frontend-hostname>.ngrok.io': 'local',
+```
+and run
+```
+$ ngrok http 9000
+```
+
+If you want to debug the Rails API through a separate ngrok process, make sure
+to also temporarily update the `API_URL` value in the selected environment
+settings in the `envVars` JS hash.
+
+Update the value in `index.html`
+```
+var envVars = {
+  local: {
+    API_URL: '<backend-hostname>.ngrok.io',
+  ...
+```
+and run
+```
+$ ngrok http 3000
+```
+
+Note that if you are using ngrok to test anything with authentication, update
+the `FRONTEND_URL` value in the rails env vars.
+
+`FRONTEND_URL=<frontend-hostname>.ngrok.io`
+
 ## Frontend
 
 The frontend application is an Angular app located in the `client/` directory. The app is built with Gulp and structured for deployment to AWS S3 + Cloudfront. To set up the frontend application, run `npm install` in the root directory, which will install Node and Bower dependencies and build the client code.
