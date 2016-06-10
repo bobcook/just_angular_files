@@ -45,6 +45,10 @@ const ReviewsController = function ($stateParams,
     });
   };
 
+  this.contentHasReviews = () => {
+    return (reviews && reviews.length > 0);
+  };
+
   this.recommendPercentage = () => {
     if (!reviews) { return null; }
 

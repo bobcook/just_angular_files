@@ -1,7 +1,7 @@
 <div class="cp-reviews">
   <div>
     <header>
-      <h4>{{ vm.recommendPercentage() }} Liked This</h4>
+      <h4 ng-show="vm.contentHasReviews()">{{ vm.recommendPercentage() }} Liked This</h4>
         <a class="toggle-carret" ng-click="vm.toggleReviews()">
           <span class="icon circle icon-down" ng-class="{'icon-up': vm.showReviews, 'icon-down': !vm.showReviews}">
           </span>
