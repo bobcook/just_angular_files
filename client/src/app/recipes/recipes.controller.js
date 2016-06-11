@@ -6,7 +6,7 @@ const RecipesController = function (Recipe,
                                     restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.filterUnpaidUsers('recipes', '/recipes');
+  restrictedRedirectService.showModalToUnpaidUsers('recipes', '/recipes');
 
   this.resource = Recipe;
 

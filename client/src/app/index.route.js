@@ -640,9 +640,9 @@ const routerConfig = function (stateHelperProvider,
                                     $rootScope,
                                     $loadCurrentUser) {
     $loadCurrentUser($rootScope.$currentUser).then(() => {
-      restrictedRedirectService.filterAnonymous('assessments',
-                                                '/assessments',
-                                                true);
+      restrictedRedirectService.showModalToAnonymousUsers('assessments',
+                                                          '/assessments',
+                                                          true);
       assessmentLinkManager.redirectToAssessment();
     });
   });

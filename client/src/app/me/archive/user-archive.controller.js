@@ -2,7 +2,7 @@ const UserArchiveController = function (UserArchivedActivity,
                                         restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.filterAnonymous('me');
+  restrictedRedirectService.showModalToAnonymousUsers('me');
 
   this.items = null;
   this.resource = UserArchivedActivity;

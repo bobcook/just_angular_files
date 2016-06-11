@@ -11,7 +11,7 @@ const AsssessmentController = function ($stateParams,
                                         restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.filterAnonymous('assessment');
+  restrictedRedirectService.showModalToAnonymousUsers('assessment');
 
   const userAssessmentId = $stateParams.id;
   let assessmentRedirect;

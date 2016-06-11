@@ -2,17 +2,18 @@ const UserGameController = function (Game,
                                      GameReview,
                                      UserGame,
                                      restrictedRedirectService,
-                                     $stateParams) {
+                                     $stateParams,
+                                     $location) {
   'ngInject';
 
-  restrictedRedirectService.filterAnonymous('me');
+  restrictedRedirectService.showModalToAnonymousUsers('me');
 
   // get one game
   UserGame.get($stateParams.id).then((game) => {
     this.game = game.data;
 
     if (game.gameType === 'Paid') {
-      restrictedRedirectService.filterUnpaidUsers('me', '/me/working-on');
+      restrictedRedirectService.showModalToUnpaidUsers('me', '/me/working-on');
     }
   });
 

@@ -14,7 +14,10 @@ const DsoGenericMocalController = function ($state,
     return _.includes(registerResources, resource);
   };
 
-  $scope.close = close;
+  $scope.close = () => {
+    close();
+    $state.go('application.home');
+  };
 
   $scope.login = dsoAuth.login;
 

@@ -1,7 +1,7 @@
 const UserGamesController = function (UserGame, restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.filterAnonymous('me');
+  restrictedRedirectService.showModalToAnonymousUsers('me');
 
   // pass values to directive
   this.isUserNamespace = true;

@@ -8,9 +8,8 @@ const ActivityController = function (Activity,
                                      $redirectContent) {
   'ngInject';
 
-  restrictedRedirectService.filterUnpaidUsers('activities',
-                                              $location.path(),
-                                              true);
+  restrictedRedirectService
+    .showModalToUnpaidUsers('activities', $location.path(), true);
 
   const id = $stateParams.id.replace('.html', '');
   Activity.get(id).then((activity) => {

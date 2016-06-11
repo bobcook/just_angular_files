@@ -1,4 +1,5 @@
 const DsoModalController = function ($scope,
+                                     $state,
                                      $location,
                                      dsoAuth,
                                      resource,
@@ -8,7 +9,11 @@ const DsoModalController = function ($scope,
                                      close) {
   'ngInject';
 
-  $scope.close = close;
+  $scope.close = () => {
+    close();
+    $state.go('application.home');
+  };
+
   $scope.login = dsoAuth.login;
   $scope.registerUrl = dsoAuth.dsoRegisterAuth();
   $scope.buttonText = `subscribe_modal.${resource}.button_text`;

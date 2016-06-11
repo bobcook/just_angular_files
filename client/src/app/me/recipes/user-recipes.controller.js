@@ -1,7 +1,7 @@
 const UserRecipesController = function (UserRecipe, restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.filterAnonymous('me');
+  restrictedRedirectService.showModalToAnonymousUsers('me');
 
   // pass values to directive
   this.isUserNamespace = true;

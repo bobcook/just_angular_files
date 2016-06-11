@@ -5,7 +5,7 @@ const UserArticleController = function (Article,
                                        $stateParams) {
   'ngInject';
 
-  restrictedRedirectService.filterAnonymous('me');
+  restrictedRedirectService.showModalToAnonymousUsers('me');
 
   // get one article
   UserArticle.get($stateParams.id).then((article) => {

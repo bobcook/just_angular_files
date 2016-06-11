@@ -12,7 +12,7 @@ const OverallResultsController = function (Activity,
                                            restrictedRedirectService) {
   'ngInject';
 
-  restrictedRedirectService.filterAnonymous('me');
+  restrictedRedirectService.showModalToAnonymousUsers('me');
 
   const queries = AssessmentResultQueries;
 

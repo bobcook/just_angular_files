@@ -8,9 +8,8 @@ const RecipeController = function (Recipe,
                                    $redirectContent) {
   'ngInject';
 
-  restrictedRedirectService.filterUnpaidUsers('recipes',
-                                              $location.path(),
-                                              true);
+  restrictedRedirectService
+    .showModalToUnpaidUsers('recipes', $location.path(), true);
 
   const id = $stateParams.id.replace('.html', '');
   Recipe.get(id).then((recipe) => {

@@ -2,11 +2,8 @@ const HomeController = function (AssessmentStatus,
                                  ExploreContent,
                                  $rootScope,
                                  $state,
-                                 dsoAuth,
-                                 restrictedRedirectModalService) {
+                                 dsoAuth) {
   'ngInject';
-
-  restrictedRedirectModalService.showModal();
 
   const currentUser = $rootScope.$currentUser;
 

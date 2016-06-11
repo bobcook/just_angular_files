@@ -8,7 +8,7 @@ const UserAssessmentController = function ($assessmentsAuth,
                                            dsoAuth) {
   'ngInject';
 
-  restrictedRedirectService.filterAnonymous('me');
+  restrictedRedirectService.showModalToAnonymousUsers('me');
 
   const isRegisteredUser = function () {
     return $rootScope.$currentUser &&

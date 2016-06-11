@@ -108,8 +108,6 @@ import presenterDispatch from './common/services/presenter-dispatch.js';
 import dsoModalService from
   './common/services/dso-modal-service.js';
 import userPolicies from './common/services/user-policies.js';
-import restrictedRedirectModalService from
-  './common/services/restricted-redirect-modal-service.js';
 import restrictedRedirectService from
   './common/services/restricted-redirect-service.js';
 import resourceUrlFormatter from './common/services/resource-url-formatter.js';
@@ -239,8 +237,6 @@ import ResultSectionController from
   './components/assessment-results/result-section.controller.js';
 import ResultIndexController from
   './components/charts/result-index.controller.js';
-import RestrictedRedirectContoller from
-  './home/restrcted-redirect.controller.js';
 import RetakeAssessmentModalController from
   './assessments/retake-assessment-modal.controller.js';
 import ReviewsController from './components/reviews/reviews.controller.js';
@@ -399,7 +395,6 @@ app
   .factory('PerformSearch', PerformSearch)
   .factory('dsoModalService', dsoModalService)
   .factory('userPolicies', userPolicies)
-  .factory('restrictedRedirectModalService', restrictedRedirectModalService)
   .factory('restrictedRedirectService', restrictedRedirectService)
   .factory('resourceUrlFormatter', resourceUrlFormatter)
   .provider('modalStateHelper', modalStateHelper)
@@ -502,7 +497,6 @@ app
   .controller('RelatedContentController', RelatedContentController)
   .controller('ResultIndexController', ResultIndexController)
   .controller('ResultSectionController', ResultSectionController)
-  .controller('RestrictedRedirectContoller', RestrictedRedirectContoller)
   .controller('RetakeAssessmentModalController',
      RetakeAssessmentModalController)
   .controller('ReviewsController', ReviewsController)
