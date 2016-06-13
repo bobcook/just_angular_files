@@ -320,8 +320,14 @@
 
 
 .games-header {
-  float: right;
+  clear: left;
+  float: left;
   display: block;
+
+  @media screen and (min-width: 690px) {
+    float: right;
+    clear: none;
+  }
 
   a, span {
     font-size: 14px;
@@ -360,6 +366,10 @@
 
       @media screen and (min-width: 768px) {
         width: auto;
+      }
+
+      @media screen and (max-width: 767px) {
+        visibility: hidden;
       }
     }
   }
