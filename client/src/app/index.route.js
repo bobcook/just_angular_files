@@ -593,6 +593,22 @@ const routerConfig = function (stateHelperProvider,
       },
     })
     .state({
+      name: 'join',
+      url: '/Join',
+      redirectTo: 'application.home',
+      params: {
+        cmp: 'DM-MEM-SSS-INT-BRN-VANTIY-06202016',
+      },
+    })
+    .state({
+      name: 'join1',
+      url: '/Join1',
+      redirectTo: 'application.home',
+      params: {
+        cmp: 'DM-MEM-SSS-INT-BRN-VANTIY1-06202016',
+      },
+    })
+    .state({
       name: 'benefits',
       url: '/benefits',
       redirectTo: 'application.home',
@@ -630,6 +646,7 @@ const routerConfig = function (stateHelperProvider,
       assessmentLinkManager.redirectToAssessment();
     });
   });
+
   $urlRouterProvider.otherwise('/not-found');
 };
 
