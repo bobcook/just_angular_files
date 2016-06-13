@@ -80,21 +80,21 @@ en:
     assessments_system_message:
       not_started:
         headline: "Better Brain Health Starts Here"
-        body_text: "Join now to take the Brain Health Assessment, developed by scientists, and start building better brain health today."
-        button_text: "Join and Get Started"
+        body_text: "Subscribe now to take the Brain Health Assessment, developed by scientists, and start building better brain health today."
+        button_text: "Subscribe and Get Started"
       started:
         headline: "You're almost there!"
-        body_text: "Join now and complete your Brain Health Assessment to see your Brain Health Score and begin receiving personalized recommendations for improving your brain health."
-        button_text: "Join and finish"
+        body_text: "Subscribe now and complete your Brain Health Assessment to see your Brain Health Score and begin receiving personalized recommendations for improving your brain health."
+        button_text: "Subscribe and finish"
       completed:
         headline: "It's time to see your Brain Health Score"
-        body_text: "You did the work, now see the results. Join now to get your brain health score and review a detailed results report."
-        button_text: "Join and get my score"
+        body_text: "You did the work, now see the results. Subscribe now to get your brain health score and review a detailed results report."
+        button_text: "Subscribe and get my score"
     system_message:
       better_brain_starts_here: "Better Brain Health Starts Here"
       take_the_assessment: "You're about to see amazing results. Take the Brain Health Assessment, developed by scientists, and receive personalized recommendations for a brain-smart lifestyle."
       finish_the_assessment: "You can do this! Finish your Brain Health Assessment to see your brain health score and begin receiving personalized recommendations for improving your brain health today. We've even saved your place for you."
-      assessment_subscribe_to_see_results: "See your assessment report and start your personalized Staying Sharp experience by joining today."
+      assessment_subscribe_to_see_results: "See your assessment report and start your personalized Staying Sharp experience by subscribing today."
       explore_your_personalized_recommendations: "Explore your Personalized Recommendations"
       check_the_activities: "You've completed the Brain Health Assessment and you're ready to start trying all the fun, simple activities chosen to address your individual brain health needs. Check them out at the end of your assessment report and start building a stronger brain today."
       nearing_expiration: "By subscribing you will continue to enjoy access to the Brain Health Assessment, scores and report, your personalized activity recommendations, premium games, and delicious brain-boosting recipes."
@@ -106,17 +106,17 @@ en:
 
   subscribe_modal:
     activities:
-      body_text: "Join now to access hundreds of simple, fun activities designed to boost your brain power."
-      button_text: "Join and Stay Sharp"
+      body_text: "Subscribe now to access hundreds of simple, fun activities designed to boost your brain power."
+      button_text: "Subscribe and Stay Sharp"
     articles:
       body_text: "Create a free account to save your favorite articles and games."
       button_text: "Create a Free Account"
     me:
-      body_text: "Join now to access the My Staying Sharp dashboard where you can save and easily access all of your favorite science-based articles, brain-food recipes and Brain Health Assessment results."
-      button_text: "Join and Stay Sharp"
+      body_text: "Subscribe now to access the My Staying Sharp dashboard where you can save and easily access all of your favorite science-based articles, brain-food recipes and Brain Health Assessment results."
+      button_text: "Subscribe and Stay Sharp"
     recipes:
-      body_text: "Join now to access delicious, healthy, brain-boosting recipes"
-      button_text: "Join and Get Cookin'"
+      body_text: "Subscribe now to access delicious, healthy, brain-boosting recipes"
+      button_text: "Subscribe and Get Cookin'"
     games:
       body_text: "Provide an email address to save your favorite articles and games. You'll also be able to comment, recommend and share content."
       button_text: "Create a Free Account"
@@ -130,7 +130,7 @@ en:
       started: "Continue Assessment"
       completed: "Retake Assessment"
     registered:
-      not_started: "Join and Take Assessment"
-      started: "Join and Complete Assessment"
-      completed: "Join now and get your results"
-    anonymous: "Join and Take Assessment"
+      not_started: "Subscribe and Take Assessment"
+      started: "Subscribe and Complete Assessment"
+      completed: "Subscribe now and get your results"
+    anonymous: "Subscribe and Take Assessment"
