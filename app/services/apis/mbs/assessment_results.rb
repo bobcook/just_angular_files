@@ -14,6 +14,7 @@ module Apis
 
         results_data =
           data
+          .compact
           .fetch('assessment', {})
           .fetch('assessment_result', {})
 
