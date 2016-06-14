@@ -16,8 +16,12 @@ module Api
         end
 
         def update
-          current_user.update(last_seen_at: last_seen_at)
-          render json: current_user
+          if user_signed_in?
+            current_user.update(last_seen_at: last_seen_at)
+            render json: current_user
+          else
+            head :unprocessable_entity
+          end
         end
 
         # angular-rails-resource does not yet support singular resources
