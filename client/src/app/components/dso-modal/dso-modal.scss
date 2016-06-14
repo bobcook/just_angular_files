@@ -1,0 +1,15 @@
+.modal.subscribe-modal {
+  @media screen and (max-width: 768px) {
+    .footer {
+      a {
+        display: inline;
+      }
+
+      .btn {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
