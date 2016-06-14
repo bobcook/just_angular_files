@@ -2,12 +2,16 @@ module Api
   module V1
     class SearchController < Api::V1::BaseController
       def index
-        render json: {
-          items: ActiveModel::ArraySerializer.new(
-            search_results, each_serializer: SearchResultsSerializer),
-          # return total_count for frontend pagination
-          total_count: search_query.results.total
-        }
+        if params[:keywords].nil?
+          head :no_content
+        else
+          render json: {
+            items: ActiveModel::ArraySerializer.new(
+              search_results, each_serializer: SearchResultsSerializer),
+            # return total_count for frontend pagination
+            total_count: search_query.results.total
+          }
+        end
       end
 
       private

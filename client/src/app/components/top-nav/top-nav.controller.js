@@ -29,6 +29,7 @@ const TopNavController = function (ApiRoutes,
   this.subscribeUrl = dsoAuth.dsoSubscribeAuth(null, intcmp);
 
   this.submitSearch = function () {
+    if (!this.keywords) { return; }
     this.isSearchOpen = false;
     $state.go(
       'application.search-results',

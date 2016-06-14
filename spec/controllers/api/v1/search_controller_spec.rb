@@ -44,6 +44,18 @@ module Api
           expect(obj['items'].length).to be(0)
         end
 
+        it 'returns no content if query is nil' do
+          get :index
+
+          expect(response.body).to eq('')
+        end
+
+        it 'has 204 status if query is nil' do
+          get :index
+
+          expect(response.status).to eq(204)
+        end
+
         context 'for paid user' do
           let(:user) { create(:user, membership_status: :paid) }
           before { login_user(user) }
