@@ -61,7 +61,7 @@ describe LatestAssessmentResultsJob, type: :job do
 
       it 'decrements the number of retries' do
         expect_any_instance_of(ActiveJob::ConfiguredJob)
-          .to receive(:perform_later).with(user, user_assessment, 9)
+          .to receive(:perform_later).with(user, user_assessment, retries: 9)
 
         LatestAssessmentResultsJob.perform_now(
           user,

@@ -25,7 +25,7 @@ class LatestAssessmentResultsJob < ActiveJob::Base
   def schedule_retry(user, user_assessment, retries)
     LatestAssessmentResultsJob
       .set(wait: 30.seconds)
-      .perform_later(user, user_assessment, retries - 1)
+      .perform_later(user, user_assessment, retries: retries - 1)
   end
 
   def latest_results_for(user)
