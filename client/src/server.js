@@ -2,6 +2,7 @@
 
 require('dotenv').config();
 const express = require('express');
+const forceSSL = require('express-force-ssl');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8080;
@@ -15,6 +16,16 @@ const basicAuth = require('basic-auth');
 const https = require('https');
 const headerConfig = require('./headers.json');
 const app = express();
+
+// NOTE: set trustXFPHeader to true when testing locally
+// this is helpful b/c we can test https redirects with ngrok
+if (process.env.ENVIRONMENT === 'development' ) {
+  app.set('forceSSLOptions', {
+    trustXFPHeader: true,
+  });
+}
+
+app.use(forceSSL);
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());

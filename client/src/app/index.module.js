@@ -100,7 +100,6 @@ import dsoAuth from './common/services/dso-auth.js';
 import dtmAnalyticsService from
   './common/services/dtm-analytics-service.js';
 import FutureBrainStats from './components/charts/future-brain-stats.js';
-import httpsInterceptor from './common/services/https-interceptor.js';
 import MBSAssessmentList from './assessments/mbs-assessment-list.js';
 import modalStateHelper from './common/services/modal-state-helper.js';
 import PerformSearch from './search/perform-search.js';
@@ -390,7 +389,6 @@ app
   .factory('dependentMemoize', dependentMemoize)
   .factory('dtmAnalyticsService', dtmAnalyticsService)
   .factory('FutureBrainStats', FutureBrainStats)
-  .factory('httpsInterceptor', httpsInterceptor)
   .factory('MBSAssessmentList', MBSAssessmentList)
   .factory('PerformSearch', PerformSearch)
   .factory('dsoModalService', dsoModalService)
