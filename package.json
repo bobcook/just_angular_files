@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "main": "server.js",
   "engines": {
-    "node": "4.4.3"
+    "node": "~0.12.7"
   },
   "scripts": {
     "test": "cd client && gulp test",
@@ -92,10 +92,10 @@
     "wiredep": "~2.2.2",
     "wrench": "~1.5.8"
   },
-  "engines": {
-    "node": "~0.12.7"
-  },
   "optionalDependencies": {
     "fsevents": "1.0.12"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1"
   }
 }
