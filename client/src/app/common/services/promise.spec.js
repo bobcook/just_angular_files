@@ -1,5 +1,5 @@
 describe('$promise', function () {
-  beforeEach(loadApp)
+  beforeEach(loadApp);
 
   beforeEach(inject(function ($rootScope, $promise) {
     this.$scope = $rootScope;
@@ -38,7 +38,7 @@ describe('$promise', function () {
 
       this.$promise.accumulate(startState, [
         firstPromise,
-        secondPromise
+        secondPromise,
       ]).then(function (results) {
         expect(results).to.eql(expected);
       });
@@ -67,7 +67,7 @@ describe('$promise', function () {
 
         $p.accumulate({}, [
           $p.as('first', firstPromise),
-          $p.as('second', secondPromise)
+          $p.as('second', secondPromise),
         ]).then(function (results) {
           expect(results).to.eql(expected);
         });

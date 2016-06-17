@@ -6,26 +6,26 @@ window.__env = {
 window.Krux = { user: '', segments: [] };
 
 window.googletag = {
-  defineSlot: function() {
+  defineSlot: function () {
     return window.googletag;
   },
-  addService: function() {
+  addService: function () {
     return window.googletag;
   },
-  setTargeting: function() {
+  setTargeting: function () {
     return window.googletag;
   },
-  defineSizeMapping: function() {
+  defineSizeMapping: function () {
     return window.googletag;
   },
-  pubAds: function() {
+  pubAds: function () {
     return window.googletag;
   },
-  refresh: function() {
+  refresh: function () {
     return window.googletag;
   },
   cmd: {
-    push: function() {},
+    push: function () {},
   },
 };
 

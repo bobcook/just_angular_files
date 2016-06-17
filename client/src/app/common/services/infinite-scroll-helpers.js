@@ -28,12 +28,12 @@ const currentPageNumber = (selector) => {
 };
 
 export default (function (stateName, CacheFactory) {
-  const trackPageNumber = function (selector, $rootScope) {
+  const trackPageNumber = function (selector, $rootScope, pageNumber) {
     const scrollFunc = function bindToScroll() {
       $rootScope.$on('$stateChangeStart', function () {
         $(window).off('scroll', handler);
       });
-      const pageNumber = currentPageNumber(selector);
+      pageNumber = pageNumber || currentPageNumber(selector);
       if (pageNumber) {
         cachePageNumber(pageNumber);
       }
@@ -47,6 +47,7 @@ export default (function (stateName, CacheFactory) {
   };
 
   const getLastSeenPageNumber = function () {
+    if (!stateWillBeCached()) { return; }
     return cacheHelpers
       .getOrCreateCache(
         CacheFactory,
@@ -55,6 +56,7 @@ export default (function (stateName, CacheFactory) {
   };
 
   const cachePageNumber = function (pageNumber) {
+    if (!stateWillBeCached()) { return; }
     cacheHelpers.getOrCreateCache(CacheFactory, statesToCache[stateName])
       .put('pageNumber', pageNumber);
   };
