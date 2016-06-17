@@ -3,7 +3,7 @@ describe('$url', function () {
 
   let $url;
 
-  beforeEach(inject(function(_$url_) {
+  beforeEach(inject(function (_$url_) {
     $url = _$url_;
   }));
 
@@ -56,7 +56,7 @@ describe('$url', function () {
   });
 
   describe('matchingPathname', function () {
-    const makeUrl = function (urlString) { return $url.makeUrl(urlString) };
+    const makeUrl = function (urlString) { return $url.makeUrl(urlString); };
     context('given a pathname', function () {
       it('is true when the given url has the pathname', function () {
         const pathname = '/employee';

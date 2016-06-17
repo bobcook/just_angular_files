@@ -4,7 +4,7 @@ import conf from '../conf';
 
 import $ from '../plugins';
 
-const webpack = function (watch, callback) {
+const webpack = function (watch, test, callback) {
   const preLoaders = [];
   if (conf.isDevelopment) {
     preLoaders.push({
@@ -48,15 +48,25 @@ const webpack = function (watch, callback) {
     }
   };
 
-  return gulp.src(path.join(conf.paths.src, '/app/index.module.js'))
+  const sources = [ path.join(conf.paths.src, '/app/index.module.js') ];
+  if (test) {
+    sources.push(path.join(conf.paths.src, '/app/**/*.spec.js'));
+    sources.push(path.join(conf.paths.src, '/**/*.mock.js'));
+  }
+
+  return gulp.src(sources)
     .pipe($.webpack(webpackOptions, null, webpackChangeHandler))
     .on('error', function () { /* Catch error here to not crash on watch */ })
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app')));
 };
 
 gulp.task('scripts', function () {
-  return webpack(false);
+  return webpack(false, false);
 });
+
+gulp.task('scripts:test', function () {
+  return webpack(false, true);
+})
 
 gulp.task('bower:symlink', function () {
   return gulp.src(conf.wiredep.directory)
@@ -66,5 +76,5 @@ gulp.task('bower:symlink', function () {
 });
 
 gulp.task('scripts:watch', ['scripts', 'bower:symlink'], function (callback) {
-  return webpack(true, callback);
+  return webpack(true, false, callback);
 });

@@ -70,42 +70,42 @@ describe('$vanityUrlCheck', function () {
     };
 
     it('has the SS-EMPLOYEE promo code for /employee', function () {
-      const currentUrl = 'http://example.com/employee'
+      const currentUrl = 'http://example.com/employee';
       const result = $vanityUrlCheck.redirectUrlFor(currentUrl);
 
       expect(hasPromoCode(result, 'SS-EMPLOYEE')).to.eq(true);
     });
 
     it('has the SS-EMPLOYEE promo code for /employees', function () {
-      const currentUrl = 'http://example.com/employees'
+      const currentUrl = 'http://example.com/employees';
       const result = $vanityUrlCheck.redirectUrlFor(currentUrl);
 
       expect(hasPromoCode(result, 'SS-EMPLOYEE')).to.eq(true);
     });
 
     it('has the SS-BETA promo code for /ssmember', function () {
-      const currentUrl = 'http://example.com/ssmember'
+      const currentUrl = 'http://example.com/ssmember';
       const result = $vanityUrlCheck.redirectUrlFor(currentUrl);
 
       expect(hasPromoCode(result, 'SS-BETA')).to.eq(true);
     });
 
     it('has the SS-BETA promo code for /ssmembers', function () {
-      const currentUrl = 'http://example.com/ssmembers'
+      const currentUrl = 'http://example.com/ssmembers';
       const result = $vanityUrlCheck.redirectUrlFor(currentUrl);
 
       expect(hasPromoCode(result, 'SS-BETA')).to.eq(true);
     });
 
-    it ('has the BTABND promo code for /betabound', function () {
+    it('has the BTABND promo code for /betabound', function () {
       const currentUrl = 'http://example.com/betabound';
       const result = $vanityUrlCheck.redirectUrlFor(currentUrl);
 
       expect(hasPromoCode(result, 'BTABND')).to.eq(true);
-    })
+    });
 
     it('has the SS-BETA promo code for all other URLs', function () {
-      const currentUrl = 'http://example.com/foobar'
+      const currentUrl = 'http://example.com/foobar';
       const result = $vanityUrlCheck.redirectUrlFor(currentUrl);
 
       expect(hasPromoCode(result, 'SS-BETA')).to.eq(true);
