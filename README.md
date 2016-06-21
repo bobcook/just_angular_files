@@ -5,7 +5,7 @@ $ npm install # if encountering errors, try running twice
 ```
 
 ## Local Development
-you will need all these processes running for local development:
+you will need this process running for local development:
 
 1. `$ cd client && gulp serve`
 
