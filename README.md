@@ -1,87 +1,13 @@
-# AARP Staying Sharp
-
-[ ![Codeship Status for philosophie/aarp-staying-sharp](https://codeship.com/projects/5ea238d0-28c4-0133-e286-1ecec8ed5cc2/status?branch=master)](https://codeship.com/projects/97822)
-[![Code Climate](https://codeclimate.com/repos/55d4c46de30ba0228b00a9c3/badges/9ddd857d2dd0872bb1a7/gpa.svg)](https://codeclimate.com/repos/55d4c46de30ba0228b00a9c3/feed)
-
 ## Setup
 
-```bash
-$ bundle
-$ bundle exec rake newb
 # make sure your installed node version matches package.json's engines.node
 $ npm install # if encountering errors, try running twice
-```
-
-### Install Elasticsearch
-```bash
-$ brew install elasticsearch
-```
-
-### Install Elastic Beanstalk CLI
-```bash
-$ brew install awsebcli
-```
-
-### Import AARP CMS content. The content will automatically be added to Elasticsearch.
-
-```bash
-$ bundle exec sidekiq -q default -q mailers
-$ bin/rake latest_content:import
-```
-
-### If you already have CMS content, but need to add the content to elasticsearch.
-
-```bash
-$ bin/rake elasticsearch:index
 ```
 
 ## Local Development
 you will need all these processes running for local development:
 
-1. `$ bundle exec rails s`
-1. `$ bundle exec sidekiq -q default -q mailers`
 1. `$ cd client && gulp serve`
-1. `$ elasticsearch` <= only needed if not running as a daemon
-
-### Development Environment Variables
-Do not set the `DSO_MAIL_API` to the actual endpoint in development to prevent
-sending emails.
-
-### Ngrok environment settings
-When running the local server through ngrok, remember to temporarily add an entry
-into the `envs` JS hash in `index.html` - this should associate the ngrok host
-name with the correct environment settings.
-
-Update the value in `index.html`
-```
-var envs = {
-  '<frontend-hostname>.ngrok.io': 'local',
-```
-and run
-```
-$ ngrok http 9000
-```
-
-If you want to debug the Rails API through a separate ngrok process, make sure
-to also temporarily update the `API_URL` value in the selected environment
-settings in the `envVars` JS hash.
-
-Update the value in `index.html`
-```
-var envVars = {
-  local: {
-    API_URL: '<backend-hostname>.ngrok.io',
-  ...
-```
-and run
-```
-$ ngrok http 3000
-```
-
-Note that if you are using ngrok to test anything with authentication, update
-the `FRONTEND_URL` value in the rails env vars.
-
-`FRONTEND_URL=<frontend-hostname>.ngrok.io`
 
 ## Frontend
 
@@ -94,14 +20,6 @@ To deploy to AWS, use `gulp deploy`. See the section on [Deployment Configuratio
 ## Backend
 
 The backend is a Rails API structured for deployment on Heroku.
-
-### Authentication
-
-In order for the frontend to be able to authenticate with AARP, the backend serves as a proxy that manages all third-party authentication itself, then returns a JWT to the client. When the user attempts to log in, they navigate to a remote URL on the backend, which redirects them to the AARP login flow. Once they've logged in, then they're returned to the backend, along with the auth token.
-
-The auth token itself is encoded into a JWT, but the JWT is too long to fit in a URL query parameter, so it can't be directly sent back to the Angular app. Instead, a temporary "claim token" is generated, which is just a random string, which *itself* is passed as a query parameter to the Angular app. The frontend then makes an API call back to the backend to retrieve the actual JWT, and the temporary claim token is destroyed. The temporary tokens expire after one hour, and the JWTs expire after 24 hours.
-
-## ThirdParty Dependencies
 
 ### Build dependencies
 
@@ -119,23 +37,6 @@ When adding or updating build dependencies, do the following:
 
 See https://nodejs.org/en/blog/npm/managing-node-js-dependencies-with-shrinkwrap for a more in-depth
 explanation of npm shrinkwrap.
-
-### Azul7 Frontend Components
-
-Azul7 has provided a majority of the frontend assets needed for the app via
-[https://github.com/StayingSharp/frontend-aarp-azul7](https://github.com/StayingSharp/frontend-aarp-azul7).
-They are made available to the app via a rake task.
-
-Whenever new components are ready for consumption, run
-
-```sh
-$ FRONTEND_REPO=<local path to azul7 repo> bundle exec rake frontend:update
-```
-
-Afterwards, create a commit to check in the changed files.
-
-**CAVEAT**: Do NOT modify the files in `/vendor/assets/<dirname>/azul7` since
-they will be destroyed the next time the `frontend:update` task runs
 
 ## Definition of Done
 
@@ -167,36 +68,6 @@ its own with `$ rubocop`.
 
 ## Deployment Procedure
 
-For current physical architecture as of 4/11/16, see
-`/doc/stayingsharp_physical_architecture.png`
-
-
-### Frontend Deployment Configuration
-
-#### AWS Elastic Beanstalk (This will become the normal flow of deployment soon)
-
-The existing environments for the staying-sharp app on AWS Elastic Beanstalk are:
-
-- staying-sharp-dev
-- staying-sharp-staging
-- staying-sharp-production
-
-###### Adding a config file
-
-Add a config file for each environment that looks like this:
-
-```
-module.exports = {
-  accessKeyId: 'use valid access key id',
-  secretAccessKey: 'use valid secret access key',
-  envName: 'staying-sharp-<ENVIRONMENT>',
-}
-```
-
-The naming of the file should follow the convention of `awseb-<ENVIRONMENT>-config.js`, where the `ENVIRONMENT` is either `dev`, `staging`, or `production`.
-
-Make sure to add the correct environment for the `envName` field.
-
 ###### Deploying
 
 To clean before building and deployment:
@@ -210,69 +81,3 @@ To build and deploy:
 ```sh
 $  gulp deploy:awseb --env <ENVIRONMENT>
 ```
-
-To add a new environment, create a `awseb-<ENVIRONMENT>-config.js` file for the environment and follow the deployment procedure. Do not create a new environment through the AWS dashboard.
-
-#### S3 + Cloudfront (We are in transition of getting the app off of S3 + Cloudfront)
-
-To deploy to AWS S3 + Cloudfront, you'll need to configure aws client:
-
-```bash
-$ brew up
-$ brew install aws-cfn-tools awscli
-$ aws configure
-```
-(you'll need ACCESS_KEY_ID and SECRET_ACCESS_KEY to configure, choose defaults for all other options)
-
-And you'll also need a file at `client/aws.json` that looks like the following:
-
-```json
-{
-  "production": {
-    "region": "us-west-2",
-    "accessKeyId": "ACCESS_KEY_ID",
-    "secretAccessKey": "SECRET_ACCESS_KEY",
-    "distributionId": "ID_OF_CLOUDFRONT_DISTRIBUTION",
-    "bucket": "NAME_OF_S3_BUCKET",
-    "params": {
-      "Bucket": "NAME_OF_S3_BUCKET_AGAIN"
-   }
-  },
-  "staging": {}, // Staging environment configs go here
-  "dev": {}, // Dev environment configs go here
-}
-```
-
-(be sure to use same ACCESS_KEY_ID and SECRET_ACCESS_KEY that you used to configure aws cli)
-
-To build and deploy:
-
-```sh
-$ gulp deploy --env <ENVIRONMENT>
-```
-
-### Staging Deployment Procedure
-
-CI will deploy the staging environment automatically on `gulp deploy --env staging`.
-
-CI requires the follow environment variables to successfully deploy the frontend
-to AWS:
-
-```sh
-AWS-BUILD-S3-BUCKET
-AWS-BUILD-S3-BUCKET-REGION
-AWS-BUILD-ACCESS-KEY-ID
-AWS-BUILD-SECRET-ACCESS-KEY
-AWS-BUILD-CLOUDFRONT-DISTRIBUTION
-```
-
-### Production Deployment Procedure
-1. QA has accepted all stories in staging
-1. Release manager creates an update to the CHANGELOG
-  - should describe all new functionality being delivered
-  - include sha
-  - include links to accepted stories
-1. Release manager creates a new tag corresponds to the new section of the CHANGELOG
-1. Push production branch to heroku
-1. Push frontend to aws with `$ gulp deploy --env production`
-1. Push frontend to firebase with: `$ firebase deploy -f aarp-ss-prod`
