@@ -1,2 +1,0 @@
-class AssessmentQuestionDate < AssessmentQuestion
-end

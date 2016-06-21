@@ -1,2 +1,0 @@
-class AssessmentQuestionnaire < Assessment
-end

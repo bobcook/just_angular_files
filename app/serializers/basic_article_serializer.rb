@@ -1,2 +1,0 @@
-class BasicArticleSerializer < ArticleSerializer
-end

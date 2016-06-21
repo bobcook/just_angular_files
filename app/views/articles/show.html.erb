@@ -1,7 +1,0 @@
-<% if @article.video? %>
-  <%= render partial: 'articles/video', article: @article %>
-<% elsif @article.slideshow? %>
-  <%= render partial: 'articles/slideshow', article: @article %>
-<% else %>
-  <%= render partial: 'articles/basic', article: @article %>
-<% end %>

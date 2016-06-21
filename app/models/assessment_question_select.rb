@@ -1,2 +1,0 @@
-class AssessmentQuestionSelect < AssessmentQuestion
-end

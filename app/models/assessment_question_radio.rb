@@ -1,2 +1,0 @@
-class AssessmentQuestionRadio < AssessmentQuestion
-end
