@@ -9,6 +9,10 @@ you will need all these processes running for local development:
 
 1. `$ cd client && gulp serve`
 
+To run the tests;
+ $ cd client
+ $ gulp test
+
 ## Frontend
 
 The frontend application is an Angular app located in the `client/` directory. The app is built with Gulp and structured for deployment to AWS S3 + Cloudfront. To set up the frontend application, run `npm install` in the root directory, which will install Node and Bower dependencies and build the client code.
