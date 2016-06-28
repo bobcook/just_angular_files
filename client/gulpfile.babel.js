@@ -1,10 +1,12 @@
 import gulp from 'gulp';
 import wrench from 'wrench';
+import gutil from 'gulp-util';
 
 /**
  *  This will load all js or coffee files in the gulp directory
  *  in order to load all gulp tasks
  */
+gutil.log('hi................')
 const requireTasks = function (directory) {
   wrench.readdirSyncRecursive(directory)
     .filter((file) => /\.js$/.test(file))
