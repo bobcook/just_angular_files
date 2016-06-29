@@ -7,6 +7,7 @@ const Airbrake = function (airbrakeConfig, envName) {
     );
 
   airbrake.addFilter(function (notice) {
+    debugger;
     notice.context.environment = envName;
     return notice;
   });

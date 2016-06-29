@@ -9,21 +9,21 @@ describe('screen-types', function () {
   };
 
   describe('getScreenTypeMinSize', function () {
-    it('for mobile', function () {
+    it('recognizes the minimum screen size for mobile', function () {
       const size = screenSizes['mobile']['min'];
       const mobileMin = screenTypes.getScreenTypeMinSize('mobile');
 
       expect(mobileMin).to.eq(size);
     });
 
-    it('for tablet', function () {
+    it('recognizes the minimum screen size for tablet', function () {
       const size = screenSizes['tablet']['min'];
       const tabletMin = screenTypes.getScreenTypeMinSize('tablet');
 
       expect(tabletMin).to.eq(size);
     });
 
-    it('for desktop', function () {
+    it('recognizes the minimum screen size for desktop', function () {
       const size = screenSizes['desktop']['min'];
       const desktopMin = screenTypes.getScreenTypeMinSize('desktop');
 
@@ -32,21 +32,21 @@ describe('screen-types', function () {
   });
 
   describe('getScreenTypeMaxSize', function () {
-    it('for mobile', function () {
+    it('recognizes the maximum screen size for mobile', function () {
       const size = screenSizes['mobile']['max'];
       const mobileMax = screenTypes.getScreenTypeMaxSize('mobile');
 
       expect(mobileMax).to.eq(size);
     });
 
-    it('for tablet', function () {
+    it('recognizes the maximum screen size for tablet', function () {
       const size = screenSizes['tablet']['max'];
       const tabletMax = screenTypes.getScreenTypeMaxSize('tablet');
 
       expect(tabletMax).to.eq(size);
     });
 
-    it('for desktop', function () {
+    it('recognizes the maximum screen size for desktop', function () {
       const size = screenSizes['desktop']['max'];
       const desktopMax = screenTypes.getScreenTypeMaxSize('desktop');
 
